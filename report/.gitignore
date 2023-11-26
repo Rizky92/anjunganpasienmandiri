@@ -1,0 +1,5 @@
+/.settings
+.project
+**/*.pdf
+**/*.jasper
+!.gitignore
