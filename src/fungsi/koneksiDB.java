@@ -63,6 +63,60 @@ public class koneksiDB {
         }
         return connection;
     }
+    
+    public static String PRINTER_REGISTRASI() {
+        try {
+            prop.loadFromXML(new FileInputStream("setting/apm.xml"));
+            return prop.getProperty("PRINTER_REGISTRASI");
+        } catch (Exception e) {
+            return "";
+        }
+    }
+    
+    public static String PRINTER_BARCODE() {
+        try {
+            prop.loadFromXML(new FileInputStream("setting/apm.xml"));
+            return prop.getProperty("PRINTER_BARCODE");
+        } catch (Exception e) {
+            return "";
+        }
+    }
+    
+    public static String URLFINGERPRINTBPJS() {
+        try {
+            prop.loadFromXML(new FileInputStream("setting/apm.xml"));
+            return prop.getProperty("URLFINGERPRINTBPJS");
+        } catch (Exception e) {
+            return "";
+        }
+    }
+
+    public static String URLAPLIKASIFINGERPRINTBPJS() {
+        try {
+            prop.loadFromXML(new FileInputStream("setting/apm.xml"));
+            return prop.getProperty("URLAPLIKASIFINGERPRINTBPJS");
+        } catch (Exception e) {
+            return "";
+        }
+    }
+
+    public static String USERFINGERPRINTBPJS() {
+        try {
+            prop.loadFromXML(new FileInputStream("setting/apm.xml"));
+            return EnkripsiAES.decrypt(prop.getProperty("USERFINGERPRINTBPJS"));
+        } catch (Exception e) {
+            return "";
+        }
+    }
+
+    public static String PASSFINGERPRINTBPJS() {
+        try {
+            prop.loadFromXML(new FileInputStream("setting/apm.xml"));
+            return EnkripsiAES.decrypt(prop.getProperty("PASSWORDFINGERPRINTBPJS"));
+        } catch (Exception e) {
+            return "";
+        }
+    }
 
     public static String HOST() {
         try {
@@ -238,46 +292,6 @@ public class koneksiDB {
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
             var = prop.getProperty("URLAPIBPJS");
-        } catch (Exception e) {
-            var = "";
-        }
-        return var;
-    }
-
-    public static String URLFINGERPRINTBPJS() {
-        try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var = prop.getProperty("URLFINGERPRINTBPJS");
-        } catch (Exception e) {
-            var = "";
-        }
-        return var;
-    }
-
-    public static String URLAPLIKASIFINGERPRINTBPJS() {
-        try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var = prop.getProperty("URLAPLIKASIFINGERPRINTBPJS");
-        } catch (Exception e) {
-            var = "";
-        }
-        return var;
-    }
-
-    public static String USERFINGERPRINTBPJS() {
-        try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var = EnkripsiAES.decrypt(prop.getProperty("USERFINGERPRINTBPJS"));
-        } catch (Exception e) {
-            var = "";
-        }
-        return var;
-    }
-
-    public static String PASSWORDFINGERPRINTBPJS() {
-        try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var = EnkripsiAES.decrypt(prop.getProperty("PASSWORDFINGERPRINTBPJS"));
         } catch (Exception e) {
             var = "";
         }
