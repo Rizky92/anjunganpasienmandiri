@@ -1,5 +1,4 @@
-/.settings
-.project
-**/*.pdf
-**/*.jasper
-!.gitignore
+/rptBarcodeRawatAPM.jasper
+/rptBuktiRegisterAPM.jasper
+/rptBridgingSEPAPM1.jasper
+/rptBridgingSEPAPM2.jasper
