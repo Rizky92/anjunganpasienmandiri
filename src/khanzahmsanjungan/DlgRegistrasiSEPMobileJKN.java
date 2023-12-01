@@ -33,6 +33,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.File;
@@ -82,11 +83,11 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
     private BPJSCekRiwayatRujukanTerakhir rujukanterakhir = new BPJSCekRiwayatRujukanTerakhir(null, true);
     private BPJSCekHistoriPelayanan historiPelayanan = new BPJSCekHistoriPelayanan(null, true);
     private String umur = "0", sttsumur = "Th", hari = "", kode_dokter = "", kode_poli = "", nama_instansi, alamat_instansi, kabupaten, propinsi, kontak, email;
-    private String kdkel = "", kdkec = "", kdkab = "", kdprop = "", nosisrute = "", BASENOREG = "", URUTNOREG = "", link = "", klg = "SAUDARA", statuspasien = "", pengurutan = "", tahun = "", bulan = "", posisitahun = "", awalantahun = "", awalanbulan = "",
+    private String kdkel = "", kdkec = "", kdkab = "", kdprop = "", nosisrute = "", BASENOREG = "", URUTNOREG = "", URLAPIBPJS = "", klg = "SAUDARA", statuspasien = "", pengurutan = "", tahun = "", bulan = "", posisitahun = "", awalantahun = "", awalanbulan = "",
             no_ktp = "", tmp_lahir = "", nm_ibu = "", alamat = "", pekerjaan = "", no_tlp = "", tglkkl = "0000-00-00",
             umurdaftar = "0", namakeluarga = "", no_peserta = "", kelurahan = "", kecamatan = "", datajam = "", jamselesai = "", jammulai = "",
             kabupatenpj = "", hariawal = "", requestJson, URL = "", nosep = "", user = "", prb = "", peserta = "", kodedokterreg = "", kodepolireg = "",
-            status = "Baru", utc = "", jeniskunjungan = "", nomorreg = "", urlaplikasi = "", urlfinger = "", userfinger = "", passfinger = "",
+            status = "Baru", utc = "", jeniskunjungan = "", nomorreg = "", URLAPLIKASIFINGERPRINTBPJS = "", URLFINGERPRINTBPJS = "", USERFINGERPRINTBPJS = "", PASSFINGERPRINTBPJS = "",
             tampilkantni = Sequel.cariIsi("select tampilkan_tni_polri from set_tni_polri");
     private int kuota = 0;
     private Properties prop = new Properties();
@@ -148,15 +149,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
             System.out.println(e);
         }
 
-        dokter.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {
-            }
-
-            @Override
-            public void windowClosing(WindowEvent e) {
-            }
-
+        dokter.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosed(WindowEvent e) {
                 if (dokter.getTable().getSelectedRow() != -1) {
@@ -170,33 +163,9 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
 
                 }
             }
-
-            @Override
-            public void windowIconified(WindowEvent e) {
-            }
-
-            @Override
-            public void windowDeiconified(WindowEvent e) {
-            }
-
-            @Override
-            public void windowActivated(WindowEvent e) {
-            }
-
-            @Override
-            public void windowDeactivated(WindowEvent e) {
-            }
         });
 
-        poli.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {
-            }
-
-            @Override
-            public void windowClosing(WindowEvent e) {
-            }
-
+        poli.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosed(WindowEvent e) {
                 if (poli.getTable().getSelectedRow() != -1) {
@@ -206,33 +175,9 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
 
                 }
             }
-
-            @Override
-            public void windowIconified(WindowEvent e) {
-            }
-
-            @Override
-            public void windowDeiconified(WindowEvent e) {
-            }
-
-            @Override
-            public void windowActivated(WindowEvent e) {
-            }
-
-            @Override
-            public void windowDeactivated(WindowEvent e) {
-            }
         });
 
-        polimapping.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {
-            }
-
-            @Override
-            public void windowClosing(WindowEvent e) {
-            }
-
+        polimapping.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosed(WindowEvent e) {
                 if (polimapping.getTable().getSelectedRow() != -1) {
@@ -242,33 +187,9 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
 
                 }
             }
-
-            @Override
-            public void windowIconified(WindowEvent e) {
-            }
-
-            @Override
-            public void windowDeiconified(WindowEvent e) {
-            }
-
-            @Override
-            public void windowActivated(WindowEvent e) {
-            }
-
-            @Override
-            public void windowDeactivated(WindowEvent e) {
-            }
         });
 
-        doktermapping.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {
-            }
-
-            @Override
-            public void windowClosing(WindowEvent e) {
-            }
-
+        doktermapping.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosed(WindowEvent e) {
                 if (doktermapping.getTable().getSelectedRow() != -1) {
@@ -278,33 +199,9 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
 
                 }
             }
-
-            @Override
-            public void windowIconified(WindowEvent e) {
-            }
-
-            @Override
-            public void windowDeiconified(WindowEvent e) {
-            }
-
-            @Override
-            public void windowActivated(WindowEvent e) {
-            }
-
-            @Override
-            public void windowDeactivated(WindowEvent e) {
-            }
         });
 
-        penyakit.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {
-            }
-
-            @Override
-            public void windowClosing(WindowEvent e) {
-            }
-
+        penyakit.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosed(WindowEvent e) {
                 if (penyakit.getTable().getSelectedRow() != -1) {
@@ -315,33 +212,9 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
 
                 }
             }
-
-            @Override
-            public void windowIconified(WindowEvent e) {
-            }
-
-            @Override
-            public void windowDeiconified(WindowEvent e) {
-            }
-
-            @Override
-            public void windowActivated(WindowEvent e) {
-            }
-
-            @Override
-            public void windowDeactivated(WindowEvent e) {
-            }
         });
 
-        rujukanterakhir.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {
-            }
-
-            @Override
-            public void windowClosing(WindowEvent e) {
-            }
-
+        rujukanterakhir.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosed(WindowEvent e) {
                 if (rujukanterakhir.getTable().getSelectedRow() != -1) {
@@ -356,33 +229,9 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                     Catatan.requestFocus();
                 }
             }
-
-            @Override
-            public void windowIconified(WindowEvent e) {
-            }
-
-            @Override
-            public void windowDeiconified(WindowEvent e) {
-            }
-
-            @Override
-            public void windowActivated(WindowEvent e) {
-            }
-
-            @Override
-            public void windowDeactivated(WindowEvent e) {
-            }
         });
 
-        historiPelayanan.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {
-            }
-
-            @Override
-            public void windowClosing(WindowEvent e) {
-            }
-
+        historiPelayanan.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosed(WindowEvent e) {
                 if (historiPelayanan.getTable().getSelectedRow() != -1) {
@@ -392,52 +241,18 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                 }
                 NoRujukan.requestFocus();
             }
-
-            @Override
-            public void windowIconified(WindowEvent e) {
-            }
-
-            @Override
-            public void windowDeiconified(WindowEvent e) {
-            }
-
-            @Override
-            public void windowActivated(WindowEvent e) {
-            }
-
-            @Override
-            public void windowDeactivated(WindowEvent e) {
-            }
         });
 
-        try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            link = prop.getProperty("URLAPIBPJS");
-            URUTNOREG = prop.getProperty("URUTNOREG");
-            BASENOREG = prop.getProperty("BASENOREG");
-        } catch (Exception ex) {
+        URUTNOREG = koneksiDB.URUTNOREG();
+        BASENOREG = koneksiDB.BASENOREG();
+        URLAPIBPJS = koneksiDB.URLAPIBPJS();
+        URLFINGERPRINTBPJS = koneksiDB.URLFINGERPRINTBPJS();
+        USERFINGERPRINTBPJS = koneksiDB.USERFINGERPRINTBPJS();
+        PASSFINGERPRINTBPJS = koneksiDB.PASSFINGERPRINTBPJS();
+        URLAPLIKASIFINGERPRINTBPJS = koneksiDB.URLAPLIKASIFINGERPRINTBPJS();
 
-            URUTNOREG = "";
-            BASENOREG = "";
-        }
-
-        try {
-            KdPPK.setText(Sequel.cariIsi("select setting.kode_ppk from setting"));
-            NmPPK.setText(Sequel.cariIsi("select setting.nama_instansi from setting"));
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-
-        try {
-            link = koneksiDB.URLAPIBPJS();
-            urlfinger = koneksiDB.URLFINGERPRINTBPJS();
-            userfinger = koneksiDB.USERFINGERPRINTBPJS();
-            passfinger = koneksiDB.PASSWORDFINGERPRINTBPJS();
-            urlaplikasi = koneksiDB.URLAPLIKASIFINGERPRINTBPJS();
-        } catch (Exception e) {
-            System.out.println("E : " + e);
-        }
-
+        KdPPK.setText(Sequel.cariIsi("select setting.kode_ppk from setting"));
+        NmPPK.setText(Sequel.cariIsi("select setting.nama_instansi from setting"));
     }
 
     /**
@@ -2052,7 +1867,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                 headers.add("X-Timestamp", utc);
                 headers.add("X-Signature", api.getHmac(utc));
                 headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
-                URL = link + "/Sep/aprovalSEP";
+                URL = URLAPIBPJS + "/Sep/aprovalSEP";
                 requestJson = " {"
                         + "\"request\": {"
                         + "\"t_sep\": {"
@@ -2103,7 +1918,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                 headers.add("X-Timestamp", utc);
                 headers.add("X-Signature", api.getHmac(utc));
                 headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
-                URL = link + "/Sep/pengajuanSEP";
+                URL = URLAPIBPJS + "/Sep/pengajuanSEP";
                 requestJson = " {"
                         + "\"request\": {"
                         + "\"t_sep\": {"
@@ -2457,7 +2272,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
             headers.add("X-Timestamp", utc);
             headers.add("X-Signature", api.getHmac(utc));
             headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
-            URL = link + "/SEP/2.0/insert";
+            URL = URLAPIBPJS + "/SEP/2.0/insert";
             requestJson = "{"
                     + "\"request\":{"
                     + "\"t_sep\":{"
@@ -2639,7 +2454,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                 headers.add("X-Timestamp", utc);
                 headers.add("X-Signature", api.getHmac(utc));
                 headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
-                URL = link + "/SEP/FingerPrint/Peserta/" + noka + "/TglPelayanan/" + Valid.SetTgl(TanggalSEP.getSelectedItem() + "");
+                URL = URLAPIBPJS + "/SEP/FingerPrint/Peserta/" + noka + "/TglPelayanan/" + Valid.SetTgl(TanggalSEP.getSelectedItem() + "");
                 requestEntity = new HttpEntity(headers);
                 root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
                 nameNode = root.path("metaData");
@@ -2674,7 +2489,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
 
     public void tampil(String nomorrujukan) {
         try {
-            URL = link + "/Rujukan/Peserta/" + nomorrujukan;
+            URL = URLAPIBPJS + "/Rujukan/Peserta/" + nomorrujukan;
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
             headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
@@ -2813,7 +2628,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                                 + "	bridging_sep where bridging_sep.no_sep='" + noSEP + "' ").equals("1")) {
 //            kondisi post ranap
                             try {
-                                URL = link + "/Peserta/nokartu/" + nokapesertakontrol + "/tglSEP/" + Valid.SetTgl(TanggalSEP.getSelectedItem().toString());
+                                URL = URLAPIBPJS + "/Peserta/nokartu/" + nokapesertakontrol + "/tglSEP/" + Valid.SetTgl(TanggalSEP.getSelectedItem().toString());
                                 headers = new HttpHeaders();
                                 headers.setContentType(MediaType.APPLICATION_JSON);
                                 headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
@@ -2903,7 +2718,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
 
                         } else {
                             try {
-                                URL = link + "/Rujukan/Peserta/" + nokapesertakontrol;
+                                URL = URLAPIBPJS + "/Rujukan/Peserta/" + nokapesertakontrol;
                                 headers = new HttpHeaders();
                                 headers.setContentType(MediaType.APPLICATION_JSON);
                                 headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
@@ -3327,9 +3142,9 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         if (!NoKartu.getText().equals("")) {
             this.toFront();
             try {
-                Runtime.getRuntime().exec(urlaplikasi);
+                Runtime.getRuntime().exec(URLAPLIKASIFINGERPRINTBPJS);
                 Robot robot = new Robot();
-                StringSelection stringSelection = new StringSelection(urlfinger);
+                StringSelection stringSelection = new StringSelection(URLFINGERPRINTBPJS);
                 Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
                 clipboard.setContents(stringSelection, stringSelection);
                 Thread.sleep(1000);
@@ -3342,7 +3157,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                 robot.keyPress(KeyEvent.VK_ENTER);
                 robot.keyRelease(KeyEvent.VK_ENTER);
                 Thread.sleep(1500);
-                StringSelection stringSelectionuser = new StringSelection(userfinger);
+                StringSelection stringSelectionuser = new StringSelection(USERFINGERPRINTBPJS);
                 Clipboard clipboarduser = Toolkit.getDefaultToolkit().getSystemClipboard();
                 clipboarduser.setContents(stringSelectionuser, stringSelectionuser);
                 robot.keyPress(KeyEvent.VK_CONTROL);
@@ -3352,7 +3167,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                 robot.keyPress(KeyEvent.VK_TAB);
                 robot.keyRelease(KeyEvent.VK_TAB);
                 Thread.sleep(1000);
-                StringSelection stringSelectionpass = new StringSelection(passfinger);
+                StringSelection stringSelectionpass = new StringSelection(PASSFINGERPRINTBPJS);
                 Clipboard clipboardpass = Toolkit.getDefaultToolkit().getSystemClipboard();
                 clipboardpass.setContents(stringSelectionpass, stringSelectionpass);
                 robot.keyPress(KeyEvent.VK_CONTROL);
@@ -3392,7 +3207,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                 headers.add("X-Timestamp", utc);
                 headers.add("X-Signature", api.getHmac(utc));
                 headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
-                URL = link + "/RencanaKontrol/Update";
+                URL = URLAPIBPJS + "/RencanaKontrol/Update";
                 requestJson = "{"
                         + "\"request\": {"
                         + "\"noSuratKontrol\":\"" + NoSurat + "\","
