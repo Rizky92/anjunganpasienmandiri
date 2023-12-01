@@ -28,6 +28,7 @@ import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.File;
@@ -72,11 +73,11 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
     private BPJSCekRiwayatRujukanTerakhir rujukanterakhir = new BPJSCekRiwayatRujukanTerakhir(null, true);
     private BPJSCekHistoriPelayanan historiPelayanan = new BPJSCekHistoriPelayanan(null, true);
     private String umur = "0", sttsumur = "Th", hari = "", kode_dokter = "", kode_poli = "", nama_instansi, alamat_instansi, kabupaten, propinsi, kontak, email;
-    private String kdkel = "", kdkec = "", kdkab = "", kdprop = "", nosisrute = "", BASENOREG = "", URUTNOREG = "", link = "", klg = "SAUDARA", statuspasien = "", pengurutan = "", tahun = "", bulan = "", posisitahun = "", awalantahun = "", awalanbulan = "",
+    private String kdkel = "", kdkec = "", kdkab = "", kdprop = "", nosisrute = "", BASENOREG = "", URUTNOREG = "", URLAPIBPJS = "", klg = "SAUDARA", statuspasien = "", pengurutan = "", tahun = "", bulan = "", posisitahun = "", awalantahun = "", awalanbulan = "",
             no_ktp = "", tmp_lahir = "", nm_ibu = "", alamat = "", pekerjaan = "", no_tlp = "", tglkkl = "0000-00-00",
             umurdaftar = "0", namakeluarga = "", no_peserta = "", kelurahan = "", kecamatan = "", datajam = "", jamselesai = "", jammulai = "",
             kabupatenpj = "", hariawal = "", requestJson, URL = "", nosep = "", user = "", prb = "", peserta = "", kodedokterreg = "", kodepolireg = "",
-            status = "Baru", utc = "", jeniskunjungan = "", nomorreg = "", urlaplikasi = "", urlfinger = "", userfinger = "", passfinger = "",
+            status = "Baru", utc = "", jeniskunjungan = "", nomorreg = "", URLAPLIKASIFINGERPRINTBPJS = "", URLFINGERPRINTBPJS = "", USERFINGERPRINTBPJS = "", PASSFINGERPRINTBPJS = "",
             tampilkantni = Sequel.cariIsi("select tampilkan_tni_polri from set_tni_polri");
     private int kuota = 0;
     private Properties prop = new Properties();
@@ -138,15 +139,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
             System.out.println(e);
         }
 
-        dokter.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {
-            }
-
-            @Override
-            public void windowClosing(WindowEvent e) {
-            }
-
+        dokter.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosed(WindowEvent e) {
                 if (dokter.getTable().getSelectedRow() != -1) {
@@ -160,33 +153,9 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
 
                 }
             }
-
-            @Override
-            public void windowIconified(WindowEvent e) {
-            }
-
-            @Override
-            public void windowDeiconified(WindowEvent e) {
-            }
-
-            @Override
-            public void windowActivated(WindowEvent e) {
-            }
-
-            @Override
-            public void windowDeactivated(WindowEvent e) {
-            }
         });
 
-        poli.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {
-            }
-
-            @Override
-            public void windowClosing(WindowEvent e) {
-            }
-
+        poli.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosed(WindowEvent e) {
                 if (poli.getTable().getSelectedRow() != -1) {
@@ -196,33 +165,9 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
 
                 }
             }
-
-            @Override
-            public void windowIconified(WindowEvent e) {
-            }
-
-            @Override
-            public void windowDeiconified(WindowEvent e) {
-            }
-
-            @Override
-            public void windowActivated(WindowEvent e) {
-            }
-
-            @Override
-            public void windowDeactivated(WindowEvent e) {
-            }
         });
 
-        polimapping.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {
-            }
-
-            @Override
-            public void windowClosing(WindowEvent e) {
-            }
-
+        polimapping.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosed(WindowEvent e) {
                 if (polimapping.getTable().getSelectedRow() != -1) {
@@ -232,33 +177,9 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
 
                 }
             }
-
-            @Override
-            public void windowIconified(WindowEvent e) {
-            }
-
-            @Override
-            public void windowDeiconified(WindowEvent e) {
-            }
-
-            @Override
-            public void windowActivated(WindowEvent e) {
-            }
-
-            @Override
-            public void windowDeactivated(WindowEvent e) {
-            }
         });
 
-        doktermapping.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {
-            }
-
-            @Override
-            public void windowClosing(WindowEvent e) {
-            }
-
+        doktermapping.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosed(WindowEvent e) {
                 if (doktermapping.getTable().getSelectedRow() != -1) {
@@ -268,33 +189,9 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
 
                 }
             }
-
-            @Override
-            public void windowIconified(WindowEvent e) {
-            }
-
-            @Override
-            public void windowDeiconified(WindowEvent e) {
-            }
-
-            @Override
-            public void windowActivated(WindowEvent e) {
-            }
-
-            @Override
-            public void windowDeactivated(WindowEvent e) {
-            }
         });
 
-        penyakit.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {
-            }
-
-            @Override
-            public void windowClosing(WindowEvent e) {
-            }
-
+        penyakit.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosed(WindowEvent e) {
                 if (penyakit.getTable().getSelectedRow() != -1) {
@@ -305,33 +202,9 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
 
                 }
             }
-
-            @Override
-            public void windowIconified(WindowEvent e) {
-            }
-
-            @Override
-            public void windowDeiconified(WindowEvent e) {
-            }
-
-            @Override
-            public void windowActivated(WindowEvent e) {
-            }
-
-            @Override
-            public void windowDeactivated(WindowEvent e) {
-            }
         });
 
-        rujukanterakhir.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {
-            }
-
-            @Override
-            public void windowClosing(WindowEvent e) {
-            }
-
+        rujukanterakhir.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosed(WindowEvent e) {
                 if (rujukanterakhir.getTable().getSelectedRow() != -1) {
@@ -346,33 +219,9 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                     Catatan.requestFocus();
                 }
             }
-
-            @Override
-            public void windowIconified(WindowEvent e) {
-            }
-
-            @Override
-            public void windowDeiconified(WindowEvent e) {
-            }
-
-            @Override
-            public void windowActivated(WindowEvent e) {
-            }
-
-            @Override
-            public void windowDeactivated(WindowEvent e) {
-            }
         });
 
-        historiPelayanan.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {
-            }
-
-            @Override
-            public void windowClosing(WindowEvent e) {
-            }
-
+        historiPelayanan.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosed(WindowEvent e) {
                 if (historiPelayanan.getTable().getSelectedRow() != -1) {
@@ -382,34 +231,15 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                 }
                 NoRujukan.requestFocus();
             }
-
-            @Override
-            public void windowIconified(WindowEvent e) {
-            }
-
-            @Override
-            public void windowDeiconified(WindowEvent e) {
-            }
-
-            @Override
-            public void windowActivated(WindowEvent e) {
-            }
-
-            @Override
-            public void windowDeactivated(WindowEvent e) {
-            }
         });
-
-        try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            link = prop.getProperty("URLAPIBPJS");
-            URUTNOREG = prop.getProperty("URUTNOREG");
-            BASENOREG = prop.getProperty("BASENOREG");
-        } catch (Exception ex) {
-
-            URUTNOREG = "";
-            BASENOREG = "";
-        }
+        
+        URUTNOREG = koneksiDB.URUTNOREG();
+        BASENOREG = koneksiDB.BASENOREG();
+        URLAPIBPJS = koneksiDB.URLAPIBPJS();
+        URLFINGERPRINTBPJS = koneksiDB.URLFINGERPRINTBPJS();
+        USERFINGERPRINTBPJS = koneksiDB.USERFINGERPRINTBPJS();
+        PASSFINGERPRINTBPJS = koneksiDB.PASSFINGERPRINTBPJS();
+        URLAPLIKASIFINGERPRINTBPJS = koneksiDB.URLAPLIKASIFINGERPRINTBPJS();
 
         try {
             KdPPK.setText(Sequel.cariIsi("select setting.kode_ppk from setting"));
@@ -417,17 +247,6 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         } catch (Exception e) {
             System.out.println(e);
         }
-
-        try {
-            link = koneksiDB.URLAPIBPJS();
-            urlfinger = koneksiDB.URLFINGERPRINTBPJS();
-            userfinger = koneksiDB.USERFINGERPRINTBPJS();
-            passfinger = koneksiDB.PASSWORDFINGERPRINTBPJS();
-            urlaplikasi = koneksiDB.URLAPLIKASIFINGERPRINTBPJS();
-        } catch (Exception e) {
-            System.out.println("E : " + e);
-        }
-
     }
 
     /**
@@ -2038,7 +1857,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                 headers.add("X-Timestamp", utc);
                 headers.add("X-Signature", api.getHmac(utc));
                 headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
-                URL = link + "/Sep/aprovalSEP";
+                URL = URLAPIBPJS + "/Sep/aprovalSEP";
                 requestJson = " {"
                         + "\"request\": {"
                         + "\"t_sep\": {"
@@ -2089,7 +1908,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                 headers.add("X-Timestamp", utc);
                 headers.add("X-Signature", api.getHmac(utc));
                 headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
-                URL = link + "/Sep/pengajuanSEP";
+                URL = URLAPIBPJS + "/Sep/pengajuanSEP";
                 requestJson = " {"
                         + "\"request\": {"
                         + "\"t_sep\": {"
@@ -2277,67 +2096,47 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
     }
 
     private void isNumber() {
-
-        if (Sequel.cariInteger("select count(booking_registrasi.no_rkm_medis) from booking_registrasi where booking_registrasi.no_rkm_medis='" + TNoRM.getText() + "' and "
-                + "booking_registrasi.tanggal_periksa='" + Valid.SetTgl(TanggalSEP.getSelectedItem().toString()) + "' and booking_registrasi.kd_dokter='" + kodedokterreg + "' and booking_registrasi.kd_poli='" + kodepolireg + "'") > 0) {
-            NoReg.setText(Sequel.cariIsi("select booking_registrasi.no_reg from booking_registrasi where booking_registrasi.no_rkm_medis='" + TNoRM.getText() + "' and "
-                    + "booking_registrasi.tanggal_periksa='" + Valid.SetTgl(TanggalSEP.getSelectedItem().toString()) + "' and booking_registrasi.kd_dokter='" + kodedokterreg + "' and booking_registrasi.kd_poli='" + kodepolireg + "'"));
-
-        } else {
-            if (BASENOREG.equals("booking")) {
-                switch (URUTNOREG) {
-                    case "poli":
-                        if (Sequel.cariInteger("select ifnull(MAX(CONVERT(no_reg,signed)),0) from booking_registrasi where kd_poli='" + kodepolireg + "' and tanggal_periksa='" + Valid.SetTgl(TanggalSEP.getSelectedItem().toString()) + "'")
-                                >= Sequel.cariInteger("select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_poli='" + kodepolireg + "' and tgl_registrasi='" + Valid.SetTgl(TanggalSEP.getSelectedItem().toString()) + "'")) {
-                            Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from booking_registrasi where kd_poli='" + kodepolireg + "' and tanggal_periksa='" + Valid.SetTgl(TanggalSEP.getSelectedItem().toString()) + "'", "", 3, NoReg);
-                        } else {
-                            Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_poli='" + kodepolireg + "' and tgl_registrasi='" + Valid.SetTgl(TanggalSEP.getSelectedItem().toString()) + "'", "", 3, NoReg);
-                        }
-                        break;
-                    case "dokter":
-                        if (Sequel.cariInteger("select ifnull(MAX(CONVERT(no_reg,signed)),0) from booking_registrasi where kd_dokter='" + kodedokterreg + "' and tanggal_periksa='" + Valid.SetTgl(TanggalSEP.getSelectedItem().toString()) + "'")
-                                >= Sequel.cariInteger("select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_dokter='" + kodedokterreg + "' and tgl_registrasi='" + Valid.SetTgl(TanggalSEP.getSelectedItem().toString()) + "'")) {
-                            Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from booking_registrasi where kd_dokter='" + kodedokterreg + "' and tanggal_periksa='" + Valid.SetTgl(TanggalSEP.getSelectedItem().toString()) + "'", "", 3, NoReg);
-                        } else {
-                            Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_dokter='" + kodedokterreg + "' and tgl_registrasi='" + Valid.SetTgl(TanggalSEP.getSelectedItem().toString()) + "'", "", 3, NoReg);
-                        }
-                        break;
-                    case "dokter + poli":
-                        if (Sequel.cariInteger("select ifnull(MAX(CONVERT(no_reg,signed)),0) from booking_registrasi where kd_dokter='" + kodedokterreg + "' and kd_poli='" + kodepolireg + "' and tanggal_periksa='" + Valid.SetTgl(TanggalSEP.getSelectedItem().toString()) + "'")
-                                >= Sequel.cariInteger("select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_dokter='" + kodedokterreg + "' and kd_poli='" + kodepolireg + "' and tgl_registrasi='" + Valid.SetTgl(TanggalSEP.getSelectedItem().toString()) + "'")) {
-                            Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from booking_registrasi where kd_dokter='" + kodedokterreg + "' and kd_poli='" + kodepolireg + "' and tanggal_periksa='" + Valid.SetTgl(TanggalSEP.getSelectedItem().toString()) + "'", "", 3, NoReg);
-                        } else {
-                            Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_dokter='" + kodedokterreg + "' and kd_poli='" + kodepolireg + "' and tgl_registrasi='" + Valid.SetTgl(TanggalSEP.getSelectedItem().toString()) + "'", "", 3, NoReg);
-                        }
-                        break;
-                    default:
-                        if (Sequel.cariInteger("select ifnull(MAX(CONVERT(no_reg,signed)),0) from booking_registrasi where kd_poli='" + kodepolireg + "' and tanggal_periksa='" + Valid.SetTgl(TanggalSEP.getSelectedItem().toString()) + "'")
-                                >= Sequel.cariInteger("select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_poli='" + kodepolireg + "' and tgl_registrasi='" + Valid.SetTgl(TanggalSEP.getSelectedItem().toString()) + "'")) {
-                            Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from booking_registrasi where kd_poli='" + kodepolireg + "' and tanggal_periksa='" + Valid.SetTgl(TanggalSEP.getSelectedItem().toString()) + "'", "", 3, NoReg);
-                        } else {
-                            Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_poli='" + kodepolireg + "' and tgl_registrasi='" + Valid.SetTgl(TanggalSEP.getSelectedItem().toString()) + "'", "", 3, NoReg);
-                        }
-                        break;
-                }
-            } else {
-                switch (URUTNOREG) {
-                    case "poli":
-                        Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_poli='" + kodepolireg + "' and tgl_registrasi='" + Valid.SetTgl(TanggalSEP.getSelectedItem().toString()) + "'", "", 3, NoReg);
-                        break;
-                    case "dokter":
-                        Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_dokter='" + kodedokterreg + "' and tgl_registrasi='" + Valid.SetTgl(TanggalSEP.getSelectedItem().toString()) + "'", "", 3, NoReg);
-                        break;
-                    case "dokter + poli":
-                        Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_dokter='" + kodedokterreg + "' and kd_poli='" + kode_poli + "' and tgl_registrasi='" + Valid.SetTgl(TanggalSEP.getSelectedItem().toString()) + "'", "", 3, NoReg);
-                        break;
-                    default:
-                        Valid.autoNomer3("select ifnull(MAX(CONVERT(no_reg,signed)),0) from reg_periksa where kd_dokter='" + kodedokterreg + "' and tgl_registrasi='" + Valid.SetTgl(TanggalSEP.getSelectedItem().toString()) + "'", "", 3, NoReg);
-                        break;
-                }
-            }
+        switch (URUTNOREG) {
+            case "poli":
+                NoReg.setText(
+                    Sequel.cariIsiSmc(
+                        "select lpad(ifnull(max(convert(no_reg, signed)), 0) + 1, 3, '0') from reg_periksa where kd_poli = ? and tgl_registrasi = ?",
+                        kodepolireg, Valid.SetTgl(TanggalSEP.getSelectedItem().toString())
+                    )
+                );
+                break;
+            case "dokter":
+                NoReg.setText(
+                    Sequel.cariIsiSmc(
+                        "select lpad(ifnull(max(convert(no_reg, signed)), 0) + 1, 3, '0') from reg_periksa where kd_dokter = ? and tgl_registrasi = ?",
+                        kodedokterreg, Valid.SetTgl(TanggalSEP.getSelectedItem().toString())
+                    )
+                );
+                break;
+            case "dokter + poli":
+                NoReg.setText(
+                    Sequel.cariIsiSmc(
+                        "select lpad(ifnull(max(convert(no_reg, signed)), 0) + 1, 3, '0') from reg_periksa where kd_poli = ? and kd_dokter = ? and tgl_registrasi = ?",
+                        kodepolireg, kodedokterreg, Valid.SetTgl(TanggalSEP.getSelectedItem().toString())
+                    )
+                );
+                break;
+            default:
+                NoReg.setText(
+                    Sequel.cariIsiSmc(
+                        "select lpad(ifnull(max(convert(no_reg, signed)), 0) + 1, 3, '0') from reg_periksa where kd_poli = ? and kd_dokter = ? and tgl_registrasi = ?",
+                        kodepolireg, kodedokterreg, Valid.SetTgl(TanggalSEP.getSelectedItem().toString())
+                    )
+                );
+                break;
         }
-
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(no_rawat,6),signed)),0) from reg_periksa where tgl_registrasi='" + Valid.SetTgl(TanggalSEP.getSelectedItem().toString()) + "' ", Valid.SetTgl(TanggalSEP.getSelectedItem().toString()).replaceAll("-", "/") + "/", 6, TNoRw);
+        
+        TNoRw.setText(
+            Sequel.cariIsiSmc(
+                "select concat(date_format(tgl_registrasi, '%Y/%m/%d'), '/', lpad(ifnull(max(convert(right(no_rawat, 6), signed)), 0) + 1, 6, '0')) from reg_periksa where tgl_registrasi = ?",
+                Valid.SetTgl(TanggalSEP.getSelectedItem().toString())
+            )
+        );
     }
 
     private void tentukanHari() {
@@ -2437,47 +2236,27 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
 
     }
 
-    private void MnCetakRegisterActionPerformed(String norawat) {
+    private void MnCetakRegisterActionPerformed(String noRawat, String noSEP) {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        if (Sequel.cariIsi("select kd_pj from reg_periksa where no_rawat='" + norawat + "'").equals("BPJ")) {
-            Map<String, Object> param = new HashMap<>();
-            param.put("namars", Sequel.cariIsi("select nama_instansi from setting"));
-            param.put("alamatrs", Sequel.cariIsi("select alamat_instansi from setting"));
-            param.put("kotars", Sequel.cariIsi("select kabupaten from setting"));
-            param.put("propinsirs", Sequel.cariIsi("select propinsi from setting"));
-            param.put("kontakrs", Sequel.cariIsi("select kontak from setting"));
-            param.put("emailrs", Sequel.cariIsi("select email from setting"));
-            param.put("logo", Sequel.cariGambar("select logo from setting"));
-            param.put("nosep", Sequel.cariIsi("select no_sep from bridging_sep where no_rawat='" + norawat + "' LIMIT 1"));
-            Valid.MyReportqryabdul("rptBuktiRegisterBPJS.jasper", "report", "::[ Bukti Register ]::",
-                    "select IF ((SELECT count( booking_registrasi.no_rkm_medis ) FROM booking_registrasi WHERE booking_registrasi.STATUS = 'Terdaftar'  AND booking_registrasi.no_rkm_medis = reg_periksa.no_rkm_medis AND booking_registrasi.tanggal_periksa = reg_periksa .tgl_registrasi AND kd_dokter = reg_periksa.kd_dokter )= 1,CONCAT( 'A', reg_periksa.no_reg ),CONCAT( 'W', reg_periksa.no_reg ) ) AS no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,pasien.no_tlp,"
-                    + "reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.umur as umur,poliklinik.nm_poli,"
-                    + "reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.biaya_reg,reg_periksa.stts_daftar,penjab.png_jawab "
-                    + "from reg_periksa inner join dokter inner join pasien inner join poliklinik inner join penjab "
-                    + "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
-                    + "and reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.kd_poli=poliklinik.kd_poli where reg_periksa.no_rawat='" + norawat + "' ", param);
-
+        
+        Map<String, Object> param = new HashMap<>();
+        param.put("norawat", noRawat);
+        param.put("parameter", noSEP);
+        param.put("namars", Sequel.cariIsi("select setting.nama_instansi from setting limit 1"));
+        param.put("kotars", Sequel.cariIsi("select setting.kabupaten from setting limit 1"));
+        
+        if (JenisPelayanan.getSelectedIndex() == 0) {
+            Valid.printReport("rptBridgingSEPAPM1.jasper", koneksiDB.PRINTER_REGISTRASI(), "::[ Cetak SEP Model 4 ]::", 1, param);
+            Valid.MyReport("rptBridgingSEPAPM1.jasper", "report", "::[ Cetak SEP Model 4 ]::", param);
         } else {
-            Map<String, Object> param = new HashMap<>();
-            param.put("namars", Sequel.cariIsi("select nama_instansi from setting"));
-            param.put("alamatrs", Sequel.cariIsi("select alamat_instansi from setting"));
-            param.put("kotars", Sequel.cariIsi("select kabupaten from setting"));
-            param.put("propinsirs", Sequel.cariIsi("select propinsi from setting"));
-            param.put("kontakrs", Sequel.cariIsi("select kontak from setting"));
-            param.put("emailrs", Sequel.cariIsi("select email from setting"));
-            param.put("logo", Sequel.cariGambar("select logo from setting"));
-            Valid.MyReportqryabdul("rptBuktiRegister.jasper", "report", "::[ Bukti Register ]::",
-                    "select IF ((SELECT count( booking_registrasi.no_rkm_medis ) FROM booking_registrasi WHERE booking_registrasi.STATUS = 'Terdaftar'  AND booking_registrasi.no_rkm_medis = reg_periksa.no_rkm_medis AND booking_registrasi.tanggal_periksa = reg_periksa .tgl_registrasi AND kd_dokter = reg_periksa.kd_dokter )= 1,CONCAT( 'A', reg_periksa.no_reg ),CONCAT( 'W', reg_periksa.no_reg ) ) AS no_reg,reg_periksa.no_rawat,reg_periksa.tgl_registrasi,reg_periksa.jam_reg,pasien.no_tlp,"
-                    + "reg_periksa.kd_dokter,dokter.nm_dokter,reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.umur as umur,poliklinik.nm_poli,"
-                    + "reg_periksa.p_jawab,reg_periksa.almt_pj,reg_periksa.hubunganpj,reg_periksa.biaya_reg,reg_periksa.stts_daftar,penjab.png_jawab "
-                    + "from reg_periksa inner join dokter inner join pasien inner join poliklinik inner join penjab "
-                    + "on reg_periksa.kd_dokter=dokter.kd_dokter and reg_periksa.no_rkm_medis=pasien.no_rkm_medis "
-                    + "and reg_periksa.kd_pj=penjab.kd_pj and reg_periksa.kd_poli=poliklinik.kd_poli where reg_periksa.no_rawat='" + norawat + "' ", param);
+            Valid.printReport("rptBridgingSEPAPM2.jasper", koneksiDB.PRINTER_REGISTRASI(), "::[ Cetak SEP Model 4 ]::", 1, param);
+            Valid.MyReport("rptBridgingSEPAPM2.jasper", "report", "::[ Cetak SEP Model 4 ]::", param);
         }
-
-//        System.out.println(norawat);
+        
+        Valid.printReport("rptBarcodeRawatAPM.jasper", koneksiDB.PRINTER_BARCODE(), "::[ Barcode Perawatan ]::", 3, param);
+        Valid.MyReport("rptBarcodeRawatAPM.jasper", "report", "::[ Barcode Perawatan ]::", param);
+        
         this.setCursor(Cursor.getDefaultCursor());
-
     }
 
     private void insertSEP() {
@@ -2495,7 +2274,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
             headers.add("X-Timestamp", utc);
             headers.add("X-Signature", api.getHmac(utc));
             headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
-            URL = link + "/SEP/2.0/insert";
+            URL = URLAPIBPJS + "/SEP/2.0/insert";
             requestJson = "{"
                     + "\"request\":{"
                     + "\"t_sep\":{"
@@ -2650,7 +2429,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                             TNoRM.getText(), Valid.SetTgl(TanggalSEP.getSelectedItem().toString()), kodedokterreg, kodepolireg
                         });
                     }
-                    MnCetakRegisterActionPerformed(TNoRw.getText());
+                    MnCetakRegisterActionPerformed(TNoRw.getText(), response.asText());
 
                     emptTeks();
                     dispose();
@@ -2679,7 +2458,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                 headers.add("X-Timestamp", utc);
                 headers.add("X-Signature", api.getHmac(utc));
                 headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
-                URL = link + "/SEP/FingerPrint/Peserta/" + noka + "/TglPelayanan/" + Valid.SetTgl(TanggalSEP.getSelectedItem() + "");
+                URL = URLAPIBPJS + "/SEP/FingerPrint/Peserta/" + noka + "/TglPelayanan/" + Valid.SetTgl(TanggalSEP.getSelectedItem() + "");
                 requestEntity = new HttpEntity(headers);
                 root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
                 nameNode = root.path("metaData");
@@ -2714,7 +2493,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
 
     public void tampil(String nomorrujukan) {
         try {
-            URL = link + "/Rujukan/Peserta/" + nomorrujukan;
+            URL = URLAPIBPJS + "/Rujukan/Peserta/" + nomorrujukan;
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
             headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
@@ -2841,7 +2620,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
 
     public void tampilPecahSEP(String nomorrujukan) {
         try {
-            URL = link + "/Rujukan/Peserta/" + nomorrujukan;
+            URL = URLAPIBPJS + "/Rujukan/Peserta/" + nomorrujukan;
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
             headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
@@ -2949,7 +2728,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                 + "	bridging_sep where bridging_sep.no_sep='" + noSEP + "' ").equals("1")) {
 //            kondisi post ranap
             try {
-                URL = link + "/Peserta/nokartu/" + nokapesertakontrol + "/tglSEP/" + Valid.SetTgl(TanggalSEP.getSelectedItem().toString());
+                URL = URLAPIBPJS + "/Peserta/nokartu/" + nokapesertakontrol + "/tglSEP/" + Valid.SetTgl(TanggalSEP.getSelectedItem().toString());
                 headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_JSON);
                 headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
@@ -3039,7 +2818,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
 
         } else {
             try {
-                URL = link + "/Rujukan/Peserta/" + nokapesertakontrol;
+                URL = URLAPIBPJS + "/Rujukan/Peserta/" + nokapesertakontrol;
                 headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_JSON);
                 headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
@@ -3446,9 +3225,9 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         if (!NoKartu.getText().equals("")) {
             this.toFront();
             try {
-                Runtime.getRuntime().exec(urlaplikasi);
+                Runtime.getRuntime().exec(URLAPLIKASIFINGERPRINTBPJS);
                 Robot robot = new Robot();
-                StringSelection stringSelection = new StringSelection(urlfinger);
+                StringSelection stringSelection = new StringSelection(URLFINGERPRINTBPJS);
                 Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
                 clipboard.setContents(stringSelection, stringSelection);
                 Thread.sleep(1000);
@@ -3461,7 +3240,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                 robot.keyPress(KeyEvent.VK_ENTER);
                 robot.keyRelease(KeyEvent.VK_ENTER);
                 Thread.sleep(1500);
-                StringSelection stringSelectionuser = new StringSelection(userfinger);
+                StringSelection stringSelectionuser = new StringSelection(USERFINGERPRINTBPJS);
                 Clipboard clipboarduser = Toolkit.getDefaultToolkit().getSystemClipboard();
                 clipboarduser.setContents(stringSelectionuser, stringSelectionuser);
                 robot.keyPress(KeyEvent.VK_CONTROL);
@@ -3471,7 +3250,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                 robot.keyPress(KeyEvent.VK_TAB);
                 robot.keyRelease(KeyEvent.VK_TAB);
                 Thread.sleep(1000);
-                StringSelection stringSelectionpass = new StringSelection(passfinger);
+                StringSelection stringSelectionpass = new StringSelection(PASSFINGERPRINTBPJS);
                 Clipboard clipboardpass = Toolkit.getDefaultToolkit().getSystemClipboard();
                 clipboardpass.setContents(stringSelectionpass, stringSelectionpass);
                 robot.keyPress(KeyEvent.VK_CONTROL);
@@ -3512,7 +3291,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                 headers.add("X-Timestamp", utc);
                 headers.add("X-Signature", api.getHmac(utc));
                 headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
-                URL = link + "/RencanaKontrol/Update";
+                URL = URLAPIBPJS + "/RencanaKontrol/Update";
                 requestJson = "{"
                         + "\"request\": {"
                         + "\"noSuratKontrol\":\"" + NoSurat + "\","
@@ -3575,7 +3354,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
 
     public void tampilRujukanRS(String nokartu) {
         try {
-            URL = link + "/Rujukan/RS/Peserta/" + nokartu;
+            URL = URLAPIBPJS + "/Rujukan/RS/Peserta/" + nokartu;
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
             headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
