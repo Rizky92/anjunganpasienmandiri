@@ -54,8 +54,12 @@ import net.sf.jasperreports.engine.JRResultSetDataSource;
 import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.export.JRPrintServiceExporter;
 import net.sf.jasperreports.engine.export.JRPrintServiceExporterParameter;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.export.SimpleExporterInput;
+import net.sf.jasperreports.export.SimplePrintServiceExporterConfiguration;
 import net.sf.jasperreports.view.JasperViewer;
 import uz.ncipro.calendar.JDateTimePicker;
 
@@ -86,8 +90,74 @@ public final class validasi {
     public validasi() {
         super();
     }
+    
+    public void printReport(String namaReport, String namaPrinter, String judul, int jumlah, Map params) {
+        String currentDir = System.getProperties().getProperty("user.dir");
 
-    ;
+        File dir = new File(currentDir);
+        File report = null;
+        
+        if (dir.isDirectory()) {
+            for (String file: dir.list()) {
+                report = new File(currentDir + File.separatorChar + file + File.separatorChar + namaReport);
+                
+                if (report.isFile()) {
+                    System.out.println("Found report file at: " + report.toString());
+                    break;
+                }
+            }
+        }
+        
+        if (report == null) {
+            JOptionPane.showMessageDialog(null, "File tidak ditemukan!");
+            return;
+        }
+        
+        try {
+            JasperReport jr = (JasperReport) JRLoader.loadObject(report);
+            JasperPrint jp = JasperFillManager.fillReport(jr, params, connect);
+            
+            PrintService printService = null;
+            
+            for (PrintService a: PrintServiceLookup.lookupPrintServices(null, null)) {
+                if (a.getName().equals(namaPrinter)) {
+                    System.out.println("Printer ditemukan: " + a.getName());
+                    printService = a;
+                    break;
+                }
+            }
+            
+            if (printService == null) {
+                JOptionPane.showMessageDialog(null, "Printer tidak ditemukan!");
+                return;
+            }
+            
+            PrintRequestAttributeSet pra = new HashPrintRequestAttributeSet();
+            pra.add(new Copies(jumlah));
+            
+            SimplePrintServiceExporterConfiguration config = new SimplePrintServiceExporterConfiguration();
+            
+            config.setPrintService(printService);
+            config.setPrintRequestAttributeSet(pra);
+            config.setPrintServiceAttributeSet(printService.getAttributes());
+            config.setDisplayPageDialog(false);
+            config.setDisplayPrintDialog(false);
+            
+            JRPrintServiceExporter exporter = new JRPrintServiceExporter();
+            
+            exporter.setExporterInput(new SimpleExporterInput(jp));
+            exporter.setConfiguration(config);
+            exporter.exportReport();
+        } catch (Exception e) {
+            System.out.println(e);
+            
+            for (StackTraceElement ste: e.getStackTrace()) {
+                System.out.println(ste);
+            }
+            
+            JOptionPane.showMessageDialog(null, "Tidak bisa menampilkan hasil cetak!");
+        }
+    }
 
     public void autoNomer(DefaultTableModel tabMode, String strAwal, Integer pnj, javax.swing.JTextField teks) {
         s = Integer.toString(tabMode.getRowCount() + 1);
