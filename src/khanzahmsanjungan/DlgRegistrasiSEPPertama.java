@@ -241,12 +241,8 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         PASSFINGERPRINTBPJS = koneksiDB.PASSFINGERPRINTBPJS();
         URLAPLIKASIFINGERPRINTBPJS = koneksiDB.URLAPLIKASIFINGERPRINTBPJS();
 
-        try {
-            KdPPK.setText(Sequel.cariIsi("select setting.kode_ppk from setting"));
-            NmPPK.setText(Sequel.cariIsi("select setting.nama_instansi from setting"));
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+        KdPPK.setText(Sequel.cariIsi("select setting.kode_ppk from setting"));
+        NmPPK.setText(Sequel.cariIsi("select setting.nama_instansi from setting"));
     }
 
     /**
