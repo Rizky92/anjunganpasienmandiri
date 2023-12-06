@@ -1477,8 +1477,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(rootPane, "Maaf, Pasien belum melakukan Fingerprint");
             BukaFingerPrint(NoKartu.getText());
         } else if (GeneralConsentSatuSehat(TNoRM.getText()) == false) {
-            int i = JOptionPane.showConfirmDialog(rootPane, "Anda perlu menyetujui Inform Consent terbaru tentang Platform SATUSEHAT. \n Apakah anda menyetujui? \n", "Konfirmasi", JOptionPane.YES_NO_OPTION);
-            if (i == JOptionPane.YES_OPTION) {
+            if (JOptionPane.showConfirmDialog(rootPane, "Anda perlu menyetujui Inform Consent terbaru tentang Platform SATUSEHAT. \n Apakah anda menyetujui? \n", "Konfirmasi", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                 generalconsentsave(TNoRM.getText());
             }
         } else {
@@ -1497,15 +1496,16 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
 
 //            kodepolireg = Sequel.cariIsi("select kd_poli_rs from maping_poli_bpjs where kd_poli_bpjs=?", KdPoli.getText());
 //            kodedokterreg = Sequel.cariIsi("select kd_dokter from maping_dokter_dpjpvclaim where kd_dokter_bpjs=?", KdDPJP.getText());
-            if (!kodepolireg.equals("")) {
-                isPoli();
-            } else {
-                isPoli();
-            }
+            isPoli();
             isCekPasien();
             isNumber();
 
             //cek apakah ada regisan sebelumnya
+            
+            if (Sequel.cariIntegerSmc("select count(*) from reg_periksa where no_rkm_medis = ? and tgl_registrasi = ? and kd_poli = ? and kd_dokter = ? and kd_pj = ?", TNoRM.getText(), Valid.SetTgl(TanggalSEP.getSelectedItem().toString()), kodepolireg, kodedokterreg, Kdpnj.getText()) > 0) {
+                
+            }
+            
             if (Valid.ValidasiRegistrasi(kodepolireg, kodedokterreg, TNoRM.getText(), Valid.SetTgl(TanggalSEP.getSelectedItem() + ""), Kdpnj.getText()) == true) {
                 JOptionPane.showMessageDialog(rootPane, "Maaf, Telah terdaftar pemeriksaan hari ini. Mohon konfirmasi ke Bagian Admisi");
                 emptTeks();
@@ -3278,9 +3278,9 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         if (!NoKartu.getText().equals("")) {
             this.toFront();
             try {
-                Runtime.getRuntime().exec(urlaplikasi);
+                Runtime.getRuntime().exec(URLAPLIKASIFINGERPRINTBPJS);
                 Robot robot = new Robot();
-                StringSelection stringSelection = new StringSelection(urlfinger);
+                StringSelection stringSelection = new StringSelection(URLFINGERPRINTBPJS);
                 Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
                 clipboard.setContents(stringSelection, stringSelection);
                 Thread.sleep(1000);
@@ -3293,7 +3293,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                 robot.keyPress(KeyEvent.VK_ENTER);
                 robot.keyRelease(KeyEvent.VK_ENTER);
                 Thread.sleep(1500);
-                StringSelection stringSelectionuser = new StringSelection(userfinger);
+                StringSelection stringSelectionuser = new StringSelection(USERFINGERPRINTBPJS);
                 Clipboard clipboarduser = Toolkit.getDefaultToolkit().getSystemClipboard();
                 clipboarduser.setContents(stringSelectionuser, stringSelectionuser);
                 robot.keyPress(KeyEvent.VK_CONTROL);
@@ -3303,7 +3303,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                 robot.keyPress(KeyEvent.VK_TAB);
                 robot.keyRelease(KeyEvent.VK_TAB);
                 Thread.sleep(1000);
-                StringSelection stringSelectionpass = new StringSelection(passfinger);
+                StringSelection stringSelectionpass = new StringSelection(PASSFINGERPRINTBPJS);
                 Clipboard clipboardpass = Toolkit.getDefaultToolkit().getSystemClipboard();
                 clipboardpass.setContents(stringSelectionpass, stringSelectionpass);
                 robot.keyPress(KeyEvent.VK_CONTROL);

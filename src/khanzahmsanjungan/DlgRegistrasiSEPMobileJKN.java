@@ -3198,9 +3198,9 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         if (!NoKartu.getText().equals("")) {
             this.toFront();
             try {
-                Runtime.getRuntime().exec(urlaplikasi);
+                Runtime.getRuntime().exec(URLAPLIKASIFINGERPRINTBPJS);
                 Robot robot = new Robot();
-                StringSelection stringSelection = new StringSelection(urlfinger);
+                StringSelection stringSelection = new StringSelection(URLFINGERPRINTBPJS);
                 Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
                 clipboard.setContents(stringSelection, stringSelection);
                 Thread.sleep(1000);
@@ -3213,7 +3213,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                 robot.keyPress(KeyEvent.VK_ENTER);
                 robot.keyRelease(KeyEvent.VK_ENTER);
                 Thread.sleep(1500);
-                StringSelection stringSelectionuser = new StringSelection(userfinger);
+                StringSelection stringSelectionuser = new StringSelection(USERFINGERPRINTBPJS);
                 Clipboard clipboarduser = Toolkit.getDefaultToolkit().getSystemClipboard();
                 clipboarduser.setContents(stringSelectionuser, stringSelectionuser);
                 robot.keyPress(KeyEvent.VK_CONTROL);
@@ -3223,7 +3223,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                 robot.keyPress(KeyEvent.VK_TAB);
                 robot.keyRelease(KeyEvent.VK_TAB);
                 Thread.sleep(1000);
-                StringSelection stringSelectionpass = new StringSelection(passfinger);
+                StringSelection stringSelectionpass = new StringSelection(PASSFINGERPRINTBPJS);
                 Clipboard clipboardpass = Toolkit.getDefaultToolkit().getSystemClipboard();
                 clipboardpass.setContents(stringSelectionpass, stringSelectionpass);
                 robot.keyPress(KeyEvent.VK_CONTROL);
