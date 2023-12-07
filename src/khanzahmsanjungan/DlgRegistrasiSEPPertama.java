@@ -2394,6 +2394,13 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                     
                     prb = "";
                 }
+                
+                if (Sequel.cariIntegerSmc(
+                    "select count(*) from booking_registrasi where no_rkm_medis = ? and tanggal_periksa = ? and kd_dokter = ? and kd_poli = ? and status != 'Terdaftar'",
+                    TNoRM.getText(), Valid.SetTgl(TanggalSEP.getSelectedItem().toString()), kodedokterreg, kodepolireg
+                ) == 1) {
+                    Sequel.mengupdateSmc("booking_registrasi", "status = 'Terdaftar', waktu_kunjungan = now()", "no_rkm_medis = ? and tanggal_periksa = ? and kd_dokter = ? and kd_poli = ?", TNoRM.getText(), Valid.SetTgl(TanggalSEP.getSelectedItem().toString()), kodedokterreg, kodepolireg);
+                }
 
                 cetakRegistrasi(TNoRw.getText(), response.asText());
 
