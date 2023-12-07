@@ -497,7 +497,7 @@ public class DlgCekKunjunganBedaPoli extends javax.swing.JDialog {
                 if (Sequel.cariInteger("select count(pasien.no_peserta) from pasien where pasien.no_peserta='" + NoRMPasien.getText() + "'") == 1) {
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                     DlgRegistrasiSEPPertama form = new DlgRegistrasiSEPPertama(null, true);
-                    form.tampilPecahSEP(NoRMPasien.getText());
+                    form.tampilKunjunganBedaPoli(NoRMPasien.getText());
                     form.setSize(this.getWidth(), this.getHeight());
                     form.setLocationRelativeTo(jPanel1);
                     this.dispose();
@@ -506,7 +506,7 @@ public class DlgCekKunjunganBedaPoli extends javax.swing.JDialog {
                 } else if (Sequel.cariInteger("select count(pasien.no_rkm_medis) from pasien where pasien.no_rkm_medis='" + NoRMPasien.getText() + "'") == 1) {
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                     DlgRegistrasiSEPPertama form = new DlgRegistrasiSEPPertama(null, true);
-                    form.tampilPecahSEP(Sequel.cariIsi("select pasien.no_peserta from pasien where pasien.no_rkm_medis='" + NoRMPasien.getText() + "'"));
+                    form.tampilKunjunganBedaPoli(Sequel.cariIsi("select pasien.no_peserta from pasien where pasien.no_rkm_medis='" + NoRMPasien.getText() + "'"));
                     form.setSize(this.getWidth(), this.getHeight());
                     form.setLocationRelativeTo(jPanel1);
                     this.dispose();
@@ -516,7 +516,7 @@ public class DlgCekKunjunganBedaPoli extends javax.swing.JDialog {
                 } else if (Sequel.cariInteger("select count(pasien.no_ktp) from pasien where pasien.no_ktp='" + NoRMPasien.getText() + "'") == 1) {
                     this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                     DlgRegistrasiSEPPertama form = new DlgRegistrasiSEPPertama(null, true);
-                    form.tampilPecahSEP(Sequel.cariIsi("select pasien.no_peserta from pasien where pasien.no_ktp='" + NoRMPasien.getText() + "'"));
+                    form.tampilKunjunganBedaPoli(Sequel.cariIsi("select pasien.no_peserta from pasien where pasien.no_ktp='" + NoRMPasien.getText() + "'"));
                     form.setSize(this.getWidth(), this.getHeight());
                     form.setLocationRelativeTo(jPanel1);
                     this.dispose();
@@ -544,7 +544,7 @@ public class DlgCekKunjunganBedaPoli extends javax.swing.JDialog {
             if (Sequel.cariInteger("select count(pasien.no_peserta) from pasien where pasien.no_peserta='" + NoRMPasien.getText() + "'") == 1) {
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 DlgRegistrasiSEPPertama form = new DlgRegistrasiSEPPertama(null, true);
-                form.tampilPecahSEP(NoRMPasien.getText());
+                form.tampilKunjunganBedaPoli(NoRMPasien.getText());
                 form.setSize(this.getWidth(), this.getHeight());
                 form.setLocationRelativeTo(jPanel1);
                 this.dispose();
@@ -553,7 +553,7 @@ public class DlgCekKunjunganBedaPoli extends javax.swing.JDialog {
             } else if (Sequel.cariInteger("select count(pasien.no_rkm_medis) from pasien where pasien.no_rkm_medis='" + NoRMPasien.getText() + "'") == 1) {
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 DlgRegistrasiSEPPertama form = new DlgRegistrasiSEPPertama(null, true);
-                form.tampilPecahSEP(Sequel.cariIsi("select pasien.no_peserta from pasien where pasien.no_rkm_medis='" + NoRMPasien.getText() + "'"));
+                form.tampilKunjunganBedaPoli(Sequel.cariIsi("select pasien.no_peserta from pasien where pasien.no_rkm_medis='" + NoRMPasien.getText() + "'"));
                 form.setSize(this.getWidth(), this.getHeight());
                 form.setLocationRelativeTo(jPanel1);
                 this.dispose();
@@ -563,7 +563,7 @@ public class DlgCekKunjunganBedaPoli extends javax.swing.JDialog {
             } else if (Sequel.cariInteger("select count(pasien.no_ktp) from pasien where pasien.no_ktp='" + NoRMPasien.getText() + "'") == 1) {
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 DlgRegistrasiSEPPertama form = new DlgRegistrasiSEPPertama(null, true);
-                form.tampilPecahSEP(Sequel.cariIsi("select pasien.no_peserta from pasien where pasien.no_ktp='" + NoRMPasien.getText() + "'"));
+                form.tampilKunjunganBedaPoli(Sequel.cariIsi("select pasien.no_peserta from pasien where pasien.no_ktp='" + NoRMPasien.getText() + "'"));
                 form.setSize(this.getWidth(), this.getHeight());
                 form.setLocationRelativeTo(jPanel1);
                 this.dispose();

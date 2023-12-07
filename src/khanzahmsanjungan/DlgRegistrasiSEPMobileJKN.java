@@ -1926,7 +1926,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                         + "\"tglSep\": \"" + Valid.SetTgl(TanggalSEP.getSelectedItem() + "") + "\","
                         + "\"jnsPelayanan\": \"" + JenisPelayanan.getSelectedItem().toString().substring(0, 1) + "\","
                         + "\"jnsPengajuan\": \"2\","
-                        + "\"keterangan\": \"Pengajuan SEP Finger oleh Anjungan Mandiri RS Indriati Boyolali\","
+                        + "\"keterangan\": \"Pengajuan SEP Finger oleh Anjungan Mandiri RS Samarinda Medika Citra\","
                         + "\"user\": \"NoRM:" + TNoRM.getText() + "\""
                         + "}"
                         + "}"
@@ -2549,7 +2549,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                     isNumber();
                     Kdpnj.setText("BPJ");
                     nmpnj.setText("BPJS");
-                    Catatan.setText("Anjungan Mandiri RS Indriati Boyolali");
+                    Catatan.setText("Anjungan Mandiri RS Samarinda Medika Citra");
                     KdPoliTerapi.setText("");
                     NmPoliTerapi.setText("");
                     KodeDokterTerapi.setText("");
@@ -2693,7 +2693,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                                     isNumber();
                                     Kdpnj.setText("BPJ");
                                     nmpnj.setText("BPJS");
-                                    Catatan.setText("Anjungan Mandiri RS Indriati Boyolali");
+                                    Catatan.setText("Anjungan Mandiri RS Samarinda Medika Citra");
                                     KdPoliTerapi.setText("");
                                     NmPoliTerapi.setText("");
                                     KodeDokterTerapi.setText("");
@@ -2800,7 +2800,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                                     isNumber();
                                     Kdpnj.setText("BPJ");
                                     nmpnj.setText("BPJS");
-                                    Catatan.setText("Anjungan Mandiri RS Indriati Boyolali");
+                                    Catatan.setText("Anjungan Mandiri RS Samarinda Medika Citra");
 
                                 } else {
                                     emptTeks();
