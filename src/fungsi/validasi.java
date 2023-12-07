@@ -120,10 +120,10 @@ public final class validasi {
             
             PrintService printService = null;
             
-            for (PrintService a: PrintServiceLookup.lookupPrintServices(null, null)) {
-                if (a.getName().equals(namaPrinter)) {
-                    System.out.println("Printer ditemukan: " + a.getName());
-                    printService = a;
+            for (PrintService currentPrintService: PrintServiceLookup.lookupPrintServices(null, null)) {
+                if (currentPrintService.getName().equals(namaPrinter)) {
+                    System.out.println("Printer ditemukan: " + currentPrintService.getName());
+                    printService = currentPrintService;
                     break;
                 }
             }
