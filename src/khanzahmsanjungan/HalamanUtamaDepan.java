@@ -35,6 +35,11 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         this.setSize(screenSize.width, screenSize.height);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        
+        jPanel1.remove(btnAdmin10);
+        jPanel1.remove(btnAdmin7);
+        
+        jPanel1.repaint();
     }
 
     /**
@@ -56,8 +61,8 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
         btnAdmin2 = new widget.ButtonBig();
         btnAdmin5 = new widget.ButtonBig();
         btnAdmin6 = new widget.ButtonBig();
-        btnAdmin8 = new widget.ButtonBig();
         btnAdmin9 = new widget.ButtonBig();
+        btnAdmin8 = new widget.ButtonBig();
         btnAdmin11 = new widget.ButtonBig();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -71,7 +76,7 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
         jLabel39.setForeground(new java.awt.Color(0, 131, 62));
         jLabel39.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel39.setText("ANJUNGAN PASIEN MANDIRI");
-        jLabel39.setFont(new java.awt.Font("Poppins", 1, 48)); // NOI18N
+        jLabel39.setFont(new java.awt.Font("Poppins", 1, 36)); // NOI18N
         jLabel39.setPreferredSize(new java.awt.Dimension(750, 75));
         jPanel3.add(jLabel39);
 
@@ -81,10 +86,10 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
         jPanel2.setForeground(new java.awt.Color(238, 238, 255));
 
         PanelWall.setBackground(new java.awt.Color(238, 238, 255));
-        PanelWall.setBackgroundImage(new javax.swing.ImageIcon(getClass().getResource("/picture/indriatikars.png"))); // NOI18N
+        PanelWall.setBackgroundImage(new javax.swing.ImageIcon(getClass().getResource("/picture/icon-128x128.png"))); // NOI18N
         PanelWall.setBackgroundImageType(usu.widget.constan.BackgroundConstan.BACKGROUND_IMAGE_STRECT);
         PanelWall.setForeground(new java.awt.Color(238, 238, 255));
-        PanelWall.setPreferredSize(new java.awt.Dimension(500, 150));
+        PanelWall.setPreferredSize(new java.awt.Dimension(150, 150));
         PanelWall.setRound(false);
         PanelWall.setWarna(new java.awt.Color(238, 238, 255));
 
@@ -92,7 +97,7 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
         PanelWall.setLayout(PanelWallLayout);
         PanelWallLayout.setHorizontalGroup(
             PanelWallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGap(0, 150, Short.MAX_VALUE)
         );
         PanelWallLayout.setVerticalGroup(
             PanelWallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,10 +111,11 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(238, 238, 255));
         jPanel1.setBorder(null);
         jPanel1.setPreferredSize(new java.awt.Dimension(1280, 1024));
-        jPanel1.setLayout(new java.awt.GridLayout(4, 0));
+        jPanel1.setLayout(new java.awt.GridLayout(0, 2));
 
         btnAdmin10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/antrianpasien.png"))); // NOI18N
         btnAdmin10.setText("ANTRIAN PASIEN");
+        btnAdmin10.setEnabled(false);
         btnAdmin10.setFont(new java.awt.Font("Poppins", 1, 24)); // NOI18N
         btnAdmin10.setIconTextGap(0);
         btnAdmin10.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -122,6 +128,7 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
 
         btnAdmin7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checkin.png"))); // NOI18N
         btnAdmin7.setText("CEK IN REGISTRASI");
+        btnAdmin7.setEnabled(false);
         btnAdmin7.setFont(new java.awt.Font("Poppins", 1, 24)); // NOI18N
         btnAdmin7.setIconTextGap(0);
         btnAdmin7.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -134,7 +141,7 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
 
         btnAdmin2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/kioskselfservice.png"))); // NOI18N
         btnAdmin2.setText("PENDAFTARAN POLIKLINIK");
-        btnAdmin2.setFont(new java.awt.Font("Poppins", 1, 24)); // NOI18N
+        btnAdmin2.setFont(new java.awt.Font("Poppins", 1, 30)); // NOI18N
         btnAdmin2.setIconTextGap(0);
         btnAdmin2.setPreferredSize(new java.awt.Dimension(200, 90));
         btnAdmin2.addActionListener(new java.awt.event.ActionListener() {
@@ -146,7 +153,7 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
 
         btnAdmin5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/BPJS_Kesehatan_Logo.png"))); // NOI18N
         btnAdmin5.setText("SEP KUNJUNGAN PERTAMA");
-        btnAdmin5.setFont(new java.awt.Font("Poppins", 1, 24)); // NOI18N
+        btnAdmin5.setFont(new java.awt.Font("Poppins", 1, 30)); // NOI18N
         btnAdmin5.setIconTextGap(0);
         btnAdmin5.setPreferredSize(new java.awt.Dimension(200, 90));
         btnAdmin5.addActionListener(new java.awt.event.ActionListener() {
@@ -158,7 +165,7 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
 
         btnAdmin6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/BPJS_Kesehatan_Logo.png"))); // NOI18N
         btnAdmin6.setText("SEP KONTROL");
-        btnAdmin6.setFont(new java.awt.Font("Poppins", 1, 24)); // NOI18N
+        btnAdmin6.setFont(new java.awt.Font("Poppins", 1, 30)); // NOI18N
         btnAdmin6.setIconTextGap(0);
         btnAdmin6.setPreferredSize(new java.awt.Dimension(200, 90));
         btnAdmin6.addActionListener(new java.awt.event.ActionListener() {
@@ -168,21 +175,9 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
         });
         jPanel1.add(btnAdmin6);
 
-        btnAdmin8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/mobilejkn48.png"))); // NOI18N
-        btnAdmin8.setText("Check In MobileJKN");
-        btnAdmin8.setFont(new java.awt.Font("Poppins", 1, 24)); // NOI18N
-        btnAdmin8.setIconTextGap(0);
-        btnAdmin8.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnAdmin8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAdmin8ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnAdmin8);
-
         btnAdmin9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/BPJS_Kesehatan_Logo.png"))); // NOI18N
         btnAdmin9.setText("KONTROL BEDA POLI");
-        btnAdmin9.setFont(new java.awt.Font("Poppins", 1, 24)); // NOI18N
+        btnAdmin9.setFont(new java.awt.Font("Poppins", 1, 30)); // NOI18N
         btnAdmin9.setIconTextGap(0);
         btnAdmin9.setPreferredSize(new java.awt.Dimension(200, 90));
         btnAdmin9.addActionListener(new java.awt.event.ActionListener() {
@@ -192,9 +187,21 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
         });
         jPanel1.add(btnAdmin9);
 
+        btnAdmin8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/mobilejkn48.png"))); // NOI18N
+        btnAdmin8.setText("CEK IN MOBILEJKN");
+        btnAdmin8.setFont(new java.awt.Font("Poppins", 1, 30)); // NOI18N
+        btnAdmin8.setIconTextGap(0);
+        btnAdmin8.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnAdmin8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdmin8ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnAdmin8);
+
         btnAdmin11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/logo-satset.png"))); // NOI18N
-        btnAdmin11.setText("Aktivasi SatuSehat");
-        btnAdmin11.setFont(new java.awt.Font("Poppins", 1, 24)); // NOI18N
+        btnAdmin11.setText("AKTIVASI SATUSEHAT");
+        btnAdmin11.setFont(new java.awt.Font("Poppins", 1, 30)); // NOI18N
         btnAdmin11.setIconTextGap(0);
         btnAdmin11.setPreferredSize(new java.awt.Dimension(200, 90));
         btnAdmin11.addActionListener(new java.awt.event.ActionListener() {
