@@ -135,6 +135,127 @@ public final class sekuel {
         
         return output;
     }
+    
+    public boolean menyimpantfSmc(String table, String kolom, String... values) {
+        try {
+            simpanSMC(table, kolom, values);
+            
+            return true;
+        } catch (Exception e) {
+            System.out.println("Terjadi kesalahan pada saat menyimpan data!");
+            System.out.println("Notifikasi : " + e);
+            
+            JOptionPane.showMessageDialog(null, "Terjadi kesalahan pada saat menyimpan data!");
+            
+            return false;
+        }
+    }
+    
+    public void menyimpanSmc(String table, String kolom, String... values) {
+        try {
+            simpanSMC(table, kolom, values);
+        } catch (Exception e) {
+            System.out.println("Terjadi kesalahan pada saat menyimpan data!");
+            System.out.println("Notifikasi : " + e);
+            
+            JOptionPane.showMessageDialog(null, "Terjadi kesalahan pada saat menyimpan data!");
+        }
+    }
+    
+    private void simpanSMC(String table, String kolom, String[] values) throws SQLException {
+        
+        String sql = "insert into " + table + " (" + kolom + ") values (";
+        String bindings = "";
+        String track;
+        
+        if (kolom == null) {
+            sql = "insert into " + table + " values (";
+        }
+        
+        for (int i = 0; i < values.length; i++) {
+            bindings = bindings.concat("?, ");
+        }
+        
+        bindings = bindings
+            .concat(")")
+            .replaceFirst("\\?\\, \\)", "?)");
+        
+        track = sql = sql.concat(bindings);
+        
+        ps = connect.prepareStatement(sql);
+
+        for (int i = 0; i < values.length; i++) {
+            ps.setString(i + 1, values[i]);
+        }
+
+        ps.executeUpdate();
+
+        if (ps != null) {
+            ps.close();
+        }
+        
+        for (String value : values) {
+            track = track.replaceFirst("\\?", "'" + value + "'");
+        }
+        
+        SimpanTrack(track);
+    }
+    
+    private void updateSMC(String table, String kolom, String kondisi, String[] values) throws SQLException {
+        
+        String sql = "update " + table + " set " + kolom + " where " + kondisi;
+        String track;
+        
+        if (kondisi == null) {
+            sql = "update " + table + " set ";
+        }
+        
+        track = sql;
+        
+        ps = connect.prepareStatement(sql);
+
+        for (int i = 0; i < values.length; i++) {
+            ps.setString(i + 1, values[i]);
+        }
+
+        ps.executeUpdate();
+
+        if (ps != null) {
+            ps.close();
+        }
+        
+        for (String value : values) {
+            track = track.replaceFirst("\\?", "'" + value + "'");
+        }
+        
+        SimpanTrack(track);
+    }
+    
+    public void mengupdateSmc(String table, String kolom, String kondisi, String... values) {
+        try {
+            updateSMC(table, kolom, kondisi, values);
+        } catch (Exception e) {
+            System.out.println("Terjadi kesalahan pada saat mengupdate data!");
+            System.out.println("Notifikasi : " + e);
+            
+            JOptionPane.showMessageDialog(null, "Terjadi kesalahan pada saat mengupdate data!");
+        }
+    }
+    
+    public boolean mengupdatetfSmc(String table, String kolom, String kondisi, String... values) {
+        try {
+            updateSMC(table, kolom, kondisi, values);
+            
+            return true;
+        } catch (Exception e) {
+            System.out.println("Terjadi kesalahan pada saat mengupdate data!");
+            System.out.println("Notifikasi : " + e);
+            
+            JOptionPane.showMessageDialog(null, "Terjadi kesalahan pada saat mengupdate data!");
+            
+            return false;
+        }
+    }
 
     public void menyimpan(String table, String value, String sama) {
         try {
@@ -1686,13 +1807,12 @@ public final class sekuel {
 
     private void SimpanTrack(String sql) {
         if (AKTIFKANTRACKSQL.equals("yes")) {
-
             try {
-                ps = connect.prepareStatement("insert into trackersql values(now(),?,?)");
+                ps = connect.prepareStatement("insert into trackersql values(now(), ?, ?)");
                 try {
                     InetAddress inetAddress = InetAddress.getLocalHost();
-                    ps.setString(1, inetAddress.getHostName() + " " + inetAddress.getHostAddress() + " " + sql);
-                    ps.setString(2, akses.getkode());
+                    ps.setString(1, sql);
+                    ps.setString(2, "APM" + inetAddress.getHostAddress());
                     ps.executeUpdate();
                 } catch (Exception e) {
                     System.out.println("Notifikasi : " + e);
