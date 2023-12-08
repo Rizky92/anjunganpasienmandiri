@@ -82,13 +82,67 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
     private SimpleDateFormat dateformat = new SimpleDateFormat("yyyy/MM/dd");
     private BPJSCekRiwayatRujukanTerakhir rujukanterakhir = new BPJSCekRiwayatRujukanTerakhir(null, true);
     private BPJSCekHistoriPelayanan historiPelayanan = new BPJSCekHistoriPelayanan(null, true);
-    private String umur = "0", sttsumur = "Th", hari = "", kode_dokter = "", kode_poli = "", nama_instansi, alamat_instansi, kabupaten, propinsi, kontak, email;
-    private String kdkel = "", kdkec = "", kdkab = "", kdprop = "", nosisrute = "", BASENOREG = "", URUTNOREG = "", URLAPIBPJS = "", klg = "SAUDARA", statuspasien = "", pengurutan = "", tahun = "", bulan = "", posisitahun = "", awalantahun = "", awalanbulan = "",
-            no_ktp = "", tmp_lahir = "", nm_ibu = "", alamat = "", pekerjaan = "", no_tlp = "", tglkkl = "0000-00-00",
-            umurdaftar = "0", namakeluarga = "", no_peserta = "", kelurahan = "", kecamatan = "", datajam = "", jamselesai = "", jammulai = "",
-            kabupatenpj = "", hariawal = "", requestJson, URL = "", nosep = "", user = "", prb = "", peserta = "", kodedokterreg = "", kodepolireg = "",
-            status = "Baru", utc = "", jeniskunjungan = "", nomorreg = "", URLAPLIKASIFINGERPRINTBPJS = "", URLFINGERPRINTBPJS = "", USERFINGERPRINTBPJS = "", PASSFINGERPRINTBPJS = "",
-            tampilkantni = Sequel.cariIsi("select tampilkan_tni_polri from set_tni_polri");
+    private String umur = "0",
+                   sttsumur = "Th",
+                   hari = "",
+                   kode_dokter = "",
+                   kode_poli = "",
+                   nama_instansi,
+                   alamat_instansi,
+                   kabupaten,
+                   propinsi,
+                   kontak,
+                   email,
+                   kdkel = "",
+                   kdkec = "",
+                   kdkab = "",
+                   kdprop = "",
+                   nosisrute = "",
+                   BASENOREG = "",
+                   URUTNOREG = "",
+                   URLAPIBPJS = "",
+                   klg = "SAUDARA",
+                   statuspasien = "",
+                   pengurutan = "",
+                   tahun = "",
+                   bulan = "",
+                   posisitahun = "",
+                   awalantahun = "",
+                   awalanbulan = "",
+                   no_ktp = "",
+                   tmp_lahir = "",
+                   nm_ibu = "",
+                   alamat = "",
+                   pekerjaan = "",
+                   no_tlp = "",
+                   tglkkl = "0000-00-00",
+                   umurdaftar = "0",
+                   namakeluarga = "",
+                   no_peserta = "",
+                   kelurahan = "",
+                   kecamatan = "",
+                   datajam = "",
+                   jamselesai = "",
+                   jammulai = "",
+                   kabupatenpj = "",
+                   hariawal = "",
+                   requestJson,
+                   URL = "",
+                   nosep = "",
+                   user = "",
+                   prb = "",
+                   peserta = "",
+                   kodedokterreg = "",
+                   kodepolireg = "",
+                   status = "Baru",
+                   utc = "",
+                   jeniskunjungan = "",
+                   nomorreg = "",
+                   URLAPLIKASIFINGERPRINTBPJS = koneksiDB.URLAPLIKASIFINGERPRINTBPJS(),
+                   URLFINGERPRINTBPJS = koneksiDB.URLFINGERPRINTBPJS(),
+                   USERFINGERPRINTBPJS = koneksiDB.USERFINGERPRINTBPJS(),
+                   PASSFINGERPRINTBPJS = koneksiDB.PASSFINGERPRINTBPJS(),
+                   tampilkantni = Sequel.cariIsi("select tampilkan_tni_polri from set_tni_polri");  
     private int kuota = 0;
     private Properties prop = new Properties();
     private File file;
@@ -2485,6 +2539,22 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         }
 
         this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    public void tampil(String noRujukan, String noRawat)
+    {
+        try {
+            URL = URLAPIBPJS + "/Rujukan/Peserta/" + noRujukan;
+            
+            utc = String.valueOf(api.GetUTCdatetimeAsString());
+            
+            headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+            headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
+            headers.add("X-Timestamp", utc);
+            headers.add("X-Signature", api.getHmac(utc));
+            headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
+        }
     }
 
     public void tampil(String nomorrujukan) {
