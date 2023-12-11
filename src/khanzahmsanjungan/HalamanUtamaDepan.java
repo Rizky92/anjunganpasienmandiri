@@ -233,10 +233,11 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAdmin2ActionPerformed
 
     private void btnAdmin7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdmin7ActionPerformed
-        DlgCekBooking pilih = new DlgCekBooking(null, true);
-        pilih.setSize(this.getWidth(), this.getHeight());
-        pilih.setLocationRelativeTo(this);
-        pilih.setVisible(true);
+        JOptionPane.showMessageDialog(rootPane, "Mohon maaf, fitur masih dalam tahap pengembangan");
+//        DlgCekBooking pilih = new DlgCekBooking(null, true);
+//        pilih.setSize(this.getWidth(), this.getHeight());
+//        pilih.setLocationRelativeTo(this);
+//        pilih.setVisible(true);
     }//GEN-LAST:event_btnAdmin7ActionPerformed
 
     private void btnAdmin5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdmin5ActionPerformed
@@ -263,18 +264,19 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAdmin9ActionPerformed
 
     private void btnAdmin10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdmin10ActionPerformed
-//        JOptionPane.showMessageDialog(rootPane, "Mohon maaf, fitur masih dalam tahap pengembangan");
-        HalamanUtamaAntrian pilih = new HalamanUtamaAntrian();
-        pilih.setSize(this.getWidth(), this.getHeight());
-        pilih.setLocationRelativeTo(this);
-        pilih.setVisible(true);
+        JOptionPane.showMessageDialog(rootPane, "Mohon maaf, fitur masih dalam tahap pengembangan");
+//        HalamanUtamaAntrian pilih = new HalamanUtamaAntrian();
+//        pilih.setSize(this.getWidth(), this.getHeight());
+//        pilih.setLocationRelativeTo(this);
+//        pilih.setVisible(true);
     }//GEN-LAST:event_btnAdmin10ActionPerformed
 
     private void btnAdmin11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdmin11ActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        String nikktppetugas = Sequel.cariIsi("select no_ktp from pegawai where nik='0132' ");
-        Valid.panggilUrl("kyc/index.php?&nikagent=" + nikktppetugas + "");
-        this.setCursor(Cursor.getDefaultCursor());
+        JOptionPane.showMessageDialog(rootPane, "Mohon maaf, fitur masih dalam tahap pengembangan");
+//        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+//        String nikktppetugas = Sequel.cariIsi("select no_ktp from pegawai where nik='0132' ");
+//        Valid.panggilUrl("kyc/index.php?&nikagent=" + nikktppetugas + "");
+//        this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnAdmin11ActionPerformed
 
     /**
