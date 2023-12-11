@@ -1549,8 +1549,6 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                 kodedokterreg = Sequel.cariIsi("select kd_dokter from maping_dokter_dpjpvclaim where kd_dokter_bpjs=?", KdDPJP.getText());
             }
 
-            // kodepolireg = Sequel.cariIsi("select kd_poli_rs from maping_poli_bpjs where kd_poli_bpjs=?", KdPoli.getText());
-            // kodedokterreg = Sequel.cariIsi("select kd_dokter from maping_dokter_dpjpvclaim where kd_dokter_bpjs=?", KdDPJP.getText());
             isPoli();
             isCekPasien();
             isNumber();
@@ -1591,41 +1589,6 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                     }
                 }
             }
-
-//            if (JenisPelayanan.getSelectedIndex() == 0) {
-//                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-//                insertSEP();
-//                this.setCursor(Cursor.getDefaultCursor());
-//            } else if (JenisPelayanan.getSelectedIndex() == 1) {
-//                if (NmPoli.getText().toLowerCase().contains("darurat")) {
-//                    if (Sequel.cariInteger("select count(bridging_sep.no_kartu) from bridging_sep where bridging_sep.no_kartu='" + no_peserta + "' and bridging_sep.jnspelayanan='" + JenisPelayanan.getSelectedItem().toString().substring(0, 1) + "' and bridging_sep.tglsep like '%" + Valid.SetTgl(TanggalSEP.getSelectedItem() + "") + "%' and bridging_sep.nmpolitujuan like '%darurat%'") >= 3) {
-//                        JOptionPane.showMessageDialog(rootPane, "Maaf, sebelumnya sudah dilakukan 3x pembuatan SEP di jenis pelayanan yang sama..!!");
-//
-//                    } else {
-//                        if ((!kodedokterreg.equals("")) && (!kodepolireg.equals(""))) {
-//                            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-//                            SimpanAntrianOnSite();
-//                            this.setCursor(Cursor.getDefaultCursor());
-//                        }
-//                        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-//                        insertSEP();
-//                        this.setCursor(Cursor.getDefaultCursor());
-//                    }
-//                } else if (!NmPoli.getText().toLowerCase().contains("darurat")) {
-//                    if (Sequel.cariInteger("select count(bridging_sep.no_kartu) from bridging_sep where bridging_sep.no_kartu='" + no_peserta + "' and bridging_sep.jnspelayanan='" + JenisPelayanan.getSelectedItem().toString().substring(0, 1) + "' and bridging_sep.tglsep like '%" + Valid.SetTgl(TanggalSEP.getSelectedItem() + "") + "%' and bridging_sep.nmpolitujuan not like '%darurat%'") >= 1) {
-//                        JOptionPane.showMessageDialog(rootPane, "Maaf, sebelumnya sudah dilakukan pembuatan SEP di jenis pelayanan yang sama..!!");
-//                    } else {
-//                        if ((!kodedokterreg.equals("")) && (!kodepolireg.equals(""))) {
-//                            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-//                            SimpanAntrianOnSite();
-//                            this.setCursor(Cursor.getDefaultCursor());
-//                        }
-//                        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-//                        insertSEP();
-//                        this.setCursor(Cursor.getDefaultCursor());
-//                    }
-//                }
-//            }
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_btnSimpanActionPerformed
