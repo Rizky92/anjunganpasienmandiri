@@ -2937,108 +2937,46 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
     }
 
     private void updateSuratKontrol(String NoSurat, String NoSEPKontrol, String KdDokterKontrol, String KdPoliKontrol, String Tanggalkontrol, String userKontrol) {
-        if (!NoSurat.equals("")) {
-            String namapoliKontrol = Sequel.cariIsi("select maping_poli_bpjs.nm_poli_bpjs from maping_poli_bpjs where maping_poli_bpjs.kd_poli_bpjs='" + KdPoliKontrol + "'");
-            String namadokterkontrol = Sequel.cariIsi("select maping_dokter_dpjpvclaim.nm_dokter_bpjs from maping_dokter_dpjpvclaim where maping_dokter_dpjpvclaim.kd_dokter_bpjs='" + KdDokterKontrol + "'");
-            String tanggalsuratkontrol = Sequel.cariIsi("select bridging_surat_kontrol_bpjs.tgl_surat from bridging_surat_kontrol_bpjs where bridging_surat_kontrol_bpjs.no_surat='" + NoSurat + "'");
-            try {
-                headers = new HttpHeaders();
-                headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-                headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
-                utc = String.valueOf(api.GetUTCdatetimeAsString());
-                headers.add("X-Timestamp", utc);
-                headers.add("X-Signature", api.getHmac(utc));
-                headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
-                URL = URLAPIBPJS + "/RencanaKontrol/Update";
-                requestJson = "{"
-                        + "\"request\": {"
-                        + "\"noSuratKontrol\":\"" + NoSurat + "\","
-                        + "\"noSEP\":\"" + NoSEPKontrol + "\","
-                        + "\"kodeDokter\":\"" + KdDokterKontrol + "\","
-                        + "\"poliKontrol\":\"" + KdPoliKontrol + "\","
-                        + "\"tglRencanaKontrol\":\"" + Tanggalkontrol + "\","
-                        + "\"user\":\"" + userKontrol + "\""
-                        + "}"
-                    + "}";
-                System.out.println("JSON : " + requestJson);
-                requestEntity = new HttpEntity(requestJson, headers);
-                root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.PUT, requestEntity, String.class).getBody());
-                nameNode = root.path("metaData");
-                System.out.println("code : " + nameNode.path("code").asText());
-                System.out.println("message : " + nameNode.path("message").asText());
-                if (nameNode.path("code").asText().equals("200")) {
-                    if (Sequel.mengedittf("bridging_surat_kontrol_bpjs", "no_surat=?", "tgl_surat=?,tgl_rencana=?,kd_dokter_bpjs=?,nm_dokter_bpjs=?,kd_poli_bpjs=?,nm_poli_bpjs=?", 7, new String[]{
-                        tanggalsuratkontrol, Tanggalkontrol, KdDokterKontrol, namadokterkontrol, KdPoliKontrol, namapoliKontrol, NoSurat
-                    }) == true) {
-                        System.out.println("Respon BPJS : " + nameNode.path("message").asText());
-//                        JOptionPane.showMessageDialog(rootPane, "Respon BPJS : "+nameNode.path("message").asText());
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(rootPane, nameNode.path("message").asText());
-                }
-            } catch (Exception ex) {
-                System.out.println("Notifikasi Bridging : " + ex);
-                if (ex.toString().contains("UnknownHostException")) {
-                    JOptionPane.showMessageDialog(rootPane, "Koneksi ke server BPJS terputus...!");
-                }
-            }
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Maaf, Silahkan anda pilih terlebih dulu data yang mau anda ganti...\n Klik data pada table untuk memilih data...!!!!");
-        }
-
-    }
-    
-    private void updateSuratKontrol(String noSKDP, String noSEP, String tglKontrol, String noKartuPeserta) {
-        if (noSKDP.trim().isEmpty()) {
-            JOptionPane.showMessageDialog(rootPane, "Maaf, data surat kontrol tidak ditemukan...!!\nSilahkan hubungi administrasi...!!");
-            
+        if (NoSurat.isBlank()) {
+            JOptionPane.showMessageDialog(rootPane, "Maaf, Surat kontrol tidak dapat ditemukan..!!");
             return;
         }
         
-        String kodePoliKontrol = Sequel.cariIsiSmc("select kd_poli_bpjs from bridging_surat_kontrol_bpjs where no_surat = ?", noSKDP),
-               namaPoliKontrol = Sequel.cariIsiSmc("select nm_poli_bpjs from maping_poli_bpjs where kd_poli_bpjs = ?", kodePoliKontrol),
-               kodeDokterKontrol = Sequel.cariIsiSmc("select kd_dokter_bpjs from bridging_surat_kontrol_bpjs where no_surat = ?", noSKDP),
-               namaDokterKontrol = Sequel.cariIsiSmc("select nm_dokter_bpjs from maping_dokter_dpjpvclaim where kd_dokter_bpjs = ?", kodeDokterKontrol),
-               tanggalSKDP = Sequel.cariIsiSmc("select tgl_surat from bridging_surat_kontrol_bpjs where no_surat = ?", noSKDP);
-        
+        String namapoliKontrol = Sequel.cariIsi("select maping_poli_bpjs.nm_poli_bpjs from maping_poli_bpjs where maping_poli_bpjs.kd_poli_bpjs='" + KdPoliKontrol + "'");
+        String namadokterkontrol = Sequel.cariIsi("select maping_dokter_dpjpvclaim.nm_dokter_bpjs from maping_dokter_dpjpvclaim where maping_dokter_dpjpvclaim.kd_dokter_bpjs='" + KdDokterKontrol + "'");
+        String tanggalsuratkontrol = Sequel.cariIsi("select bridging_surat_kontrol_bpjs.tgl_surat from bridging_surat_kontrol_bpjs where bridging_surat_kontrol_bpjs.no_surat='" + NoSurat + "'");
         try {
-            utc = String.valueOf(api.GetUTCdatetimeAsString());
-
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
             headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
+            utc = String.valueOf(api.GetUTCdatetimeAsString());
             headers.add("X-Timestamp", utc);
             headers.add("X-Signature", api.getHmac(utc));
             headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
-
             URL = URLAPIBPJS + "/RencanaKontrol/Update";
-
             requestJson = "{"
                 + "\"request\": {"
-                    + "\"noSuratKontrol\":\"" + noSKDP + "\","
-                    + "\"noSEP\":\"" + noSEP + "\","
-                    + "\"kodeDokter\":\"" + kodeDokterKontrol + "\","
-                    + "\"poliKontrol\":\"" + kodePoliKontrol + "\","
-                    + "\"tglRencanaKontrol\":\"" + tglKontrol + "\","
-                    + "\"user\":\"" + noKartuPeserta + "\""
+                    + "\"noSuratKontrol\":\"" + NoSurat + "\","
+                    + "\"noSEP\":\"" + NoSEPKontrol + "\","
+                    + "\"kodeDokter\":\"" + KdDokterKontrol + "\","
+                    + "\"poliKontrol\":\"" + KdPoliKontrol + "\","
+                    + "\"tglRencanaKontrol\":\"" + Tanggalkontrol + "\","
+                    + "\"user\":\"" + userKontrol + "\""
                 + "}"
             + "}";
-
             System.out.println("JSON : " + requestJson);
-
             requestEntity = new HttpEntity(requestJson, headers);
             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.PUT, requestEntity, String.class).getBody());
             nameNode = root.path("metaData");
             System.out.println("code : " + nameNode.path("code").asText());
             System.out.println("message : " + nameNode.path("message").asText());
-
             if (nameNode.path("code").asText().equals("200")) {
-                System.out.println("Respon BPJS : " + nameNode.path("message").asText());
-
-                Sequel.mengupdateSmc("bridging_surat_kontrol_bpjs",
-                    "tgl_surat = ?, tgl_rencana = ?, kd_dokter_bpjs = ?, nm_dokter_bpjs = ?, kd_poli_bpjs = ?, nm_poli_bpjs = ?", "no_surat = ?",
-                    tanggalSKDP, tglKontrol, kodeDokterKontrol, namaDokterKontrol, kodePoliKontrol, namaPoliKontrol, noSKDP
-                );
+                if (Sequel.mengedittf("bridging_surat_kontrol_bpjs", "no_surat=?", "tgl_surat=?,tgl_rencana=?,kd_dokter_bpjs=?,nm_dokter_bpjs=?,kd_poli_bpjs=?,nm_poli_bpjs=?", 7, new String[]{
+                    tanggalsuratkontrol, Tanggalkontrol, KdDokterKontrol, namadokterkontrol, KdPoliKontrol, namapoliKontrol, NoSurat
+                }) == true) {
+                    System.out.println("Respon BPJS : " + nameNode.path("message").asText());
+//                        JOptionPane.showMessageDialog(rootPane, "Respon BPJS : "+nameNode.path("message").asText());
+                }
             } else {
                 JOptionPane.showMessageDialog(rootPane, nameNode.path("message").asText());
             }
@@ -3048,6 +2986,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(rootPane, "Koneksi ke server BPJS terputus...!");
             }
         }
+
     }
 
     public boolean GeneralConsentSatuSehat(String NoRMPasien) {
