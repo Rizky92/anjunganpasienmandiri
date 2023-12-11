@@ -37,6 +37,7 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         
         jPanel1.remove(btnAdmin10);
+        jPanel1.remove(btnAdmin11);
         jPanel1.remove(btnAdmin7);
         
         jPanel1.repaint();
@@ -201,6 +202,7 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
 
         btnAdmin11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/logo-satset.png"))); // NOI18N
         btnAdmin11.setText("AKTIVASI SATUSEHAT");
+        btnAdmin11.setEnabled(false);
         btnAdmin11.setFont(new java.awt.Font("Poppins", 1, 30)); // NOI18N
         btnAdmin11.setIconTextGap(0);
         btnAdmin11.setPreferredSize(new java.awt.Dimension(200, 90));

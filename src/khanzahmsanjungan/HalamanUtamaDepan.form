@@ -274,6 +274,7 @@
               <Image iconType="3" name="/48x48/logo-satset.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="AKTIVASI SATUSEHAT"/>
+            <Property name="enabled" type="boolean" value="false"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Poppins" size="30" style="1"/>
             </Property>
