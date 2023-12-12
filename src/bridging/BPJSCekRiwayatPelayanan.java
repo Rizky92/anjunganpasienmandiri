@@ -40,7 +40,7 @@ import org.springframework.http.MediaType;
  *
  * @author dosen
  */
-public final class BPJSCekHistoriPelayanan extends javax.swing.JDialog {
+public final class BPJSCekRiwayatPelayanan extends javax.swing.JDialog {
 
     private final DefaultTableModel tabMode;
     private validasi Valid = new validasi();
@@ -63,7 +63,7 @@ public final class BPJSCekHistoriPelayanan extends javax.swing.JDialog {
      * @param parent
      * @param modal
      */
-    public BPJSCekHistoriPelayanan(java.awt.Frame parent, boolean modal) {
+    public BPJSCekRiwayatPelayanan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
 
@@ -195,7 +195,7 @@ public final class BPJSCekHistoriPelayanan extends javax.swing.JDialog {
         panelGlass6.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-04-2023" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-11-2023" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -209,7 +209,7 @@ public final class BPJSCekHistoriPelayanan extends javax.swing.JDialog {
         panelGlass6.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20-04-2023" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-11-2023" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -306,7 +306,7 @@ public final class BPJSCekHistoriPelayanan extends javax.swing.JDialog {
      */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
-            BPJSCekHistoriPelayanan dialog = new BPJSCekHistoriPelayanan(new javax.swing.JFrame(), true);
+            BPJSCekRiwayatPelayanan dialog = new BPJSCekRiwayatPelayanan(new javax.swing.JFrame(), true);
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosing(java.awt.event.WindowEvent e) {
