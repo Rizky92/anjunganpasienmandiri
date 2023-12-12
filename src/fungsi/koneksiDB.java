@@ -801,11 +801,11 @@ public class koneksiDB {
     public static String AKTIFKANTRACKSQL() {
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            var = prop.getProperty("AKTIFKANTRACKSQL");
+            
+            return EnkripsiAES.decrypt(prop.getProperty("AKTIFKANTRACKSQL"));
         } catch (Exception e) {
-            var = "";
+            return "";
         }
-        return var;
     }
 
     public static String HOSTWSLICA() {
