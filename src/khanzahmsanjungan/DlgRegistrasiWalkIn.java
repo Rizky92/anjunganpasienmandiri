@@ -191,6 +191,8 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         dateTanggalPeriksa.setEditable(false);
         dateTanggalPeriksa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-12-2023" }));
         dateTanggalPeriksa.setDisplayFormat("dd-MM-yyyy");
+        dateTanggalPeriksa.setEnabled(false);
+        dateTanggalPeriksa.setFocusable(false);
         dateTanggalPeriksa.setOpaque(false);
         dateTanggalPeriksa.setPreferredSize(new java.awt.Dimension(95, 23));
         jPanel2.add(dateTanggalPeriksa);
@@ -517,7 +519,7 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
                     labelNamaPasien.setText(rs.getString("nm_pasien"));
                     labelTglLahir.setText(formatTanggal(rs.getString("tgl_lahir")));
                 }
-            } catch (Exception e) {
+            } catch (SQLException e) {
                 System.out.println("Notif : " + e);
             } finally {
                 if (rs != null) {
@@ -528,7 +530,7 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
                     ps.close();
                 }
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println("Notif : " + e);
         }
     }
@@ -587,7 +589,7 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
                         pasienStatusUmur = "Hr";
                     }
                 }
-            } catch (Exception e) {
+            } catch (SQLException e) {
                 System.out.println("Notif : " + e);
             } finally {
                 if (rs != null) {
@@ -598,7 +600,7 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
                     ps.close();
                 }
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.out.println("Notif : " + e);
         }
     }
