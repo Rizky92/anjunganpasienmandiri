@@ -22,6 +22,7 @@ import fungsi.sekuel;
 import fungsi.validasi;
 import java.awt.AWTException;
 import java.awt.Cursor;
+import java.awt.HeadlessException;
 import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
@@ -1608,7 +1609,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
     }//GEN-LAST:event_btnFingerPrintKeyPressed
 
     private void btnFingerPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFingerPrintActionPerformed
-        BukaFingerPrint();
+        bukaAplikasiFingerprint();
     }//GEN-LAST:event_btnFingerPrintActionPerformed
 
     private void btnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnSimpanKeyPressed
@@ -1640,7 +1641,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
             Valid.textKosong(KdDPJP, "DPJP");
         } else if (! statusfinger && Sequel.cariIntegerSmc("select timestampdiff(year, ?, CURRENT_DATE())", TglLahir.getText()) >= 17 && JenisPelayanan.getSelectedIndex() != 0 && !KdPoli.getText().equals("IGD")) {
             JOptionPane.showMessageDialog(rootPane, "Maaf, Pasien belum melakukan Fingerprint");
-            BukaFingerPrint();
+            bukaAplikasiFingerprint();
         // } else if (GeneralConsentSatuSehat(TNoRM.getText()) == false) {
         //     int i = JOptionPane.showConfirmDialog(rootPane, "Anda perlu menyetujui Inform Consent terbaru tentang Platform SATUSEHAT. \n Apakah anda menyetujui? \n", "Konfirmasi", JOptionPane.YES_NO_OPTION);
         //     if (i == JOptionPane.YES_OPTION) {
@@ -1761,7 +1762,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                             + "\"tglSep\": \"" + Valid.SetTgl(TanggalSEP.getSelectedItem() + "") + "\","
                             + "\"jnsPelayanan\": \"" + JenisPelayanan.getSelectedItem().toString().substring(0, 1) + "\","
                             + "\"jnsPengajuan\": \"2\","
-                            + "\"keterangan\": \"Pengajuan SEP Finger oleh Anjungan Mandiri RS Samarinda Medika Citra\","
+                            + "\"keterangan\": \"Pengajuan SEP Finger oleh Anjungan Pasien Mandiri RS Samarinda Medika Citra\","
                             + "\"user\": \"NoRM:" + TNoRM.getText() + "\""
                         + "}"
                     + "}"
@@ -2228,7 +2229,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                     Valid.SetTgl(TanggalRujuk, response.path("tglKunjungan").asText());
                     Kdpnj.setText("BPJ");
                     nmpnj.setText("BPJS");
-                    Catatan.setText("Anjungan Mandiri RS Samarinda Medika Citra");
+                    Catatan.setText("Anjungan Pasien Mandiri RS Samarinda Medika Citra");
                     NoTelp.setText(response.path("peserta").path("mr").path("noTelepon").asText());
                     if (NoTelp.getText().equals("null")) {
                         NoTelp.setText(Sequel.cariIsiSmc("select no_tlp from pasien where no_rkm_medis = ?", TNoRM.getText()));
@@ -2255,6 +2256,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                     String noSEP = Sequel.cariIsiSmc("select no_sep from bridging_surat_kontrol_bpjs where no_surat = ?", noSKDP);
                     String nokapesertakontrol = Sequel.cariIsiSmc("select no_kartu from bridging_sep where no_sep = ? limit 1", noSEP);
                     String tglkontrol = Sequel.cariIsiSmc("select tgl_rencana from bridging_surat_kontrol_bpjs where no_surat = ?", noSKDP);
+                    String asalFaskes = Sequel.cariIsiSmc("select left(asal_rujukan, 1) from bridging_sep where no_sep = ?", noSEP);
                     
                     if (Sequel.cariIntegerSmc("select datediff(? ,CURRENT_DATE)", tglkontrol) > 0) {
                         JOptionPane.showMessageDialog(rootPane, "Waktu registrasi tidak boleh melewati jadwal kontrol..!!\nSilahkan hubungi administrasi..!!");
@@ -2296,7 +2298,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                                     FlagProsedur.setSelectedIndex(0);
                                     Penunjang.setSelectedIndex(0);
                                     AsesmenPoli.setSelectedIndex(0);
-                                    AsalRujukan.setSelectedIndex(0);
+                                    AsalRujukan.setSelectedIndex(1);
                                     
                                     KdPoli.setText(Sequel.cariIsiSmc("select kd_poli_bpjs from bridging_surat_kontrol_bpjs where no_surat = ?", noSKDP));
                                     NmPoli.setText(Sequel.cariIsiSmc("select nm_poli_bpjs from bridging_surat_kontrol_bpjs where no_surat = ?", noSKDP));
@@ -2331,7 +2333,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                                     NmPpkRujukan.setText(Sequel.cariIsi("select setting.nama_instansi from setting"));
                                     Kdpnj.setText("BPJ");
                                     nmpnj.setText("BPJS");
-                                    Catatan.setText("Anjungan Mandiri RS Samarinda Medika Citra");
+                                    Catatan.setText("Anjungan Pasien Mandiri RS Samarinda Medika Citra");
                                     NoTelp.setText(response.path("peserta").path("mr").path("noTelepon").asText());
                                     if (NoTelp.getText().equals("null")) {
                                         NoTelp.setText(Sequel.cariIsiSmc("select no_tlp from pasien where no_rkm_medis = ?", TNoRM.getText()));
@@ -2388,7 +2390,11 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                                         FlagProsedur.setSelectedIndex(0);
                                         Penunjang.setSelectedIndex(0);
                                         AsesmenPoli.setSelectedIndex(0);
-                                        AsalRujukan.setSelectedIndex(1);
+                                        if (asalFaskes.equals("2")) {
+                                            AsalRujukan.setSelectedIndex(1);
+                                        } else {
+                                            AsalRujukan.setSelectedIndex(0);
+                                        }
                                         KdPoli.setText(Sequel.cariIsiSmc("select kd_poli_bpjs from bridging_surat_kontrol_bpjs where no_surat = ?", noSKDP));
                                         NmPoli.setText(Sequel.cariIsiSmc("select nm_poli_bpjs from bridging_surat_kontrol_bpjs where no_surat = ?", noSKDP));
                                         KdDPJP.setText(Sequel.cariIsiSmc("select kd_dokter_bpjs from bridging_surat_kontrol_bpjs where no_surat = ?", noSKDP));
@@ -2404,6 +2410,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                                         FlagProsedur.setSelectedIndex(0);
                                         Penunjang.setSelectedIndex(0);
                                         AsesmenPoli.setSelectedIndex(5);
+                                        AsalRujukan.setSelectedIndex(0);
                                         KdPoli.setText(Sequel.cariIsiSmc("select kd_poli_bpjs from bridging_surat_kontrol_bpjs where no_surat = ?", noSKDP));
                                         NmPoli.setText(Sequel.cariIsiSmc("select nm_poli_bpjs from bridging_surat_kontrol_bpjs where no_surat = ?", noSKDP));
                                         KdDPJP.setText(Sequel.cariIsiSmc("select kd_dokter_bpjs from bridging_surat_kontrol_bpjs where no_surat = ?", noSKDP));
@@ -2437,7 +2444,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                                     NmPpkRujukan.setText(Sequel.cariIsi("select setting.nama_instansi from setting"));
                                     Kdpnj.setText("BPJ");
                                     nmpnj.setText("BPJS");
-                                    Catatan.setText("Anjungan Mandiri RS Samarinda Medika Citra");
+                                    Catatan.setText("Anjungan Pasien Mandiri RS Samarinda Medika Citra");
                                     NoTelp.setText(response.path("peserta").path("mr").path("noTelepon").asText());
                                     if (NoTelp.getText().equals("null")) {
                                         NoTelp.setText(Sequel.cariIsiSmc("select no_tlp from pasien where no_rkm_medis = ?", TNoRM.getText()));
@@ -2728,51 +2735,52 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         }
     }
 
-    private void BukaFingerPrint() {
+    private void bukaAplikasiFingerprint() {
         if (NoKartu.getText().isBlank()) {
-            JOptionPane.showMessageDialog(rootPane, "No. kartu peserta BPJS tidak ada..!!");
+            JOptionPane.showMessageDialog(rootPane, "No. kartu peserta tidak ada..!!");
+            
             return;
         }
         
-        this.toFront();
-
+        toFront();
+        
         try {
             Runtime.getRuntime().exec(URLAPLIKASIFINGERPRINTBPJS);
-            Robot robot = new Robot();
+            
+            Thread.sleep(2000);
+            
+            Robot r = new Robot();
+            StringSelection ss = new StringSelection(USERFINGERPRINTBPJS);
+            Clipboard c = Toolkit.getDefaultToolkit().getSystemClipboard();
+            c.setContents(ss, ss);
+            
+            r.keyPress(KeyEvent.VK_CONTROL);
+            r.keyPress(KeyEvent.VK_V);
+            r.keyRelease(KeyEvent.VK_V);
+            r.keyRelease(KeyEvent.VK_CONTROL);
+            r.keyPress(KeyEvent.VK_TAB);
+            r.keyRelease(KeyEvent.VK_TAB);
             Thread.sleep(1000);
-            StringSelection stringSelectionuser = new StringSelection(USERFINGERPRINTBPJS);
-            Clipboard clipboarduser = Toolkit.getDefaultToolkit().getSystemClipboard();
-            clipboarduser.setContents(stringSelectionuser, stringSelectionuser);
-            robot.keyPress(KeyEvent.VK_CONTROL);
-            robot.keyPress(KeyEvent.VK_V);
-            robot.keyRelease(KeyEvent.VK_V);
-            robot.keyRelease(KeyEvent.VK_CONTROL);
-            robot.keyPress(KeyEvent.VK_TAB);
-            robot.keyRelease(KeyEvent.VK_TAB);
+            
+            ss = new StringSelection(PASSFINGERPRINTBPJS);
+            c.setContents(ss, ss);
+            
+            r.keyPress(KeyEvent.VK_CONTROL);
+            r.keyPress(KeyEvent.VK_V);
+            r.keyRelease(KeyEvent.VK_V);
+            r.keyRelease(KeyEvent.VK_CONTROL);
+            r.keyPress(KeyEvent.VK_TAB);
+            r.keyRelease(KeyEvent.VK_TAB);
             Thread.sleep(1000);
-            StringSelection stringSelectionpass = new StringSelection(PASSFINGERPRINTBPJS);
-            Clipboard clipboardpass = Toolkit.getDefaultToolkit().getSystemClipboard();
-            clipboardpass.setContents(stringSelectionpass, stringSelectionpass);
-            robot.keyPress(KeyEvent.VK_CONTROL);
-            robot.keyPress(KeyEvent.VK_V);
-            robot.keyRelease(KeyEvent.VK_V);
-            robot.keyRelease(KeyEvent.VK_CONTROL);
-            robot.keyPress(KeyEvent.VK_ENTER);
-            robot.keyRelease(KeyEvent.VK_ENTER);
-            Thread.sleep(1000);
-            StringSelection stringSelectionnokartu = new StringSelection(NoKartu.getText());
-            Clipboard clipboardnokartu = Toolkit.getDefaultToolkit().getSystemClipboard();
-            clipboardnokartu.setContents(stringSelectionnokartu, stringSelectionnokartu);
-            robot.keyPress(KeyEvent.VK_CONTROL);
-            robot.keyPress(KeyEvent.VK_V);
-            robot.keyRelease(KeyEvent.VK_V);
-            robot.keyRelease(KeyEvent.VK_CONTROL);
-        } catch (IOException ex) {
-            System.out.println("Notif Finger : " + ex);
-        } catch (AWTException ex) {
-            System.out.println("Notif Finger : " + ex);
-        } catch (InterruptedException ex) {
-            System.out.println("Notif Finger : " + ex);
+            
+            ss = new StringSelection(NoKartu.getText().trim());
+            c.setContents(ss, ss);
+            r.keyPress(KeyEvent.VK_CONTROL);
+            r.keyPress(KeyEvent.VK_V);
+            r.keyRelease(KeyEvent.VK_V);
+            r.keyRelease(KeyEvent.VK_CONTROL);
+        } catch (AWTException | HeadlessException | IOException | InterruptedException e) {
+            System.out.println("Notif : " + e);
         }
     }
 
