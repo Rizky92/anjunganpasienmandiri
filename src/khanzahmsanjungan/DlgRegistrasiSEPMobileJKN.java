@@ -294,6 +294,10 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog
         TNoRw = new widget.TextBox();
         NoRujukMasuk = new widget.TextBox();
         Tanggal = new widget.Tanggal();
+        modalCekinQR = new javax.swing.JDialog();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        btnKonfirmasiCekIn = new widget.Button();
         jPanel1 = new component.Panel();
         jPanel2 = new component.Panel();
         TPasien = new widget.TextBox();
@@ -450,6 +454,37 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog
         Tanggal.setFont(new java.awt.Font("Poppins", 0, 12)); // NOI18N
         Tanggal.setOpaque(false);
         Tanggal.setPreferredSize(new java.awt.Dimension(95, 23));
+
+        modalCekinQR.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        modalCekinQR.setAlwaysOnTop(true);
+        modalCekinQR.setBackground(new java.awt.Color(238, 238, 255));
+        modalCekinQR.setModalExclusionType(java.awt.Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
+        modalCekinQR.setModalityType(java.awt.Dialog.ModalityType.APPLICATION_MODAL);
+        modalCekinQR.getContentPane().setLayout(new java.awt.BorderLayout(1, 1));
+
+        jPanel4.setBackground(new java.awt.Color(238, 238, 255));
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "LAKUKAN CEK IN DI APLIKASI MOBILEJKN ANDA", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 36), new java.awt.Color(0, 131, 62))); // NOI18N
+        jPanel4.setLayout(new java.awt.BorderLayout());
+
+        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/qr-cekin-jkn.jpg"))); // NOI18N
+        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel4.add(jLabel1, java.awt.BorderLayout.CENTER);
+
+        btnKonfirmasiCekIn.setText("KONFIRMASI");
+        btnKonfirmasiCekIn.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnKonfirmasiCekIn.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                btnKonfirmasiCekInActionPerformed(evt);
+            }
+        });
+        jPanel4.add(btnKonfirmasiCekIn, java.awt.BorderLayout.PAGE_END);
+
+        modalCekinQR.getContentPane().add(jPanel4, java.awt.BorderLayout.CENTER);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setModal(true);
@@ -1552,6 +1587,37 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnPengajuanFPActionPerformed
 
+    private void btnKonfirmasiCekInActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnKonfirmasiCekInActionPerformed
+    {//GEN-HEADEREND:event_btnKonfirmasiCekInActionPerformed
+        if (NoKartu.getText().isBlank()) {
+            JOptionPane.showMessageDialog(rootPane, "Maaf, No. Kartu peserta BPJS tidak ditemukan..!!");
+            
+            return;
+        }
+        
+        String statusCekin = Sequel.cariIsiSmc("select status from referensi_mobilejkn_bpjs where nomorkartu = ? and tanggalperiksa = current_date()", NoKartu.getText());
+        
+        if (statusCekin.equals("Belum")) {
+            JOptionPane.showMessageDialog(rootPane, "Maaf, anda belum melakukan proses cekin di MobileJKN..!!");
+            
+            return;
+        }
+        
+        if (statusCekin.equals("Batal")) {
+            JOptionPane.showMessageDialog(rootPane, "Maaf, tidak bisa melakukan proses cekin karena pendaftaran ini sudah dibatalkan..!!");
+            
+            return;
+        }
+        
+        if (statusCekin.equals("Gagal")) {
+            JOptionPane.showMessageDialog(rootPane, "Maaf, proses cekin gagal..!!\nSilahkan hubungi administrasi..!!");
+            
+            return;
+        }
+        
+        JOptionPane.showMessageDialog(rootPane, "Proses Check In berhasil..!!");
+    }//GEN-LAST:event_btnKonfirmasiCekInActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1650,10 +1716,12 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog
     private widget.Button btnDokterTerapi;
     private component.Button btnFingerPrint;
     private component.Button btnKeluar;
+    private widget.Button btnKonfirmasiCekIn;
     private widget.Button btnPengajuanFP;
     private widget.Button btnPoliTerapi;
     private widget.Button btnRiwayatPelayanan;
     private component.Button btnSimpan;
+    private javax.swing.JLabel jLabel1;
     private widget.Label jLabel10;
     private widget.Label jLabel11;
     private widget.Label jLabel12;
@@ -1685,9 +1753,11 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog
     private component.Panel jPanel1;
     private component.Panel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private widget.TextBox kdpoli;
     private widget.Label lblNoRawat;
     private widget.Label lblTerapi;
+    private javax.swing.JDialog modalCekinQR;
     private widget.TextBox nmpnj;
     // End of variables declaration//GEN-END:variables
 
@@ -1948,6 +2018,15 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog
             }
         }
     }
+    
+    private void cekInSebelumKonfirmasi()
+    {
+        String statusCekin = Sequel.cariIsiSmc("select status from referensi_mobilejkn_bpjs where nomorkartu = ? and tanggalperiksa = current_date()", NoKartu.getText());
+        
+        if (statusCekin.equals("Belum")) {
+            modalCekinQR.setVisible(true);
+        }
+    }
 
     public void tampil(String nomorrujukan)
     {
@@ -1970,9 +2049,9 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog
             peserta = "";
 
             if (nameNode.path("code").asText().equals("200")) {
-                TNoRw.setText(Sequel.cariIsiSmc("select no_rawat from referensi_mobilejkn_bpjs where nomorkartu = ? and status = 'Belum' and tanggalperiksa = CURRENT_DATE()", nomorrujukan));
+                TNoRw.setText(Sequel.cariIsiSmc("select no_rawat from referensi_mobilejkn_bpjs where nomorkartu = ? and tanggalperiksa = CURRENT_DATE()", nomorrujukan));
                 lblNoRawat.setText(TNoRw.getText());
-                jeniskunjungan = Sequel.cariIsiSmc("select left(jeniskunjungan, 1) from referensi_mobilejkn_bpjs where nomorkartu = ? and status = 'Belum' and tanggalperiksa = CURRENT_DATE()", nomorrujukan);
+                jeniskunjungan = Sequel.cariIsiSmc("select left(jeniskunjungan, 1) from referensi_mobilejkn_bpjs where nomorkartu = ? and tanggalperiksa = CURRENT_DATE()", nomorrujukan);
 
                 response = mapper.readTree(api.Decrypt(root.path("response").asText(), utc)).path("rujukan");
 
@@ -2032,7 +2111,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog
                     KdDPJPLayanan.setText(KdDPJP.getText());
                     NmDPJPLayanan.setText(NmDPJP.getText());
                 } else if (jeniskunjungan.equals("3")) {
-                    String noSKDP = Sequel.cariIsiSmc("select nomorreferensi from referensi_mobilejkn_bpjs where nomorkartu = ? and status = 'Belum' and tanggalperiksa = CURRENT_DATE()", nomorrujukan);
+                    String noSKDP = Sequel.cariIsiSmc("select nomorreferensi from referensi_mobilejkn_bpjs where nomorkartu = ? and tanggalperiksa = CURRENT_DATE()", nomorrujukan);
                     String noSEP = Sequel.cariIsiSmc("select no_sep from bridging_surat_kontrol_bpjs where no_surat = ?", noSKDP);
                     String noKartuPeserta = Sequel.cariIsiSmc("select no_kartu from bridging_sep where no_sep = ? limit 1", noSEP);
                     String tglkontrol = Sequel.cariIsiSmc("select tgl_rencana from bridging_surat_kontrol_bpjs where no_surat = ?", noSKDP);
