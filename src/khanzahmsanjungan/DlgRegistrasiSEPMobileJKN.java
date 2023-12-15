@@ -1857,6 +1857,13 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog
                     KdDPJPLayanan.getText(),
                     NmDPJPLayanan.getText()
                 );
+                
+                Sequel.mengupdateSmc(
+                    "referensi_mobilejkn_bpjs",
+                    "validasi = now(), status = 'Checkin'",
+                    "nomorkartu = ? and tanggalperiksa = current_date() and kodedokter = ? and kodepoli = ?",
+                    NoKartu.getText(), KdDPJP.getText(), KdPoli.getText()
+                );
 
                 if (!simpanRujukan()) {
                     System.out.println("Terjadi kesalahan pada saat proses rujukan masuk pasien!");
