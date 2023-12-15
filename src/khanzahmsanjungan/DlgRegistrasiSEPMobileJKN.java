@@ -1439,18 +1439,12 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog
                     if (Sequel.cariIntegerSmc("select count(*) from bridging_sep where no_kartu = ? and jnspelayanan = ? and tglsep = ? and nmpolitujuan like '%darurat%'", no_peserta, JenisPelayanan.getSelectedItem().toString().substring(0, 1), Valid.SetTgl(TanggalSEP.getSelectedItem().toString())) >= 3) {
                         JOptionPane.showMessageDialog(rootPane, "Maaf, sebelumnya sudah dilakukan 3x pembuatan SEP di jenis pelayanan yang sama..!!");
                     } else {
-                        if ((!kodedokterreg.equals("")) && (!kodepolireg.equals(""))) {
-                            SimpanAntrianOnSite();
-                        }
                         insertSEP();
                     }
                 } else if (!NmPoli.getText().toLowerCase().contains("darurat")) {
                     if (Sequel.cariIntegerSmc("select count(*) from bridging_sep where no_kartu = ? and jnspelayanan = ? and tglsep = ? and nmpolitujuan not like '%darurat%'", no_peserta, JenisPelayanan.getSelectedItem().toString().substring(0, 1), Valid.SetTgl(TanggalSEP.getSelectedItem().toString())) >= 1) {
                         JOptionPane.showMessageDialog(rootPane, "Maaf, sebelumnya sudah dilakukan pembuatan SEP di jenis pelayanan yang sama..!!");
                     } else {
-                        if ((!kodedokterreg.equals("")) && (!kodepolireg.equals(""))) {
-                            SimpanAntrianOnSite();
-                        }
                         insertSEP();
                     }
                 }
