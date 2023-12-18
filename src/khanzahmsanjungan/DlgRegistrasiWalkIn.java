@@ -641,8 +641,8 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         }
         
         regNoRawat = Sequel.cariIsiSmc(
-            "select concat(date_format(tgl_registrasi, '%Y/%m/%d'), '/', lpad(ifnull(max(convert(right(no_rawat, 6), signed)), 0) + 1, 6, '0')) from reg_periksa where tgl_registrasi = ?",
-            Valid.SetTgl(dateTanggalPeriksa.getSelectedItem().toString())
+            "select concat(date_format(?, '%Y/%m/%d'), '/', lpad(ifnull(max(convert(right(no_rawat, 6), signed)), 0) + 1, 6, '0')) from reg_periksa where tgl_registrasi = ?",
+            Valid.SetTgl(dateTanggalPeriksa.getSelectedItem().toString()), Valid.SetTgl(dateTanggalPeriksa.getSelectedItem().toString())
         );
     }
 
