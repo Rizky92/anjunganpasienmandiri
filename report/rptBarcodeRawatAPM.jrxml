@@ -8,13 +8,16 @@
 	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
 	<parameter name="norawat" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[select reg_periksa.no_rawat, reg_periksa.no_rkm_medis, pasien.nm_pasien, pasien.tgl_lahir from reg_periksa join pasien on reg_periksa.no_rkm_medis = pasien.no_rkm_medis where reg_periksa.no_rawat = $P{norawat}]]>
+		<![CDATA[select 
+reg_periksa.no_rkm_medis, 
+pasien.nm_pasien, 
+pasien.tgl_lahir, 
+reg_periksa.umurdaftar,
+reg_periksa.sttsumur
+from reg_periksa 
+join pasien on reg_periksa.no_rkm_medis = pasien.no_rkm_medis 
+where reg_periksa.no_rawat = $P{norawat}]]>
 	</queryString>
-	<field name="no_rawat" class="java.lang.String">
-		<property name="com.jaspersoft.studio.field.label" value="no_rawat"/>
-		<property name="com.jaspersoft.studio.field.tree.path" value="reg_periksa"/>
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
 	<field name="no_rkm_medis" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="no_rkm_medis"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="reg_periksa"/>
@@ -27,6 +30,14 @@
 		<property name="com.jaspersoft.studio.field.label" value="tgl_lahir"/>
 		<property name="com.jaspersoft.studio.field.tree.path" value="pasien"/>
 	</field>
+	<field name="umurdaftar" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="umurdaftar"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="reg_periksa"/>
+	</field>
+	<field name="sttsumur" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="sttsumur"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="reg_periksa"/>
+	</field>
 	<detail>
 		<band height="75" splitType="Stretch">
 			<textField>
@@ -38,7 +49,7 @@
 					<font fontName="Tahoma" size="9"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{nm_pasien}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{nm_pasien} + " (" + $F{umurdaftar} + " " + $F{sttsumur} + ")"]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="100" y="0" width="145" height="11" uuid="6fc028a2-7445-4785-a611-56b4ecb1c105">
@@ -61,7 +72,7 @@
 				<textFieldExpression><![CDATA[$F{no_rkm_medis}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="22" width="224" height="10" uuid="ab8cbd9e-9176-429b-b1f1-a418aee857f7">
+				<reportElement x="0" y="23" width="224" height="10" uuid="ab8cbd9e-9176-429b-b1f1-a418aee857f7">
 					<property name="com.jaspersoft.studio.unit.height" value="cm"/>
 				</reportElement>
 				<textElement>
