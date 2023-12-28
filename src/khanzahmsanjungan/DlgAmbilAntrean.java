@@ -133,7 +133,7 @@ public class DlgAmbilAntrean extends javax.swing.JDialog {
         getContentPane().setLayout(new java.awt.BorderLayout(1, 1));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 215, 255)), "::[ ANTRIAN PASIEN ]::", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Poppins", 0, 24), new java.awt.Color(0, 131, 62))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 215, 255)), "::[ ANTRIAN PASIEN ]::", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Inter", 0, 24), new java.awt.Color(0, 131, 62))); // NOI18N
         jPanel1.setForeground(new java.awt.Color(0, 131, 62));
         jPanel1.setPreferredSize(new java.awt.Dimension(400, 70));
         jPanel1.setLayout(new java.awt.GridLayout(3, 1));
@@ -143,7 +143,7 @@ public class DlgAmbilAntrean extends javax.swing.JDialog {
 
         lblNamaAntrian.setForeground(new java.awt.Color(0, 131, 62));
         lblNamaAntrian.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblNamaAntrian.setFont(new java.awt.Font("Poppins", 0, 36)); // NOI18N
+        lblNamaAntrian.setFont(new java.awt.Font("Inter", 0, 36)); // NOI18N
         lblNamaAntrian.setPreferredSize(new java.awt.Dimension(500, 75));
         jPanel2.add(lblNamaAntrian);
 
@@ -154,7 +154,7 @@ public class DlgAmbilAntrean extends javax.swing.JDialog {
 
         lblNoAntrian.setForeground(new java.awt.Color(0, 131, 62));
         lblNoAntrian.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblNoAntrian.setFont(new java.awt.Font("Poppins", 1, 48)); // NOI18N
+        lblNoAntrian.setFont(new java.awt.Font("Inter", 1, 48)); // NOI18N
         lblNoAntrian.setIconTextGap(0);
         lblNoAntrian.setPreferredSize(new java.awt.Dimension(350, 150));
         jPanel3.add(lblNoAntrian);
@@ -169,7 +169,7 @@ public class DlgAmbilAntrean extends javax.swing.JDialog {
         BtnClose2.setMnemonic('U');
         BtnClose2.setText("Cetak Antrian");
         BtnClose2.setToolTipText("Alt+U");
-        BtnClose2.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
+        BtnClose2.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
         BtnClose2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BtnClose2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         BtnClose2.setIconTextGap(0);
@@ -188,7 +188,7 @@ public class DlgAmbilAntrean extends javax.swing.JDialog {
         BtnClose3.setMnemonic('U');
         BtnClose3.setText("Batal");
         BtnClose3.setToolTipText("Alt+U");
-        BtnClose3.setFont(new java.awt.Font("Poppins", 1, 18)); // NOI18N
+        BtnClose3.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
         BtnClose3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BtnClose3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         BtnClose3.setIconTextGap(0);

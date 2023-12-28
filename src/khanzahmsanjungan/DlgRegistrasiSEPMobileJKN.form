@@ -138,12 +138,12 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
-            <StringItem index="0" value="14-12-2023"/>
+            <StringItem index="0" value="28-12-2023"/>
           </StringArray>
         </Property>
         <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Poppins" size="12" style="0"/>
+          <Font name="Inter" size="12" style="0"/>
         </Property>
         <Property name="opaque" type="boolean" value="false"/>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -179,7 +179,7 @@
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
                 <TitledBorder justification="2" position="2" title="LAKUKAN CEK IN DI APLIKASI MOBILEJKN ANDA">
-                  <Font PropertyName="font" name="Segoe UI" size="36" style="1"/>
+                  <Font PropertyName="font" name="Inter Display" size="36" style="1"/>
                   <Color PropertyName="color" blue="3e" green="83" red="0" type="rgb"/>
                 </TitledBorder>
               </Border>
@@ -197,6 +197,9 @@
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Inter Display SemiBold" size="12" style="0"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="0" green="0" red="0" type="rgb"/>
@@ -217,7 +220,7 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="KONFIRMASI"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="24" style="1"/>
+                  <Font name="Inter Medium" size="24" style="1"/>
                 </Property>
               </Properties>
               <Events>
@@ -275,7 +278,7 @@
                   <Color PropertyName="color" blue="ff" green="ee" red="ee" type="rgb"/>
                 </LineBorder>
               </Border>
-              <Font PropertyName="font" name="Poppins" size="24" style="0"/>
+              <Font PropertyName="font" name="Inter" size="24" style="0"/>
               <Color PropertyName="color" blue="3e" green="83" red="0" type="rgb"/>
             </TitledBorder>
           </Border>
@@ -366,7 +369,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Tgl.SEP :"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[55, 23]"/>
@@ -386,12 +389,12 @@
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="1">
-                    <StringItem index="0" value="14-12-2023"/>
+                    <StringItem index="0" value="28-12-2023"/>
                   </StringArray>
                 </Property>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
                 <Property name="opaque" type="boolean" value="false"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -411,7 +414,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Tgl.Rujuk :"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[55, 23]"/>
@@ -431,12 +434,12 @@
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="1">
-                    <StringItem index="0" value="14-12-2023"/>
+                    <StringItem index="0" value="28-12-2023"/>
                   </StringArray>
                 </Property>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
                 <Property name="opaque" type="boolean" value="false"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -456,7 +459,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="No.SKDP / S. Kontrol :"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[55, 23]"/>
@@ -491,7 +494,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="PPK Pelayanan :"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[55, 23]"/>
@@ -542,7 +545,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="PPK Rujukan :"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[55, 23]"/>
@@ -593,7 +596,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Diagnosa Awal :"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[55, 23]"/>
@@ -676,7 +679,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Poli Tujuan :"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[55, 23]"/>
@@ -695,7 +698,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Jns.Pelayanan :"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[55, 23]"/>
@@ -714,7 +717,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Catatan :"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -752,7 +755,7 @@
                 </Property>
                 <Property name="selectedIndex" type="int" value="1"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
               </Properties>
               <Events>
@@ -771,7 +774,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Kelas :"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -794,7 +797,7 @@
                 </Property>
                 <Property name="selectedIndex" type="int" value="2"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -817,7 +820,7 @@
                   </StringArray>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[64, 25]"/>
@@ -839,7 +842,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Data Pasien : "/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[55, 23]"/>
@@ -874,7 +877,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="J.K :"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -906,7 +909,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Peserta :"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[55, 23]"/>
@@ -941,7 +944,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Status :"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[55, 23]"/>
@@ -976,7 +979,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Asal Rujukan :"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -997,7 +1000,7 @@
                   </StringArray>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -1030,7 +1033,7 @@
                   </StringArray>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[64, 25]"/>
@@ -1049,7 +1052,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Katarak :"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -1065,7 +1068,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Tgl KLL :"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[55, 23]"/>
@@ -1084,13 +1087,13 @@
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="1">
-                    <StringItem index="0" value="14-12-2023"/>
+                    <StringItem index="0" value="28-12-2023"/>
                   </StringArray>
                 </Property>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
                 <Property name="enabled" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
                 <Property name="opaque" type="boolean" value="false"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -1110,7 +1113,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Dokter DPJP :"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[55, 23]"/>
@@ -1161,7 +1164,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Keterangan :"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[55, 23]"/>
@@ -1193,7 +1196,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Suplesi :"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -1214,7 +1217,7 @@
                   </StringArray>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[64, 25]"/>
@@ -1245,7 +1248,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Suplesi :"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[55, 23]"/>
@@ -1264,7 +1267,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Propinsi KLL :"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -1312,7 +1315,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Kabupaten KLL :"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -1360,7 +1363,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Kecamatan KLL :"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -1408,7 +1411,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Tujuan Kunjungan :"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[55, 23]"/>
@@ -1436,7 +1439,7 @@
                   </StringArray>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
               </Properties>
               <Events>
@@ -1462,7 +1465,7 @@
                 </Property>
                 <Property name="enabled" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -1478,7 +1481,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Flag Prosedur :"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[55, 23]"/>
@@ -1497,7 +1500,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Penunjang :"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[55, 23]"/>
@@ -1533,7 +1536,7 @@
                 </Property>
                 <Property name="enabled" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -1549,7 +1552,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Asesmen Pelayanan :"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[55, 23]"/>
@@ -1580,7 +1583,7 @@
                   </StringArray>
                 </Property>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -1597,7 +1600,7 @@
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="text" type="java.lang.String" value="Terapi / Rehabilitasi Medik"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[55, 23]"/>
@@ -1649,7 +1652,7 @@
                 <Property name="mnemonic" type="int" value="88"/>
                 <Property name="toolTipText" type="java.lang.String" value="Alt+X"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
               </Properties>
               <Events>
@@ -1668,7 +1671,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Laka Lantas :"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -1685,7 +1688,7 @@
                 <Property name="horizontalAlignment" type="int" value="2"/>
                 <Property name="text" type="java.lang.String" value="No Reg"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[55, 23]"/>
@@ -1704,7 +1707,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Tgl.Lahir :"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[55, 23]"/>
@@ -1723,7 +1726,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="NIK :"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -1755,7 +1758,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="No.Rujukan :"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[55, 23]"/>
@@ -1790,7 +1793,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="No.Kartu :"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -1807,7 +1810,7 @@
                 <Property name="mnemonic" type="int" value="88"/>
                 <Property name="toolTipText" type="java.lang.String" value="Alt+X"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
               </Properties>
               <Events>
@@ -1827,7 +1830,7 @@
                 <Property name="mnemonic" type="int" value="88"/>
                 <Property name="toolTipText" type="java.lang.String" value="Alt+X"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
               </Properties>
               <Events>
@@ -1847,7 +1850,7 @@
                 <Property name="mnemonic" type="int" value="88"/>
                 <Property name="toolTipText" type="java.lang.String" value="Alt+X"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
               </Properties>
               <Events>
@@ -1868,7 +1871,7 @@
                 <Property name="text" type="java.lang.String" value="Riwayat Layanan BPJS"/>
                 <Property name="toolTipText" type="java.lang.String" value="Alt+X"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
               </Properties>
               <Events>
@@ -1952,7 +1955,7 @@
                 <Property name="mnemonic" type="int" value="88"/>
                 <Property name="toolTipText" type="java.lang.String" value="Alt+X"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
               </Properties>
               <Events>
@@ -1972,7 +1975,7 @@
                 <Property name="mnemonic" type="int" value="88"/>
                 <Property name="toolTipText" type="java.lang.String" value="Alt+X"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
               </Properties>
               <Events>
@@ -1991,7 +1994,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="DPJP Layanan :"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[55, 23]"/>
@@ -2010,7 +2013,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="No.Telp :"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[55, 23]"/>
@@ -2031,7 +2034,7 @@
                 <Property name="text" type="java.lang.String" value="Approval FP BPJS"/>
                 <Property name="toolTipText" type="java.lang.String" value="Alt+X"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="2"/>
               </Properties>
@@ -2053,7 +2056,7 @@
                 <Property name="text" type="java.lang.String" value="Pengajuan FP BPJS"/>
                 <Property name="toolTipText" type="java.lang.String" value="Alt+X"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="12" style="0"/>
+                  <Font name="Inter" size="12" style="0"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="2"/>
               </Properties>
@@ -2097,7 +2100,7 @@
                 <Property name="text" type="java.lang.String" value="Konfirmasi"/>
                 <Property name="toolTipText" type="java.lang.String" value="Alt+S"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="18" style="0"/>
+                  <Font name="Inter" size="18" style="0"/>
                 </Property>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -2121,7 +2124,7 @@
                 <Property name="text" type="java.lang.String" value="FINGERPRINT BPJS"/>
                 <Property name="toolTipText" type="java.lang.String" value="Alt+K"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="18" style="0"/>
+                  <Font name="Inter" size="18" style="0"/>
                 </Property>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -2144,7 +2147,7 @@
                 <Property name="text" type="java.lang.String" value="Batal"/>
                 <Property name="toolTipText" type="java.lang.String" value="Alt+K"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Poppins" size="18" style="0"/>
+                  <Font name="Inter" size="18" style="0"/>
                 </Property>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">

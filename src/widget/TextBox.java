@@ -14,7 +14,7 @@ public class TextBox extends JTextField {
 
     public TextBox() {
         super();
-        setFont(new java.awt.Font("Poppins", 0, 12));
+        setFont(new java.awt.Font("Inter", 0, 12));
         setSelectionColor(new Color(230, 230, 172));
         setSelectedTextColor(new Color(255, 0, 0));
         setForeground(new Color(0, 131, 62));

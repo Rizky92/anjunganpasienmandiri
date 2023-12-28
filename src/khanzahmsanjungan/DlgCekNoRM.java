@@ -170,13 +170,13 @@ public class DlgCekNoRM extends javax.swing.JDialog {
         getContentPane().setLayout(new java.awt.BorderLayout(1, 1));
 
         jPanel1.setBackground(new java.awt.Color(238, 238, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 215, 255)), "::[ Cek Data Pasien!!! ]::", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Poppins", 0, 24), new java.awt.Color(0, 131, 62))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 215, 255)), "::[ Cek Data Pasien!!! ]::", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Inter", 0, 24), new java.awt.Color(0, 131, 62))); // NOI18N
         jPanel1.setPreferredSize(new java.awt.Dimension(400, 70));
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
         NoRMPasien.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 131, 62), 2, true));
         NoRMPasien.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        NoRMPasien.setFont(new java.awt.Font("Poppins", 0, 24)); // NOI18N
+        NoRMPasien.setFont(new java.awt.Font("Inter", 0, 24)); // NOI18N
         NoRMPasien.setPreferredSize(new java.awt.Dimension(350, 75));
         NoRMPasien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -197,7 +197,7 @@ public class DlgCekNoRM extends javax.swing.JDialog {
         jLabel28.setForeground(new java.awt.Color(0, 131, 62));
         jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel28.setText("No Rekam Medis Pasien / NIK KTP : ");
-        jLabel28.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        jLabel28.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         jLabel28.setPreferredSize(new java.awt.Dimension(350, 75));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -231,7 +231,7 @@ public class DlgCekNoRM extends javax.swing.JDialog {
         BtnClose2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/konfirmasi.png"))); // NOI18N
         BtnClose2.setMnemonic('U');
         BtnClose2.setToolTipText("Alt+U");
-        BtnClose2.setFont(new java.awt.Font("Poppins", 1, 11)); // NOI18N
+        BtnClose2.setFont(new java.awt.Font("Inter", 1, 11)); // NOI18N
         BtnClose2.setIconTextGap(0);
         BtnClose2.setMargin(new java.awt.Insets(0, 0, 0, 0));
         BtnClose2.setPreferredSize(new java.awt.Dimension(100, 75));
