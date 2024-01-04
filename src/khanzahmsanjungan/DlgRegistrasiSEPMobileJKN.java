@@ -449,7 +449,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog
         NoRujukMasuk.setText("0");
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-12-2023" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-12-2023" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         Tanggal.setOpaque(false);
@@ -527,7 +527,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog
 
         TanggalSEP.setEditable(false);
         TanggalSEP.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-12-2023" }));
+        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-12-2023" }));
         TanggalSEP.setDisplayFormat("dd-MM-yyyy");
         TanggalSEP.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         TanggalSEP.setOpaque(false);
@@ -544,7 +544,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog
 
         TanggalRujuk.setEditable(false);
         TanggalRujuk.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-12-2023" }));
+        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-12-2023" }));
         TanggalRujuk.setDisplayFormat("dd-MM-yyyy");
         TanggalRujuk.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         TanggalRujuk.setOpaque(false);
@@ -789,7 +789,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog
         jLabel38.setBounds(650, 280, 80, 30);
 
         TanggalKKL.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalKKL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-12-2023" }));
+        TanggalKKL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-12-2023" }));
         TanggalKKL.setDisplayFormat("dd-MM-yyyy");
         TanggalKKL.setEnabled(false);
         TanggalKKL.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
@@ -1221,7 +1221,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog
         btnSimpan.setMnemonic('S');
         btnSimpan.setText("Konfirmasi");
         btnSimpan.setToolTipText("Alt+S");
-        btnSimpan.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
+        btnSimpan.setFont(new java.awt.Font("Inter Medium", 0, 18)); // NOI18N
         btnSimpan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnSimpan.setPreferredSize(new java.awt.Dimension(300, 45));
         btnSimpan.addActionListener(new java.awt.event.ActionListener()
@@ -1245,7 +1245,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog
         btnFingerPrint.setMnemonic('K');
         btnFingerPrint.setText("FINGERPRINT BPJS");
         btnFingerPrint.setToolTipText("Alt+K");
-        btnFingerPrint.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
+        btnFingerPrint.setFont(new java.awt.Font("Inter Medium", 0, 18)); // NOI18N
         btnFingerPrint.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnFingerPrint.setPreferredSize(new java.awt.Dimension(300, 45));
         btnFingerPrint.addActionListener(new java.awt.event.ActionListener()
@@ -1262,7 +1262,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog
         btnKeluar.setMnemonic('K');
         btnKeluar.setText("Batal");
         btnKeluar.setToolTipText("Alt+K");
-        btnKeluar.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
+        btnKeluar.setFont(new java.awt.Font("Inter Medium", 0, 18)); // NOI18N
         btnKeluar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnKeluar.setPreferredSize(new java.awt.Dimension(300, 45));
         btnKeluar.addActionListener(new java.awt.event.ActionListener()
@@ -1445,11 +1445,6 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog
         } else if (!statusfinger && Sequel.cariIntegerSmc("select timestampdiff(year, ?, CURRENT_DATE())", TglLahir.getText()) >= 17 && JenisPelayanan.getSelectedIndex() != 0 && !KdPoli.getText().equals("IGD")) {
             JOptionPane.showMessageDialog(rootPane, "Maaf, Pasien belum melakukan Fingerprint");
             bukaAplikasiFingerprint();
-            // } else if (GeneralConsentSatuSehat(TNoRM.getText()) == false) {
-            //     int i = JOptionPane.showConfirmDialog(rootPane, "Anda perlu menyetujui Inform Consent terbaru tentang Platform SATUSEHAT. \n Apakah anda menyetujui? \n", "Konfirmasi", JOptionPane.YES_NO_OPTION);
-            //     if (i == JOptionPane.YES_OPTION) {
-            //         generalconsentsave(TNoRM.getText());
-            //     }
         } else {
             if (!KdPoliTerapi.getText().equals("")) {
                 kodepolireg = KdPoliTerapi.getText();
@@ -1463,10 +1458,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog
                 kodedokterreg = Sequel.cariIsi("select kd_dokter from maping_dokter_dpjpvclaim where kd_dokter_bpjs=?", KdDPJP.getText());
             }
 
-            // kodepolireg = Sequel.cariIsi("select kd_poli_rs from maping_poli_bpjs where kd_poli_bpjs=?", KdPoli.getText());
-            // kodedokterreg = Sequel.cariIsi("select kd_dokter from maping_dokter_dpjpvclaim where kd_dokter_bpjs=?", KdDPJP.getText());
             isPoli();
-            // isCekPasien();
 
             if (JenisPelayanan.getSelectedIndex() == 0) {
                 insertSEP();
@@ -1929,12 +1921,17 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog
                     NmDPJPLayanan.getText()
                 );
                 
-                Sequel.mengupdateSmc(
-                    "referensi_mobilejkn_bpjs",
-                    "validasi = now(), status = 'Checkin'",
-                    "nomorkartu = ? and tanggalperiksa = current_date() and kodedokter = ? and kodepoli = ?",
-                    NoKartu.getText(), KdDPJP.getText(), KdPoli.getText()
-                );
+                if (Sequel.cariBooleanSmc(
+                    "select exists(select * from referensi_mobilejkn_bpjs where nomorkartu = ? and tanggalperiksa = current_date() and kodedokter = ? and kodepoli = ? and status = 'Belum')",
+                    NoKartu.getText(), KdDPJP.getText(), KdPoli.getText())
+                ) {
+                    Sequel.mengupdateSmc(
+                        "referensi_mobilejkn_bpjs",
+                        "validasi = now(), status = 'Checkin'",
+                        "nomorkartu = ? and tanggalperiksa = current_date() and kodedokter = ? and kodepoli = ?",
+                        NoKartu.getText(), KdDPJP.getText(), KdPoli.getText()
+                    );
+                }
 
                 if (!simpanRujukan()) {
                     System.out.println("Terjadi kesalahan pada saat proses rujukan masuk pasien!");

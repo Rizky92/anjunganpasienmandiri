@@ -137,9 +137,8 @@ public class DlgCekKunjunganPertamaSEP extends javax.swing.JDialog {
         jPanel1.add(NoRMPasien, gridBagConstraints);
 
         jLabel28.setForeground(new java.awt.Color(0, 131, 62));
-        jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel28.setText("No. Peserta / No. RM / NIK :");
-        jLabel28.setFont(new java.awt.Font("Inter Display Medium", 0, 30)); // NOI18N
+        jLabel28.setText("No. RM / No. Kartu BPJS : ");
+        jLabel28.setFont(new java.awt.Font("Inter Display Medium", 0, 36)); // NOI18N
         jLabel28.setPreferredSize(new java.awt.Dimension(450, 75));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
