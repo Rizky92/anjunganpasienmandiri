@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.2" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
+<Form version="1.8" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -141,9 +141,6 @@
               <Dimension value="[350, 75]"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NoRMPasienActionPerformed"/>
-          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
               <GridBagConstraints gridX="2" gridY="14" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="21" weightX="0.0" weightY="0.0"/>
@@ -339,7 +336,7 @@
             <Component class="javax.swing.JButton" name="btnAngka8">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="48" style="0"/>
+                  <Font name="Inter Display SemiBold" size="48" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="8"/>
               </Properties>
@@ -350,7 +347,7 @@
             <Component class="javax.swing.JButton" name="btnAngka7">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="48" style="0"/>
+                  <Font name="Inter Display SemiBold" size="48" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="7"/>
               </Properties>
@@ -361,7 +358,7 @@
             <Component class="javax.swing.JButton" name="btnAngka9">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="48" style="0"/>
+                  <Font name="Inter Display SemiBold" size="48" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="9"/>
               </Properties>
@@ -372,7 +369,7 @@
             <Component class="javax.swing.JButton" name="btnAngka4">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="48" style="0"/>
+                  <Font name="Inter Display SemiBold" size="48" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="4"/>
               </Properties>
@@ -383,7 +380,7 @@
             <Component class="javax.swing.JButton" name="btnAngka5">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="48" style="0"/>
+                  <Font name="Inter Display SemiBold" size="48" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="5"/>
               </Properties>
@@ -394,7 +391,7 @@
             <Component class="javax.swing.JButton" name="btnAngka6">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="48" style="0"/>
+                  <Font name="Inter Display SemiBold" size="48" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="6"/>
               </Properties>
@@ -405,7 +402,7 @@
             <Component class="javax.swing.JButton" name="btnAngka2">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="48" style="0"/>
+                  <Font name="Inter Display SemiBold" size="48" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="2"/>
               </Properties>
@@ -416,7 +413,7 @@
             <Component class="javax.swing.JButton" name="btnAngka1">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="48" style="0"/>
+                  <Font name="Inter Display SemiBold" size="48" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="1"/>
               </Properties>
@@ -427,7 +424,7 @@
             <Component class="javax.swing.JButton" name="btnAngka3">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="48" style="0"/>
+                  <Font name="Inter Display SemiBold" size="48" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="3"/>
               </Properties>
@@ -438,7 +435,7 @@
             <Component class="javax.swing.JButton" name="btnAngka0">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="48" style="0"/>
+                  <Font name="Inter Display SemiBold" size="48" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="0"/>
               </Properties>
@@ -449,9 +446,9 @@
             <Component class="javax.swing.JButton" name="btnAngkaHps">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="36" style="0"/>
+                  <Font name="Inter Display SemiBold" size="36" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="&lt;---"/>
+                <Property name="text" type="java.lang.String" value="\ud83e\udc50" containsInvalidXMLChars="true"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAngkaHpsActionPerformed"/>
@@ -460,7 +457,7 @@
             <Component class="javax.swing.JButton" name="btnClear">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="48" style="0"/>
+                  <Font name="Inter Display SemiBold" size="48" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="C"/>
               </Properties>
@@ -471,7 +468,7 @@
             <Component class="javax.swing.JButton" name="btnK">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="48" style="0"/>
+                  <Font name="Inter Display SemiBold" size="48" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="K"/>
               </Properties>
@@ -482,7 +479,7 @@
             <Component class="javax.swing.JButton" name="btnR">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="48" style="0"/>
+                  <Font name="Inter Display SemiBold" size="48" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="R"/>
               </Properties>
@@ -493,7 +490,7 @@
             <Component class="javax.swing.JButton" name="btnTemplate">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Segoe UI" size="48" style="0"/>
+                  <Font name="Inter Display SemiBold" size="48" style="0"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="TP"/>
               </Properties>

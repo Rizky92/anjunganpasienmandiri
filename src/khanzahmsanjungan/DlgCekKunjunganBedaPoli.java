@@ -180,7 +180,7 @@ public class DlgCekKunjunganBedaPoli extends javax.swing.JDialog {
         jPanel3.setBackground(new java.awt.Color(238, 238, 255));
         jPanel3.setPreferredSize(new java.awt.Dimension(350, 399));
 
-        btnAngka8.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        btnAngka8.setFont(new java.awt.Font("Inter Display SemiBold", 0, 48)); // NOI18N
         btnAngka8.setText("8");
         btnAngka8.addActionListener(new java.awt.event.ActionListener()
         {
@@ -190,7 +190,7 @@ public class DlgCekKunjunganBedaPoli extends javax.swing.JDialog {
             }
         });
 
-        btnAngka7.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        btnAngka7.setFont(new java.awt.Font("Inter Display SemiBold", 0, 48)); // NOI18N
         btnAngka7.setText("7");
         btnAngka7.addActionListener(new java.awt.event.ActionListener()
         {
@@ -200,7 +200,7 @@ public class DlgCekKunjunganBedaPoli extends javax.swing.JDialog {
             }
         });
 
-        btnAngka9.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        btnAngka9.setFont(new java.awt.Font("Inter Display SemiBold", 0, 48)); // NOI18N
         btnAngka9.setText("9");
         btnAngka9.addActionListener(new java.awt.event.ActionListener()
         {
@@ -210,7 +210,7 @@ public class DlgCekKunjunganBedaPoli extends javax.swing.JDialog {
             }
         });
 
-        btnAngka4.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        btnAngka4.setFont(new java.awt.Font("Inter Display SemiBold", 0, 48)); // NOI18N
         btnAngka4.setText("4");
         btnAngka4.addActionListener(new java.awt.event.ActionListener()
         {
@@ -220,7 +220,7 @@ public class DlgCekKunjunganBedaPoli extends javax.swing.JDialog {
             }
         });
 
-        btnAngka5.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        btnAngka5.setFont(new java.awt.Font("Inter Display SemiBold", 0, 48)); // NOI18N
         btnAngka5.setText("5");
         btnAngka5.addActionListener(new java.awt.event.ActionListener()
         {
@@ -230,7 +230,7 @@ public class DlgCekKunjunganBedaPoli extends javax.swing.JDialog {
             }
         });
 
-        btnAngka6.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        btnAngka6.setFont(new java.awt.Font("Inter Display SemiBold", 0, 48)); // NOI18N
         btnAngka6.setText("6");
         btnAngka6.addActionListener(new java.awt.event.ActionListener()
         {
@@ -240,7 +240,7 @@ public class DlgCekKunjunganBedaPoli extends javax.swing.JDialog {
             }
         });
 
-        btnAngka2.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        btnAngka2.setFont(new java.awt.Font("Inter Display SemiBold", 0, 48)); // NOI18N
         btnAngka2.setText("2");
         btnAngka2.addActionListener(new java.awt.event.ActionListener()
         {
@@ -250,7 +250,7 @@ public class DlgCekKunjunganBedaPoli extends javax.swing.JDialog {
             }
         });
 
-        btnAngka1.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        btnAngka1.setFont(new java.awt.Font("Inter Display SemiBold", 0, 48)); // NOI18N
         btnAngka1.setText("1");
         btnAngka1.addActionListener(new java.awt.event.ActionListener()
         {
@@ -260,7 +260,7 @@ public class DlgCekKunjunganBedaPoli extends javax.swing.JDialog {
             }
         });
 
-        btnAngka3.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        btnAngka3.setFont(new java.awt.Font("Inter Display SemiBold", 0, 48)); // NOI18N
         btnAngka3.setText("3");
         btnAngka3.addActionListener(new java.awt.event.ActionListener()
         {
@@ -270,7 +270,7 @@ public class DlgCekKunjunganBedaPoli extends javax.swing.JDialog {
             }
         });
 
-        btnAngka0.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        btnAngka0.setFont(new java.awt.Font("Inter Display SemiBold", 0, 48)); // NOI18N
         btnAngka0.setText("0");
         btnAngka0.addActionListener(new java.awt.event.ActionListener()
         {
@@ -280,7 +280,7 @@ public class DlgCekKunjunganBedaPoli extends javax.swing.JDialog {
             }
         });
 
-        btnAngkaHps.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        btnAngkaHps.setFont(new java.awt.Font("Inter Display SemiBold", 0, 36)); // NOI18N
         btnAngkaHps.setText("<-");
         btnAngkaHps.addActionListener(new java.awt.event.ActionListener()
         {
@@ -290,7 +290,7 @@ public class DlgCekKunjunganBedaPoli extends javax.swing.JDialog {
             }
         });
 
-        btnClear.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        btnClear.setFont(new java.awt.Font("Inter Display SemiBold", 0, 48)); // NOI18N
         btnClear.setText("C");
         btnClear.addActionListener(new java.awt.event.ActionListener()
         {
@@ -305,64 +305,59 @@ public class DlgCekKunjunganBedaPoli extends javax.swing.JDialog {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(6, 6, 6)
+                .addGap(0, 0, 0)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(btnAngka4, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(btnAngka5, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(btnAngka6, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnAngka4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnAngka5, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnAngka6, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(btnAngka1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(btnAngka2, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(btnAngka3, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnAngka1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnAngka2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnAngka3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(btnAngka0, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addComponent(btnAngkaHps, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnAngka0, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnAngkaHps, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(btnAngka7, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(btnAngka8, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(30, 30, 30)
-                        .addComponent(btnAngka9, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnAngka7, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnAngka8, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnAngka9, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, 0))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(5, 5, 5)
+                .addGap(0, 0, 0)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnAngka7, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAngka8, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAngka9, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnAngka4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnAngka5, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAngka6, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAngka6, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAngka5, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAngka4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnAngka3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAngka2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAngka1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(btnAngka1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnAngka0, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnAngkaHps, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnAngka0, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAngkaHps, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
