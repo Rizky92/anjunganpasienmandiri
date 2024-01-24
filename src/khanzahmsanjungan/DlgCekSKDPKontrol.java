@@ -557,14 +557,4 @@ public class DlgCekSKDPKontrol extends javax.swing.JDialog
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
-
-    public void setPasien(String norm, String kodepoli, String kddokter) {
-    }
-
-    private void UpdateUmur() {
-
-    }
-
-    private void isNumber() {
-    }
 }

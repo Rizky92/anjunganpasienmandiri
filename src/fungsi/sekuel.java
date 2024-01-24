@@ -72,7 +72,7 @@ public final class sekuel {
         boolean output = false;
         
         try {
-            ps = connect.prepareStatement(sql);
+            ps = connect.prepareStatement("select exists(" + sql + ")");
             
             try {
                 for (int i = 0; i < values.length; i++) {

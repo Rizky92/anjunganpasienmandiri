@@ -414,9 +414,9 @@ public class DlgCekinMobileJKN extends javax.swing.JDialog {
             return;
         }
         
-        if (Sequel.cariIntegerSmc("select count(*) from referensi_mobilejkn_bpjs where nomorkartu = ? and tanggalperiksa = current_date()", NoRMPasien.getText()) > 0) {
+        if (Sequel.cariBooleanSmc("select * from referensi_mobilejkn_bpjs where nomorkartu = ? and tanggalperiksa = current_date()", NoRMPasien.getText())) {
             form.tampil(NoRMPasien.getText());
-        } else if (Sequel.cariIntegerSmc("select count(*) from referensi_mobilejkn_bpjs where norm = ? and tanggalperiksa = current_date()", NoRMPasien.getText()) > 0) {
+        } else if (Sequel.cariBooleanSmc("select * from referensi_mobilejkn_bpjs where norm = ? and tanggalperiksa = current_date()", NoRMPasien.getText())) {
             form.tampil(Sequel.cariIsi("select nomorkartu from referensi_mobilejkn_bpjs where norm = ? and tanggalperiksa = current_date()"));
         } else {
             JOptionPane.showMessageDialog(rootPane, "Data Booking MobileJKN tidak ditemukan. ");

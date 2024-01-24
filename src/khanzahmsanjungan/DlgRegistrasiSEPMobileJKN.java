@@ -1922,7 +1922,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog
                 );
                 
                 if (Sequel.cariBooleanSmc(
-                    "select exists(select * from referensi_mobilejkn_bpjs where nomorkartu = ? and tanggalperiksa = current_date() and kodedokter = ? and kodepoli = ? and status = 'Belum')",
+                    "select * from referensi_mobilejkn_bpjs where nomorkartu = ? and tanggalperiksa = current_date() and kodedokter = ? and kodepoli = ? and status = 'Belum'",
                     NoKartu.getText(), KdDPJP.getText(), KdPoli.getText())
                 ) {
                     Sequel.mengupdateSmc(
@@ -2809,13 +2809,4 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog
 
         return true;
     }
-
-    private void updateUmurPasien()
-    {
-        Sequel.mengupdateSmc("pasien",
-            "umur = CONCAT(CONCAT(CONCAT(TIMESTAMPDIFF(YEAR, tgl_lahir, CURDATE()), ' Th '), CONCAT(TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) div 12) * 12), ' Bl ')), CONCAT(TIMESTAMPDIFF(DAY, DATE_ADD(DATE_ADD(tgl_lahir, INTERVAL TIMESTAMPDIFF(YEAR, tgl_lahir, CURDATE()) YEAR), INTERVAL TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) div 12) * 12) MONTH), CURDATE()), ' Hr'))",
-            "no_rkm_medis = ?", TNoRM.getText()
-        );
-    }
-
 }
