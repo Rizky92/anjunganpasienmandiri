@@ -84,10 +84,10 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
         jLabel39.setPreferredSize(new java.awt.Dimension(750, 75));
         jPanel3.add(jLabel39, java.awt.BorderLayout.CENTER);
 
-        jLabel1.setFont(new java.awt.Font("Inter Display SemiBold", 0, 12)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI SemiBold", 0, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 153, 153));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel1.setText("Ver. 2023-12-31        ");
+        jLabel1.setText("Build 2024-01-25      ");
         jLabel1.setFocusable(false);
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel3.add(jLabel1, java.awt.BorderLayout.PAGE_END);

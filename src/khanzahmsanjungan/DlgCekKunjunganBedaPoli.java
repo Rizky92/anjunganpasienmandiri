@@ -124,7 +124,7 @@ public class DlgCekKunjunganBedaPoli extends javax.swing.JDialog {
 
         jLabel28.setForeground(new java.awt.Color(0, 131, 62));
         jLabel28.setText("No. RM / No. Kartu BPJS : ");
-        jLabel28.setFont(new java.awt.Font("Inter Display Medium", 0, 36)); // NOI18N
+        jLabel28.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel28.setPreferredSize(new java.awt.Dimension(450, 75));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -180,7 +180,7 @@ public class DlgCekKunjunganBedaPoli extends javax.swing.JDialog {
         jPanel3.setBackground(new java.awt.Color(238, 238, 255));
         jPanel3.setPreferredSize(new java.awt.Dimension(350, 399));
 
-        btnAngka8.setFont(new java.awt.Font("Inter Display SemiBold", 0, 48)); // NOI18N
+        btnAngka8.setFont(new java.awt.Font("Segoe UI SemiBold", 0, 48)); // NOI18N
         btnAngka8.setText("8");
         btnAngka8.addActionListener(new java.awt.event.ActionListener()
         {
@@ -190,7 +190,7 @@ public class DlgCekKunjunganBedaPoli extends javax.swing.JDialog {
             }
         });
 
-        btnAngka7.setFont(new java.awt.Font("Inter Display SemiBold", 0, 48)); // NOI18N
+        btnAngka7.setFont(new java.awt.Font("Segoe UI SemiBold", 0, 48)); // NOI18N
         btnAngka7.setText("7");
         btnAngka7.addActionListener(new java.awt.event.ActionListener()
         {
@@ -200,7 +200,7 @@ public class DlgCekKunjunganBedaPoli extends javax.swing.JDialog {
             }
         });
 
-        btnAngka9.setFont(new java.awt.Font("Inter Display SemiBold", 0, 48)); // NOI18N
+        btnAngka9.setFont(new java.awt.Font("Segoe UI SemiBold", 0, 48)); // NOI18N
         btnAngka9.setText("9");
         btnAngka9.addActionListener(new java.awt.event.ActionListener()
         {
@@ -210,7 +210,7 @@ public class DlgCekKunjunganBedaPoli extends javax.swing.JDialog {
             }
         });
 
-        btnAngka4.setFont(new java.awt.Font("Inter Display SemiBold", 0, 48)); // NOI18N
+        btnAngka4.setFont(new java.awt.Font("Segoe UI SemiBold", 0, 48)); // NOI18N
         btnAngka4.setText("4");
         btnAngka4.addActionListener(new java.awt.event.ActionListener()
         {
@@ -220,7 +220,7 @@ public class DlgCekKunjunganBedaPoli extends javax.swing.JDialog {
             }
         });
 
-        btnAngka5.setFont(new java.awt.Font("Inter Display SemiBold", 0, 48)); // NOI18N
+        btnAngka5.setFont(new java.awt.Font("Segoe UI SemiBold", 0, 48)); // NOI18N
         btnAngka5.setText("5");
         btnAngka5.addActionListener(new java.awt.event.ActionListener()
         {
@@ -230,7 +230,7 @@ public class DlgCekKunjunganBedaPoli extends javax.swing.JDialog {
             }
         });
 
-        btnAngka6.setFont(new java.awt.Font("Inter Display SemiBold", 0, 48)); // NOI18N
+        btnAngka6.setFont(new java.awt.Font("Segoe UI SemiBold", 0, 48)); // NOI18N
         btnAngka6.setText("6");
         btnAngka6.addActionListener(new java.awt.event.ActionListener()
         {
@@ -240,7 +240,7 @@ public class DlgCekKunjunganBedaPoli extends javax.swing.JDialog {
             }
         });
 
-        btnAngka2.setFont(new java.awt.Font("Inter Display SemiBold", 0, 48)); // NOI18N
+        btnAngka2.setFont(new java.awt.Font("Segoe UI SemiBold", 0, 48)); // NOI18N
         btnAngka2.setText("2");
         btnAngka2.addActionListener(new java.awt.event.ActionListener()
         {
@@ -250,7 +250,7 @@ public class DlgCekKunjunganBedaPoli extends javax.swing.JDialog {
             }
         });
 
-        btnAngka1.setFont(new java.awt.Font("Inter Display SemiBold", 0, 48)); // NOI18N
+        btnAngka1.setFont(new java.awt.Font("Segoe UI SemiBold", 0, 48)); // NOI18N
         btnAngka1.setText("1");
         btnAngka1.addActionListener(new java.awt.event.ActionListener()
         {
@@ -260,7 +260,7 @@ public class DlgCekKunjunganBedaPoli extends javax.swing.JDialog {
             }
         });
 
-        btnAngka3.setFont(new java.awt.Font("Inter Display SemiBold", 0, 48)); // NOI18N
+        btnAngka3.setFont(new java.awt.Font("Segoe UI SemiBold", 0, 48)); // NOI18N
         btnAngka3.setText("3");
         btnAngka3.addActionListener(new java.awt.event.ActionListener()
         {
@@ -270,7 +270,7 @@ public class DlgCekKunjunganBedaPoli extends javax.swing.JDialog {
             }
         });
 
-        btnAngka0.setFont(new java.awt.Font("Inter Display SemiBold", 0, 48)); // NOI18N
+        btnAngka0.setFont(new java.awt.Font("Segoe UI SemiBold", 0, 48)); // NOI18N
         btnAngka0.setText("0");
         btnAngka0.addActionListener(new java.awt.event.ActionListener()
         {
@@ -280,8 +280,8 @@ public class DlgCekKunjunganBedaPoli extends javax.swing.JDialog {
             }
         });
 
-        btnAngkaHps.setFont(new java.awt.Font("Inter Display SemiBold", 0, 36)); // NOI18N
-        btnAngkaHps.setText("←");
+        btnAngkaHps.setFont(new java.awt.Font("Segoe UI SemiBold", 0, 36)); // NOI18N
+        btnAngkaHps.setText("<-");
         btnAngkaHps.addActionListener(new java.awt.event.ActionListener()
         {
             public void actionPerformed(java.awt.event.ActionEvent evt)
@@ -290,7 +290,7 @@ public class DlgCekKunjunganBedaPoli extends javax.swing.JDialog {
             }
         });
 
-        btnClear.setFont(new java.awt.Font("Inter Display SemiBold", 0, 48)); // NOI18N
+        btnClear.setFont(new java.awt.Font("Segoe UI SemiBold", 0, 48)); // NOI18N
         btnClear.setText("C");
         btnClear.addActionListener(new java.awt.event.ActionListener()
         {

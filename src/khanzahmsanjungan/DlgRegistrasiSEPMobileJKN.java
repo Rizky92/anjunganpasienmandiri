@@ -467,7 +467,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog
         jPanel4.setLayout(new java.awt.BorderLayout());
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel1.setFont(new java.awt.Font("Inter Display SemiBold", 0, 12)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI SemiBold", 0, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/qr-cekin-jkn.jpg"))); // NOI18N
