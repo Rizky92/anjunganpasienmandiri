@@ -449,7 +449,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog
         NoRujukMasuk.setText("0");
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-12-2023" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-01-2024" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         Tanggal.setOpaque(false);
@@ -527,7 +527,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog
 
         TanggalSEP.setEditable(false);
         TanggalSEP.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-12-2023" }));
+        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-01-2024" }));
         TanggalSEP.setDisplayFormat("dd-MM-yyyy");
         TanggalSEP.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         TanggalSEP.setOpaque(false);
@@ -544,7 +544,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog
 
         TanggalRujuk.setEditable(false);
         TanggalRujuk.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-12-2023" }));
+        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-01-2024" }));
         TanggalRujuk.setDisplayFormat("dd-MM-yyyy");
         TanggalRujuk.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         TanggalRujuk.setOpaque(false);
@@ -789,7 +789,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog
         jLabel38.setBounds(650, 280, 80, 30);
 
         TanggalKKL.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalKKL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-12-2023" }));
+        TanggalKKL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "24-01-2024" }));
         TanggalKKL.setDisplayFormat("dd-MM-yyyy");
         TanggalKKL.setEnabled(false);
         TanggalKKL.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
@@ -1214,7 +1214,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog
         jPanel1.add(jPanel2, java.awt.BorderLayout.CENTER);
 
         jPanel3.setBackground(new java.awt.Color(238, 238, 255));
-        jPanel3.setPreferredSize(new java.awt.Dimension(615, 200));
+        jPanel3.setPreferredSize(new java.awt.Dimension(1283, 57));
 
         btnSimpan.setForeground(new java.awt.Color(0, 131, 62));
         btnSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/konfirmasi.png"))); // NOI18N
@@ -2026,10 +2026,10 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog
         }
     }
 
-    public void tampil(String nomorrujukan)
+    public void tampil(String noKartu)
     {
         try {
-            URL = URLAPIBPJS + "/Rujukan/Peserta/" + nomorrujukan;
+            URL = URLAPIBPJS + "/Rujukan/Peserta/" + noKartu;
             System.out.println("URL : " + URL);
 
             utc = String.valueOf(api.GetUTCdatetimeAsString());
@@ -2047,9 +2047,9 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog
             peserta = "";
 
             if (nameNode.path("code").asText().equals("200")) {
-                TNoRw.setText(Sequel.cariIsiSmc("select no_rawat from referensi_mobilejkn_bpjs where nomorkartu = ? and tanggalperiksa = CURRENT_DATE()", nomorrujukan));
+                TNoRw.setText(Sequel.cariIsiSmc("select no_rawat from referensi_mobilejkn_bpjs where nomorkartu = ? and tanggalperiksa = CURRENT_DATE() and status != 'Batal'", noKartu));
                 lblNoRawat.setText(TNoRw.getText());
-                jeniskunjungan = Sequel.cariIsiSmc("select left(jeniskunjungan, 1) from referensi_mobilejkn_bpjs where nomorkartu = ? and tanggalperiksa = CURRENT_DATE()", nomorrujukan);
+                jeniskunjungan = Sequel.cariIsiSmc("select left(jeniskunjungan, 1) from referensi_mobilejkn_bpjs where nomorkartu = ? and tanggalperiksa = CURRENT_DATE() and status != 'Batal'", noKartu);
 
                 response = mapper.readTree(api.Decrypt(root.path("response").asText(), utc)).path("rujukan");
 
@@ -2109,7 +2109,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog
                     KdDPJPLayanan.setText(KdDPJP.getText());
                     NmDPJPLayanan.setText(NmDPJP.getText());
                 } else if (jeniskunjungan.equals("3")) {
-                    String noSKDP = Sequel.cariIsiSmc("select nomorreferensi from referensi_mobilejkn_bpjs where nomorkartu = ? and tanggalperiksa = CURRENT_DATE()", nomorrujukan);
+                    String noSKDP = Sequel.cariIsiSmc("select nomorreferensi from referensi_mobilejkn_bpjs where nomorkartu = ? and tanggalperiksa = CURRENT_DATE()", noKartu);
                     String noSEP = Sequel.cariIsiSmc("select no_sep from bridging_surat_kontrol_bpjs where no_surat = ?", noSKDP);
                     String noKartuPeserta = Sequel.cariIsiSmc("select no_kartu from bridging_sep where no_sep = ? limit 1", noSEP);
                     String tglkontrol = Sequel.cariIsiSmc("select tgl_rencana from bridging_surat_kontrol_bpjs where no_surat = ?", noSKDP);
