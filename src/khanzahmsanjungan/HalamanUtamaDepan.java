@@ -50,8 +50,7 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         jPanel3 = new javax.swing.JPanel();
         jLabel39 = new widget.Label();
@@ -87,7 +86,7 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI SemiBold", 0, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 153, 153));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel1.setText("Build 2024-01-25      ");
+        jLabel1.setText("Build 2024-03-05      ");
         jLabel1.setFocusable(false);
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel3.add(jLabel1, java.awt.BorderLayout.PAGE_END);
@@ -131,10 +130,8 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
         btnAdmin10.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
         btnAdmin10.setIconTextGap(0);
         btnAdmin10.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnAdmin10.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnAdmin10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdmin10ActionPerformed(evt);
             }
         });
@@ -146,10 +143,8 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
         btnAdmin7.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
         btnAdmin7.setIconTextGap(0);
         btnAdmin7.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnAdmin7.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnAdmin7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdmin7ActionPerformed(evt);
             }
         });
@@ -160,10 +155,8 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
         btnAdmin2.setFont(new java.awt.Font("Inter", 1, 30)); // NOI18N
         btnAdmin2.setIconTextGap(0);
         btnAdmin2.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnAdmin2.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnAdmin2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdmin2ActionPerformed(evt);
             }
         });
@@ -174,10 +167,8 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
         btnAdmin5.setFont(new java.awt.Font("Inter", 1, 30)); // NOI18N
         btnAdmin5.setIconTextGap(0);
         btnAdmin5.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnAdmin5.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnAdmin5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdmin5ActionPerformed(evt);
             }
         });
@@ -188,10 +179,8 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
         btnAdmin6.setFont(new java.awt.Font("Inter", 1, 30)); // NOI18N
         btnAdmin6.setIconTextGap(0);
         btnAdmin6.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnAdmin6.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnAdmin6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdmin6ActionPerformed(evt);
             }
         });
@@ -202,10 +191,8 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
         btnAdmin9.setFont(new java.awt.Font("Inter", 1, 30)); // NOI18N
         btnAdmin9.setIconTextGap(0);
         btnAdmin9.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnAdmin9.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnAdmin9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdmin9ActionPerformed(evt);
             }
         });
@@ -216,10 +203,8 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
         btnAdmin8.setFont(new java.awt.Font("Inter", 1, 30)); // NOI18N
         btnAdmin8.setIconTextGap(0);
         btnAdmin8.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnAdmin8.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnAdmin8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdmin8ActionPerformed(evt);
             }
         });
@@ -231,10 +216,8 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
         btnAdmin11.setFont(new java.awt.Font("Inter", 1, 30)); // NOI18N
         btnAdmin11.setIconTextGap(0);
         btnAdmin11.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnAdmin11.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnAdmin11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdmin11ActionPerformed(evt);
             }
         });

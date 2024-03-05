@@ -384,21 +384,24 @@ public class DlgCekinMobileJKN extends javax.swing.JDialog {
                 return;
             }
 
-            if (Sequel.cariIntegerSmc("select count(*) from referensi_mobilejkn_bpjs where nomorkartu = ? and tanggalperiksa = current_date() and status != 'Batal'", NoRMPasien.getText()) != 0) {
+            if (Sequel.cariBooleanSmc("select * from referensi_mobilejkn_bpjs where nomorkartu = ? and tanggalperiksa = current_date() and status != 'Batal'", NoRMPasien.getText())) {
                 form.tampil(NoRMPasien.getText());
-            } else if (Sequel.cariIntegerSmc("select count(*) from referensi_mobilejkn_bpjs where norm = ? and tanggalperiksa = current_date() and status != 'Batal'", NoRMPasien.getText()) != 0) {
-                form.tampil(Sequel.cariIsi("select nomorkartu from referensi_mobilejkn_bpjs where norm = ? and tanggalperiksa = current_date() and status != 'Batal'"));
+                form.setSize(this.getWidth(), this.getHeight());
+                form.setLocationRelativeTo(jPanel1);
+                form.setVisible(true);
+                this.dispose();
+                this.setCursor(Cursor.getDefaultCursor());
+            } else if (Sequel.cariBooleanSmc("select * from referensi_mobilejkn_bpjs where norm = ? and tanggalperiksa = current_date() and status != 'Batal'", NoRMPasien.getText())) {
+                form.tampil(Sequel.cariIsi("select nomorkartu from referensi_mobilejkn_bpjs where norm = ? and tanggalperiksa = current_date() and status != 'Batal'", NoRMPasien.getText()));
+                form.setSize(this.getWidth(), this.getHeight());
+                form.setLocationRelativeTo(jPanel1);
+                form.setVisible(true);
+                this.dispose();
+                this.setCursor(Cursor.getDefaultCursor());
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Data Booking MobileJKN tidak ditemukan. ");
                 this.setCursor(Cursor.getDefaultCursor());
-                return;
             }
-
-            form.setSize(this.getWidth(), this.getHeight());
-            form.setLocationRelativeTo(jPanel1);
-            form.setVisible(true);
-            this.dispose();
-            this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_NoRMPasienKeyPressed
 
@@ -414,21 +417,24 @@ public class DlgCekinMobileJKN extends javax.swing.JDialog {
             return;
         }
         
-        if (Sequel.cariIntegerSmc("select count(*) from referensi_mobilejkn_bpjs where nomorkartu = ? and tanggalperiksa = current_date() and status != 'Batal'", NoRMPasien.getText()) != 0) {
+        if (Sequel.cariBooleanSmc("select * from referensi_mobilejkn_bpjs where nomorkartu = ? and tanggalperiksa = current_date() and status != 'Batal'", NoRMPasien.getText())) {
             form.tampil(NoRMPasien.getText());
-        } else if (Sequel.cariIntegerSmc("select count(*) from referensi_mobilejkn_bpjs where norm = ? and tanggalperiksa = current_date() and status != 'Batal'", NoRMPasien.getText()) != 0) {
-            form.tampil(Sequel.cariIsi("select nomorkartu from referensi_mobilejkn_bpjs where norm = ? and tanggalperiksa = current_date() and status != 'Batal'"));
+            form.setSize(this.getWidth(), this.getHeight());
+            form.setLocationRelativeTo(jPanel1);
+            form.setVisible(true);
+            this.dispose();
+            this.setCursor(Cursor.getDefaultCursor());
+        } else if (Sequel.cariBooleanSmc("select * from referensi_mobilejkn_bpjs where norm = ? and tanggalperiksa = current_date() and status != 'Batal'", NoRMPasien.getText())) {
+            form.tampil(Sequel.cariIsi("select nomorkartu from referensi_mobilejkn_bpjs where norm = ? and tanggalperiksa = current_date() and status != 'Batal'", NoRMPasien.getText()));
+            form.setSize(this.getWidth(), this.getHeight());
+            form.setLocationRelativeTo(jPanel1);
+            form.setVisible(true);
+            this.dispose();
+            this.setCursor(Cursor.getDefaultCursor());
         } else {
             JOptionPane.showMessageDialog(rootPane, "Data Booking MobileJKN tidak ditemukan. ");
             this.setCursor(Cursor.getDefaultCursor());
-            return;
         }
-        
-        form.setSize(this.getWidth(), this.getHeight());
-        form.setLocationRelativeTo(jPanel1);
-        form.setVisible(true);
-        this.dispose();
-        this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnKonfirmasiActionPerformed
 
     private void btnAngka8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAngka8ActionPerformed

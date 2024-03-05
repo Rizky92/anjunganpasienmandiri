@@ -76,7 +76,7 @@
               <Color blue="99" green="99" red="0" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="11"/>
-            <Property name="text" type="java.lang.String" value="Build 2024-01-25      "/>
+            <Property name="text" type="java.lang.String" value="Build 2024-03-05      "/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
           </Properties>

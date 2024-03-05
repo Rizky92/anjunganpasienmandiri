@@ -309,8 +309,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
 
         LblKdPoli = new component.Label();
         LblKdDokter = new component.Label();
@@ -440,49 +439,37 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         LblKdDokter.setPreferredSize(new java.awt.Dimension(20, 14));
 
         NoReg.setPreferredSize(new java.awt.Dimension(320, 30));
-        NoReg.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        NoReg.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NoRegActionPerformed(evt);
             }
         });
-        NoReg.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        NoReg.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 NoRegKeyPressed(evt);
             }
         });
 
         NoRawat.setPreferredSize(new java.awt.Dimension(320, 30));
-        NoRawat.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        NoRawat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NoRawatActionPerformed(evt);
             }
         });
-        NoRawat.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        NoRawat.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 NoRawatKeyPressed(evt);
             }
         });
 
         Biaya.setPreferredSize(new java.awt.Dimension(320, 30));
-        Biaya.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        Biaya.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BiayaActionPerformed(evt);
             }
         });
-        Biaya.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        Biaya.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 BiayaKeyPressed(evt);
             }
         });
@@ -508,81 +495,66 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         NoTelpPasien.setPreferredSize(new java.awt.Dimension(20, 14));
 
         kdpoli.setHighlighter(null);
-        kdpoli.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        kdpoli.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 kdpoliKeyPressed(evt);
             }
         });
 
         TBiaya.setText("0");
-        TBiaya.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        TBiaya.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 TBiayaKeyPressed(evt);
             }
         });
 
         Kdpnj.setHighlighter(null);
-        Kdpnj.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        Kdpnj.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 KdpnjKeyPressed(evt);
             }
         });
 
         nmpnj.setHighlighter(null);
-        nmpnj.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        nmpnj.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 nmpnjKeyPressed(evt);
             }
         });
 
         TNoRw.setText("0");
-        TNoRw.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        TNoRw.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 TNoRwKeyPressed(evt);
             }
         });
 
         NoRujukMasuk.setText("0");
-        NoRujukMasuk.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        NoRujukMasuk.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 NoRujukMasukKeyPressed(evt);
             }
         });
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-12-2023" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-02-2024" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         Tanggal.setOpaque(false);
         Tanggal.setPreferredSize(new java.awt.Dimension(95, 23));
-        Tanggal.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        Tanggal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 TanggalKeyPressed(evt);
             }
         });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(0, 0));
         setModal(true);
         setUndecorated(true);
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter()
-        {
-            public void windowOpened(java.awt.event.WindowEvent evt)
-            {
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
         });
@@ -590,7 +562,8 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
 
         jPanel1.setBackground(new java.awt.Color(238, 238, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(238, 238, 255), 1, true), "DATA ELIGIBILITAS PESERTA JKN", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Inter", 0, 24), new java.awt.Color(0, 131, 62))); // NOI18N
-        jPanel1.setPreferredSize(new java.awt.Dimension(400, 70));
+        jPanel1.setMinimumSize(new java.awt.Dimension(543, 106));
+        jPanel1.setPreferredSize(new java.awt.Dimension(543, 106));
         jPanel1.setLayout(new java.awt.BorderLayout(0, 1));
 
         jPanel2.setBackground(new java.awt.Color(238, 238, 255));
@@ -604,10 +577,8 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         TPasien.setBounds(340, 10, 230, 30);
 
         TNoRM.setHighlighter(null);
-        TNoRM.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        TNoRM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TNoRMActionPerformed(evt);
             }
         });
@@ -629,15 +600,13 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
 
         TanggalSEP.setEditable(false);
         TanggalSEP.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-12-2023" }));
+        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-02-2024" }));
         TanggalSEP.setDisplayFormat("dd-MM-yyyy");
         TanggalSEP.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         TanggalSEP.setOpaque(false);
         TanggalSEP.setPreferredSize(new java.awt.Dimension(95, 25));
-        TanggalSEP.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        TanggalSEP.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 TanggalSEPKeyPressed(evt);
             }
         });
@@ -653,15 +622,13 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
 
         TanggalRujuk.setEditable(false);
         TanggalRujuk.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-12-2023" }));
+        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-02-2024" }));
         TanggalRujuk.setDisplayFormat("dd-MM-yyyy");
         TanggalRujuk.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         TanggalRujuk.setOpaque(false);
         TanggalRujuk.setPreferredSize(new java.awt.Dimension(95, 23));
-        TanggalRujuk.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        TanggalRujuk.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 TanggalRujukKeyPressed(evt);
             }
         });
@@ -678,10 +645,8 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         NoRujukan.setEditable(false);
         NoRujukan.setBackground(new java.awt.Color(255, 255, 153));
         NoRujukan.setHighlighter(null);
-        NoRujukan.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        NoRujukan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 NoRujukanKeyPressed(evt);
             }
         });
@@ -779,10 +744,8 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
 
         Catatan.setEditable(false);
         Catatan.setHighlighter(null);
-        Catatan.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        Catatan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 CatatanKeyPressed(evt);
             }
         });
@@ -794,17 +757,13 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         JenisPelayanan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1. Ranap", "2. Ralan" }));
         JenisPelayanan.setSelectedIndex(1);
         JenisPelayanan.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
-        JenisPelayanan.addItemListener(new java.awt.event.ItemListener()
-        {
-            public void itemStateChanged(java.awt.event.ItemEvent evt)
-            {
+        JenisPelayanan.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 JenisPelayananItemStateChanged(evt);
             }
         });
-        JenisPelayanan.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        JenisPelayanan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 JenisPelayananKeyPressed(evt);
             }
         });
@@ -821,10 +780,8 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         Kelas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1. Kelas 1", "2. Kelas 2", "3. Kelas 3" }));
         Kelas.setSelectedIndex(2);
         Kelas.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
-        Kelas.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        Kelas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 KelasKeyPressed(evt);
             }
         });
@@ -835,17 +792,13 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         LakaLantas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0. Bukan KLL", "1. KLL Bukan KK", "2. KLL dan KK", "3. KK" }));
         LakaLantas.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         LakaLantas.setPreferredSize(new java.awt.Dimension(64, 25));
-        LakaLantas.addItemListener(new java.awt.event.ItemListener()
-        {
-            public void itemStateChanged(java.awt.event.ItemEvent evt)
-            {
+        LakaLantas.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 LakaLantasItemStateChanged(evt);
             }
         });
-        LakaLantas.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        LakaLantas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 LakaLantasKeyPressed(evt);
             }
         });
@@ -912,10 +865,8 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         AsalRujukan.setForeground(new java.awt.Color(0, 131, 62));
         AsalRujukan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1. Faskes 1", "2. Faskes 2(RS)" }));
         AsalRujukan.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
-        AsalRujukan.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        AsalRujukan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 AsalRujukanKeyPressed(evt);
             }
         });
@@ -923,10 +874,8 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         AsalRujukan.setBounds(730, 100, 170, 30);
 
         NoTelp.setHighlighter(null);
-        NoTelp.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        NoTelp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 NoTelpKeyPressed(evt);
             }
         });
@@ -937,10 +886,8 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         Katarak.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0. Tidak", "1.Ya" }));
         Katarak.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         Katarak.setPreferredSize(new java.awt.Dimension(64, 25));
-        Katarak.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        Katarak.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 KatarakKeyPressed(evt);
             }
         });
@@ -961,16 +908,14 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         jLabel38.setBounds(650, 280, 80, 30);
 
         TanggalKKL.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalKKL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-12-2023" }));
+        TanggalKKL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "23-02-2024" }));
         TanggalKKL.setDisplayFormat("dd-MM-yyyy");
         TanggalKKL.setEnabled(false);
         TanggalKKL.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         TanggalKKL.setOpaque(false);
         TanggalKKL.setPreferredSize(new java.awt.Dimension(64, 25));
-        TanggalKKL.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        TanggalKKL.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 TanggalKKLKeyPressed(evt);
             }
         });
@@ -1005,10 +950,8 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
 
         Keterangan.setEditable(false);
         Keterangan.setHighlighter(null);
-        Keterangan.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        Keterangan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 KeteranganKeyPressed(evt);
             }
         });
@@ -1025,10 +968,8 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         Suplesi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0. Tidak", "1.Ya" }));
         Suplesi.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         Suplesi.setPreferredSize(new java.awt.Dimension(64, 25));
-        Suplesi.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        Suplesi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 SuplesiKeyPressed(evt);
             }
         });
@@ -1036,10 +977,8 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         Suplesi.setBounds(730, 340, 90, 30);
 
         NoSEPSuplesi.setHighlighter(null);
-        NoSEPSuplesi.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        NoSEPSuplesi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 NoSEPSuplesiKeyPressed(evt);
             }
         });
@@ -1118,17 +1057,13 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         TujuanKunjungan.setForeground(new java.awt.Color(0, 131, 62));
         TujuanKunjungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0. Normal", "1. Prosedur", "2. Konsul Dokter" }));
         TujuanKunjungan.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
-        TujuanKunjungan.addItemListener(new java.awt.event.ItemListener()
-        {
-            public void itemStateChanged(java.awt.event.ItemEvent evt)
-            {
+        TujuanKunjungan.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 TujuanKunjunganItemStateChanged(evt);
             }
         });
-        TujuanKunjungan.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        TujuanKunjungan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 TujuanKunjunganKeyPressed(evt);
             }
         });
@@ -1139,10 +1074,8 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         FlagProsedur.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "0. Prosedur Tidak Berkelanjutan", "1. Prosedur dan Terapi Berkelanjutan" }));
         FlagProsedur.setEnabled(false);
         FlagProsedur.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
-        FlagProsedur.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        FlagProsedur.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 FlagProsedurKeyPressed(evt);
             }
         });
@@ -1167,10 +1100,8 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         Penunjang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "1. Radioterapi", "2. Kemoterapi", "3. Rehabilitasi Medik", "4. Rehabilitasi Psikososial", "5. Transfusi Darah", "6. Pelayanan Gigi", "7. Laboratorium", "8. USG", "9. Farmasi", "10. Lain-Lain", "11. MRI", "12. HEMODIALISA" }));
         Penunjang.setEnabled(false);
         Penunjang.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
-        Penunjang.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        Penunjang.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 PenunjangKeyPressed(evt);
             }
         });
@@ -1188,10 +1119,8 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         AsesmenPoli.setForeground(new java.awt.Color(0, 131, 62));
         AsesmenPoli.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "1. Poli spesialis tidak tersedia pada hari sebelumnya", "2. Jam Poli telah berakhir pada hari sebelumnya", "3. Spesialis yang dimaksud tidak praktek pada hari sebelumnya", "4. Atas Instruksi RS", "5. Tujuan Kontrol" }));
         AsesmenPoli.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
-        AsesmenPoli.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        AsesmenPoli.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 AsesmenPoliKeyPressed(evt);
             }
         });
@@ -1222,17 +1151,13 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         btnDPJPLayanan.setMnemonic('X');
         btnDPJPLayanan.setToolTipText("Alt+X");
         btnDPJPLayanan.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
-        btnDPJPLayanan.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnDPJPLayanan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDPJPLayananActionPerformed(evt);
             }
         });
-        btnDPJPLayanan.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        btnDPJPLayanan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 btnDPJPLayananKeyPressed(evt);
             }
         });
@@ -1268,10 +1193,8 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         NoSKDP.setEditable(false);
         NoSKDP.setBackground(new java.awt.Color(255, 255, 153));
         NoSKDP.setHighlighter(null);
-        NoSKDP.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        NoSKDP.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 NoSKDPKeyPressed(evt);
             }
         });
@@ -1301,17 +1224,13 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         btnDPJPLayanan1.setMnemonic('X');
         btnDPJPLayanan1.setToolTipText("Alt+X");
         btnDPJPLayanan1.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
-        btnDPJPLayanan1.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnDPJPLayanan1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDPJPLayanan1ActionPerformed(evt);
             }
         });
-        btnDPJPLayanan1.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        btnDPJPLayanan1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 btnDPJPLayanan1KeyPressed(evt);
             }
         });
@@ -1322,17 +1241,13 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         btnDiagnosaAwal.setMnemonic('X');
         btnDiagnosaAwal.setToolTipText("Alt+X");
         btnDiagnosaAwal.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
-        btnDiagnosaAwal.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnDiagnosaAwal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDiagnosaAwalActionPerformed(evt);
             }
         });
-        btnDiagnosaAwal.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        btnDiagnosaAwal.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 btnDiagnosaAwalKeyPressed(evt);
             }
         });
@@ -1343,17 +1258,13 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         btnDiagnosaAwal1.setMnemonic('X');
         btnDiagnosaAwal1.setToolTipText("Alt+X");
         btnDiagnosaAwal1.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
-        btnDiagnosaAwal1.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnDiagnosaAwal1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDiagnosaAwal1ActionPerformed(evt);
             }
         });
-        btnDiagnosaAwal1.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        btnDiagnosaAwal1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 btnDiagnosaAwal1KeyPressed(evt);
             }
         });
@@ -1366,17 +1277,13 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         btnDiagnosaAwal2.setToolTipText("Alt+X");
         btnDiagnosaAwal2.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         btnDiagnosaAwal2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnDiagnosaAwal2.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnDiagnosaAwal2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDiagnosaAwal2ActionPerformed(evt);
             }
         });
-        btnDiagnosaAwal2.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        btnDiagnosaAwal2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 btnDiagnosaAwal2KeyPressed(evt);
             }
         });
@@ -1411,17 +1318,13 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         btnDokterTerapi.setMnemonic('X');
         btnDokterTerapi.setToolTipText("Alt+X");
         btnDokterTerapi.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
-        btnDokterTerapi.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnDokterTerapi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDokterTerapiActionPerformed(evt);
             }
         });
-        btnDokterTerapi.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        btnDokterTerapi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 btnDokterTerapiKeyPressed(evt);
             }
         });
@@ -1432,17 +1335,13 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         btnPoliTerapi.setMnemonic('X');
         btnPoliTerapi.setToolTipText("Alt+X");
         btnPoliTerapi.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
-        btnPoliTerapi.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnPoliTerapi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPoliTerapiActionPerformed(evt);
             }
         });
-        btnPoliTerapi.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        btnPoliTerapi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 btnPoliTerapiKeyPressed(evt);
             }
         });
@@ -1462,17 +1361,13 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         btnDiagnosaAwal3.setToolTipText("Alt+X");
         btnDiagnosaAwal3.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         btnDiagnosaAwal3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnDiagnosaAwal3.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnDiagnosaAwal3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDiagnosaAwal3ActionPerformed(evt);
             }
         });
-        btnDiagnosaAwal3.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        btnDiagnosaAwal3.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 btnDiagnosaAwal3KeyPressed(evt);
             }
         });
@@ -1485,17 +1380,13 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         btnDiagnosaAwal4.setToolTipText("Alt+X");
         btnDiagnosaAwal4.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         btnDiagnosaAwal4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnDiagnosaAwal4.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnDiagnosaAwal4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDiagnosaAwal4ActionPerformed(evt);
             }
         });
-        btnDiagnosaAwal4.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        btnDiagnosaAwal4.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 btnDiagnosaAwal4KeyPressed(evt);
             }
         });
@@ -1505,7 +1396,8 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         jPanel1.add(jPanel2, java.awt.BorderLayout.CENTER);
 
         jPanel3.setBackground(new java.awt.Color(238, 238, 255));
-        jPanel3.setPreferredSize(new java.awt.Dimension(615, 200));
+        jPanel3.setMinimumSize(new java.awt.Dimension(533, 120));
+        jPanel3.setPreferredSize(new java.awt.Dimension(533, 120));
 
         btnSimpan.setForeground(new java.awt.Color(0, 131, 62));
         btnSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/konfirmasi.png"))); // NOI18N
@@ -1515,17 +1407,13 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         btnSimpan.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         btnSimpan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnSimpan.setPreferredSize(new java.awt.Dimension(300, 45));
-        btnSimpan.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnSimpan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSimpanActionPerformed(evt);
             }
         });
-        btnSimpan.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        btnSimpan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 btnSimpanKeyPressed(evt);
             }
         });
@@ -1539,17 +1427,13 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         btnFingerPrint.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         btnFingerPrint.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnFingerPrint.setPreferredSize(new java.awt.Dimension(300, 45));
-        btnFingerPrint.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnFingerPrint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFingerPrintActionPerformed(evt);
             }
         });
-        btnFingerPrint.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        btnFingerPrint.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 btnFingerPrintKeyPressed(evt);
             }
         });
@@ -1563,17 +1447,13 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         btnKeluar.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         btnKeluar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnKeluar.setPreferredSize(new java.awt.Dimension(300, 45));
-        btnKeluar.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnKeluar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnKeluarActionPerformed(evt);
             }
         });
-        btnKeluar.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        btnKeluar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 btnKeluarKeyPressed(evt);
             }
         });
@@ -2532,6 +2412,11 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                 if (! simpanRujukan()) {
                     System.out.println("Terjadi kesalahan pada saat proses rujukan masuk pasien!");
                 }
+                
+                
+                if (JenisPelayanan.getSelectedIndex() == 1) {
+                    Sequel.mengupdateSmc("bridging_sep", "tglpulang = ?", "no_sep = ?", Valid.SetTgl(TanggalSEP.getSelectedItem().toString()), response.asText());
+                }
 
                 if (! prb.equals("")) {
                     Sequel.menyimpanSmc("bpjs_prb", null, response.asText(), prb);
@@ -2583,8 +2468,8 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                         if (response.path("status").asText().contains(Sequel.cariIsi("select current_date()"))) {
                             statusfinger = true;
                         } else {
-                            statusfinger = false;
-                            JOptionPane.showMessageDialog(rootPane, response.path("status").asText());
+                            statusfinger = false; 
+                           JOptionPane.showMessageDialog(rootPane, response.path("status").asText());
                         }
                     }
 
