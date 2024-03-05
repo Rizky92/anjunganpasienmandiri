@@ -156,7 +156,7 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         getContentPane().setLayout(new java.awt.BorderLayout(1, 1));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 215, 255)), "PENDAFTARAN POLIKLINIK ONSITE", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Poppins", 0, 24), new java.awt.Color(0, 131, 62))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 215, 255)), "PENDAFTARAN POLIKLINIK ONSITE", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Inter", 0, 24), new java.awt.Color(0, 131, 62))); // NOI18N
         jPanel1.setPreferredSize(new java.awt.Dimension(400, 70));
         jPanel1.setLayout(new java.awt.BorderLayout(0, 1));
 
@@ -167,7 +167,7 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         jLabel10.setForeground(new java.awt.Color(0, 131, 62));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel10.setText("No. Rekam Medis");
-        jLabel10.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         jLabel10.setPreferredSize(new java.awt.Dimension(20, 14));
         jPanel2.add(jLabel10);
         jLabel10.setBounds(20, 50, 220, 40);
@@ -175,7 +175,7 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         jLabel29.setForeground(new java.awt.Color(0, 131, 62));
         jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel29.setText("Tanggal Periksa");
-        jLabel29.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        jLabel29.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         jLabel29.setPreferredSize(new java.awt.Dimension(20, 14));
         jPanel2.add(jLabel29);
         jLabel29.setBounds(20, 180, 220, 40);
@@ -183,7 +183,7 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         jLabel31.setForeground(new java.awt.Color(0, 131, 62));
         jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel31.setText("Poli Tujuan");
-        jLabel31.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        jLabel31.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         jLabel31.setPreferredSize(new java.awt.Dimension(20, 14));
         jPanel2.add(jLabel31);
         jLabel31.setBounds(20, 220, 220, 40);
@@ -200,7 +200,7 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
 
         labelNoRM.setForeground(new java.awt.Color(0, 131, 62));
         labelNoRM.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        labelNoRM.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        labelNoRM.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         labelNoRM.setPreferredSize(new java.awt.Dimension(20, 14));
         jPanel2.add(labelNoRM);
         labelNoRM.setBounds(290, 50, 590, 40);
@@ -208,14 +208,14 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         jLabel32.setForeground(new java.awt.Color(0, 131, 62));
         jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel32.setText("Dokter Tujuan");
-        jLabel32.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        jLabel32.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         jLabel32.setPreferredSize(new java.awt.Dimension(20, 14));
         jPanel2.add(jLabel32);
         jLabel32.setBounds(20, 260, 220, 40);
 
         dropdownCaraBayar.setForeground(new java.awt.Color(0, 131, 62));
         dropdownCaraBayar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "UMUM / PERSONAL" }));
-        dropdownCaraBayar.setFont(new java.awt.Font("Poppins", 1, 14)); // NOI18N
+        dropdownCaraBayar.setFont(new java.awt.Font("Inter", 1, 14)); // NOI18N
         jPanel2.add(dropdownCaraBayar);
         dropdownCaraBayar.setBounds(290, 300, 520, 40);
 
@@ -223,7 +223,7 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         buttonCariPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pilih.png"))); // NOI18N
         buttonCariPoli.setMnemonic('S');
         buttonCariPoli.setToolTipText("Alt+S");
-        buttonCariPoli.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        buttonCariPoli.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         buttonCariPoli.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         buttonCariPoli.setPreferredSize(new java.awt.Dimension(300, 45));
         buttonCariPoli.addActionListener(new java.awt.event.ActionListener() {
@@ -235,7 +235,7 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         buttonCariPoli.setBounds(810, 220, 70, 40);
 
         textNamaPoli.setEditable(false);
-        textNamaPoli.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        textNamaPoli.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         textNamaPoli.setPreferredSize(new java.awt.Dimension(72, 28));
         jPanel2.add(textNamaPoli);
         textNamaPoli.setBounds(290, 220, 520, 40);
@@ -243,7 +243,7 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         jLabel36.setForeground(new java.awt.Color(0, 131, 62));
         jLabel36.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel36.setText("Cara Bayar");
-        jLabel36.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        jLabel36.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         jLabel36.setPreferredSize(new java.awt.Dimension(20, 14));
         jPanel2.add(jLabel36);
         jLabel36.setBounds(20, 300, 220, 40);
@@ -252,7 +252,7 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         buttonCariDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pilih.png"))); // NOI18N
         buttonCariDokter.setMnemonic('S');
         buttonCariDokter.setToolTipText("Alt+S");
-        buttonCariDokter.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        buttonCariDokter.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         buttonCariDokter.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         buttonCariDokter.setPreferredSize(new java.awt.Dimension(300, 45));
         buttonCariDokter.addActionListener(new java.awt.event.ActionListener() {
@@ -264,7 +264,7 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         buttonCariDokter.setBounds(810, 260, 70, 40);
 
         textNamaDokter.setEditable(false);
-        textNamaDokter.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        textNamaDokter.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         textNamaDokter.setPreferredSize(new java.awt.Dimension(72, 28));
         jPanel2.add(textNamaDokter);
         textNamaDokter.setBounds(290, 260, 520, 40);
@@ -272,7 +272,7 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         jLabel12.setForeground(new java.awt.Color(0, 131, 62));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel12.setText(":");
-        jLabel12.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         jLabel12.setPreferredSize(new java.awt.Dimension(20, 14));
         jPanel2.add(jLabel12);
         jLabel12.setBounds(250, 300, 40, 40);
@@ -280,7 +280,7 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         jLabel13.setForeground(new java.awt.Color(0, 131, 62));
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel13.setText(":");
-        jLabel13.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         jLabel13.setPreferredSize(new java.awt.Dimension(20, 14));
         jPanel2.add(jLabel13);
         jLabel13.setBounds(250, 50, 40, 40);
@@ -288,7 +288,7 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         jLabel14.setForeground(new java.awt.Color(0, 131, 62));
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel14.setText(":");
-        jLabel14.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         jLabel14.setPreferredSize(new java.awt.Dimension(20, 14));
         jPanel2.add(jLabel14);
         jLabel14.setBounds(250, 180, 40, 40);
@@ -296,7 +296,7 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         jLabel15.setForeground(new java.awt.Color(0, 131, 62));
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel15.setText(":");
-        jLabel15.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         jLabel15.setPreferredSize(new java.awt.Dimension(20, 14));
         jPanel2.add(jLabel15);
         jLabel15.setBounds(250, 220, 40, 40);
@@ -304,7 +304,7 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         jLabel16.setForeground(new java.awt.Color(0, 131, 62));
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel16.setText(":");
-        jLabel16.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         jLabel16.setPreferredSize(new java.awt.Dimension(20, 14));
         jPanel2.add(jLabel16);
         jLabel16.setBounds(250, 210, 40, 40);
@@ -312,7 +312,7 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         jLabel17.setForeground(new java.awt.Color(0, 131, 62));
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel17.setText(":");
-        jLabel17.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         jLabel17.setPreferredSize(new java.awt.Dimension(20, 14));
         jPanel2.add(jLabel17);
         jLabel17.setBounds(250, 260, 40, 40);
@@ -320,7 +320,7 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         jLabel11.setForeground(new java.awt.Color(0, 131, 62));
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel11.setText("Nama");
-        jLabel11.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         jLabel11.setPreferredSize(new java.awt.Dimension(20, 14));
         jPanel2.add(jLabel11);
         jLabel11.setBounds(20, 90, 220, 40);
@@ -328,14 +328,14 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         jLabel18.setForeground(new java.awt.Color(0, 131, 62));
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel18.setText(":");
-        jLabel18.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        jLabel18.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         jLabel18.setPreferredSize(new java.awt.Dimension(20, 14));
         jPanel2.add(jLabel18);
         jLabel18.setBounds(250, 90, 40, 40);
 
         labelNamaPasien.setForeground(new java.awt.Color(0, 131, 62));
         labelNamaPasien.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        labelNamaPasien.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        labelNamaPasien.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         labelNamaPasien.setPreferredSize(new java.awt.Dimension(20, 14));
         jPanel2.add(labelNamaPasien);
         labelNamaPasien.setBounds(290, 90, 590, 40);
@@ -343,7 +343,7 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         jLabel19.setForeground(new java.awt.Color(0, 131, 62));
         jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel19.setText("Tgl. Lahir");
-        jLabel19.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        jLabel19.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         jLabel19.setPreferredSize(new java.awt.Dimension(20, 14));
         jPanel2.add(jLabel19);
         jLabel19.setBounds(20, 130, 220, 40);
@@ -351,14 +351,14 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         jLabel20.setForeground(new java.awt.Color(0, 131, 62));
         jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel20.setText(":");
-        jLabel20.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        jLabel20.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         jLabel20.setPreferredSize(new java.awt.Dimension(20, 14));
         jPanel2.add(jLabel20);
         jLabel20.setBounds(250, 130, 40, 40);
 
         labelTglLahir.setForeground(new java.awt.Color(0, 131, 62));
         labelTglLahir.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        labelTglLahir.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        labelTglLahir.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         labelTglLahir.setPreferredSize(new java.awt.Dimension(20, 14));
         jPanel2.add(labelTglLahir);
         labelTglLahir.setBounds(290, 130, 590, 40);
@@ -373,7 +373,7 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         btnSimpan.setMnemonic('S');
         btnSimpan.setText("Konfirmasi");
         btnSimpan.setToolTipText("Alt+S");
-        btnSimpan.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        btnSimpan.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         btnSimpan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnSimpan.setPreferredSize(new java.awt.Dimension(300, 45));
         btnSimpan.addActionListener(new java.awt.event.ActionListener() {
@@ -388,7 +388,7 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         btnKeluar.setMnemonic('K');
         btnKeluar.setText("Batal");
         btnKeluar.setToolTipText("Alt+K");
-        btnKeluar.setFont(new java.awt.Font("Poppins", 0, 18)); // NOI18N
+        btnKeluar.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         btnKeluar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnKeluar.setPreferredSize(new java.awt.Dimension(300, 45));
         btnKeluar.addActionListener(new java.awt.event.ActionListener() {
