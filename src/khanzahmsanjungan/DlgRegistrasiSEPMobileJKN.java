@@ -2316,7 +2316,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog
                                 + "\"kuotanonjkn\": " + kuota + ","
                                 + "\"keterangan\": \"Peserta harap 30 menit lebih awal guna pencatatan administrasi.\""
                                 + "}";
-                            System.out.println("JSON : " + requestJson + "\n");
+                            System.out.println("JSON : " + requestJson);
                             requestEntity = new HttpEntity(requestJson, headers);
                             URL = koneksiDB.URLAPIMOBILEJKN() + "/antrean/add";
                             System.out.println("URL Kirim Pakai No.Rujuk : " + URL);
@@ -2331,6 +2331,82 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog
                 } catch (Exception e) {
                     System.out.println("Notif : " + e);
                 }
+            }
+        } else {
+            try {
+                ps = koneksi.prepareStatement(
+                    "select referensi_mobilejkn_bpjs.*, reg_periksa.no_rkm_medis, pasien.nm_pasien, poliklinik.nm_poli, dokter.nm_dokter " +
+                    "from referensi_mobilejkn_bpjs " +
+                    "join reg_periksa on referensi_mobilejkn_bpjs.no_rawat = reg_periksa.no_rawat " +
+                    "join pasien on reg_periksa.no_rkm_medis = pasien.no_rkm_medis " +
+                    "join poliklinik on reg_periksa.kd_poli = poliklinik.kd_poli " +
+                    "join dokter on reg_periksa.kd_dokter = dokter.kd_dokter " +
+                    "where referensi_mobilejkn_bpjs.statuskirim = 'Belum' and referensi_mobilejkn_bpjs.no_rawat = ?"
+                );
+                try {
+                    ps.setString(1, TNoRw.getText());
+                    rs = ps.executeQuery();
+                    while (rs.next()) {
+                        try {
+                            headers = new HttpHeaders();
+                            headers.setContentType(MediaType.APPLICATION_JSON);
+                            headers.add("x-cons-id", koneksiDB.CONSIDAPIMOBILEJKN());
+                            utc = String.valueOf(api.GetUTCdatetimeAsString());
+                            headers.add("x-timestamp", utc);
+                            headers.add("x-signature", api.getHmac(utc));
+                            headers.add("user_key", koneksiDB.USERKEYAPIMOBILEJKN());
+                            requestJson = "{"
+                                + "\"kodebooking\": \"" + rs.getString("nobooking") + "\","
+                                + "\"jenispasien\": \"JKN\","
+                                + "\"nomorkartu\": \"" + rs.getString("nomorkartu") + "\","
+                                + "\"nik\": \"" + rs.getString("nik") + "\","
+                                + "\"nohp\": \"" + rs.getString("nohp") + "\","
+                                + "\"kodepoli\": \"" + rs.getString("kodepoli") + "\","
+                                + "\"namapoli\": \"" + rs.getString("nm_poli") + "\","
+                                + "\"pasienbaru\": " + rs.getString("pasienbaru") + ","
+                                + "\"norm\": \"" + rs.getString("no_rkm_medis") + "\","
+                                + "\"tanggalperiksa\": \"" + rs.getString("tanggalperiksa") + "\","
+                                + "\"kodedokter\": " + rs.getString("kodedokter") + ","
+                                + "\"namadokter\": \"" + rs.getString("nm_dokter") + "\","
+                                + "\"jampraktek\": \"" + rs.getString("jampraktek") + "\","
+                                + "\"jeniskunjungan\": " + rs.getString("jeniskunjungan").substring(0, 1) + ","
+                                + "\"nomorreferensi\": \"" + rs.getString("nomorreferensi") + "\","
+                                + "\"nomorantrean\": \"" + rs.getString("nomorantrean") + "\","
+                                + "\"angkaantrean\": " + Integer.parseInt(rs.getString("angkaantrean")) + ","
+                                + "\"estimasidilayani\": " + rs.getString("estimasidilayani") + ","
+                                + "\"sisakuotajkn\": " + rs.getString("sisakuotajkn") + ","
+                                + "\"kuotajkn\": " + rs.getString("kuotajkn") + ","
+                                + "\"sisakuotanonjkn\": " + rs.getString("sisakuotanonjkn") + ","
+                                + "\"kuotanonjkn\": " + rs.getString("kuotanonjkn") + ","
+                                + "\"keterangan\": \"Peserta harap 30 menit lebih awal guna pencatatan administrasi.\""
+                                + "}";
+                            System.out.println("JSON : " + requestJson);
+                            requestEntity = new HttpEntity(requestJson, headers);
+                            URL = koneksiDB.URLAPIMOBILEJKN() + "/antrean/add";
+                            System.out.println("URL : " + URL);
+                            root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
+                            nameNode = root.path("metadata");
+                            Sequel.logTaskid(rs.getString("no_rawat"), "JKN", "-", nameNode.path("code").asText(), nameNode.path("message").asText());
+                            if (nameNode.path("code").asText().equals("200") || nameNode.path("code").asText().equals("208") || nameNode.path("message").asText().equals("Ok")) {
+                                Sequel.mengupdateSmc("referensi_mobilejkn_bpjs", "statuskirim = 'Sudah'", "nobooking = ?", rs.getString("nobooking"));
+                            }
+                            System.out.println("respon WS BPJS : " + nameNode.path("code").asText() + " " + nameNode.path("message").asText() + "\n");
+                        } catch (Exception ex) {
+                            System.out.println("Notifikasi Bridging : " + ex);
+                        }
+                    }
+                } catch (Exception ex) {
+                    System.out.println("Notif Ketersediaan : " + ex);
+                } finally {
+                    if (rs != null) {
+                        rs.close();
+                    }
+                    if (ps != null) {
+                        ps.close();
+                    }
+                }
+            } catch (Exception e) {
+                System.out.println("Notif : " + e);
             }
         }
     }
