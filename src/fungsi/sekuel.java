@@ -75,12 +75,12 @@ public final class sekuel {
         try {
             ps = connect.prepareStatement(query);
             try {
-            ps.setString(1, noRawat);
-            ps.setString(2, jenisKunjungan);
-            ps.setString(3, taskid);
-            ps.setString(4, code);
-            ps.setString(5, message);
-            ps.executeUpdate();
+                ps.setString(1, noRawat);
+                ps.setString(2, jenisKunjungan);
+                ps.setString(3, taskid);
+                ps.setString(4, code);
+                ps.setString(5, message);
+                ps.executeUpdate();
             } catch (Exception e) {
                 System.out.println("Notif : " + e);
             } finally {
@@ -231,7 +231,7 @@ public final class sekuel {
             sql = "insert into " + table + " values (";
         }
         
-        for (int i = 0; i < values.length; i++) {
+        for (String value : values) {
             bindings = bindings.concat("?, ");
         }
         
