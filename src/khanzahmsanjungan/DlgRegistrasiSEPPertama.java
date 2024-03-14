@@ -17,6 +17,11 @@ import bridging.BPJSCekReferensiPenyakit;
 import bridging.BPJSCekRiwayatRujukanTerakhir;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sun.jna.Native;
+import com.sun.jna.Pointer;
+import com.sun.jna.platform.win32.User32;
+import com.sun.jna.platform.win32.WinDef;
+import com.sun.jna.platform.win32.WinUser;
 import fungsi.akses;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
@@ -148,7 +153,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
     private JsonNode response;
     private FileReader myObj;
     private Calendar cal = Calendar.getInstance();
-    private boolean statusfinger = false;
+    private boolean statusfinger = false, aplikasiAktif = false;
     private HttpHeaders headers;
     private HttpEntity requestEntity;
     private JsonNode nameNode;
@@ -2461,7 +2466,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                 root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
                 nameNode = root.path("metaData");
                 System.out.println("kodecekstatus : " + nameNode.path("code").asText());
-                //System.out.println("message : "+nameNode.path("message").asText());
+                // System.out.println("message : "+nameNode.path("message").asText());
                 if (nameNode.path("code").asText().equals("200")) {
                     response = mapper.readTree(api.Decrypt(root.path("response").asText(), utc));
                     if (response.path("kode").asText().equals("1")) {
@@ -3160,48 +3165,84 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
     private void bukaAplikasiFingerprint() {
         if (NoKartu.getText().isBlank()) {
             JOptionPane.showMessageDialog(rootPane, "No. kartu peserta tidak ada..!!");
-            
+
             return;
         }
-        
+
         toFront();
-        
+
         try {
-            Runtime.getRuntime().exec(URLAPLIKASIFINGERPRINTBPJS);
+            aplikasiAktif = false;
+            User32 u32 = User32.INSTANCE;
             
-            Thread.sleep(2000);
+            u32.EnumWindows((WinDef.HWND hwnd, Pointer pntr) -> {
+                char[] windowText = new char[512];
+                u32.GetWindowText(hwnd, windowText, 512);
+                String wText = Native.toString(windowText);
+                
+                if (wText.isEmpty()) {
+                    return true;
+                }
+                
+                if (wText.contains("Registrasi Sidik Jari")) {
+                    DlgRegistrasiSEPPertama.this.aplikasiAktif = true;
+                    u32.SetForegroundWindow(hwnd);
+                }
+                
+                return true;
+            }, Pointer.NULL);
             
             Robot r = new Robot();
-            StringSelection ss = new StringSelection(USERFINGERPRINTBPJS);
             Clipboard c = Toolkit.getDefaultToolkit().getSystemClipboard();
-            c.setContents(ss, ss);
+            StringSelection ss;
             
-            r.keyPress(KeyEvent.VK_CONTROL);
-            r.keyPress(KeyEvent.VK_V);
-            r.keyRelease(KeyEvent.VK_V);
-            r.keyRelease(KeyEvent.VK_CONTROL);
-            r.keyPress(KeyEvent.VK_TAB);
-            r.keyRelease(KeyEvent.VK_TAB);
-            Thread.sleep(1000);
-            
-            ss = new StringSelection(PASSFINGERPRINTBPJS);
-            c.setContents(ss, ss);
-            
-            r.keyPress(KeyEvent.VK_CONTROL);
-            r.keyPress(KeyEvent.VK_V);
-            r.keyRelease(KeyEvent.VK_V);
-            r.keyRelease(KeyEvent.VK_CONTROL);
-            r.keyPress(KeyEvent.VK_TAB);
-            r.keyRelease(KeyEvent.VK_TAB);
-            Thread.sleep(1000);
-            
-            ss = new StringSelection(NoKartu.getText().trim());
-            c.setContents(ss, ss);
-            r.keyPress(KeyEvent.VK_CONTROL);
-            r.keyPress(KeyEvent.VK_V);
-            r.keyRelease(KeyEvent.VK_V);
-            r.keyRelease(KeyEvent.VK_CONTROL);
-        } catch (AWTException | HeadlessException | IOException | InterruptedException e) {
+            if (aplikasiAktif) {
+                Thread.sleep(1000);
+                r.keyPress(KeyEvent.VK_CONTROL);
+                r.keyPress(KeyEvent.VK_A);
+                r.keyRelease(KeyEvent.VK_A);
+                r.keyRelease(KeyEvent.VK_CONTROL);
+                Thread.sleep(500);
+                
+                ss = new StringSelection(NoKartu.getText().trim());
+                c.setContents(ss, ss);
+                r.keyPress(KeyEvent.VK_CONTROL);
+                r.keyPress(KeyEvent.VK_V);
+                r.keyRelease(KeyEvent.VK_V);
+                r.keyRelease(KeyEvent.VK_CONTROL);
+            } else {
+                Runtime.getRuntime().exec(URLAPLIKASIFINGERPRINTBPJS);
+                Thread.sleep(2000);
+                ss = new StringSelection(USERFINGERPRINTBPJS);
+                c.setContents(ss, ss);
+
+                r.keyPress(KeyEvent.VK_CONTROL);
+                r.keyPress(KeyEvent.VK_V);
+                r.keyRelease(KeyEvent.VK_V);
+                r.keyRelease(KeyEvent.VK_CONTROL);
+                r.keyPress(KeyEvent.VK_TAB);
+                r.keyRelease(KeyEvent.VK_TAB);
+                Thread.sleep(1000);
+
+                ss = new StringSelection(PASSFINGERPRINTBPJS);
+                c.setContents(ss, ss);
+
+                r.keyPress(KeyEvent.VK_CONTROL);
+                r.keyPress(KeyEvent.VK_V);
+                r.keyRelease(KeyEvent.VK_V);
+                r.keyRelease(KeyEvent.VK_CONTROL);
+                r.keyPress(KeyEvent.VK_ENTER);
+                r.keyRelease(KeyEvent.VK_ENTER);
+                Thread.sleep(1000);
+                
+                ss = new StringSelection(NoKartu.getText().trim());
+                c.setContents(ss, ss);
+                r.keyPress(KeyEvent.VK_CONTROL);
+                r.keyPress(KeyEvent.VK_V);
+                r.keyRelease(KeyEvent.VK_V);
+                r.keyRelease(KeyEvent.VK_CONTROL);
+            }
+        } catch (Exception e) {
             System.out.println("Notif : " + e);
         }
     }

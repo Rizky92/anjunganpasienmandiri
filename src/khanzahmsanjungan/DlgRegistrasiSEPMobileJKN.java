@@ -17,6 +17,11 @@ import bridging.BPJSCekReferensiPenyakit;
 import bridging.BPJSCekRiwayatRujukanTerakhir;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sun.jna.Native;
+import com.sun.jna.Pointer;
+import com.sun.jna.platform.win32.User32;
+import com.sun.jna.platform.win32.WinDef;
+import com.sun.jna.platform.win32.WinUser;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
@@ -66,7 +71,6 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog
     private BPJSCekRiwayatRujukanTerakhir rujukanterakhir = new BPJSCekRiwayatRujukanTerakhir(null, true);
     private BPJSCekRiwayatPelayanan historiPelayanan = new BPJSCekRiwayatPelayanan(null, true);
     private String hari = "",
-        statuspasien = "",
         tglkkl = "0000-00-00",
         datajam = "",
         jamselesai = "",
@@ -95,6 +99,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog
     private int day = cal.get(Calendar.DAY_OF_WEEK);
     private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     private Date parsedDate;
+    private boolean aplikasiAktif = false;
 
     /**
      * Creates new form DlgAdmin
@@ -1324,8 +1329,6 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog
                 kodedokterreg = Sequel.cariIsi("select kd_dokter from maping_dokter_dpjpvclaim where kd_dokter_bpjs=?", KdDPJP.getText());
             }
 
-            isPoli();
-
             if (JenisPelayanan.getSelectedIndex() == 0) {
                 insertSEP();
             } else if (JenisPelayanan.getSelectedIndex() == 1) {
@@ -2467,37 +2470,6 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog
         NmDokterTerapi.setText("");
     }
 
-    private void isPoli()
-    {
-        try {
-            ps = koneksi.prepareStatement("select registrasi, registrasilama from poliklinik where kd_poli = ? order by nm_poli");
-            try {
-                ps.setString(1, kodepolireg);
-                rs = ps.executeQuery();
-
-                if (rs.next()) {
-                    if (statuspasien.equals("Lama")) {
-                        TBiaya.setText(rs.getString("registrasilama"));
-                    } else {
-                        TBiaya.setText(rs.getString("registrasi"));
-                    }
-                }
-            } catch (Exception e) {
-                System.out.println("Notifikasi : " + e);
-            } finally {
-                if (rs != null) {
-                    rs.close();
-                }
-
-                if (ps != null) {
-                    ps.close();
-                }
-            }
-        } catch (Exception e) {
-            System.out.println("Notif Cari Poli : " + e);
-        }
-    }
-
     private void bukaAplikasiFingerprint()
     {
         if (NoKartu.getText().isBlank()) {
@@ -2509,41 +2481,77 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog
         toFront();
 
         try {
-            Runtime.getRuntime().exec(URLAPLIKASIFINGERPRINTBPJS);
-
-            Thread.sleep(2000);
-
+            aplikasiAktif = false;
+            User32 u32 = User32.INSTANCE;
+            
+            u32.EnumWindows((WinDef.HWND hwnd, Pointer pntr) -> {
+                char[] windowText = new char[512];
+                u32.GetWindowText(hwnd, windowText, 512);
+                String wText = Native.toString(windowText);
+                
+                if (wText.isEmpty()) {
+                    return true;
+                }
+                
+                if (wText.contains("Registrasi Sidik Jari")) {
+                    DlgRegistrasiSEPMobileJKN.this.aplikasiAktif = true;
+                    u32.SetForegroundWindow(hwnd);
+                }
+                
+                return true;
+            }, Pointer.NULL);
+            
             Robot r = new Robot();
-            StringSelection ss = new StringSelection(USERFINGERPRINTBPJS);
             Clipboard c = Toolkit.getDefaultToolkit().getSystemClipboard();
-            c.setContents(ss, ss);
+            StringSelection ss;
+            
+            if (aplikasiAktif) {
+                Thread.sleep(1000);
+                r.keyPress(KeyEvent.VK_CONTROL);
+                r.keyPress(KeyEvent.VK_A);
+                r.keyRelease(KeyEvent.VK_A);
+                r.keyRelease(KeyEvent.VK_CONTROL);
+                Thread.sleep(500);
+                
+                ss = new StringSelection(NoKartu.getText().trim());
+                c.setContents(ss, ss);
+                r.keyPress(KeyEvent.VK_CONTROL);
+                r.keyPress(KeyEvent.VK_V);
+                r.keyRelease(KeyEvent.VK_V);
+                r.keyRelease(KeyEvent.VK_CONTROL);
+            } else {
+                Runtime.getRuntime().exec(URLAPLIKASIFINGERPRINTBPJS);
+                Thread.sleep(2000);
+                ss = new StringSelection(USERFINGERPRINTBPJS);
+                c.setContents(ss, ss);
 
-            r.keyPress(KeyEvent.VK_CONTROL);
-            r.keyPress(KeyEvent.VK_V);
-            r.keyRelease(KeyEvent.VK_V);
-            r.keyRelease(KeyEvent.VK_CONTROL);
-            r.keyPress(KeyEvent.VK_TAB);
-            r.keyRelease(KeyEvent.VK_TAB);
-            Thread.sleep(1000);
+                r.keyPress(KeyEvent.VK_CONTROL);
+                r.keyPress(KeyEvent.VK_V);
+                r.keyRelease(KeyEvent.VK_V);
+                r.keyRelease(KeyEvent.VK_CONTROL);
+                r.keyPress(KeyEvent.VK_TAB);
+                r.keyRelease(KeyEvent.VK_TAB);
+                Thread.sleep(1000);
 
-            ss = new StringSelection(PASSFINGERPRINTBPJS);
-            c.setContents(ss, ss);
+                ss = new StringSelection(PASSFINGERPRINTBPJS);
+                c.setContents(ss, ss);
 
-            r.keyPress(KeyEvent.VK_CONTROL);
-            r.keyPress(KeyEvent.VK_V);
-            r.keyRelease(KeyEvent.VK_V);
-            r.keyRelease(KeyEvent.VK_CONTROL);
-            r.keyPress(KeyEvent.VK_TAB);
-            r.keyRelease(KeyEvent.VK_TAB);
-            Thread.sleep(1000);
-
-            ss = new StringSelection(NoKartu.getText().trim());
-            c.setContents(ss, ss);
-            r.keyPress(KeyEvent.VK_CONTROL);
-            r.keyPress(KeyEvent.VK_V);
-            r.keyRelease(KeyEvent.VK_V);
-            r.keyRelease(KeyEvent.VK_CONTROL);
-        } catch (AWTException | HeadlessException | IOException | InterruptedException e) {
+                r.keyPress(KeyEvent.VK_CONTROL);
+                r.keyPress(KeyEvent.VK_V);
+                r.keyRelease(KeyEvent.VK_V);
+                r.keyRelease(KeyEvent.VK_CONTROL);
+                r.keyPress(KeyEvent.VK_ENTER);
+                r.keyRelease(KeyEvent.VK_ENTER);
+                Thread.sleep(1000);
+                
+                ss = new StringSelection(NoKartu.getText().trim());
+                c.setContents(ss, ss);
+                r.keyPress(KeyEvent.VK_CONTROL);
+                r.keyPress(KeyEvent.VK_V);
+                r.keyRelease(KeyEvent.VK_V);
+                r.keyRelease(KeyEvent.VK_CONTROL);
+            }
+        } catch (Exception e) {
             System.out.println("Notif : " + e);
         }
     }
