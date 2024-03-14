@@ -51,25 +51,6 @@ public class KhanzaHMSAnjungan {
             }
         });
         try {
-//            UIManager.setLookAndFeel(new FlatMacLightLaf());
-//            UIManager.put("TabbedPane.showTabSeparators", true);
-//            UIManager.put("TabbedPane.tabSeparatorsFullHeight", true);
-//            UIManager.put("ScrollBar.showButtons", true);
-//            UIManager.put("TabbedPane.selectedBackground", Color.LIGHT_GRAY);
-//            UIManager.put("TabbedPane.underlineColor", Color.GREEN);
-//            UIManager.put("TabbedPane.tabSeparatorColor", Color.darkGray);
-//            UIManager.put("Component.arrowType", "chevron");
-//            UIManager.put("Component.innerFocusWidth", 1);
-//            UIManager.put("TextBoxGlass.innerFocusWidth", 1);
-//            UIManager.put("TextBox.focusWidth", 1);
-//            UIManager.put("Component.focusWidth", 1);
-//            UIManager.put("Button.innerFocusWidth", 1);
-//            UIManager.put("Button.arc", 0);
-//            UIManager.put("Component.arc", 0);
-//            UIManager.put("CheckBox.arc", 0);
-//            UIManager.put("ProgressBar.arc", 0);
-//            UIManager.put("TextBox.arc", 5);
-
             UIManager.setLookAndFeel(new FlatMacLightLaf());
             System.setProperty("flatlaf.animation", "true");
             UIManager.put("TabbedPane.showTabSeparators", true);
@@ -91,7 +72,6 @@ public class KhanzaHMSAnjungan {
             UIManager.put("CheckBox.arc", 0);
             UIManager.put("ProgressBar.arc", 0);
             UIManager.put("TextBox.arc", 5);
-//            UIManager.put("TextField.caretBlinkRate", 40);
             UIManager.put("PasswordField.showCapsLock", true);
             UIManager.put("PasswordField.showRevealButton", true);
             UIManager.put("TextArea.selectionForeground", new Color(255, 255, 255));
@@ -102,5 +82,4 @@ public class KhanzaHMSAnjungan {
             System.err.println("Failed to initialize LaF");
         }
     }
-
 }
