@@ -3,7 +3,7 @@ Aplikasi anjungan pasien mandiri (APM) modifikasi dari [APM RS Indriati Boyolali
 
 ### Requirements
 - [Apache Netbeans](https://netbeans.apache.org/front/main/download/index.html)
-- Liberica JDK 15 [Download](https://github.com/bell-sw/Liberica/releases/tag/15.0.2%2B10)
+- Liberica JDK 17 [Download](https://github.com/bell-sw/Liberica/releases?q=17.0&expanded=true)
 - Aplikasi Fingerprint BPJS v2.0+
 
 ### Konfigurasi
