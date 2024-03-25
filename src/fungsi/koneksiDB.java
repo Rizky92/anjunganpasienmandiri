@@ -82,6 +82,15 @@ public class koneksiDB {
         }
     }
     
+    public static int PRINTJUMLAHBARCODE() {
+        try {
+            prop.loadFromXML(new FileInputStream("setting/apm.xml"));
+            return Integer.parseInt(prop.getProperty("PRINTJUMLAHBARCODE", "3"));
+        } catch (Exception e) {
+            return 3;
+        }
+    }
+    
     public static String URLFINGERPRINTBPJS() {
         try {
             prop.loadFromXML(new FileInputStream("setting/apm.xml"));
