@@ -1501,9 +1501,8 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog
                     JOptionPane.showMessageDialog(rootPane, "Koneksi ke server BPJS terputus...!");
                 }
             }
-
         } else {
-            JOptionPane.showMessageDialog(rootPane, "Maaf, Pasien tidak ada");
+            JOptionPane.showMessageDialog(rootPane, "Maaf, No. kartu peserta pasien kosong...!!!");
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnPengajuanFPActionPerformed

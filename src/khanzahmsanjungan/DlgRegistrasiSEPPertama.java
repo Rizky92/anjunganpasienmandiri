@@ -545,7 +545,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         });
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-03-2024" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-03-2024" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         Tanggal.setOpaque(false);
@@ -555,6 +555,11 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                 TanggalKeyPressed(evt);
             }
         });
+
+        WindowAksi.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        WindowAksi.setModal(true);
+        WindowAksi.setUndecorated(true);
+        WindowAksi.setResizable(false);
 
         internalFrame1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -660,7 +665,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
 
         TanggalSEP.setEditable(false);
         TanggalSEP.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-03-2024" }));
+        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-03-2024" }));
         TanggalSEP.setDisplayFormat("dd-MM-yyyy");
         TanggalSEP.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         TanggalSEP.setOpaque(false);
@@ -682,7 +687,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
 
         TanggalRujuk.setEditable(false);
         TanggalRujuk.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-03-2024" }));
+        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-03-2024" }));
         TanggalRujuk.setDisplayFormat("dd-MM-yyyy");
         TanggalRujuk.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         TanggalRujuk.setOpaque(false);
@@ -968,7 +973,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         jLabel38.setBounds(650, 280, 80, 30);
 
         TanggalKKL.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalKKL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25-03-2024" }));
+        TanggalKKL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-03-2024" }));
         TanggalKKL.setDisplayFormat("dd-MM-yyyy");
         TanggalKKL.setEnabled(false);
         TanggalKKL.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
@@ -1912,12 +1917,16 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
     private void btnDiagnosaAwal3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiagnosaAwal3ActionPerformed
         pwUserId.setText("");
         pwPass.setText("");
-        if (!NoKartu.getText().equals("")) {
-            aksi = "Approval";
-            WindowAksi.setVisible(true);
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Maaf, No. Kartu Peserta tidak ada...!!!");
-        }
+        WindowAksi.setSize(400, 300);
+        WindowAksi.setLocationRelativeTo(null);
+        WindowAksi.setAlwaysOnTop(true);
+        WindowAksi.setVisible(true);
+//        if (!NoKartu.getText().equals("")) {
+//            aksi = "Approval";
+//            WindowAksi.setVisible(true);
+//        } else {
+//            JOptionPane.showMessageDialog(rootPane, "Maaf, No. Kartu Peserta tidak ada...!!!");
+//        }
     }//GEN-LAST:event_btnDiagnosaAwal3ActionPerformed
 
     private void btnDiagnosaAwal3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnDiagnosaAwal3KeyPressed
@@ -1927,12 +1936,16 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
     private void btnDiagnosaAwal4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiagnosaAwal4ActionPerformed
         pwUserId.setText("");
         pwPass.setText("");
-        if (!NoKartu.getText().equals("")) {
-            aksi = "Pengajuan";
-            WindowAksi.setVisible(true);
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Maaf, No. Kartu Peserta tidak ada...!!!");
-        }
+        WindowAksi.setSize(400, 300);
+        WindowAksi.setLocationRelativeTo(null);
+        WindowAksi.setAlwaysOnTop(true);
+        WindowAksi.setVisible(true);
+//        if (!NoKartu.getText().equals("")) {
+//            aksi = "Pengajuan";
+//            WindowAksi.setVisible(true);
+//        } else {
+//            JOptionPane.showMessageDialog(rootPane, "Maaf, No. Kartu Peserta tidak ada...!!!");
+//        }
     }//GEN-LAST:event_btnDiagnosaAwal4ActionPerformed
 
     private void btnDiagnosaAwal4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnDiagnosaAwal4KeyPressed
@@ -3400,28 +3413,6 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
             if (ex.toString().contains("UnknownHostException")) {
                 JOptionPane.showMessageDialog(rootPane, "Koneksi ke server BPJS terputus...!");
             }
-        }
-    }
-
-    public boolean GeneralConsentSatuSehat(String NoRMPasien) {
-        int cariflaging = Sequel.cariInteger("select count(flagging_pasien_satusehat.no_rkm_medis) from flagging_pasien_satusehat where flagging_pasien_satusehat.no_rkm_medis='" + NoRMPasien + "'");
-        boolean statussatusehat = false;
-
-        if (cariflaging > 0) {
-            statussatusehat = true;
-        } else {
-            statussatusehat = false;
-        }
-
-        return statussatusehat;
-    }
-
-    private void generalconsentsave(String nomorrm) {
-        if (GeneralConsentSatuSehat(nomorrm) == false) {
-            Sequel.menyimpan2("flagging_pasien_satusehat", "?,?,?", "Data", 3, new String[]{
-                nomorrm, "yes", Sequel.cariIsi("select now()")
-            });
-
         }
     }
 
