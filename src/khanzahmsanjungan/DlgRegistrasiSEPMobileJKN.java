@@ -1381,7 +1381,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog
             Valid.textKosong(Keterangan, "Keterangan");
         } else if (KdDPJP.getText().trim().equals("") || NmDPJP.getText().trim().equals("")) {
             Valid.textKosong(KdDPJP, "DPJP");
-        } else if (!statusfinger && Sequel.cariIntegerSmc("select timestampdiff(year, ?, CURRENT_DATE())", TglLahir.getText()) >= 17 && JenisPelayanan.getSelectedIndex() != 0 && !KdPoli.getText().equals("IGD")) {
+        } else if (!statusfinger && Sequel.cariIntegerSmc("select timestampdiff(year, ?, current_date())", TglLahir.getText()) >= 17 && JenisPelayanan.getSelectedIndex() != 0 && !KdPoli.getText().equals("IGD")) {
             JOptionPane.showMessageDialog(rootPane, "Maaf, Pasien belum melakukan Fingerprint");
             bukaAplikasiFingerprint();
         } else {
@@ -1849,8 +1849,9 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog
                 response = mapper.readTree(api.Decrypt(root.path("response").asText(), utc)).path("sep").path("noSep");
 
                 Sequel.mengupdateSmc("pasien",
-                    "umur = CONCAT(CONCAT(CONCAT(TIMESTAMPDIFF(YEAR, tgl_lahir, CURDATE()), ' Th '), CONCAT(TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) div 12) * 12), ' Bl ')), CONCAT(TIMESTAMPDIFF(DAY, DATE_ADD(DATE_ADD(tgl_lahir, INTERVAL TIMESTAMPDIFF(YEAR, tgl_lahir, CURDATE()) YEAR), INTERVAL TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) div 12) * 12) MONTH), CURDATE()), ' Hr'))",
-                    "no_rkm_medis = ?", TNoRM.getText()
+                    "no_tlp = ?, umur = concat(concat(concat(timestampdiff(year, tgl_lahir, curdate()), ' Th '), concat(timestampdiff(month, tgl_lahir, curdate()) - ((timestampdiff(month, tgl_lahir, curdate()) div 12) * 12), ' Bl ')), concat(timestampdiff(day, date_add(date_add(tgl_lahir, interval timestampdiff(year, tgl_lahir, curdate()) year), interval timestampdiff(month, tgl_lahir, curdate()) - ((timestampdiff(month, tgl_lahir, curdate()) div 12) * 12) month), curdate()), ' Hr'))",
+                    "no_rkm_medis = ?",
+                    NoTelp.getText(), TNoRM.getText()
                 );
 
                 Sequel.menyimpanSmc("bridging_sep", null,
@@ -1907,18 +1908,6 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog
                     KdDPJPLayanan.getText(),
                     NmDPJPLayanan.getText()
                 );
-                
-                if (Sequel.cariBooleanSmc(
-                    "select * from referensi_mobilejkn_bpjs where nomorkartu = ? and tanggalperiksa = current_date() and kodedokter = ? and kodepoli = ? and status = 'Belum'",
-                    NoKartu.getText(), KdDPJP.getText(), KdPoli.getText())
-                ) {
-                    Sequel.mengupdateSmc(
-                        "referensi_mobilejkn_bpjs",
-                        "validasi = now(), status = 'Checkin'",
-                        "nomorkartu = ? and tanggalperiksa = current_date() and kodedokter = ? and kodepoli = ?",
-                        NoKartu.getText(), KdDPJP.getText(), KdPoli.getText()
-                    );
-                }
 
                 if (!simpanRujukan()) {
                     System.out.println("Terjadi kesalahan pada saat proses rujukan masuk pasien!");
@@ -2469,6 +2458,10 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog
                 }
             }
         } else {
+            if (Sequel.cariBooleanSmc("select * from referensi_mobilejkn_bpjs where no_rawat = ? and status = 'Belum'", TNoRw.getText())) {
+                Sequel.mengupdateSmc("referensi_mobilejkn_bpjs", "validasi = now(), status = 'Checkin'", "no_rawat = ?", TNoRw.getText());
+            }
+            
             try {
                 ps = koneksi.prepareStatement(
                     "select referensi_mobilejkn_bpjs.*, reg_periksa.no_rkm_medis, pasien.nm_pasien, poliklinik.nm_poli, dokter.nm_dokter " +
@@ -2747,30 +2740,6 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog
         }
     }
 
-    public boolean GeneralConsentSatuSehat(String NoRMPasien)
-    {
-        int cariflaging = Sequel.cariInteger("select count(flagging_pasien_satusehat.no_rkm_medis) from flagging_pasien_satusehat where flagging_pasien_satusehat.no_rkm_medis='" + NoRMPasien + "'");
-        boolean statussatusehat = false;
-
-        if (cariflaging > 0) {
-            statussatusehat = true;
-        } else {
-            statussatusehat = false;
-        }
-
-        return statussatusehat;
-    }
-
-    private void generalconsentsave(String nomorrm)
-    {
-        if (GeneralConsentSatuSehat(nomorrm) == false) {
-            Sequel.menyimpan2("flagging_pasien_satusehat", "?,?,?", "Data", 3, new String[] {
-                nomorrm, "yes", Sequel.cariIsi("select now()")
-            });
-
-        }
-    }
-
     private boolean simpanRujukan()
     {
         int coba = 0, maxCoba = 5;
@@ -2803,11 +2772,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog
         String isNoRujukMasuk = Sequel.cariIsiSmc("select rujuk_masuk.no_balasan from rujuk_masuk where rujuk_masuk.no_rawat = ?", TNoRw.getText());
 
         if (coba == maxCoba && (isNoRujukMasuk == null || (!isNoRujukMasuk.equals(NoRujukMasuk.getText())))) {
-            System.out.println("======================================================");
-            System.out.println("Tidak dapat memproses rujukan masuk dengan detail berikut:");
-            System.out.println("No. Surat: " + NoRujukMasuk.getText());
-            System.out.println("No. Rawat: " + TNoRw.getText());
-            System.out.println("======================================================");
+            System.out.println("Error menyimpan rujukan masuk pasien...!!!");
 
             return false;
         }
