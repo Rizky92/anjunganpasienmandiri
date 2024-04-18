@@ -86,7 +86,7 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI SemiBold", 0, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 153, 153));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel1.setText("Build 2024-03-14      ");
+        jLabel1.setText("Build 2024-04-18      ");
         jLabel1.setFocusable(false);
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel3.add(jLabel1, java.awt.BorderLayout.PAGE_END);
