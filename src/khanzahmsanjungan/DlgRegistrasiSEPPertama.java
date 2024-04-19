@@ -302,6 +302,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
 
         KdPPK.setText(Sequel.cariIsi("select setting.kode_ppk from setting"));
         NmPPK.setText(Sequel.cariIsi("select setting.nama_instansi from setting"));
+        JumlahBarcode.setText("3");
     }
 
     /**
@@ -548,7 +549,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         });
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-04-2024" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-04-2024" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         Tanggal.setOpaque(false);
@@ -672,7 +673,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
 
         TanggalSEP.setEditable(false);
         TanggalSEP.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-04-2024" }));
+        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-04-2024" }));
         TanggalSEP.setDisplayFormat("dd-MM-yyyy");
         TanggalSEP.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         TanggalSEP.setOpaque(false);
@@ -694,7 +695,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
 
         TanggalRujuk.setEditable(false);
         TanggalRujuk.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-04-2024" }));
+        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-04-2024" }));
         TanggalRujuk.setDisplayFormat("dd-MM-yyyy");
         TanggalRujuk.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         TanggalRujuk.setOpaque(false);
@@ -979,8 +980,9 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         jPanel2.add(jLabel38);
         jLabel38.setBounds(650, 280, 80, 30);
 
+        TanggalKKL.setEditable(false);
         TanggalKKL.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalKKL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-04-2024" }));
+        TanggalKKL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "19-04-2024" }));
         TanggalKKL.setDisplayFormat("dd-MM-yyyy");
         TanggalKKL.setEnabled(false);
         TanggalKKL.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
@@ -1471,7 +1473,6 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         jPanel2.add(jLabel15);
         jLabel15.setBounds(1040, 70, 110, 30);
 
-        JumlahBarcode.setEditable(false);
         JumlahBarcode.setText("3");
         JumlahBarcode.setHighlighter(null);
         JumlahBarcode.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1939,8 +1940,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
     }//GEN-LAST:event_btnPoliTerapiKeyPressed
 
     private void btnDiagnosaAwal3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiagnosaAwal3ActionPerformed
-        pwUserId.setText("");
-        pwPass.setText("");
+        resetAksi();
         WindowAksi.setSize(400, 300);
         WindowAksi.setLocationRelativeTo(null);
         WindowAksi.setVisible(true);
@@ -1959,8 +1959,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
     }//GEN-LAST:event_btnDiagnosaAwal3KeyPressed
 
     private void btnDiagnosaAwal4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiagnosaAwal4ActionPerformed
-        pwUserId.setText("");
-        pwPass.setText("");
+        resetAksi();
         WindowAksi.setSize(400, 300);
         WindowAksi.setLocationRelativeTo(null);
         WindowAksi.setVisible(true);
@@ -2103,8 +2102,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
     }//GEN-LAST:event_pwPassKeyPressed
 
     private void btnAksiBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAksiBatalActionPerformed
-        pwUserId.setText("");
-        pwPass.setText("");
+        resetAksi();
         WindowAksi.dispose();
     }//GEN-LAST:event_btnAksiBatalActionPerformed
 
@@ -3509,6 +3507,8 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         NmPoliTerapi.setText("");
         KodeDokterTerapi.setText("");
         NmDokterTerapi.setText("");
+        JumlahBarcode.setText("3");
+        resetAksi();
     }
 
     private void isPoli() {
@@ -3778,5 +3778,11 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
             "no_rkm_medis = ?",
             NoTelp.getText(), NIK.getText(), TNoRM.getText()
         );
+    }
+    
+    private void resetAksi() {
+        pwUserId.setText("");
+        pwPass.setText("");
+        aksi = "";
     }
 }
