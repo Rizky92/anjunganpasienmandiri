@@ -63,6 +63,7 @@ import net.sf.jasperreports.export.SimpleExporterInput;
 import net.sf.jasperreports.export.SimplePrintServiceExporterConfiguration;
 import net.sf.jasperreports.view.JasperViewer;
 import uz.ncipro.calendar.JDateTimePicker;
+import widget.Tanggal;
 
 /**
  *
@@ -90,6 +91,10 @@ public final class validasi {
 
     public validasi() {
         super();
+    }
+    
+    public String setTglSmc(Tanggal tgl) {
+        return new SimpleDateFormat("yyyy-MM-dd").format(tgl.getDate());
     }
     
     public void printReport(String namaReport, String namaPrinter, String judul, int jumlah, Map params) {
