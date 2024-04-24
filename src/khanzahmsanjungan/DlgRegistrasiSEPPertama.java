@@ -1979,7 +1979,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
 
     private void btnAksiKonfirmasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAksiKonfirmasiActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        if (!NoKartu.getText().isBlank()) {
+        if (NoKartu.getText().isBlank()) {
             JOptionPane.showMessageDialog(rootPane, "Maaf, No. Kartu Peserta tidak ada...!!!");
         } else {
             try {
