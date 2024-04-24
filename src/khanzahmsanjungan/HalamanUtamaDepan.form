@@ -76,7 +76,7 @@
               <Color blue="99" green="99" red="0" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="11"/>
-            <Property name="text" type="java.lang.String" value="Build 2024-04-23      "/>
+            <Property name="text" type="java.lang.String" value="Build 2024-04-24 Patch 1      "/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
           </Properties>
@@ -170,7 +170,6 @@
               <Image iconType="3" name="/48x48/antrianpasien.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="ANTRIAN PASIEN"/>
-            <Property name="enabled" type="boolean" value="false"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Inter" size="24" style="1"/>
             </Property>

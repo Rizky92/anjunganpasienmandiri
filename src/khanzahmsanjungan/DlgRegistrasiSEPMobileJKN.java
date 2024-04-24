@@ -1430,13 +1430,11 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
     }//GEN-LAST:event_btnSimpanActionPerformed
 
     private void btnApprovalFPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApprovalFPActionPerformed
-        pwUserId.setText("");
-        pwPass.setText("");
-        WindowAksi.setSize(400, 300);
-        WindowAksi.setLocationRelativeTo(null);
-        WindowAksi.setVisible(true);
-        if (!NoKartu.getText().equals("")) {
+        resetAksi();
+        if (! NoKartu.getText().isBlank()) {
             aksi = "Approval";
+            WindowAksi.setSize(400, 300);
+            WindowAksi.setLocationRelativeTo(null);
             WindowAksi.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(rootPane, "Maaf, No. Kartu Peserta tidak ada...!!!");
@@ -1444,13 +1442,11 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
     }//GEN-LAST:event_btnApprovalFPActionPerformed
 
     private void btnPengajuanFPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPengajuanFPActionPerformed
-        pwUserId.setText("");
-        pwPass.setText("");
-        WindowAksi.setSize(400, 300);
-        WindowAksi.setLocationRelativeTo(null);
-        WindowAksi.setVisible(true);
-        if (!NoKartu.getText().equals("")) {
+        resetAksi();
+        if (! NoKartu.getText().isBlank()) {
             aksi = "Pengajuan";
+            WindowAksi.setSize(400, 300);
+            WindowAksi.setLocationRelativeTo(null);
             WindowAksi.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(rootPane, "Maaf, No. Kartu Peserta tidak ada...!!!");
@@ -1495,6 +1491,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                     rs = ps.executeQuery();
                     if (rs.next()) {
                         if (aksi.equals("Pengajuan")) {
+                            System.out.println("Aksi " + aksi);
                             try {
                                 headers = new HttpHeaders();
                                 headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
@@ -1533,6 +1530,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                                 }
                             }
                         } else if (aksi.equals("Approval")) {
+                            System.out.println("Aksi " + aksi);
                             try {
                                 headers = new HttpHeaders();
                                 headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
@@ -1560,7 +1558,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                                 System.out.println("code : " + nameNode.path("code").asText());
                                 System.out.println("message : " + nameNode.path("message").asText());
                                 if (nameNode.path("code").asText().equals("200")) {
-                                    JOptionPane.showMessageDialog(rootPane, "Arpoval Berhasil");
+                                    JOptionPane.showMessageDialog(rootPane, "Approval Berhasil");
                                 } else {
                                     JOptionPane.showMessageDialog(rootPane, nameNode.path("message").asText());
                                 }
@@ -1574,6 +1572,9 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                             resetAksi();
                             JOptionPane.showMessageDialog(rootPane, "Anda tidak diizinkan untuk melakukan aksi ini...!!!");
                         }
+                    } else {
+                        resetAksi();
+                        JOptionPane.showMessageDialog(rootPane, "Anda tidak diizinkan untuk melakukan aksi ini...!!!");
                     }
                 } catch (Exception e) {
                     System.out.println("Notif : " + e);

@@ -1941,11 +1941,10 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
 
     private void btnDiagnosaAwal3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiagnosaAwal3ActionPerformed
         resetAksi();
-        WindowAksi.setSize(400, 300);
-        WindowAksi.setLocationRelativeTo(null);
-        WindowAksi.setVisible(true);
-        if (!NoKartu.getText().equals("")) {
+        if (! NoKartu.getText().isBlank()) {
             aksi = "Approval";
+            WindowAksi.setSize(400, 300);
+            WindowAksi.setLocationRelativeTo(null);
             WindowAksi.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(rootPane, "Maaf, No. Kartu Peserta tidak ada...!!!");
@@ -1960,11 +1959,10 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
 
     private void btnDiagnosaAwal4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiagnosaAwal4ActionPerformed
         resetAksi();
-        WindowAksi.setSize(400, 300);
-        WindowAksi.setLocationRelativeTo(null);
-        WindowAksi.setVisible(true);
-        if (!NoKartu.getText().equals("")) {
+        if (! NoKartu.getText().isBlank()) {
             aksi = "Pengajuan";
+            WindowAksi.setSize(400, 300);
+            WindowAksi.setLocationRelativeTo(null);
             WindowAksi.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(rootPane, "Maaf, No. Kartu Peserta tidak ada...!!!");
@@ -2055,7 +2053,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                                 System.out.println("code : " + nameNode.path("code").asText());
                                 System.out.println("message : " + nameNode.path("message").asText());
                                 if (nameNode.path("code").asText().equals("200")) {
-                                    JOptionPane.showMessageDialog(rootPane, "Arpoval Berhasil");
+                                    JOptionPane.showMessageDialog(rootPane, "Approval Berhasil");
                                 } else {
                                     JOptionPane.showMessageDialog(rootPane, nameNode.path("message").asText());
                                 }

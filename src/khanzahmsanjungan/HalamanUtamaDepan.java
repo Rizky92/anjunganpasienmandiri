@@ -36,6 +36,7 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
         this.setSize(screenSize.width, screenSize.height);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         
+        btnAdmin10.setEnabled(false);
         jPanel1.remove(btnAdmin10);
         jPanel1.remove(btnAdmin11);
         jPanel1.remove(btnAdmin7);
@@ -86,7 +87,7 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI SemiBold", 0, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 153, 153));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel1.setText("Build 2024-04-23      ");
+        jLabel1.setText("Build 2024-04-24 Patch 1      ");
         jLabel1.setFocusable(false);
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel3.add(jLabel1, java.awt.BorderLayout.PAGE_END);
@@ -126,7 +127,6 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
 
         btnAdmin10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/antrianpasien.png"))); // NOI18N
         btnAdmin10.setText("ANTRIAN PASIEN");
-        btnAdmin10.setEnabled(false);
         btnAdmin10.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
         btnAdmin10.setIconTextGap(0);
         btnAdmin10.setPreferredSize(new java.awt.Dimension(200, 90));
