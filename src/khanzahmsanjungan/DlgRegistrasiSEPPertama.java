@@ -3401,6 +3401,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                         System.out.println(requestEntity);
                         root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
                         nameNode = root.path("metadata");
+                        Sequel.logTaskid(TNoRw.getText(), "NON JKN", "-", nameNode.path("code").asText(), nameNode.path("message").asText());
                         System.out.println("respon WS BPJS Kirim Pakai SKDP : " + nameNode.path("code").asText() + " " + nameNode.path("message").asText() + "\n");
                     } catch (Exception e) {
                         System.out.println("Notif SKDP : " + e);
@@ -3447,6 +3448,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                         System.out.println("URL Kirim Pakai No.Rujuk : " + URL);
                         root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
                         nameNode = root.path("metadata");
+                        Sequel.logTaskid(TNoRw.getText(), "NON JKN", "-", nameNode.path("code").asText(), nameNode.path("message").asText());
                         System.out.println("respon WS BPJS : " + nameNode.path("code").asText() + " " + nameNode.path("message").asText() + "\n");
                     } catch (Exception e) {
                         System.out.println("Notif No.Rujuk : " + e);
