@@ -3284,6 +3284,10 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         }
     }
 
+    public void tampilKontrol2(String noSKDP) {
+        
+    }
+    
     private void SimpanAntrianOnSite() {
         if ((!NoRujukan.getText().equals("")) || (!NoSKDP.getText().equals(""))) {
             if (TujuanKunjungan.getSelectedItem().toString().equals("0. Normal") && FlagProsedur.getSelectedItem().toString().equals("") && Penunjang.getSelectedItem().toString().equals("") && AsesmenPoli.getSelectedItem().toString().equals("")) {
