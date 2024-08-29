@@ -21,7 +21,7 @@ import javax.swing.JOptionPane;
 public class DlgCekSKDPKontrol extends javax.swing.JDialog {
     private final sekuel Sequel = new sekuel();
     private final DlgRegistrasiSEPPertama form = new DlgRegistrasiSEPPertama(null, true);
-    
+
     /**
      * Creates new form DlgAdmin
      *
@@ -44,7 +44,7 @@ public class DlgCekSKDPKontrol extends javax.swing.JDialog {
         jPanel2 = new javax.swing.JPanel();
         PanelWall = new usu.widget.glass.PanelGlass();
         jPanel1 = new component.Panel();
-        NoRMPasien = new component.TextBox();
+        InputSKDP = new component.TextBox();
         jLabel28 = new component.Label();
         BtnTutup = new widget.ButtonBig();
         BtnKonfirmasi = new widget.ButtonBig();
@@ -106,16 +106,16 @@ public class DlgCekSKDPKontrol extends javax.swing.JDialog {
         jPanel1.setPreferredSize(new java.awt.Dimension(413, 115));
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
-        NoRMPasien.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 131, 62), 2, true));
-        NoRMPasien.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        NoRMPasien.setToolTipText("");
-        NoRMPasien.setFont(new java.awt.Font("Inter", 0, 36)); // NOI18N
-        NoRMPasien.setPreferredSize(new java.awt.Dimension(450, 75));
+        InputSKDP.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 131, 62), 2, true));
+        InputSKDP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        InputSKDP.setToolTipText("");
+        InputSKDP.setFont(new java.awt.Font("Inter", 0, 36)); // NOI18N
+        InputSKDP.setPreferredSize(new java.awt.Dimension(450, 75));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 14;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        jPanel1.add(NoRMPasien, gridBagConstraints);
+        jPanel1.add(InputSKDP, gridBagConstraints);
 
         jLabel28.setForeground(new java.awt.Color(0, 131, 62));
         jLabel28.setText("No. Surat Kontrol : ");
@@ -379,38 +379,38 @@ public class DlgCekSKDPKontrol extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnTutupActionPerformed
 
     private void BtnKonfirmasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKonfirmasiActionPerformed
-        if (NoRMPasien.getText().isBlank()) {
+        if (InputSKDP.getText().isBlank()) {
             JOptionPane.showMessageDialog(null, "Isian masih kosong..!!");
-            NoRMPasien.requestFocus();
+            InputSKDP.requestFocus();
             return;
         }
-        
+
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        
-        if (Sequel.cariBooleanSmc("select * from bridging_surat_kontrol_bpjs where no_surat = ?", NoRMPasien.getText())) {
-            String tanggalKontrol = Sequel.cariIsiSmc("select tgl_rencana from bridging_surat_kontrol_bpjs where no_surat = ?", NoRMPasien.getText());
+
+        if (Sequel.cariBooleanSmc("select * from bridging_surat_kontrol_bpjs where no_surat = ?", InputSKDP.getText())) {
+            String tanggalKontrol = Sequel.cariIsiSmc("select tgl_rencana from bridging_surat_kontrol_bpjs where no_surat = ?", InputSKDP.getText());
             if (Sequel.cariIntegerSmc("select datediff(?, current_date())", tanggalKontrol) > 0) {
                 JOptionPane.showMessageDialog(null, "Jadwal kontrol pasien tidak boleh dimajukan..!!");
-                NoRMPasien.setText("");
-            } else if (Sequel.cariBooleanSmc("select * from referensi_mobilejkn_bpjs where nomorreferensi = ? and tanggalperiksa = current_date()", NoRMPasien.getText())) {
+                InputSKDP.setText("");
+            } else if (Sequel.cariBooleanSmc("select * from referensi_mobilejkn_bpjs where nomorreferensi = ? and tanggalperiksa = current_date()", InputSKDP.getText())) {
                 JOptionPane.showMessageDialog(null, "Pasien telah mendaftar online menggunakan MobileJKN.\nSilahkan cekin di menu \"Cek In MobileJKN\"..!!");
-                NoRMPasien.setText("");
-            } else if (Sequel.cariBooleanSmc("select * from referensi_mobilejkn_bpjs where nomorreferensi = ? and status = 'Belum'", NoRMPasien.getText())) {
-                tanggalKontrol = Sequel.cariIsiSmc("select date_format(tanggalperiksa, '%d-%m-%Y') from referensi_mobilejkn_bpjs where nomorreferensi = ? and status = 'Belum'", NoRMPasien.getText());
-                int i = JOptionPane.showConfirmDialog(null,"Pasien telah mendaftar online menggunakan MobileJKN pada tanggal " + tanggalKontrol
-                    + ".\nApakah tetap mau mendaftar pada hari ini?\n\nCatatan: Melanjutkan pendaftaran pada hari ini akan membatalkan pendaftaran online MobileJKN.",
+                InputSKDP.setText("");
+            } else if (Sequel.cariBooleanSmc("select * from referensi_mobilejkn_bpjs where nomorreferensi = ? and status = 'Belum'", InputSKDP.getText())) {
+                tanggalKontrol = Sequel.cariIsiSmc("select date_format(tanggalperiksa, '%d-%m-%Y') from referensi_mobilejkn_bpjs where nomorreferensi = ? and status = 'Belum'", InputSKDP.getText());
+                int i = JOptionPane.showConfirmDialog(null, "Pasien telah mendaftar online menggunakan MobileJKN pada tanggal " + tanggalKontrol
+                    + ".\nApakah tetap mau mendaftar pada hari ini?\n\nCatatan: Melanjutkan pendaftaran pada hari ini akan membatalkan pendaftaran online MobileJKN pasien.",
                     "Konfirmasi Pendaftaran", JOptionPane.YES_NO_OPTION);
                 if (i == JOptionPane.YES_OPTION) {
-                    form.tampilKontrol2(NoRMPasien.getText());
+                    form.tampilKontrol2(InputSKDP.getText());
                     form.setSize(this.getWidth(), this.getHeight());
                     form.setLocationRelativeTo(jPanel1);
                     this.dispose();
                     form.setVisible(true);
                 } else {
-                    NoRMPasien.setText("");
+                    InputSKDP.setText("");
                 }
             } else {
-                form.tampilKontrol(NoRMPasien.getText());
+                form.tampilKontrol(InputSKDP.getText());
                 form.setSize(this.getWidth(), this.getHeight());
                 form.setLocationRelativeTo(jPanel1);
                 this.dispose();
@@ -423,73 +423,73 @@ public class DlgCekSKDPKontrol extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnKonfirmasiActionPerformed
 
     private void btnAngka8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAngka8ActionPerformed
-        NoRMPasien.setText(NoRMPasien.getText() + "8");
+        InputSKDP.setText(InputSKDP.getText() + "8");
     }//GEN-LAST:event_btnAngka8ActionPerformed
 
     private void btnAngka7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAngka7ActionPerformed
-        NoRMPasien.setText(NoRMPasien.getText() + "7");
+        InputSKDP.setText(InputSKDP.getText() + "7");
     }//GEN-LAST:event_btnAngka7ActionPerformed
 
     private void btnAngka9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAngka9ActionPerformed
-        NoRMPasien.setText(NoRMPasien.getText() + "9");
+        InputSKDP.setText(InputSKDP.getText() + "9");
     }//GEN-LAST:event_btnAngka9ActionPerformed
 
     private void btnAngka4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAngka4ActionPerformed
-        NoRMPasien.setText(NoRMPasien.getText() + "4");
+        InputSKDP.setText(InputSKDP.getText() + "4");
     }//GEN-LAST:event_btnAngka4ActionPerformed
 
     private void btnAngka5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAngka5ActionPerformed
-        NoRMPasien.setText(NoRMPasien.getText() + "5");
+        InputSKDP.setText(InputSKDP.getText() + "5");
     }//GEN-LAST:event_btnAngka5ActionPerformed
 
     private void btnAngka6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAngka6ActionPerformed
-        NoRMPasien.setText(NoRMPasien.getText() + "6");
+        InputSKDP.setText(InputSKDP.getText() + "6");
     }//GEN-LAST:event_btnAngka6ActionPerformed
 
     private void btnAngka2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAngka2ActionPerformed
-        NoRMPasien.setText(NoRMPasien.getText() + "2");
+        InputSKDP.setText(InputSKDP.getText() + "2");
     }//GEN-LAST:event_btnAngka2ActionPerformed
 
     private void btnAngka1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAngka1ActionPerformed
-        NoRMPasien.setText(NoRMPasien.getText() + "1");
+        InputSKDP.setText(InputSKDP.getText() + "1");
     }//GEN-LAST:event_btnAngka1ActionPerformed
 
     private void btnAngka3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAngka3ActionPerformed
-        NoRMPasien.setText(NoRMPasien.getText() + "3");
+        InputSKDP.setText(InputSKDP.getText() + "3");
     }//GEN-LAST:event_btnAngka3ActionPerformed
 
     private void btnAngka0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAngka0ActionPerformed
-        NoRMPasien.setText(NoRMPasien.getText() + "0");
+        InputSKDP.setText(InputSKDP.getText() + "0");
     }//GEN-LAST:event_btnAngka0ActionPerformed
 
     private void btnAngkaHpsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAngkaHpsActionPerformed
-        int length = NoRMPasien.getText().length();
+        int length = InputSKDP.getText().length();
         String store;
         if (length > 0) {
-            StringBuilder back = new StringBuilder(NoRMPasien.getText());
+            StringBuilder back = new StringBuilder(InputSKDP.getText());
             back.deleteCharAt(length - 1);
             store = back.toString();
-            NoRMPasien.setText(store);
+            InputSKDP.setText(store);
         }
     }//GEN-LAST:event_btnAngkaHpsActionPerformed
 
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
-        if (NoRMPasien.getText().length() > 0) {
-            NoRMPasien.setText("");
+        if (InputSKDP.getText().length() > 0) {
+            InputSKDP.setText("");
         }
     }//GEN-LAST:event_btnClearActionPerformed
 
     private void btnKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKActionPerformed
-        NoRMPasien.setText(NoRMPasien.getText() + "K");
+        InputSKDP.setText(InputSKDP.getText() + "K");
     }//GEN-LAST:event_btnKActionPerformed
 
     private void btnRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRActionPerformed
-        NoRMPasien.setText(NoRMPasien.getText() + "R");
+        InputSKDP.setText(InputSKDP.getText() + "R");
     }//GEN-LAST:event_btnRActionPerformed
 
     private void btnTemplateActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnTemplateActionPerformed
     {//GEN-HEADEREND:event_btnTemplateActionPerformed
-        NoRMPasien.setText(Sequel.cariIsiSmc("select kode_ppk from setting"));
+        InputSKDP.setText(Sequel.cariIsiSmc("select kode_ppk from setting"));
     }//GEN-LAST:event_btnTemplateActionPerformed
 
     /**
@@ -511,7 +511,7 @@ public class DlgCekSKDPKontrol extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.ButtonBig BtnKonfirmasi;
     private widget.ButtonBig BtnTutup;
-    private component.TextBox NoRMPasien;
+    private component.TextBox InputSKDP;
     private usu.widget.glass.PanelGlass PanelWall;
     private javax.swing.JButton btnAngka0;
     private javax.swing.JButton btnAngka1;

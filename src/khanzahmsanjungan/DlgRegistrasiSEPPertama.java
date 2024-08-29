@@ -3397,7 +3397,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                             + "\"kuotajkn\": " + kuota + ","
                             + "\"sisakuotanonjkn\": " + (kuota - Integer.parseInt(NoReg.getText())) + ","
                             + "\"kuotanonjkn\": " + kuota + ","
-                            + "\"keterangan\": \"Peserta harap 30 menit lebih awal guna pencatatan administrasi. Estimasi pelayanan 10 menit per pasien\""
+                            + "\"keterangan\": \"Peserta harap 30 menit lebih awal guna pencatatan administrasi.\""
                             + "}";
                         requestEntity = new HttpEntity(requestJson, headers);
                         URL = koneksiDB.URLAPIMOBILEJKN() + "/antrean/add";
@@ -3405,7 +3405,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                         System.out.println(requestEntity);
                         root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
                         nameNode = root.path("metadata");
-                        Sequel.logTaskid(TNoRw.getText(), "NON JKN", "-", nameNode.path("code").asText(), nameNode.path("message").asText());
+                        Sequel.logTaskid(TNoRw.getText(), null, "Onsite", "addantrean", nameNode.path("code").asText(), nameNode.path("message").asText(), datajam);
                         System.out.println("respon WS BPJS Kirim Pakai SKDP : " + nameNode.path("code").asText() + " " + nameNode.path("message").asText() + "\n");
                     } catch (Exception e) {
                         System.out.println("Notif SKDP : " + e);
@@ -3452,7 +3452,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                         System.out.println("URL Kirim Pakai No.Rujuk : " + URL);
                         root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
                         nameNode = root.path("metadata");
-                        Sequel.logTaskid(TNoRw.getText(), "NON JKN", "-", nameNode.path("code").asText(), nameNode.path("message").asText());
+                        Sequel.logTaskid(TNoRw.getText(), null, "Onsite", "addantrean", nameNode.path("code").asText(), nameNode.path("message").asText(), datajam);
                         System.out.println("respon WS BPJS : " + nameNode.path("code").asText() + " " + nameNode.path("message").asText() + "\n");
                     } catch (Exception e) {
                         System.out.println("Notif No.Rujuk : " + e);
