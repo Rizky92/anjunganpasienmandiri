@@ -2009,7 +2009,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
             "select referensi_mobilejkn_bpjs.*, maping_poli_bpjs.nm_poli_bpjs, maping_poli_bpjs.kd_poli_rs, maping_dokter_dpjpvclaim.nm_dokter_bpjs, maping_dokter_dpjpvclaim.kd_dokter from referensi_mobilejkn_bpjs " +
             "join maping_poli_bpjs on referensi_mobilejkn_bpjs.kodepoli = maping_poli_bpjs.kd_poli_bpjs join maping_dokter_dpjpvclaim on referensi_mobilejkn_bpjs.kodedokter = maping_dokter_dpjpvclaim.kd_dokter_bpjs " +
             "where referensi_mobilejkn_bpjs.nomorkartu = ? and referensi_mobilejkn_bpjs.tanggalperiksa = current_date() and referensi_mobilejkn_bpjs.status in ('Belum', 'Checkin') and tanggalperiksa = current_date() " +
-            "and referensi_mobilejkn_bpjs.no_rawat not in (select pemeriksaan_ralan.no_rawat from pemeriksaan_ralan where pemeriksaan_ralan.no_rawat = referensi_mobilejkn_bpjs.no_rawat)"
+            "and not exists(select * from pemeriksaan_ralan where pemeriksaan_ralan.no_rawat = referensi_mobilejkn_bpjs.no_rawat)"
         )) {
             psjkn.setString(1, noKartu);
             try (ResultSet rsjkn = psjkn.executeQuery()) {
