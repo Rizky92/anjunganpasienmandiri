@@ -389,7 +389,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         NoRujukMasuk.setText("0");
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-05-2024" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-09-2024" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         Tanggal.setOpaque(false);
@@ -472,11 +472,14 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         jPanel2.setPreferredSize(new java.awt.Dimension(390, 120));
         jPanel2.setLayout(null);
 
+        TPasien.setEditable(false);
         TPasien.setBackground(new java.awt.Color(245, 250, 240));
         TPasien.setHighlighter(null);
         jPanel2.add(TPasien);
         TPasien.setBounds(340, 10, 230, 30);
 
+        TNoRM.setEditable(false);
+        TNoRM.setBackground(new java.awt.Color(245, 250, 240));
         TNoRM.setHighlighter(null);
         jPanel2.add(TNoRM);
         TNoRM.setBounds(230, 10, 110, 30);
@@ -496,7 +499,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
 
         TanggalSEP.setEditable(false);
         TanggalSEP.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-05-2024" }));
+        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-09-2024" }));
         TanggalSEP.setDisplayFormat("dd-MM-yyyy");
         TanggalSEP.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         TanggalSEP.setOpaque(false);
@@ -513,7 +516,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
 
         TanggalRujuk.setEditable(false);
         TanggalRujuk.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-05-2024" }));
+        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-09-2024" }));
         TanggalRujuk.setDisplayFormat("dd-MM-yyyy");
         TanggalRujuk.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         TanggalRujuk.setOpaque(false);
@@ -755,7 +758,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
 
         TanggalKKL.setEditable(false);
         TanggalKKL.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalKKL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-05-2024" }));
+        TanggalKKL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-09-2024" }));
         TanggalKKL.setDisplayFormat("dd-MM-yyyy");
         TanggalKKL.setEnabled(false);
         TanggalKKL.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
@@ -2304,7 +2307,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                         System.out.println("URL : " + URL);
                         root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
                         nameNode = root.path("metadata");
-                        Sequel.logTaskid(TNoRw.getText(), rs.getString("nobooking"), "MobileJKN", "addantrean", nameNode.path("code").asText(), nameNode.path("message").asText(), datajam);
+                        Sequel.logTaskid(TNoRw.getText(), rs.getString("nobooking"), "MobileJKN", "addantrean", requestJson, nameNode.path("code").asText(), nameNode.path("message").asText(), root.asText(), datajam);
                         if (nameNode.path("code").asText().equals("200") || nameNode.path("code").asText().equals("208") || nameNode.path("message").asText().equals("Ok")) {
                             Sequel.mengupdateSmc("referensi_mobilejkn_bpjs", "statuskirim = 'Sudah'", "nobooking = ?", rs.getString("nobooking"));
                         }
