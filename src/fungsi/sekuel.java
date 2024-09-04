@@ -68,26 +68,22 @@ public final class sekuel {
         super();
     }
     
-    public void logTaskid(String noRawat, String jenisKunjungan, String taskid, String code, String message)
-    {
-        String query = "insert into referensi_mobilejkn_bpjs_taskid_response (no_rawat, jenispasien, taskid, code, message, waktu) values (?, ?, ?, ?, ?, now())";
-        
-        try {
-            ps = connect.prepareStatement(query);
-            try {
-                ps.setString(1, noRawat);
-                ps.setString(2, jenisKunjungan);
-                ps.setString(3, taskid);
-                ps.setString(4, code);
-                ps.setString(5, message);
-                ps.executeUpdate();
-            } catch (Exception e) {
-                System.out.println("Notif : " + e);
-            } finally {
-                if (ps != null) {
-                    ps.close();
-                }
-            }
+    public void logTaskid(String norawat, String kodebooking, String jenisPasien, String taskid, String request, String code, String message, String response, String wakturs) {
+        try (PreparedStatement ps = connect.prepareStatement(
+            "insert into referensi_mobilejkn_bpjs_taskid_response2 " +
+            "(no_rawat, kodebooking, jenispasien, taskid, request, code, message, response, waktu, waktu_rs) " +
+            "values (?, ?, ?, ?, ?, ?, ?, ?, now(), ?)"
+        )) {
+            ps.setString(1, norawat);
+            ps.setString(2, kodebooking);
+            ps.setString(3, jenisPasien);
+            ps.setString(4, taskid);
+            ps.setString(5, request);
+            ps.setString(6, code);
+            ps.setString(7, message);
+            ps.setString(8, response);
+            ps.setString(9, wakturs);
+            ps.executeUpdate();
         } catch (Exception e) {
             System.out.println("Notif : " + e);
         }

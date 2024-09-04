@@ -389,7 +389,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         NoRujukMasuk.setText("0");
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-05-2024" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-09-2024" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         Tanggal.setOpaque(false);
@@ -472,11 +472,14 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         jPanel2.setPreferredSize(new java.awt.Dimension(390, 120));
         jPanel2.setLayout(null);
 
+        TPasien.setEditable(false);
         TPasien.setBackground(new java.awt.Color(245, 250, 240));
         TPasien.setHighlighter(null);
         jPanel2.add(TPasien);
         TPasien.setBounds(340, 10, 230, 30);
 
+        TNoRM.setEditable(false);
+        TNoRM.setBackground(new java.awt.Color(245, 250, 240));
         TNoRM.setHighlighter(null);
         jPanel2.add(TNoRM);
         TNoRM.setBounds(230, 10, 110, 30);
@@ -496,7 +499,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
 
         TanggalSEP.setEditable(false);
         TanggalSEP.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-05-2024" }));
+        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-09-2024" }));
         TanggalSEP.setDisplayFormat("dd-MM-yyyy");
         TanggalSEP.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         TanggalSEP.setOpaque(false);
@@ -513,7 +516,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
 
         TanggalRujuk.setEditable(false);
         TanggalRujuk.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-05-2024" }));
+        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-09-2024" }));
         TanggalRujuk.setDisplayFormat("dd-MM-yyyy");
         TanggalRujuk.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         TanggalRujuk.setOpaque(false);
@@ -755,7 +758,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
 
         TanggalKKL.setEditable(false);
         TanggalKKL.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalKKL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "14-05-2024" }));
+        TanggalKKL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-09-2024" }));
         TanggalKKL.setDisplayFormat("dd-MM-yyyy");
         TanggalKKL.setEnabled(false);
         TanggalKKL.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
@@ -2065,6 +2068,166 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                             Status.setText(response.path("statusPeserta").path("kode").asText() + " " + response.path("statusPeserta").path("keterangan").asText());
                             TglLahir.setText(response.path("tglLahir").asText());
                             JenisPeserta.setText(response.path("jenisPeserta").path("keterangan").asText());
+                            if (jeniskunjungan.equals("1")) {
+                                // RUJUKAN FKTP
+                                AsalRujukan.setSelectedIndex(0);
+                                try {
+                                    URL = URLAPIBPJS + "/Rujukan/" + rsjkn.getString("nomorreferensi");
+                                    System.out.println("URL : " + URL);
+                                    utc = String.valueOf(api.GetUTCdatetimeAsString());
+                                    headers = new HttpHeaders();
+                                    headers.setContentType(MediaType.APPLICATION_JSON);
+                                    headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
+                                    headers.add("X-Timestamp", utc);
+                                    headers.add("X-Signature", api.getHmac(utc));
+                                    headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
+                                    requestEntity = new HttpEntity(headers);
+                                    root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
+                                    nameNode = root.path("metaData");
+                                    if (nameNode.path("code").asText().equals("200")) {
+                                        response = mapper.readTree(api.Decrypt(root.path("response").asText(), utc)).path("rujukan");
+                                        KdPenyakit.setText(response.path("diagnosa").path("kode").asText());
+                                        NmPenyakit.setText(response.path("diagnosa").path("nama").asText());
+                                        NoRujukan.setText(response.path("noKunjungan").asText());
+                                        KdPpkRujukan.setText(response.path("provPerujuk").path("kode").asText());
+                                        NmPpkRujukan.setText(response.path("provPerujuk").path("nama").asText());
+                                        Valid.SetTgl(TanggalRujuk, response.path("tglKunjungan").asText());
+                                    } else {
+                                        System.out.println("Notif : " + nameNode.asText());
+                                        JOptionPane.showMessageDialog(rootPane, nameNode.path("message").asText());
+                                        emptTeks();
+                                    }
+                                } catch (Exception e) {
+                                    System.out.println("Notif : " + e);
+                                    if (e.toString().contains("UnknownHostException")) {
+                                        JOptionPane.showMessageDialog(rootPane, "Koneksi ke Server BPJS terputus...!!!");
+                                    }
+                                    emptTeks();
+                                }
+                            } else if (jeniskunjungan.equals("4")) {
+                                // RUJUKAN FKTL
+                                AsalRujukan.setSelectedIndex(1);
+                                try {
+                                    URL = URLAPIBPJS + "/Rujukan/RS/" + rsjkn.getString("nomorreferensi");
+                                    System.out.println("URL : " + URL);
+                                    utc = String.valueOf(api.GetUTCdatetimeAsString());
+                                    headers = new HttpHeaders();
+                                    headers.setContentType(MediaType.APPLICATION_JSON);
+                                    headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
+                                    headers.add("X-Timestamp", utc);
+                                    headers.add("X-Signature", api.getHmac(utc));
+                                    headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
+                                    requestEntity = new HttpEntity(headers);
+                                    root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
+                                    nameNode = root.path("metaData");
+                                    if (nameNode.path("code").asText().equals("200")) {
+                                        response = mapper.readTree(api.Decrypt(root.path("response").asText(), utc)).path("rujukan");
+                                        KdPenyakit.setText(response.path("diagnosa").path("kode").asText());
+                                        NmPenyakit.setText(response.path("diagnosa").path("nama").asText());
+                                        NoRujukan.setText(response.path("noKunjungan").asText());
+                                        KdPpkRujukan.setText(response.path("provPerujuk").path("kode").asText());
+                                        NmPpkRujukan.setText(response.path("provPerujuk").path("nama").asText());
+                                        Valid.SetTgl(TanggalRujuk, response.path("tglKunjungan").asText());
+                                    } else {
+                                        System.out.println("Notif : " + nameNode.asText());
+                                        JOptionPane.showMessageDialog(rootPane, nameNode.path("message").asText());
+                                        emptTeks();
+                                    }
+                                } catch (Exception e) {
+                                    System.out.println("Notif : " + e);
+                                    if (e.toString().contains("UnknownHostException")) {
+                                        JOptionPane.showMessageDialog(rootPane, "Koneksi ke Server BPJS terputus...!!!");
+                                    }
+                                    emptTeks();
+                                }
+                            } else if (jeniskunjungan.equals("3")) {
+                                // CEK JENIS KONTROL DULU
+                                try (PreparedStatement pskontrol = koneksi.prepareStatement(
+                                    "select bridging_surat_kontrol_bpjs.*, left(bridging_sep.asal_rujukan, 1) as asal_rujukan, bridging_sep.jnspelayanan, bridging_sep.no_rujukan, bridging_sep.klsrawat " +
+                                    "from bridging_surat_kontrol_bpjs join bridging_sep on bridging_surat_kontrol_bpjs.no_sep = bridging_sep.no_sep where bridging_surat_kontrol_bpjs.no_surat = ?"
+                                )) {
+                                    pskontrol.setString(1, rsjkn.getString("nomorreferensi"));
+                                    try (ResultSet rskontrol = pskontrol.executeQuery()) {
+                                        if (rskontrol.next()) {
+                                            if (! rskontrol.getString("tgl_rencana").equals(Valid.SetTgl(TanggalSEP.getSelectedItem().toString()))) {
+                                                updateSuratKontrol(
+                                                    rskontrol.getString("no_surat"), rskontrol.getString("no_sep"), rsjkn.getString("nomorkartu"), Valid.SetTgl(TanggalSEP.getSelectedItem().toString()),
+                                                    rsjkn.getString("kodedokter"), rsjkn.getString("nm_dokter_bpjs"), rsjkn.getString("kodepoli"), rsjkn.getString("nm_poli_bpjs")
+                                                );
+                                            }
+                                            if (rskontrol.getString("jnspelayanan").equals("1")) {
+                                                // KONTROL POST RANAP
+                                                KdPenyakit.setText("Z09.8");
+                                                NmPenyakit.setText("Z09.8 - Follow-up examination after other treatment for other conditions");
+                                                NoRujukan.setText(rskontrol.getString("no_sep"));
+                                                TujuanKunjungan.setSelectedIndex(0);
+                                                FlagProsedur.setSelectedIndex(0);
+                                                Penunjang.setSelectedIndex(0);
+                                                AsesmenPoli.setSelectedIndex(0);
+                                                AsalRujukan.setSelectedIndex(1);
+                                                NoSKDP.setText(rskontrol.getString("no_surat"));
+                                                KdPpkRujukan.setText(Sequel.cariIsiSmc("select kode_ppk from setting"));
+                                                NmPpkRujukan.setText(Sequel.cariIsiSmc("select nama_instansi from setting"));
+                                            } else {
+                                                // KONTROL POLI
+                                                try {
+                                                    if (rskontrol.getString("asal_rujukan").equals("1")) {
+                                                        URL = URLAPIBPJS + "/Rujukan/" + rskontrol.getString("no_rujukan");
+                                                        AsalRujukan.setSelectedIndex(0);
+                                                    } else if (rskontrol.getString("asal_rujukan").equals("2")) {
+                                                        URL = URLAPIBPJS + "/Rujukan/RS/" + rskontrol.getString("no_rujukan");
+                                                        AsalRujukan.setSelectedIndex(1);
+                                                    }
+                                                    utc = String.valueOf(api.GetUTCdatetimeAsString());
+                                                    headers = new HttpHeaders();
+                                                    headers.setContentType(MediaType.APPLICATION_JSON);
+                                                    headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
+                                                    headers.add("X-Timestamp", utc);
+                                                    headers.add("X-Signature", api.getHmac(utc));
+                                                    headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
+                                                    requestEntity = new HttpEntity(headers);
+                                                    root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
+                                                    nameNode = root.path("metaData");
+                                                    System.out.println("URL : " + URL);
+                                                    if (nameNode.path("code").asText().equals("200")) {
+                                                        response = mapper.readTree(api.Decrypt(root.path("response").asText(), utc)).path("rujukan");
+                                                        KdPenyakit.setText(response.path("diagnosa").path("kode").asText());
+                                                        NmPenyakit.setText(response.path("diagnosa").path("nama").asText());
+                                                        NoRujukan.setText(response.path("noKunjungan").asText());
+                                                        NoSKDP.setText(rskontrol.getString("no_surat"));
+                                                        TujuanKunjungan.setSelectedIndex(2);
+                                                        FlagProsedur.setSelectedIndex(0);
+                                                        Penunjang.setSelectedIndex(0);
+                                                        AsesmenPoli.setSelectedIndex(5);
+                                                        KdPpkRujukan.setText(response.path("provPerujuk").path("kode").asText());
+                                                        NmPpkRujukan.setText(response.path("provPerujuk").path("nama").asText());
+                                                        Valid.SetTgl(TanggalRujuk, response.path("tglKunjungan").asText());
+                                                    } else {
+                                                        System.out.println("Notif : " + nameNode.asText());
+                                                        JOptionPane.showMessageDialog(rootPane, nameNode.path("message").asText());
+                                                        emptTeks();
+                                                    }
+                                                } catch (Exception e) {
+                                                    System.out.println("Notifikasi Peserta : " + e);
+                                                    if (e.toString().contains("UnknownHostException")) {
+                                                        JOptionPane.showMessageDialog(rootPane, "Koneksi ke server BPJS terputus...!");
+                                                    }
+                                                    emptTeks();
+                                                }
+                                            }
+                                        } else {
+                                            JOptionPane.showMessageDialog(rootPane, "Maaf, rujukan kontrol pasien tidak ditemukan!\nSilahkan hubungi administrasi.");
+                                            emptTeks();
+                                        }
+                                    }
+                                } catch (Exception e) {
+                                    JOptionPane.showMessageDialog(rootPane, "Maaf, rujukan kontrol pasien tidak ditemukan!\nSilahkan hubungi administrasi.");
+                                    emptTeks();
+                                }
+                            } else {
+                                JOptionPane.showMessageDialog(rootPane, "Maaf, antrian JKN tidak ditemukan!\nSilahkan hubungi administrasi.");
+                                emptTeks();
+                            }
                         } else {
                             System.out.println("Notif : " + nameNode.asText());
                             JOptionPane.showMessageDialog(rootPane, nameNode.path("message").asText());
@@ -2075,166 +2238,6 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                         if (e.toString().contains("UnknownHostException")) {
                             JOptionPane.showMessageDialog(rootPane, "Koneksi ke server BPJS terputus...!");
                         }
-                        emptTeks();
-                    }
-                    if (jeniskunjungan.equals("1")) {
-                        // RUJUKAN FKTP
-                        AsalRujukan.setSelectedIndex(0);
-                        try {
-                            URL = URLAPIBPJS + "/Rujukan/" + rsjkn.getString("nomorreferensi");
-                            System.out.println("URL : " + URL);
-                            utc = String.valueOf(api.GetUTCdatetimeAsString());
-                            headers = new HttpHeaders();
-                            headers.setContentType(MediaType.APPLICATION_JSON);
-                            headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
-                            headers.add("X-Timestamp", utc);
-                            headers.add("X-Signature", api.getHmac(utc));
-                            headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
-                            requestEntity = new HttpEntity(headers);
-                            root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
-                            nameNode = root.path("metaData");
-                            if (nameNode.path("code").asText().equals("200")) {
-                                response = mapper.readTree(api.Decrypt(root.path("response").asText(), utc)).path("rujukan");
-                                KdPenyakit.setText(response.path("diagnosa").path("kode").asText());
-                                NmPenyakit.setText(response.path("diagnosa").path("nama").asText());
-                                NoRujukan.setText(response.path("noKunjungan").asText());
-                                KdPpkRujukan.setText(response.path("provPerujuk").path("kode").asText());
-                                NmPpkRujukan.setText(response.path("provPerujuk").path("nama").asText());
-                                Valid.SetTgl(TanggalRujuk, response.path("tglKunjungan").asText());
-                            } else {
-                                System.out.println("Notif : " + nameNode.asText());
-                                JOptionPane.showMessageDialog(rootPane, nameNode.path("message").asText());
-                                emptTeks();
-                            }
-                        } catch (Exception e) {
-                            System.out.println("Notif : " + e);
-                            if (e.toString().contains("UnknownHostException")) {
-                                JOptionPane.showMessageDialog(rootPane, "Koneksi ke Server BPJS terputus...!!!");
-                            }
-                            emptTeks();
-                        }
-                    } else if (jeniskunjungan.equals("4")) {
-                        // RUJUKAN FKTL
-                        AsalRujukan.setSelectedIndex(1);
-                        try {
-                            URL = URLAPIBPJS + "/Rujukan/RS/" + rsjkn.getString("nomorreferensi");
-                            System.out.println("URL : " + URL);
-                            utc = String.valueOf(api.GetUTCdatetimeAsString());
-                            headers = new HttpHeaders();
-                            headers.setContentType(MediaType.APPLICATION_JSON);
-                            headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
-                            headers.add("X-Timestamp", utc);
-                            headers.add("X-Signature", api.getHmac(utc));
-                            headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
-                            requestEntity = new HttpEntity(headers);
-                            root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
-                            nameNode = root.path("metaData");
-                            if (nameNode.path("code").asText().equals("200")) {
-                                response = mapper.readTree(api.Decrypt(root.path("response").asText(), utc)).path("rujukan");
-                                KdPenyakit.setText(response.path("diagnosa").path("kode").asText());
-                                NmPenyakit.setText(response.path("diagnosa").path("nama").asText());
-                                NoRujukan.setText(response.path("noKunjungan").asText());
-                                KdPpkRujukan.setText(response.path("provPerujuk").path("kode").asText());
-                                NmPpkRujukan.setText(response.path("provPerujuk").path("nama").asText());
-                                Valid.SetTgl(TanggalRujuk, response.path("tglKunjungan").asText());
-                            } else {
-                                System.out.println("Notif : " + nameNode.asText());
-                                JOptionPane.showMessageDialog(rootPane, nameNode.path("message").asText());
-                                emptTeks();
-                            }
-                        } catch (Exception e) {
-                            System.out.println("Notif : " + e);
-                            if (e.toString().contains("UnknownHostException")) {
-                                JOptionPane.showMessageDialog(rootPane, "Koneksi ke Server BPJS terputus...!!!");
-                            }
-                            emptTeks();
-                        }
-                    } else if (jeniskunjungan.equals("3")) {
-                        // CEK JENIS KONTROL DULU
-                        try (PreparedStatement pskontrol = koneksi.prepareStatement(
-                            "select bridging_surat_kontrol_bpjs.*, left(bridging_sep.asal_rujukan, 1) as asal_rujukan, bridging_sep.jnspelayanan, bridging_sep.no_rujukan, bridging_sep.klsrawat " +
-                            "from bridging_surat_kontrol_bpjs join bridging_sep on bridging_surat_kontrol_bpjs.no_sep = bridging_sep.no_sep where bridging_surat_kontrol_bpjs.no_surat = ?"
-                        )) {
-                            pskontrol.setString(1, rsjkn.getString("nomorreferensi"));
-                            try (ResultSet rskontrol = pskontrol.executeQuery()) {
-                                if (rskontrol.next()) {
-                                    if (! rskontrol.getString("tgl_rencana").equals(Valid.SetTgl(TanggalSEP.getSelectedItem().toString()))) {
-                                        updateSuratKontrol(
-                                            rskontrol.getString("no_surat"), rskontrol.getString("no_sep"), rsjkn.getString("nomorkartu"), Valid.SetTgl(TanggalSEP.getSelectedItem().toString()),
-                                            rsjkn.getString("kodedokter"), rsjkn.getString("nm_dokter_bpjs"), rsjkn.getString("kodepoli"), rsjkn.getString("nm_poli_bpjs")
-                                        );
-                                    }
-                                    if (rskontrol.getString("jnspelayanan").equals("1")) {
-                                        // KONTROL POST RANAP
-                                        KdPenyakit.setText("Z09.8");
-                                        NmPenyakit.setText("Z09.8 - Follow-up examination after other treatment for other conditions");
-                                        NoRujukan.setText(rskontrol.getString("no_sep"));
-                                        TujuanKunjungan.setSelectedIndex(0);
-                                        FlagProsedur.setSelectedIndex(0);
-                                        Penunjang.setSelectedIndex(0);
-                                        AsesmenPoli.setSelectedIndex(0);
-                                        AsalRujukan.setSelectedIndex(1);
-                                        NoSKDP.setText(rskontrol.getString("no_surat"));
-                                        KdPpkRujukan.setText(Sequel.cariIsiSmc("select kode_ppk from setting"));
-                                        NmPpkRujukan.setText(Sequel.cariIsiSmc("select nama_instansi from setting"));
-                                    } else {
-                                        // KONTROL POLI
-                                        try {
-                                            if (rskontrol.getString("asal_rujukan").equals("1")) {
-                                                URL = URLAPIBPJS + "/Rujukan/" + rskontrol.getString("no_rujukan");
-                                                AsalRujukan.setSelectedIndex(0);
-                                            } else if (rskontrol.getString("asal_rujukan").equals("2")) {
-                                                URL = URLAPIBPJS + "/Rujukan/RS/" + rskontrol.getString("no_rujukan");
-                                                AsalRujukan.setSelectedIndex(1);
-                                            }
-                                            utc = String.valueOf(api.GetUTCdatetimeAsString());
-                                            headers = new HttpHeaders();
-                                            headers.setContentType(MediaType.APPLICATION_JSON);
-                                            headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
-                                            headers.add("X-Timestamp", utc);
-                                            headers.add("X-Signature", api.getHmac(utc));
-                                            headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
-                                            requestEntity = new HttpEntity(headers);
-                                            root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
-                                            nameNode = root.path("metaData");
-                                            System.out.println("URL : " + URL);
-                                            if (nameNode.path("code").asText().equals("200")) {
-                                                response = mapper.readTree(api.Decrypt(root.path("response").asText(), utc)).path("rujukan");
-                                                KdPenyakit.setText(response.path("diagnosa").path("kode").asText());
-                                                NmPenyakit.setText(response.path("diagnosa").path("nama").asText());
-                                                NoRujukan.setText(response.path("noKunjungan").asText());
-                                                NoSKDP.setText(rskontrol.getString("no_surat"));
-                                                TujuanKunjungan.setSelectedIndex(2);
-                                                FlagProsedur.setSelectedIndex(0);
-                                                Penunjang.setSelectedIndex(0);
-                                                AsesmenPoli.setSelectedIndex(5);
-                                                KdPpkRujukan.setText(response.path("provPerujuk").path("kode").asText());
-                                                NmPpkRujukan.setText(response.path("provPerujuk").path("nama").asText());
-                                                Valid.SetTgl(TanggalRujuk, response.path("tglKunjungan").asText());
-                                            } else {
-                                                System.out.println("Notif : " + nameNode.asText());
-                                                JOptionPane.showMessageDialog(rootPane, nameNode.path("message").asText());
-                                                emptTeks();
-                                            }
-                                        } catch (Exception e) {
-                                            System.out.println("Notifikasi Peserta : " + e);
-                                            if (e.toString().contains("UnknownHostException")) {
-                                                JOptionPane.showMessageDialog(rootPane, "Koneksi ke server BPJS terputus...!");
-                                            }
-                                            emptTeks();
-                                        }
-                                    }
-                                } else {
-                                    JOptionPane.showMessageDialog(rootPane, "Maaf, rujukan kontrol pasien tidak ditemukan!\nSilahkan hubungi administrasi.");
-                                    emptTeks();
-                                }
-                            }
-                        } catch (Exception e) {
-                            JOptionPane.showMessageDialog(rootPane, "Maaf, rujukan kontrol pasien tidak ditemukan!\nSilahkan hubungi administrasi.");
-                            emptTeks();
-                        }
-                    } else {
-                        JOptionPane.showMessageDialog(rootPane, "Maaf, antrian JKN tidak ditemukan!\nSilahkan hubungi administrasi.");
                         emptTeks();
                     }
                 } else {
@@ -2304,7 +2307,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                         System.out.println("URL : " + URL);
                         root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
                         nameNode = root.path("metadata");
-                        Sequel.logTaskid(rs.getString("no_rawat"), "JKN", "-", nameNode.path("code").asText(), nameNode.path("message").asText());
+                        Sequel.logTaskid(TNoRw.getText(), rs.getString("nobooking"), "MobileJKN", "addantrean", requestJson, nameNode.path("code").asText(), nameNode.path("message").asText(), root.asText(), datajam);
                         if (nameNode.path("code").asText().equals("200") || nameNode.path("code").asText().equals("208") || nameNode.path("message").asText().equals("Ok")) {
                             Sequel.mengupdateSmc("referensi_mobilejkn_bpjs", "statuskirim = 'Sudah'", "nobooking = ?", rs.getString("nobooking"));
                         }
