@@ -379,36 +379,17 @@ public class DlgCekSKDPKontrol extends javax.swing.JDialog {
     }//GEN-LAST:event_BtnTutupActionPerformed
 
     private void BtnKonfirmasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKonfirmasiActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         if (InputSKDP.getText().isBlank()) {
             JOptionPane.showMessageDialog(null, "Isian masih kosong..!!");
             InputSKDP.requestFocus();
-            return;
-        }
-
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-
-        if (Sequel.cariBooleanSmc("select * from bridging_surat_kontrol_bpjs where no_surat = ?", InputSKDP.getText())) {
-            String tanggalKontrol = Sequel.cariIsiSmc("select tgl_rencana from bridging_surat_kontrol_bpjs where no_surat = ?", InputSKDP.getText());
-            if (Sequel.cariIntegerSmc("select datediff(?, current_date())", tanggalKontrol) > 0) {
+        } else if (Sequel.cariBooleanSmc("select * from referensi_mobilejkn_bpjs where nomorreferensi = ? and tanggalperiksa = current_date()", InputSKDP.getText())) {
+            JOptionPane.showMessageDialog(null, "Pasien telah mendaftar online menggunakan MobileJKN.\nSilahkan cekin di menu \"Cek In MobileJKN\"..!!");
+            InputSKDP.setText("");
+        } else if (Sequel.cariBooleanSmc("select * from bridging_surat_kontrol_bpjs where no_surat = ?", InputSKDP.getText())) {
+            if (Sequel.cariIntegerSmc("select datediff((select tgl_rencana from bridging_surat_kontrol_bpjs where no_surat = ?), current_date())", InputSKDP.getText()) > 0) {
                 JOptionPane.showMessageDialog(null, "Jadwal kontrol pasien tidak boleh dimajukan..!!");
                 InputSKDP.setText("");
-            } else if (Sequel.cariBooleanSmc("select * from referensi_mobilejkn_bpjs where nomorreferensi = ? and tanggalperiksa = current_date()", InputSKDP.getText())) {
-                JOptionPane.showMessageDialog(null, "Pasien telah mendaftar online menggunakan MobileJKN.\nSilahkan cekin di menu \"Cek In MobileJKN\"..!!");
-                InputSKDP.setText("");
-            } else if (Sequel.cariBooleanSmc("select * from referensi_mobilejkn_bpjs where nomorreferensi = ? and status = 'Belum'", InputSKDP.getText())) {
-                tanggalKontrol = Sequel.cariIsiSmc("select date_format(tanggalperiksa, '%d-%m-%Y') from referensi_mobilejkn_bpjs where nomorreferensi = ? and status = 'Belum'", InputSKDP.getText());
-                int i = JOptionPane.showConfirmDialog(null, "Pasien telah mendaftar online menggunakan MobileJKN pada tanggal " + tanggalKontrol
-                    + ".\nApakah tetap mau mendaftar pada hari ini?\n\nCatatan: Melanjutkan pendaftaran pada hari ini akan membatalkan pendaftaran online MobileJKN pasien.",
-                    "Konfirmasi Pendaftaran", JOptionPane.YES_NO_OPTION);
-                if (i == JOptionPane.YES_OPTION) {
-                    form.tampilKontrol2(InputSKDP.getText());
-                    form.setSize(this.getWidth(), this.getHeight());
-                    form.setLocationRelativeTo(jPanel1);
-                    this.dispose();
-                    form.setVisible(true);
-                } else {
-                    InputSKDP.setText("");
-                }
             } else {
                 form.tampilKontrol(InputSKDP.getText());
                 form.setSize(this.getWidth(), this.getHeight());

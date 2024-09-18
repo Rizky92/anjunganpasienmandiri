@@ -3292,6 +3292,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
     }
     
     private void SimpanAntrianOnSite() {
+        int angkaantrean = Integer.parseInt(NoReg.getText());
         if ((!NoRujukan.getText().equals("")) || (!NoSKDP.getText().equals(""))) {
             if (TujuanKunjungan.getSelectedItem().toString().equals("0. Normal") && FlagProsedur.getSelectedItem().toString().equals("") && Penunjang.getSelectedItem().toString().equals("") && AsesmenPoli.getSelectedItem().toString().equals("")) {
                 if (AsalRujukan.getSelectedIndex() == 0) {
@@ -3393,11 +3394,11 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                             + "\"jeniskunjungan\": " + jeniskunjungan + ","
                             + "\"nomorreferensi\": \"" + NoSKDP.getText() + "\","
                             + "\"nomorantrean\": \"" + NoReg.getText() + "\","
-                            + "\"angkaantrean\": " + Integer.parseInt(NoReg.getText()) + ","
+                            + "\"angkaantrean\": " + angkaantrean + ","
                             + "\"estimasidilayani\": " + parsedDate.getTime() + ","
-                            + "\"sisakuotajkn\": " + (kuota - Integer.parseInt(NoReg.getText())) + ","
+                            + "\"sisakuotajkn\": " + (kuota - angkaantrean) + ","
                             + "\"kuotajkn\": " + kuota + ","
-                            + "\"sisakuotanonjkn\": " + (kuota - Integer.parseInt(NoReg.getText())) + ","
+                            + "\"sisakuotanonjkn\": " + (kuota - angkaantrean) + ","
                             + "\"kuotanonjkn\": " + kuota + ","
                             + "\"keterangan\": \"Peserta harap 30 menit lebih awal guna pencatatan administrasi.\""
                             + "}";
@@ -3407,7 +3408,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                         System.out.println(requestEntity);
                         root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
                         nameNode = root.path("metadata");
-                        Sequel.logTaskid(TNoRw.getText(), TNoRw.getText(), "Onsite", "addantrean", requestJson, nameNode.path("code").asText(), nameNode.path("message").asText(), root.asText(), datajam);
+                        Sequel.logTaskid(TNoRw.getText(), TNoRw.getText(), "Onsite", "addantrean", requestJson, nameNode.path("code").asText(), nameNode.path("message").asText(), root.toString(), datajam);
                         System.out.println("respon WS BPJS Kirim Pakai SKDP : " + nameNode.path("code").asText() + " " + nameNode.path("message").asText() + "\n");
                     } catch (Exception e) {
                         System.out.println("Notif SKDP : " + e);
@@ -3440,11 +3441,11 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                             + "\"jeniskunjungan\": " + jeniskunjungan + ","
                             + "\"nomorreferensi\": \"" + NoRujukan.getText() + "\","
                             + "\"nomorantrean\": \"" + NoReg.getText() + "\","
-                            + "\"angkaantrean\": " + Integer.parseInt(NoReg.getText()) + ","
+                            + "\"angkaantrean\": " + angkaantrean + ","
                             + "\"estimasidilayani\": " + parsedDate.getTime() + ","
-                            + "\"sisakuotajkn\": " + (kuota - Integer.parseInt(NoReg.getText())) + ","
+                            + "\"sisakuotajkn\": " + (kuota - angkaantrean) + ","
                             + "\"kuotajkn\": " + kuota + ","
-                            + "\"sisakuotanonjkn\": " + (kuota - Integer.parseInt(NoReg.getText())) + ","
+                            + "\"sisakuotanonjkn\": " + (kuota - angkaantrean) + ","
                             + "\"kuotanonjkn\": " + kuota + ","
                             + "\"keterangan\": \"Peserta harap 30 menit lebih awal guna pencatatan administrasi.\""
                             + "}";
@@ -3454,7 +3455,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                         System.out.println("URL Kirim Pakai No.Rujuk : " + URL);
                         root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
                         nameNode = root.path("metadata");
-                        Sequel.logTaskid(TNoRw.getText(), TNoRw.getText(), "Onsite", "addantrean", requestJson, nameNode.path("code").asText(), nameNode.path("message").asText(), root.asText(), datajam);
+                        Sequel.logTaskid(TNoRw.getText(), TNoRw.getText(), "Onsite", "addantrean", requestJson, nameNode.path("code").asText(), nameNode.path("message").asText(), root.toString(), datajam);
                         System.out.println("respon WS BPJS : " + nameNode.path("code").asText() + " " + nameNode.path("message").asText() + "\n");
                     } catch (Exception e) {
                         System.out.println("Notif No.Rujuk : " + e);

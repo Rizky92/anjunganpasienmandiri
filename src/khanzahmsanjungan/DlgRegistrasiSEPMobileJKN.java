@@ -2014,6 +2014,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
             psjkn.setString(1, noKartu);
             try (ResultSet rsjkn = psjkn.executeQuery()) {
                 if (rsjkn.next()) {
+                    nobooking = rsjkn.getString("nobooking");
                     jeniskunjungan = rsjkn.getString("jeniskunjungan").substring(0, 1);
                     TNoRw.setText(rsjkn.getString("no_rawat"));
                     lblNoRawat.setText(TNoRw.getText());
@@ -2029,9 +2030,6 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                     NoKartu.setText(rsjkn.getString("nomorkartu"));
                     TNoRM.setText(rsjkn.getString("norm"));
                     NIK.setText(rsjkn.getString("nik"));
-                    if (NIK.getText().contains("null") || NIK.getText().isBlank()) {
-                        NIK.setText(Sequel.cariIsiSmc("select no_ktp from pasien where no_rkm_medis = ?", TNoRM.getText()));
-                    }
                     NoTelp.setText(rsjkn.getString("nohp"));
                     if (NoTelp.getText().contains("null") || NoTelp.getText().isBlank()) {
                         NoTelp.setText(Sequel.cariIsiSmc("select no_tlp from pasien where no_rkm_medis = ?", TNoRM.getText()));
@@ -2253,19 +2251,19 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
     }
 
     public void SimpanAntrianOnSite() {
-        if (Sequel.cariBooleanSmc("select * from referensi_mobilejkn_bpjs where no_rawat = ? and status = 'Belum'", TNoRw.getText())) {
-            Sequel.mengupdateSmc("referensi_mobilejkn_bpjs", "validasi = now(), status = 'Checkin'", "no_rawat = ? and status = 'Belum'", TNoRw.getText());
-            Sequel.mengupdateSmc("reg_periksa", "jam_reg = current_time()", "no_rawat = ? and stts != 'Batal'", TNoRw.getText());
+        if (Sequel.cariBooleanSmc("select * from referensi_mobilejkn_bpjs where referensi_mobilejkn_bpjs.nobooking = ? and referensi_mobilejkn_bpjs.status = 'Belum'", nobooking)) {
+            Sequel.mengupdateSmc("referensi_mobilejkn_bpjs", "referensi_mobilejkn_bpjs.validasi = now(), referensi_mobilejkn_bpjs.status = 'Checkin'", "referensi_mobilejkn_bpjs.nobooking = ? and referensi_mobilejkn_bpjs.status = 'Belum'", nobooking);
+            Sequel.mengupdateSmc("reg_periksa", "reg_periksa.jam_reg = current_time()", "reg_periksa.no_rawat = ? and stts != 'Batal'", TNoRw.getText());
         }
         try {
             ps = koneksi.prepareStatement(
                 "select referensi_mobilejkn_bpjs.*, reg_periksa.no_rkm_medis, pasien.nm_pasien, poliklinik.nm_poli, dokter.nm_dokter from referensi_mobilejkn_bpjs " +
                 "join reg_periksa on referensi_mobilejkn_bpjs.no_rawat = reg_periksa.no_rawat join pasien on reg_periksa.no_rkm_medis = pasien.no_rkm_medis " +
                 "join poliklinik on reg_periksa.kd_poli = poliklinik.kd_poli join dokter on reg_periksa.kd_dokter = dokter.kd_dokter " +
-                "where referensi_mobilejkn_bpjs.statuskirim = 'Belum' and referensi_mobilejkn_bpjs.no_rawat = ? and referensi_mobilejkn.status = 'Checkin'"
+                "where referensi_mobilejkn_bpjs.statuskirim = 'Belum' and referensi_mobilejkn_bpjs.nobooking = ? and referensi_mobilejkn.status = 'Checkin'"
             );
             try {
-                ps.setString(1, TNoRw.getText());
+                ps.setString(1, nobooking);
                 rs = ps.executeQuery();
                 while (rs.next()) {
                     try {
@@ -2281,7 +2279,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                             + "\"jenispasien\": \"JKN\","
                             + "\"nomorkartu\": \"" + rs.getString("nomorkartu") + "\","
                             + "\"nik\": \"" + rs.getString("nik") + "\","
-                            + "\"nohp\": \"" + rs.getString("nohp") + "\","
+                            + "\"nohp\": \"" + NoTelp.getText().trim() + "\","
                             + "\"kodepoli\": \"" + rs.getString("kodepoli") + "\","
                             + "\"namapoli\": \"" + rs.getString("nm_poli") + "\","
                             + "\"pasienbaru\": " + rs.getString("pasienbaru") + ","
@@ -2293,12 +2291,12 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                             + "\"jeniskunjungan\": " + rs.getString("jeniskunjungan").substring(0, 1) + ","
                             + "\"nomorreferensi\": \"" + rs.getString("nomorreferensi") + "\","
                             + "\"nomorantrean\": \"" + rs.getString("nomorantrean") + "\","
-                            + "\"angkaantrean\": " + Integer.parseInt(rs.getString("angkaantrean")) + ","
+                            + "\"angkaantrean\": " + rs.getInt("angkaantrean") + ","
                             + "\"estimasidilayani\": " + rs.getString("estimasidilayani") + ","
-                            + "\"sisakuotajkn\": " + rs.getString("sisakuotajkn") + ","
-                            + "\"kuotajkn\": " + rs.getString("kuotajkn") + ","
-                            + "\"sisakuotanonjkn\": " + rs.getString("sisakuotanonjkn") + ","
-                            + "\"kuotanonjkn\": " + rs.getString("kuotanonjkn") + ","
+                            + "\"sisakuotajkn\": " + rs.getInt("sisakuotajkn") + ","
+                            + "\"kuotajkn\": " + rs.getInt("kuotajkn") + ","
+                            + "\"sisakuotanonjkn\": " + rs.getInt("sisakuotanonjkn") + ","
+                            + "\"kuotanonjkn\": " + rs.getInt("kuotanonjkn") + ","
                             + "\"keterangan\": \"Peserta harap 30 menit lebih awal guna pencatatan administrasi.\""
                             + "}";
                         System.out.println("JSON : " + requestJson);
@@ -2307,7 +2305,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                         System.out.println("URL : " + URL);
                         root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
                         nameNode = root.path("metadata");
-                        Sequel.logTaskid(TNoRw.getText(), rs.getString("nobooking"), "MobileJKN", "addantrean", requestJson, nameNode.path("code").asText(), nameNode.path("message").asText(), root.asText(), datajam);
+                        Sequel.logTaskid(TNoRw.getText(), rs.getString("nobooking"), "MobileJKN", "addantrean", requestJson, nameNode.path("code").asText(), nameNode.path("message").asText(), root.toString(), datajam);
                         if (nameNode.path("code").asText().equals("200") || nameNode.path("code").asText().equals("208") || nameNode.path("message").asText().equals("Ok")) {
                             Sequel.mengupdateSmc("referensi_mobilejkn_bpjs", "statuskirim = 'Sudah'", "nobooking = ?", rs.getString("nobooking"));
                         }
@@ -2389,6 +2387,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         Kdpnj.setText("BPJ");
         nmpnj.setText("BPJS");
         jeniskunjungan = "";
+        nobooking = "";
         resetAksi();
     }
 
