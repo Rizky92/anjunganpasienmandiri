@@ -3352,7 +3352,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                         jammulai = rs.getString("jam_mulai");
                         jamselesai = rs.getString("jam_selesai");
                         kuota = rs.getInt("kuota");
-                        datajam = Sequel.cariIsiSmc("select date_add(concat(?, ' ', ?), interval ? minute)", Valid.setTglSmc(TanggalSEP), jammulai, String.valueOf(Integer.parseInt(NoReg.getText()) * 10));
+                        datajam = Sequel.cariIsiSmc("select date_add(concat(?, ' ', ?), interval ? minute)", Valid.setTglSmc(TanggalSEP), jammulai, String.valueOf(Integer.parseInt(NoReg.getText()) * 5));
                         parsedDate = dateFormat.parse(datajam);
                     } else {
                         System.out.println("Jadwal tidak ditemukan...!");
