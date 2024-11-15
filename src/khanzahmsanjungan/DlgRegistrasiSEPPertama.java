@@ -130,7 +130,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         jeniskunjungan = "",
         nomorreg = "",
         URLAPLIKASIFINGERPRINTBPJS = koneksiDB.URLAPLIKASIFINGERPRINTBPJS(),
-        URLFINGERPRINTBPJS = koneksiDB.URLFINGERPRINTBPJS(),
+        URLAPLIKASIFRISTABPJS = koneksiDB.URLAPLIKASIFRISTABPJS(),
         USERFINGERPRINTBPJS = koneksiDB.USERFINGERPRINTBPJS(),
         PASSFINGERPRINTBPJS = koneksiDB.PASSFINGERPRINTBPJS(),
         PRINTER_REGISTRASI = koneksiDB.PRINTER_REGISTRASI(),
@@ -295,10 +295,10 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         URUTNOREG = koneksiDB.URUTNOREG();
         BASENOREG = koneksiDB.BASENOREG();
         URLAPIBPJS = koneksiDB.URLAPIBPJS();
-        URLFINGERPRINTBPJS = koneksiDB.URLFINGERPRINTBPJS();
         USERFINGERPRINTBPJS = koneksiDB.USERFINGERPRINTBPJS();
         PASSFINGERPRINTBPJS = koneksiDB.PASSFINGERPRINTBPJS();
         URLAPLIKASIFINGERPRINTBPJS = koneksiDB.URLAPLIKASIFINGERPRINTBPJS();
+        URLAPLIKASIFRISTABPJS = koneksiDB.URLAPLIKASIFRISTABPJS();
 
         KdPPK.setText(Sequel.cariIsi("select setting.kode_ppk from setting"));
         NmPPK.setText(Sequel.cariIsi("select setting.nama_instansi from setting"));
@@ -337,6 +337,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         label1 = new widget.Label();
         label2 = new widget.Label();
         label3 = new widget.Label();
+        WindowPilihValidasi = new javax.swing.JDialog();
         jPanel1 = new component.Panel();
         jPanel2 = new component.Panel();
         TPasien = new widget.TextBox();
@@ -549,7 +550,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         });
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-09-2024" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-11-2024" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         Tanggal.setOpaque(false);
@@ -676,7 +677,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
 
         TanggalSEP.setEditable(false);
         TanggalSEP.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-09-2024" }));
+        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-11-2024" }));
         TanggalSEP.setDisplayFormat("dd-MM-yyyy");
         TanggalSEP.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         TanggalSEP.setOpaque(false);
@@ -698,7 +699,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
 
         TanggalRujuk.setEditable(false);
         TanggalRujuk.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-09-2024" }));
+        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-11-2024" }));
         TanggalRujuk.setDisplayFormat("dd-MM-yyyy");
         TanggalRujuk.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         TanggalRujuk.setOpaque(false);
@@ -985,7 +986,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
 
         TanggalKKL.setEditable(false);
         TanggalKKL.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalKKL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-09-2024" }));
+        TanggalKKL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15-11-2024" }));
         TanggalKKL.setDisplayFormat("dd-MM-yyyy");
         TanggalKKL.setEnabled(false);
         TanggalKKL.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
@@ -1515,7 +1516,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         btnFingerPrint.setForeground(new java.awt.Color(0, 131, 62));
         btnFingerPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/fingerprint.png"))); // NOI18N
         btnFingerPrint.setMnemonic('K');
-        btnFingerPrint.setText("FINGERPRINT BPJS");
+        btnFingerPrint.setText("VALIDASI");
         btnFingerPrint.setToolTipText("Alt+K");
         btnFingerPrint.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         btnFingerPrint.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -2200,6 +2201,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
     private widget.TextBox TglLahir;
     private widget.ComboBox TujuanKunjungan;
     private javax.swing.JDialog WindowAksi;
+    private javax.swing.JDialog WindowPilihValidasi;
     private widget.Button btnAksiBatal;
     private widget.Button btnAksiKonfirmasi;
     private widget.Button btnDPJPLayanan;

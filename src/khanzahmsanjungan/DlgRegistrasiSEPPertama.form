@@ -168,7 +168,7 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
-            <StringItem index="0" value="17-10-2024"/>
+            <StringItem index="0" value="15-11-2024"/>
           </StringArray>
         </Property>
         <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -324,6 +324,10 @@
           </SubComponents>
         </Container>
       </SubComponents>
+    </Container>
+    <Container class="javax.swing.JDialog" name="WindowPilihValidasi">
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
     </Container>
   </NonVisualComponents>
   <Properties>
@@ -492,7 +496,7 @@
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="1">
-                    <StringItem index="0" value="17-10-2024"/>
+                    <StringItem index="0" value="15-11-2024"/>
                   </StringArray>
                 </Property>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -540,7 +544,7 @@
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="1">
-                    <StringItem index="0" value="17-10-2024"/>
+                    <StringItem index="0" value="15-11-2024"/>
                   </StringArray>
                 </Property>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -1217,7 +1221,7 @@
                 </Property>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="1">
-                    <StringItem index="0" value="17-10-2024"/>
+                    <StringItem index="0" value="15-11-2024"/>
                   </StringArray>
                 </Property>
                 <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy"/>
@@ -2301,7 +2305,7 @@
                   <Image iconType="3" name="/48x48/fingerprint.png"/>
                 </Property>
                 <Property name="mnemonic" type="int" value="75"/>
-                <Property name="text" type="java.lang.String" value="FINGERPRINT BPJS"/>
+                <Property name="text" type="java.lang.String" value="VALIDASI"/>
                 <Property name="toolTipText" type="java.lang.String" value="Alt+K"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Inter" size="18" style="0"/>

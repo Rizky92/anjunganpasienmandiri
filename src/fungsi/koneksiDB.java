@@ -91,19 +91,19 @@ public class koneksiDB {
         }
     }
     
-    public static String URLFINGERPRINTBPJS() {
-        try {
-            prop.loadFromXML(new FileInputStream("setting/apm.xml"));
-            return prop.getProperty("URLFINGERPRINTBPJS");
-        } catch (Exception e) {
-            return "";
-        }
-    }
-
     public static String URLAPLIKASIFINGERPRINTBPJS() {
         try {
             prop.loadFromXML(new FileInputStream("setting/apm.xml"));
             return prop.getProperty("URLAPLIKASIFINGERPRINTBPJS");
+        } catch (Exception e) {
+            return "";
+        }
+    }
+    
+    public static String URLAPLIKASIFRISTABPJS() {
+        try {
+            prop.loadFromXML(new FileInputStream("setting/apm.xml"));
+            return prop.getProperty("URLAPLIKASIFRISTABPJS");
         } catch (Exception e) {
             return "";
         }
