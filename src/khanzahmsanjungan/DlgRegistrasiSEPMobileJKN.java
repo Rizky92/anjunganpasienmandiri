@@ -72,7 +72,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         datajam = "",
         jamselesai = "",
         jammulai = "",
-        requestJson,
+        requestJson = "",
         URL = "",
         prb = "",
         nobooking = "",
@@ -83,21 +83,20 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
 
     private final String URLAPIBPJS = koneksiDB.URLAPIBPJS(),
         URLAPLIKASIFINGERPRINTBPJS = koneksiDB.URLAPLIKASIFINGERPRINTBPJS(),
+        URLAPLIKASIFRISTABPJS = koneksiDB.URLAPLIKASIFRISTABPJS(),
         USERFINGERPRINTBPJS = koneksiDB.USERFINGERPRINTBPJS(),
         PASSFINGERPRINTBPJS = koneksiDB.PASSFINGERPRINTBPJS();
+    
     private int kuota = 0;
-    private ObjectMapper mapper = new ObjectMapper();
-    private JsonNode root;
-    private JsonNode response;
+    private final ObjectMapper mapper = new ObjectMapper();
+    private JsonNode root, nameNode, response;
     private Calendar cal = Calendar.getInstance();
-    private boolean statusfinger = false;
     private HttpHeaders headers;
     private HttpEntity requestEntity;
-    private JsonNode nameNode;
     private int day = cal.get(Calendar.DAY_OF_WEEK);
     private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     private Date parsedDate;
-    private boolean aplikasiAktif = false;
+    private boolean statusfinger = false, fingerprintAktif = false, fristaAktif = false;
 
     /**
      * Creates new form DlgAdmin
@@ -389,7 +388,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         NoRujukMasuk.setText("0");
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-09-2024" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-11-2024" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         Tanggal.setOpaque(false);
@@ -499,7 +498,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
 
         TanggalSEP.setEditable(false);
         TanggalSEP.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-09-2024" }));
+        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-11-2024" }));
         TanggalSEP.setDisplayFormat("dd-MM-yyyy");
         TanggalSEP.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         TanggalSEP.setOpaque(false);
@@ -516,7 +515,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
 
         TanggalRujuk.setEditable(false);
         TanggalRujuk.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-09-2024" }));
+        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-11-2024" }));
         TanggalRujuk.setDisplayFormat("dd-MM-yyyy");
         TanggalRujuk.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         TanggalRujuk.setOpaque(false);
@@ -758,7 +757,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
 
         TanggalKKL.setEditable(false);
         TanggalKKL.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalKKL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-09-2024" }));
+        TanggalKKL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-11-2024" }));
         TanggalKKL.setDisplayFormat("dd-MM-yyyy");
         TanggalKKL.setEnabled(false);
         TanggalKKL.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
@@ -1016,7 +1015,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         NIK.setBounds(730, 40, 300, 30);
 
         jLabel7.setForeground(new java.awt.Color(0, 131, 62));
-        jLabel7.setText("No. Kartu :");
+        jLabel7.setText("No. Peserta :");
         jLabel7.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         jPanel2.add(jLabel7);
         jLabel7.setBounds(625, 70, 100, 30);
@@ -1180,9 +1179,9 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         btnSimpan.setForeground(new java.awt.Color(0, 131, 62));
         btnSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/konfirmasi.png"))); // NOI18N
         btnSimpan.setMnemonic('S');
-        btnSimpan.setText("Konfirmasi");
+        btnSimpan.setText(" KONFIRMASI");
         btnSimpan.setToolTipText("Alt+S");
-        btnSimpan.setFont(new java.awt.Font("Inter Medium", 0, 18)); // NOI18N
+        btnSimpan.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         btnSimpan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnSimpan.setPreferredSize(new java.awt.Dimension(300, 45));
         btnSimpan.addActionListener(new java.awt.event.ActionListener() {
@@ -1200,9 +1199,9 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         btnFingerPrint.setForeground(new java.awt.Color(0, 131, 62));
         btnFingerPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/fingerprint.png"))); // NOI18N
         btnFingerPrint.setMnemonic('K');
-        btnFingerPrint.setText("FINGERPRINT BPJS");
+        btnFingerPrint.setText(" VALIDASI");
         btnFingerPrint.setToolTipText("Alt+K");
-        btnFingerPrint.setFont(new java.awt.Font("Inter Medium", 0, 18)); // NOI18N
+        btnFingerPrint.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         btnFingerPrint.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnFingerPrint.setPreferredSize(new java.awt.Dimension(300, 45));
         btnFingerPrint.addActionListener(new java.awt.event.ActionListener() {
@@ -1215,9 +1214,9 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         btnKeluar.setForeground(new java.awt.Color(0, 131, 62));
         btnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/reset.png"))); // NOI18N
         btnKeluar.setMnemonic('K');
-        btnKeluar.setText("Batal");
+        btnKeluar.setText(" BATAL");
         btnKeluar.setToolTipText("Alt+K");
-        btnKeluar.setFont(new java.awt.Font("Inter Medium", 0, 18)); // NOI18N
+        btnKeluar.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         btnKeluar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnKeluar.setPreferredSize(new java.awt.Dimension(300, 45));
         btnKeluar.addActionListener(new java.awt.event.ActionListener() {
@@ -1319,7 +1318,6 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
 
     private void btnRiwayatPelayananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRiwayatPelayananActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-
         historiPelayanan.setSize(jPanel1.getWidth() - 50, jPanel1.getHeight() - 50);
         historiPelayanan.setLocationRelativeTo(jPanel1);
         historiPelayanan.setKartu(NoKartu.getText());
@@ -2398,7 +2396,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         }
         this.toFront();
         try {
-            aplikasiAktif = false;
+            fingerprintAktif = false;
             User32 u32 = User32.INSTANCE;
             u32.EnumWindows((WinDef.HWND hwnd, Pointer pntr) -> {
                 char[] windowText = new char[512];
@@ -2406,7 +2404,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                 String wText = Native.toString(windowText);
                 if (wText.isEmpty()) return true;
                 if (wText.contains("Registrasi Sidik Jari")) {
-                    DlgRegistrasiSEPMobileJKN.this.aplikasiAktif = true;
+                    DlgRegistrasiSEPMobileJKN.this.fingerprintAktif = true;
                     u32.SetForegroundWindow(hwnd);
                 }
                 return true;
@@ -2414,7 +2412,76 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
             Robot r = new Robot();
             Clipboard c = Toolkit.getDefaultToolkit().getSystemClipboard();
             StringSelection ss;
-            if (aplikasiAktif) {
+            if (fingerprintAktif) {
+                Thread.sleep(1000);
+                r.keyPress(KeyEvent.VK_CONTROL);
+                r.keyPress(KeyEvent.VK_A);
+                r.keyRelease(KeyEvent.VK_A);
+                r.keyRelease(KeyEvent.VK_CONTROL);
+                Thread.sleep(500);
+                ss = new StringSelection(NoKartu.getText().trim());
+                c.setContents(ss, ss);
+                r.keyPress(KeyEvent.VK_CONTROL);
+                r.keyPress(KeyEvent.VK_V);
+                r.keyRelease(KeyEvent.VK_V);
+                r.keyRelease(KeyEvent.VK_CONTROL);
+            } else {
+                Runtime.getRuntime().exec(URLAPLIKASIFINGERPRINTBPJS);
+                Thread.sleep(2000);
+                ss = new StringSelection(USERFINGERPRINTBPJS);
+                c.setContents(ss, ss);
+                r.keyPress(KeyEvent.VK_CONTROL);
+                r.keyPress(KeyEvent.VK_V);
+                r.keyRelease(KeyEvent.VK_V);
+                r.keyRelease(KeyEvent.VK_CONTROL);
+                r.keyPress(KeyEvent.VK_TAB);
+                r.keyRelease(KeyEvent.VK_TAB);
+                Thread.sleep(1000);
+                ss = new StringSelection(PASSFINGERPRINTBPJS);
+                c.setContents(ss, ss);
+                r.keyPress(KeyEvent.VK_CONTROL);
+                r.keyPress(KeyEvent.VK_V);
+                r.keyRelease(KeyEvent.VK_V);
+                r.keyRelease(KeyEvent.VK_CONTROL);
+                r.keyPress(KeyEvent.VK_ENTER);
+                r.keyRelease(KeyEvent.VK_ENTER);
+                Thread.sleep(1000);
+                ss = new StringSelection(NoKartu.getText().trim());
+                c.setContents(ss, ss);
+                r.keyPress(KeyEvent.VK_CONTROL);
+                r.keyPress(KeyEvent.VK_V);
+                r.keyRelease(KeyEvent.VK_V);
+                r.keyRelease(KeyEvent.VK_CONTROL);
+            }
+        } catch (Exception e) {
+            System.out.println("Notif : " + e);
+        }
+    }
+    
+    private void bukaAplikasiFrista() {
+        if (NoKartu.getText().isBlank()) {
+            JOptionPane.showMessageDialog(rootPane, "No. kartu peserta tidak ada..!!");
+            return;
+        }
+        this.toFront();
+        try {
+            fingerprintAktif = false;
+            User32 u32 = User32.INSTANCE;
+            u32.EnumWindows((WinDef.HWND hwnd, Pointer pntr) -> {
+                char[] windowText = new char[512];
+                u32.GetWindowText(hwnd, windowText, 512);
+                String wText = Native.toString(windowText);
+                if (wText.isEmpty()) return true;
+                if (wText.contains("Registrasi Sidik Jari")) {
+                    DlgRegistrasiSEPMobileJKN.this.fingerprintAktif = true;
+                    u32.SetForegroundWindow(hwnd);
+                }
+                return true;
+            }, Pointer.NULL);
+            Robot r = new Robot();
+            Clipboard c = Toolkit.getDefaultToolkit().getSystemClipboard();
+            StringSelection ss;
+            if (fingerprintAktif) {
                 Thread.sleep(1000);
                 r.keyPress(KeyEvent.VK_CONTROL);
                 r.keyPress(KeyEvent.VK_A);
