@@ -18,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import fungsi.batasInput;
+import fungsi.BatasInput;
 import fungsi.validasi;
 import fungsi.sekuel;
 import fungsi.koneksiDB;
@@ -114,7 +114,7 @@ public final class BPJSCekRiwayatPelayanan extends javax.swing.JDialog {
 
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
 
-        NoKartu.setDocument(new batasInput((byte) 100).getKata(NoKartu));
+        NoKartu.setDocument(new BatasInput((byte) 100).getKata(NoKartu));
 
         try {
             link = koneksiDB.URLAPIBPJS();

@@ -15,7 +15,7 @@ package bridging;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable;
-import fungsi.batasInput;
+import fungsi.BatasInput;
 import fungsi.koneksiDB;
 import java.awt.Dimension;
 import javax.swing.JTable;
@@ -23,11 +23,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import fungsi.sekuel;
 import fungsi.validasi;
-import fungsi.akses;
 import java.awt.Cursor;
 import java.awt.event.KeyEvent;
-import java.util.HashMap;
-import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.event.DocumentEvent;
 import org.springframework.http.HttpEntity;
@@ -84,7 +81,7 @@ public final class BPJSCekReferensiPoli extends javax.swing.JDialog {
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
         
-        Poli.setDocument(new batasInput((byte)100).getKata(Poli));
+        Poli.setDocument(new BatasInput((byte)100).getKata(Poli));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
             Poli.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -136,7 +133,6 @@ public final class BPJSCekReferensiPoli extends javax.swing.JDialog {
         Poli = new widget.TextBox();
         BtnCari = new widget.Button();
         jLabel17 = new widget.Label();
-        BtnPrint = new widget.Button();
         BtnKeluar = new widget.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -145,7 +141,7 @@ public final class BPJSCekReferensiPoli extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Data Referensi Poli/Unit VClaim ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50,50,50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Data Referensi Poli/Unit VClaim ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -197,19 +193,6 @@ public final class BPJSCekReferensiPoli extends javax.swing.JDialog {
         jLabel17.setPreferredSize(new java.awt.Dimension(30, 23));
         panelGlass6.add(jLabel17);
 
-        BtnPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/b_print.png"))); // NOI18N
-        BtnPrint.setMnemonic('T');
-        BtnPrint.setText("Cetak");
-        BtnPrint.setToolTipText("Alt+T");
-        BtnPrint.setName("BtnPrint"); // NOI18N
-        BtnPrint.setPreferredSize(new java.awt.Dimension(100, 30));
-        BtnPrint.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnPrintActionPerformed(evt);
-            }
-        });
-        panelGlass6.add(BtnPrint);
-
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
         BtnKeluar.setMnemonic('K');
         BtnKeluar.setText("Keluar");
@@ -242,43 +225,13 @@ public final class BPJSCekReferensiPoli extends javax.swing.JDialog {
     private void BtnKeluarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnKeluarKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             dispose();
-        }else{Valid.pindah(evt,BtnPrint,BtnKeluar);}
+        }else{Valid.pindah(evt,BtnCari,BtnKeluar);}
     }//GEN-LAST:event_BtnKeluarKeyPressed
-
-    private void BtnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrintActionPerformed
-        if(tabMode.getRowCount()==0){
-            JOptionPane.showMessageDialog(null,"Maaf, data sudah habis. Tidak ada data yang bisa anda print...!!!!");
-            //TCari.requestFocus();
-        }else if(tabMode.getRowCount()!=0){
-            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            
-            Sequel.queryu("truncate table temporary");
-            int row=tabMode.getRowCount();
-            for(int r=0;r<row;r++){  
-                Sequel.menyimpan("temporary","'0','"+
-                                tabMode.getValueAt(r,0).toString()+"','"+
-                                tabMode.getValueAt(r,1).toString()+"','"+
-                                tabMode.getValueAt(r,2).toString()+"','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''","Rekap Harian Pengadaan Ipsrs"); 
-            }
-            
-            Map<String, Object> param = new HashMap<>();                 
-            param.put("namars",akses.getnamars());
-            param.put("alamatrs",akses.getalamatrs());
-            param.put("kotars",akses.getkabupatenrs());
-            param.put("propinsirs",akses.getpropinsirs());
-            //param.put("peserta","No.Peserta : "+NoKartu.getText()+" Nama Peserta : "+NamaPasien.getText());
-            param.put("kontakrs",akses.getkontakrs());
-            param.put("emailrs",akses.getemailrs());   
-            param.put("logo",Sequel.cariGambar("select logo from setting")); 
-            Valid.MyReport("rptCariBPJSReferensiPoli.jasper","report","[ Pencarian Referensi Poli ]",param);
-            this.setCursor(Cursor.getDefaultCursor());
-        }        
-    }//GEN-LAST:event_BtnPrintActionPerformed
 
     private void PoliKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PoliKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             tampil(Poli.getText());
-            BtnPrint.requestFocus();
+            BtnCari.requestFocus();
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_DOWN){
             tampil(Poli.getText());
         }else if(evt.getKeyCode()==KeyEvent.VK_PAGE_UP){
@@ -298,7 +251,7 @@ public final class BPJSCekReferensiPoli extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnCariActionPerformed(null);
         }else{
-            Valid.pindah(evt,Poli,BtnPrint);
+            Valid.pindah(evt,Poli,BtnKeluar);
         }
     }//GEN-LAST:event_BtnCariKeyPressed
 
@@ -321,7 +274,6 @@ public final class BPJSCekReferensiPoli extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.Button BtnCari;
     private widget.Button BtnKeluar;
-    private widget.Button BtnPrint;
     private widget.TextBox Poli;
     private widget.ScrollPane Scroll;
     private widget.InternalFrame internalFrame1;

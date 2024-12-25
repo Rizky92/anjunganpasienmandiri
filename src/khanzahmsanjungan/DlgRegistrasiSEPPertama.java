@@ -21,7 +21,7 @@ import com.sun.jna.Native;
 import com.sun.jna.Pointer;
 import com.sun.jna.platform.win32.User32;
 import com.sun.jna.platform.win32.WinDef;
-import fungsi.batasInput;
+import fungsi.BatasInput;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
@@ -161,7 +161,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
     public DlgRegistrasiSEPPertama(java.awt.Frame parent, boolean id) {
         super(parent, id);
         initComponents();
-        JumlahBarcode.setDocument(new batasInput((byte) 3).getOnlyAngka(JumlahBarcode));
+        JumlahBarcode.setDocument(new BatasInput((byte) 3).getOnlyAngka(JumlahBarcode));
 
         try {
             ps = koneksi.prepareStatement("select nama_instansi, alamat_instansi, kabupaten, propinsi, aktifkan, wallpaper,kontak,email,logo from setting");

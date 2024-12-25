@@ -13,11 +13,9 @@ package khanzahmsanjungan;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable;
-import fungsi.batasInput;
+import fungsi.BatasInput;
 import fungsi.koneksiDB;
 import fungsi.validasi;
-import fungsi.akses;
-import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.io.File;
@@ -105,7 +103,7 @@ public final class DlgCariDokter extends javax.swing.JDialog {
             }
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
-        TCari.setDocument(new batasInput((byte) 100).getKata(TCari));
+        TCari.setDocument(new BatasInput((byte) 100).getKata(TCari));
 
         if (koneksiDB.CARICEPAT().equals("aktif")) {
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
@@ -150,7 +148,6 @@ public final class DlgCariDokter extends javax.swing.JDialog {
         TCari = new widget.TextBox();
         BtnCari = new widget.Button();
         BtnAll = new widget.Button();
-        BtnTambah = new widget.Button();
         label10 = new widget.Label();
         LCount = new widget.Label();
         BtnKeluar = new widget.Button();
@@ -240,18 +237,6 @@ public final class DlgCariDokter extends javax.swing.JDialog {
             }
         });
         panelisi3.add(BtnAll);
-
-        BtnTambah.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/plus_16.png"))); // NOI18N
-        BtnTambah.setMnemonic('3');
-        BtnTambah.setToolTipText("Alt+3");
-        BtnTambah.setName("BtnTambah"); // NOI18N
-        BtnTambah.setPreferredSize(new java.awt.Dimension(28, 23));
-        BtnTambah.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnTambahActionPerformed(evt);
-            }
-        });
-        panelisi3.add(BtnTambah);
 
         label10.setText("Record :");
         label10.setName("label10"); // NOI18N
@@ -343,20 +328,6 @@ public final class DlgCariDokter extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_BtnKeluarActionPerformed
 
-    private void BtnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTambahActionPerformed
-//        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));        
-//        //nm_dokter.setModal(true);
-//        DlgDokter dokter=new DlgDokter(null,false);
-//        dokter.emptTeks();
-//        dokter.isCek();
-//        dokter.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-//        dokter.setLocationRelativeTo(internalFrame1);
-//        dokter.setAlwaysOnTop(false);
-//        dokter.setVisible(true);
-//        this.setCursor(Cursor.getDefaultCursor());   
-
-    }//GEN-LAST:event_BtnTambahActionPerformed
-
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         emptTeks();
     }//GEN-LAST:event_formWindowActivated
@@ -385,7 +356,6 @@ public final class DlgCariDokter extends javax.swing.JDialog {
     private widget.Button BtnAll;
     private widget.Button BtnCari;
     private widget.Button BtnKeluar;
-    private widget.Button BtnTambah;
     private widget.Label LCount;
     private widget.ScrollPane Scroll;
     public widget.TextBox TCari;
@@ -447,10 +417,6 @@ public final class DlgCariDokter extends javax.swing.JDialog {
 
     public JTable getTable() {
         return tbKamar;
-    }
-
-    public void isCek() {
-        BtnTambah.setEnabled(akses.getdokter());
     }
 
     private void tampil2() {

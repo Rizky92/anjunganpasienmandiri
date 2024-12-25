@@ -4,10 +4,8 @@
  */
 package khanzahmsanjungan;
 
-import fungsi.akses;
 import fungsi.sekuel;
 import fungsi.validasi;
-import java.awt.Cursor;
 import java.awt.Dimension;
 import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.awt.Toolkit;
@@ -22,8 +20,6 @@ import javax.swing.JOptionPane;
 public class HalamanUtamaDepan extends javax.swing.JFrame {
 
     private static HalamanUtamaDepan myInstance;
-    private sekuel Sequel = new sekuel();
-    private validasi Valid = new validasi();
 
     /**
      * Creates new form HalamanUtamaDepan
