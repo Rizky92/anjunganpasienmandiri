@@ -92,18 +92,18 @@ public class DlgCekBooking extends javax.swing.JDialog {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        LblKdPoli = new component.Label();
-        LblKdDokter = new component.Label();
-        NoReg = new component.TextBox();
-        NoRawat = new component.TextBox();
-        Biaya = new component.TextBox();
-        TAlmt = new component.Label();
-        TPngJwb = new component.Label();
-        THbngn = new component.Label();
-        NoTelpPasien = new component.Label();
-        jPanel1 = new component.Panel();
-        NoRMPasien = new component.TextBox();
-        jLabel28 = new component.Label();
+        LblKdPoli = new widget.Label();
+        LblKdDokter = new widget.Label();
+        NoReg = new widget.TextBox();
+        NoRawat = new widget.TextBox();
+        Biaya = new widget.TextBox();
+        TAlmt = new widget.Label();
+        TPngJwb = new widget.Label();
+        THbngn = new widget.Label();
+        NoTelpPasien = new widget.Label();
+        jPanel1 = new widget.Panel();
+        NoRMPasien = new widget.TextBox();
+        jLabel28 = new widget.Label();
         BtnClose = new widget.ButtonBig();
         BtnClose2 = new widget.ButtonBig();
         jPanel3 = new javax.swing.JPanel();
@@ -641,18 +641,18 @@ public class DlgCekBooking extends javax.swing.JDialog {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private component.TextBox Biaya;
+    private widget.TextBox Biaya;
     private widget.ButtonBig BtnClose;
     private widget.ButtonBig BtnClose2;
-    private component.Label LblKdDokter;
-    private component.Label LblKdPoli;
-    private component.TextBox NoRMPasien;
-    private component.TextBox NoRawat;
-    private component.TextBox NoReg;
-    private component.Label NoTelpPasien;
-    private component.Label TAlmt;
-    private component.Label THbngn;
-    private component.Label TPngJwb;
+    private widget.Label LblKdDokter;
+    private widget.Label LblKdPoli;
+    private widget.TextBox NoRMPasien;
+    private widget.TextBox NoRawat;
+    private widget.TextBox NoReg;
+    private widget.Label NoTelpPasien;
+    private widget.Label TAlmt;
+    private widget.Label THbngn;
+    private widget.Label TPngJwb;
     private javax.swing.JButton btnAngka0;
     private javax.swing.JButton btnAngka1;
     private javax.swing.JButton btnAngka2;
@@ -665,8 +665,8 @@ public class DlgCekBooking extends javax.swing.JDialog {
     private javax.swing.JButton btnAngka9;
     private javax.swing.JButton btnAngkaHps;
     private javax.swing.JButton btnClear;
-    private component.Label jLabel28;
-    private component.Panel jPanel1;
+    private widget.Label jLabel28;
+    private widget.Panel jPanel1;
     private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
 

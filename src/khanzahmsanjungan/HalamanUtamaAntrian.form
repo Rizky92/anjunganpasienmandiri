@@ -64,7 +64,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="component.Panel" name="jPanel1">
+    <Container class="widget.Panel" name="jPanel1">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ee" red="ee" type="rgb"/>

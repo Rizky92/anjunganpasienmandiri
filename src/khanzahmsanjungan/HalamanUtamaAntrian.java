@@ -42,7 +42,7 @@ public class HalamanUtamaAntrian extends javax.swing.JFrame {
 
         jPanel3 = new javax.swing.JPanel();
         jLabel39 = new widget.Label();
-        jPanel1 = new component.Panel();
+        jPanel1 = new widget.Panel();
         btnAdmin2 = new widget.ButtonBig();
         btnAdmin3 = new widget.ButtonBig();
         btnAdmin4 = new widget.ButtonBig();
@@ -289,7 +289,7 @@ public class HalamanUtamaAntrian extends javax.swing.JFrame {
     private widget.ButtonBig btnAdmin3;
     private widget.ButtonBig btnAdmin4;
     private widget.Label jLabel39;
-    private component.Panel jPanel1;
+    private widget.Panel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables

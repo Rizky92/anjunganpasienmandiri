@@ -5,7 +5,6 @@
 package widget;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -26,13 +25,9 @@ public class InternalFrame extends JPanel {
 
     private static final long serialVersionUID = -1;
     private BufferedImage gradientImage;
-    //private Color warnaAtas = new Color(245,170,245) ;
-    //private Color warnaBawah = new Color(245,170,245) ;
     private Color warnaAtas = new Color(255, 255, 255);
     private Color warnaBawah = new Color(255, 255, 255);
 
-    //private Color warnaAtas = new Color(255,194,255);
-    //private Color warnaBawah = new Color(255,194,255);
     public InternalFrame() {
         super();
         this.setBorder(javax.swing.BorderFactory.createLineBorder(new Color(50, 50, 50)));

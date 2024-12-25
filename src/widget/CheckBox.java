@@ -12,11 +12,11 @@ import javax.swing.JCheckBox;
  *
  * @author dosen3
  */
-public class CekBox extends JCheckBox{
+public class CheckBox extends JCheckBox{
 
     private static final long serialVersionUID = 1L;
 
-    public CekBox(){
+    public CheckBox(){
         super();
         setFont(new java.awt.Font("Tahoma", 0, 11));
         //setBackground(new Color(209,209,209));

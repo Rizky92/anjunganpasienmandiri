@@ -58,7 +58,7 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         PanelWall = new usu.widget.glass.PanelGlass();
-        jPanel1 = new component.Panel();
+        jPanel1 = new widget.Panel();
         btnAdmin10 = new widget.ButtonBig();
         btnAdmin7 = new widget.ButtonBig();
         btnAdmin2 = new widget.ButtonBig();
@@ -344,7 +344,7 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
     private widget.ButtonBig btnAdmin9;
     private javax.swing.JLabel jLabel1;
     private widget.Label jLabel39;
-    private component.Panel jPanel1;
+    private widget.Panel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables

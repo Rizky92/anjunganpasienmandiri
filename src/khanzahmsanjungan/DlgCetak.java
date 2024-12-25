@@ -72,17 +72,17 @@ public class DlgCetak extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        LblNoRw = new component.Label();
-        jPanel1 = new component.Panel();
-        jPanel4 = new component.Panel();
-        jLabel4 = new component.Label();
-        BtnAbout = new component.Button();
-        BtnAbout4 = new component.Button();
-        BtnAbout5 = new component.Button();
-        BtnAbout1 = new component.Button();
-        BtnAbout3 = new component.Button();
-        BtnAbout2 = new component.Button();
-        BtnKeluar = new component.Button();
+        LblNoRw = new widget.Label();
+        jPanel1 = new widget.Panel();
+        jPanel4 = new widget.Panel();
+        jLabel4 = new widget.Label();
+        BtnAbout = new widget.Button();
+        BtnAbout4 = new widget.Button();
+        BtnAbout5 = new widget.Button();
+        BtnAbout1 = new widget.Button();
+        BtnAbout3 = new widget.Button();
+        BtnAbout2 = new widget.Button();
+        BtnKeluar = new widget.Button();
 
         LblNoRw.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LblNoRw.setText("Norm");
@@ -441,17 +441,17 @@ public class DlgCetak extends javax.swing.JDialog {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private component.Button BtnAbout;
-    private component.Button BtnAbout1;
-    private component.Button BtnAbout2;
-    private component.Button BtnAbout3;
-    private component.Button BtnAbout4;
-    private component.Button BtnAbout5;
-    private component.Button BtnKeluar;
-    private component.Label LblNoRw;
-    private component.Label jLabel4;
-    private component.Panel jPanel1;
-    private component.Panel jPanel4;
+    private widget.Button BtnAbout;
+    private widget.Button BtnAbout1;
+    private widget.Button BtnAbout2;
+    private widget.Button BtnAbout3;
+    private widget.Button BtnAbout4;
+    private widget.Button BtnAbout5;
+    private widget.Button BtnKeluar;
+    private widget.Label LblNoRw;
+    private widget.Label jLabel4;
+    private widget.Panel jPanel1;
+    private widget.Panel jPanel4;
     // End of variables declaration//GEN-END:variables
 
     public void setPasien(String norawat, String Poli, String Antrian, String Nama, String NoRM,

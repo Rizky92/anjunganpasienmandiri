@@ -61,16 +61,16 @@ public class DlgAmbilAntrean extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        LblKdPoli = new component.Label();
-        LblKdDokter = new component.Label();
-        NoReg = new component.TextBox();
-        NoRawat = new component.TextBox();
-        Biaya = new component.TextBox();
-        jPanel1 = new component.Panel();
+        LblKdPoli = new widget.Label();
+        LblKdDokter = new widget.Label();
+        NoReg = new widget.TextBox();
+        NoRawat = new widget.TextBox();
+        Biaya = new widget.TextBox();
+        jPanel1 = new widget.Panel();
         jPanel2 = new javax.swing.JPanel();
-        lblNamaAntrian = new component.Label();
+        lblNamaAntrian = new widget.Label();
         jPanel3 = new javax.swing.JPanel();
-        lblNoAntrian = new component.Label();
+        lblNoAntrian = new widget.Label();
         jPanel4 = new javax.swing.JPanel();
         BtnClose2 = new widget.ButtonBig();
         BtnClose3 = new widget.ButtonBig();
@@ -273,19 +273,19 @@ public class DlgAmbilAntrean extends javax.swing.JDialog {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private component.TextBox Biaya;
+    private widget.TextBox Biaya;
     private widget.ButtonBig BtnClose2;
     private widget.ButtonBig BtnClose3;
-    private component.Label LblKdDokter;
-    private component.Label LblKdPoli;
-    private component.TextBox NoRawat;
-    private component.TextBox NoReg;
-    private component.Panel jPanel1;
+    private widget.Label LblKdDokter;
+    private widget.Label LblKdPoli;
+    private widget.TextBox NoRawat;
+    private widget.TextBox NoReg;
+    private widget.Panel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private component.Label lblNamaAntrian;
-    private component.Label lblNoAntrian;
+    private widget.Label lblNamaAntrian;
+    private widget.Label lblNoAntrian;
     // End of variables declaration//GEN-END:variables
 
     public void setPasien(String norm, String kodepoli, String kddokter) {
