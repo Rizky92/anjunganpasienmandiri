@@ -10,7 +10,7 @@
  */
 package khanzahmsanjungan;
 
-import fungsi.koneksiDB;
+import fungsi.KoneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import java.awt.Cursor;
@@ -28,7 +28,7 @@ import java.util.Properties;
  */
 public class DlgAmbilAntrean extends javax.swing.JDialog {
 
-    private Connection koneksi = koneksiDB.condb();
+    private Connection koneksi = KoneksiDB.condb();
     private sekuel Sequel = new sekuel();
     private validasi Valid = new validasi();
     private PreparedStatement ps;

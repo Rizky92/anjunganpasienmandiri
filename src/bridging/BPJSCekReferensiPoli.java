@@ -16,7 +16,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable;
 import fungsi.BatasInput;
-import fungsi.koneksiDB;
+import fungsi.KoneksiDB;
 import java.awt.Dimension;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -83,7 +83,7 @@ public final class BPJSCekReferensiPoli extends javax.swing.JDialog {
         
         Poli.setDocument(new BatasInput((byte)100).getKata(Poli));
         
-        if(koneksiDB.CARICEPAT().equals("aktif")){
+        if(KoneksiDB.CARICEPAT().equals("aktif")){
             Poli.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -107,7 +107,7 @@ public final class BPJSCekReferensiPoli extends javax.swing.JDialog {
         } 
         
         try {
-            link=koneksiDB.URLAPIBPJS();
+            link=KoneksiDB.URLAPIBPJS();
         } catch (Exception e) {
             System.out.println("E : "+e);
         }
@@ -287,11 +287,11 @@ public final class BPJSCekReferensiPoli extends javax.swing.JDialog {
         try {
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
-	    headers.add("X-Cons-ID",koneksiDB.CONSIDAPIBPJS());
+	    headers.add("X-Cons-ID",KoneksiDB.CONSIDAPIBPJS());
 	    utc=String.valueOf(api.GetUTCdatetimeAsString());
 	    headers.add("X-Timestamp",utc);
 	    headers.add("X-Signature",api.getHmac(utc));
-            headers.add("user_key",koneksiDB.USERKEYAPIBPJS());
+            headers.add("user_key",KoneksiDB.USERKEYAPIBPJS());
             requestEntity = new HttpEntity(headers);
             URL = link+"/referensi/poli/"+poli;	
             //System.out.println(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());

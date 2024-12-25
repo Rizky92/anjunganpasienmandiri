@@ -32,9 +32,6 @@ import javax.print.PrintServiceLookup;
 import javax.print.attribute.HashPrintRequestAttributeSet;
 import javax.print.attribute.PrintRequestAttributeSet;
 import javax.print.attribute.standard.Copies;
-import javax.print.attribute.standard.MediaPrintableArea;
-import javax.print.attribute.standard.MediaSize;
-import javax.print.attribute.standard.MediaSizeName;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -44,6 +41,7 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.JTextComponent;
 import jxl.Workbook;
 import jxl.write.Label;
 import jxl.write.WritableSheet;
@@ -63,6 +61,7 @@ import net.sf.jasperreports.export.SimpleExporterInput;
 import net.sf.jasperreports.export.SimplePrintServiceExporterConfiguration;
 import net.sf.jasperreports.view.JasperViewer;
 import uz.ncipro.calendar.JDateTimePicker;
+import widget.ComboBox;
 import widget.Tanggal;
 
 /**
@@ -71,99 +70,142 @@ import widget.Tanggal;
  */
 public final class validasi {
 
-    private int a, j, i, result = 0;
-
-    private String s, s1, auto, PEMBULATANHARGAOBAT = koneksiDB.PEMBULATANHARGAOBAT();
-    private final Connection connect = koneksiDB.condb();
-    private final sekuel sek = new sekuel();
+    private final String PEMBULATANHARGAOBAT = KoneksiDB.PEMBULATANHARGAOBAT();
+    private final Connection koneksi = KoneksiDB.condb();
+    private final sekuel Sequel = new sekuel();
     private final java.awt.Desktop desktop = java.awt.Desktop.getDesktop();
-    private final DecimalFormat df2 = new DecimalFormat("###,###,###,###,###,###,###");
-    private final DecimalFormat df4 = new DecimalFormat("###,###,###,###,###,###,###.#################");
-    private final DecimalFormat df5 = new DecimalFormat("###,###,###,###,###,###,###.##");
-    private final DecimalFormat df3 = new DecimalFormat("######");
-    private final DecimalFormat df6 = new DecimalFormat("######.###");
-    private final DecimalFormat df7 = new DecimalFormat("######.#");
-    private PreparedStatement ps;
-    private ResultSet rs;
     private final Calendar now = Calendar.getInstance();
     private final int year = (now.get(Calendar.YEAR));
-    private static final Properties prop = new Properties();
-
+    private final DecimalFormat df2 = new DecimalFormat("###,###,###,###,###,###,###"),
+                                df3 = new DecimalFormat("######"),
+                                df4 = new DecimalFormat("###,###,###,###,###,###,###.#################"),
+                                df5 = new DecimalFormat("###,###,###,###,###,###,###.##"),
+                                df6 = new DecimalFormat("######.###"),
+                                df7 = new DecimalFormat("######.#");
+    private int a, j, i, result = 0;
+    private String s, s1, auto;
+    private PreparedStatement ps;
+    private ResultSet rs;
+    
     public validasi() {
         super();
     }
     
-    public String setTglSmc(Tanggal tgl) {
-        return new SimpleDateFormat("yyyy-MM-dd").format(tgl.getDate());
+    public void autonomorSmc(JTextComponent komponen, String prefix, String separator, String table, String kolom, int panjang, String pad, String tanggal, int next) {
+        komponen.setText(Sequel.autonomorSmc(prefix, separator, table, kolom, panjang, pad, tanggal, next));
     }
     
-    public void printReport(String namaReport, String namaPrinter, String judul, int jumlah, Map params) {
-        String currentDir = System.getProperties().getProperty("user.dir");
-
-        File dir = new File(currentDir);
-        File report = null;
-        
-        if (dir.isDirectory()) {
-            for (String file: dir.list()) {
-                report = new File(currentDir + File.separatorChar + file + File.separatorChar + namaReport);
-                
-                if (report.isFile()) {
-                    System.out.println("Found report file at: " + report.toString());
-                    break;
-                }
+    public void autonomorSmc(JTextComponent komponen, String prefix, String separator, String table, String kolom, int panjang, String pad, Tanggal tanggal, int next) {
+        autonomorSmc(komponen, prefix, separator, table, kolom, panjang, pad, getTglSmc(tanggal), next);
+    }
+    
+    public void autonomorSmc(JTextComponent komponen, String prefix, String separator, String table, String kolom, int panjang, String pad, String tanggal) {
+        komponen.setText(Sequel.autonomorSmc(prefix, separator, table, kolom, panjang, pad, tanggal));
+    }
+    
+    public void autonomorSmc(JTextComponent komponen, String prefix, String separator, String table, String kolom, int panjang, String pad, Tanggal tanggal) {
+        autonomorSmc(komponen, prefix, separator, table, kolom, panjang, pad, getTglSmc(tanggal));
+    }
+    
+    public void autonomor1Smc(JTextComponent komponen, String prefix, String table, String kolom, int panjang, String pad, Tanggal tanggal) {
+        autonomorSmc(komponen, prefix, "", table, kolom, panjang, pad, getTglSmc(tanggal));
+    }
+    
+    public String getTglSmc(Tanggal tanggal) {
+        return new SimpleDateFormat("yyyy-MM-dd").format(tanggal.getDate());
+    }
+    
+    public String getJamSmc(ComboBox jam, ComboBox menit, ComboBox detik) {
+        return jam.getSelectedItem() + ":" + menit.getSelectedItem() + ":" + detik.getSelectedItem();
+    }
+    
+    public String getTglJamSmc(Tanggal tanggal, ComboBox jam, ComboBox menit, ComboBox detik) {
+        return getTglSmc(tanggal) + " " + getJamSmc(jam, menit, detik);
+    }
+    
+    public String getTglJamSmc(Tanggal tgljam) {
+        return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(tgljam.getDate());
+    }
+    
+    public String setTglSmc(Date tgl) {
+        return new SimpleDateFormat("dd-MM-yyyy").format(tgl);
+    }
+    
+    public String setTglSmc(String tgl) {
+        return tgl.substring(8, 10) + "-" + tgl.substring(5, 7) + "-" + tgl.substring(0, 4);
+    }
+    
+    public String setTglJamSmc(Date tgljam) {
+        return new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(tgljam);
+    }
+    
+    public void reportSmc(String reportName, String reportDirName, String judul, Map reportParams, String sql, String... values) {
+        try (PreparedStatement ps = koneksi.prepareStatement(sql)) {
+            for (int i = 0; i < values.length; i++) {
+                ps.setString(i + 1, values[i]);
             }
+            JasperViewer jasperViewer = new JasperViewer(JasperFillManager.fillReport("./" + reportDirName + "/" + reportName, reportParams, new JRResultSetDataSource(ps.executeQuery())), false);
+            jasperViewer.setTitle(judul);
+            Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+            jasperViewer.setSize(screen.width - 50, screen.height - 50);
+            jasperViewer.setModalExclusionType(ModalExclusionType.TOOLKIT_EXCLUDE);
+            jasperViewer.setLocationRelativeTo(null);
+            jasperViewer.setVisible(true);
+        } catch (Exception e) {
+            System.out.println("Notif : " + e);
+            JOptionPane.showMessageDialog(null, "Report can't view because : " + e);
         }
-        
-        if (report == null) {
-            JOptionPane.showMessageDialog(null, "File tidak ditemukan!");
-            return;
-        }
-        
+    }
+    
+    public void reportSmc(String reportName, String reportDirName, String judul, Map reportParams) {
         try {
-            JasperReport jr = (JasperReport) JRLoader.loadObject(report);
-            JasperPrint jp = JasperFillManager.fillReport(jr, params, connect);
-            
+            JasperViewer jv = new JasperViewer(JasperFillManager.fillReport("./" + reportDirName + "/" + reportName, reportParams, koneksi), false);
+            jv.setTitle(judul);
+            Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+            jv.setSize(screen.width - 50, screen.height - 50);
+            jv.setModalExclusionType(ModalExclusionType.TOOLKIT_EXCLUDE);
+            jv.setLocationRelativeTo(null);
+            jv.setVisible(true);
+        } catch (Exception e) {
+            System.out.println("Notif : " + e);
+            JOptionPane.showMessageDialog(null, "Report can't view because : " + e);
+        }
+    }
+    
+    public void printReportSmc(String reportName, String reportDirName, String judul, Map reportParams, int jumlah, String namaPrinter) {
+        try {
             PrintService printService = null;
-            
-            for (PrintService currentPrintService: PrintServiceLookup.lookupPrintServices(null, null)) {
+            for (PrintService currentPrintService : PrintServiceLookup.lookupPrintServices(null, null)) {
                 if (currentPrintService.getName().equals(namaPrinter)) {
                     System.out.println("Printer ditemukan: " + currentPrintService.getName());
                     printService = currentPrintService;
                     break;
                 }
             }
-            
             if (printService == null) {
                 JOptionPane.showMessageDialog(null, "Printer tidak ditemukan!");
                 return;
             }
-            
+
             PrintRequestAttributeSet pra = new HashPrintRequestAttributeSet();
             pra.add(new Copies(jumlah));
-            
+
             SimplePrintServiceExporterConfiguration config = new SimplePrintServiceExporterConfiguration();
-            
             config.setPrintService(printService);
             config.setPrintRequestAttributeSet(pra);
             config.setPrintServiceAttributeSet(printService.getAttributes());
             config.setDisplayPageDialog(false);
             config.setDisplayPrintDialog(false);
-            
+
             JRPrintServiceExporter exporter = new JRPrintServiceExporter();
-            
-            exporter.setExporterInput(new SimpleExporterInput(jp));
+            exporter.setExporterInput(new SimpleExporterInput(JasperFillManager.fillReport("./" + reportDirName + "/" + reportName, reportParams, koneksi)));
             exporter.setConfiguration(config);
             exporter.exportReport();
         } catch (Exception e) {
-            System.out.println(e);
-            
-            for (StackTraceElement ste: e.getStackTrace()) {
-                System.out.println(ste);
-            }
-            
-            JOptionPane.showMessageDialog(null, "Tidak bisa menampilkan hasil cetak!");
+            System.out.println("Notif : " + e);
+            JOptionPane.showMessageDialog(null, "Terjadi kesalahan pada saat melakukan cetak otomatis!");
         }
-    }
+    }    
 
     public void autoNomer(DefaultTableModel tabMode, String strAwal, Integer pnj, javax.swing.JTextField teks) {
         s = Integer.toString(tabMode.getRowCount() + 1);
@@ -177,7 +219,7 @@ public final class validasi {
 
     public void autoNomer(String tabel, String strAwal, Integer pnj, javax.swing.JTextField teks) {
         try {
-            ps = connect.prepareStatement("select * from " + tabel);
+            ps = koneksi.prepareStatement("select * from " + tabel);
             try {
                 rs = ps.executeQuery();
                 rs.last();
@@ -206,7 +248,7 @@ public final class validasi {
 
     public void autoNomer2(String sql, String strAwal, Integer pnj, javax.swing.JTextField teks) {
         try {
-            ps = connect.prepareStatement(sql);
+            ps = koneksi.prepareStatement(sql);
             try {
                 rs = ps.executeQuery();
                 rs.last();
@@ -235,7 +277,7 @@ public final class validasi {
 
     public void autoNomer3(String sql, String strAwal, Integer pnj, javax.swing.JTextField teks) {
         try {
-            ps = connect.prepareStatement(sql);
+            ps = koneksi.prepareStatement(sql);
             try {
                 rs = ps.executeQuery();
                 s = "1";
@@ -268,7 +310,7 @@ public final class validasi {
 
     public void autoNomer4(String sql, String strAwal, Integer pnj, javax.swing.JTextField teks) {
         try {
-            ps = connect.prepareStatement(sql);
+            ps = koneksi.prepareStatement(sql);
             try {
                 rs = ps.executeQuery();
                 s = "1";
@@ -301,7 +343,7 @@ public final class validasi {
 
     public void autoNomer5(String sql, String strAwal, Integer pnj, javax.swing.JTextField teks) {
         try {
-            ps = connect.prepareStatement(sql);
+            ps = koneksi.prepareStatement(sql);
             try {
                 rs = ps.executeQuery();
                 s = "1";
@@ -334,7 +376,7 @@ public final class validasi {
 
     public void autoNomer6(String sql, String strAwal, Integer pnj, javax.swing.JTextField teks) {
         try {
-            ps = connect.prepareStatement(sql);
+            ps = koneksi.prepareStatement(sql);
             try {
                 rs = ps.executeQuery();
                 s = "1";
@@ -368,7 +410,7 @@ public final class validasi {
     public String autoNomer(String tabel, String strAwal, Integer pnj) {
         try {
             auto = "";
-            ps = connect.prepareStatement("select * from " + tabel);
+            ps = koneksi.prepareStatement("select * from " + tabel);
             try {
                 rs = ps.executeQuery();
                 rs.last();
@@ -401,7 +443,7 @@ public final class validasi {
     public String autoNomer3(String sql, String strAwal, Integer pnj) {
         try {
             auto = "";
-            ps = connect.prepareStatement(sql);
+            ps = koneksi.prepareStatement(sql);
             try {
                 rs = ps.executeQuery();
                 s = "1";
@@ -441,7 +483,7 @@ public final class validasi {
         } else if (nilai_field.getText().trim().equals("")) {
             JOptionPane.showMessageDialog(null, "Maaf, Gagal mengedit. Pilih dulu data yang mau diedit.\nKlik data pada table untuk memilih...!!!!");
         } else if (!nilai_field.getText().trim().equals("")) {
-            sek.mengedit(table, field_acuan + "='" + nilai_field.getText() + "'", update);
+            Sequel.mengedit(table, field_acuan + "='" + nilai_field.getText() + "'", update);
         }
     }
 
@@ -449,7 +491,7 @@ public final class validasi {
         if (nilai_field.getText().trim().equals("")) {
             JOptionPane.showMessageDialog(null, "Maaf, Gagal mengedit. Pilih dulu data yang mau diedit.\nKlik data pada table untuk memilih...!!!!");
         } else if (!nilai_field.getText().trim().equals("")) {
-            sek.mengedit(table, field_acuan + "='" + nilai_field.getText() + "'", update);
+            Sequel.mengedit(table, field_acuan + "='" + nilai_field.getText() + "'", update);
         }
     }
 
@@ -459,7 +501,7 @@ public final class validasi {
         } else if (nilai_field.trim().equals("")) {
             JOptionPane.showMessageDialog(null, "Maaf, Gagal mengedit. Pilih dulu data yang mau diedit.\nKlik data pada table untuk memilih...!!!!");
         } else if (!nilai_field.trim().equals("")) {
-            sek.mengedit(table, field_acuan + "=" + nilai_field, update, i, a);
+            Sequel.mengedit(table, field_acuan + "=" + nilai_field, update, i, a);
         }
     }
 
@@ -470,7 +512,7 @@ public final class validasi {
         } else if (nilai_field.getSelectedItem().equals("")) {
             JOptionPane.showMessageDialog(null, "Maaf, Gagal mengedit. Pilih dulu data yang mau diedit.\nKlik data pada table untuk memilih...!!!!");
         } else if (nilai_field.getSelectedItem() != "") {
-            sek.mengedit(table, field_acuan + "='" + nilai_field.getSelectedItem() + "'", update);
+            Sequel.mengedit(table, field_acuan + "='" + nilai_field.getSelectedItem() + "'", update);
 
         }
     }
@@ -482,7 +524,7 @@ public final class validasi {
         } else if (nilai_field.getText().trim().equals("")) {
             JOptionPane.showMessageDialog(null, "Maaf, Gagal mengedit. Pilih dulu data yang mau diedit.\nKlik data pada table untuk memilih...!!!!");
         } else if (!nilai_field.getText().trim().equals("")) {
-            sek.mengedit(table, field_acuan + "='" + nilai_field.getText() + "'", update);
+            Sequel.mengedit(table, field_acuan + "='" + nilai_field.getText() + "'", update);
 
         }
     }
@@ -500,7 +542,7 @@ public final class validasi {
             for (i = 0; i < model.getRowCount(); i++) {
                 for (j = 0; j < model.getColumnCount(); j++) {
                     Label row = new Label(j, i + 1,
-                            model.getValueAt(i, j).toString());
+                        model.getValueAt(i, j).toString());
                     sheet1.addCell(row);
                 }
             }
@@ -518,7 +560,7 @@ public final class validasi {
         } else if (nilai_field.getText().trim().equals("")) {
             JOptionPane.showMessageDialog(null, "Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
         } else if (!nilai_field.getText().trim().equals("")) {
-            sek.meghapus(table, field, nilai_field.getText());
+            Sequel.meghapus(table, field, nilai_field.getText());
 
         }
     }
@@ -531,14 +573,14 @@ public final class validasi {
             JOptionPane.showMessageDialog(null, "Maaf, Gagal menghapus. Pilih dulu data yang mau dihapus.\nKlik data pada table untuk memilih...!!!!");
         } else if (nilai_field.getSelectedItem() != "") {
             String data = nilai_field.getSelectedItem().toString();
-            sek.meghapus(table, field, data);
+            Sequel.meghapus(table, field, data);
         }
     }
 
     public void loadCombo(JComboBox cmb, String field, String table) {
         cmb.removeAllItems();
         try {
-            ps = connect.prepareStatement("select " + field + " from " + table + " order by " + field);
+            ps = koneksi.prepareStatement("select " + field + " from " + table + " order by " + field);
             try {
                 rs = ps.executeQuery();
                 while (rs.next()) {
@@ -602,11 +644,11 @@ public final class validasi {
         } // end if
 
         try {
-            try (Statement stm = connect.createStatement()) {
+            try (Statement stm = koneksi.createStatement()) {
                 try {
 
                     String namafile = "./" + reportDirName + "/" + reportName;
-                    JasperPrint jasperPrint = JasperFillManager.fillReport(namafile, parameters, connect);
+                    JasperPrint jasperPrint = JasperFillManager.fillReport(namafile, parameters, koneksi);
 
                     JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
                     jasperViewer.setTitle(judul);
@@ -648,11 +690,11 @@ public final class validasi {
         } // end if
 
         try {
-            try (Statement stm = connect.createStatement()) {
+            try (Statement stm = koneksi.createStatement()) {
                 try {
                     File f = new File("./" + reportDirName + "/" + reportName.replaceAll("jasper", "pdf"));
                     String namafile = "./" + reportDirName + "/" + reportName;
-                    JasperPrint jasperPrint = JasperFillManager.fillReport(namafile, parameters, connect);
+                    JasperPrint jasperPrint = JasperFillManager.fillReport(namafile, parameters, koneksi);
                     JasperExportManager.exportReportToPdfFile(jasperPrint, "./" + reportDirName + "/" + reportName.replaceAll("jasper", "pdf"));
                     Desktop.getDesktop().open(f);
                 } catch (Exception rptexcpt) {
@@ -688,11 +730,11 @@ public final class validasi {
         } // end if
 
         try {
-            try (Statement stm = connect.createStatement()) {
+            try (Statement stm = koneksi.createStatement()) {
                 try {
 
                     String namafile = "./" + reportDirName + "/" + reportName;
-                    JasperPrint jasperPrint = JasperFillManager.fillReport(namafile, parameters, connect);
+                    JasperPrint jasperPrint = JasperFillManager.fillReport(namafile, parameters, koneksi);
 
                     JasperViewer jasperViewer = new JasperViewer(jasperPrint, false);
                     jasperViewer.setTitle(judul);
@@ -734,7 +776,7 @@ public final class validasi {
 
         try {
             System.out.println("masuk sini");
-            ps = connect.prepareStatement(qry);
+            ps = koneksi.prepareStatement(qry);
             try {
                 String namafile = "./" + reportDirName + "/" + reportName;
                 rs = ps.executeQuery();
@@ -791,7 +833,7 @@ public final class validasi {
         } // end if
 
         try {
-            ps = connect.prepareStatement(qry);
+            ps = koneksi.prepareStatement(qry);
             try {
                 String namafile = "./" + reportDirName + "/" + reportName;
                 rs = ps.executeQuery();
@@ -951,7 +993,7 @@ public final class validasi {
         } // end if
 
         try {
-            ps = connect.prepareStatement(qry);
+            ps = koneksi.prepareStatement(qry);
             try {
                 String namafile = "./" + reportDirName + "/" + reportName;
                 File f = new File("./" + reportDirName + "/" + reportName.replaceAll("jasper", "pdf"));
@@ -978,7 +1020,7 @@ public final class validasi {
 
     public void MyReport(String reportName, Map parameters, String title) {
         try {
-            JasperViewer jasperViewer = new JasperViewer(JasperFillManager.fillReport("./report/" + reportName, parameters, connect), false);
+            JasperViewer jasperViewer = new JasperViewer(JasperFillManager.fillReport("./report/" + reportName, parameters, koneksi), false);
             jasperViewer.setTitle(title);
             jasperViewer.setLocationRelativeTo(null);
             jasperViewer.setVisible(true);
@@ -990,8 +1032,8 @@ public final class validasi {
 
     public void MyReportSilentPrint(String reportName, Map parameters, String title) {
         try {
-            JasperViewer jasperViewer = new JasperViewer(JasperFillManager.fillReport("./report/" + reportName, parameters, connect), false);
-            JasperPrint jasperPrint = JasperFillManager.fillReport("./report/" + reportName, parameters, connect);
+            JasperViewer jasperViewer = new JasperViewer(JasperFillManager.fillReport("./report/" + reportName, parameters, koneksi), false);
+            JasperPrint jasperPrint = JasperFillManager.fillReport("./report/" + reportName, parameters, koneksi);
 //            jasperViewer.setTitle(title);
 //            jasperViewer.setLocationRelativeTo(null);
 //            jasperViewer.setVisible(true);
@@ -1229,17 +1271,17 @@ public final class validasi {
             Properties prop = new Properties();
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
             if (os.contains("win")) {
-                rt.exec("rundll32 url.dll,FileProtocolHandler " + "http://" + koneksiDB.HOSTHYBRIDWEB() + ":" + prop.getProperty("PORTWEB") + "/" + prop.getProperty("HYBRIDWEB") + "/" + url);
+                rt.exec("rundll32 url.dll,FileProtocolHandler " + "http://" + KoneksiDB.HOSTHYBRIDWEB() + ":" + prop.getProperty("PORTWEB") + "/" + prop.getProperty("HYBRIDWEB") + "/" + url);
             } else if (os.contains("mac")) {
-                rt.exec("open " + "http://" + koneksiDB.HOSTHYBRIDWEB() + ":" + prop.getProperty("PORTWEB") + "/" + prop.getProperty("HYBRIDWEB") + "/" + url);
+                rt.exec("open " + "http://" + KoneksiDB.HOSTHYBRIDWEB() + ":" + prop.getProperty("PORTWEB") + "/" + prop.getProperty("HYBRIDWEB") + "/" + url);
             } else if (os.contains("nix") || os.contains("nux")) {
                 String[] browsers = {"x-www-browser", "epiphany", "firefox", "mozilla", "konqueror", "chrome", "chromium", "netscape", "opera", "links", "lynx", "midori"};
                 // Build a command string which looks like "browser1 "url" || browser2 "url" ||..."
                 StringBuilder cmd = new StringBuilder();
                 for (i = 0; i < browsers.length; i++) {
-                    cmd.append(i == 0 ? "" : " || ").append(browsers[i]).append(" \"").append("http://").append(koneksiDB.HOSTHYBRIDWEB() + ":" + prop.getProperty("PORTWEB")).append("/").append(prop.getProperty("HYBRIDWEB")).append("/").append(url).append("\" ");
+                    cmd.append(i == 0 ? "" : " || ").append(browsers[i]).append(" \"").append("http://").append(KoneksiDB.HOSTHYBRIDWEB() + ":" + prop.getProperty("PORTWEB")).append("/").append(prop.getProperty("HYBRIDWEB")).append("/").append(url).append("\" ");
                 }
-                rt.exec(new String[]{"sh", "-c", cmd.toString()});
+                rt.exec(new String[] {"sh", "-c", cmd.toString()});
             }
         } catch (Exception e) {
             System.out.println("Notif Browser : " + e);
@@ -1263,7 +1305,7 @@ public final class validasi {
                 for (i = 0; i < browsers.length; i++) {
                     cmd.append(i == 0 ? "" : " || ").append(browsers[i]).append(" \"").append(url).append("\" ");
                 }
-                rt.exec(new String[]{"sh", "-c", cmd.toString()});
+                rt.exec(new String[] {"sh", "-c", cmd.toString()});
             }
         } catch (Exception e) {
             System.out.println("Notif Browser : " + e);
@@ -1274,7 +1316,7 @@ public final class validasi {
         try {
             Properties prop = new Properties();
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            desktop.print(new File(new java.net.URI("http://" + koneksiDB.HOSTHYBRIDWEB() + ":" + prop.getProperty("PORTWEB") + "/" + url)));
+            desktop.print(new File(new java.net.URI("http://" + KoneksiDB.HOSTHYBRIDWEB() + ":" + prop.getProperty("PORTWEB") + "/" + url)));
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -1437,7 +1479,7 @@ public final class validasi {
 
     public boolean ValidasiRegistrasi(String kodepoli, String kodedokter, String norm, String tglperiksa, String kodepj) {
         try {
-            if (sek.cariInteger("select count(reg_periksa.no_rm) from reg_periksa where reg_periksa.kd_poli='" + kodepoli + "' and reg_periksa.kd_dokter='" + kodedokter + "' and reg_periksa.no_rkm_medis='" + norm + "' and reg_periksa.tgl_registrasi='" + tglperiksa + "' reg_periksa.kd_pj='" + kodepj + "'") > 0) {
+            if (Sequel.cariInteger("select count(reg_periksa.no_rm) from reg_periksa where reg_periksa.kd_poli='" + kodepoli + "' and reg_periksa.kd_dokter='" + kodedokter + "' and reg_periksa.no_rkm_medis='" + norm + "' and reg_periksa.tgl_registrasi='" + tglperiksa + "' reg_periksa.kd_pj='" + kodepj + "'") > 0) {
                 return true;
             } else {
                 return false;

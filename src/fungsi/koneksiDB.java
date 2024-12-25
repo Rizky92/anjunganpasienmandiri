@@ -16,14 +16,14 @@ import javax.swing.JOptionPane;
  *
  * @author khanzasoft
  */
-public class koneksiDB {
+public class KoneksiDB {
 
     private static Connection connection = null;
     private static final Properties prop = new Properties();
     private static final MysqlDataSource dataSource = new MysqlDataSource();
     private static String var = "";
 
-    public koneksiDB() {
+    public KoneksiDB() {
     }
 
     public static Connection condb() {

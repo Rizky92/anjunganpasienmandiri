@@ -14,7 +14,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable;
 import fungsi.BatasInput;
-import fungsi.koneksiDB;
+import fungsi.KoneksiDB;
 import fungsi.validasi;
 import java.awt.Dimension;
 import java.awt.event.KeyEvent;
@@ -37,7 +37,7 @@ public final class DlgCariDokter extends javax.swing.JDialog {
 
     private final DefaultTableModel tabMode;
     private validasi Valid = new validasi();
-    private Connection koneksi = koneksiDB.condb();
+    private Connection koneksi = KoneksiDB.condb();
     private PreparedStatement ps;
     private ResultSet rs;
     private File file;
@@ -105,7 +105,7 @@ public final class DlgCariDokter extends javax.swing.JDialog {
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
         TCari.setDocument(new BatasInput((byte) 100).getKata(TCari));
 
-        if (koneksiDB.CARICEPAT().equals("aktif")) {
+        if (KoneksiDB.CARICEPAT().equals("aktif")) {
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
                 @Override
                 public void insertUpdate(DocumentEvent e) {

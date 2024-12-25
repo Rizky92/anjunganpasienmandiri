@@ -10,7 +10,7 @@
  */
 package khanzahmsanjungan;
 
-import fungsi.koneksiDB;
+import fungsi.KoneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import java.awt.Cursor;
@@ -35,14 +35,14 @@ import javax.swing.JOptionPane;
  */
 public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
 
-    private Connection koneksi = koneksiDB.condb();
+    private Connection koneksi = KoneksiDB.condb();
     private sekuel Sequel = new sekuel();
     private validasi Valid = new validasi();
     private PreparedStatement ps;
     private ResultSet rs;
-    private final String URUTNOREG = koneksiDB.URUTNOREG(),
-                         PRINTERREGISTRASI = koneksiDB.PRINTER_REGISTRASI(),
-                         PRINTERBARCODE = koneksiDB.PRINTER_BARCODE();
+    private final String URUTNOREG = KoneksiDB.URUTNOREG(),
+                         PRINTERREGISTRASI = KoneksiDB.PRINTER_REGISTRASI(),
+                         PRINTERBARCODE = KoneksiDB.PRINTER_BARCODE();
     private String hari = "",
                    regNoRawat = "",
                    regNoUrut = "",
@@ -729,10 +729,10 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         param.put("kontakrs", instansiKontak);
         param.put("norawat", regNoRawat);
         
-        Valid.printReport("rptBuktiRegisterAPM.jasper", PRINTERREGISTRASI, "::[ Bukti Registrasi 1 ]::", 1, param);
-        Valid.MyReport("rptBuktiRegisterAPM.jasper", "report", "::[ Bukti Registrasi 1 ]::", param);
-        Valid.printReport("rptBarcodeRawatAPM.jasper", PRINTERBARCODE, "::[ Barcode Perawatan ]::", 3, param);
-        Valid.MyReport("rptBarcodeRawatAPM.jasper", "report", "::[ Barcode Perawatan ]::", param);
+        Valid.printReportSmc("rptBuktiRegisterAPM.jasper", "report", "::[ Bukti Registrasi ]::", param, 1, PRINTERREGISTRASI);
+        Valid.reportSmc("rptBuktiRegisterAPM.jasper", "report", "::[ Bukti Registrasi ]::", param);
+        Valid.printReportSmc("rptBarcodeRawatAPM.jasper", "report", "::[ Barcode Perawatan ]::", param, 3, PRINTERBARCODE);
+        Valid.reportSmc("rptBarcodeRawatAPM.jasper", "report", "::[ Barcode Perawatan ]::", param);
         
         this.setCursor(Cursor.getDefaultCursor());
     }

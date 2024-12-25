@@ -22,7 +22,7 @@ import com.sun.jna.Pointer;
 import com.sun.jna.platform.win32.User32;
 import com.sun.jna.platform.win32.WinDef;
 import fungsi.BatasInput;
-import fungsi.koneksiDB;
+import fungsi.KoneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import java.awt.Cursor;
@@ -53,7 +53,7 @@ import org.springframework.http.MediaType;
  */
 public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
 
-    private final Connection koneksi = koneksiDB.condb();
+    private final Connection koneksi = KoneksiDB.condb();
     private final sekuel Sequel = new sekuel();
     private final ApiBPJS api = new ApiBPJS();
     private validasi Valid = new validasi();
@@ -81,11 +81,11 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         utc = "",
         jeniskunjungan = "";
 
-    private final String URLAPIBPJS = koneksiDB.URLAPIBPJS(),
-        URLAPLIKASIFINGERPRINTBPJS = koneksiDB.URLAPLIKASIFINGERPRINTBPJS(),
-        URLAPLIKASIFRISTABPJS = koneksiDB.URLAPLIKASIFRISTABPJS(),
-        USERFINGERPRINTBPJS = koneksiDB.USERFINGERPRINTBPJS(),
-        PASSFINGERPRINTBPJS = koneksiDB.PASSFINGERPRINTBPJS();
+    private final String URLAPIBPJS = KoneksiDB.URLAPIBPJS(),
+        URLAPLIKASIFINGERPRINTBPJS = KoneksiDB.URLAPLIKASIFINGERPRINTBPJS(),
+        URLAPLIKASIFRISTABPJS = KoneksiDB.URLAPLIKASIFRISTABPJS(),
+        USERFINGERPRINTBPJS = KoneksiDB.USERFINGERPRINTBPJS(),
+        PASSFINGERPRINTBPJS = KoneksiDB.PASSFINGERPRINTBPJS();
     
     private int kuota = 0;
     private final ObjectMapper mapper = new ObjectMapper();
@@ -1489,11 +1489,11 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                             try {
                                 headers = new HttpHeaders();
                                 headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-                                headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
+                                headers.add("X-Cons-ID", KoneksiDB.CONSIDAPIBPJS());
                                 utc = String.valueOf(api.GetUTCdatetimeAsString());
                                 headers.add("X-Timestamp", utc);
                                 headers.add("X-Signature", api.getHmac(utc));
-                                headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
+                                headers.add("user_key", KoneksiDB.USERKEYAPIBPJS());
                                 URL = URLAPIBPJS + "/Sep/pengajuanSEP";
                                 requestJson = " {"
                                     + "\"request\": {"
@@ -1528,11 +1528,11 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                             try {
                                 headers = new HttpHeaders();
                                 headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-                                headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
+                                headers.add("X-Cons-ID", KoneksiDB.CONSIDAPIBPJS());
                                 utc = String.valueOf(api.GetUTCdatetimeAsString());
                                 headers.add("X-Timestamp", utc);
                                 headers.add("X-Signature", api.getHmac(utc));
-                                headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
+                                headers.add("user_key", KoneksiDB.USERKEYAPIBPJS());
                                 URL = URLAPIBPJS + "/Sep/aprovalSEP";
                                 requestJson = " {"
                                     + "\"request\": {"
@@ -1751,15 +1751,14 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         param.put("kotars", Sequel.cariIsi("select setting.kabupaten from setting limit 1"));
 
         if (JenisPelayanan.getSelectedIndex() == 0) {
-            Valid.printReport("rptBridgingSEPAPM1.jasper", koneksiDB.PRINTER_REGISTRASI(), "::[ Cetak SEP Model 4 ]::", 1, param);
-            Valid.MyReport("rptBridgingSEPAPM1.jasper", "report", "::[ Cetak SEP Model 4 ]::", param);
+            Valid.printReportSmc("rptBridgingSEPAPM1.jasper", "report", "::[ Cetak SEP Model 4 ]::", param, 1, KoneksiDB.PRINTER_REGISTRASI());
+            Valid.reportSmc("rptBridgingSEPAPM1.jasper", "report", "::[ Cetak SEP Model 4 ]::", param);
         } else {
-            Valid.printReport("rptBridgingSEPAPM2.jasper", koneksiDB.PRINTER_REGISTRASI(), "::[ Cetak SEP Model 4 ]::", 1, param);
-            Valid.MyReport("rptBridgingSEPAPM2.jasper", "report", "::[ Cetak SEP Model 4 ]::", param);
+            Valid.printReportSmc("rptBridgingSEPAPM2.jasper", "report", "::[ Cetak SEP Model 4 ]::", param, 1, KoneksiDB.PRINTER_REGISTRASI());
+            Valid.reportSmc("rptBridgingSEPAPM2.jasper", "report", "::[ Cetak SEP Model 4 ]::", param);
         }
-
-        Valid.printReport("rptBarcodeRawatAPM.jasper", koneksiDB.PRINTER_BARCODE(), "::[ Barcode Perawatan ]::", Integer.parseInt(JumlahBarcode.getText().trim()), param);
-        Valid.MyReport("rptBarcodeRawatAPM.jasper", "report", "::[ Barcode Perawatan ]::", param);
+        Valid.printReportSmc("rptBarcodeRawatAPM.jasper", "report", "::[ Barcode Perawatan ]::", param, Integer.parseInt(JumlahBarcode.getText().trim()), KoneksiDB.PRINTER_BARCODE());
+        Valid.reportSmc("rptBarcodeRawatAPM.jasper", "report", "::[ Cetak SEP Model 4 ]::", param);
     }
 
     private void insertSEP() {
@@ -1772,11 +1771,11 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
 
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-            headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
+            headers.add("X-Cons-ID", KoneksiDB.CONSIDAPIBPJS());
             utc = String.valueOf(api.GetUTCdatetimeAsString());
             headers.add("X-Timestamp", utc);
             headers.add("X-Signature", api.getHmac(utc));
-            headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
+            headers.add("user_key", KoneksiDB.USERKEYAPIBPJS());
             URL = URLAPIBPJS + "/SEP/2.0/insert";
             requestJson = "{"
                 + "\"request\":{"
@@ -1958,10 +1957,10 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
 
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-            headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
+            headers.add("X-Cons-ID", KoneksiDB.CONSIDAPIBPJS());
             headers.add("X-Timestamp", utc);
             headers.add("X-Signature", api.getHmac(utc));
-            headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
+            headers.add("user_key", KoneksiDB.USERKEYAPIBPJS());
 
             requestEntity = new HttpEntity(headers);
             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
@@ -2038,10 +2037,10 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                         utc = String.valueOf(api.GetUTCdatetimeAsString());
                         headers = new HttpHeaders();
                         headers.setContentType(MediaType.APPLICATION_JSON);
-                        headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
+                        headers.add("X-Cons-ID", KoneksiDB.CONSIDAPIBPJS());
                         headers.add("X-Timestamp", utc);
                         headers.add("X-Signature", api.getHmac(utc));
-                        headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
+                        headers.add("user_key", KoneksiDB.USERKEYAPIBPJS());
                         requestEntity = new HttpEntity(headers);
                         root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
                         nameNode = root.path("metaData");
@@ -2073,10 +2072,10 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                                     utc = String.valueOf(api.GetUTCdatetimeAsString());
                                     headers = new HttpHeaders();
                                     headers.setContentType(MediaType.APPLICATION_JSON);
-                                    headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
+                                    headers.add("X-Cons-ID", KoneksiDB.CONSIDAPIBPJS());
                                     headers.add("X-Timestamp", utc);
                                     headers.add("X-Signature", api.getHmac(utc));
-                                    headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
+                                    headers.add("user_key", KoneksiDB.USERKEYAPIBPJS());
                                     requestEntity = new HttpEntity(headers);
                                     root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
                                     nameNode = root.path("metaData");
@@ -2109,10 +2108,10 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                                     utc = String.valueOf(api.GetUTCdatetimeAsString());
                                     headers = new HttpHeaders();
                                     headers.setContentType(MediaType.APPLICATION_JSON);
-                                    headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
+                                    headers.add("X-Cons-ID", KoneksiDB.CONSIDAPIBPJS());
                                     headers.add("X-Timestamp", utc);
                                     headers.add("X-Signature", api.getHmac(utc));
-                                    headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
+                                    headers.add("user_key", KoneksiDB.USERKEYAPIBPJS());
                                     requestEntity = new HttpEntity(headers);
                                     root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
                                     nameNode = root.path("metaData");
@@ -2177,10 +2176,10 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                                                     utc = String.valueOf(api.GetUTCdatetimeAsString());
                                                     headers = new HttpHeaders();
                                                     headers.setContentType(MediaType.APPLICATION_JSON);
-                                                    headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
+                                                    headers.add("X-Cons-ID", KoneksiDB.CONSIDAPIBPJS());
                                                     headers.add("X-Timestamp", utc);
                                                     headers.add("X-Signature", api.getHmac(utc));
-                                                    headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
+                                                    headers.add("user_key", KoneksiDB.USERKEYAPIBPJS());
                                                     requestEntity = new HttpEntity(headers);
                                                     root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
                                                     nameNode = root.path("metaData");
@@ -2267,11 +2266,11 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                     try {
                         headers = new HttpHeaders();
                         headers.setContentType(MediaType.APPLICATION_JSON);
-                        headers.add("x-cons-id", koneksiDB.CONSIDAPIMOBILEJKN());
+                        headers.add("x-cons-id", KoneksiDB.CONSIDAPIMOBILEJKN());
                         utc = String.valueOf(api.GetUTCdatetimeAsString());
                         headers.add("x-timestamp", utc);
                         headers.add("x-signature", api.getHmac(utc));
-                        headers.add("user_key", koneksiDB.USERKEYAPIMOBILEJKN());
+                        headers.add("user_key", KoneksiDB.USERKEYAPIMOBILEJKN());
                         requestJson = "{"
                             + "\"kodebooking\": \"" + rs.getString("nobooking") + "\","
                             + "\"jenispasien\": \"JKN\","
@@ -2299,7 +2298,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                             + "}";
                         System.out.println("JSON : " + requestJson);
                         requestEntity = new HttpEntity(requestJson, headers);
-                        URL = koneksiDB.URLAPIMOBILEJKN() + "/antrean/add";
+                        URL = KoneksiDB.URLAPIMOBILEJKN() + "/antrean/add";
                         System.out.println("URL : " + URL);
                         root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
                         nameNode = root.path("metadata");
@@ -2536,10 +2535,10 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
             utc = String.valueOf(api.GetUTCdatetimeAsString());
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-            headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
+            headers.add("X-Cons-ID", KoneksiDB.CONSIDAPIBPJS());
             headers.add("X-Timestamp", utc);
             headers.add("X-Signature", api.getHmac(utc));
-            headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
+            headers.add("user_key", KoneksiDB.USERKEYAPIBPJS());
             URL = URLAPIBPJS + "/RencanaKontrol/Update";
             requestJson = "{"
                 + "\"request\": {"

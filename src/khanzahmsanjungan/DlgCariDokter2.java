@@ -13,7 +13,7 @@ package khanzahmsanjungan;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable;
-import fungsi.koneksiDB;
+import fungsi.KoneksiDB;
 import fungsi.validasi;
 import java.awt.Dimension;
 import java.io.File;
@@ -34,7 +34,7 @@ public final class DlgCariDokter2 extends javax.swing.JDialog {
 
     private final DefaultTableModel tabMode;
     private validasi Valid = new validasi();
-    private Connection koneksi = koneksiDB.condb();
+    private Connection koneksi = KoneksiDB.condb();
     private PreparedStatement ps;
     private ResultSet rs;
     private File file;
