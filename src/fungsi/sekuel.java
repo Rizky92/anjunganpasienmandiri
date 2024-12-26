@@ -64,14 +64,14 @@ public final class sekuel {
     public sekuel() {
         super();
     }
-    
+
     public String autonomorSmc(String prefix, String separator, String table, String kolom, int panjang, String pad, String tanggal, int next) {
-        String sql = 
-            "select concat(if(? is null or ? = '', '', concat(?, ?)), date_format(" +
-            "?, concat_ws(?, '%Y', '%m', '%d')), ?, lpad(ifnull(max(convert(right(" +
-            table + "." + kolom + ", ?), unsigned)), 0) + ?, ?, ?)) from " + table +
-            " where " + table + "." + kolom + " like concat(if(? is null or ? = '', " +
-            "'', concat(?, ?)), date_format(?, concat_ws(?, '%Y', '%m', '%d')), '%')";
+        String sql
+            = "select concat(if(? is null or ? = '', '', concat(?, ?)), date_format("
+            + "?, concat_ws(?, '%Y', '%m', '%d')), ?, lpad(ifnull(max(convert(right("
+            + table + "." + kolom + ", ?), unsigned)), 0) + ?, ?, ?)) from " + table
+            + " where " + table + "." + kolom + " like concat(if(? is null or ? = '', "
+            + "'', concat(?, ?)), date_format(?, concat_ws(?, '%Y', '%m', '%d')), '%')";
         try (PreparedStatement ps = koneksi.prepareStatement(sql)) {
             ps.setString(1, prefix);
             ps.setString(2, prefix);
@@ -100,8 +100,7 @@ public final class sekuel {
         }
         return "";
     }
-    
-    
+
     public String autonomorSmc(String prefix, String separator, String table, String kolom, int panjang, String pad, String tanggal) {
         return autonomorSmc(prefix, separator, table, kolom, panjang, pad, tanggal, 1);
     }
@@ -398,7 +397,7 @@ public final class sekuel {
         }
         return false;
     }
-    
+
     public void logTaskid(String norawat, String kodebooking, String jenisPasien, String taskid, String request, String code, String message, String response, String wakturs) {
         try (PreparedStatement ps = koneksi.prepareStatement(
             "insert into referensi_mobilejkn_bpjs_taskid_response2 (no_rawat, kodebooking, jenispasien, taskid, request, code, message, response, waktu, waktu_rs) values (?, ?, ?, ?, ?, ?, ?, ?, now(), ?)"
@@ -1369,7 +1368,7 @@ public final class sekuel {
         angka = 0;
         try {
             ps = koneksi.prepareStatement(
-                    "select count(billing.no_rawat) from billing where billing.no_rawat=?");
+                "select count(billing.no_rawat) from billing where billing.no_rawat=?");
             try {
                 ps.setString(1, norawat);
                 rs = ps.executeQuery();
@@ -1947,7 +1946,7 @@ public final class sekuel {
                     ((Painter) txt).setImage(gambar(text));
                     Blob blob = rs.getBlob(5);
                     ((Painter) txt).setImageIcon(new javax.swing.ImageIcon(
-                            blob.getBytes(1, (int) (blob.length()))));
+                        blob.getBytes(1, (int) (blob.length()))));
                 }
             } catch (Exception ex) {
                 cetak(ex.toString());
@@ -2034,7 +2033,7 @@ public final class sekuel {
             int scaledH = (int) (scale * inImage.getHeight(null));
 
             BufferedImage outImage = new BufferedImage(scaledW, scaledH,
-                    BufferedImage.TYPE_INT_RGB);
+                BufferedImage.TYPE_INT_RGB);
 
             AffineTransform tx = new AffineTransform();
 
@@ -2098,8 +2097,8 @@ public final class sekuel {
                 try (FileChannel inChannel = inFile.getChannel()) {
                     outChannel = outFile.getChannel();
                     for (ByteBuffer buffer = ByteBuffer.allocate(1024 * 1024);
-                            inChannel.read(buffer) != -1;
-                            buffer.clear()) {
+                        inChannel.read(buffer) != -1;
+                        buffer.clear()) {
                         buffer.flip();
                         while (buffer.hasRemaining()) {
                             outChannel.write(buffer);

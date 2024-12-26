@@ -86,7 +86,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         URLAPLIKASIFRISTABPJS = KoneksiDB.URLAPLIKASIFRISTABPJS(),
         USERFINGERPRINTBPJS = KoneksiDB.USERFINGERPRINTBPJS(),
         PASSFINGERPRINTBPJS = KoneksiDB.PASSFINGERPRINTBPJS();
-    
+
     private int kuota = 0;
     private final ObjectMapper mapper = new ObjectMapper();
     private JsonNode root, nameNode, response;
@@ -1425,7 +1425,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
 
     private void btnApprovalFPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApprovalFPActionPerformed
         resetAksi();
-        if (! NoKartu.getText().isBlank()) {
+        if (!NoKartu.getText().isBlank()) {
             aksi = "Approval";
             WindowAksi.setSize(400, 300);
             WindowAksi.setLocationRelativeTo(null);
@@ -1437,7 +1437,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
 
     private void btnPengajuanFPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPengajuanFPActionPerformed
         resetAksi();
-        if (! NoKartu.getText().isBlank()) {
+        if (!NoKartu.getText().isBlank()) {
             aksi = "Pengajuan";
             WindowAksi.setSize(400, 300);
             WindowAksi.setLocationRelativeTo(null);
@@ -2003,10 +2003,10 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         btnDokterTerapi.setVisible(false);
         lblTerapi.setVisible(false);
         try (PreparedStatement psjkn = koneksi.prepareStatement(
-            "select referensi_mobilejkn_bpjs.*, maping_poli_bpjs.nm_poli_bpjs, maping_poli_bpjs.kd_poli_rs, maping_dokter_dpjpvclaim.nm_dokter_bpjs, maping_dokter_dpjpvclaim.kd_dokter from referensi_mobilejkn_bpjs " +
-            "join maping_poli_bpjs on referensi_mobilejkn_bpjs.kodepoli = maping_poli_bpjs.kd_poli_bpjs join maping_dokter_dpjpvclaim on referensi_mobilejkn_bpjs.kodedokter = maping_dokter_dpjpvclaim.kd_dokter_bpjs " +
-            "where referensi_mobilejkn_bpjs.nomorkartu = ? and referensi_mobilejkn_bpjs.tanggalperiksa = current_date() and referensi_mobilejkn_bpjs.status in ('Belum', 'Checkin') and tanggalperiksa = current_date() " +
-            "and not exists(select * from pemeriksaan_ralan where pemeriksaan_ralan.no_rawat = referensi_mobilejkn_bpjs.no_rawat)"
+            "select referensi_mobilejkn_bpjs.*, maping_poli_bpjs.nm_poli_bpjs, maping_poli_bpjs.kd_poli_rs, maping_dokter_dpjpvclaim.nm_dokter_bpjs, maping_dokter_dpjpvclaim.kd_dokter from referensi_mobilejkn_bpjs "
+            + "join maping_poli_bpjs on referensi_mobilejkn_bpjs.kodepoli = maping_poli_bpjs.kd_poli_bpjs join maping_dokter_dpjpvclaim on referensi_mobilejkn_bpjs.kodedokter = maping_dokter_dpjpvclaim.kd_dokter_bpjs "
+            + "where referensi_mobilejkn_bpjs.nomorkartu = ? and referensi_mobilejkn_bpjs.tanggalperiksa = current_date() and referensi_mobilejkn_bpjs.status in ('Belum', 'Checkin') and tanggalperiksa = current_date() "
+            + "and not exists(select * from pemeriksaan_ralan where pemeriksaan_ralan.no_rawat = referensi_mobilejkn_bpjs.no_rawat)"
         )) {
             psjkn.setString(1, noKartu);
             try (ResultSet rsjkn = psjkn.executeQuery()) {
@@ -2048,10 +2048,17 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                         if (nameNode.path("code").asText().equals("200")) {
                             response = mapper.readTree(api.Decrypt(root.path("response").asText(), utc)).path("peserta");
                             switch (response.path("hakKelas").path("kode").asText()) {
-                                case "1": Kelas.setSelectedIndex(0); break;
-                                case "2": Kelas.setSelectedIndex(1); break;
-                                case "3": Kelas.setSelectedIndex(2); break;
-                                default: break;
+                                case "1":
+                                    Kelas.setSelectedIndex(0);
+                                    break;
+                                case "2":
+                                    Kelas.setSelectedIndex(1);
+                                    break;
+                                case "3":
+                                    Kelas.setSelectedIndex(2);
+                                    break;
+                                default:
+                                    break;
                             }
                             prb = response.path("informasi").path("prolanisPRB").asText();
                             if (prb.contains("null")) {
@@ -2138,13 +2145,13 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                             } else if (jeniskunjungan.equals("3")) {
                                 // CEK JENIS KONTROL DULU
                                 try (PreparedStatement pskontrol = koneksi.prepareStatement(
-                                    "select bridging_surat_kontrol_bpjs.*, left(bridging_sep.asal_rujukan, 1) as asal_rujukan, bridging_sep.jnspelayanan, bridging_sep.no_rujukan, bridging_sep.klsrawat " +
-                                    "from bridging_surat_kontrol_bpjs join bridging_sep on bridging_surat_kontrol_bpjs.no_sep = bridging_sep.no_sep where bridging_surat_kontrol_bpjs.no_surat = ?"
+                                    "select bridging_surat_kontrol_bpjs.*, left(bridging_sep.asal_rujukan, 1) as asal_rujukan, bridging_sep.jnspelayanan, bridging_sep.no_rujukan, bridging_sep.klsrawat "
+                                    + "from bridging_surat_kontrol_bpjs join bridging_sep on bridging_surat_kontrol_bpjs.no_sep = bridging_sep.no_sep where bridging_surat_kontrol_bpjs.no_surat = ?"
                                 )) {
                                     pskontrol.setString(1, rsjkn.getString("nomorreferensi"));
                                     try (ResultSet rskontrol = pskontrol.executeQuery()) {
                                         if (rskontrol.next()) {
-                                            if (! rskontrol.getString("tgl_rencana").equals(Valid.SetTgl(TanggalSEP.getSelectedItem().toString()))) {
+                                            if (!rskontrol.getString("tgl_rencana").equals(Valid.SetTgl(TanggalSEP.getSelectedItem().toString()))) {
                                                 updateSuratKontrol(
                                                     rskontrol.getString("no_surat"), rskontrol.getString("no_sep"), rsjkn.getString("nomorkartu"), Valid.SetTgl(TanggalSEP.getSelectedItem().toString()),
                                                     rsjkn.getString("kodedokter"), rsjkn.getString("nm_dokter_bpjs"), rsjkn.getString("kodepoli"), rsjkn.getString("nm_poli_bpjs")
@@ -2254,10 +2261,10 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         }
         try {
             ps = koneksi.prepareStatement(
-                "select referensi_mobilejkn_bpjs.*, reg_periksa.no_rkm_medis, pasien.nm_pasien, poliklinik.nm_poli, dokter.nm_dokter from referensi_mobilejkn_bpjs " +
-                "join reg_periksa on referensi_mobilejkn_bpjs.no_rawat = reg_periksa.no_rawat join pasien on reg_periksa.no_rkm_medis = pasien.no_rkm_medis " +
-                "join poliklinik on reg_periksa.kd_poli = poliklinik.kd_poli join dokter on reg_periksa.kd_dokter = dokter.kd_dokter " +
-                "where referensi_mobilejkn_bpjs.statuskirim = 'Belum' and referensi_mobilejkn_bpjs.nobooking = ? and referensi_mobilejkn.status = 'Checkin'"
+                "select referensi_mobilejkn_bpjs.*, reg_periksa.no_rkm_medis, pasien.nm_pasien, poliklinik.nm_poli, dokter.nm_dokter from referensi_mobilejkn_bpjs "
+                + "join reg_periksa on referensi_mobilejkn_bpjs.no_rawat = reg_periksa.no_rawat join pasien on reg_periksa.no_rkm_medis = pasien.no_rkm_medis "
+                + "join poliklinik on reg_periksa.kd_poli = poliklinik.kd_poli join dokter on reg_periksa.kd_dokter = dokter.kd_dokter "
+                + "where referensi_mobilejkn_bpjs.statuskirim = 'Belum' and referensi_mobilejkn_bpjs.nobooking = ? and referensi_mobilejkn.status = 'Checkin'"
             );
             try {
                 ps.setString(1, nobooking);
@@ -2401,7 +2408,9 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                 char[] windowText = new char[512];
                 u32.GetWindowText(hwnd, windowText, 512);
                 String wText = Native.toString(windowText);
-                if (wText.isEmpty()) return true;
+                if (wText.isEmpty()) {
+                    return true;
+                }
                 if (wText.contains("Registrasi Sidik Jari")) {
                     DlgRegistrasiSEPMobileJKN.this.fingerprintAktif = true;
                     u32.SetForegroundWindow(hwnd);
@@ -2456,7 +2465,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
             System.out.println("Notif : " + e);
         }
     }
-    
+
     private void bukaAplikasiFrista() {
         if (NoKartu.getText().isBlank()) {
             JOptionPane.showMessageDialog(rootPane, "No. kartu peserta tidak ada..!!");
@@ -2470,7 +2479,9 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                 char[] windowText = new char[512];
                 u32.GetWindowText(hwnd, windowText, 512);
                 String wText = Native.toString(windowText);
-                if (wText.isEmpty()) return true;
+                if (wText.isEmpty()) {
+                    return true;
+                }
                 if (wText.contains("Registrasi Sidik Jari")) {
                     DlgRegistrasiSEPMobileJKN.this.fingerprintAktif = true;
                     u32.SetForegroundWindow(hwnd);
@@ -2525,7 +2536,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
             System.out.println("Notif : " + e);
         }
     }
-    
+
     private void updateSuratKontrol(String noSKDP, String noSEP, String noKartu, String tanggalPeriksa, String kodeDPJP, String namaDPJP, String kodePoli, String namaPoli) {
         if (noSKDP.trim().isEmpty()) {
             JOptionPane.showMessageDialog(rootPane, "Maaf, data surat kontrol tidak ditemukan...!!\nSilahkan hubungi administrasi...!!");
@@ -2584,7 +2595,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
             TNoRw.getText(), NmPpkRujukan.getText(), "-", NoRujukan.getText(),
             "0", NmPpkRujukan.getText(), KdPenyakit.getText(), "-", "-", NoRujukMasuk.getText()
         );
-        while (coba < maxCoba && ! sukses) {
+        while (coba < maxCoba && !sukses) {
             NoRujukMasuk.setText(
                 Sequel.cariIsiSmc(
                     "select concat('BR/', date_format(?, '%Y/%m/%d/'), lpad(ifnull(max(convert(right(rujuk_masuk.no_balasan, 4), signed)), 0) + 1, 4, '0')) from rujuk_masuk where rujuk_masuk.no_balasan like concat('BR/', date_format(?, '%Y/%m/%d/'), '%')",
@@ -2599,7 +2610,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         }
         return sukses;
     }
-    
+
     private void resetAksi() {
         pwUserId.setText("");
         pwPass.setText("");

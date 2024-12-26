@@ -75,68 +75,68 @@ public final class validasi {
     private final Calendar now = Calendar.getInstance();
     private final int year = (now.get(Calendar.YEAR));
     private final DecimalFormat df2 = new DecimalFormat("###,###,###,###,###,###,###"),
-                                df3 = new DecimalFormat("######"),
-                                df4 = new DecimalFormat("###,###,###,###,###,###,###.#################"),
-                                df5 = new DecimalFormat("###,###,###,###,###,###,###.##"),
-                                df6 = new DecimalFormat("######.###"),
-                                df7 = new DecimalFormat("######.#");
+        df3 = new DecimalFormat("######"),
+        df4 = new DecimalFormat("###,###,###,###,###,###,###.#################"),
+        df5 = new DecimalFormat("###,###,###,###,###,###,###.##"),
+        df6 = new DecimalFormat("######.###"),
+        df7 = new DecimalFormat("######.#");
     private int a, j, i, result = 0;
     private String s, s1, auto;
     private PreparedStatement ps;
     private ResultSet rs;
-    
+
     public validasi() {
         super();
     }
-    
+
     public void autonomorSmc(JTextComponent komponen, String prefix, String separator, String table, String kolom, int panjang, String pad, String tanggal, int next) {
         komponen.setText(Sequel.autonomorSmc(prefix, separator, table, kolom, panjang, pad, tanggal, next));
     }
-    
+
     public void autonomorSmc(JTextComponent komponen, String prefix, String separator, String table, String kolom, int panjang, String pad, Tanggal tanggal, int next) {
         autonomorSmc(komponen, prefix, separator, table, kolom, panjang, pad, getTglSmc(tanggal), next);
     }
-    
+
     public void autonomorSmc(JTextComponent komponen, String prefix, String separator, String table, String kolom, int panjang, String pad, String tanggal) {
         komponen.setText(Sequel.autonomorSmc(prefix, separator, table, kolom, panjang, pad, tanggal));
     }
-    
+
     public void autonomorSmc(JTextComponent komponen, String prefix, String separator, String table, String kolom, int panjang, String pad, Tanggal tanggal) {
         autonomorSmc(komponen, prefix, separator, table, kolom, panjang, pad, getTglSmc(tanggal));
     }
-    
+
     public void autonomor1Smc(JTextComponent komponen, String prefix, String table, String kolom, int panjang, String pad, Tanggal tanggal) {
         autonomorSmc(komponen, prefix, "", table, kolom, panjang, pad, getTglSmc(tanggal));
     }
-    
+
     public String getTglSmc(Tanggal tanggal) {
         return new SimpleDateFormat("yyyy-MM-dd").format(tanggal.getDate());
     }
-    
+
     public String getJamSmc(ComboBox jam, ComboBox menit, ComboBox detik) {
         return jam.getSelectedItem() + ":" + menit.getSelectedItem() + ":" + detik.getSelectedItem();
     }
-    
+
     public String getTglJamSmc(Tanggal tanggal, ComboBox jam, ComboBox menit, ComboBox detik) {
         return getTglSmc(tanggal) + " " + getJamSmc(jam, menit, detik);
     }
-    
+
     public String getTglJamSmc(Tanggal tgljam) {
         return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(tgljam.getDate());
     }
-    
+
     public String setTglSmc(Date tgl) {
         return new SimpleDateFormat("dd-MM-yyyy").format(tgl);
     }
-    
+
     public String setTglSmc(String tgl) {
         return tgl.substring(8, 10) + "-" + tgl.substring(5, 7) + "-" + tgl.substring(0, 4);
     }
-    
+
     public String setTglJamSmc(Date tgljam) {
         return new SimpleDateFormat("dd-MM-yyyy HH:mm:ss").format(tgljam);
     }
-    
+
     public void reportSmc(String reportName, String reportDirName, String judul, Map reportParams, String sql, String... values) {
         try (PreparedStatement ps = koneksi.prepareStatement(sql)) {
             for (int i = 0; i < values.length; i++) {
@@ -154,7 +154,7 @@ public final class validasi {
             JOptionPane.showMessageDialog(null, "Report can't view because : " + e);
         }
     }
-    
+
     public void reportSmc(String reportName, String reportDirName, String judul, Map reportParams) {
         try {
             JasperViewer jv = new JasperViewer(JasperFillManager.fillReport("./" + reportDirName + "/" + reportName, reportParams, koneksi), false);
@@ -169,7 +169,7 @@ public final class validasi {
             JOptionPane.showMessageDialog(null, "Report can't view because : " + e);
         }
     }
-    
+
     public void printReportSmc(String reportName, String reportDirName, String judul, Map reportParams, int jumlah, String namaPrinter) {
         try {
             PrintService printService = null;
@@ -203,7 +203,7 @@ public final class validasi {
             System.out.println("Notif : " + e);
             JOptionPane.showMessageDialog(null, "Terjadi kesalahan pada saat melakukan cetak otomatis!");
         }
-    }    
+    }
 
     public void autoNomer(DefaultTableModel tabMode, String strAwal, Integer pnj, javax.swing.JTextField teks) {
         s = Integer.toString(tabMode.getRowCount() + 1);
