@@ -18,7 +18,7 @@ public class RadioButton extends JRadioButton {
 
     public RadioButton() {
         super();
-        setFont(new java.awt.Font("Tahoma", 0, 11));
+        setFont(new java.awt.Font("Inter", 0, 11));
         setBackground(new Color(255, 255, 255));
         setForeground(new Color(50, 50, 50));
         setFocusPainted(false);

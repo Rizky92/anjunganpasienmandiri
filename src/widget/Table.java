@@ -22,7 +22,7 @@ public class Table extends JTable {
         setSelectionForeground(new Color(130, 134, 0));
         getTableHeader().setBackground(new Color(240, 255, 255));
         getTableHeader().setBorder(new LineBorder(new Color(240, 255, 255)));
-        getTableHeader().setFont(new java.awt.Font("Tahoma", 0, 18));
+        getTableHeader().setFont(new java.awt.Font("Inter", 0, 18));
         getTableHeader().setForeground(new Color(0, 131, 62));
     }
 }

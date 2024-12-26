@@ -77,12 +77,12 @@ public class DlgAmbilAntrean extends javax.swing.JDialog {
 
         LblKdPoli.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LblKdPoli.setText("Norm");
-        LblKdPoli.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        LblKdPoli.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         LblKdPoli.setPreferredSize(new java.awt.Dimension(20, 14));
 
         LblKdDokter.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LblKdDokter.setText("Norm");
-        LblKdDokter.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        LblKdDokter.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         LblKdDokter.setPreferredSize(new java.awt.Dimension(20, 14));
 
         NoReg.setPreferredSize(new java.awt.Dimension(320, 30));

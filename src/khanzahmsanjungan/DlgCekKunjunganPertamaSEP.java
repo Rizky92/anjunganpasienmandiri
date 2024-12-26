@@ -137,7 +137,7 @@ public class DlgCekKunjunganPertamaSEP extends javax.swing.JDialog {
         BtnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/exit.png"))); // NOI18N
         BtnClose.setMnemonic('U');
         BtnClose.setToolTipText("Alt+U");
-        BtnClose.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        BtnClose.setFont(new java.awt.Font("Inter", 1, 11)); // NOI18N
         BtnClose.setHorizontalTextPosition(javax.swing.SwingConstants.TRAILING);
         BtnClose.setIconTextGap(2);
         BtnClose.setMargin(new java.awt.Insets(0, 0, 0, 0));

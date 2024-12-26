@@ -115,12 +115,12 @@ public class DlgCekNoRM extends javax.swing.JDialog {
 
         LblKdPoli.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LblKdPoli.setText("Norm");
-        LblKdPoli.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        LblKdPoli.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         LblKdPoli.setPreferredSize(new java.awt.Dimension(20, 14));
 
         LblKdDokter.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LblKdDokter.setText("Norm");
-        LblKdDokter.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        LblKdDokter.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         LblKdDokter.setPreferredSize(new java.awt.Dimension(20, 14));
 
         NoReg.setPreferredSize(new java.awt.Dimension(320, 30));
@@ -228,7 +228,7 @@ public class DlgCekNoRM extends javax.swing.JDialog {
         BtnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/exit.png"))); // NOI18N
         BtnClose.setMnemonic('U');
         BtnClose.setToolTipText("Alt+U");
-        BtnClose.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        BtnClose.setFont(new java.awt.Font("Inter", 1, 11)); // NOI18N
         BtnClose.setHorizontalTextPosition(javax.swing.SwingConstants.TRAILING);
         BtnClose.setIconTextGap(2);
         BtnClose.setMargin(new java.awt.Insets(0, 0, 0, 0));

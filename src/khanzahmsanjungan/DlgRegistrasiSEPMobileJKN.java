@@ -341,12 +341,12 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
 
         LblKdPoli.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LblKdPoli.setText("Norm");
-        LblKdPoli.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        LblKdPoli.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         LblKdPoli.setPreferredSize(new java.awt.Dimension(20, 14));
 
         LblKdDokter.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LblKdDokter.setText("Norm");
-        LblKdDokter.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        LblKdDokter.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         LblKdDokter.setPreferredSize(new java.awt.Dimension(20, 14));
 
         NoReg.setPreferredSize(new java.awt.Dimension(320, 30));
@@ -357,22 +357,22 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
 
         TAlmt.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         TAlmt.setText("Norm");
-        TAlmt.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        TAlmt.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         TAlmt.setPreferredSize(new java.awt.Dimension(20, 14));
 
         TPngJwb.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         TPngJwb.setText("Norm");
-        TPngJwb.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        TPngJwb.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         TPngJwb.setPreferredSize(new java.awt.Dimension(20, 14));
 
         THbngn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         THbngn.setText("Norm");
-        THbngn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        THbngn.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         THbngn.setPreferredSize(new java.awt.Dimension(20, 14));
 
         NoTelpPasien.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         NoTelpPasien.setText("Norm");
-        NoTelpPasien.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        NoTelpPasien.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         NoTelpPasien.setPreferredSize(new java.awt.Dimension(20, 14));
 
         kdpoli.setHighlighter(null);
@@ -402,7 +402,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         internalFrame1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pwUserId.setForeground(new java.awt.Color(40, 40, 40));
-        pwUserId.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        pwUserId.setFont(new java.awt.Font("Inter", 1, 12)); // NOI18N
         pwUserId.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 pwUserIdKeyPressed(evt);
@@ -411,7 +411,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         internalFrame1.add(pwUserId, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 230, 23));
 
         pwPass.setForeground(new java.awt.Color(40, 40, 40));
-        pwPass.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        pwPass.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         pwPass.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 pwPassKeyPressed(evt);
@@ -420,7 +420,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         internalFrame1.add(pwPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 230, 23));
 
         btnAksiKonfirmasi.setText("Konfirmasi");
-        btnAksiKonfirmasi.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnAksiKonfirmasi.setFont(new java.awt.Font("Inter", 1, 12)); // NOI18N
         btnAksiKonfirmasi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAksiKonfirmasiActionPerformed(evt);
@@ -429,7 +429,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         internalFrame1.add(btnAksiKonfirmasi, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, -1, -1));
 
         btnAksiBatal.setText("Batal");
-        btnAksiBatal.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnAksiBatal.setFont(new java.awt.Font("Inter", 1, 12)); // NOI18N
         btnAksiBatal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAksiBatalActionPerformed(evt);
@@ -439,17 +439,17 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
 
         label1.setText("User ID :");
         label1.setFocusable(false);
-        label1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        label1.setFont(new java.awt.Font("Inter", 1, 12)); // NOI18N
         internalFrame1.add(label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 120, 23));
 
         label2.setText("Password :");
         label2.setFocusable(false);
-        label2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        label2.setFont(new java.awt.Font("Inter", 1, 12)); // NOI18N
         internalFrame1.add(label2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 120, 23));
 
         label3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         label3.setText("Konfirmasi Aksi");
-        label3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        label3.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
         internalFrame1.add(label3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 400, -1));
 
         WindowAksi.getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);
@@ -2248,7 +2248,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
     }
 
     public void SimpanAntrianOnSite() {
-        if (Sequel.cariBooleanSmc("select * from referensi_mobilejkn_bpjs where referensi_mobilejkn_bpjs.nobooking = ? and referensi_mobilejkn_bpjs.status = 'Belum'", nobooking)) {
+        if (Sequel.cariExistsSmc("select * from referensi_mobilejkn_bpjs where referensi_mobilejkn_bpjs.nobooking = ? and referensi_mobilejkn_bpjs.status = 'Belum'", nobooking)) {
             Sequel.mengupdateSmc("referensi_mobilejkn_bpjs", "referensi_mobilejkn_bpjs.validasi = now(), referensi_mobilejkn_bpjs.status = 'Checkin'", "referensi_mobilejkn_bpjs.nobooking = ? and referensi_mobilejkn_bpjs.status = 'Belum'", nobooking);
             Sequel.mengupdateSmc("reg_periksa", "reg_periksa.jam_reg = current_time()", "reg_periksa.no_rawat = ? and stts != 'Batal'", TNoRw.getText());
         }

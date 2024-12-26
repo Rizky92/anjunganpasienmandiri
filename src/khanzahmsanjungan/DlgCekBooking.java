@@ -122,12 +122,12 @@ public class DlgCekBooking extends javax.swing.JDialog {
 
         LblKdPoli.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LblKdPoli.setText("Norm");
-        LblKdPoli.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        LblKdPoli.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         LblKdPoli.setPreferredSize(new java.awt.Dimension(20, 14));
 
         LblKdDokter.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LblKdDokter.setText("Norm");
-        LblKdDokter.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        LblKdDokter.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         LblKdDokter.setPreferredSize(new java.awt.Dimension(20, 14));
 
         NoReg.setPreferredSize(new java.awt.Dimension(320, 30));
@@ -168,22 +168,22 @@ public class DlgCekBooking extends javax.swing.JDialog {
 
         TAlmt.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         TAlmt.setText("Norm");
-        TAlmt.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        TAlmt.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         TAlmt.setPreferredSize(new java.awt.Dimension(20, 14));
 
         TPngJwb.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         TPngJwb.setText("Norm");
-        TPngJwb.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        TPngJwb.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         TPngJwb.setPreferredSize(new java.awt.Dimension(20, 14));
 
         THbngn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         THbngn.setText("Norm");
-        THbngn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        THbngn.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         THbngn.setPreferredSize(new java.awt.Dimension(20, 14));
 
         NoTelpPasien.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         NoTelpPasien.setText("Norm");
-        NoTelpPasien.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        NoTelpPasien.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         NoTelpPasien.setPreferredSize(new java.awt.Dimension(20, 14));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -238,7 +238,7 @@ public class DlgCekBooking extends javax.swing.JDialog {
         BtnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/exit.png"))); // NOI18N
         BtnClose.setMnemonic('U');
         BtnClose.setToolTipText("Alt+U");
-        BtnClose.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        BtnClose.setFont(new java.awt.Font("Inter", 1, 11)); // NOI18N
         BtnClose.setHorizontalTextPosition(javax.swing.SwingConstants.TRAILING);
         BtnClose.setIconTextGap(2);
         BtnClose.setMargin(new java.awt.Insets(0, 0, 0, 0));

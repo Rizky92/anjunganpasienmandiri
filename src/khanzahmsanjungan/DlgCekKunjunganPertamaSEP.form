@@ -174,7 +174,7 @@
             <Property name="mnemonic" type="int" value="85"/>
             <Property name="toolTipText" type="java.lang.String" value="Alt+U"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="11" style="1"/>
+              <Font name="Inter" size="11" style="1"/>
             </Property>
             <Property name="horizontalTextPosition" type="int" value="11"/>
             <Property name="iconTextGap" type="int" value="2"/>

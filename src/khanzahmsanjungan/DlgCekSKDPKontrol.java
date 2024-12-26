@@ -132,7 +132,7 @@ public class DlgCekSKDPKontrol extends javax.swing.JDialog {
         BtnTutup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/exit.png"))); // NOI18N
         BtnTutup.setMnemonic('U');
         BtnTutup.setToolTipText("Alt+U");
-        BtnTutup.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        BtnTutup.setFont(new java.awt.Font("Inter", 1, 11)); // NOI18N
         BtnTutup.setHorizontalTextPosition(javax.swing.SwingConstants.TRAILING);
         BtnTutup.setIconTextGap(2);
         BtnTutup.setMargin(new java.awt.Insets(0, 0, 0, 0));
@@ -250,7 +250,7 @@ public class DlgCekSKDPKontrol extends javax.swing.JDialog {
             }
         });
 
-        btnAngkaHps.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        btnAngkaHps.setFont(new java.awt.Font("Inter", 0, 36)); // NOI18N
         btnAngkaHps.setText("<---");
         btnAngkaHps.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -383,10 +383,10 @@ public class DlgCekSKDPKontrol extends javax.swing.JDialog {
         if (InputSKDP.getText().isBlank()) {
             JOptionPane.showMessageDialog(null, "Isian masih kosong..!!");
             InputSKDP.requestFocus();
-        } else if (Sequel.cariBooleanSmc("select * from referensi_mobilejkn_bpjs where nomorreferensi = ? and tanggalperiksa = current_date()", InputSKDP.getText())) {
+        } else if (Sequel.cariExistsSmc("select * from referensi_mobilejkn_bpjs where nomorreferensi = ? and tanggalperiksa = current_date()", InputSKDP.getText())) {
             JOptionPane.showMessageDialog(null, "Pasien telah mendaftar online menggunakan MobileJKN.\nSilahkan cekin di menu \"Cek In MobileJKN\"..!!");
             InputSKDP.setText("");
-        } else if (Sequel.cariBooleanSmc("select * from bridging_surat_kontrol_bpjs where no_surat = ?", InputSKDP.getText())) {
+        } else if (Sequel.cariExistsSmc("select * from bridging_surat_kontrol_bpjs where no_surat = ?", InputSKDP.getText())) {
             if (Sequel.cariIntegerSmc("select datediff((select tgl_rencana from bridging_surat_kontrol_bpjs where no_surat = ?), current_date())", InputSKDP.getText()) > 0) {
                 JOptionPane.showMessageDialog(null, "Jadwal kontrol pasien tidak boleh dimajukan..!!");
                 InputSKDP.setText("");
