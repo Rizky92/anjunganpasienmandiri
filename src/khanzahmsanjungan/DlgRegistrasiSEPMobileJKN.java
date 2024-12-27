@@ -57,31 +57,30 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
     private final Connection koneksi = KoneksiDB.condb();
     private final sekuel Sequel = new sekuel();
     private final ApiBPJS api = new ApiBPJS();
-    private validasi Valid = new validasi();
+    private final validasi Valid = new validasi();
+    private final ObjectMapper mapper = new ObjectMapper();
+    private final String kodepj = Sequel.cariIsiSmc("select password_asuransi.kd_pj from password_asuransi");
+    private final BPJSCekReferensiDokterDPJP1 dokter = new BPJSCekReferensiDokterDPJP1(null, true);
+    private final BPJSCekReferensiPenyakit penyakit = new BPJSCekReferensiPenyakit(null, true);
+    private final DlgCariPoliBPJS poli = new DlgCariPoliBPJS(null, true);
+    private final DlgCariPoli polimapping = new DlgCariPoli(null, true);
+    private final DlgCariDokter2 doktermapping = new DlgCariDokter2(null, true);
+    private final BPJSCekRiwayatRujukanTerakhir rujukanterakhir = new BPJSCekRiwayatRujukanTerakhir(null, true);
+    private final BPJSCekRiwayatPelayanan historiPelayanan = new BPJSCekRiwayatPelayanan(null, true);
     private PreparedStatement ps;
     private ResultSet rs;
-    private BPJSCekReferensiDokterDPJP1 dokter = new BPJSCekReferensiDokterDPJP1(null, true);
-    private BPJSCekReferensiPenyakit penyakit = new BPJSCekReferensiPenyakit(null, true);
-    private DlgCariPoliBPJS poli = new DlgCariPoliBPJS(null, true);
-    private DlgCariPoli polimapping = new DlgCariPoli(null, true);
-    private DlgCariDokter2 doktermapping = new DlgCariDokter2(null, true);
-    private BPJSCekRiwayatRujukanTerakhir rujukanterakhir = new BPJSCekRiwayatRujukanTerakhir(null, true);
-    private BPJSCekRiwayatPelayanan historiPelayanan = new BPJSCekRiwayatPelayanan(null, true);
-    private String 
-        kodepj = Sequel.cariIsiSmc("select password_asuransi.kd_pj from password_asuransi"),
-        aksi = "",
-        tglkkl = "0000-00-00",
-        norujukmasuk = "",
-        requestJson = "",
-        URL = "",
-        prb = "",
-        nobooking = "",
-        kodedokterreg = "",
-        kodepolireg = "",
-        utc = "",
-        jeniskunjungan = "";
+    private String aksi = "",
+                   tglkkl = "0000-00-00",
+                   norujukmasuk = "",
+                   requestJson = "",
+                   URL = "",
+                   prb = "",
+                   nobooking = "",
+                   kodedokterreg = "",
+                   kodepolireg = "",
+                   utc = "",
+                   jeniskunjungan = "";
 
-    private final ObjectMapper mapper = new ObjectMapper();
     private JsonNode root, nameNode, response;
     private HttpHeaders headers;
     private HttpEntity requestEntity;
@@ -316,7 +315,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         JumlahBarcode = new widget.TextBox();
         jPanel3 = new javax.swing.JPanel();
         btnSimpan = new widget.Button();
-        btnFingerPrint = new widget.Button();
+        BtnPilihValidasi = new widget.Button();
         btnKeluar = new widget.Button();
 
         WindowAksi.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -1188,20 +1187,20 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         });
         jPanel3.add(btnSimpan);
 
-        btnFingerPrint.setForeground(new java.awt.Color(0, 131, 62));
-        btnFingerPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/fingerprint.png"))); // NOI18N
-        btnFingerPrint.setMnemonic('K');
-        btnFingerPrint.setText(" VALIDASI");
-        btnFingerPrint.setToolTipText("Alt+K");
-        btnFingerPrint.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
-        btnFingerPrint.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnFingerPrint.setPreferredSize(new java.awt.Dimension(300, 45));
-        btnFingerPrint.addActionListener(new java.awt.event.ActionListener() {
+        BtnPilihValidasi.setForeground(new java.awt.Color(0, 131, 62));
+        BtnPilihValidasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/fingerprint.png"))); // NOI18N
+        BtnPilihValidasi.setMnemonic('K');
+        BtnPilihValidasi.setText(" VALIDASI");
+        BtnPilihValidasi.setToolTipText("Alt+K");
+        BtnPilihValidasi.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
+        BtnPilihValidasi.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        BtnPilihValidasi.setPreferredSize(new java.awt.Dimension(300, 45));
+        BtnPilihValidasi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFingerPrintActionPerformed(evt);
+                BtnPilihValidasiActionPerformed(evt);
             }
         });
-        jPanel3.add(btnFingerPrint);
+        jPanel3.add(BtnPilihValidasi);
 
         btnKeluar.setForeground(new java.awt.Color(0, 131, 62));
         btnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/reset.png"))); // NOI18N
@@ -1341,7 +1340,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         dispose();
     }//GEN-LAST:event_btnKeluarActionPerformed
 
-    private void btnFingerPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFingerPrintActionPerformed
+    private void BtnPilihValidasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPilihValidasiActionPerformed
         if (NoKartu.getText().isBlank() || NIK.getText().isBlank()) {
             JOptionPane.showMessageDialog(null, "Maaf, NIK / No. Peserta masih kosong...!!!");
         } else {
@@ -1349,7 +1348,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
             WindowPilihValidasi.setLocationRelativeTo(null);
             WindowPilihValidasi.setVisible(true);
         }
-    }//GEN-LAST:event_btnFingerPrintActionPerformed
+    }//GEN-LAST:event_BtnPilihValidasiActionPerformed
 
     private void btnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnSimpanKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
@@ -1380,20 +1379,8 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
             Valid.textKosong(KdDPJP, "DPJP");
         } else if (!statusfinger && Sequel.cariIntegerSmc("select timestampdiff(year, ?, current_date())", TglLahir.getText()) >= 17 && JenisPelayanan.getSelectedIndex() != 0 && !KdPoli.getText().equals("IGD")) {
             JOptionPane.showMessageDialog(null, "Maaf, Pasien belum melakukan Fingerprint");
-            bukaAplikasiFingerprint();
+            BtnPilihValidasiActionPerformed(null);
         } else {
-            if (!KdPoliTerapi.getText().equals("")) {
-                kodepolireg = KdPoliTerapi.getText();
-            } else {
-                kodepolireg = Sequel.cariIsi("select kd_poli_rs from maping_poli_bpjs where kd_poli_bpjs=?", KdPoli.getText());
-            }
-
-            if (!KodeDokterTerapi.getText().equals("")) {
-                kodedokterreg = KodeDokterTerapi.getText();
-            } else {
-                kodedokterreg = Sequel.cariIsi("select kd_dokter from maping_dokter_dpjpvclaim where kd_dokter_bpjs=?", KdDPJP.getText());
-            }
-
             if (JenisPelayanan.getSelectedIndex() == 0) {
                 insertSEP();
             } else if (JenisPelayanan.getSelectedIndex() == 1) {
@@ -1628,6 +1615,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
     private widget.ComboBox AsalRujukan;
     private widget.ComboBox AsesmenPoli;
     private widget.Button BtnBatalValidasi;
+    private widget.Button BtnPilihValidasi;
     private widget.TextBox Catatan;
     private widget.ComboBox FlagProsedur;
     private widget.TextBox JK;
@@ -1693,7 +1681,6 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
     private widget.Button btnDPJPLayanan1;
     private widget.Button btnDiagnosaAwal;
     private widget.Button btnDokterTerapi;
-    private widget.Button btnFingerPrint;
     private widget.Button btnFingerprint;
     private widget.Button btnFrista;
     private widget.Button btnKeluar;
