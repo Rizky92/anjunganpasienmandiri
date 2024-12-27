@@ -3187,7 +3187,6 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
             System.out.println("No. Surat: " + norujukmasuk);
             System.out.println("No. Rawat: " + norawat);
             System.out.println("======================================================");
-
             return false;
         }
         return true;

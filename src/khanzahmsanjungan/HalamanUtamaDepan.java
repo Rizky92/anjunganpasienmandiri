@@ -20,6 +20,12 @@ import javax.swing.JOptionPane;
 public class HalamanUtamaDepan extends javax.swing.JFrame {
 
     private static HalamanUtamaDepan myInstance;
+    
+    private final DlgCekNoRM pendaftaranwalkin = new DlgCekNoRM(null, true);
+    private final DlgCekKunjunganPertamaSEP sepkunjunganpertama = new DlgCekKunjunganPertamaSEP(null, true);
+    private final DlgCekSKDPKontrol sepkontrol = new DlgCekSKDPKontrol(null, true);
+    private final DlgCekKunjunganBedaPoli sepkontrolbedapoli = new DlgCekKunjunganBedaPoli(null, true);
+    private final DlgCekinMobileJKN cekinmobilejkn = new DlgCekinMobileJKN(null, true);
 
     /**
      * Creates new form HalamanUtamaDepan
@@ -114,7 +120,6 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
-        jPanel1.setBackground(new java.awt.Color(238, 238, 255));
         jPanel1.setBorder(null);
         jPanel1.setPreferredSize(new java.awt.Dimension(1280, 1024));
         jPanel1.setLayout(new java.awt.GridLayout(0, 2));
@@ -181,7 +186,7 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
         jPanel1.add(btnAdmin6);
 
         btnAdmin9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/BPJS_Kesehatan_Logo.png"))); // NOI18N
-        btnAdmin9.setText("KONTROL BEDA POLI");
+        btnAdmin9.setText("SEP KONTROL BEDA POLI");
         btnAdmin9.setFont(new java.awt.Font("Inter", 1, 30)); // NOI18N
         btnAdmin9.setIconTextGap(0);
         btnAdmin9.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -223,17 +228,15 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAdmin6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdmin6ActionPerformed
-        DlgCekSKDPKontrol pilih = new DlgCekSKDPKontrol(null, true);
-        pilih.setSize(this.getWidth(), this.getHeight());
-        pilih.setLocationRelativeTo(this);
-        pilih.setVisible(true);
+        sepkontrol.setSize(this.getWidth(), this.getHeight());
+        sepkontrol.setLocationRelativeTo(this);
+        sepkontrol.setVisible(true);
     }//GEN-LAST:event_btnAdmin6ActionPerformed
 
     private void btnAdmin2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdmin2ActionPerformed
-        DlgCekNoRM pilih = new DlgCekNoRM(null, true);
-        pilih.setSize(this.getWidth(), this.getHeight());
-        pilih.setLocationRelativeTo(this);
-        pilih.setVisible(true);
+        pendaftaranwalkin.setSize(this.getWidth(), this.getHeight());
+        pendaftaranwalkin.setLocationRelativeTo(this);
+        pendaftaranwalkin.setVisible(true);
     }//GEN-LAST:event_btnAdmin2ActionPerformed
 
     private void btnAdmin7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdmin7ActionPerformed
@@ -245,26 +248,21 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAdmin7ActionPerformed
 
     private void btnAdmin5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdmin5ActionPerformed
-        DlgCekKunjunganPertamaSEP pilih = new DlgCekKunjunganPertamaSEP(null, true);
-        pilih.setSize(this.getWidth(), this.getHeight());
-        pilih.setLocationRelativeTo(this);
-        pilih.setVisible(true);
+        sepkunjunganpertama.setSize(this.getWidth(), this.getHeight());
+        sepkunjunganpertama.setLocationRelativeTo(this);
+        sepkunjunganpertama.setVisible(true);
     }//GEN-LAST:event_btnAdmin5ActionPerformed
 
     private void btnAdmin8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdmin8ActionPerformed
-        DlgCekinMobileJKN pilih = new DlgCekinMobileJKN(null, true);
-        pilih.setSize(this.getWidth(), this.getHeight());
-        pilih.setLocationRelativeTo(this);
-        pilih.setVisible(true);
-
-//        JOptionPane.showMessageDialog(rootPane, "Mohon maaf, fitur masih dalam tahap pengembangan");
+        cekinmobilejkn.setSize(this.getWidth(), this.getHeight());
+        cekinmobilejkn.setLocationRelativeTo(this);
+        cekinmobilejkn.setVisible(true);
     }//GEN-LAST:event_btnAdmin8ActionPerformed
 
     private void btnAdmin9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdmin9ActionPerformed
-        DlgCekKunjunganBedaPoli pilih = new DlgCekKunjunganBedaPoli(null, true);
-        pilih.setSize(this.getWidth(), this.getHeight());
-        pilih.setLocationRelativeTo(this);
-        pilih.setVisible(true);
+        sepkontrolbedapoli.setSize(this.getWidth(), this.getHeight());
+        sepkontrolbedapoli.setLocationRelativeTo(this);
+        sepkontrolbedapoli.setVisible(true);
     }//GEN-LAST:event_btnAdmin9ActionPerformed
 
     private void btnAdmin10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdmin10ActionPerformed

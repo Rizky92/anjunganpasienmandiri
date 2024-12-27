@@ -43,6 +43,7 @@ public class DlgCekSKDPKontrol extends javax.swing.JDialog {
 
         jPanel2 = new javax.swing.JPanel();
         PanelWall = new usu.widget.glass.PanelGlass();
+        jLabel31 = new widget.Label();
         jPanel1 = new widget.Panel();
         InputSKDP = new widget.TextBox();
         jLabel28 = new widget.Label();
@@ -64,6 +65,8 @@ public class DlgCekSKDPKontrol extends javax.swing.JDialog {
         btnK = new javax.swing.JButton();
         btnR = new javax.swing.JButton();
         btnTemplate = new javax.swing.JButton();
+        jLabel30 = new widget.Label();
+        jLabel29 = new widget.Label();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(413, 115));
@@ -97,34 +100,46 @@ public class DlgCekSKDPKontrol extends javax.swing.JDialog {
 
         jPanel2.add(PanelWall);
 
+        jLabel31.setForeground(new java.awt.Color(0, 131, 62));
+        jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel31.setText("SEP KONTROL");
+        jLabel31.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        jLabel31.setPreferredSize(new java.awt.Dimension(360, 75));
+        jPanel2.add(jLabel31);
+
         getContentPane().add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
-        jPanel1.setBackground(new java.awt.Color(238, 238, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 215, 255)), "::[ Cek Data Kontrol BPJS!!! ]::", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Inter", 0, 24), new java.awt.Color(0, 131, 62))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 131, 62)));
         jPanel1.setForeground(new java.awt.Color(0, 131, 62));
         jPanel1.setMinimumSize(new java.awt.Dimension(413, 115));
         jPanel1.setPreferredSize(new java.awt.Dimension(413, 115));
-        jPanel1.setLayout(new java.awt.GridBagLayout());
+        java.awt.GridBagLayout jPanel1Layout = new java.awt.GridBagLayout();
+        jPanel1Layout.columnWeights = new double[] {10.0, 23.0, 1.0, 1.0, 10.0};
+        jPanel1.setLayout(jPanel1Layout);
 
         InputSKDP.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 131, 62), 2, true));
         InputSKDP.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         InputSKDP.setToolTipText("");
         InputSKDP.setFont(new java.awt.Font("Inter", 0, 36)); // NOI18N
+        InputSKDP.setName(""); // NOI18N
         InputSKDP.setPreferredSize(new java.awt.Dimension(450, 75));
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 14;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         jPanel1.add(InputSKDP, gridBagConstraints);
 
         jLabel28.setForeground(new java.awt.Color(0, 131, 62));
-        jLabel28.setText("No. Surat Kontrol : ");
+        jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel28.setText("No. Surat Kontrol :");
         jLabel28.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel28.setPreferredSize(new java.awt.Dimension(320, 75));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 14;
-        gridBagConstraints.ipady = 5;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipady = 10;
         jPanel1.add(jLabel28, gridBagConstraints);
 
         BtnTutup.setBackground(new java.awt.Color(255, 255, 255));
@@ -144,8 +159,9 @@ public class DlgCekSKDPKontrol extends javax.swing.JDialog {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 14;
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         jPanel1.add(BtnTutup, gridBagConstraints);
 
         BtnKonfirmasi.setBackground(new java.awt.Color(255, 255, 255));
@@ -164,8 +180,9 @@ public class DlgCekSKDPKontrol extends javax.swing.JDialog {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 14;
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         jPanel1.add(BtnKonfirmasi, gridBagConstraints);
 
         jPanel3.setBackground(new java.awt.Color(238, 238, 255));
@@ -362,12 +379,30 @@ public class DlgCekSKDPKontrol extends javax.swing.JDialog {
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 16;
-        gridBagConstraints.gridwidth = 5;
-        gridBagConstraints.gridheight = 9;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 3;
         jPanel1.add(jPanel3, gridBagConstraints);
+
+        jLabel30.setForeground(new java.awt.Color(0, 131, 62));
+        jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel30.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel30.setPreferredSize(new java.awt.Dimension(500, 75));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        jPanel1.add(jLabel30, gridBagConstraints);
+
+        jLabel29.setForeground(new java.awt.Color(0, 131, 62));
+        jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel29.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel29.setPreferredSize(new java.awt.Dimension(500, 75));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        jPanel1.add(jLabel29, gridBagConstraints);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -510,6 +545,9 @@ public class DlgCekSKDPKontrol extends javax.swing.JDialog {
     private javax.swing.JButton btnR;
     private javax.swing.JButton btnTemplate;
     private widget.Label jLabel28;
+    private widget.Label jLabel29;
+    private widget.Label jLabel30;
+    private widget.Label jLabel31;
     private widget.Panel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

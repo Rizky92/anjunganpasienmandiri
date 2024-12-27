@@ -10,25 +10,29 @@ Aplikasi anjungan pasien mandiri (APM) modifikasi dari [APM RS Indriati Boyolali
 ### Konfigurasi
 Berikut adalah konfigurasi yang disediakan dalam file `apm.xml`:
 ```xml
-<entry key="URLFINGERPRINTBPJS">https://fp.bpjs-kesehatan.go.id/finger-rest/</entry>
-<entry key="URLAPLIKASIFINGERPRINTBPJS">C:\Program Files (x86)\Aplikasi Sidik Jari BPJS Kesehatan\After.exe</entry>
-<entry key="USERFINGERPRINTBPJS"></entry>
-<entry key="PASSFINGERPRINTBPJS"></entry>
-<entry key="PRINTER_BARCODE"></entry>
 <entry key="PRINTER_REGISTRASI"></entry>
+<entry key="PRINTER_BARCODE"></entry>
+<entry key="PRINTERJUMLAHBARCODE">3</entry>
+<entry key="URLAPLIKASIFINGERPRINTBPJS">D:\BPJS Kesehatan\Aplikasi Sidik Jari BPJS Kesehatan\After.exe</entry>
+<entry key="URLAPLIKASIFRISTABPJS">D:\BPJS Kesehatan\Aplikasi FRISTA BPJS Kesehatan\frista.exe</entry>
+<entry key="USERFINGERPRINTBPJS">l4nh5eVYrLAER/I2A4b3Tw==</entry>
+<entry key="PASSWORDFINGERPRINTBPJS">l4nh5eVYrLAER/I2A4b3Tw==</entry>
 ```
 
-#### key "URLFINGERPRINTBPJS"
-Digunakan untuk mengakses URL API Fingerprint BPJS.
+#### key "PRINTER_BARCODE"
+Digunakan untuk mengetahui nama printer untuk mencetak barcode.
+
+#### key "PRINTER_REGISTRASI"
+Digunakan untuk mengetahui nama printer untuk mencetak lembar registrasi pasien dan SEP pasien.
+
+#### key "PRINTERJUMLAHBARCODE"
+Digunakan untuk mengatur nilai default jumlah barcode yang mau dicetak.
 
 #### key "URLAPLIKASIFINGERPRINTBPJS"
-Berisi path ke aplikasi fingerprint BPJS
+Berisi path ke aplikasi fingerprint BPJS.
+
+#### key "URLAPLIKASIFRISTABPJS"
+Berisi path ke aplikasi FRISTA BPJS.
 
 #### key "USERFINGERPRINTBPJS" dan "PASSFINGERPRINTBPJS"
 Berisi kredensial login username dan password aplikasi fingerprint BPJS, dengan kredensial dienkripsi menggunakan enkripsi dari SIMRS Khanza.
-
-#### key "PRINTER_BARCODE"
-Digunakan untuk mengetahui nama printer service untuk mencetak barcode.
-
-#### key "PRINTER_REGISTRASI"
-Digunakan untuk mengetahui nama printer service untuk mencetak lembar registrasi pasien dan SEP pasien.

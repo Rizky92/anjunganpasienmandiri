@@ -40,12 +40,12 @@ public class DlgCekKunjunganPertamaSEP extends javax.swing.JDialog {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel2 = new javax.swing.JPanel();
         PanelWall = new usu.widget.glass.PanelGlass();
+        jLabel31 = new widget.Label();
         jPanel1 = new widget.Panel();
         NoRMPasien = new widget.TextBox();
         jLabel28 = new widget.Label();
@@ -64,6 +64,8 @@ public class DlgCekKunjunganPertamaSEP extends javax.swing.JDialog {
         btnAngka0 = new javax.swing.JButton();
         btnAngkaHps = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
+        jLabel30 = new widget.Label();
+        jLabel29 = new widget.Label();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setModal(true);
@@ -95,39 +97,48 @@ public class DlgCekKunjunganPertamaSEP extends javax.swing.JDialog {
 
         jPanel2.add(PanelWall);
 
+        jLabel31.setForeground(new java.awt.Color(0, 131, 62));
+        jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel31.setText("SEP KUNJUNGAN PERTAMA");
+        jLabel31.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        jLabel31.setPreferredSize(new java.awt.Dimension(620, 75));
+        jPanel2.add(jLabel31);
+
         getContentPane().add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
-        jPanel1.setBackground(new java.awt.Color(238, 238, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 215, 255)), "::[ Cek Data Pasien!!! ]::", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Inter", 0, 30), new java.awt.Color(0, 131, 62))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 131, 62)));
         jPanel1.setForeground(new java.awt.Color(0, 131, 62));
         jPanel1.setPreferredSize(new java.awt.Dimension(400, 70));
-        jPanel1.setLayout(new java.awt.GridBagLayout());
+        java.awt.GridBagLayout jPanel1Layout = new java.awt.GridBagLayout();
+        jPanel1Layout.columnWeights = new double[] {10.0, 23.0, 1.0, 1.0, 10.0};
+        jPanel1.setLayout(jPanel1Layout);
 
         NoRMPasien.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 131, 62), 2, true));
         NoRMPasien.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         NoRMPasien.setFont(new java.awt.Font("Inter", 0, 36)); // NOI18N
         NoRMPasien.setPreferredSize(new java.awt.Dimension(350, 75));
-        NoRMPasien.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        NoRMPasien.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 NoRMPasienKeyPressed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 13;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         jPanel1.add(NoRMPasien, gridBagConstraints);
 
         jLabel28.setForeground(new java.awt.Color(0, 131, 62));
-        jLabel28.setText("No. RM / No. Kartu BPJS : ");
+        jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel28.setText("No. RM / No. Kartu BPJS / No. Rujukan : ");
         jLabel28.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel28.setPreferredSize(new java.awt.Dimension(450, 75));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 13;
-        gridBagConstraints.ipady = 5;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipady = 10;
         jPanel1.add(jLabel28, gridBagConstraints);
 
         BtnClose.setBackground(new java.awt.Color(255, 255, 255));
@@ -141,16 +152,15 @@ public class DlgCekKunjunganPertamaSEP extends javax.swing.JDialog {
         BtnClose.setMargin(new java.awt.Insets(0, 0, 0, 0));
         BtnClose.setPreferredSize(new java.awt.Dimension(100, 75));
         BtnClose.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        BtnClose.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        BtnClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnCloseActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 13;
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         jPanel1.add(BtnClose, gridBagConstraints);
 
         BtnClose2.setBackground(new java.awt.Color(255, 255, 255));
@@ -163,16 +173,15 @@ public class DlgCekKunjunganPertamaSEP extends javax.swing.JDialog {
         BtnClose2.setMargin(new java.awt.Insets(0, 0, 0, 0));
         BtnClose2.setPreferredSize(new java.awt.Dimension(100, 75));
         BtnClose2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        BtnClose2.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        BtnClose2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnClose2ActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 13;
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         jPanel1.add(BtnClose2, gridBagConstraints);
 
         jPanel3.setBackground(new java.awt.Color(238, 238, 255));
@@ -180,100 +189,80 @@ public class DlgCekKunjunganPertamaSEP extends javax.swing.JDialog {
 
         btnAngka8.setFont(new java.awt.Font("Segoe UI SemiBold", 0, 48)); // NOI18N
         btnAngka8.setText("8");
-        btnAngka8.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnAngka8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAngka8ActionPerformed(evt);
             }
         });
 
         btnAngka7.setFont(new java.awt.Font("Segoe UI SemiBold", 0, 48)); // NOI18N
         btnAngka7.setText("7");
-        btnAngka7.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnAngka7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAngka7ActionPerformed(evt);
             }
         });
 
         btnAngka9.setFont(new java.awt.Font("Segoe UI SemiBold", 0, 48)); // NOI18N
         btnAngka9.setText("9");
-        btnAngka9.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnAngka9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAngka9ActionPerformed(evt);
             }
         });
 
         btnAngka4.setFont(new java.awt.Font("Segoe UI SemiBold", 0, 48)); // NOI18N
         btnAngka4.setText("4");
-        btnAngka4.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnAngka4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAngka4ActionPerformed(evt);
             }
         });
 
         btnAngka5.setFont(new java.awt.Font("Segoe UI SemiBold", 0, 48)); // NOI18N
         btnAngka5.setText("5");
-        btnAngka5.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnAngka5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAngka5ActionPerformed(evt);
             }
         });
 
         btnAngka6.setFont(new java.awt.Font("Segoe UI SemiBold", 0, 48)); // NOI18N
         btnAngka6.setText("6");
-        btnAngka6.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnAngka6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAngka6ActionPerformed(evt);
             }
         });
 
         btnAngka2.setFont(new java.awt.Font("Segoe UI SemiBold", 0, 48)); // NOI18N
         btnAngka2.setText("2");
-        btnAngka2.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnAngka2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAngka2ActionPerformed(evt);
             }
         });
 
         btnAngka1.setFont(new java.awt.Font("Segoe UI SemiBold", 0, 48)); // NOI18N
         btnAngka1.setText("1");
-        btnAngka1.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnAngka1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAngka1ActionPerformed(evt);
             }
         });
 
         btnAngka3.setFont(new java.awt.Font("Segoe UI SemiBold", 0, 48)); // NOI18N
         btnAngka3.setText("3");
-        btnAngka3.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnAngka3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAngka3ActionPerformed(evt);
             }
         });
 
         btnAngka0.setFont(new java.awt.Font("Segoe UI SemiBold", 0, 48)); // NOI18N
         btnAngka0.setText("0");
-        btnAngka0.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnAngka0.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAngka0ActionPerformed(evt);
             }
         });
@@ -284,20 +273,16 @@ public class DlgCekKunjunganPertamaSEP extends javax.swing.JDialog {
         btnAngkaHps.setMaximumSize(new java.awt.Dimension(75, 75));
         btnAngkaHps.setMinimumSize(new java.awt.Dimension(75, 75));
         btnAngkaHps.setPreferredSize(new java.awt.Dimension(75, 75));
-        btnAngkaHps.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnAngkaHps.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAngkaHpsActionPerformed(evt);
             }
         });
 
         btnClear.setFont(new java.awt.Font("Segoe UI SemiBold", 0, 48)); // NOI18N
         btnClear.setText("C");
-        btnClear.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnClearActionPerformed(evt);
             }
         });
@@ -362,12 +347,30 @@ public class DlgCekKunjunganPertamaSEP extends javax.swing.JDialog {
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 16;
-        gridBagConstraints.gridwidth = 5;
-        gridBagConstraints.gridheight = 9;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 3;
         jPanel1.add(jPanel3, gridBagConstraints);
+
+        jLabel30.setForeground(new java.awt.Color(0, 131, 62));
+        jLabel30.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel30.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel30.setPreferredSize(new java.awt.Dimension(500, 75));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        jPanel1.add(jLabel30, gridBagConstraints);
+
+        jLabel29.setForeground(new java.awt.Color(0, 131, 62));
+        jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel29.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel29.setPreferredSize(new java.awt.Dimension(500, 75));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        jPanel1.add(jLabel29, gridBagConstraints);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -551,6 +554,9 @@ public class DlgCekKunjunganPertamaSEP extends javax.swing.JDialog {
     private javax.swing.JButton btnAngkaHps;
     private javax.swing.JButton btnClear;
     private widget.Label jLabel28;
+    private widget.Label jLabel29;
+    private widget.Label jLabel30;
+    private widget.Label jLabel31;
     private widget.Panel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

@@ -10,17 +10,10 @@
  */
 package khanzahmsanjungan;
 
-import fungsi.KoneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import java.awt.Cursor;
 import java.awt.event.KeyEvent;
-import java.io.FileInputStream;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.text.SimpleDateFormat;
-import java.util.Properties;
 import javax.swing.JOptionPane;
 
 /**
@@ -29,16 +22,9 @@ import javax.swing.JOptionPane;
  */
 public class DlgCekNoRM extends javax.swing.JDialog {
 
-    private Connection koneksi = KoneksiDB.condb();
-    private sekuel Sequel = new sekuel();
-    private validasi Valid = new validasi();
-    private PreparedStatement ps;
-    private ResultSet rs;
-    private SimpleDateFormat dateformat = new SimpleDateFormat("yyyy/MM/dd");
-    private String umur = "0", sttsumur = "Th";
-    private String status = "Baru", BASENOREG = "", URUTNOREG = "", aktifjadwal = "";
-    private Properties prop = new Properties();
-    private int lebar = 0, tinggi = 0;
+    private final sekuel Sequel = new sekuel();
+    private final validasi Valid = new validasi();
+    private final DlgRegistrasiWalkIn form = new DlgRegistrasiWalkIn(null, true);
 
     /**
      * Creates new form DlgAdmin
@@ -49,33 +35,6 @@ public class DlgCekNoRM extends javax.swing.JDialog {
     public DlgCekNoRM(java.awt.Frame parent, boolean id) {
         super(parent, id);
         initComponents();
-
-        try {
-            ps = koneksi.prepareStatement(
-                "select nm_pasien,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) asal,"
-                + "namakeluarga,keluarga,pasien.kd_pj,penjab.png_jawab,if(tgl_daftar=?,'Baru','Lama') as daftar, "
-                + "TIMESTAMPDIFF(YEAR, tgl_lahir, CURDATE()) as tahun, "
-                + "(TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) div 12) * 12)) as bulan, "
-                + "TIMESTAMPDIFF(DAY, DATE_ADD(DATE_ADD(tgl_lahir,INTERVAL TIMESTAMPDIFF(YEAR, tgl_lahir, CURDATE()) YEAR), INTERVAL TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) div 12) * 12) MONTH), CURDATE()) as hari from pasien "
-                + "inner join kelurahan inner join kecamatan inner join kabupaten inner join penjab "
-                + "on pasien.kd_kel=kelurahan.kd_kel and pasien.kd_pj=penjab.kd_pj "
-                + "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab "
-                + "where pasien.no_rkm_medis=?");
-        } catch (Exception ex) {
-            System.out.println(ex);
-        }
-
-        try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            aktifjadwal = prop.getProperty("JADWALDOKTERDIREGISTRASI");
-            URUTNOREG = prop.getProperty("URUTNOREG");
-            BASENOREG = prop.getProperty("BASENOREG");
-        } catch (Exception ex) {
-            aktifjadwal = "";
-            URUTNOREG = "";
-            BASENOREG = "";
-        }
-
     }
 
     /**
@@ -83,15 +42,9 @@ public class DlgCekNoRM extends javax.swing.JDialog {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        LblKdPoli = new widget.Label();
-        LblKdDokter = new widget.Label();
-        NoReg = new widget.TextBox();
-        NoRawat = new widget.TextBox();
-        Biaya = new widget.TextBox();
         jPanel1 = new widget.Panel();
         NoRMPasien = new widget.TextBox();
         jLabel28 = new widget.Label();
@@ -111,78 +64,12 @@ public class DlgCekNoRM extends javax.swing.JDialog {
         btnAngkaHps = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
 
-        LblKdPoli.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LblKdPoli.setText("Norm");
-        LblKdPoli.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
-        LblKdPoli.setPreferredSize(new java.awt.Dimension(20, 14));
-
-        LblKdDokter.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LblKdDokter.setText("Norm");
-        LblKdDokter.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
-        LblKdDokter.setPreferredSize(new java.awt.Dimension(20, 14));
-
-        NoReg.setPreferredSize(new java.awt.Dimension(320, 30));
-        NoReg.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                NoRegActionPerformed(evt);
-            }
-        });
-        NoReg.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
-                NoRegKeyPressed(evt);
-            }
-        });
-
-        NoRawat.setPreferredSize(new java.awt.Dimension(320, 30));
-        NoRawat.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                NoRawatActionPerformed(evt);
-            }
-        });
-        NoRawat.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
-                NoRawatKeyPressed(evt);
-            }
-        });
-
-        Biaya.setPreferredSize(new java.awt.Dimension(320, 30));
-        Biaya.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                BiayaActionPerformed(evt);
-            }
-        });
-        Biaya.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
-                BiayaKeyPressed(evt);
-            }
-        });
-
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setModal(true);
         setUndecorated(true);
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter()
-        {
-            public void windowOpened(java.awt.event.WindowEvent evt)
-            {
-                formWindowOpened(evt);
-            }
-        });
         getContentPane().setLayout(new java.awt.BorderLayout(1, 1));
 
-        jPanel1.setBackground(new java.awt.Color(238, 238, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 215, 255)), "::[ Cek Data Pasien!!! ]::", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Inter", 0, 24), new java.awt.Color(0, 131, 62))); // NOI18N
         jPanel1.setPreferredSize(new java.awt.Dimension(400, 70));
         jPanel1.setLayout(new java.awt.GridBagLayout());
@@ -191,17 +78,8 @@ public class DlgCekNoRM extends javax.swing.JDialog {
         NoRMPasien.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         NoRMPasien.setFont(new java.awt.Font("Inter", 0, 24)); // NOI18N
         NoRMPasien.setPreferredSize(new java.awt.Dimension(350, 75));
-        NoRMPasien.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                NoRMPasienActionPerformed(evt);
-            }
-        });
-        NoRMPasien.addKeyListener(new java.awt.event.KeyAdapter()
-        {
-            public void keyPressed(java.awt.event.KeyEvent evt)
-            {
+        NoRMPasien.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 NoRMPasienKeyPressed(evt);
             }
         });
@@ -232,10 +110,8 @@ public class DlgCekNoRM extends javax.swing.JDialog {
         BtnClose.setMargin(new java.awt.Insets(0, 0, 0, 0));
         BtnClose.setPreferredSize(new java.awt.Dimension(100, 75));
         BtnClose.setVerticalTextPosition(javax.swing.SwingConstants.CENTER);
-        BtnClose.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        BtnClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnCloseActionPerformed(evt);
             }
         });
@@ -254,10 +130,8 @@ public class DlgCekNoRM extends javax.swing.JDialog {
         BtnClose2.setMargin(new java.awt.Insets(0, 0, 0, 0));
         BtnClose2.setPreferredSize(new java.awt.Dimension(100, 75));
         BtnClose2.setVerticalTextPosition(javax.swing.SwingConstants.CENTER);
-        BtnClose2.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        BtnClose2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnClose2ActionPerformed(evt);
             }
         });
@@ -271,120 +145,96 @@ public class DlgCekNoRM extends javax.swing.JDialog {
 
         btnAngka8.setFont(new java.awt.Font("Segoe UI SemiBold", 0, 48)); // NOI18N
         btnAngka8.setText("8");
-        btnAngka8.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnAngka8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAngka8ActionPerformed(evt);
             }
         });
 
         btnAngka7.setFont(new java.awt.Font("Segoe UI SemiBold", 0, 48)); // NOI18N
         btnAngka7.setText("7");
-        btnAngka7.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnAngka7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAngka7ActionPerformed(evt);
             }
         });
 
         btnAngka9.setFont(new java.awt.Font("Segoe UI SemiBold", 0, 48)); // NOI18N
         btnAngka9.setText("9");
-        btnAngka9.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnAngka9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAngka9ActionPerformed(evt);
             }
         });
 
         btnAngka4.setFont(new java.awt.Font("Segoe UI SemiBold", 0, 48)); // NOI18N
         btnAngka4.setText("4");
-        btnAngka4.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnAngka4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAngka4ActionPerformed(evt);
             }
         });
 
         btnAngka5.setFont(new java.awt.Font("Segoe UI SemiBold", 0, 48)); // NOI18N
         btnAngka5.setText("5");
-        btnAngka5.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnAngka5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAngka5ActionPerformed(evt);
             }
         });
 
         btnAngka6.setFont(new java.awt.Font("Segoe UI SemiBold", 0, 48)); // NOI18N
         btnAngka6.setText("6");
-        btnAngka6.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnAngka6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAngka6ActionPerformed(evt);
             }
         });
 
         btnAngka2.setFont(new java.awt.Font("Segoe UI SemiBold", 0, 48)); // NOI18N
         btnAngka2.setText("2");
-        btnAngka2.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnAngka2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAngka2ActionPerformed(evt);
             }
         });
 
         btnAngka1.setFont(new java.awt.Font("Segoe UI SemiBold", 0, 48)); // NOI18N
         btnAngka1.setText("1");
-        btnAngka1.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnAngka1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAngka1ActionPerformed(evt);
             }
         });
 
         btnAngka3.setFont(new java.awt.Font("Segoe UI SemiBold", 0, 48)); // NOI18N
         btnAngka3.setText("3");
-        btnAngka3.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnAngka3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAngka3ActionPerformed(evt);
             }
         });
 
         btnAngka0.setFont(new java.awt.Font("Segoe UI SemiBold", 0, 48)); // NOI18N
         btnAngka0.setText("0");
-        btnAngka0.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnAngka0.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAngka0ActionPerformed(evt);
             }
         });
 
         btnAngkaHps.setFont(new java.awt.Font("Segoe UI SemiBold", 0, 36)); // NOI18N
         btnAngkaHps.setText("<-");
-        btnAngkaHps.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnAngkaHps.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAngkaHpsActionPerformed(evt);
             }
         });
 
         btnClear.setFont(new java.awt.Font("Segoe UI SemiBold", 0, 48)); // NOI18N
         btnClear.setText("C");
-        btnClear.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        btnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnClearActionPerformed(evt);
             }
         });
@@ -460,82 +310,28 @@ public class DlgCekNoRM extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-
-    }//GEN-LAST:event_formWindowOpened
-
-    private void NoRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoRegActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NoRegActionPerformed
-
-    private void NoRegKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoRegKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NoRegKeyPressed
-
-    private void NoRawatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoRawatActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NoRawatActionPerformed
-
-    private void NoRawatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoRawatKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NoRawatKeyPressed
-
-    private void BiayaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BiayaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BiayaActionPerformed
-
-    private void BiayaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BiayaKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BiayaKeyPressed
-
-    private void NoRMPasienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoRMPasienActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NoRMPasienActionPerformed
-
     private void NoRMPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoRMPasienKeyPressed
-
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            if (Sequel.cariInteger("select count(pasien.no_rkm_medis) from pasien where pasien.no_rkm_medis='" + NoRMPasien.getText() + "'") == 1) {
-                DlgRegistrasiWalkIn form = new DlgRegistrasiWalkIn(null, true);
-                form.setPasien(NoRMPasien.getText());
-                form.setSize(this.getWidth(), this.getHeight());
-                form.setLocationRelativeTo(jPanel1);
-                this.dispose();
-                form.setVisible(true);
-            } else if (Sequel.cariInteger("select count(pasien.no_ktp) from pasien where pasien.no_ktp='" + NoRMPasien.getText() + "'") == 1) {
-                DlgRegistrasiWalkIn form = new DlgRegistrasiWalkIn(null, true);
-                form.setPasien(Sequel.cariIsi("select pasien.no_rkm_medis from pasien where pasien.no_ktp='" + NoRMPasien.getText() + "'"));
-                form.setSize(this.getWidth(), this.getHeight());
-                form.setLocationRelativeTo(jPanel1);
-                this.dispose();
-                form.setVisible(true);
-            } else {
-                JOptionPane.showMessageDialog(rootPane, "No Rekam Medis tidak terdaftar ");
-                NoRMPasien.setText("");
-            }
-            this.setCursor(Cursor.getDefaultCursor());
+            BtnClose2ActionPerformed(null);
         }
-
     }//GEN-LAST:event_NoRMPasienKeyPressed
 
     private void BtnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCloseActionPerformed
-
         dispose();
     }//GEN-LAST:event_BtnCloseActionPerformed
 
     private void BtnClose2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnClose2ActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        if (Sequel.cariInteger("select count(pasien.no_rkm_medis) from pasien where pasien.no_rkm_medis='" + NoRMPasien.getText() + "'") == 1) {
-            DlgRegistrasiWalkIn form = new DlgRegistrasiWalkIn(null, true);
+        if (NoRMPasien.getText().isBlank()) {
+            Valid.textKosong(NoRMPasien, "Input");
+        } else if (Sequel.cariExistsSmc("select * from pasien where pasien.no_rkm_medis = ?", NoRMPasien.getText())) {
             form.setPasien(NoRMPasien.getText());
             form.setSize(this.getWidth(), this.getHeight());
             form.setLocationRelativeTo(jPanel1);
             this.dispose();
             form.setVisible(true);
-        } else if (Sequel.cariInteger("select count(pasien.no_ktp) from pasien where pasien.no_ktp='" + NoRMPasien.getText() + "'") == 1) {
-            DlgRegistrasiWalkIn form = new DlgRegistrasiWalkIn(null, true);
-            form.setPasien(Sequel.cariIsi("select pasien.no_rkm_medis from pasien where pasien.no_ktp='" + NoRMPasien.getText() + "'"));
+        } else if (Sequel.cariExistsSmc("select * from pasien where pasien.no_ktp = ?", NoRMPasien.getText())) {
+            form.setPasien(Sequel.cariIsiSmc("select pasien.no_rkm_medis from pasien where pasien.no_ktp = ?", NoRMPasien.getText()));
             form.setSize(this.getWidth(), this.getHeight());
             form.setLocationRelativeTo(jPanel1);
             this.dispose();
@@ -613,7 +409,6 @@ public class DlgCekNoRM extends javax.swing.JDialog {
         java.awt.EventQueue.invokeLater(() -> {
             DlgCekNoRM dialog = new DlgCekNoRM(new javax.swing.JFrame(), true);
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-
                 @Override
                 public void windowClosing(java.awt.event.WindowEvent e) {
                     System.exit(0);
@@ -623,14 +418,9 @@ public class DlgCekNoRM extends javax.swing.JDialog {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private widget.TextBox Biaya;
     private widget.ButtonBig BtnClose;
     private widget.ButtonBig BtnClose2;
-    private widget.Label LblKdDokter;
-    private widget.Label LblKdPoli;
     private widget.TextBox NoRMPasien;
-    private widget.TextBox NoRawat;
-    private widget.TextBox NoReg;
     private javax.swing.JButton btnAngka0;
     private javax.swing.JButton btnAngka1;
     private javax.swing.JButton btnAngka2;
@@ -647,14 +437,4 @@ public class DlgCekNoRM extends javax.swing.JDialog {
     private widget.Panel jPanel1;
     private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
-
-    public void setPasien(String norm, String kodepoli, String kddokter) {
-    }
-
-    private void UpdateUmur() {
-
-    }
-
-    private void isNumber() {
-    }
 }

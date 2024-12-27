@@ -143,9 +143,6 @@
     </Container>
     <Container class="widget.Panel" name="jPanel1">
       <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ee" red="ee" type="rgb"/>
-        </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="null"/>
         </Property>
@@ -260,7 +257,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/48x48/BPJS_Kesehatan_Logo.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="KONTROL BEDA POLI"/>
+            <Property name="text" type="java.lang.String" value="SEP KONTROL BEDA POLI"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Inter" size="30" style="1"/>
             </Property>
