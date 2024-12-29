@@ -69,8 +69,8 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
     private final BPJSCekRiwayatRujukanTerakhir rujukanterakhir = new BPJSCekRiwayatRujukanTerakhir(null, true);
     private final BPJSCekRiwayatPelayanan historiPelayanan = new BPJSCekRiwayatPelayanan(null, true);
     private final ObjectMapper mapper = new ObjectMapper();
-    private String kodepj = Sequel.cariIsiSmc("select password_asuransi.kd_pj from password_asuransi"),
-        norawat = "",
+    private final String kodepj = Sequel.cariIsiSmc("select password_asuransi.kd_pj from password_asuransi");
+    private String norawat = "",
         noreg = "",
         alamatpasien = "",
         pjpasien = "",
@@ -1930,7 +1930,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                     nosep,
                     norawat,
                     Valid.getTglSmc(TanggalSEP),
-                    Valid.SetTgl(TanggalRujuk.getSelectedItem().toString()),
+                    Valid.getTglSmc(TanggalRujuk),
                     NoRujukan.getText(),
                     KdPpkRujukan.getText(),
                     NmPpkRujukan.getText(),
@@ -2118,7 +2118,6 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                 NmPpkRujukan.setText(response.path("provPerujuk").path("nama").asText());
                 Valid.SetTgl(TanggalRujuk, response.path("tglKunjungan").asText());
                 isNumber();
-                kodepj = "BPJ";
                 Catatan.setText("Anjungan Pasien Mandiri " + NmPPK.getText());
                 NoTelp.setText(response.path("peserta").path("mr").path("noTelepon").asText());
                 if (NoTelp.getText().contains("null") || NoTelp.getText().isBlank()) {
@@ -2172,7 +2171,6 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                         KdPoli.setText(response.path("poliRujukan").path("kode").asText());
                         NmPoli.setText(response.path("poliRujukan").path("nama").asText());
                         JenisPeserta.setText(response.path("peserta").path("jenisPeserta").path("keterangan").asText());
-
                         kodepolireg = Sequel.cariIsi("select kd_poli_rs from maping_poli_bpjs where kd_poli_bpjs=?", response.path("poliRujukan").path("kode").asText());
                         kodedokterreg = Sequel.cariIsi("select kd_dokter from maping_dokter_dpjpvclaim where kd_dokter_bpjs=?", KdDPJP.getText());
                         NoTelp.setText(response.path("peserta").path("mr").path("noTelepon").asText());
@@ -2184,8 +2182,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                         Valid.SetTgl(TanggalRujuk, response.path("tglKunjungan").asText());
                         AsalRujukan.setSelectedIndex(1);
                         isNumber();
-                        kodepj = "BPJ";
-                        Catatan.setText("Anjungan Pasien Mandiri RS Samarinda Medika Citra");
+                        Catatan.setText("Anjungan Pasien Mandiri " + NmPPK.getText());
                     } else {
                         emptTeks();
                         JOptionPane.showMessageDialog(null, "Pesan Pencarian Rujukan FKRTL : " + metadata.path("message").asText());
@@ -2274,8 +2271,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                 NmPpkRujukan.setText(response.path("provPerujuk").path("nama").asText());
                 Valid.SetTgl(TanggalRujuk, response.path("tglKunjungan").asText());
                 isNumber();
-                kodepj = "BPJ";
-                Catatan.setText("Anjungan Pasien Mandiri RS Samarinda Medika Citra");
+                Catatan.setText("Anjungan Pasien Mandiri " + NmPPK.getText());
                 NoTelp.setText(response.path("peserta").path("mr").path("noTelepon").asText());
                 if (NoTelp.getText().contains("null") || NoTelp.getText().isBlank()) {
                     NoTelp.setText(Sequel.cariIsiSmc("select no_tlp from pasien where no_rkm_medis = ?", TNoRM.getText()));
@@ -2339,8 +2335,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                         Valid.SetTgl(TanggalRujuk, response.path("tglKunjungan").asText());
                         AsalRujukan.setSelectedIndex(1);
                         isNumber();
-                        kodepj = "BPJ";
-                        Catatan.setText("Anjungan Pasien Mandiri RS Samarinda Medika Citra");
+                        Catatan.setText("Anjungan Pasien Mandiri " + NmPPK.getText());
                     } else {
                         emptTeks();
                         System.out.println("Pesan pencarian rujukan FKTL : " + metadata.path("message").asText());
@@ -2493,8 +2488,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                                 KdPpkRujukan.setText(Sequel.cariIsiSmc("select kode_ppk from setting"));
                                 NmPpkRujukan.setText(Sequel.cariIsiSmc("select nama_instansi from setting"));
                                 isNumber();
-                                kodepj = "BPJ";
-                                Catatan.setText("Anjungan Pasien Mandiri RS Samarinda Medika Citra");
+                                Catatan.setText("Anjungan Pasien Mandiri " + NmPPK.getText());
                                 NoTelp.setText(response.path("mr").path("noTelepon").asText());
                                 if (NoTelp.getText().contains("null") || NoTelp.getText().isBlank()) {
                                     NoTelp.setText(Sequel.cariIsiSmc("select no_tlp from pasien where no_rkm_medis = ?", TNoRM.getText()));
@@ -2584,8 +2578,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                                 NmPpkRujukan.setText(response.path("provPerujuk").path("nama").asText());
                                 Valid.SetTgl(TanggalRujuk, response.path("tglKunjungan").asText());
                                 isNumber();
-                                kodepj = "BPJ";
-                                Catatan.setText("Anjungan Pasien Mandiri RS Samarinda Medika Citra");
+                                Catatan.setText("Anjungan Pasien Mandiri " + NmPPK.getText());
                                 NoTelp.setText(response.path("peserta").path("mr").path("noTelepon").asText());
                                 if (NoTelp.getText().contains("null") || NoTelp.getText().isBlank()) {
                                     NoTelp.setText(Sequel.cariIsiSmc("select no_tlp from pasien where no_rkm_medis = ?", TNoRM.getText()));
@@ -2765,7 +2758,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                                 + "\"namapoli\": \"" + NmPoli.getText() + "\","
                                 + "\"pasienbaru\": 0,"
                                 + "\"norm\": \"" + TNoRM.getText() + "\","
-                                + "\"tanggalperiksa\": \"" + Valid.SetTgl(TanggalSEP.getSelectedItem() + "") + "\","
+                                + "\"tanggalperiksa\": \"" + Valid.getTglSmc(TanggalSEP) + "\","
                                 + "\"kodedokter\": " + KdDPJP.getText() + ","
                                 + "\"namadokter\": \"" + NmDPJP.getText() + "\","
                                 + "\"jampraktek\": \"" + jammulai.substring(0, 5) + "-" + jamselesai.substring(0, 5) + "\","
@@ -2812,7 +2805,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                                 + "\"namapoli\": \"" + NmPoli.getText() + "\","
                                 + "\"pasienbaru\": 0,"
                                 + "\"norm\": \"" + TNoRM.getText() + "\","
-                                + "\"tanggalperiksa\": \"" + Valid.SetTgl(TanggalSEP.getSelectedItem() + "") + "\","
+                                + "\"tanggalperiksa\": \"" + Valid.getTglSmc(TanggalSEP) + "\","
                                 + "\"kodedokter\": " + KdDPJP.getText() + ","
                                 + "\"namadokter\": \"" + NmDPJP.getText() + "\","
                                 + "\"jampraktek\": \"" + jammulai.substring(0, 5) + "-" + jamselesai.substring(0, 5) + "\","

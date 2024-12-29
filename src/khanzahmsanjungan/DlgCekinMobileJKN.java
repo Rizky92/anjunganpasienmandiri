@@ -134,9 +134,9 @@ public class DlgCekinMobileJKN extends javax.swing.JDialog {
         jLabel28.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel28.setPreferredSize(new java.awt.Dimension(500, 75));
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridwidth = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipady = 10;
         jPanel1.add(jLabel28, gridBagConstraints);
