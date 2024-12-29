@@ -23,11 +23,9 @@ public class KhanzaHMSAnjungan {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-
         WidgetUtilities.invokeLater(() -> {
             HalamanUtamaDepan utama = HalamanUtamaDepan.getInstance();
             utama.setVisible(true);
-
             String printerBarcode = null, printerRegistrasi = null;
 
             for (PrintService ps : PrintServiceLookup.lookupPrintServices(null, null)) {
