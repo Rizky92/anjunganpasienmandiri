@@ -61,7 +61,6 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
     private final ApiBPJS api = new ApiBPJS();
     private final validasi Valid = new validasi();
     private final ObjectMapper mapper = new ObjectMapper();
-    private final String kodepj = Sequel.cariIsiSmc("select password_asuransi.kd_pj from password_asuransi");
     private final BPJSCekReferensiDokterDPJP1 dokter = new BPJSCekReferensiDokterDPJP1(null, true);
     private final BPJSCekReferensiPenyakit penyakit = new BPJSCekReferensiPenyakit(null, true);
     private final DlgCariPoliBPJS poli = new DlgCariPoliBPJS(null, true);
@@ -70,6 +69,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
     private final BPJSCekRiwayatRujukanTerakhir rujukanterakhir = new BPJSCekRiwayatRujukanTerakhir(null, true);
     private final BPJSCekRiwayatPelayanan historiPelayanan = new BPJSCekRiwayatPelayanan(null, true);
     private final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    private final String kodepj = Sequel.cariIsiSmc("select password_asuransi.kd_pj from password_asuransi");
     private String aksi = "",
                    nosep = "",
                    tglkll = "",
@@ -298,7 +298,6 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         jLabel26 = new widget.Label();
         NIK = new widget.TextBox();
         jLabel7 = new widget.Label();
-        btnDPJPLayanan1 = new widget.Button();
         btnDiagnosaAwal = new widget.Button();
         btnCariNoRujukan = new widget.Button();
         btnRiwayatPelayanan = new widget.Button();
@@ -490,7 +489,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
 
         TanggalSEP.setEditable(false);
         TanggalSEP.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-12-2024" }));
+        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-12-2024" }));
         TanggalSEP.setDisplayFormat("dd-MM-yyyy");
         TanggalSEP.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         TanggalSEP.setOpaque(false);
@@ -507,7 +506,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
 
         TanggalRujuk.setEditable(false);
         TanggalRujuk.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-12-2024" }));
+        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-12-2024" }));
         TanggalRujuk.setDisplayFormat("dd-MM-yyyy");
         TanggalRujuk.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         TanggalRujuk.setOpaque(false);
@@ -749,7 +748,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
 
         TanggalKKL.setEditable(false);
         TanggalKKL.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalKKL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "27-12-2024" }));
+        TanggalKKL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-12-2024" }));
         TanggalKKL.setDisplayFormat("dd-MM-yyyy");
         TanggalKKL.setEnabled(false);
         TanggalKKL.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
@@ -1012,18 +1011,6 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         jPanel2.add(jLabel7);
         jLabel7.setBounds(625, 70, 100, 30);
 
-        btnDPJPLayanan1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pilih.png"))); // NOI18N
-        btnDPJPLayanan1.setMnemonic('X');
-        btnDPJPLayanan1.setToolTipText("Alt+X");
-        btnDPJPLayanan1.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
-        btnDPJPLayanan1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDPJPLayanan1ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(btnDPJPLayanan1);
-        btnDPJPLayanan1.setBounds(570, 190, 40, 30);
-
         btnDiagnosaAwal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pilih.png"))); // NOI18N
         btnDiagnosaAwal.setMnemonic('X');
         btnDiagnosaAwal.setToolTipText("Alt+X");
@@ -1279,13 +1266,6 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
             btnDPJPLayanan.setEnabled(true);
         }
     }//GEN-LAST:event_JenisPelayananItemStateChanged
-
-    private void btnDPJPLayanan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDPJPLayanan1ActionPerformed
-        poli.setSize(jPanel1.getWidth() - 100, jPanel1.getHeight() - 100);
-        poli.tampil();
-        poli.setLocationRelativeTo(jPanel1);
-        poli.setVisible(true);
-    }//GEN-LAST:event_btnDPJPLayanan1ActionPerformed
 
     private void btnDiagnosaAwalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiagnosaAwalActionPerformed
         penyakit.setSize(jPanel1.getWidth() - 100, jPanel1.getHeight() - 100);
@@ -1663,7 +1643,6 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
     private widget.Button btnApprovalFP;
     private widget.Button btnCariNoRujukan;
     private widget.Button btnDPJPLayanan;
-    private widget.Button btnDPJPLayanan1;
     private widget.Button btnDiagnosaAwal;
     private widget.Button btnDokterTerapi;
     private widget.Button btnFingerprint;

@@ -24,7 +24,7 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
     private final DlgCekNoRM pendaftaranwalkin = new DlgCekNoRM(null, true);
     private final DlgCekKunjunganPertamaSEP sepkunjunganpertama = new DlgCekKunjunganPertamaSEP(null, true);
     private final DlgCekSKDPKontrol sepkontrol = new DlgCekSKDPKontrol(null, true);
-    private final DlgCekKunjunganBedaPoli sepkontrolbedapoli = new DlgCekKunjunganBedaPoli(null, true);
+    private final DlgCekKunjunganBedaPoliSEP sepkontrolbedapoli = new DlgCekKunjunganBedaPoliSEP(null, true);
     private final DlgCekinMobileJKN cekinmobilejkn = new DlgCekinMobileJKN(null, true);
 
     /**
@@ -87,7 +87,7 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI SemiBold", 0, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 153, 153));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel1.setText("Build 2024-09-04 Patch 1      ");
+        jLabel1.setText("Build 2025-01-01      ");
         jLabel1.setFocusable(false);
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jPanel3.add(jLabel1, java.awt.BorderLayout.PAGE_END);
@@ -161,7 +161,7 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
         });
         jPanel1.add(btnAdmin2);
 
-        btnAdmin5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/BPJS_Kesehatan_Logo.png"))); // NOI18N
+        btnAdmin5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/bpjs-kesehatan.png"))); // NOI18N
         btnAdmin5.setText("SEP KUNJUNGAN PERTAMA");
         btnAdmin5.setFont(new java.awt.Font("Inter", 1, 30)); // NOI18N
         btnAdmin5.setIconTextGap(0);
@@ -173,7 +173,7 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
         });
         jPanel1.add(btnAdmin5);
 
-        btnAdmin6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/BPJS_Kesehatan_Logo.png"))); // NOI18N
+        btnAdmin6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/bpjs-kesehatan.png"))); // NOI18N
         btnAdmin6.setText("SEP KONTROL");
         btnAdmin6.setFont(new java.awt.Font("Inter", 1, 30)); // NOI18N
         btnAdmin6.setIconTextGap(0);
@@ -185,7 +185,7 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
         });
         jPanel1.add(btnAdmin6);
 
-        btnAdmin9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/BPJS_Kesehatan_Logo.png"))); // NOI18N
+        btnAdmin9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/bpjs-kesehatan.png"))); // NOI18N
         btnAdmin9.setText("SEP KONTROL BEDA POLI");
         btnAdmin9.setFont(new java.awt.Font("Inter", 1, 30)); // NOI18N
         btnAdmin9.setIconTextGap(0);

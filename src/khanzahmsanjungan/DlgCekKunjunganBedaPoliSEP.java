@@ -19,7 +19,7 @@ import javax.swing.JOptionPane;
  *
  * @author Kode
  */
-public class DlgCekKunjunganBedaPoli extends javax.swing.JDialog {
+public class DlgCekKunjunganBedaPoliSEP extends javax.swing.JDialog {
 
     private final sekuel Sequel = new sekuel();
     private final DlgRegistrasiSEPPertama form = new DlgRegistrasiSEPPertama(null, false);
@@ -30,7 +30,7 @@ public class DlgCekKunjunganBedaPoli extends javax.swing.JDialog {
      * @param parent
      * @param id
      */
-    public DlgCekKunjunganBedaPoli(java.awt.Frame parent, boolean id) {
+    public DlgCekKunjunganBedaPoliSEP(java.awt.Frame parent, boolean id) {
         super(parent, id);
         initComponents();
     }
@@ -134,9 +134,9 @@ public class DlgCekKunjunganBedaPoli extends javax.swing.JDialog {
         jLabel28.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel28.setPreferredSize(new java.awt.Dimension(450, 75));
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridwidth = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.ipady = 10;
         jPanel1.add(jLabel28, gridBagConstraints);
@@ -491,7 +491,7 @@ public class DlgCekKunjunganBedaPoli extends javax.swing.JDialog {
      */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
-            DlgCekKunjunganBedaPoli dialog = new DlgCekKunjunganBedaPoli(new javax.swing.JFrame(), true);
+            DlgCekKunjunganBedaPoliSEP dialog = new DlgCekKunjunganBedaPoliSEP(new javax.swing.JFrame(), true);
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
 
                 @Override
