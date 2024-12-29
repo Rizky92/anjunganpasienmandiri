@@ -62,7 +62,7 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         instansiKontak = "";
 
     private DlgCariPoli poli = new DlgCariPoli(null, true);
-    private DlgCariDokter2 dokter = new DlgCariDokter2(null, true);
+    private DlgCariDokter dokter = new DlgCariDokter(null, true);
     private Calendar cal = Calendar.getInstance();
     private int day = cal.get(Calendar.DAY_OF_WEEK);
 

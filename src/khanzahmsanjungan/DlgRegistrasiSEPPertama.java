@@ -65,7 +65,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
     private final BPJSCekReferensiPenyakit penyakit = new BPJSCekReferensiPenyakit(null, true);
     private final DlgCariPoliBPJS poli = new DlgCariPoliBPJS(null, true);
     private final DlgCariPoli polimapping = new DlgCariPoli(null, true);
-    private final DlgCariDokter2 doktermapping = new DlgCariDokter2(null, true);
+    private final DlgCariDokter doktermapping = new DlgCariDokter(null, true);
     private final BPJSCekRiwayatRujukanTerakhir rujukanterakhir = new BPJSCekRiwayatRujukanTerakhir(null, true);
     private final BPJSCekRiwayatPelayanan historiPelayanan = new BPJSCekRiwayatPelayanan(null, true);
     private final ObjectMapper mapper = new ObjectMapper();
