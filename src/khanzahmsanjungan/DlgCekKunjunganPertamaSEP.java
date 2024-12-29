@@ -45,7 +45,6 @@ public class DlgCekKunjunganPertamaSEP extends javax.swing.JDialog {
 
         jPanel2 = new javax.swing.JPanel();
         PanelWall = new usu.widget.glass.PanelGlass();
-        jLabel31 = new widget.Label();
         jPanel1 = new widget.Panel();
         NoRMPasien = new widget.TextBox();
         jLabel28 = new widget.Label();
@@ -97,16 +96,9 @@ public class DlgCekKunjunganPertamaSEP extends javax.swing.JDialog {
 
         jPanel2.add(PanelWall);
 
-        jLabel31.setForeground(new java.awt.Color(0, 131, 62));
-        jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel31.setText("SEP KUNJUNGAN PERTAMA");
-        jLabel31.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
-        jLabel31.setPreferredSize(new java.awt.Dimension(620, 75));
-        jPanel2.add(jLabel31);
-
         getContentPane().add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 131, 62)));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 131, 62)), "SEP KUNJUNGAN PERTAMA", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Inter Semibold", 0, 36), new java.awt.Color(0, 131, 62))); // NOI18N
         jPanel1.setForeground(new java.awt.Color(0, 131, 62));
         jPanel1.setPreferredSize(new java.awt.Dimension(400, 70));
         java.awt.GridBagLayout jPanel1Layout = new java.awt.GridBagLayout();
@@ -379,21 +371,25 @@ public class DlgCekKunjunganPertamaSEP extends javax.swing.JDialog {
 
     private void NoRMPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoRMPasienKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            if (NoRMPasien.getText().isBlank()) {
-                JOptionPane.showMessageDialog(rootPane, "Isian masih kosong..!!");
-                this.setCursor(Cursor.getDefaultCursor());
-                return;
-            }
+            BtnClose2ActionPerformed(null);
+        }
+    }//GEN-LAST:event_NoRMPasienKeyPressed
 
-            if ((Sequel.cariIntegerSmc("select count(*) from referensi_mobilejkn_bpjs where norm = ? and tanggalperiksa = current_date()", NoRMPasien.getText()) > 0)
-                || (Sequel.cariIntegerSmc("select count(*) from referensi_mobilejkn_bpjs where nomorkartu = ? and tanggalperiksa = current_date()", NoRMPasien.getText()) > 0)) {
-                JOptionPane.showMessageDialog(rootPane, "Pasien telah menggunakan Mobile JKN. Silahkan masuk melalui menu \"Cek In MobileJKN\"..!!");
-                this.setCursor(Cursor.getDefaultCursor());
-                return;
-            }
+    private void BtnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCloseActionPerformed
+        dispose();
+    }//GEN-LAST:event_BtnCloseActionPerformed
 
-            if (Sequel.cariIntegerSmc("select count(*) from pasien where no_peserta = ?", NoRMPasien.getText()) == 1) {
+    private void BtnClose2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnClose2ActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        if (NoRMPasien.getText().isBlank()) {
+            JOptionPane.showMessageDialog(rootPane, "Isian masih kosong..!!");
+        } else {
+            if (Sequel.cariExistsSmc(
+                "select * from referensi_mobilejkn_bpjs where (norm = ? or nomorkartu = ?) and tanggalperiksa = current_date() and status != 'Batal'",
+                NoRMPasien.getText(), NoRMPasien.getText()
+            )) {
+                JOptionPane.showMessageDialog(null, "Pasien telah mengambil antrian di MobileJKN. Silahkan masuk melalui menu \"Cek In MobileJKN\"..!!");
+            } else if (Sequel.cariIntegerSmc("select count(*) from pasien where no_peserta = ?", NoRMPasien.getText()) == 1) {
                 form.tampilKunjunganPertama(NoRMPasien.getText());
                 form.setSize(this.getWidth(), this.getHeight());
                 form.setLocationRelativeTo(jPanel1);
@@ -408,43 +404,6 @@ public class DlgCekKunjunganPertamaSEP extends javax.swing.JDialog {
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Data pasien tidak ditemukan!");
             }
-            this.setCursor(Cursor.getDefaultCursor());
-        }
-    }//GEN-LAST:event_NoRMPasienKeyPressed
-
-    private void BtnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCloseActionPerformed
-        dispose();
-    }//GEN-LAST:event_BtnCloseActionPerformed
-
-    private void BtnClose2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnClose2ActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        if (NoRMPasien.getText().isBlank()) {
-            JOptionPane.showMessageDialog(rootPane, "Isian masih kosong..!!");
-            this.setCursor(Cursor.getDefaultCursor());
-            return;
-        }
-
-        if ((Sequel.cariIntegerSmc("select count(*) from referensi_mobilejkn_bpjs where norm = ? and tanggalperiksa = current_date()", NoRMPasien.getText()) > 0)
-            || (Sequel.cariIntegerSmc("select count(*) from referensi_mobilejkn_bpjs where nomorkartu = ? and tanggalperiksa = current_date()", NoRMPasien.getText()) > 0)) {
-            JOptionPane.showMessageDialog(rootPane, "Pasien telah menggunakan Mobile JKN. Silahkan masuk melalui menu \"Cek In MobileJKN\"..!!");
-            this.setCursor(Cursor.getDefaultCursor());
-            return;
-        }
-
-        if (Sequel.cariIntegerSmc("select count(*) from pasien where no_peserta = ?", NoRMPasien.getText()) == 1) {
-            form.tampilKunjunganPertama(NoRMPasien.getText());
-            form.setSize(this.getWidth(), this.getHeight());
-            form.setLocationRelativeTo(jPanel1);
-            this.dispose();
-            form.setVisible(true);
-        } else if (Sequel.cariIntegerSmc("select count(*) from pasien where no_rkm_medis = ?", NoRMPasien.getText()) == 1) {
-            form.tampilKunjunganPertama(Sequel.cariIsiSmc("select no_peserta from pasien where no_rkm_medis = ?", NoRMPasien.getText()));
-            form.setSize(this.getWidth(), this.getHeight());
-            form.setLocationRelativeTo(jPanel1);
-            this.dispose();
-            form.setVisible(true);
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Data pasien tidak ditemukan!");
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnClose2ActionPerformed
@@ -556,9 +515,12 @@ public class DlgCekKunjunganPertamaSEP extends javax.swing.JDialog {
     private widget.Label jLabel28;
     private widget.Label jLabel29;
     private widget.Label jLabel30;
-    private widget.Label jLabel31;
     private widget.Panel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
+
+    public void emptTeks() {
+        NoRMPasien.setText("");
+    }
 }

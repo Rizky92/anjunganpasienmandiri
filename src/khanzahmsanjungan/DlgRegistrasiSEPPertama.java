@@ -11,7 +11,7 @@
 package khanzahmsanjungan;
 
 import bridging.ApiBPJS;
-import bridging.BPJSCekReferensiDokterDPJP1;
+import bridging.BPJSCekReferensiDokterDPJP;
 import bridging.BPJSCekReferensiPenyakit;
 import bridging.BPJSCekRiwayatPelayanan;
 import bridging.BPJSCekRiwayatRujukanTerakhir;
@@ -61,7 +61,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
     private final sekuel Sequel = new sekuel();
     private final ApiBPJS api = new ApiBPJS();
     private final validasi Valid = new validasi();
-    private final BPJSCekReferensiDokterDPJP1 dokter = new BPJSCekReferensiDokterDPJP1(null, true);
+    private final BPJSCekReferensiDokterDPJP dokter = new BPJSCekReferensiDokterDPJP(null, true);
     private final BPJSCekReferensiPenyakit penyakit = new BPJSCekReferensiPenyakit(null, true);
     private final DlgCariPoliBPJS poli = new DlgCariPoliBPJS(null, true);
     private final DlgCariPoli polimapping = new DlgCariPoli(null, true);
@@ -507,7 +507,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
 
         TanggalSEP.setEditable(false);
         TanggalSEP.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-12-2024" }));
+        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-12-2024" }));
         TanggalSEP.setDisplayFormat("dd-MM-yyyy");
         TanggalSEP.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         TanggalSEP.setOpaque(false);
@@ -524,7 +524,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
 
         TanggalRujuk.setEditable(false);
         TanggalRujuk.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-12-2024" }));
+        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-12-2024" }));
         TanggalRujuk.setDisplayFormat("dd-MM-yyyy");
         TanggalRujuk.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         TanggalRujuk.setOpaque(false);
@@ -766,7 +766,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
 
         TanggalKKL.setEditable(false);
         TanggalKKL.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalKKL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "26-12-2024" }));
+        TanggalKKL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "30-12-2024" }));
         TanggalKKL.setDisplayFormat("dd-MM-yyyy");
         TanggalKKL.setEnabled(false);
         TanggalKKL.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
@@ -1177,7 +1177,6 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         jPanel3.setBackground(new java.awt.Color(238, 238, 255));
         jPanel3.setMinimumSize(new java.awt.Dimension(533, 120));
         jPanel3.setPreferredSize(new java.awt.Dimension(533, 120));
-        jPanel3.setLayout(new java.awt.GridBagLayout());
 
         btnSimpan.setForeground(new java.awt.Color(0, 131, 62));
         btnSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/konfirmasi.png"))); // NOI18N
@@ -1192,7 +1191,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                 btnSimpanActionPerformed(evt);
             }
         });
-        jPanel3.add(btnSimpan, new java.awt.GridBagConstraints());
+        jPanel3.add(btnSimpan);
 
         btnValidasi.setForeground(new java.awt.Color(0, 131, 62));
         btnValidasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/fingerprint.png"))); // NOI18N
@@ -1207,7 +1206,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                 btnValidasiActionPerformed(evt);
             }
         });
-        jPanel3.add(btnValidasi, new java.awt.GridBagConstraints());
+        jPanel3.add(btnValidasi);
 
         btnKeluar.setForeground(new java.awt.Color(0, 131, 62));
         btnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/reset.png"))); // NOI18N
@@ -1222,7 +1221,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                 btnKeluarActionPerformed(evt);
             }
         });
-        jPanel3.add(btnKeluar, new java.awt.GridBagConstraints());
+        jPanel3.add(btnKeluar);
 
         jPanel1.add(jPanel3, java.awt.BorderLayout.PAGE_END);
 

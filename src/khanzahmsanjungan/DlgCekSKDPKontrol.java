@@ -43,7 +43,6 @@ public class DlgCekSKDPKontrol extends javax.swing.JDialog {
 
         jPanel2 = new javax.swing.JPanel();
         PanelWall = new usu.widget.glass.PanelGlass();
-        jLabel31 = new widget.Label();
         jPanel1 = new widget.Panel();
         InputSKDP = new widget.TextBox();
         jLabel28 = new widget.Label();
@@ -100,19 +99,12 @@ public class DlgCekSKDPKontrol extends javax.swing.JDialog {
 
         jPanel2.add(PanelWall);
 
-        jLabel31.setForeground(new java.awt.Color(0, 131, 62));
-        jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel31.setText("SEP KONTROL");
-        jLabel31.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
-        jLabel31.setPreferredSize(new java.awt.Dimension(360, 75));
-        jPanel2.add(jLabel31);
-
         getContentPane().add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 131, 62)));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 131, 62)), "SEP KONTROL", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Inter Semibold", 0, 36), new java.awt.Color(0, 131, 62))); // NOI18N
         jPanel1.setForeground(new java.awt.Color(0, 131, 62));
         jPanel1.setMinimumSize(new java.awt.Dimension(413, 115));
-        jPanel1.setPreferredSize(new java.awt.Dimension(413, 115));
+        jPanel1.setPreferredSize(new java.awt.Dimension(400, 70));
         java.awt.GridBagLayout jPanel1Layout = new java.awt.GridBagLayout();
         jPanel1Layout.columnWeights = new double[] {10.0, 23.0, 1.0, 1.0, 10.0};
         jPanel1.setLayout(jPanel1Layout);
@@ -547,7 +539,6 @@ public class DlgCekSKDPKontrol extends javax.swing.JDialog {
     private widget.Label jLabel28;
     private widget.Label jLabel29;
     private widget.Label jLabel30;
-    private widget.Label jLabel31;
     private widget.Panel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

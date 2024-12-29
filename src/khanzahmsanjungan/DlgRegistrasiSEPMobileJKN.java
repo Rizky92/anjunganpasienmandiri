@@ -11,7 +11,7 @@
 package khanzahmsanjungan;
 
 import bridging.ApiBPJS;
-import bridging.BPJSCekReferensiDokterDPJP1;
+import bridging.BPJSCekReferensiDokterDPJP;
 import bridging.BPJSCekReferensiPenyakit;
 import bridging.BPJSCekRiwayatPelayanan;
 import bridging.BPJSCekRiwayatRujukanTerakhir;
@@ -61,7 +61,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
     private final ApiBPJS api = new ApiBPJS();
     private final validasi Valid = new validasi();
     private final ObjectMapper mapper = new ObjectMapper();
-    private final BPJSCekReferensiDokterDPJP1 dokter = new BPJSCekReferensiDokterDPJP1(null, true);
+    private final BPJSCekReferensiDokterDPJP dokter = new BPJSCekReferensiDokterDPJP(null, true);
     private final BPJSCekReferensiPenyakit penyakit = new BPJSCekReferensiPenyakit(null, true);
     private final DlgCariPoliBPJS poli = new DlgCariPoliBPJS(null, true);
     private final DlgCariPoli polimapping = new DlgCariPoli(null, true);

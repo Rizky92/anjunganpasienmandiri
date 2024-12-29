@@ -252,6 +252,7 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAdmin5ActionPerformed
 
     private void btnAdmin8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdmin8ActionPerformed
+        cekinmobilejkn.emptTeks();
         cekinmobilejkn.setSize(this.getWidth(), this.getHeight());
         cekinmobilejkn.setLocationRelativeTo(this);
         cekinmobilejkn.setVisible(true);
