@@ -16,7 +16,7 @@ Berikut adalah konfigurasi yang disediakan dalam file `apm.xml`:
 <entry key="URLAPLIKASIFINGERPRINTBPJS">D:\BPJS Kesehatan\Aplikasi Sidik Jari BPJS Kesehatan\After.exe</entry>
 <entry key="URLAPLIKASIFRISTABPJS">D:\BPJS Kesehatan\Aplikasi FRISTA BPJS Kesehatan\frista.exe</entry>
 <entry key="USERFINGERPRINTBPJS">l4nh5eVYrLAER/I2A4b3Tw==</entry>
-<entry key="PASSWORDFINGERPRINTBPJS">l4nh5eVYrLAER/I2A4b3Tw==</entry>
+<entry key="PASSFINGERPRINTBPJS">l4nh5eVYrLAER/I2A4b3Tw==</entry>
 ```
 
 #### key "PRINTER_BARCODE"
