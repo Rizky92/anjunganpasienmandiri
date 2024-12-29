@@ -60,14 +60,13 @@ public class HalamanUtamaAntrian extends javax.swing.JFrame {
 
         jLabel39.setForeground(new java.awt.Color(0, 131, 62));
         jLabel39.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel39.setText("ANJUNGAN PASIEN MANDIRI");
+        jLabel39.setText("AMBIL ANTRIAN");
         jLabel39.setFont(new java.awt.Font("Inter", 1, 48)); // NOI18N
         jLabel39.setPreferredSize(new java.awt.Dimension(750, 75));
         jPanel3.add(jLabel39);
 
         getContentPane().add(jPanel3, java.awt.BorderLayout.PAGE_END);
 
-        jPanel1.setBackground(new java.awt.Color(238, 238, 255));
         jPanel1.setBorder(null);
         jPanel1.setPreferredSize(new java.awt.Dimension(1280, 1024));
         jPanel1.setLayout(new java.awt.GridLayout(3, 0));
@@ -153,7 +152,7 @@ public class HalamanUtamaAntrian extends javax.swing.JFrame {
         PanelWall.setBackgroundImage(new javax.swing.ImageIcon(getClass().getResource("/picture/indriatikars.png"))); // NOI18N
         PanelWall.setBackgroundImageType(usu.widget.constan.BackgroundConstan.BACKGROUND_IMAGE_STRECT);
         PanelWall.setForeground(new java.awt.Color(238, 238, 255));
-        PanelWall.setPreferredSize(new java.awt.Dimension(500, 150));
+        PanelWall.setPreferredSize(new java.awt.Dimension(150, 150));
         PanelWall.setRound(false);
         PanelWall.setWarna(new java.awt.Color(238, 238, 255));
         PanelWall.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -166,7 +165,7 @@ public class HalamanUtamaAntrian extends javax.swing.JFrame {
         PanelWall.setLayout(PanelWallLayout);
         PanelWallLayout.setHorizontalGroup(
             PanelWallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGap(0, 150, Short.MAX_VALUE)
         );
         PanelWallLayout.setVerticalGroup(
             PanelWallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

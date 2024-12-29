@@ -4,8 +4,6 @@
  */
 package khanzahmsanjungan;
 
-import fungsi.sekuel;
-import fungsi.validasi;
 import java.awt.Dimension;
 import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.awt.Toolkit;
