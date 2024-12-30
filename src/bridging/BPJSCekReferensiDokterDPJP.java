@@ -14,8 +14,8 @@ package bridging;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.WarnaTable;
-import fungsi.BatasInput;
-import fungsi.KoneksiDB;
+import fungsi.batasInput;
+import fungsi.koneksiDB;
 import java.awt.Dimension;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -84,9 +84,9 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
 
-        Dokter.setDocument(new BatasInput((byte) 100).getKata(Dokter));
+        Dokter.setDocument(new batasInput((byte) 100).getKata(Dokter));
 
-        if (KoneksiDB.CARICEPAT().equals("aktif")) {
+        if (koneksiDB.CARICEPAT().equals("aktif")) {
             Dokter.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
@@ -375,7 +375,7 @@ public final class BPJSCekReferensiDokterDPJP extends javax.swing.JDialog {
     public void tampil(String poli) {
         Valid.tabelKosong(tabMode);
         try {
-            url = KoneksiDB.URLAPIBPJS() + "/referensi/dokter/pelayanan/2/tglPelayanan/" + Valid.getTglSmc(DTPCari1) + "/Spesialis/" + KdSep.getText();
+            url = koneksiDB.URLAPIBPJS() + "/referensi/dokter/pelayanan/2/tglPelayanan/" + Valid.getTglSmc(DTPCari1) + "/Spesialis/" + KdSep.getText();
             root = mapper.readTree(api.getRest().exchange(url, HttpMethod.GET, requestEntity, String.class).getBody());
             metadata = root.path("metaData");
             System.out.println("code : " + metadata.path("code").asText());

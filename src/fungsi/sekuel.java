@@ -49,8 +49,8 @@ import uz.ncipro.calendar.JDateTimePicker;
  * @author Owner
  */
 public final class sekuel {
-    private final Connection koneksi = KoneksiDB.condb();
-    private final String AKTIFKANTRACKSQL = KoneksiDB.AKTIFKANTRACKSQL();
+    private final Connection koneksi = koneksiDB.condb();
+    private final String AKTIFKANTRACKSQL = koneksiDB.AKTIFKANTRACKSQL();
     private final DecimalFormat df2 = new DecimalFormat("####");
     private javax.swing.ImageIcon icon = null;
     private String folder, dicari = "", track = "";

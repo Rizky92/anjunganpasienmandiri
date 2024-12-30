@@ -10,7 +10,7 @@
  */
 package khanzahmsanjungan;
 
-import fungsi.KoneksiDB;
+import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import java.awt.Cursor;
@@ -32,7 +32,7 @@ import javax.swing.JOptionPane;
  */
 public class DlgCekBooking extends javax.swing.JDialog {
 
-    private Connection koneksi = KoneksiDB.condb();
+    private Connection koneksi = koneksiDB.condb();
     private sekuel Sequel = new sekuel();
     private validasi Valid = new validasi();
     private PreparedStatement ps, ps3;

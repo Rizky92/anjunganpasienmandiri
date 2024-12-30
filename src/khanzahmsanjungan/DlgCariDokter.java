@@ -11,7 +11,7 @@
 package khanzahmsanjungan;
 
 import fungsi.WarnaTable;
-import fungsi.KoneksiDB;
+import fungsi.koneksiDB;
 import fungsi.validasi;
 import java.awt.Dimension;
 import java.sql.Connection;
@@ -29,7 +29,7 @@ public final class DlgCariDokter extends javax.swing.JDialog {
 
     private final DefaultTableModel tabMode;
     private final validasi Valid = new validasi();
-    private final Connection koneksi = KoneksiDB.condb();
+    private final Connection koneksi = koneksiDB.condb();
 
     /**
      * Creates new form DlgPenyakit

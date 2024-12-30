@@ -1,6 +1,6 @@
 package bridging;
 
-import fungsi.KoneksiDB;
+import fungsi.koneksiDB;
 import java.io.UnsupportedEncodingException;
 import java.security.GeneralSecurityException;
 import java.security.InvalidAlgorithmParameterException;
@@ -40,8 +40,8 @@ public class ApiBPJS {
 
     public ApiBPJS() {
         try {
-            Key = KoneksiDB.SECRETKEYAPIBPJS();
-            Consid = KoneksiDB.CONSIDAPIBPJS();
+            Key = koneksiDB.SECRETKEYAPIBPJS();
+            Consid = koneksiDB.CONSIDAPIBPJS();
         } catch (Exception ex) {
             System.out.println("Notifikasi : " + ex);
         }

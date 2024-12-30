@@ -21,8 +21,8 @@ import com.sun.jna.Native;
 import com.sun.jna.Pointer;
 import com.sun.jna.platform.win32.User32;
 import com.sun.jna.platform.win32.WinDef;
-import fungsi.BatasInput;
-import fungsi.KoneksiDB;
+import fungsi.batasInput;
+import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import java.awt.Cursor;
@@ -57,7 +57,7 @@ import org.springframework.web.client.HttpServerErrorException;
  */
 public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
 
-    private final Connection koneksi = KoneksiDB.condb();
+    private final Connection koneksi = koneksiDB.condb();
     private final sekuel Sequel = new sekuel();
     private final ApiBPJS api = new ApiBPJS();
     private final validasi Valid = new validasi();
@@ -110,7 +110,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
     public DlgRegistrasiSEPPertama(java.awt.Frame parent, boolean id) {
         super(parent, id);
         initComponents();
-        JumlahBarcode.setDocument(new BatasInput((byte) 3).getOnlyAngka(JumlahBarcode));
+        JumlahBarcode.setDocument(new batasInput((byte) 3).getOnlyAngka(JumlahBarcode));
 
         dokter.addWindowListener(new WindowAdapter() {
             @Override
@@ -1472,7 +1472,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                     if (rs.next()) {
                         switch (aksi) {
                             case "Pengajuan":
-                                url = KoneksiDB.URLAPIBPJS() + "/Sep/pengajuanSEP";
+                                url = koneksiDB.URLAPIBPJS() + "/Sep/pengajuanSEP";
                                 requestJson = "{"
                                     + "\"request\": {"
                                     + "\"t_sep\": {"
@@ -1490,11 +1490,11 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                                 try {
                                     headers = new HttpHeaders();
                                     headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-                                    headers.add("X-Cons-ID", KoneksiDB.CONSIDAPIBPJS());
+                                    headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
                                     utc = api.getUTCDateTime();
                                     headers.add("X-Timestamp", utc);
                                     headers.add("X-Signature", api.getHmac(utc));
-                                    headers.add("user_key", KoneksiDB.USERKEYAPIBPJS());
+                                    headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
                                     requestEntity = new HttpEntity(requestJson, headers);
                                     root = mapper.readTree(api.getRest().exchange(url, HttpMethod.POST, requestEntity, String.class).getBody());
                                     metadata = root.path("metaData");
@@ -1513,7 +1513,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                                 }
                                 break;
                             case "Approval":
-                                url = KoneksiDB.URLAPIBPJS() + "/Sep/aprovalSEP";
+                                url = koneksiDB.URLAPIBPJS() + "/Sep/aprovalSEP";
                                 requestJson = "{"
                                     + "\"request\": {"
                                     + "\"t_sep\": {"
@@ -1531,11 +1531,11 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                                 try {
                                     headers = new HttpHeaders();
                                     headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-                                    headers.add("X-Cons-ID", KoneksiDB.CONSIDAPIBPJS());
+                                    headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
                                     utc = api.getUTCDateTime();
                                     headers.add("X-Timestamp", utc);
                                     headers.add("X-Signature", api.getHmac(utc));
-                                    headers.add("user_key", KoneksiDB.USERKEYAPIBPJS());
+                                    headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
                                     requestEntity = new HttpEntity(requestJson, headers);
                                     root = mapper.readTree(api.getRest().exchange(url, HttpMethod.POST, requestEntity, String.class).getBody());
                                     metadata = root.path("metaData");
@@ -1736,7 +1736,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     private void isNumber() {
-        switch (KoneksiDB.URUTNOREG()) {
+        switch (koneksiDB.URUTNOREG()) {
             case "poli":
                 noreg = Sequel.cariIsiSmc(
                     "select lpad(ifnull(max(convert(no_reg, signed)), 0) + 1, 3, '0') from reg_periksa where kd_poli = ? and tgl_registrasi = ?",
@@ -1815,18 +1815,18 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         param.put("kotars", Sequel.cariIsi("select setting.kabupaten from setting limit 1"));
 
         if (JenisPelayanan.getSelectedIndex() == 0) {
-            Valid.printReportSmc("rptBridgingSEPAPM1.jasper", "report", "::[ Cetak SEP Model 4 ]::", param, 1, KoneksiDB.PRINTER_REGISTRASI());
+            Valid.printReportSmc("rptBridgingSEPAPM1.jasper", "report", "::[ Cetak SEP Model 4 ]::", param, 1, koneksiDB.PRINTER_REGISTRASI());
             Valid.reportSmc("rptBridgingSEPAPM1.jasper", "report", "::[ Cetak SEP Model 4 ]::", param);
         } else {
-            Valid.printReportSmc("rptBridgingSEPAPM2.jasper", "report", "::[ Cetak SEP Model 4 ]::", param, 1, KoneksiDB.PRINTER_REGISTRASI());
+            Valid.printReportSmc("rptBridgingSEPAPM2.jasper", "report", "::[ Cetak SEP Model 4 ]::", param, 1, koneksiDB.PRINTER_REGISTRASI());
             Valid.reportSmc("rptBridgingSEPAPM2.jasper", "report", "::[ Cetak SEP Model 4 ]::", param);
         }
-        Valid.printReportSmc("rptBarcodeRawatAPM.jasper", "report", "::[ Barcode Perawatan ]::", param, Integer.parseInt(JumlahBarcode.getText().trim()), KoneksiDB.PRINTER_BARCODE());
+        Valid.printReportSmc("rptBarcodeRawatAPM.jasper", "report", "::[ Barcode Perawatan ]::", param, Integer.parseInt(JumlahBarcode.getText().trim()), koneksiDB.PRINTER_BARCODE());
         Valid.reportSmc("rptBarcodeRawatAPM.jasper", "report", "::[ Cetak SEP Model 4 ]::", param);
     }
 
     private void insertSEP() {
-        url = KoneksiDB.URLAPIBPJS() + "/SEP/2.0/insert";
+        url = koneksiDB.URLAPIBPJS() + "/SEP/2.0/insert";
         requestJson = "{"
             + "\"request\": {"
             + "\"t_sep\": {"
@@ -1897,10 +1897,10 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
             utc = api.getUTCDateTime();
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-            headers.add("X-Cons-ID", KoneksiDB.CONSIDAPIBPJS());
+            headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
             headers.add("X-Timestamp", utc);
             headers.add("X-Signature", api.getHmac(utc));
-            headers.add("user_key", KoneksiDB.USERKEYAPIBPJS());
+            headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
             requestEntity = new HttpEntity(requestJson, headers);
             root = mapper.readTree(api.getRest().exchange(url, HttpMethod.POST, requestEntity, String.class).getBody());
             metadata = root.path("metaData");
@@ -2017,12 +2017,12 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
             try {
                 headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-                headers.add("X-Cons-ID", KoneksiDB.CONSIDAPIBPJS());
+                headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
                 utc = api.getUTCDateTime();
                 headers.add("X-Timestamp", utc);
                 headers.add("X-Signature", api.getHmac(utc));
-                headers.add("user_key", KoneksiDB.USERKEYAPIBPJS());
-                url = KoneksiDB.URLAPIBPJS() + "/SEP/FingerPrint/Peserta/" + noka + "/TglPelayanan/" + Valid.getTglSmc(TanggalSEP);
+                headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
+                url = koneksiDB.URLAPIBPJS() + "/SEP/FingerPrint/Peserta/" + noka + "/TglPelayanan/" + Valid.getTglSmc(TanggalSEP);
                 requestEntity = new HttpEntity(headers);
                 root = mapper.readTree(api.getRest().exchange(url, HttpMethod.GET, requestEntity, String.class).getBody());
                 metadata = root.path("metaData");
@@ -2065,14 +2065,14 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         btnDokterTerapi.setVisible(false);
         lblTerapi.setVisible(false);
         try {
-            url = KoneksiDB.URLAPIBPJS() + "/Rujukan/Peserta/" + noKartu;
+            url = koneksiDB.URLAPIBPJS() + "/Rujukan/Peserta/" + noKartu;
             utc = api.getUTCDateTime();
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
-            headers.add("X-Cons-ID", KoneksiDB.CONSIDAPIBPJS());
+            headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
             headers.add("X-Timestamp", utc);
             headers.add("X-Signature", api.getHmac(utc));
-            headers.add("user_key", KoneksiDB.USERKEYAPIBPJS());
+            headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
             requestEntity = new HttpEntity(headers);
             root = mapper.readTree(api.getRest().exchange(url, HttpMethod.GET, requestEntity, String.class).getBody());
             metadata = root.path("metaData");
@@ -2126,14 +2126,14 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                 System.out.println("Pesan pencarian rujukan FKTP : " + metadata.path("message").asText());
                 JOptionPane.showMessageDialog(null, "Pesan Pencarian Rujukan FKTP : " + metadata.path("message").asText());
                 try {
-                    url = KoneksiDB.URLAPIBPJS() + "/Rujukan/RS/Peserta/" + noKartu;
+                    url = koneksiDB.URLAPIBPJS() + "/Rujukan/RS/Peserta/" + noKartu;
                     headers = new HttpHeaders();
                     headers.setContentType(MediaType.APPLICATION_JSON);
-                    headers.add("X-Cons-ID", KoneksiDB.CONSIDAPIBPJS());
+                    headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
                     utc = api.getUTCDateTime();
                     headers.add("X-Timestamp", utc);
                     headers.add("X-Signature", api.getHmac(utc));
-                    headers.add("user_key", KoneksiDB.USERKEYAPIBPJS());
+                    headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
                     requestEntity = new HttpEntity(headers);
                     root = mapper.readTree(api.getRest().exchange(url, HttpMethod.GET, requestEntity, String.class).getBody());
                     metadata = root.path("metaData");
@@ -2218,14 +2218,14 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         Penunjang.setSelectedIndex(0);
         AsesmenPoli.setSelectedIndex(1);
         try {
-            url = KoneksiDB.URLAPIBPJS() + "/Rujukan/Peserta/" + noKartu;
+            url = koneksiDB.URLAPIBPJS() + "/Rujukan/Peserta/" + noKartu;
             utc = api.getUTCDateTime();
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
-            headers.add("X-Cons-ID", KoneksiDB.CONSIDAPIBPJS());
+            headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
             headers.add("X-Timestamp", utc);
             headers.add("X-Signature", api.getHmac(utc));
-            headers.add("user_key", KoneksiDB.USERKEYAPIBPJS());
+            headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
             requestEntity = new HttpEntity(headers);
             root = mapper.readTree(api.getRest().exchange(url, HttpMethod.GET, requestEntity, String.class).getBody());
             metadata = root.path("metaData");
@@ -2278,14 +2278,14 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
             } else {
                 System.out.println("Pesan pencarian rujukan FKTP : " + metadata.path("message").asText());
                 try {
-                    url = KoneksiDB.URLAPIBPJS() + "/Rujukan/RS/Peserta/" + noKartu;
+                    url = koneksiDB.URLAPIBPJS() + "/Rujukan/RS/Peserta/" + noKartu;
                     headers = new HttpHeaders();
                     headers.setContentType(MediaType.APPLICATION_JSON);
-                    headers.add("X-Cons-ID", KoneksiDB.CONSIDAPIBPJS());
+                    headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
                     utc = api.getUTCDateTime();
                     headers.add("X-Timestamp", utc);
                     headers.add("X-Signature", api.getHmac(utc));
-                    headers.add("user_key", KoneksiDB.USERKEYAPIBPJS());
+                    headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
                     requestEntity = new HttpEntity(headers);
                     root = mapper.readTree(api.getRest().exchange(url, HttpMethod.GET, requestEntity, String.class).getBody());
                     metadata = root.path("metaData");
@@ -2425,14 +2425,14 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                     }
                     if (rskontrol.getString("jnspelayanan").equals("1")) {
                         try {
-                            url = KoneksiDB.URLAPIBPJS() + "/Peserta/nokartu/" + rskontrol.getString("no_kartu") + "/tglSEP/" + Valid.getTglSmc(TanggalSEP);
+                            url = koneksiDB.URLAPIBPJS() + "/Peserta/nokartu/" + rskontrol.getString("no_kartu") + "/tglSEP/" + Valid.getTglSmc(TanggalSEP);
                             utc = api.getUTCDateTime();
                             headers = new HttpHeaders();
                             headers.setContentType(MediaType.APPLICATION_JSON);
-                            headers.add("X-Cons-ID", KoneksiDB.CONSIDAPIBPJS());
+                            headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
                             headers.add("X-Timestamp", utc);
                             headers.add("X-Signature", api.getHmac(utc));
-                            headers.add("user_key", KoneksiDB.USERKEYAPIBPJS());
+                            headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
                             requestEntity = new HttpEntity(headers);
                             root = mapper.readTree(api.getRest().exchange(url, HttpMethod.GET, requestEntity, String.class).getBody());
                             metadata = root.path("metaData");
@@ -2505,17 +2505,17 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                     } else {
                         try {
                             if (rskontrol.getString("asal_rujukan").equals("1")) {
-                                url = KoneksiDB.URLAPIBPJS() + "/Rujukan/" + rskontrol.getString("no_rujukan");
+                                url = koneksiDB.URLAPIBPJS() + "/Rujukan/" + rskontrol.getString("no_rujukan");
                             } else if (rskontrol.getString("asal_rujukan").equals("2")) {
-                                url = KoneksiDB.URLAPIBPJS() + "/Rujukan/RS/" + rskontrol.getString("no_rujukan");
+                                url = koneksiDB.URLAPIBPJS() + "/Rujukan/RS/" + rskontrol.getString("no_rujukan");
                             }
                             utc = api.getUTCDateTime();
                             headers = new HttpHeaders();
                             headers.setContentType(MediaType.APPLICATION_JSON);
-                            headers.add("X-Cons-ID", KoneksiDB.CONSIDAPIBPJS());
+                            headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
                             headers.add("X-Timestamp", utc);
                             headers.add("X-Signature", api.getHmac(utc));
-                            headers.add("user_key", KoneksiDB.USERKEYAPIBPJS());
+                            headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
                             requestEntity = new HttpEntity(headers);
                             root = mapper.readTree(api.getRest().exchange(url, HttpMethod.GET, requestEntity, String.class).getBody());
                             metadata = root.path("metaData");
@@ -2707,17 +2707,17 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                         + "\"keterangan\": \"Peserta harap 30 menit lebih awal guna pencatatan administrasi.\""
                         + "}";
                     System.out.println("JSON : " + requestJson);
-                    url = KoneksiDB.URLAPIMOBILEJKN() + "/antrean/add";
+                    url = koneksiDB.URLAPIMOBILEJKN() + "/antrean/add";
                     System.out.println("URL : " + url);
                     System.out.print("addantrean " + norawat + " : ");
                     try {
                         utc = api.getUTCDateTime();
                         headers = new HttpHeaders();
                         headers.setContentType(MediaType.APPLICATION_JSON);
-                        headers.add("x-cons-id", KoneksiDB.CONSIDAPIMOBILEJKN());
+                        headers.add("x-cons-id", koneksiDB.CONSIDAPIMOBILEJKN());
                         headers.add("x-timestamp", utc);
                         headers.add("x-signature", api.getHmac(utc));
-                        headers.add("user_key", KoneksiDB.USERKEYAPIMOBILEJKN());
+                        headers.add("user_key", koneksiDB.USERKEYAPIMOBILEJKN());
                         requestEntity = new HttpEntity(requestJson, headers);
                         root = mapper.readTree(api.getRest().exchange(url, HttpMethod.POST, requestEntity, String.class).getBody());
                         metadata = root.path("metadata");
@@ -2743,10 +2743,10 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                             utc = api.getUTCDateTime();
                             headers = new HttpHeaders();
                             headers.setContentType(MediaType.APPLICATION_JSON);
-                            headers.add("x-cons-id", KoneksiDB.CONSIDAPIMOBILEJKN());
+                            headers.add("x-cons-id", koneksiDB.CONSIDAPIMOBILEJKN());
                             headers.add("x-timestamp", utc);
                             headers.add("x-signature", api.getHmac(utc));
-                            headers.add("user_key", KoneksiDB.USERKEYAPIMOBILEJKN());
+                            headers.add("user_key", koneksiDB.USERKEYAPIMOBILEJKN());
                             requestJson = "{"
                                 + "\"kodebooking\": \"" + norawat + "\","
                                 + "\"jenispasien\": \"JKN\","
@@ -2773,7 +2773,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                                 + "\"keterangan\": \"Peserta harap 30 menit lebih awal guna pencatatan administrasi.\""
                                 + "}";
                             requestEntity = new HttpEntity(requestJson, headers);
-                            url = KoneksiDB.URLAPIMOBILEJKN() + "/antrean/add";
+                            url = koneksiDB.URLAPIMOBILEJKN() + "/antrean/add";
                             System.out.println("URL : " + url);
                             System.out.println(requestEntity);
                             root = mapper.readTree(api.getRest().exchange(url, HttpMethod.POST, requestEntity, String.class).getBody());
@@ -2789,11 +2789,11 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                         try {
                             headers = new HttpHeaders();
                             headers.setContentType(MediaType.APPLICATION_JSON);
-                            headers.add("x-cons-id", KoneksiDB.CONSIDAPIMOBILEJKN());
+                            headers.add("x-cons-id", koneksiDB.CONSIDAPIMOBILEJKN());
                             utc = api.getUTCDateTime();
                             headers.add("x-timestamp", utc);
                             headers.add("x-signature", api.getHmac(utc));
-                            headers.add("user_key", KoneksiDB.USERKEYAPIMOBILEJKN());
+                            headers.add("user_key", koneksiDB.USERKEYAPIMOBILEJKN());
                             requestJson = "{"
                                 + "\"kodebooking\": \"" + norawat + "\","
                                 + "\"jenispasien\": \"JKN\","
@@ -2821,7 +2821,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                                 + "}";
                             System.out.println("JSON : " + requestJson + "\n");
                             requestEntity = new HttpEntity(requestJson, headers);
-                            url = KoneksiDB.URLAPIMOBILEJKN() + "/antrean/add";
+                            url = koneksiDB.URLAPIMOBILEJKN() + "/antrean/add";
                             System.out.println("URL Kirim Pakai No.Rujuk : " + url);
                             root = mapper.readTree(api.getRest().exchange(url, HttpMethod.POST, requestEntity, String.class).getBody());
                             metadata = root.path("metadata");
@@ -2957,9 +2957,9 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                 r.keyRelease(KeyEvent.VK_V);
                 r.keyRelease(KeyEvent.VK_CONTROL);
             } else {
-                Runtime.getRuntime().exec(KoneksiDB.URLAPLIKASIFINGERPRINTBPJS());
+                Runtime.getRuntime().exec(koneksiDB.URLAPLIKASIFINGERPRINTBPJS());
                 Thread.sleep(2000);
-                ss = new StringSelection(KoneksiDB.USERFINGERPRINTBPJS());
+                ss = new StringSelection(koneksiDB.USERFINGERPRINTBPJS());
                 c.setContents(ss, ss);
 
                 r.keyPress(KeyEvent.VK_CONTROL);
@@ -2970,7 +2970,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                 r.keyRelease(KeyEvent.VK_TAB);
                 Thread.sleep(1000);
 
-                ss = new StringSelection(KoneksiDB.PASSFINGERPRINTBPJS());
+                ss = new StringSelection(koneksiDB.PASSFINGERPRINTBPJS());
                 c.setContents(ss, ss);
 
                 r.keyPress(KeyEvent.VK_CONTROL);
@@ -3042,10 +3042,10 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                 r.keyRelease(KeyEvent.VK_V);
                 r.keyRelease(KeyEvent.VK_CONTROL);
             } else {
-                Runtime.getRuntime().exec(KoneksiDB.URLAPLIKASIFRISTABPJS());
+                Runtime.getRuntime().exec(koneksiDB.URLAPLIKASIFRISTABPJS());
                 Thread.sleep(5000);
 
-                ss = new StringSelection(KoneksiDB.USERFINGERPRINTBPJS());
+                ss = new StringSelection(koneksiDB.USERFINGERPRINTBPJS());
                 c.setContents(ss, ss);
                 r.keyPress(KeyEvent.VK_CONTROL);
                 r.keyPress(KeyEvent.VK_V);
@@ -3055,7 +3055,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                 r.keyRelease(KeyEvent.VK_TAB);
                 Thread.sleep(1000);
 
-                ss = new StringSelection(KoneksiDB.PASSFINGERPRINTBPJS());
+                ss = new StringSelection(koneksiDB.PASSFINGERPRINTBPJS());
                 c.setContents(ss, ss);
                 r.keyPress(KeyEvent.VK_CONTROL);
                 r.keyPress(KeyEvent.VK_V);
@@ -3092,11 +3092,11 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
             utc = api.getUTCDateTime();
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-            headers.add("X-Cons-ID", KoneksiDB.CONSIDAPIBPJS());
+            headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
             headers.add("X-Timestamp", utc);
             headers.add("X-Signature", api.getHmac(utc));
-            headers.add("user_key", KoneksiDB.USERKEYAPIBPJS());
-            url = KoneksiDB.URLAPIBPJS() + "/RencanaKontrol/Update";
+            headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
+            url = koneksiDB.URLAPIBPJS() + "/RencanaKontrol/Update";
             requestJson = "{"
                 + "\"request\": {"
                 + "\"noSuratKontrol\":\"" + noSKDP + "\","

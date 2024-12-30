@@ -19,7 +19,7 @@ import javax.swing.table.TableColumn;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.validasi;
-import fungsi.KoneksiDB;
+import fungsi.koneksiDB;
 import java.awt.Cursor;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
@@ -97,7 +97,7 @@ public final class BPJSCekRiwayatRujukanTerakhir extends javax.swing.JDialog {
 
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
         try {
-            link = KoneksiDB.URLAPIBPJS();
+            link = koneksiDB.URLAPIBPJS();
         } catch (Exception e) {
             System.out.println("E : " + e);
         }
@@ -248,11 +248,11 @@ public final class BPJSCekRiwayatRujukanTerakhir extends javax.swing.JDialog {
             Valid.tabelKosong(tabMode);
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
-            headers.add("X-Cons-ID", KoneksiDB.CONSIDAPIBPJS());
+            headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
             utc = String.valueOf(api.GetUTCdatetimeAsString());
             headers.add("X-Timestamp", utc);
             headers.add("X-Signature", api.getHmac(utc));
-            headers.add("user_key", KoneksiDB.USERKEYAPIBPJS());
+            headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
             requestEntity = new HttpEntity(headers);
             URL = link + "/Rujukan/List/Peserta/" + nomorkartu;
             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
@@ -273,11 +273,11 @@ public final class BPJSCekRiwayatRujukanTerakhir extends javax.swing.JDialog {
 
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
-            headers.add("X-Cons-ID", KoneksiDB.CONSIDAPIBPJS());
+            headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
             utc = String.valueOf(api.GetUTCdatetimeAsString());
             headers.add("X-Timestamp", utc);
             headers.add("X-Signature", api.getHmac(utc));
-            headers.add("user_key", KoneksiDB.USERKEYAPIBPJS());
+            headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
             requestEntity = new HttpEntity(headers);
             URL = link + "/Rujukan/RS/List/Peserta/" + nomorkartu;
             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());

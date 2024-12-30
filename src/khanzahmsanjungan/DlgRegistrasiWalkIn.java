@@ -10,7 +10,7 @@
  */
 package khanzahmsanjungan;
 
-import fungsi.KoneksiDB;
+import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import java.awt.Cursor;
@@ -35,14 +35,14 @@ import javax.swing.JOptionPane;
  */
 public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
 
-    private Connection koneksi = KoneksiDB.condb();
+    private Connection koneksi = koneksiDB.condb();
     private sekuel Sequel = new sekuel();
     private validasi Valid = new validasi();
     private PreparedStatement ps;
     private ResultSet rs;
-    private final String URUTNOREG = KoneksiDB.URUTNOREG(),
-        PRINTERREGISTRASI = KoneksiDB.PRINTER_REGISTRASI(),
-        PRINTERBARCODE = KoneksiDB.PRINTER_BARCODE();
+    private final String URUTNOREG = koneksiDB.URUTNOREG(),
+        PRINTERREGISTRASI = koneksiDB.PRINTER_REGISTRASI(),
+        PRINTERBARCODE = koneksiDB.PRINTER_BARCODE();
     private String hari = "",
         regNoRawat = "",
         regNoUrut = "",

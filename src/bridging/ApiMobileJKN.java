@@ -1,6 +1,6 @@
 package bridging;
 
-import fungsi.KoneksiDB;
+import fungsi.koneksiDB;
 import java.io.UnsupportedEncodingException;
 import java.security.GeneralSecurityException;
 import java.security.InvalidAlgorithmParameterException;
@@ -40,8 +40,8 @@ public class ApiMobileJKN {
 
     public ApiMobileJKN() {
         try {
-            Key = KoneksiDB.SECRETKEYAPIMOBILEJKN();
-            Consid = KoneksiDB.CONSIDAPIMOBILEJKN();
+            Key = koneksiDB.SECRETKEYAPIMOBILEJKN();
+            Consid = koneksiDB.CONSIDAPIMOBILEJKN();
         } catch (Exception ex) {
             System.out.println("Notifikasi : " + ex);
         }
