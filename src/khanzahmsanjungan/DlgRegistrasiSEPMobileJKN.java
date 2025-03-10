@@ -26,10 +26,12 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import java.awt.Cursor;
+import java.awt.Dimension;
 import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
+import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -82,6 +84,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         jeniskunjungan = "";
 
     private final String URLAPIBPJS = koneksiDB.URLAPIBPJS(),
+        AUTOBUKAAPLIKASI = koneksiDB.AUTOBUKAAPLIKASI(),
         URLAPLIKASIFINGERPRINTBPJS = koneksiDB.URLAPLIKASIFINGERPRINTBPJS(),
         USERFINGERPRINTBPJS = koneksiDB.USERFINGERPRINTBPJS(),
         PASSFINGERPRINTBPJS = koneksiDB.PASSFINGERPRINTBPJS();
@@ -90,14 +93,13 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
     private JsonNode root;
     private JsonNode response;
     private Calendar cal = Calendar.getInstance();
-    private boolean statusfinger = false;
+    private boolean statusfinger = false, aplikasiAktif = false, fristaAktif = false;
     private HttpHeaders headers;
     private HttpEntity requestEntity;
     private JsonNode nameNode;
     private int day = cal.get(Calendar.DAY_OF_WEEK);
     private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     private Date parsedDate;
-    private boolean aplikasiAktif = false;
 
     /**
      * Creates new form DlgAdmin
@@ -1352,7 +1354,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
     }//GEN-LAST:event_btnKeluarActionPerformed
 
     private void btnFingerPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFingerPrintActionPerformed
-        bukaAplikasiFingerprint();
+        bukaAplikasiValidasi();
     }//GEN-LAST:event_btnFingerPrintActionPerformed
 
     private void btnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnSimpanKeyPressed
@@ -1384,7 +1386,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
             Valid.textKosong(KdDPJP, "DPJP");
         } else if (!statusfinger && Sequel.cariIntegerSmc("select timestampdiff(year, ?, current_date())", TglLahir.getText()) >= 17 && JenisPelayanan.getSelectedIndex() != 0 && !KdPoli.getText().equals("IGD")) {
             JOptionPane.showMessageDialog(rootPane, "Maaf, Pasien belum melakukan Fingerprint");
-            bukaAplikasiFingerprint();
+            bukaAplikasiValidasi();
         } else {
             if (!KdPoliTerapi.getText().equals("")) {
                 kodepolireg = KdPoliTerapi.getText();
@@ -2391,29 +2393,48 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         resetAksi();
     }
 
+    private void bukaAplikasiValidasi() {
+        if (AUTOBUKAAPLIKASI.equals("frista")) {
+            bukaAplikasiFrista();
+        } else {
+            bukaAplikasiFingerprint();
+        }
+    }
+
     private void bukaAplikasiFingerprint() {
         if (NoKartu.getText().isBlank()) {
             JOptionPane.showMessageDialog(rootPane, "No. kartu peserta tidak ada..!!");
+
             return;
         }
-        this.toFront();
+
+        toFront();
+
         try {
             aplikasiAktif = false;
             User32 u32 = User32.INSTANCE;
+
             u32.EnumWindows((WinDef.HWND hwnd, Pointer pntr) -> {
                 char[] windowText = new char[512];
                 u32.GetWindowText(hwnd, windowText, 512);
                 String wText = Native.toString(windowText);
-                if (wText.isEmpty()) return true;
+
+                if (wText.isEmpty()) {
+                    return true;
+                }
+
                 if (wText.contains("Registrasi Sidik Jari")) {
                     DlgRegistrasiSEPMobileJKN.this.aplikasiAktif = true;
                     u32.SetForegroundWindow(hwnd);
                 }
+
                 return true;
             }, Pointer.NULL);
+
             Robot r = new Robot();
             Clipboard c = Toolkit.getDefaultToolkit().getSystemClipboard();
             StringSelection ss;
+
             if (aplikasiAktif) {
                 Thread.sleep(1000);
                 r.keyPress(KeyEvent.VK_CONTROL);
@@ -2421,6 +2442,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                 r.keyRelease(KeyEvent.VK_A);
                 r.keyRelease(KeyEvent.VK_CONTROL);
                 Thread.sleep(500);
+
                 ss = new StringSelection(NoKartu.getText().trim());
                 c.setContents(ss, ss);
                 r.keyPress(KeyEvent.VK_CONTROL);
@@ -2428,9 +2450,95 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                 r.keyRelease(KeyEvent.VK_V);
                 r.keyRelease(KeyEvent.VK_CONTROL);
             } else {
-                Runtime.getRuntime().exec(URLAPLIKASIFINGERPRINTBPJS);
+                Runtime.getRuntime().exec(koneksiDB.URLAPLIKASIFINGERPRINTBPJS());
                 Thread.sleep(2000);
-                ss = new StringSelection(USERFINGERPRINTBPJS);
+                ss = new StringSelection(koneksiDB.USERFINGERPRINTBPJS());
+                c.setContents(ss, ss);
+
+                r.keyPress(KeyEvent.VK_CONTROL);
+                r.keyPress(KeyEvent.VK_V);
+                r.keyRelease(KeyEvent.VK_V);
+                r.keyRelease(KeyEvent.VK_CONTROL);
+                r.keyPress(KeyEvent.VK_TAB);
+                r.keyRelease(KeyEvent.VK_TAB);
+                Thread.sleep(1000);
+
+                ss = new StringSelection(koneksiDB.PASSFINGERPRINTBPJS());
+                c.setContents(ss, ss);
+
+                r.keyPress(KeyEvent.VK_CONTROL);
+                r.keyPress(KeyEvent.VK_V);
+                r.keyRelease(KeyEvent.VK_V);
+                r.keyRelease(KeyEvent.VK_CONTROL);
+                r.keyPress(KeyEvent.VK_ENTER);
+                r.keyRelease(KeyEvent.VK_ENTER);
+                Thread.sleep(1000);
+
+                ss = new StringSelection(NoKartu.getText().trim());
+                c.setContents(ss, ss);
+                r.keyPress(KeyEvent.VK_CONTROL);
+                r.keyPress(KeyEvent.VK_V);
+                r.keyRelease(KeyEvent.VK_V);
+                r.keyRelease(KeyEvent.VK_CONTROL);
+            }
+        } catch (Exception e) {
+            System.out.println("Notif : " + e);
+        }
+    }
+    
+    private void bukaAplikasiFrista() {
+        if (NIK.getText().isBlank()) {
+            JOptionPane.showMessageDialog(null, "No. kartu peserta tidak ada..!!");
+            return;
+        }
+        toFront();
+        try {
+            fristaAktif = false;
+            User32 u32 = User32.INSTANCE;
+            Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+
+            u32.EnumWindows((WinDef.HWND hwnd, Pointer pntr) -> {
+                char[] windowText = new char[512];
+                u32.GetWindowText(hwnd, windowText, 512);
+                String wText = Native.toString(windowText);
+
+                if (wText.toLowerCase().contains("face recognition bpjs kesehatan")) {
+                    DlgRegistrasiSEPMobileJKN.this.fristaAktif = true;
+                    u32.ShowWindow(hwnd, User32.SW_RESTORE);
+                    u32.SetForegroundWindow(hwnd);
+                    return false;
+                }
+
+                return true;
+            }, Pointer.NULL);
+
+            Robot r = new Robot();
+            Clipboard c = Toolkit.getDefaultToolkit().getSystemClipboard();
+            StringSelection ss;
+
+            if (fristaAktif) {
+                Thread.sleep(1000);
+                r.mouseMove(d.width / 2, d.height / 2);
+                r.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+                r.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+
+                r.keyPress(KeyEvent.VK_CONTROL);
+                r.keyPress(KeyEvent.VK_A);
+                r.keyRelease(KeyEvent.VK_A);
+                r.keyRelease(KeyEvent.VK_CONTROL);
+                Thread.sleep(200);
+
+                ss = new StringSelection(NIK.getText());
+                c.setContents(ss, ss);
+                r.keyPress(KeyEvent.VK_CONTROL);
+                r.keyPress(KeyEvent.VK_V);
+                r.keyRelease(KeyEvent.VK_V);
+                r.keyRelease(KeyEvent.VK_CONTROL);
+            } else {
+                Runtime.getRuntime().exec(koneksiDB.URLAPLIKASIFRISTABPJS());
+                Thread.sleep(5000);
+
+                ss = new StringSelection(koneksiDB.USERFINGERPRINTBPJS());
                 c.setContents(ss, ss);
                 r.keyPress(KeyEvent.VK_CONTROL);
                 r.keyPress(KeyEvent.VK_V);
@@ -2439,16 +2547,24 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                 r.keyPress(KeyEvent.VK_TAB);
                 r.keyRelease(KeyEvent.VK_TAB);
                 Thread.sleep(1000);
-                ss = new StringSelection(PASSFINGERPRINTBPJS);
+
+                ss = new StringSelection(koneksiDB.PASSFINGERPRINTBPJS());
                 c.setContents(ss, ss);
                 r.keyPress(KeyEvent.VK_CONTROL);
                 r.keyPress(KeyEvent.VK_V);
                 r.keyRelease(KeyEvent.VK_V);
                 r.keyRelease(KeyEvent.VK_CONTROL);
-                r.keyPress(KeyEvent.VK_ENTER);
-                r.keyRelease(KeyEvent.VK_ENTER);
-                Thread.sleep(1000);
-                ss = new StringSelection(NoKartu.getText().trim());
+                r.keyPress(KeyEvent.VK_TAB);
+                r.keyRelease(KeyEvent.VK_TAB);
+                r.keyPress(KeyEvent.VK_SPACE);
+                r.keyRelease(KeyEvent.VK_SPACE);
+                Thread.sleep(3000);
+
+                r.mouseMove(d.width / 2, d.height / 2);
+                r.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+                r.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+
+                ss = new StringSelection(NIK.getText());
                 c.setContents(ss, ss);
                 r.keyPress(KeyEvent.VK_CONTROL);
                 r.keyPress(KeyEvent.VK_V);

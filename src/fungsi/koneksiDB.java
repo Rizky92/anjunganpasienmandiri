@@ -126,6 +126,24 @@ public class koneksiDB {
             return "";
         }
     }
+    
+    public static String URLAPLIKASIFRISTABPJS() {
+        try {
+            prop.loadFromXML(new FileInputStream("setting/apm.xml"));
+            return prop.getProperty("URLAPLIKASIFRISTABPJS");
+        } catch (Exception e) {
+            return "";
+        }
+    }
+    
+    public static String AUTOBUKAAPLIKASI() {
+        try (FileInputStream fs = new FileInputStream("setting/apm.xml")) {
+            prop.loadFromXML(fs);
+            return prop.getProperty("AUTOBUKAAPLIKASI");
+        } catch (Exception e) {
+            return "";
+        }
+    }
 
     public static String HOST() {
         try {

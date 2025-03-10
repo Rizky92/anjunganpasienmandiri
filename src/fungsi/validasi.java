@@ -93,7 +93,7 @@ public final class validasi {
         super();
     }
     
-    public String setTglSmc(Tanggal tgl) {
+    public String getTglSmc(Tanggal tgl) {
         return new SimpleDateFormat("yyyy-MM-dd").format(tgl.getDate());
     }
     
