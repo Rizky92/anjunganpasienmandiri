@@ -60,6 +60,7 @@ public class DlgAmbilAntrean extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         LblKdPoli = new component.Label();
         LblKdDokter = new component.Label();
@@ -71,8 +72,13 @@ public class DlgAmbilAntrean extends javax.swing.JDialog {
         lblNamaAntrian = new component.Label();
         jPanel3 = new javax.swing.JPanel();
         lblNoAntrian = new component.Label();
+        buttonBig1 = new widget.ButtonBig();
+        buttonBig2 = new widget.ButtonBig();
+        buttonBig3 = new widget.ButtonBig();
+        buttonBig4 = new widget.ButtonBig();
+        buttonBig5 = new widget.ButtonBig();
+        buttonBig6 = new widget.ButtonBig();
         jPanel4 = new javax.swing.JPanel();
-        BtnClose2 = new widget.ButtonBig();
         BtnClose3 = new widget.ButtonBig();
 
         LblKdPoli.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -133,55 +139,110 @@ public class DlgAmbilAntrean extends javax.swing.JDialog {
         getContentPane().setLayout(new java.awt.BorderLayout(1, 1));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 215, 255)), "::[ ANTRIAN PASIEN ]::", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Inter", 0, 24), new java.awt.Color(0, 131, 62))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 131, 62)));
         jPanel1.setForeground(new java.awt.Color(0, 131, 62));
         jPanel1.setPreferredSize(new java.awt.Dimension(400, 70));
-        jPanel1.setLayout(new java.awt.GridLayout(3, 1));
+        jPanel1.setLayout(new java.awt.BorderLayout());
 
         jPanel2.setBackground(new java.awt.Color(238, 238, 255));
         jPanel2.setForeground(new java.awt.Color(238, 238, 255));
+        jPanel2.setPreferredSize(new java.awt.Dimension(60, 60));
 
         lblNamaAntrian.setForeground(new java.awt.Color(0, 131, 62));
         lblNamaAntrian.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblNamaAntrian.setFont(new java.awt.Font("Inter", 0, 36)); // NOI18N
+        lblNamaAntrian.setText("AMBIL ANTRIAN");
+        lblNamaAntrian.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        lblNamaAntrian.setFont(new java.awt.Font("Inter", 1, 36)); // NOI18N
         lblNamaAntrian.setPreferredSize(new java.awt.Dimension(500, 75));
         jPanel2.add(lblNamaAntrian);
 
-        jPanel1.add(jPanel2);
+        jPanel1.add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
         jPanel3.setBackground(new java.awt.Color(238, 238, 255));
         jPanel3.setForeground(new java.awt.Color(238, 238, 255));
+        java.awt.GridBagLayout jPanel3Layout = new java.awt.GridBagLayout();
+        jPanel3Layout.columnWeights = new double[] {1.0, 1.0, 5.0};
+        jPanel3Layout.rowWeights = new double[] {1.0, 1.0, 1.0, 1.0, 1.0, 1.0};
+        jPanel3.setLayout(jPanel3Layout);
 
         lblNoAntrian.setForeground(new java.awt.Color(0, 131, 62));
         lblNoAntrian.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblNoAntrian.setText("F0001");
         lblNoAntrian.setFont(new java.awt.Font("Inter", 1, 48)); // NOI18N
         lblNoAntrian.setIconTextGap(0);
         lblNoAntrian.setPreferredSize(new java.awt.Dimension(350, 150));
-        jPanel3.add(lblNoAntrian);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = java.awt.GridBagConstraints.REMAINDER;
+        gridBagConstraints.gridheight = java.awt.GridBagConstraints.REMAINDER;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
+        jPanel3.add(lblNoAntrian, gridBagConstraints);
 
-        jPanel1.add(jPanel3);
+        buttonBig1.setBackground(new java.awt.Color(0, 131, 62));
+        buttonBig1.setForeground(new java.awt.Color(50, 50, 50));
+        buttonBig1.setText("ANTRIAN A");
+        buttonBig1.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        jPanel3.add(buttonBig1, gridBagConstraints);
+
+        buttonBig2.setBackground(new java.awt.Color(0, 131, 62));
+        buttonBig2.setForeground(new java.awt.Color(50, 50, 50));
+        buttonBig2.setText("ANTRIAN B");
+        buttonBig2.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        jPanel3.add(buttonBig2, gridBagConstraints);
+
+        buttonBig3.setBackground(new java.awt.Color(0, 131, 62));
+        buttonBig3.setForeground(new java.awt.Color(50, 50, 50));
+        buttonBig3.setText("ANTRIAN C");
+        buttonBig3.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        jPanel3.add(buttonBig3, gridBagConstraints);
+
+        buttonBig4.setBackground(new java.awt.Color(0, 131, 62));
+        buttonBig4.setForeground(new java.awt.Color(50, 50, 50));
+        buttonBig4.setText("ANTRIAN D");
+        buttonBig4.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        jPanel3.add(buttonBig4, gridBagConstraints);
+
+        buttonBig5.setBackground(new java.awt.Color(0, 131, 62));
+        buttonBig5.setForeground(new java.awt.Color(50, 50, 50));
+        buttonBig5.setText("ANTRIAN E");
+        buttonBig5.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        jPanel3.add(buttonBig5, gridBagConstraints);
+
+        buttonBig6.setBackground(new java.awt.Color(0, 131, 62));
+        buttonBig6.setForeground(new java.awt.Color(50, 50, 50));
+        buttonBig6.setText("ANTRIAN F");
+        buttonBig6.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        jPanel3.add(buttonBig6, gridBagConstraints);
+
+        jPanel1.add(jPanel3, java.awt.BorderLayout.CENTER);
 
         jPanel4.setBackground(new java.awt.Color(238, 238, 255));
         jPanel4.setForeground(new java.awt.Color(238, 238, 255));
-
-        BtnClose2.setBackground(new java.awt.Color(255, 255, 255));
-        BtnClose2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/print.png"))); // NOI18N
-        BtnClose2.setMnemonic('U');
-        BtnClose2.setText("Cetak Antrian");
-        BtnClose2.setToolTipText("Alt+U");
-        BtnClose2.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
-        BtnClose2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnClose2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnClose2.setIconTextGap(0);
-        BtnClose2.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        BtnClose2.setPreferredSize(new java.awt.Dimension(250, 75));
-        BtnClose2.setVerticalTextPosition(javax.swing.SwingConstants.CENTER);
-        BtnClose2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnClose2ActionPerformed(evt);
-            }
-        });
-        jPanel4.add(BtnClose2);
 
         BtnClose3.setBackground(new java.awt.Color(255, 255, 255));
         BtnClose3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/exit.png"))); // NOI18N
@@ -189,7 +250,6 @@ public class DlgAmbilAntrean extends javax.swing.JDialog {
         BtnClose3.setText("Batal");
         BtnClose3.setToolTipText("Alt+U");
         BtnClose3.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
-        BtnClose3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BtnClose3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         BtnClose3.setIconTextGap(0);
         BtnClose3.setMargin(new java.awt.Insets(0, 0, 0, 0));
@@ -202,7 +262,7 @@ public class DlgAmbilAntrean extends javax.swing.JDialog {
         });
         jPanel4.add(BtnClose3);
 
-        jPanel1.add(jPanel4);
+        jPanel1.add(jPanel4, java.awt.BorderLayout.PAGE_END);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -237,21 +297,6 @@ public class DlgAmbilAntrean extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_BiayaKeyPressed
 
-    private void BtnClose2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnClose2ActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        String sqlQuery = "type, noantrian, postdate, start_time, end_time";
-        String[] values = new String[]{jnsloket, String.valueOf(antriansekarang), Sequel.cariIsi("select current_date()"), Sequel.cariIsi("select current_time()"), "00:00:00"};
-
-        if (Sequel.menyimpantfautoincrement("antrian_loket", sqlQuery, values.length, values) == true) {
-            CetakAntrian(lblNamaAntrian.getText(), antriansekarang, Sequel.cariIsi("select current_date()"), Sequel.cariIsi("select current_time()"));
-            lblNamaAntrian.setText("");
-            lblNoAntrian.setText("");
-            antriansekarang = 0;
-            dispose();
-        }
-        this.setCursor(Cursor.getDefaultCursor());
-    }//GEN-LAST:event_BtnClose2ActionPerformed
-
     private void BtnClose3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnClose3ActionPerformed
         dispose();
     }//GEN-LAST:event_BtnClose3ActionPerformed
@@ -274,12 +319,17 @@ public class DlgAmbilAntrean extends javax.swing.JDialog {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private component.TextBox Biaya;
-    private widget.ButtonBig BtnClose2;
     private widget.ButtonBig BtnClose3;
     private component.Label LblKdDokter;
     private component.Label LblKdPoli;
     private component.TextBox NoRawat;
     private component.TextBox NoReg;
+    private widget.ButtonBig buttonBig1;
+    private widget.ButtonBig buttonBig2;
+    private widget.ButtonBig buttonBig3;
+    private widget.ButtonBig buttonBig4;
+    private widget.ButtonBig buttonBig5;
+    private widget.ButtonBig buttonBig6;
     private component.Panel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

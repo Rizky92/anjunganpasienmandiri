@@ -9,7 +9,6 @@ import static java.awt.Frame.MAXIMIZED_BOTH;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -62,7 +61,7 @@ public class HalamanUtamaAntrian extends javax.swing.JFrame {
 
         jLabel39.setForeground(new java.awt.Color(0, 131, 62));
         jLabel39.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel39.setText("ANJUNGAN PASIEN MANDIRI");
+        jLabel39.setText("AMBIL ANTRIAN");
         jLabel39.setFont(new java.awt.Font("Inter", 1, 48)); // NOI18N
         jLabel39.setPreferredSize(new java.awt.Dimension(750, 75));
         jPanel3.add(jLabel39);
@@ -75,8 +74,8 @@ public class HalamanUtamaAntrian extends javax.swing.JFrame {
         jPanel1.setLayout(new java.awt.GridLayout(3, 0));
 
         btnAdmin2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/onlineadmisi.png"))); // NOI18N
-        btnAdmin2.setText("ADMISI (Appointment)");
-        btnAdmin2.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
+        btnAdmin2.setText("ANTRIAN A");
+        btnAdmin2.setFont(new java.awt.Font("Inter", 1, 30)); // NOI18N
         btnAdmin2.setIconTextGap(0);
         btnAdmin2.setPreferredSize(new java.awt.Dimension(200, 90));
         btnAdmin2.addActionListener(new java.awt.event.ActionListener() {
@@ -87,8 +86,8 @@ public class HalamanUtamaAntrian extends javax.swing.JFrame {
         jPanel1.add(btnAdmin2);
 
         btnAdmin3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/offlineadmisi.png"))); // NOI18N
-        btnAdmin3.setText("ADMISI (Walk In)");
-        btnAdmin3.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
+        btnAdmin3.setText("ANTRIAN B");
+        btnAdmin3.setFont(new java.awt.Font("Inter", 1, 30)); // NOI18N
         btnAdmin3.setIconTextGap(0);
         btnAdmin3.setPreferredSize(new java.awt.Dimension(200, 90));
         btnAdmin3.addActionListener(new java.awt.event.ActionListener() {
@@ -99,8 +98,8 @@ public class HalamanUtamaAntrian extends javax.swing.JFrame {
         jPanel1.add(btnAdmin3);
 
         btnAdmin4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/bedpasien.png"))); // NOI18N
-        btnAdmin4.setText("ADMISI (Rawat Inap & IGD)");
-        btnAdmin4.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
+        btnAdmin4.setText("ANTRIAN C");
+        btnAdmin4.setFont(new java.awt.Font("Inter", 1, 30)); // NOI18N
         btnAdmin4.setIconTextGap(0);
         btnAdmin4.setPreferredSize(new java.awt.Dimension(200, 90));
         btnAdmin4.addActionListener(new java.awt.event.ActionListener() {
@@ -111,8 +110,8 @@ public class HalamanUtamaAntrian extends javax.swing.JFrame {
         jPanel1.add(btnAdmin4);
 
         btnAdmin10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/customerservice.png"))); // NOI18N
-        btnAdmin10.setText("CUSTOMER SERVICE");
-        btnAdmin10.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
+        btnAdmin10.setText("ANTRIAN D");
+        btnAdmin10.setFont(new java.awt.Font("Inter", 1, 30)); // NOI18N
         btnAdmin10.setIconTextGap(0);
         btnAdmin10.setPreferredSize(new java.awt.Dimension(200, 90));
         btnAdmin10.addActionListener(new java.awt.event.ActionListener() {
@@ -123,8 +122,8 @@ public class HalamanUtamaAntrian extends javax.swing.JFrame {
         jPanel1.add(btnAdmin10);
 
         btnAdmin11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/farmasi.png"))); // NOI18N
-        btnAdmin11.setText("FARMASI (Resep Racikan)");
-        btnAdmin11.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
+        btnAdmin11.setText("ANTRIAN E");
+        btnAdmin11.setFont(new java.awt.Font("Inter", 1, 30)); // NOI18N
         btnAdmin11.setIconTextGap(0);
         btnAdmin11.setPreferredSize(new java.awt.Dimension(200, 90));
         btnAdmin11.addActionListener(new java.awt.event.ActionListener() {
@@ -135,8 +134,8 @@ public class HalamanUtamaAntrian extends javax.swing.JFrame {
         jPanel1.add(btnAdmin11);
 
         btnAdmin12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/farmasi.png"))); // NOI18N
-        btnAdmin12.setText("FARMASI (Non Racikan)");
-        btnAdmin12.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
+        btnAdmin12.setText("ANTRIAN F");
+        btnAdmin12.setFont(new java.awt.Font("Inter", 1, 30)); // NOI18N
         btnAdmin12.setIconTextGap(0);
         btnAdmin12.setPreferredSize(new java.awt.Dimension(200, 90));
         btnAdmin12.addActionListener(new java.awt.event.ActionListener() {
@@ -152,10 +151,10 @@ public class HalamanUtamaAntrian extends javax.swing.JFrame {
         jPanel2.setForeground(new java.awt.Color(238, 238, 255));
 
         PanelWall.setBackground(new java.awt.Color(238, 238, 255));
-        PanelWall.setBackgroundImage(new javax.swing.ImageIcon(getClass().getResource("/picture/indriatikars.png"))); // NOI18N
+        PanelWall.setBackgroundImage(new javax.swing.ImageIcon(getClass().getResource("/picture/icon-128x128.png"))); // NOI18N
         PanelWall.setBackgroundImageType(usu.widget.constan.BackgroundConstan.BACKGROUND_IMAGE_STRECT);
         PanelWall.setForeground(new java.awt.Color(238, 238, 255));
-        PanelWall.setPreferredSize(new java.awt.Dimension(500, 150));
+        PanelWall.setPreferredSize(new java.awt.Dimension(150, 150));
         PanelWall.setRound(false);
         PanelWall.setWarna(new java.awt.Color(238, 238, 255));
         PanelWall.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -168,7 +167,7 @@ public class HalamanUtamaAntrian extends javax.swing.JFrame {
         PanelWall.setLayout(PanelWallLayout);
         PanelWallLayout.setHorizontalGroup(
             PanelWallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGap(0, 150, Short.MAX_VALUE)
         );
         PanelWallLayout.setVerticalGroup(
             PanelWallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

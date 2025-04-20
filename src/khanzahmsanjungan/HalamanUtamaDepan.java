@@ -34,8 +34,6 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
         this.setSize(screenSize.width, screenSize.height);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         
-        btnAdmin10.setEnabled(false);
-        jPanel1.remove(btnAdmin10);
         jPanel1.remove(btnAdmin11);
         jPanel1.remove(btnAdmin7);
         
@@ -125,7 +123,7 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
 
         btnAdmin10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/antrianpasien.png"))); // NOI18N
         btnAdmin10.setText("ANTRIAN PASIEN");
-        btnAdmin10.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
+        btnAdmin10.setFont(new java.awt.Font("Inter", 1, 30)); // NOI18N
         btnAdmin10.setIconTextGap(0);
         btnAdmin10.setPreferredSize(new java.awt.Dimension(200, 90));
         btnAdmin10.addActionListener(new java.awt.event.ActionListener() {
@@ -272,11 +270,10 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAdmin9ActionPerformed
 
     private void btnAdmin10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdmin10ActionPerformed
-        JOptionPane.showMessageDialog(rootPane, "Mohon maaf, fitur masih dalam tahap pengembangan");
-//        HalamanUtamaAntrian pilih = new HalamanUtamaAntrian();
-//        pilih.setSize(this.getWidth(), this.getHeight());
-//        pilih.setLocationRelativeTo(this);
-//        pilih.setVisible(true);
+        DlgAmbilAntrean pilih = new DlgAmbilAntrean(null, true);
+        pilih.setSize(this.getWidth(), this.getHeight());
+        pilih.setLocationRelativeTo(this);
+        pilih.setVisible(true);
     }//GEN-LAST:event_btnAdmin10ActionPerformed
 
     private void btnAdmin11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdmin11ActionPerformed
