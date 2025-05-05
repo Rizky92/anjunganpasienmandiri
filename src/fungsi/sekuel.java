@@ -34,6 +34,7 @@ import java.sql.SQLException;
 import java.sql.Connection;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
@@ -63,6 +64,7 @@ public final class sekuel {
     private Date tanggal = new Date();
     private boolean bool = false;
     private DecimalFormat df2 = new DecimalFormat("####");
+    private String track = "";
 
     public sekuel() {
         super();
@@ -89,227 +91,321 @@ public final class sekuel {
         }
     }
     
-    public boolean cariBooleanSmc(String sql, String... values) {
-        boolean output = false;
-        
-        try {
-            ps = connect.prepareStatement("select exists(" + sql + ")");
-            
-            try {
-                for (int i = 0; i < values.length; i++) {
-                    ps.setString(i + 1, values[i]);
-                }
-
-                rs = ps.executeQuery();
-
-                if (rs.next()) {
-                    output = rs.getBoolean(1);
-                }
-            } catch (Exception e) {
-                System.out.println("Notifikasi : " + e);
-            } finally {
-                if (rs != null) {
-                    rs.close();
-                }
-                
-                if (ps != null) {
-                    ps.close();
-                }
-            }
-        } catch (Exception e) {
-            System.out.println("Notifikasi : " + e);
-        }
-        
-        return output;
-    }
-    
     public String cariIsiSmc(String sql, String... values) {
-        String output = "";
-        
-        try {
-            ps = connect.prepareStatement(sql);
-            
-            try {
-                for (int i = 0; i < values.length; i++) {
-                    ps.setString(i + 1, values[i]);
-                }
-
-                rs = ps.executeQuery();
-
+        try (PreparedStatement ps = connect.prepareStatement(sql)) {
+            for (int i = 0; i < values.length; i++) {
+                ps.setString(i + 1, values[i]);
+            }
+            try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
-                    output = rs.getString(1);
-                }
-            } catch (Exception e) {
-                System.out.println("Notifikasi : " + e);
-            } finally {
-                if (rs != null) {
-                    rs.close();
-                }
-                
-                if (ps != null) {
-                    ps.close();
+                    return rs.getString(1);
                 }
             }
         } catch (Exception e) {
-            System.out.println("Notifikasi : " + e);
+            System.out.println("Notif : " + e);
         }
-        
-        return output;
+        return "";
+    }
+
+    public boolean cariExistsSmc(String sql, String... values) {
+        try (PreparedStatement ps = connect.prepareStatement("select exists(" + sql + ")")) {
+            for (int i = 0; i < values.length; i++) {
+                ps.setString(i + 1, values[i]);
+            }
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getBoolean(1);
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif : " + e);
+        }
+        return false;
+    }
+
+    public int cariIntegerSmc(String sql, int defaultValue, String... values) {
+        try (PreparedStatement ps = connect.prepareStatement(sql)) {
+            for (int i = 0; i < values.length; i++) {
+                ps.setString(i + 1, values[i]);
+            }
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt(1);
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif : " + e);
+        }
+        return defaultValue;
     }
     
     public int cariIntegerSmc(String sql, String... values) {
-        int output = 0;
-        
-        try {
-            ps = connect.prepareStatement(sql);
-            
-            try {
-                for (int i = 0; i < values.length; i++) {
-                    ps.setString(i + 1, values[i]);
-                }
+        return cariIntegerSmc(sql, 0, values);
+    }
 
-                rs = ps.executeQuery();
-
+    public double cariDoubleSmc(String sql, double defaultValue, String... values) {
+        try (PreparedStatement ps = connect.prepareStatement(sql)) {
+            for (int i = 0; i < values.length; i++) {
+                ps.setString(i + 1, values[i]);
+            }
+            try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
-                    output = rs.getInt(1);
-                }
-            } catch (Exception e) {
-                System.out.println("Notifikasi : " + e);
-            } finally {
-                if (rs != null) {
-                    rs.close();
-                }
-                
-                if (ps != null) {
-                    ps.close();
+                    return rs.getDouble(1);
                 }
             }
         } catch (Exception e) {
-            System.out.println("Notifikasi : " + e);
+            System.out.println("Notif : " + e);
         }
-        
-        return output;
+        return defaultValue;
     }
     
-    public boolean menyimpantfSmc(String table, String kolom, String... values) {
-        try {
-            simpanSMC(table, kolom, values);
-            
-            return true;
+    public double cariDoubleSmc(String sql, String... values) {
+        return cariDoubleSmc(sql, 0, values);
+    }
+
+    public Date cariTglSmc(String sql, String... values) {
+        try (PreparedStatement ps = connect.prepareStatement(sql)) {
+            for (int i = 0; i < values.length; i++) {
+                ps.setString(i + 1, values[i]);
+            }
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return (Date) rs.getTimestamp(1);
+                }
+            }
         } catch (Exception e) {
-            System.out.println("Terjadi kesalahan pada saat menyimpan data!");
-            System.out.println("Notifikasi : " + e);
-            
-            JOptionPane.showMessageDialog(null, "Terjadi kesalahan pada saat menyimpan data!");
-            
-            return false;
+            System.out.println("Notif : " + e);
         }
+        return null;
+    }
+
+    public Blob cariBlobSmc(String sql, String... values) {
+        try (PreparedStatement ps = connect.prepareStatement(sql)) {
+            for (int i = 0; i < values.length; i++) {
+                ps.setString(i + 1, values[i]);
+            }
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getBlob(1);
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif : " + e);
+        }
+        return null;
+    }
+
+    public ByteArrayInputStream cariGambarSmc(String sql, String... values) {
+        try (PreparedStatement ps = connect.prepareStatement(sql)) {
+            for (int i = 0; i < values.length; i++) {
+                ps.setString(i + 1, values[i]);
+            }
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return new ByteArrayInputStream(rs.getBytes(1));
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif : " + e);
+        }
+        return null;
     }
     
+    public ArrayList<String> cariArraySmc(String sql, String... values) {
+        ArrayList<String> list = new ArrayList<>();
+        try (PreparedStatement ps = connect.prepareStatement(sql)) {
+            for (int i = 0; i < values.length; i++) {
+                ps.setString(i + 1, values[i]);
+            }
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    list.add(rs.getString(1));
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif : " + e);
+        }
+        return list;
+    }
+
     public void menyimpanSmc(String table, String kolom, String... values) {
-        try {
-            simpanSMC(table, kolom, values);
-        } catch (Exception e) {
-            System.out.println("Terjadi kesalahan pada saat menyimpan data!");
-            System.out.println("Notifikasi : " + e);
-            
-            JOptionPane.showMessageDialog(null, "Terjadi kesalahan pada saat menyimpan data!");
-        }
-    }
-    
-    private void simpanSMC(String table, String kolom, String[] values) throws SQLException {
-        
         String sql = "insert into " + table + " (" + kolom + ") values (";
-        String bindings = "";
-        String track;
-        
-        if (kolom == null) {
+        if (kolom == null || kolom.isBlank()) {
             sql = "insert into " + table + " values (";
         }
-        
-        for (String value : values) {
-            bindings = bindings.concat("?, ");
-        }
-        
-        bindings = bindings
-            .concat(")")
-            .replaceFirst("\\?\\, \\)", "?)");
-        
-        track = sql = sql.concat(bindings);
-        
-        ps = connect.prepareStatement(sql);
-
         for (int i = 0; i < values.length; i++) {
-            ps.setString(i + 1, values[i]);
+            sql = sql.concat("?, ");
         }
 
-        ps.executeUpdate();
-
-        if (ps != null) {
-            ps.close();
+        try (PreparedStatement ps = connect.prepareStatement(sql.substring(0, sql.length() - 2).concat(")"))) {
+            for (int i = 0; i < values.length; i++) {
+                ps.setString(i + 1, values[i]);
+            }
+            if (ps.executeUpdate() > 0) {
+                track = ps.toString();
+                SimpanTrack(track.substring(track.indexOf("insert")));
+            }
+        } catch (Exception e) {
+            System.out.println("Notif : " + e);
+            JOptionPane.showMessageDialog(null, "Gagal menyimpan data!");
         }
-        
-        for (String value : values) {
-            track = track.replaceFirst("\\?", "'" + value + "'");
-        }
-        
-        SimpanTrack(track);
     }
-    
-    private void updateSMC(String table, String kolom, String kondisi, String[] values) throws SQLException {
-        
-        String sql = "update " + table + " set " + kolom + " where " + kondisi;
-        String track;
-        
-        if (kondisi == null) {
-            sql = "update " + table + " set ";
-        }
-        
-        track = sql;
-        
-        ps = connect.prepareStatement(sql);
 
+    public boolean menyimpantfSmc(String table, String kolom, String... values) {
+        String sql = "insert into " + table + " (" + kolom + ") values (";
+        if (kolom == null || kolom.isBlank()) {
+            sql = "insert into " + table + " values (";
+        }
         for (int i = 0; i < values.length; i++) {
-            ps.setString(i + 1, values[i]);
+            sql = sql.concat("?, ");
         }
 
-        ps.executeUpdate();
+        try (PreparedStatement ps = connect.prepareStatement(sql.substring(0, sql.length() - 2).concat(")"))) {
+            for (int i = 0; i < values.length; i++) {
+                ps.setString(i + 1, values[i]);
+            }
+            if (ps.executeUpdate() > 0) {
+                track = ps.toString();
+                SimpanTrack(track.substring(track.indexOf("insert")));
+                return true;
+            }
+        } catch (Exception e) {
+            System.out.println("Notif : " + e);
+        }
+        return false;
+    }
 
-        if (ps != null) {
-            ps.close();
+    public boolean menyimpantfNotifSmc(String judulOnDuplicate, String table, String kolom, String... values) {
+        String sql = "insert into " + table + " (" + kolom + ") values (";
+        if (kolom == null || kolom.isBlank()) {
+            sql = "insert into " + table + " values (";
         }
-        
-        for (String value : values) {
-            track = track.replaceFirst("\\?", "'" + value + "'");
+        for (int i = 0; i < values.length; i++) {
+            sql = sql.concat("?, ");
         }
-        
-        SimpanTrack(track);
-    }
-    
-    public void mengupdateSmc(String table, String kolom, String kondisi, String... values) {
-        try {
-            updateSMC(table, kolom, kondisi, values);
+
+        try (PreparedStatement ps = connect.prepareStatement(sql.substring(0, sql.length() - 2).concat(")"))) {
+            for (int i = 0; i < values.length; i++) {
+                ps.setString(i + 1, values[i]);
+            }
+            if (ps.executeUpdate() > 0) {
+                track = ps.toString();
+                SimpanTrack(track.substring(track.indexOf("insert")));
+                return true;
+            }
         } catch (Exception e) {
-            System.out.println("Terjadi kesalahan pada saat mengupdate data!");
-            System.out.println("Notifikasi : " + e);
-            
-            JOptionPane.showMessageDialog(null, "Terjadi kesalahan pada saat mengupdate data!");
+            System.out.println("Notif : " + e);
+            if (judulOnDuplicate != null && !judulOnDuplicate.isBlank()) {
+                JOptionPane.showMessageDialog(null, "Tidak bisa menyimpan data, kemungkinan ada " + judulOnDuplicate + " yang sama dimasukkan sebelumnya.");
+            }
+        }
+        return false;
+    }
+
+    public void mengupdateSmc(String table, String kolom, String where, String... values) {
+        String sql = "update " + table + " set " + kolom + " where " + where;
+        if (where == null || where.isBlank()) {
+            sql = "update " + table + " set " + kolom;
+        }
+
+        try (PreparedStatement ps = connect.prepareStatement(sql)) {
+            for (int i = 0; i < values.length; i++) {
+                ps.setString(i + 1, values[i]);
+            }
+            if (ps.executeUpdate() > 0) {
+                track = ps.toString();
+                SimpanTrack(track.substring(track.indexOf("update")));
+            }
+        } catch (Exception e) {
+            System.out.println("Notif : " + e);
+            JOptionPane.showMessageDialog(null, "Gagal mengupdate data!");
         }
     }
-    
-    public boolean mengupdatetfSmc(String table, String kolom, String kondisi, String... values) {
-        try {
-            updateSMC(table, kolom, kondisi, values);
-            
-            return true;
-        } catch (Exception e) {
-            System.out.println("Terjadi kesalahan pada saat mengupdate data!");
-            System.out.println("Notifikasi : " + e);
-            
-            JOptionPane.showMessageDialog(null, "Terjadi kesalahan pada saat mengupdate data!");
-            
-            return false;
+
+    public boolean mengupdatetfSmc(String table, String kolom, String where, String... values) {
+        String sql = "update " + table + " set " + kolom + " where " + where;
+        if (where == null || where.isBlank()) {
+            sql = "update " + table + " set " + kolom;
         }
+
+        try (PreparedStatement ps = connect.prepareStatement(sql)) {
+            for (int i = 0; i < values.length; i++) {
+                ps.setString(i + 1, values[i]);
+            }
+            if (ps.executeUpdate() > 0) {
+                track = ps.toString();
+                SimpanTrack(track.substring(track.indexOf("update")));
+                return true;
+            }
+        } catch (Exception e) {
+            System.out.println("Notif : " + e);
+        }
+        return false;
+    }
+
+    public void menghapusSmc(String table, String where, String... values) {
+        String sql = "delete from " + table + " where " + where;
+        if (where == null || where.isBlank()) {
+            sql = "delete from " + table;
+        }
+
+        try (PreparedStatement ps = connect.prepareStatement(sql)) {
+            for (int i = 0; i < values.length; i++) {
+                ps.setString(i + 1, values[i]);
+            }
+            if (ps.executeUpdate() > 0) {
+                track = ps.toString();
+                SimpanTrack(track.substring(track.indexOf("delete")));
+            }
+        } catch (Exception e) {
+            System.out.println("Notif : " + e);
+            if (e.getMessage().contains("constraint")) {
+                JOptionPane.showMessageDialog(null, "Gagal menghapus data, kemungkinan masih digunakan di bagian lainnya!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Gagal menghapus data!");
+            }
+        }
+    }
+
+    public void menghapusSmc(String table) {
+        menghapusSmc(table, null);
+    }
+
+    public boolean menghapustfSmc(String table, String where, String... values) {
+        String sql = "delete from " + table + " where " + where;
+        if (where == null || where.isBlank()) {
+            sql = "delete from " + table;
+        }
+
+        try (PreparedStatement ps = connect.prepareStatement(sql)) {
+            for (int i = 0; i < values.length; i++) {
+                ps.setString(i + 1, values[i]);
+            }
+            if (ps.executeUpdate() > 0) {
+                track = ps.toString();
+                SimpanTrack(track.substring(track.indexOf("delete")));
+                return true;
+            }
+        } catch (Exception e) {
+            System.out.println("Notif : " + e);
+        }
+        return false;
+    }
+
+    public boolean executeRawSmc(String sql, String... values) {
+        try (PreparedStatement ps = connect.prepareStatement(sql)) {
+            for (int i = 0; i < values.length; i++) {
+                ps.setString(i + 1, values[i]);
+            }
+            if (ps.executeUpdate() > 0) {
+                track = ps.toString();
+                SimpanTrack(track.substring(track.indexOf(sql.substring(0, 8))));
+                return true;
+            }
+        } catch (Exception e) {
+            System.out.println("Notif : " + e);
+        }
+        return false;
     }
 
     public void menyimpan(String table, String value, String sama) {

@@ -384,14 +384,14 @@ public class DlgCekinMobileJKN extends javax.swing.JDialog {
                 return;
             }
 
-            if (Sequel.cariBooleanSmc("select * from referensi_mobilejkn_bpjs where nomorkartu = ? and tanggalperiksa = current_date() and status != 'Batal'", NoRMPasien.getText())) {
+            if (Sequel.cariExistsSmc("select * from referensi_mobilejkn_bpjs where nomorkartu = ? and tanggalperiksa = current_date() and status != 'Batal'", NoRMPasien.getText())) {
                 form.tampil(NoRMPasien.getText());
                 form.setSize(this.getWidth(), this.getHeight());
                 form.setLocationRelativeTo(jPanel1);
                 form.setVisible(true);
                 this.dispose();
                 this.setCursor(Cursor.getDefaultCursor());
-            } else if (Sequel.cariBooleanSmc("select * from referensi_mobilejkn_bpjs where norm = ? and tanggalperiksa = current_date() and status != 'Batal'", NoRMPasien.getText())) {
+            } else if (Sequel.cariExistsSmc("select * from referensi_mobilejkn_bpjs where norm = ? and tanggalperiksa = current_date() and status != 'Batal'", NoRMPasien.getText())) {
                 form.tampil(Sequel.cariIsi("select nomorkartu from referensi_mobilejkn_bpjs where norm = ? and tanggalperiksa = current_date() and status != 'Batal'", NoRMPasien.getText()));
                 form.setSize(this.getWidth(), this.getHeight());
                 form.setLocationRelativeTo(jPanel1);
@@ -417,14 +417,14 @@ public class DlgCekinMobileJKN extends javax.swing.JDialog {
             return;
         }
         
-        if (Sequel.cariBooleanSmc("select * from referensi_mobilejkn_bpjs where nomorkartu = ? and tanggalperiksa = current_date() and status != 'Batal'", NoRMPasien.getText())) {
+        if (Sequel.cariExistsSmc("select * from referensi_mobilejkn_bpjs where nomorkartu = ? and tanggalperiksa = current_date() and status != 'Batal'", NoRMPasien.getText())) {
             form.tampil(NoRMPasien.getText());
             form.setSize(this.getWidth(), this.getHeight());
             form.setLocationRelativeTo(jPanel1);
             form.setVisible(true);
             this.dispose();
             this.setCursor(Cursor.getDefaultCursor());
-        } else if (Sequel.cariBooleanSmc("select * from referensi_mobilejkn_bpjs where norm = ? and tanggalperiksa = current_date() and status != 'Batal'", NoRMPasien.getText())) {
+        } else if (Sequel.cariExistsSmc("select * from referensi_mobilejkn_bpjs where norm = ? and tanggalperiksa = current_date() and status != 'Batal'", NoRMPasien.getText())) {
             form.tampil(Sequel.cariIsi("select nomorkartu from referensi_mobilejkn_bpjs where norm = ? and tanggalperiksa = current_date() and status != 'Batal'", NoRMPasien.getText()));
             form.setSize(this.getWidth(), this.getHeight());
             form.setLocationRelativeTo(jPanel1);

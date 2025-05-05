@@ -383,10 +383,10 @@ public class DlgCekSKDPKontrol extends javax.swing.JDialog {
         if (InputSKDP.getText().isBlank()) {
             JOptionPane.showMessageDialog(null, "Isian masih kosong..!!");
             InputSKDP.requestFocus();
-        } else if (Sequel.cariBooleanSmc("select * from referensi_mobilejkn_bpjs where nomorreferensi = ? and tanggalperiksa = current_date()", InputSKDP.getText())) {
+        } else if (Sequel.cariExistsSmc("select * from referensi_mobilejkn_bpjs where nomorreferensi = ? and tanggalperiksa = current_date()", InputSKDP.getText())) {
             JOptionPane.showMessageDialog(null, "Pasien telah mendaftar online menggunakan MobileJKN.\nSilahkan cekin di menu \"Cek In MobileJKN\"..!!");
             InputSKDP.setText("");
-        } else if (Sequel.cariBooleanSmc("select * from bridging_surat_kontrol_bpjs where no_surat = ?", InputSKDP.getText())) {
+        } else if (Sequel.cariExistsSmc("select * from bridging_surat_kontrol_bpjs where no_surat = ?", InputSKDP.getText())) {
             if (Sequel.cariIntegerSmc("select datediff((select tgl_rencana from bridging_surat_kontrol_bpjs where no_surat = ?), current_date())", InputSKDP.getText()) > 0) {
                 JOptionPane.showMessageDialog(null, "Jadwal kontrol pasien tidak boleh dimajukan..!!");
                 InputSKDP.setText("");
