@@ -89,14 +89,6 @@ public final class sekuel {
             System.out.println("Notif : " + e);
         }
     }
-    
-    private double parseDouble(String value) {
-        try {
-            return Double.parseDouble(value);
-        } catch (NumberFormatException e) {
-            return 0;
-        }
-    }
 
     public String cariIsiSmc(String sql, String... values) {
         try (PreparedStatement ps = connect.prepareStatement(sql)) {
