@@ -60,10 +60,11 @@ public final class sekuel {
     private ResultSet rs;
     private int angka = 0;
     private double angka2 = 0;
-    private String dicari = "", track = "";
+    private String dicari = "";
     private Date tanggal = new Date();
     private boolean bool = false;
     private DecimalFormat df2 = new DecimalFormat("####");
+    private String track = "";
 
     public sekuel() {
         super();
