@@ -89,7 +89,7 @@ public final class sekuel {
             System.out.println("Notif : " + e);
         }
     }
-
+    
     public String cariIsiSmc(String sql, String... values) {
         try (PreparedStatement ps = connect.prepareStatement(sql)) {
             for (int i = 0; i < values.length; i++) {
@@ -405,37 +405,6 @@ public final class sekuel {
             System.out.println("Notif : " + e);
         }
         return false;
-    }
-
-    public void deleteTemporary() {
-        try (PreparedStatement ps = connect.prepareStatement("delete from temporary where temporary.temp37 = ?")) {
-            ps.setString(1, akses.getalamatip());
-            ps.executeUpdate();
-        } catch (Exception e) {
-            System.out.println("Notif : " + e);
-        }
-    }
-
-    public void temporary(String... values) {
-        String sql = "insert into temporary values (";
-        for (int i = 0; i < 37; i++) {
-            if (i < values.length) {
-                sql = sql.concat("?, ");
-            } else {
-                sql = sql.concat("'', ");
-            }
-        }
-
-        try (PreparedStatement ps = connect.prepareStatement(sql.concat("?)"))) {
-            for (int i = 0; i < values.length; i++) {
-                ps.setString(i + 1, values[i]);
-            }
-            ps.setString(values.length + 1, akses.getalamatip());
-            ps.executeUpdate();
-        } catch (Exception e) {
-            System.out.println("Notif : " + e);
-            JOptionPane.showMessageDialog(null, "Gagal memproses hasil cetak..!!");
-        }
     }
 
     public void menyimpan(String table, String value, String sama) {
