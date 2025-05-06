@@ -82,6 +82,15 @@ public class koneksiDB {
         }
     }
     
+    public static String PRINTER_ANTRIAN() {
+        try (FileInputStream fs = new FileInputStream("setting/apm.xml")) {
+            prop.loadFromXML(fs);
+            return prop.getProperty("PRINTER_ANTRIAN", "");
+        } catch (Exception e) {
+            return "";
+        }
+    }
+    
     public static int PRINTJUMLAHBARCODE() {
         try {
             prop.loadFromXML(new FileInputStream("setting/apm.xml"));

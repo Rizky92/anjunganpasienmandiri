@@ -3,11 +3,6 @@
  * and open the template in the editor.
  */
 
- /*
- * DlgAdmin.java
- *
- * Created on 04 Des 13, 12:59:34
- */
 package khanzahmsanjungan;
 
 import fungsi.koneksiDB;
@@ -15,41 +10,36 @@ import fungsi.sekuel;
 import fungsi.validasi;
 import java.awt.Cursor;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 
-/**
- *
- * @author Kode
- */
 public class DlgAmbilAntrean extends javax.swing.JDialog {
 
-    private Connection koneksi = koneksiDB.condb();
-    private sekuel Sequel = new sekuel();
-    private validasi Valid = new validasi();
-    private PreparedStatement ps;
-    private ResultSet rs;
-    private SimpleDateFormat dateformat = new SimpleDateFormat("yyyy/MM/dd");
-    private String umur = "0", sttsumur = "Th", jnsloket = "", hurufantrianget = "";
-    private String status = "Baru", BASENOREG = "", URUTNOREG = "", aktifjadwal = "";
+    private final Connection koneksi = koneksiDB.condb();
+    private final sekuel Sequel = new sekuel();
+    private final validasi Valid = new validasi();
+    
+    private Map<String, Object> param = new HashMap<>();
 
-    private Properties prop = new Properties();
-    private int lebar = 0, tinggi = 0, antriansekarang = 0;
-
-    /**
-     * Creates new form DlgAdmin
-     *
-     * @param parent
-     * @param id
-     */
     public DlgAmbilAntrean(java.awt.Frame parent, boolean id) {
         super(parent, id);
         initComponents();
-
+        
+        try (ResultSet rs = koneksi.createStatement().executeQuery(
+            "select nama_instansi, alamat_instansi, kabupaten, propinsi, kontak, email from setting"
+        )) {
+            if (rs.next()) {
+                param.put("namars", rs.getString("nama_instansi"));
+                param.put("alamatrs", rs.getString("alamat_instansi"));
+                param.put("kotars", rs.getString("kabupaten"));
+                param.put("propinsirs", rs.getString("propinsi"));
+                param.put("kontakrs", rs.getString("kontak"));
+                param.put("emailrs", rs.getString("email"));
+            }
+        } catch (Exception e) {
+            System.out.println("Notif : " + e);
+        }
     }
 
     /**
@@ -61,200 +51,181 @@ public class DlgAmbilAntrean extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        LblKdPoli = new component.Label();
-        LblKdDokter = new component.Label();
-        NoReg = new component.TextBox();
-        NoRawat = new component.TextBox();
-        Biaya = new component.TextBox();
         jPanel1 = new component.Panel();
         jPanel2 = new javax.swing.JPanel();
         lblNamaAntrian = new component.Label();
         jPanel3 = new javax.swing.JPanel();
-        lblNoAntrian = new component.Label();
+        HurufA = new widget.ButtonBig();
+        HurufB = new widget.ButtonBig();
+        HurufC = new widget.ButtonBig();
+        HurufD = new widget.ButtonBig();
+        HurufE = new widget.ButtonBig();
+        HurufF = new widget.ButtonBig();
         jPanel4 = new javax.swing.JPanel();
-        BtnClose2 = new widget.ButtonBig();
-        BtnClose3 = new widget.ButtonBig();
-
-        LblKdPoli.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LblKdPoli.setText("Norm");
-        LblKdPoli.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        LblKdPoli.setPreferredSize(new java.awt.Dimension(20, 14));
-
-        LblKdDokter.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LblKdDokter.setText("Norm");
-        LblKdDokter.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        LblKdDokter.setPreferredSize(new java.awt.Dimension(20, 14));
-
-        NoReg.setPreferredSize(new java.awt.Dimension(320, 30));
-        NoReg.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NoRegActionPerformed(evt);
-            }
-        });
-        NoReg.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                NoRegKeyPressed(evt);
-            }
-        });
-
-        NoRawat.setPreferredSize(new java.awt.Dimension(320, 30));
-        NoRawat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NoRawatActionPerformed(evt);
-            }
-        });
-        NoRawat.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                NoRawatKeyPressed(evt);
-            }
-        });
-
-        Biaya.setPreferredSize(new java.awt.Dimension(320, 30));
-        Biaya.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BiayaActionPerformed(evt);
-            }
-        });
-        Biaya.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BiayaKeyPressed(evt);
-            }
-        });
+        BtnKeluar = new widget.ButtonBig();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setModal(true);
         setUndecorated(true);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
             }
         });
         getContentPane().setLayout(new java.awt.BorderLayout(1, 1));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 215, 255)), "::[ ANTRIAN PASIEN ]::", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Inter", 0, 24), new java.awt.Color(0, 131, 62))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 131, 62)));
         jPanel1.setForeground(new java.awt.Color(0, 131, 62));
         jPanel1.setPreferredSize(new java.awt.Dimension(400, 70));
-        jPanel1.setLayout(new java.awt.GridLayout(3, 1));
+        jPanel1.setLayout(new java.awt.BorderLayout());
 
         jPanel2.setBackground(new java.awt.Color(238, 238, 255));
         jPanel2.setForeground(new java.awt.Color(238, 238, 255));
+        jPanel2.setPreferredSize(new java.awt.Dimension(60, 60));
 
         lblNamaAntrian.setForeground(new java.awt.Color(0, 131, 62));
         lblNamaAntrian.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblNamaAntrian.setFont(new java.awt.Font("Inter", 0, 36)); // NOI18N
+        lblNamaAntrian.setText("AMBIL ANTRIAN");
+        lblNamaAntrian.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        lblNamaAntrian.setFont(new java.awt.Font("Inter", 1, 36)); // NOI18N
         lblNamaAntrian.setPreferredSize(new java.awt.Dimension(500, 75));
         jPanel2.add(lblNamaAntrian);
 
-        jPanel1.add(jPanel2);
+        jPanel1.add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
         jPanel3.setBackground(new java.awt.Color(238, 238, 255));
         jPanel3.setForeground(new java.awt.Color(238, 238, 255));
+        jPanel3.setLayout(new java.awt.GridLayout(0, 2));
 
-        lblNoAntrian.setForeground(new java.awt.Color(0, 131, 62));
-        lblNoAntrian.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblNoAntrian.setFont(new java.awt.Font("Inter", 1, 48)); // NOI18N
-        lblNoAntrian.setIconTextGap(0);
-        lblNoAntrian.setPreferredSize(new java.awt.Dimension(350, 150));
-        jPanel3.add(lblNoAntrian);
+        HurufA.setText("ANTRIAN A");
+        HurufA.setFont(new java.awt.Font("Inter", 1, 36)); // NOI18N
+        HurufA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HurufAActionPerformed(evt);
+            }
+        });
+        jPanel3.add(HurufA);
 
-        jPanel1.add(jPanel3);
+        HurufB.setText("ANTRIAN B");
+        HurufB.setFont(new java.awt.Font("Inter", 1, 36)); // NOI18N
+        HurufB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HurufBActionPerformed(evt);
+            }
+        });
+        jPanel3.add(HurufB);
+
+        HurufC.setText("ANTRIAN C");
+        HurufC.setFont(new java.awt.Font("Inter", 1, 36)); // NOI18N
+        HurufC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HurufCActionPerformed(evt);
+            }
+        });
+        jPanel3.add(HurufC);
+
+        HurufD.setText("ANTRIAN D");
+        HurufD.setFont(new java.awt.Font("Inter", 1, 36)); // NOI18N
+        HurufD.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HurufDActionPerformed(evt);
+            }
+        });
+        jPanel3.add(HurufD);
+
+        HurufE.setText("ANTRIAN E");
+        HurufE.setFont(new java.awt.Font("Inter", 1, 36)); // NOI18N
+        HurufE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HurufEActionPerformed(evt);
+            }
+        });
+        jPanel3.add(HurufE);
+
+        HurufF.setText("ANTRIAN F");
+        HurufF.setFont(new java.awt.Font("Inter", 1, 36)); // NOI18N
+        HurufF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HurufFActionPerformed(evt);
+            }
+        });
+        jPanel3.add(HurufF);
+
+        jPanel1.add(jPanel3, java.awt.BorderLayout.CENTER);
 
         jPanel4.setBackground(new java.awt.Color(238, 238, 255));
         jPanel4.setForeground(new java.awt.Color(238, 238, 255));
 
-        BtnClose2.setBackground(new java.awt.Color(255, 255, 255));
-        BtnClose2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/print.png"))); // NOI18N
-        BtnClose2.setMnemonic('U');
-        BtnClose2.setText("Cetak Antrian");
-        BtnClose2.setToolTipText("Alt+U");
-        BtnClose2.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
-        BtnClose2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnClose2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnClose2.setIconTextGap(0);
-        BtnClose2.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        BtnClose2.setPreferredSize(new java.awt.Dimension(250, 75));
-        BtnClose2.setVerticalTextPosition(javax.swing.SwingConstants.CENTER);
-        BtnClose2.addActionListener(new java.awt.event.ActionListener() {
+        BtnKeluar.setBackground(new java.awt.Color(255, 255, 255));
+        BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/exit.png"))); // NOI18N
+        BtnKeluar.setMnemonic('U');
+        BtnKeluar.setText("KELUAR");
+        BtnKeluar.setToolTipText("Alt+U");
+        BtnKeluar.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
+        BtnKeluar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        BtnKeluar.setIconTextGap(0);
+        BtnKeluar.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        BtnKeluar.setPreferredSize(new java.awt.Dimension(250, 75));
+        BtnKeluar.setVerticalTextPosition(javax.swing.SwingConstants.CENTER);
+        BtnKeluar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnClose2ActionPerformed(evt);
+                BtnKeluarActionPerformed(evt);
             }
         });
-        jPanel4.add(BtnClose2);
+        jPanel4.add(BtnKeluar);
 
-        BtnClose3.setBackground(new java.awt.Color(255, 255, 255));
-        BtnClose3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/exit.png"))); // NOI18N
-        BtnClose3.setMnemonic('U');
-        BtnClose3.setText("Batal");
-        BtnClose3.setToolTipText("Alt+U");
-        BtnClose3.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
-        BtnClose3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnClose3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        BtnClose3.setIconTextGap(0);
-        BtnClose3.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        BtnClose3.setPreferredSize(new java.awt.Dimension(250, 75));
-        BtnClose3.setVerticalTextPosition(javax.swing.SwingConstants.CENTER);
-        BtnClose3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnClose3ActionPerformed(evt);
-            }
-        });
-        jPanel4.add(BtnClose3);
-
-        jPanel1.add(jPanel4);
+        jPanel1.add(jPanel4, java.awt.BorderLayout.PAGE_END);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-
-    }//GEN-LAST:event_formWindowOpened
-
-    private void NoRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoRegActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NoRegActionPerformed
-
-    private void NoRegKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoRegKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NoRegKeyPressed
-
-    private void NoRawatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoRawatActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NoRawatActionPerformed
-
-    private void NoRawatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoRawatKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NoRawatKeyPressed
-
-    private void BiayaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BiayaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BiayaActionPerformed
-
-    private void BiayaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BiayaKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BiayaKeyPressed
-
-    private void BtnClose2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnClose2ActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        String sqlQuery = "type, noantrian, postdate, start_time, end_time";
-        String[] values = new String[]{jnsloket, String.valueOf(antriansekarang), Sequel.cariIsi("select current_date()"), Sequel.cariIsi("select current_time()"), "00:00:00"};
-
-        if (Sequel.menyimpantfautoincrement("antrian_loket", sqlQuery, values.length, values) == true) {
-            CetakAntrian(lblNamaAntrian.getText(), antriansekarang, Sequel.cariIsi("select current_date()"), Sequel.cariIsi("select current_time()"));
-            lblNamaAntrian.setText("");
-            lblNoAntrian.setText("");
-            antriansekarang = 0;
-            dispose();
-        }
-        this.setCursor(Cursor.getDefaultCursor());
-    }//GEN-LAST:event_BtnClose2ActionPerformed
-
-    private void BtnClose3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnClose3ActionPerformed
+    private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
         dispose();
-    }//GEN-LAST:event_BtnClose3ActionPerformed
+    }//GEN-LAST:event_BtnKeluarActionPerformed
+
+    private void HurufAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HurufAActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        cetakAntrianHuruf("A");
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_HurufAActionPerformed
+
+    private void HurufBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HurufBActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        cetakAntrianHuruf("B");
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_HurufBActionPerformed
+
+    private void HurufCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HurufCActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        cetakAntrianHuruf("C");
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_HurufCActionPerformed
+
+    private void HurufDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HurufDActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        cetakAntrianHuruf("D");
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_HurufDActionPerformed
+
+    private void HurufEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HurufEActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        cetakAntrianHuruf("E");
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_HurufEActionPerformed
+
+    private void HurufFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HurufFActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        cetakAntrianHuruf("F");
+        this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_HurufFActionPerformed
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        tampil();
+    }//GEN-LAST:event_formWindowActivated
 
     /**
      * @param args the command line arguments
@@ -272,60 +243,100 @@ public class DlgAmbilAntrean extends javax.swing.JDialog {
             dialog.setVisible(true);
         });
     }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private component.TextBox Biaya;
-    private widget.ButtonBig BtnClose2;
-    private widget.ButtonBig BtnClose3;
-    private component.Label LblKdDokter;
-    private component.Label LblKdPoli;
-    private component.TextBox NoRawat;
-    private component.TextBox NoReg;
+    private widget.ButtonBig BtnKeluar;
+    private widget.ButtonBig HurufA;
+    private widget.ButtonBig HurufB;
+    private widget.ButtonBig HurufC;
+    private widget.ButtonBig HurufD;
+    private widget.ButtonBig HurufE;
+    private widget.ButtonBig HurufF;
     private component.Panel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private component.Label lblNamaAntrian;
-    private component.Label lblNoAntrian;
     // End of variables declaration//GEN-END:variables
 
-    public void setPasien(String norm, String kodepoli, String kddokter) {
-    }
-
-    public void setNoAntrian(String namalabel, String hurufantrian, String tipeloket) {
-        jnsloket = "";
-        if (Sequel.cariInteger("select count(antrian_loket.noantrian) from antrian_loket where round(DATE_FORMAT(postdate, '%d')) = DAY(CURDATE()) AND round(DATE_FORMAT(postdate, '%m')) = MONTH(CURDATE()) AND round(DATE_FORMAT(postdate, '%Y')) = YEAR(CURDATE()) AND type = '" + tipeloket + "'") < 1) {
-            antriansekarang = 1;
-        } else {
-            antriansekarang = Integer.parseInt(Sequel.cariIsi("SELECT MAX(CAST(noantrian as UNSIGNED)) as noantrian FROM antrian_loket WHERE round(DATE_FORMAT(postdate, '%d')) = DAY(CURDATE()) AND round(DATE_FORMAT(postdate, '%m')) = MONTH(CURDATE()) AND round(DATE_FORMAT(postdate, '%Y')) = YEAR(CURDATE()) AND type = '" + tipeloket + "' ORDER BY round(noantrian) DESC")) + 1;
+    private void cetakAntrianHuruf(String prefix) {
+        switch (prefix) {
+            case "A":
+                if (Sequel.executeRawSmc(
+                    "insert into antriloketcetak_smc (nomor, tanggal, jam) values (concat('A', lpad(?, greatest(length(substring(nomor, 2)), 3), '0')), current_date(), current_time())",
+                    String.valueOf(Integer.parseInt(HurufA.getText().substring(HurufA.getText().indexOf("(") + 2, HurufA.getText().length() - 1)) + 1)
+                )) {
+                    param.put("logo", Sequel.cariGambar("select logo from setting"));
+                    Valid.printReportSmc("rptAntriLoketAPM.jasper", "report", "::[ Antrian Loket ]::", param, koneksiDB.PRINTER_ANTRIAN(), 1,
+                        "select date_format(tanggal, '%d-%m-%Y') as tanggal, max(nomor) as nomor, " +
+                        "jam from antriloketcetak_smc where left(nomor, 1) = 'A' and tanggal = current_date()");
+                }
+                break;
+            case "B":
+                if (Sequel.executeRawSmc(
+                    "insert into antriloketcetak_smc (nomor, tanggal, jam) values (concat('B', lpad(?, greatest(length(substring(nomor, 2)), 3), '0')), current_date(), current_time())",
+                    String.valueOf(Integer.parseInt(HurufB.getText().substring(HurufB.getText().indexOf("(") + 2, HurufB.getText().length() - 1)) + 1)
+                )) {
+                    param.put("logo", Sequel.cariGambar("select logo from setting"));
+                    Valid.printReportSmc("rptAntriLoketAPM.jasper", "report", "::[ Antrian Loket ]::", param, koneksiDB.PRINTER_ANTRIAN(), 1,
+                        "select date_format(tanggal, '%d-%m-%Y') as tanggal, max(nomor) as nomor, " +
+                        "jam from antriloketcetak_smc where left(nomor, 1) = 'B' and tanggal = current_date()");
+                }
+                break;
+            case "C":
+                if (Sequel.executeRawSmc(
+                    "insert into antriloketcetak_smc (nomor, tanggal, jam) values (concat('C', lpad(?, greatest(length(substring(nomor, 2)), 3), '0')), current_date(), current_time())",
+                    String.valueOf(Integer.parseInt(HurufC.getText().substring(HurufC.getText().indexOf("(") + 2, HurufC.getText().length() - 1)) + 1)
+                )) {
+                    param.put("logo", Sequel.cariGambar("select logo from setting"));
+                    Valid.printReportSmc("rptAntriLoketAPM.jasper", "report", "::[ Antrian Loket ]::", param, koneksiDB.PRINTER_ANTRIAN(), 1,
+                        "select date_format(tanggal, '%d-%m-%Y') as tanggal, max(nomor) as nomor, " +
+                        "jam from antriloketcetak_smc where left(nomor, 1) = 'C' and tanggal = current_date()");
+                }
+                break;
+            case "D":
+                if (Sequel.executeRawSmc(
+                    "insert into antriloketcetak_smc (nomor, tanggal, jam) values (concat('D', lpad(?, greatest(length(substring(nomor, 2)), 3), '0')), current_date(), current_time())",
+                    String.valueOf(Integer.parseInt(HurufD.getText().substring(HurufD.getText().indexOf("(") + 2, HurufD.getText().length() - 1)) + 1)
+                )) {
+                    param.put("logo", Sequel.cariGambar("select logo from setting"));
+                    Valid.printReportSmc("rptAntriLoketAPM.jasper", "report", "::[ Antrian Loket ]::", param, koneksiDB.PRINTER_ANTRIAN(), 1,
+                        "select date_format(tanggal, '%d-%m-%Y') as tanggal, max(nomor) as nomor, " +
+                        "jam from antriloketcetak_smc where left(nomor, 1) = 'D' and tanggal = current_date()");
+                }
+                break;
+            case "E":
+                if (Sequel.executeRawSmc(
+                    "insert into antriloketcetak_smc (nomor, tanggal, jam) values (concat('E', lpad(?, greatest(length(substring(nomor, 2)), 3), '0')), current_date(), current_time())",
+                    String.valueOf(Integer.parseInt(HurufE.getText().substring(HurufE.getText().indexOf("(") + 2, HurufE.getText().length() - 1)) + 1)
+                )) {
+                    param.put("logo", Sequel.cariGambar("select logo from setting"));
+                    Valid.printReportSmc("rptAntriLoketAPM.jasper", "report", "::[ Antrian Loket ]::", param, koneksiDB.PRINTER_ANTRIAN(), 1,
+                        "select date_format(tanggal, '%d-%m-%Y') as tanggal, max(nomor) as nomor, " +
+                        "jam from antriloketcetak_smc where left(nomor, 1) = 'E' and tanggal = current_date()");
+                }
+                break;
+            case "F":
+                if (Sequel.executeRawSmc(
+                    "insert into antriloketcetak_smc (nomor, tanggal, jam) values (concat('F', lpad(?, greatest(length(substring(nomor, 2)), 3), '0')), current_date(), current_time())",
+                    String.valueOf(Integer.parseInt(HurufF.getText().substring(HurufF.getText().indexOf("(") + 2, HurufF.getText().length() - 1)) + 1)
+                )) {
+                    param.put("logo", Sequel.cariGambar("select logo from setting"));
+                    Valid.printReportSmc("rptAntriLoketAPM.jasper", "report", "::[ Antrian Loket ]::", param, koneksiDB.PRINTER_ANTRIAN(), 1,
+                        "select date_format(tanggal, '%d-%m-%Y') as tanggal, max(nomor) as nomor, " +
+                        "jam from antriloketcetak_smc where left(nomor, 1) = 'F' and tanggal = current_date()");
+                }
+                break;
         }
-
-        lblNoAntrian.setText(hurufantrian + "" + antriansekarang);
-        lblNamaAntrian.setText(namalabel);
-        jnsloket = tipeloket;
-        hurufantrianget = hurufantrian;
-
+        tampil();
     }
-
-    private void CetakAntrian(String label, Integer noantrian, String tgl, String jam) {
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-
-        Map<String, Object> param = new HashMap<>();
-        param.put("labelantrian", label);
-        param.put("nomorantrian", hurufantrianget + String.valueOf(noantrian));
-        param.put("tanggal", tgl);
-        param.put("jam", jam);
-        param.put("namars", Sequel.cariIsi("select nama_instansi from setting"));
-        param.put("alamatrs", Sequel.cariIsi("select alamat_instansi from setting"));
-        param.put("kotars", Sequel.cariIsi("select kabupaten from setting"));
-        param.put("propinsirs", Sequel.cariIsi("select propinsi from setting"));
-        param.put("kontakrs", Sequel.cariIsi("select kontak from setting"));
-        param.put("emailrs", Sequel.cariIsi("select email from setting"));
-        param.put("logo", Sequel.cariGambar("select logo from setting"));
-
-        Valid.MyReportqryabdulAntrian("rptAntrianLoket.jasper", "report", "::[ No Antrian Loket ]::",
-                "", param);
-
-        this.setCursor(Cursor.getDefaultCursor());
-
+    
+    private void tampil() {
+        HurufA.setText("ANTRIAN A (" + Sequel.cariIsiSmc("select ifnull(max(nomor), 'A000') from antriloketcetak_smc where tanggal = current_date() and left(nomor, 1) = 'A'") + ")");
+        HurufB.setText("ANTRIAN B (" + Sequel.cariIsiSmc("select ifnull(max(nomor), 'B000') from antriloketcetak_smc where tanggal = current_date() and left(nomor, 1) = 'B'") + ")");
+        HurufC.setText("ANTRIAN C (" + Sequel.cariIsiSmc("select ifnull(max(nomor), 'C000') from antriloketcetak_smc where tanggal = current_date() and left(nomor, 1) = 'C'") + ")");
+        HurufD.setText("ANTRIAN D (" + Sequel.cariIsiSmc("select ifnull(max(nomor), 'D000') from antriloketcetak_smc where tanggal = current_date() and left(nomor, 1) = 'D'") + ")");
+        HurufE.setText("ANTRIAN E (" + Sequel.cariIsiSmc("select ifnull(max(nomor), 'E000') from antriloketcetak_smc where tanggal = current_date() and left(nomor, 1) = 'E'") + ")");
+        HurufF.setText("ANTRIAN F (" + Sequel.cariIsiSmc("select ifnull(max(nomor), 'F000') from antriloketcetak_smc where tanggal = current_date() and left(nomor, 1) = 'F'") + ")");
     }
 }
