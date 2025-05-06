@@ -4,6 +4,7 @@
     <comment>KhanzaHMS</comment>
     <entry key="PRINTER_REGISTRASI"></entry>
     <entry key="PRINTER_BARCODE"></entry>
+    <entry key="PRINTER_ANTRIAN"></entry>
     <entry key="PRINTERJUMLAHBARCODE">3</entry>
     <entry key="URLAPLIKASIFINGERPRINTBPJS">D:\BPJS Kesehatan\Aplikasi Sidik Jari BPJS Kesehatan\After.exe</entry>
     <entry key="URLAPLIKASIFRISTABPJS">D:\BPJS Kesehatan\FRISTA\frista.exe</entry>

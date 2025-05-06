@@ -267,7 +267,7 @@ public class DlgAmbilAntrean extends javax.swing.JDialog {
                     String.valueOf(Integer.parseInt(HurufA.getText().substring(HurufA.getText().indexOf("(") + 2, HurufA.getText().length() - 1)) + 1)
                 )) {
                     param.put("logo", Sequel.cariGambar("select logo from setting"));
-                    Valid.reportSmc("rptAntriLoketAPM.jasper", "report", "::[ Antrian Loket ]::", param,
+                    Valid.printReportSmc("rptAntriLoketAPM.jasper", "report", "::[ Antrian Loket ]::", param, koneksiDB.PRINTER_ANTRIAN(), 1,
                         "select date_format(tanggal, '%d-%m-%Y') as tanggal, max(nomor) as nomor, " +
                         "jam from antriloketcetak_smc where left(nomor, 1) = 'A' and tanggal = current_date()");
                 }
@@ -278,7 +278,7 @@ public class DlgAmbilAntrean extends javax.swing.JDialog {
                     String.valueOf(Integer.parseInt(HurufB.getText().substring(HurufB.getText().indexOf("(") + 2, HurufB.getText().length() - 1)) + 1)
                 )) {
                     param.put("logo", Sequel.cariGambar("select logo from setting"));
-                    Valid.reportSmc("rptAntriLoketAPM.jasper", "report", "::[ Antrian Loket ]::", param,
+                    Valid.printReportSmc("rptAntriLoketAPM.jasper", "report", "::[ Antrian Loket ]::", param, koneksiDB.PRINTER_ANTRIAN(), 1,
                         "select date_format(tanggal, '%d-%m-%Y') as tanggal, max(nomor) as nomor, " +
                         "jam from antriloketcetak_smc where left(nomor, 1) = 'B' and tanggal = current_date()");
                 }
@@ -289,7 +289,7 @@ public class DlgAmbilAntrean extends javax.swing.JDialog {
                     String.valueOf(Integer.parseInt(HurufC.getText().substring(HurufC.getText().indexOf("(") + 2, HurufC.getText().length() - 1)) + 1)
                 )) {
                     param.put("logo", Sequel.cariGambar("select logo from setting"));
-                    Valid.reportSmc("rptAntriLoketAPM.jasper", "report", "::[ Antrian Loket ]::", param,
+                    Valid.printReportSmc("rptAntriLoketAPM.jasper", "report", "::[ Antrian Loket ]::", param, koneksiDB.PRINTER_ANTRIAN(), 1,
                         "select date_format(tanggal, '%d-%m-%Y') as tanggal, max(nomor) as nomor, " +
                         "jam from antriloketcetak_smc where left(nomor, 1) = 'C' and tanggal = current_date()");
                 }
@@ -300,7 +300,7 @@ public class DlgAmbilAntrean extends javax.swing.JDialog {
                     String.valueOf(Integer.parseInt(HurufD.getText().substring(HurufD.getText().indexOf("(") + 2, HurufD.getText().length() - 1)) + 1)
                 )) {
                     param.put("logo", Sequel.cariGambar("select logo from setting"));
-                    Valid.reportSmc("rptAntriLoketAPM.jasper", "report", "::[ Antrian Loket ]::", param,
+                    Valid.printReportSmc("rptAntriLoketAPM.jasper", "report", "::[ Antrian Loket ]::", param, koneksiDB.PRINTER_ANTRIAN(), 1,
                         "select date_format(tanggal, '%d-%m-%Y') as tanggal, max(nomor) as nomor, " +
                         "jam from antriloketcetak_smc where left(nomor, 1) = 'D' and tanggal = current_date()");
                 }
@@ -311,7 +311,7 @@ public class DlgAmbilAntrean extends javax.swing.JDialog {
                     String.valueOf(Integer.parseInt(HurufE.getText().substring(HurufE.getText().indexOf("(") + 2, HurufE.getText().length() - 1)) + 1)
                 )) {
                     param.put("logo", Sequel.cariGambar("select logo from setting"));
-                    Valid.reportSmc("rptAntriLoketAPM.jasper", "report", "::[ Antrian Loket ]::", param,
+                    Valid.printReportSmc("rptAntriLoketAPM.jasper", "report", "::[ Antrian Loket ]::", param, koneksiDB.PRINTER_ANTRIAN(), 1,
                         "select date_format(tanggal, '%d-%m-%Y') as tanggal, max(nomor) as nomor, " +
                         "jam from antriloketcetak_smc where left(nomor, 1) = 'E' and tanggal = current_date()");
                 }
@@ -322,7 +322,7 @@ public class DlgAmbilAntrean extends javax.swing.JDialog {
                     String.valueOf(Integer.parseInt(HurufF.getText().substring(HurufF.getText().indexOf("(") + 2, HurufF.getText().length() - 1)) + 1)
                 )) {
                     param.put("logo", Sequel.cariGambar("select logo from setting"));
-                    Valid.reportSmc("rptAntriLoketAPM.jasper", "report", "::[ Antrian Loket ]::", param,
+                    Valid.printReportSmc("rptAntriLoketAPM.jasper", "report", "::[ Antrian Loket ]::", param, koneksiDB.PRINTER_ANTRIAN(), 1,
                         "select date_format(tanggal, '%d-%m-%Y') as tanggal, max(nomor) as nomor, " +
                         "jam from antriloketcetak_smc where left(nomor, 1) = 'F' and tanggal = current_date()");
                 }
