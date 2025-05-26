@@ -19,6 +19,7 @@ public class DlgAmbilAntrean extends javax.swing.JDialog {
     private final Connection koneksi = koneksiDB.condb();
     private final sekuel Sequel = new sekuel();
     private final validasi Valid = new validasi();
+    private final String[] PREFIXHURUFAKTIF = koneksiDB.PREFIXHURUFAKTIF();
     
     private Map<String, Object> param = new HashMap<>();
 
@@ -40,6 +41,25 @@ public class DlgAmbilAntrean extends javax.swing.JDialog {
         } catch (Exception e) {
             System.out.println("Notif : " + e);
         }
+        
+        jPanel3.remove(HurufA);
+        jPanel3.remove(HurufB);
+        jPanel3.remove(HurufC);
+        jPanel3.remove(HurufD);
+        jPanel3.remove(HurufE);
+        jPanel3.remove(HurufF);
+        
+        for (String huruf : PREFIXHURUFAKTIF) {
+            switch (huruf) {
+                case "A": jPanel3.add(HurufA); break;
+                case "B": jPanel3.add(HurufB); break;
+                case "C": jPanel3.add(HurufC); break;
+                case "D": jPanel3.add(HurufD); break;
+                case "E": jPanel3.add(HurufE); break;
+                case "F": jPanel3.add(HurufF); break;
+            }
+        }
+        repaint();
     }
 
     /**
@@ -332,11 +352,15 @@ public class DlgAmbilAntrean extends javax.swing.JDialog {
     }
     
     private void tampil() {
-        HurufA.setText("ANTRIAN A (" + Sequel.cariIsiSmc("select ifnull(max(nomor), 'A000') from antriloketcetak_smc where tanggal = current_date() and left(nomor, 1) = 'A'") + ")");
-        HurufB.setText("ANTRIAN B (" + Sequel.cariIsiSmc("select ifnull(max(nomor), 'B000') from antriloketcetak_smc where tanggal = current_date() and left(nomor, 1) = 'B'") + ")");
-        HurufC.setText("ANTRIAN C (" + Sequel.cariIsiSmc("select ifnull(max(nomor), 'C000') from antriloketcetak_smc where tanggal = current_date() and left(nomor, 1) = 'C'") + ")");
-        HurufD.setText("ANTRIAN D (" + Sequel.cariIsiSmc("select ifnull(max(nomor), 'D000') from antriloketcetak_smc where tanggal = current_date() and left(nomor, 1) = 'D'") + ")");
-        HurufE.setText("ANTRIAN E (" + Sequel.cariIsiSmc("select ifnull(max(nomor), 'E000') from antriloketcetak_smc where tanggal = current_date() and left(nomor, 1) = 'E'") + ")");
-        HurufF.setText("ANTRIAN F (" + Sequel.cariIsiSmc("select ifnull(max(nomor), 'F000') from antriloketcetak_smc where tanggal = current_date() and left(nomor, 1) = 'F'") + ")");
+        for (String huruf : PREFIXHURUFAKTIF) {
+            switch (huruf) {
+                case "A": HurufA.setText("ANTRIAN A (" + Sequel.cariIsiSmc("select ifnull(max(nomor), 'A000') from antriloketcetak_smc where tanggal = current_date() and left(nomor, 1) = 'A'") + ")"); break;
+                case "B": HurufB.setText("ANTRIAN B (" + Sequel.cariIsiSmc("select ifnull(max(nomor), 'B000') from antriloketcetak_smc where tanggal = current_date() and left(nomor, 1) = 'B'") + ")"); break;
+                case "C": HurufC.setText("ANTRIAN C (" + Sequel.cariIsiSmc("select ifnull(max(nomor), 'C000') from antriloketcetak_smc where tanggal = current_date() and left(nomor, 1) = 'C'") + ")"); break;
+                case "D": HurufD.setText("ANTRIAN D (" + Sequel.cariIsiSmc("select ifnull(max(nomor), 'D000') from antriloketcetak_smc where tanggal = current_date() and left(nomor, 1) = 'D'") + ")"); break;
+                case "E": HurufE.setText("ANTRIAN E (" + Sequel.cariIsiSmc("select ifnull(max(nomor), 'E000') from antriloketcetak_smc where tanggal = current_date() and left(nomor, 1) = 'E'") + ")"); break;
+                case "F": HurufF.setText("ANTRIAN F (" + Sequel.cariIsiSmc("select ifnull(max(nomor), 'F000') from antriloketcetak_smc where tanggal = current_date() and left(nomor, 1) = 'F'") + ")"); break;
+            }
+        }
     }
 }

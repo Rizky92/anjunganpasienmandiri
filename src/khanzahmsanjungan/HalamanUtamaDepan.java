@@ -4,6 +4,7 @@
  */
 package khanzahmsanjungan;
 
+import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import java.awt.Dimension;
@@ -36,6 +37,9 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
         
         jPanel1.remove(btnAdmin11);
         jPanel1.remove(btnAdmin7);
+        if (!koneksiDB.ANTRIANPREFIXHURUF()) {
+            jPanel1.remove(btnAdmin10);
+        }
         
         jPanel1.repaint();
     }
