@@ -2732,9 +2732,9 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                 Kdpnj.setText("BPJ");
                 nmpnj.setText("BPJS");
                 Catatan.setText("Anjungan Pasien Mandiri RS Samarinda Medika Citra");
-                NoTelp.setText(response.path("peserta").path("mr").path("noTelepon").asText());
+                NoTelp.setText(Sequel.cariIsiSmc("select no_tlp from pasien where no_rkm_medis = ?", TNoRM.getText()));
                 if (NoTelp.getText().contains("null") || NoTelp.getText().isBlank()) {
-                    NoTelp.setText(Sequel.cariIsiSmc("select no_tlp from pasien where no_rkm_medis = ?", TNoRM.getText()));
+                    NoTelp.setText(response.path("peserta").path("mr").path("noTelepon").asText());
                 }
             } else {
                 System.out.println("Pesan pencarian rujukan FKTP : " + nameNode.path("message").asText());
@@ -2789,9 +2789,9 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                         kdpoli.setText(Sequel.cariIsi("select kd_poli_rs from maping_poli_bpjs where kd_poli_bpjs=?", response.path("poliRujukan").path("kode").asText()));
                         kodepolireg = Sequel.cariIsi("select kd_poli_rs from maping_poli_bpjs where kd_poli_bpjs=?", response.path("poliRujukan").path("kode").asText());
                         kodedokterreg = Sequel.cariIsi("select kd_dokter from maping_dokter_dpjpvclaim where kd_dokter_bpjs=?", KdDPJP.getText());
-                        NoTelp.setText(response.path("peserta").path("mr").path("noTelepon").asText());
+                        NoTelp.setText(Sequel.cariIsiSmc("select no_tlp from pasien where no_rkm_medis = ?", TNoRM.getText()));
                         if (NoTelp.getText().contains("null") || NoTelp.getText().isBlank()) {
-                            NoTelp.setText(Sequel.cariIsiSmc("select no_tlp from pasien where no_rkm_medis = ?", TNoRM.getText()));
+                            NoTelp.setText(response.path("peserta").path("mr").path("noTelepon").asText());
                         }
                         KdPpkRujukan.setText(response.path("provPerujuk").path("kode").asText());
                         NmPpkRujukan.setText(response.path("provPerujuk").path("nama").asText());
@@ -2943,9 +2943,9 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                 Kdpnj.setText("BPJ");
                 nmpnj.setText("BPJS");
                 Catatan.setText("Anjungan Pasien Mandiri RS Samarinda Medika Citra");
-                NoTelp.setText(response.path("peserta").path("mr").path("noTelepon").asText());
+                NoTelp.setText(Sequel.cariIsiSmc("select no_tlp from pasien where no_rkm_medis = ?", TNoRM.getText()));
                 if (NoTelp.getText().contains("null") || NoTelp.getText().isBlank()) {
-                    NoTelp.setText(Sequel.cariIsiSmc("select no_tlp from pasien where no_rkm_medis = ?", TNoRM.getText()));
+                    NoTelp.setText(response.path("peserta").path("mr").path("noTelepon").asText());
                 }
             } else {
                 System.out.println("Pesan pencarian rujukan FKTP : " + nameNode.path("message").asText());
@@ -2999,9 +2999,9 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                         kdpoli.setText(Sequel.cariIsiSmc("select kd_poli_rs from maping_poli_bpjs where kd_poli_bpjs=?", response.path("poliRujukan").path("kode").asText()));
                         kodepolireg = Sequel.cariIsiSmc("select kd_poli_rs from maping_poli_bpjs where kd_poli_bpjs=?", response.path("poliRujukan").path("kode").asText());
                         kodedokterreg = Sequel.cariIsiSmc("select kd_dokter from maping_dokter_dpjpvclaim where kd_dokter_bpjs=?", KdDPJP.getText());
-                        NoTelp.setText(response.path("peserta").path("mr").path("noTelepon").asText());
+                        NoTelp.setText(Sequel.cariIsiSmc("select no_tlp from pasien where no_rkm_medis = ?", TNoRM.getText()));
                         if (NoTelp.getText().contains("null") || NoTelp.getText().isBlank()) {
-                            NoTelp.setText(Sequel.cariIsiSmc("select no_tlp from pasien where no_rkm_medis = ?", TNoRM.getText()));
+                            NoTelp.setText(response.path("peserta").path("mr").path("noTelepon").asText());
                         }
                         KdPpkRujukan.setText(response.path("provPerujuk").path("kode").asText());
                         NmPpkRujukan.setText(response.path("provPerujuk").path("nama").asText());
@@ -3174,9 +3174,9 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                                 Kdpnj.setText("BPJ");
                                 nmpnj.setText("BPJS");
                                 Catatan.setText("Anjungan Pasien Mandiri RS Samarinda Medika Citra");
-                                NoTelp.setText(response.path("mr").path("noTelepon").asText());
+                                NoTelp.setText(Sequel.cariIsiSmc("select no_tlp from pasien where no_rkm_medis = ?", TNoRM.getText()));
                                 if (NoTelp.getText().contains("null") || NoTelp.getText().isBlank()) {
-                                    NoTelp.setText(Sequel.cariIsiSmc("select no_tlp from pasien where no_rkm_medis = ?", TNoRM.getText()));
+                                    NoTelp.setText(response.path("mr").path("noTelepon").asText());
                                 }
                             } else {
                                 emptTeks();
@@ -3268,9 +3268,9 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                                 Kdpnj.setText("BPJ");
                                 nmpnj.setText("BPJS");
                                 Catatan.setText("Anjungan Pasien Mandiri RS Samarinda Medika Citra");
-                                NoTelp.setText(response.path("peserta").path("mr").path("noTelepon").asText());
+                                NoTelp.setText(Sequel.cariIsiSmc("select no_tlp from pasien where no_rkm_medis = ?", TNoRM.getText()));
                                 if (NoTelp.getText().contains("null") || NoTelp.getText().isBlank()) {
-                                    NoTelp.setText(Sequel.cariIsiSmc("select no_tlp from pasien where no_rkm_medis = ?", TNoRM.getText()));
+                                    NoTelp.setText(response.path("peserta").path("mr").path("noTelepon").asText());
                                 }
                             } else {
                                 emptTeks();

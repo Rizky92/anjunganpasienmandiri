@@ -2032,9 +2032,9 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                     NoKartu.setText(rsjkn.getString("nomorkartu"));
                     TNoRM.setText(rsjkn.getString("norm"));
                     NIK.setText(rsjkn.getString("nik"));
-                    NoTelp.setText(rsjkn.getString("nohp"));
+                    NoTelp.setText(Sequel.cariIsiSmc("select no_tlp from pasien where no_rkm_medis = ?", TNoRM.getText()));
                     if (NoTelp.getText().contains("null") || NoTelp.getText().isBlank()) {
-                        NoTelp.setText(Sequel.cariIsiSmc("select no_tlp from pasien where no_rkm_medis = ?", TNoRM.getText()));
+                        NoTelp.setText(rsjkn.getString("nohp"));
                     }
                     // CEK STATUS PASIEN
                     try {
