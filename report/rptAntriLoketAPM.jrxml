@@ -80,12 +80,12 @@
 				<textFieldExpression><![CDATA[$P{namars}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="0" y="36" width="148" height="14" uuid="abcaecae-7b9d-4547-b813-ccdea3193caa"/>
+				<reportElement x="0" y="47" width="148" height="9" uuid="abcaecae-7b9d-4547-b813-ccdea3193caa"/>
 				<textElement textAlignment="Center">
 					<font fontName="Tahoma" size="7"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA["ANTRIAN LOKET TANGGAL "+$F{tanggal}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{tanggal}+" "+$F{jam}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="0" y="136" width="148" height="9" uuid="7c0c9af3-0b4a-47df-9a15-d7e17f6a905b">
@@ -118,7 +118,7 @@
 				<text><![CDATA[Ke Rumah Sakit]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="0" y="45" width="148" height="90" uuid="da37b308-4054-426c-a737-4799ae67f590">
+				<reportElement x="0" y="56" width="148" height="79" uuid="da37b308-4054-426c-a737-4799ae67f590">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -133,6 +133,14 @@
 					<font fontName="Tahoma" size="7" isItalic="false"/>
 				</textElement>
 				<text><![CDATA[Jika antrian terlewat 10 nomor, silahkan mengambil antrian ulang ke customer care]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="36" width="148" height="9" uuid="f05b952d-664b-4608-8f8f-a6cfba34270f"/>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="7"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<text><![CDATA[ANTRIAN LOKET]]></text>
 			</staticText>
 		</band>
 	</detail>
