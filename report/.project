@@ -8,4 +8,16 @@
 	</buildSpec>
 	<natures>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>rptBridgingSEP7.jrxml</name>
+			<type>1</type>
+			<location>D:/Projects/rptBridgingSEP7.jrxml</location>
+		</link>
+		<link>
+			<name>rptBridgingSEPAPM1_1.jrxml</name>
+			<type>1</type>
+			<location>D:/Projects/java/rptBridgingSEPAPM1.jrxml</location>
+		</link>
+	</linkedResources>
 </projectDescription>
