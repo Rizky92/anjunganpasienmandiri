@@ -374,7 +374,7 @@ public class DlgCekKunjunganBedaPoli extends javax.swing.JDialog {
     private void NoRMPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoRMPasienKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             if (NoRMPasien.getText().isBlank()) {
-                JOptionPane.showMessageDialog(rootPane, "Isian masih kosong..!!");
+                JOptionPane.showMessageDialog(null, "Isian masih kosong..!!");
             } else {
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 if (Sequel.cariIntegerSmc("select count(*) from pasien where no_peserta = ?", NoRMPasien.getText()) == 1) {
@@ -384,7 +384,7 @@ public class DlgCekKunjunganBedaPoli extends javax.swing.JDialog {
                 } else if (Sequel.cariInteger("select count(*) from pasien where no_ktp = ?", NoRMPasien.getText()) == 1) {
                     form.tampilKunjunganBedaPoli(Sequel.cariIsiSmc("select no_peserta from pasien where no_ktp = ?", NoRMPasien.getText()));
                 } else {
-                    JOptionPane.showMessageDialog(rootPane, "Data pasien tidak ditemukan!");
+                    JOptionPane.showMessageDialog(null, "Data pasien tidak ditemukan!");
                     this.setCursor(Cursor.getDefaultCursor());
                     return;
                 }
@@ -404,7 +404,7 @@ public class DlgCekKunjunganBedaPoli extends javax.swing.JDialog {
 
     private void BtnCekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCekActionPerformed
         if (NoRMPasien.getText().isBlank()) {
-            JOptionPane.showMessageDialog(rootPane, "Isian masih kosong..!!");
+            JOptionPane.showMessageDialog(null, "Isian masih kosong..!!");
         } else {
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             if (Sequel.cariIntegerSmc("select count(*) from pasien where no_peserta = ?", NoRMPasien.getText()) == 1) {
@@ -414,7 +414,7 @@ public class DlgCekKunjunganBedaPoli extends javax.swing.JDialog {
             } else if (Sequel.cariInteger("select count(*) from pasien where no_ktp = ?", NoRMPasien.getText()) == 1) {
                 form.tampilKunjunganBedaPoli(Sequel.cariIsiSmc("select no_peserta from pasien where no_ktp = ?", NoRMPasien.getText()));
             } else {
-                JOptionPane.showMessageDialog(rootPane, "Data pasien tidak ditemukan!");
+                JOptionPane.showMessageDialog(null, "Data pasien tidak ditemukan!");
                 this.setCursor(Cursor.getDefaultCursor());
                 return;
             }

@@ -412,15 +412,15 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
     private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
 
         if (labelNoRM.getText().isBlank()) {
-            JOptionPane.showMessageDialog(rootPane, "No. RM Kosong..!!");
+            JOptionPane.showMessageDialog(null, "No. RM Kosong..!!");
         } else if (regKodePoli.isBlank()) {
-            JOptionPane.showMessageDialog(rootPane, "Pilih poli terlebih dahulu..!!");
+            JOptionPane.showMessageDialog(null, "Pilih poli terlebih dahulu..!!");
         } else if (regKodeDokter.isBlank()) {
-            JOptionPane.showMessageDialog(rootPane, "Pilih Dokter terlebih dahulu..!!");
+            JOptionPane.showMessageDialog(null, "Pilih Dokter terlebih dahulu..!!");
         } else if (Sequel.cariIntegerSmc("select count(*) from reg_periksa where kd_pj = 'A09' and no_rkm_medis = ? and tgl_registrasi = ? and kd_poli = ? and kd_dokter = ?", labelNoRM.getText(), Valid.SetTgl(dateTanggalPeriksa.getSelectedItem().toString()), regKodePoli, regKodeDokter) > 0) {
-            JOptionPane.showMessageDialog(rootPane, "Maaf, anda sudah terdaftar pada hari ini dengan dokter dan poli yang sama..!!");
+            JOptionPane.showMessageDialog(null, "Maaf, anda sudah terdaftar pada hari ini dengan dokter dan poli yang sama..!!");
         } else if (Sequel.cariIntegerSmc("select count(*) from reg_periksa join kamar_inap on reg_periksa.no_rawat = kamar_inap.no_rawat where kamar_inap.stts_pulang = '-' and reg_periksa.no_rkm_medis = ?", labelNoRM.getText()) > 0) {
-            JOptionPane.showMessageDialog(rootPane, "Maaf, pasien sedang dalam masa perawatan di rawat inap..!!");
+            JOptionPane.showMessageDialog(null, "Maaf, pasien sedang dalam masa perawatan di rawat inap..!!");
         } else {
             setNomorRegistrasi();
             updateUmurPasien();
@@ -429,7 +429,7 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
             if (registerPasien()) {
                 cetakRegistrasi();
                 
-                JOptionPane.showMessageDialog(rootPane, "Berhasil!");
+                JOptionPane.showMessageDialog(null, "Berhasil!");
             }
             
             kosongkanInput();

@@ -380,7 +380,7 @@ public class DlgCekKunjunganPertamaSEP extends javax.swing.JDialog {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             if (NoRMPasien.getText().isBlank()) {
-                JOptionPane.showMessageDialog(rootPane, "Isian masih kosong..!!");
+                JOptionPane.showMessageDialog(null, "Isian masih kosong..!!");
                 this.setCursor(Cursor.getDefaultCursor());
                 return;
             }
@@ -389,7 +389,7 @@ public class DlgCekKunjunganPertamaSEP extends javax.swing.JDialog {
                 (Sequel.cariIntegerSmc("select count(*) from referensi_mobilejkn_bpjs where norm = ? and tanggalperiksa = current_date()", NoRMPasien.getText()) > 0) ||
                 (Sequel.cariIntegerSmc("select count(*) from referensi_mobilejkn_bpjs where nomorkartu = ? and tanggalperiksa = current_date()", NoRMPasien.getText()) > 0)
             ) {
-                JOptionPane.showMessageDialog(rootPane, "Pasien telah menggunakan Mobile JKN. Silahkan masuk melalui menu \"Cek In MobileJKN\"..!!");
+                JOptionPane.showMessageDialog(null, "Pasien telah menggunakan Mobile JKN. Silahkan masuk melalui menu \"Cek In MobileJKN\"..!!");
                 this.setCursor(Cursor.getDefaultCursor());
                 return;
             }
@@ -407,7 +407,7 @@ public class DlgCekKunjunganPertamaSEP extends javax.swing.JDialog {
                 this.dispose();
                 form.setVisible(true);
             } else {
-                JOptionPane.showMessageDialog(rootPane, "Data pasien tidak ditemukan!");
+                JOptionPane.showMessageDialog(null, "Data pasien tidak ditemukan!");
             }
             this.setCursor(Cursor.getDefaultCursor());
         }
@@ -420,7 +420,7 @@ public class DlgCekKunjunganPertamaSEP extends javax.swing.JDialog {
     private void BtnClose2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnClose2ActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         if (NoRMPasien.getText().isBlank()) {
-            JOptionPane.showMessageDialog(rootPane, "Isian masih kosong..!!");
+            JOptionPane.showMessageDialog(null, "Isian masih kosong..!!");
             this.setCursor(Cursor.getDefaultCursor());
             return;
         }
@@ -429,7 +429,7 @@ public class DlgCekKunjunganPertamaSEP extends javax.swing.JDialog {
             (Sequel.cariIntegerSmc("select count(*) from referensi_mobilejkn_bpjs where norm = ? and tanggalperiksa = current_date()", NoRMPasien.getText()) > 0) ||
             (Sequel.cariIntegerSmc("select count(*) from referensi_mobilejkn_bpjs where nomorkartu = ? and tanggalperiksa = current_date()", NoRMPasien.getText()) > 0)
         ) {
-            JOptionPane.showMessageDialog(rootPane, "Pasien telah menggunakan Mobile JKN. Silahkan masuk melalui menu \"Cek In MobileJKN\"..!!");
+            JOptionPane.showMessageDialog(null, "Pasien telah menggunakan Mobile JKN. Silahkan masuk melalui menu \"Cek In MobileJKN\"..!!");
             this.setCursor(Cursor.getDefaultCursor());
             return;
         }
@@ -447,7 +447,7 @@ public class DlgCekKunjunganPertamaSEP extends javax.swing.JDialog {
             this.dispose();
             form.setVisible(true);
         } else {
-            JOptionPane.showMessageDialog(rootPane, "Data pasien tidak ditemukan!");
+            JOptionPane.showMessageDialog(null, "Data pasien tidak ditemukan!");
         }
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnClose2ActionPerformed

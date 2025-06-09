@@ -1308,7 +1308,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
 
     private void btnCariNoRujukanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariNoRujukanActionPerformed
         if (NoKartu.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(rootPane, "No.Kartu masih kosong...!!");
+            JOptionPane.showMessageDialog(null, "No.Kartu masih kosong...!!");
         } else {
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             rujukanterakhir.setSize(jPanel1.getWidth() - 50, jPanel1.getHeight() - 50);
@@ -1385,7 +1385,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         } else if (KdDPJP.getText().trim().equals("") || NmDPJP.getText().trim().equals("")) {
             Valid.textKosong(KdDPJP, "DPJP");
         } else if (!statusfinger && Sequel.cariIntegerSmc("select timestampdiff(year, ?, current_date())", TglLahir.getText()) >= 17 && JenisPelayanan.getSelectedIndex() != 0 && !KdPoli.getText().equals("IGD")) {
-            JOptionPane.showMessageDialog(rootPane, "Maaf, Pasien belum melakukan Fingerprint");
+            JOptionPane.showMessageDialog(null, "Maaf, Pasien belum melakukan Fingerprint");
             bukaAplikasiValidasi();
         } else {
             if (!KdPoliTerapi.getText().equals("")) {
@@ -1405,7 +1405,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
             } else if (JenisPelayanan.getSelectedIndex() == 1) {
                 if (NmPoli.getText().toLowerCase().contains("darurat")) {
                     if (Sequel.cariIntegerSmc("select count(*) from bridging_sep where no_kartu = ? and jnspelayanan = ? and tglsep = ? and nmpolitujuan like '%darurat%'", NoKartu.getText().trim(), JenisPelayanan.getSelectedItem().toString().substring(0, 1), Valid.SetTgl(TanggalSEP.getSelectedItem().toString())) >= 3) {
-                        JOptionPane.showMessageDialog(rootPane, "Maaf, sebelumnya sudah dilakukan 3x pembuatan SEP di jenis pelayanan yang sama..!!");
+                        JOptionPane.showMessageDialog(null, "Maaf, sebelumnya sudah dilakukan 3x pembuatan SEP di jenis pelayanan yang sama..!!");
                     } else {
                         if ((!kodedokterreg.equals("")) && (!kodepolireg.equals(""))) {
                             SimpanAntrianOnSite();
@@ -1414,7 +1414,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                     }
                 } else if (!NmPoli.getText().toLowerCase().contains("darurat")) {
                     if (Sequel.cariIntegerSmc("select count(*) from bridging_sep where no_kartu = ? and jnspelayanan = ? and tglsep = ? and nmpolitujuan not like '%darurat%'", NoKartu.getText().trim(), JenisPelayanan.getSelectedItem().toString().substring(0, 1), Valid.SetTgl(TanggalSEP.getSelectedItem().toString())) >= 1) {
-                        JOptionPane.showMessageDialog(rootPane, "Maaf, sebelumnya sudah dilakukan pembuatan SEP di jenis pelayanan yang sama..!!");
+                        JOptionPane.showMessageDialog(null, "Maaf, sebelumnya sudah dilakukan pembuatan SEP di jenis pelayanan yang sama..!!");
                     } else {
                         if ((!kodedokterreg.equals("")) && (!kodepolireg.equals(""))) {
                             SimpanAntrianOnSite();
@@ -1435,7 +1435,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
             WindowAksi.setLocationRelativeTo(null);
             WindowAksi.setVisible(true);
         } else {
-            JOptionPane.showMessageDialog(rootPane, "Maaf, No. Kartu Peserta tidak ada...!!!");
+            JOptionPane.showMessageDialog(null, "Maaf, No. Kartu Peserta tidak ada...!!!");
         }
     }//GEN-LAST:event_btnApprovalFPActionPerformed
 
@@ -1447,7 +1447,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
             WindowAksi.setLocationRelativeTo(null);
             WindowAksi.setVisible(true);
         } else {
-            JOptionPane.showMessageDialog(rootPane, "Maaf, No. Kartu Peserta tidak ada...!!!");
+            JOptionPane.showMessageDialog(null, "Maaf, No. Kartu Peserta tidak ada...!!!");
         }
     }//GEN-LAST:event_btnPengajuanFPActionPerformed
 
@@ -1479,7 +1479,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
     private void btnAksiKonfirmasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAksiKonfirmasiActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         if (NoKartu.getText().isBlank()) {
-            JOptionPane.showMessageDialog(rootPane, "Maaf, No. Kartu Peserta tidak ada...!!!");
+            JOptionPane.showMessageDialog(null, "Maaf, No. Kartu Peserta tidak ada...!!!");
         } else {
             try {
                 ps = koneksi.prepareStatement("select aes_decrypt(id_user, 'nur') from user where id_user = aes_encrypt(?, 'nur') and password = aes_encrypt(?, 'windi') limit 1");
@@ -1517,14 +1517,14 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                                 System.out.println("code : " + nameNode.path("code").asText());
                                 System.out.println("message : " + nameNode.path("message").asText());
                                 if (nameNode.path("code").asText().equals("200")) {
-                                    JOptionPane.showMessageDialog(rootPane, "Pengajuan Berhasil");
+                                    JOptionPane.showMessageDialog(null, "Pengajuan Berhasil");
                                 } else {
                                     JOptionPane.showMessageDialog(rootPane, nameNode.path("message").asText());
                                 }
                             } catch (Exception ex) {
                                 System.out.println("Notifikasi Bridging : " + ex);
                                 if (ex.toString().contains("UnknownHostException")) {
-                                    JOptionPane.showMessageDialog(rootPane, "Koneksi ke server BPJS terputus...!");
+                                    JOptionPane.showMessageDialog(null, "Koneksi ke server BPJS terputus...!");
                                 }
                             }
                         } else if (aksi.equals("Approval")) {
@@ -1556,23 +1556,23 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                                 System.out.println("code : " + nameNode.path("code").asText());
                                 System.out.println("message : " + nameNode.path("message").asText());
                                 if (nameNode.path("code").asText().equals("200")) {
-                                    JOptionPane.showMessageDialog(rootPane, "Approval Berhasil");
+                                    JOptionPane.showMessageDialog(null, "Approval Berhasil");
                                 } else {
                                     JOptionPane.showMessageDialog(rootPane, nameNode.path("message").asText());
                                 }
                             } catch (Exception ex) {
                                 System.out.println("Notifikasi Bridging : " + ex);
                                 if (ex.toString().contains("UnknownHostException")) {
-                                    JOptionPane.showMessageDialog(rootPane, "Koneksi ke server BPJS terputus...!");
+                                    JOptionPane.showMessageDialog(null, "Koneksi ke server BPJS terputus...!");
                                 }
                             }
                         } else {
                             resetAksi();
-                            JOptionPane.showMessageDialog(rootPane, "Anda tidak diizinkan untuk melakukan aksi ini...!!!");
+                            JOptionPane.showMessageDialog(null, "Anda tidak diizinkan untuk melakukan aksi ini...!!!");
                         }
                     } else {
                         resetAksi();
-                        JOptionPane.showMessageDialog(rootPane, "Anda tidak diizinkan untuk melakukan aksi ini...!!!");
+                        JOptionPane.showMessageDialog(null, "Anda tidak diizinkan untuk melakukan aksi ini...!!!");
                     }
                 } catch (Exception e) {
                     System.out.println("Notif : " + e);
@@ -1587,7 +1587,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
             } catch (Exception e) {
                 System.out.println("Notif : " + e);
                 resetAksi();
-                JOptionPane.showMessageDialog(rootPane, "Terjadi kesalahan pada saat memproses aksi...!!!");
+                JOptionPane.showMessageDialog(null, "Terjadi kesalahan pada saat memproses aksi...!!!");
             }
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -1848,7 +1848,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
             nameNode = root.path("metaData");
             System.out.println("code : " + nameNode.path("code").asText());
-            JOptionPane.showMessageDialog(rootPane, "Respon BPJS : " + nameNode.path("message").asText());
+            JOptionPane.showMessageDialog(null, "Respon BPJS : " + nameNode.path("message").asText());
             if (nameNode.path("code").asText().equals("200")) {
                 response = mapper.readTree(api.Decrypt(root.path("response").asText(), utc)).path("sep").path("noSep");
                 Sequel.mengupdateSmc("pasien",
@@ -1941,7 +1941,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         } catch (Exception ex) {
             System.out.println("Notifikasi Bridging : " + ex);
             if (ex.toString().contains("UnknownHostException")) {
-                JOptionPane.showMessageDialog(rootPane, "Koneksi ke server BPJS terputus...!");
+                JOptionPane.showMessageDialog(null, "Koneksi ke server BPJS terputus...!");
             }
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -1951,7 +1951,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         statusfinger = false;
 
         if (NoKartu.getText().isBlank()) {
-            JOptionPane.showMessageDialog(rootPane, "No. Kartu BPJS tidak ada..!!");
+            JOptionPane.showMessageDialog(null, "No. Kartu BPJS tidak ada..!!");
 
             return;
         }
@@ -1990,7 +1990,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         } catch (Exception ex) {
             System.out.println("Notifikasi Bridging : " + ex);
             if (ex.toString().contains("UnknownHostException")) {
-                JOptionPane.showMessageDialog(rootPane, "Koneksi ke server BPJS terputus...!");
+                JOptionPane.showMessageDialog(null, "Koneksi ke server BPJS terputus...!");
             }
         }
     }
@@ -2100,7 +2100,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                                 } catch (Exception e) {
                                     System.out.println("Notif : " + e);
                                     if (e.toString().contains("UnknownHostException")) {
-                                        JOptionPane.showMessageDialog(rootPane, "Koneksi ke Server BPJS terputus...!!!");
+                                        JOptionPane.showMessageDialog(null, "Koneksi ke Server BPJS terputus...!!!");
                                     }
                                     emptTeks();
                                 }
@@ -2136,7 +2136,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                                 } catch (Exception e) {
                                     System.out.println("Notif : " + e);
                                     if (e.toString().contains("UnknownHostException")) {
-                                        JOptionPane.showMessageDialog(rootPane, "Koneksi ke Server BPJS terputus...!!!");
+                                        JOptionPane.showMessageDialog(null, "Koneksi ke Server BPJS terputus...!!!");
                                     }
                                     emptTeks();
                                 }
@@ -2210,22 +2210,22 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                                                 } catch (Exception e) {
                                                     System.out.println("Notifikasi Peserta : " + e);
                                                     if (e.toString().contains("UnknownHostException")) {
-                                                        JOptionPane.showMessageDialog(rootPane, "Koneksi ke server BPJS terputus...!");
+                                                        JOptionPane.showMessageDialog(null, "Koneksi ke server BPJS terputus...!");
                                                     }
                                                     emptTeks();
                                                 }
                                             }
                                         } else {
-                                            JOptionPane.showMessageDialog(rootPane, "Maaf, rujukan kontrol pasien tidak ditemukan!\nSilahkan hubungi administrasi.");
+                                            JOptionPane.showMessageDialog(null, "Maaf, rujukan kontrol pasien tidak ditemukan!\nSilahkan hubungi administrasi.");
                                             emptTeks();
                                         }
                                     }
                                 } catch (Exception e) {
-                                    JOptionPane.showMessageDialog(rootPane, "Maaf, rujukan kontrol pasien tidak ditemukan!\nSilahkan hubungi administrasi.");
+                                    JOptionPane.showMessageDialog(null, "Maaf, rujukan kontrol pasien tidak ditemukan!\nSilahkan hubungi administrasi.");
                                     emptTeks();
                                 }
                             } else {
-                                JOptionPane.showMessageDialog(rootPane, "Maaf, antrian JKN tidak ditemukan!\nSilahkan hubungi administrasi.");
+                                JOptionPane.showMessageDialog(null, "Maaf, antrian JKN tidak ditemukan!\nSilahkan hubungi administrasi.");
                                 emptTeks();
                             }
                         } else {
@@ -2236,18 +2236,18 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                     } catch (Exception e) {
                         System.out.println("Notif : " + e);
                         if (e.toString().contains("UnknownHostException")) {
-                            JOptionPane.showMessageDialog(rootPane, "Koneksi ke server BPJS terputus...!");
+                            JOptionPane.showMessageDialog(null, "Koneksi ke server BPJS terputus...!");
                         }
                         emptTeks();
                     }
                 } else {
-                    JOptionPane.showMessageDialog(rootPane, "Maaf, pasien membatalkan antrian MobileJKN, atau telah menerima pelayanan!\nSilahkan hubungi administrasi.");
+                    JOptionPane.showMessageDialog(null, "Maaf, pasien membatalkan antrian MobileJKN, atau telah menerima pelayanan!\nSilahkan hubungi administrasi.");
                     emptTeks();
                 }
             }
         } catch (Exception e) {
             System.out.println("Notif : " + e);
-            JOptionPane.showMessageDialog(rootPane, "Maaf, terjadi kesalahan pada saat mencari rujukan di MobileJKN!\nSilahkan hubungi administrasi.");
+            JOptionPane.showMessageDialog(null, "Maaf, terjadi kesalahan pada saat mencari rujukan di MobileJKN!\nSilahkan hubungi administrasi.");
             emptTeks();
         }
     }
@@ -2403,7 +2403,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
 
     private void bukaAplikasiFingerprint() {
         if (NoKartu.getText().isBlank()) {
-            JOptionPane.showMessageDialog(rootPane, "No. kartu peserta tidak ada..!!");
+            JOptionPane.showMessageDialog(null, "No. kartu peserta tidak ada..!!");
 
             return;
         }
@@ -2578,7 +2578,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
     
     private void updateSuratKontrol(String noSKDP, String noSEP, String noKartu, String tanggalPeriksa, String kodeDPJP, String namaDPJP, String kodePoli, String namaPoli) {
         if (noSKDP.trim().isEmpty()) {
-            JOptionPane.showMessageDialog(rootPane, "Maaf, data surat kontrol tidak ditemukan...!!\nSilahkan hubungi administrasi...!!");
+            JOptionPane.showMessageDialog(null, "Maaf, data surat kontrol tidak ditemukan...!!\nSilahkan hubungi administrasi...!!");
             return;
         }
         try {
@@ -2617,7 +2617,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         } catch (Exception ex) {
             System.out.println("Notifikasi Bridging : " + ex);
             if (ex.toString().contains("UnknownHostException")) {
-                JOptionPane.showMessageDialog(rootPane, "Koneksi ke server BPJS terputus...!");
+                JOptionPane.showMessageDialog(null, "Koneksi ke server BPJS terputus...!");
             }
         }
     }

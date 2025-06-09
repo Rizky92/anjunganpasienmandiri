@@ -513,7 +513,7 @@ public class DlgCekNoRM extends javax.swing.JDialog {
                 this.dispose();
                 form.setVisible(true);
             } else {
-                JOptionPane.showMessageDialog(rootPane, "No Rekam Medis tidak terdaftar ");
+                JOptionPane.showMessageDialog(null, "No Rekam Medis tidak terdaftar ");
                 NoRMPasien.setText("");
             }
             this.setCursor(Cursor.getDefaultCursor());
@@ -543,7 +543,7 @@ public class DlgCekNoRM extends javax.swing.JDialog {
             this.dispose();
             form.setVisible(true);
         } else {
-            JOptionPane.showMessageDialog(rootPane, "No Rekam Medis tidak terdaftar ");
+            JOptionPane.showMessageDialog(null, "No Rekam Medis tidak terdaftar ");
             NoRMPasien.setText("");
         }
         this.setCursor(Cursor.getDefaultCursor());

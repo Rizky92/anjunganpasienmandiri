@@ -379,7 +379,7 @@ public class DlgCekinMobileJKN extends javax.swing.JDialog {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             if (NoRMPasien.getText().isBlank()) {
-                JOptionPane.showMessageDialog(rootPane, "Isian masih kosong..!!");
+                JOptionPane.showMessageDialog(null, "Isian masih kosong..!!");
                 this.setCursor(Cursor.getDefaultCursor());
                 return;
             }
@@ -399,7 +399,7 @@ public class DlgCekinMobileJKN extends javax.swing.JDialog {
                 this.dispose();
                 this.setCursor(Cursor.getDefaultCursor());
             } else {
-                JOptionPane.showMessageDialog(rootPane, "Data Booking MobileJKN tidak ditemukan. ");
+                JOptionPane.showMessageDialog(null, "Data Booking MobileJKN tidak ditemukan. ");
                 this.setCursor(Cursor.getDefaultCursor());
             }
         }
@@ -412,7 +412,7 @@ public class DlgCekinMobileJKN extends javax.swing.JDialog {
     private void BtnKonfirmasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKonfirmasiActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         if (NoRMPasien.getText().isBlank()) {
-            JOptionPane.showMessageDialog(rootPane, "Isian masih kosong..!!");
+            JOptionPane.showMessageDialog(null, "Isian masih kosong..!!");
             this.setCursor(Cursor.getDefaultCursor());
             return;
         }
@@ -432,7 +432,7 @@ public class DlgCekinMobileJKN extends javax.swing.JDialog {
             this.dispose();
             this.setCursor(Cursor.getDefaultCursor());
         } else {
-            JOptionPane.showMessageDialog(rootPane, "Data Booking MobileJKN tidak ditemukan. ");
+            JOptionPane.showMessageDialog(null, "Data Booking MobileJKN tidak ditemukan. ");
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnKonfirmasiActionPerformed

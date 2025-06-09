@@ -485,22 +485,22 @@ public class DlgCekBooking extends javax.swing.JDialog {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             if (NoRMPasien.getText().equals("")) {
-                JOptionPane.showMessageDialog(rootPane, "No Rekam Medis kosong ");
+                JOptionPane.showMessageDialog(null, "No Rekam Medis kosong ");
                 NoRMPasien.setText("");
             } else if (Sequel.cariInteger("SELECT count(no_rkm_medis) FROM pasien WHERE no_rkm_medis = '" + NoRMPasien.getText() + "'") == 0) {
-                JOptionPane.showMessageDialog(rootPane, "Data pasien tidak ditemukan ");
+                JOptionPane.showMessageDialog(null, "Data pasien tidak ditemukan ");
                 NoRMPasien.setText("");
             } else if (Sequel.cariInteger("SELECT count(kd_pj) FROM booking_registrasi WHERE no_rkm_medis = '" + NoRMPasien.getText() + "' AND kd_pj!='A09' AND tanggal_periksa=current_date()") > 0) {
-                JOptionPane.showMessageDialog(rootPane, "Maaf, Anda menggunakan Asuransi. \n Untuk pasien BPJS, Silahkan cekin menggunakan menu BPJS.\n Untuk Asuransi silahkan menuju loket Admisi ");
+                JOptionPane.showMessageDialog(null, "Maaf, Anda menggunakan Asuransi. \n Untuk pasien BPJS, Silahkan cekin menggunakan menu BPJS.\n Untuk Asuransi silahkan menuju loket Admisi ");
                 NoRMPasien.setText("");
             } else if (Sequel.cariInteger("SELECT count(no_rkm_medis) FROM booking_registrasi WHERE no_rkm_medis = '" + NoRMPasien.getText() + "' AND tanggal_periksa=current_date()") == 0) {
-                JOptionPane.showMessageDialog(rootPane, "Data Booking tidak ditemukan ");
+                JOptionPane.showMessageDialog(null, "Data Booking tidak ditemukan ");
                 NoRMPasien.setText("");
             } else if (Sequel.cariInteger("SELECT count(no_rkm_medis) FROM booking_registrasi WHERE status='Terdaftar' and no_rkm_medis = '" + NoRMPasien.getText() + "' AND tanggal_periksa=current_date()") > 0) {
-                JOptionPane.showMessageDialog(rootPane, "Data Booking telah terdaftar ");
+                JOptionPane.showMessageDialog(null, "Data Booking telah terdaftar ");
                 NoRMPasien.setText("");
             } else if (Sequel.cariInteger("SELECT count(no_rkm_medis) FROM booking_registrasi WHERE status='Batal' and no_rkm_medis = '" + NoRMPasien.getText() + "' AND tanggal_periksa=current_date()") > 0) {
-                JOptionPane.showMessageDialog(rootPane, "Data Booking telah dibatalkan ");
+                JOptionPane.showMessageDialog(null, "Data Booking telah dibatalkan ");
                 NoRMPasien.setText("");
             } else if (GeneralConsentSatuSehat(NoRMPasien.getText()) == false) {
                 int i = JOptionPane.showConfirmDialog(rootPane, "Anda perlu menyetujui Inform Consent terbaru tentang Platform SATUSEHAT. \n Apakah anda menyetujui? \n", "Konfirmasi", JOptionPane.YES_NO_OPTION);
@@ -534,22 +534,22 @@ public class DlgCekBooking extends javax.swing.JDialog {
 
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         if (NoRMPasien.getText().equals("")) {
-            JOptionPane.showMessageDialog(rootPane, "No Rekam Medis kosong ");
+            JOptionPane.showMessageDialog(null, "No Rekam Medis kosong ");
             NoRMPasien.setText("");
         } else if (Sequel.cariInteger("SELECT count(no_rkm_medis) FROM pasien WHERE no_rkm_medis = '" + NoRMPasien.getText() + "'") == 0) {
-            JOptionPane.showMessageDialog(rootPane, "Data pasien tidak ditemukan ");
+            JOptionPane.showMessageDialog(null, "Data pasien tidak ditemukan ");
             NoRMPasien.setText("");
         } else if (Sequel.cariInteger("SELECT count(kd_pj) FROM booking_registrasi WHERE no_rkm_medis = '" + NoRMPasien.getText() + "' AND kd_pj!='A09' AND tanggal_periksa=current_date()") > 0) {
-            JOptionPane.showMessageDialog(rootPane, "Maaf, Anda menggunakan Asuransi. \n Untuk pasien BPJS, Silahkan cekin menggunakan menu BPJS.\n Untuk Asuransi silahkan menuju loket Admisi ");
+            JOptionPane.showMessageDialog(null, "Maaf, Anda menggunakan Asuransi. \n Untuk pasien BPJS, Silahkan cekin menggunakan menu BPJS.\n Untuk Asuransi silahkan menuju loket Admisi ");
             NoRMPasien.setText("");
         } else if (Sequel.cariInteger("SELECT count(no_rkm_medis) FROM booking_registrasi WHERE no_rkm_medis = '" + NoRMPasien.getText() + "' AND tanggal_periksa=current_date()") == 0) {
-            JOptionPane.showMessageDialog(rootPane, "Data Booking tidak ditemukan ");
+            JOptionPane.showMessageDialog(null, "Data Booking tidak ditemukan ");
             NoRMPasien.setText("");
         } else if (Sequel.cariInteger("SELECT count(no_rkm_medis) FROM booking_registrasi WHERE status='Terdaftar' and no_rkm_medis = '" + NoRMPasien.getText() + "' AND tanggal_periksa=current_date()") > 0) {
-            JOptionPane.showMessageDialog(rootPane, "Data Booking telah terdaftar ");
+            JOptionPane.showMessageDialog(null, "Data Booking telah terdaftar ");
             NoRMPasien.setText("");
         } else if (Sequel.cariInteger("SELECT count(no_rkm_medis) FROM booking_registrasi WHERE status='Batal' and no_rkm_medis = '" + NoRMPasien.getText() + "' AND tanggal_periksa=current_date()") > 0) {
-            JOptionPane.showMessageDialog(rootPane, "Data Booking telah dibatalkan ");
+            JOptionPane.showMessageDialog(null, "Data Booking telah dibatalkan ");
             NoRMPasien.setText("");
         } else if (GeneralConsentSatuSehat(NoRMPasien.getText()) == false) {
             int i = JOptionPane.showConfirmDialog(rootPane, "Anda perlu menyetujui Inform Consent terbaru tentang Platform SATUSEHAT. \n Apakah anda menyetujui? \n", "Konfirmasi", JOptionPane.YES_NO_OPTION);
@@ -750,7 +750,7 @@ public class DlgCekBooking extends javax.swing.JDialog {
                         });
                         Sequel.mengedit("pasien", "no_rkm_medis=?", "umur=CONCAT(CONCAT(CONCAT(TIMESTAMPDIFF(YEAR, tgl_lahir, CURDATE()), ' Th '),CONCAT(TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) div 12) * 12), ' Bl ')),CONCAT(TIMESTAMPDIFF(DAY, DATE_ADD(DATE_ADD(tgl_lahir,INTERVAL TIMESTAMPDIFF(YEAR, tgl_lahir, CURDATE()) YEAR), INTERVAL TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) div 12) * 12) MONTH), CURDATE()), ' Hr'))", 1, new String[]{NoRMPasien.getText()});
 
-                        JOptionPane.showMessageDialog(rootPane, "Berhasil");
+                        JOptionPane.showMessageDialog(null, "Berhasil");
                         MnCetakRegisterActionPerformed(NoRawat.getText());
                         NoRMPasien.setText("");
                         NoRawat.setText("");

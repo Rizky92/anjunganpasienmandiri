@@ -505,7 +505,7 @@ public final class BPJSCekReferensiDokterDPJP1 extends javax.swing.JDialog {
         } catch (Exception ex) {
             System.out.println("Notifikasi : " + ex);
             if (ex.toString().contains("UnknownHostException")) {
-                JOptionPane.showMessageDialog(rootPane, "Koneksi ke server BPJS terputus...!");
+                JOptionPane.showMessageDialog(null, "Koneksi ke server BPJS terputus...!");
             }
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -548,7 +548,7 @@ public final class BPJSCekReferensiDokterDPJP1 extends javax.swing.JDialog {
         } catch (Exception ex) {
             System.out.println("Notifikasi : " + ex);
             if (ex.toString().contains("UnknownHostException")) {
-                JOptionPane.showMessageDialog(rootPane, "Koneksi ke server BPJS terputus...!");
+                JOptionPane.showMessageDialog(null, "Koneksi ke server BPJS terputus...!");
             }
         }
         this.setCursor(Cursor.getDefaultCursor());

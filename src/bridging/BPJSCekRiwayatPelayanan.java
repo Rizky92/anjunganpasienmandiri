@@ -368,7 +368,7 @@ public final class BPJSCekRiwayatPelayanan extends javax.swing.JDialog {
         } catch (Exception ex) {
             System.out.println("Notifikasi Peserta : " + ex);
             if (ex.toString().contains("UnknownHostException")) {
-                JOptionPane.showMessageDialog(rootPane, "Koneksi ke server BPJS terputus...!");
+                JOptionPane.showMessageDialog(null, "Koneksi ke server BPJS terputus...!");
             }
         }
     }
@@ -406,7 +406,7 @@ public final class BPJSCekRiwayatPelayanan extends javax.swing.JDialog {
         } catch (Exception ex) {
             System.out.println("Notifikasi Peserta : " + ex);
             if (ex.toString().contains("UnknownHostException")) {
-                JOptionPane.showMessageDialog(rootPane, "Koneksi ke server BPJS terputus...!");
+                JOptionPane.showMessageDialog(null, "Koneksi ke server BPJS terputus...!");
             }
         }
     }

@@ -35,10 +35,10 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
         this.setSize(screenSize.width, screenSize.height);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         
-        jPanel1.remove(btnAdmin11);
-        jPanel1.remove(btnAdmin7);
+        jPanel1.remove(btnAktivasiSatuSehat);
+        jPanel1.remove(btnCekinBooking);
         if (!koneksiDB.ANTRIANPREFIXHURUF()) {
-            jPanel1.remove(btnAdmin10);
+            jPanel1.remove(btnAmbilAntrian);
         }
         
         jPanel1.repaint();
@@ -59,14 +59,14 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         PanelWall = new usu.widget.glass.PanelGlass();
         jPanel1 = new component.Panel();
-        btnAdmin10 = new widget.ButtonBig();
-        btnAdmin7 = new widget.ButtonBig();
-        btnAdmin2 = new widget.ButtonBig();
-        btnAdmin5 = new widget.ButtonBig();
-        btnAdmin6 = new widget.ButtonBig();
-        btnAdmin9 = new widget.ButtonBig();
-        btnAdmin8 = new widget.ButtonBig();
-        btnAdmin11 = new widget.ButtonBig();
+        btnAmbilAntrian = new widget.ButtonBig();
+        btnCekinBooking = new widget.ButtonBig();
+        btnDaftarEksekutif = new widget.ButtonBig();
+        btnSEPPertama = new widget.ButtonBig();
+        btnSEPKontrol = new widget.ButtonBig();
+        btnSEPKontrolBedaPoli = new widget.ButtonBig();
+        btnCekinMobileJKN = new widget.ButtonBig();
+        btnAktivasiSatuSehat = new widget.ButtonBig();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("ANJUNGAN PASIEN MANDIRI");
@@ -125,168 +125,165 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
         jPanel1.setPreferredSize(new java.awt.Dimension(1280, 1024));
         jPanel1.setLayout(new java.awt.GridLayout(0, 2));
 
-        btnAdmin10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/antrianpasien.png"))); // NOI18N
-        btnAdmin10.setText("ANTRIAN PASIEN");
-        btnAdmin10.setFont(new java.awt.Font("Inter", 1, 30)); // NOI18N
-        btnAdmin10.setIconTextGap(0);
-        btnAdmin10.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnAdmin10.addActionListener(new java.awt.event.ActionListener() {
+        btnAmbilAntrian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/antrianpasien.png"))); // NOI18N
+        btnAmbilAntrian.setText("ANTRIAN PASIEN");
+        btnAmbilAntrian.setFont(new java.awt.Font("Inter", 1, 30)); // NOI18N
+        btnAmbilAntrian.setIconTextGap(0);
+        btnAmbilAntrian.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnAmbilAntrian.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAdmin10ActionPerformed(evt);
+                btnAmbilAntrianActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAdmin10);
+        jPanel1.add(btnAmbilAntrian);
 
-        btnAdmin7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checkin.png"))); // NOI18N
-        btnAdmin7.setText("CEK IN REGISTRASI");
-        btnAdmin7.setEnabled(false);
-        btnAdmin7.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
-        btnAdmin7.setIconTextGap(0);
-        btnAdmin7.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnAdmin7.addActionListener(new java.awt.event.ActionListener() {
+        btnCekinBooking.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checkin.png"))); // NOI18N
+        btnCekinBooking.setText("CEK IN REGISTRASI");
+        btnCekinBooking.setFont(new java.awt.Font("Inter", 1, 30)); // NOI18N
+        btnCekinBooking.setIconTextGap(0);
+        btnCekinBooking.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCekinBooking.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAdmin7ActionPerformed(evt);
+                btnCekinBookingActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAdmin7);
+        jPanel1.add(btnCekinBooking);
 
-        btnAdmin2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/kioskselfservice.png"))); // NOI18N
-        btnAdmin2.setText("PENDAFTARAN POLIKLINIK");
-        btnAdmin2.setFont(new java.awt.Font("Inter", 1, 30)); // NOI18N
-        btnAdmin2.setIconTextGap(0);
-        btnAdmin2.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnAdmin2.addActionListener(new java.awt.event.ActionListener() {
+        btnDaftarEksekutif.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/kioskselfservice.png"))); // NOI18N
+        btnDaftarEksekutif.setText("PENDAFTARAN POLIKLINIK");
+        btnDaftarEksekutif.setFont(new java.awt.Font("Inter", 1, 30)); // NOI18N
+        btnDaftarEksekutif.setIconTextGap(0);
+        btnDaftarEksekutif.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnDaftarEksekutif.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAdmin2ActionPerformed(evt);
+                btnDaftarEksekutifActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAdmin2);
+        jPanel1.add(btnDaftarEksekutif);
 
-        btnAdmin5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/BPJS_Kesehatan_Logo.png"))); // NOI18N
-        btnAdmin5.setText("SEP KUNJUNGAN PERTAMA");
-        btnAdmin5.setFont(new java.awt.Font("Inter", 1, 30)); // NOI18N
-        btnAdmin5.setIconTextGap(0);
-        btnAdmin5.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnAdmin5.addActionListener(new java.awt.event.ActionListener() {
+        btnSEPPertama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/BPJS_Kesehatan_Logo.png"))); // NOI18N
+        btnSEPPertama.setText("SEP KUNJUNGAN PERTAMA");
+        btnSEPPertama.setFont(new java.awt.Font("Inter", 1, 30)); // NOI18N
+        btnSEPPertama.setIconTextGap(0);
+        btnSEPPertama.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSEPPertama.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAdmin5ActionPerformed(evt);
+                btnSEPPertamaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAdmin5);
+        jPanel1.add(btnSEPPertama);
 
-        btnAdmin6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/BPJS_Kesehatan_Logo.png"))); // NOI18N
-        btnAdmin6.setText("SEP KONTROL");
-        btnAdmin6.setFont(new java.awt.Font("Inter", 1, 30)); // NOI18N
-        btnAdmin6.setIconTextGap(0);
-        btnAdmin6.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnAdmin6.addActionListener(new java.awt.event.ActionListener() {
+        btnSEPKontrol.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/BPJS_Kesehatan_Logo.png"))); // NOI18N
+        btnSEPKontrol.setText("SEP KONTROL");
+        btnSEPKontrol.setFont(new java.awt.Font("Inter", 1, 30)); // NOI18N
+        btnSEPKontrol.setIconTextGap(0);
+        btnSEPKontrol.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSEPKontrol.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAdmin6ActionPerformed(evt);
+                btnSEPKontrolActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAdmin6);
+        jPanel1.add(btnSEPKontrol);
 
-        btnAdmin9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/BPJS_Kesehatan_Logo.png"))); // NOI18N
-        btnAdmin9.setText("KONTROL BEDA POLI");
-        btnAdmin9.setFont(new java.awt.Font("Inter", 1, 30)); // NOI18N
-        btnAdmin9.setIconTextGap(0);
-        btnAdmin9.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnAdmin9.addActionListener(new java.awt.event.ActionListener() {
+        btnSEPKontrolBedaPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/BPJS_Kesehatan_Logo.png"))); // NOI18N
+        btnSEPKontrolBedaPoli.setText("KONTROL BEDA POLI");
+        btnSEPKontrolBedaPoli.setFont(new java.awt.Font("Inter", 1, 30)); // NOI18N
+        btnSEPKontrolBedaPoli.setIconTextGap(0);
+        btnSEPKontrolBedaPoli.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSEPKontrolBedaPoli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAdmin9ActionPerformed(evt);
+                btnSEPKontrolBedaPoliActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAdmin9);
+        jPanel1.add(btnSEPKontrolBedaPoli);
 
-        btnAdmin8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/mobilejkn48.png"))); // NOI18N
-        btnAdmin8.setText("CEK IN MOBILEJKN");
-        btnAdmin8.setFont(new java.awt.Font("Inter", 1, 30)); // NOI18N
-        btnAdmin8.setIconTextGap(0);
-        btnAdmin8.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnAdmin8.addActionListener(new java.awt.event.ActionListener() {
+        btnCekinMobileJKN.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/mobilejkn48.png"))); // NOI18N
+        btnCekinMobileJKN.setText("CEK IN MOBILEJKN");
+        btnCekinMobileJKN.setFont(new java.awt.Font("Inter", 1, 30)); // NOI18N
+        btnCekinMobileJKN.setIconTextGap(0);
+        btnCekinMobileJKN.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnCekinMobileJKN.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAdmin8ActionPerformed(evt);
+                btnCekinMobileJKNActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAdmin8);
+        jPanel1.add(btnCekinMobileJKN);
 
-        btnAdmin11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/logo-satset.png"))); // NOI18N
-        btnAdmin11.setText("AKTIVASI SATUSEHAT");
-        btnAdmin11.setEnabled(false);
-        btnAdmin11.setFont(new java.awt.Font("Inter", 1, 30)); // NOI18N
-        btnAdmin11.setIconTextGap(0);
-        btnAdmin11.setPreferredSize(new java.awt.Dimension(200, 90));
-        btnAdmin11.addActionListener(new java.awt.event.ActionListener() {
+        btnAktivasiSatuSehat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/logo-satset.png"))); // NOI18N
+        btnAktivasiSatuSehat.setText("AKTIVASI SATUSEHAT");
+        btnAktivasiSatuSehat.setFont(new java.awt.Font("Inter", 1, 30)); // NOI18N
+        btnAktivasiSatuSehat.setIconTextGap(0);
+        btnAktivasiSatuSehat.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnAktivasiSatuSehat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAdmin11ActionPerformed(evt);
+                btnAktivasiSatuSehatActionPerformed(evt);
             }
         });
-        jPanel1.add(btnAdmin11);
+        jPanel1.add(btnAktivasiSatuSehat);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnAdmin6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdmin6ActionPerformed
+    private void btnSEPKontrolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSEPKontrolActionPerformed
         DlgCekSKDPKontrol pilih = new DlgCekSKDPKontrol(null, true);
         pilih.setSize(this.getWidth(), this.getHeight());
         pilih.setLocationRelativeTo(this);
         pilih.setVisible(true);
-    }//GEN-LAST:event_btnAdmin6ActionPerformed
+    }//GEN-LAST:event_btnSEPKontrolActionPerformed
 
-    private void btnAdmin2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdmin2ActionPerformed
+    private void btnDaftarEksekutifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDaftarEksekutifActionPerformed
         DlgCekNoRM pilih = new DlgCekNoRM(null, true);
         pilih.setSize(this.getWidth(), this.getHeight());
         pilih.setLocationRelativeTo(this);
         pilih.setVisible(true);
-    }//GEN-LAST:event_btnAdmin2ActionPerformed
+    }//GEN-LAST:event_btnDaftarEksekutifActionPerformed
 
-    private void btnAdmin7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdmin7ActionPerformed
-        JOptionPane.showMessageDialog(rootPane, "Mohon maaf, fitur masih dalam tahap pengembangan");
-//        DlgCekBooking pilih = new DlgCekBooking(null, true);
-//        pilih.setSize(this.getWidth(), this.getHeight());
-//        pilih.setLocationRelativeTo(this);
-//        pilih.setVisible(true);
-    }//GEN-LAST:event_btnAdmin7ActionPerformed
+    private void btnCekinBookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCekinBookingActionPerformed
+        JOptionPane.showMessageDialog(null, "Mohon maaf, fitur masih dalam tahap pengembangan");
+        // DlgCekBooking pilih = new DlgCekBooking(null, true);
+        // pilih.setSize(this.getWidth(), this.getHeight());
+        // pilih.setLocationRelativeTo(this);
+        // pilih.setVisible(true);
+    }//GEN-LAST:event_btnCekinBookingActionPerformed
 
-    private void btnAdmin5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdmin5ActionPerformed
+    private void btnSEPPertamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSEPPertamaActionPerformed
         DlgCekKunjunganPertamaSEP pilih = new DlgCekKunjunganPertamaSEP(null, true);
         pilih.setSize(this.getWidth(), this.getHeight());
         pilih.setLocationRelativeTo(this);
         pilih.setVisible(true);
-    }//GEN-LAST:event_btnAdmin5ActionPerformed
+    }//GEN-LAST:event_btnSEPPertamaActionPerformed
 
-    private void btnAdmin8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdmin8ActionPerformed
+    private void btnCekinMobileJKNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCekinMobileJKNActionPerformed
+        // JOptionPane.showMessageDialog(null, "Mohon maaf, fitur masih dalam tahap pengembangan");
         DlgCekinMobileJKN pilih = new DlgCekinMobileJKN(null, true);
         pilih.setSize(this.getWidth(), this.getHeight());
         pilih.setLocationRelativeTo(this);
         pilih.setVisible(true);
+    }//GEN-LAST:event_btnCekinMobileJKNActionPerformed
 
-//        JOptionPane.showMessageDialog(rootPane, "Mohon maaf, fitur masih dalam tahap pengembangan");
-    }//GEN-LAST:event_btnAdmin8ActionPerformed
-
-    private void btnAdmin9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdmin9ActionPerformed
+    private void btnSEPKontrolBedaPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSEPKontrolBedaPoliActionPerformed
         DlgCekKunjunganBedaPoli pilih = new DlgCekKunjunganBedaPoli(null, true);
         pilih.setSize(this.getWidth(), this.getHeight());
         pilih.setLocationRelativeTo(this);
         pilih.setVisible(true);
-    }//GEN-LAST:event_btnAdmin9ActionPerformed
+    }//GEN-LAST:event_btnSEPKontrolBedaPoliActionPerformed
 
-    private void btnAdmin10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdmin10ActionPerformed
+    private void btnAmbilAntrianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAmbilAntrianActionPerformed
         DlgAmbilAntrean pilih = new DlgAmbilAntrean(null, true);
         pilih.setSize(this.getWidth(), this.getHeight());
         pilih.setLocationRelativeTo(this);
         pilih.setVisible(true);
-    }//GEN-LAST:event_btnAdmin10ActionPerformed
+    }//GEN-LAST:event_btnAmbilAntrianActionPerformed
 
-    private void btnAdmin11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdmin11ActionPerformed
-        JOptionPane.showMessageDialog(rootPane, "Mohon maaf, fitur masih dalam tahap pengembangan");
-//        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-//        String nikktppetugas = Sequel.cariIsi("select no_ktp from pegawai where nik='0132' ");
-//        Valid.panggilUrl("kyc/index.php?&nikagent=" + nikktppetugas + "");
-//        this.setCursor(Cursor.getDefaultCursor());
-    }//GEN-LAST:event_btnAdmin11ActionPerformed
+    private void btnAktivasiSatuSehatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAktivasiSatuSehatActionPerformed
+        JOptionPane.showMessageDialog(null, "Mohon maaf, fitur masih dalam tahap pengembangan");
+        // this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        // String nikktppetugas = Sequel.cariIsi("select no_ktp from pegawai where nik='0132' ");
+        // Valid.panggilUrl("kyc/index.php?&nikagent=" + nikktppetugas + "");
+        // this.setCursor(Cursor.getDefaultCursor());
+    }//GEN-LAST:event_btnAktivasiSatuSehatActionPerformed
 
     /**
      * @param args the command line arguments
@@ -316,10 +313,8 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new HalamanUtamaDepan().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new HalamanUtamaDepan().setVisible(true);
         });
     }
 
@@ -333,14 +328,14 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private usu.widget.glass.PanelGlass PanelWall;
-    private widget.ButtonBig btnAdmin10;
-    private widget.ButtonBig btnAdmin11;
-    private widget.ButtonBig btnAdmin2;
-    private widget.ButtonBig btnAdmin5;
-    private widget.ButtonBig btnAdmin6;
-    private widget.ButtonBig btnAdmin7;
-    private widget.ButtonBig btnAdmin8;
-    private widget.ButtonBig btnAdmin9;
+    private widget.ButtonBig btnAktivasiSatuSehat;
+    private widget.ButtonBig btnAmbilAntrian;
+    private widget.ButtonBig btnCekinBooking;
+    private widget.ButtonBig btnCekinMobileJKN;
+    private widget.ButtonBig btnDaftarEksekutif;
+    private widget.ButtonBig btnSEPKontrol;
+    private widget.ButtonBig btnSEPKontrolBedaPoli;
+    private widget.ButtonBig btnSEPPertama;
     private javax.swing.JLabel jLabel1;
     private widget.Label jLabel39;
     private component.Panel jPanel1;
