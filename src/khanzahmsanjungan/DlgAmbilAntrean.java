@@ -289,7 +289,7 @@ public class DlgAmbilAntrean extends javax.swing.JDialog {
                     param.put("logo", Sequel.cariGambar("select logo from setting"));
                     Valid.printReportSmc("rptAntriLoketAPM.jasper", "report", "::[ Antrian Loket ]::", param, koneksiDB.PRINTER_ANTRIAN(), 1,
                         "select date_format(tanggal, '%d-%m-%Y') as tanggal, nomor, jam from " +
-                        "antriloketcetak_smc where left(nomor, 1) = 'A' and tanggal = current_date()");
+                        "antriloketcetak_smc where left(nomor, 1) = 'A' and tanggal = current_date() order by nomor desc limit 1");
                 }
                 break;
             case "B":
@@ -300,7 +300,7 @@ public class DlgAmbilAntrean extends javax.swing.JDialog {
                     param.put("logo", Sequel.cariGambar("select logo from setting"));
                     Valid.printReportSmc("rptAntriLoketAPM.jasper", "report", "::[ Antrian Loket ]::", param, koneksiDB.PRINTER_ANTRIAN(), 1,
                         "select date_format(tanggal, '%d-%m-%Y') as tanggal, nomor, jam from " +
-                        "antriloketcetak_smc where left(nomor, 1) = 'B' and tanggal = current_date()");
+                        "antriloketcetak_smc where left(nomor, 1) = 'B' and tanggal = current_date() order by nomor desc limit 1");
                 }
                 break;
             case "C":
@@ -311,7 +311,7 @@ public class DlgAmbilAntrean extends javax.swing.JDialog {
                     param.put("logo", Sequel.cariGambar("select logo from setting"));
                     Valid.printReportSmc("rptAntriLoketAPM.jasper", "report", "::[ Antrian Loket ]::", param, koneksiDB.PRINTER_ANTRIAN(), 1,
                         "select date_format(tanggal, '%d-%m-%Y') as tanggal, nomor, jam from " +
-                        "antriloketcetak_smc where left(nomor, 1) = 'C' and tanggal = current_date()");
+                        "antriloketcetak_smc where left(nomor, 1) = 'C' and tanggal = current_date() order by nomor desc limit 1");
                 }
                 break;
             case "D":
@@ -322,7 +322,7 @@ public class DlgAmbilAntrean extends javax.swing.JDialog {
                     param.put("logo", Sequel.cariGambar("select logo from setting"));
                     Valid.printReportSmc("rptAntriLoketAPM.jasper", "report", "::[ Antrian Loket ]::", param, koneksiDB.PRINTER_ANTRIAN(), 1,
                         "select date_format(tanggal, '%d-%m-%Y') as tanggal, nomor, jam from " +
-                        "antriloketcetak_smc where left(nomor, 1) = 'D' and tanggal = current_date()");
+                        "antriloketcetak_smc where left(nomor, 1) = 'D' and tanggal = current_date() order by nomor desc limit 1");
                 }
                 break;
             case "E":
@@ -333,7 +333,7 @@ public class DlgAmbilAntrean extends javax.swing.JDialog {
                     param.put("logo", Sequel.cariGambar("select logo from setting"));
                     Valid.printReportSmc("rptAntriLoketAPM.jasper", "report", "::[ Antrian Loket ]::", param, koneksiDB.PRINTER_ANTRIAN(), 1,
                         "select date_format(tanggal, '%d-%m-%Y') as tanggal, nomor, jam from " +
-                        "antriloketcetak_smc where left(nomor, 1) = 'E' and tanggal = current_date()");
+                        "antriloketcetak_smc where left(nomor, 1) = 'E' and tanggal = current_date() order by nomor desc limit 1");
                 }
                 break;
             case "F":
@@ -344,7 +344,7 @@ public class DlgAmbilAntrean extends javax.swing.JDialog {
                     param.put("logo", Sequel.cariGambar("select logo from setting"));
                     Valid.printReportSmc("rptAntriLoketAPM.jasper", "report", "::[ Antrian Loket ]::", param, koneksiDB.PRINTER_ANTRIAN(), 1,
                         "select date_format(tanggal, '%d-%m-%Y') as tanggal, nomor, jam from " +
-                        "antriloketcetak_smc where left(nomor, 1) = 'F' and tanggal = current_date()");
+                        "antriloketcetak_smc where left(nomor, 1) = 'F' and tanggal = current_date() order by nomor desc limit 1");
                 }
                 break;
         }
