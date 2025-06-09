@@ -2,4 +2,6 @@
 /nbproject/private/
 /build/
 /dist/
+/setting/*.xml
+!/setting/apm.xml.example
 manifest.mf
