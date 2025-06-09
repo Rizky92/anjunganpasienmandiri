@@ -55,7 +55,7 @@ public final class sekuel {
     private javax.swing.ImageIcon iconThumbnail = null;
     private String folder;
     private final Connection connect = koneksiDB.condb();
-    private String AKTIFKANTRACKSQL = koneksiDB.AKTIFKANTRACKSQL();
+    private boolean AKTIFKANTRACKSQL = koneksiDB.AKTIFKANTRACKSQL();
     private PreparedStatement ps;
     private ResultSet rs;
     private int angka = 0;
@@ -558,7 +558,7 @@ public final class sekuel {
                 ps.close();
             }
 
-            if (AKTIFKANTRACKSQL.equals("yes")) {
+            if (AKTIFKANTRACKSQL) {
                 dicari = "";
                 for (angka = 1; angka <= i; angka++) {
                     dicari = dicari + "|" + a[angka - 1];
@@ -607,7 +607,7 @@ public final class sekuel {
                 ps.close();
             }
 
-            if (AKTIFKANTRACKSQL.equals("yes")) {
+            if (AKTIFKANTRACKSQL) {
                 // You may want to adjust this part based on your requirements
                 dicari = String.join("|", values);
             }
@@ -644,7 +644,7 @@ public final class sekuel {
                 }
             }
 
-            if (AKTIFKANTRACKSQL.equals("yes")) {
+            if (AKTIFKANTRACKSQL) {
                 dicari = "";
                 for (angka = 1; angka <= i; angka++) {
                     dicari = dicari + "|" + a[angka - 1];
@@ -674,7 +674,7 @@ public final class sekuel {
                 }
             }
 
-            if (AKTIFKANTRACKSQL.equals("yes")) {
+            if (AKTIFKANTRACKSQL) {
                 dicari = "";
                 for (angka = 1; angka <= i; angka++) {
                     dicari = dicari + "|" + a[angka - 1];
@@ -1040,7 +1040,7 @@ public final class sekuel {
                     ps.close();
                 }
             }
-            if (AKTIFKANTRACKSQL.equals("yes")) {
+            if (AKTIFKANTRACKSQL) {
                 dicari = "";
                 for (angka = 1; angka <= i; angka++) {
                     dicari = dicari + "|" + a[angka - 1];
@@ -1184,7 +1184,7 @@ public final class sekuel {
                     ps.close();
                 }
             }
-            if (AKTIFKANTRACKSQL.equals("yes")) {
+            if (AKTIFKANTRACKSQL) {
                 dicari = "";
                 for (angka = 1; angka <= i; angka++) {
                     dicari = dicari + "|" + a[angka - 1];
@@ -1957,7 +1957,7 @@ public final class sekuel {
     }
 
     private void SimpanTrack(String sql) {
-        if (AKTIFKANTRACKSQL.equals("yes")) {
+        if (AKTIFKANTRACKSQL) {
             try {
                 ps = connect.prepareStatement("insert into trackersql values(now(), ?, ?)");
                 try {

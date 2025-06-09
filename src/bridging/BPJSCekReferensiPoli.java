@@ -86,29 +86,6 @@ public final class BPJSCekReferensiPoli extends javax.swing.JDialog {
         
         Poli.setDocument(new batasInput((byte)100).getKata(Poli));
         
-        if(koneksiDB.CARICEPAT().equals("aktif")){
-            Poli.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
-                @Override
-                public void insertUpdate(DocumentEvent e) {
-                    if(Poli.getText().length()>2){
-                        tampil(Poli.getText());
-                    }
-                }
-                @Override
-                public void removeUpdate(DocumentEvent e) {
-                    if(Poli.getText().length()>2){
-                        tampil(Poli.getText());
-                    }
-                }
-                @Override
-                public void changedUpdate(DocumentEvent e) {
-                    if(Poli.getText().length()>2){
-                        tampil(Poli.getText());
-                    }
-                }
-            });
-        } 
-        
         try {
             link=koneksiDB.URLAPIBPJS();
         } catch (Exception e) {

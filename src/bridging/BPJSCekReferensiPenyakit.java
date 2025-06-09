@@ -91,31 +91,6 @@ public final class BPJSCekReferensiPenyakit extends javax.swing.JDialog {
 
         diagnosa.setDocument(new batasInput((byte) 100).getKata(diagnosa));
 
-        if (koneksiDB.CARICEPAT().equals("aktif")) {
-            diagnosa.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
-                @Override
-                public void insertUpdate(DocumentEvent e) {
-                    if (diagnosa.getText().length() > 2) {
-                        tampil(diagnosa.getText());
-                    }
-                }
-
-                @Override
-                public void removeUpdate(DocumentEvent e) {
-                    if (diagnosa.getText().length() > 2) {
-                        tampil(diagnosa.getText());
-                    }
-                }
-
-                @Override
-                public void changedUpdate(DocumentEvent e) {
-                    if (diagnosa.getText().length() > 2) {
-                        tampil(diagnosa.getText());
-                    }
-                }
-            });
-        }
-
         try {
             link = koneksiDB.URLAPIBPJS();
         } catch (Exception e) {
