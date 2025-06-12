@@ -78,18 +78,12 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         super(parent, id);
         initComponents();
 
-        try {
-            rs = koneksi.prepareStatement("select nama_instansi, alamat_instansi, kabupaten, kontak from setting").executeQuery();
-
+        try (ResultSet rs = koneksi.prepareStatement("select nama_instansi, alamat_instansi, kabupaten, kontak from setting").executeQuery()) {
             if (rs.next()) {
                 instansiNama = rs.getString("nama_instansi");
                 instansiAlamat = rs.getString("alamat_instansi");
                 instansiKota = rs.getString("kabupaten");
                 instansiKontak = rs.getString("kontak");
-            }
-
-            if (rs != null) {
-                rs.close();
             }
         } catch (SQLException e) {
             System.out.println("Notif : " + e);
@@ -98,16 +92,22 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         poli.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosed(WindowEvent e) {
-                textNamaPoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(), 1).toString());
-                regKodePoli = poli.getTable().getValueAt(poli.getTable().getSelectedRow(), 0).toString();
+                if (poli.getTable().getSelectedRow() >= 0) {
+                    textNamaDokter.setText("");
+                    regKodeDokter = "";
+                    textNamaPoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(), 1).toString());
+                    regKodePoli = poli.getTable().getValueAt(poli.getTable().getSelectedRow(), 0).toString();
+                }
             }
         });
 
         dokter.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosed(WindowEvent e) {
-                textNamaDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(), 1).toString());
-                regKodeDokter = dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(), 0).toString();
+                if (dokter.getTable().getSelectedRow() >= 0) {
+                    textNamaDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(), 1).toString());
+                    regKodeDokter = dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(), 0).toString();
+                }
             }
         });
     }
@@ -189,7 +189,7 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         jLabel31.setBounds(20, 220, 220, 40);
 
         dateTanggalPeriksa.setEditable(false);
-        dateTanggalPeriksa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-12-2023" }));
+        dateTanggalPeriksa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-06-2025" }));
         dateTanggalPeriksa.setDisplayFormat("dd-MM-yyyy");
         dateTanggalPeriksa.setEnabled(false);
         dateTanggalPeriksa.setFocusable(false);
@@ -410,7 +410,6 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
     }//GEN-LAST:event_btnKeluarActionPerformed
 
     private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
-
         if (labelNoRM.getText().isBlank()) {
             JOptionPane.showMessageDialog(null, "No. RM Kosong..!!");
         } else if (regKodePoli.isBlank()) {
@@ -425,25 +424,14 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
             setNomorRegistrasi();
             updateUmurPasien();
             setStatusPasien();
-
             if (registerPasien()) {
                 cetakRegistrasi();
-
-                JOptionPane.showMessageDialog(null, "Berhasil!");
+                JOptionPane.showMessageDialog(rootPane, "Berhasil!");
             }
-
             kosongkanInput();
-
             dispose();
         }
     }//GEN-LAST:event_btnSimpanActionPerformed
-
-    private void buttonCariPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCariPoliActionPerformed
-        poli.tampil(hari);
-        poli.setSize(jPanel1.getWidth() - 50, jPanel1.getHeight() - 50);
-        poli.setLocationRelativeTo(jPanel2);
-        poli.setVisible(true);
-    }//GEN-LAST:event_buttonCariPoliActionPerformed
 
     private void buttonCariDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCariDokterActionPerformed
         dokter.tampil(hari, regKodePoli);
@@ -452,6 +440,13 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         dokter.setVisible(true);
     }//GEN-LAST:event_buttonCariDokterActionPerformed
 
+    private void buttonCariPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCariPoliActionPerformed
+        poli.tampil(hari);
+        poli.setSize(jPanel1.getWidth() - 50, jPanel1.getHeight() - 50);
+        poli.setLocationRelativeTo(jPanel2);
+        poli.setVisible(true);
+    }//GEN-LAST:event_buttonCariPoliActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -459,7 +454,6 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         java.awt.EventQueue.invokeLater(() -> {
             DlgRegistrasiWalkIn dialog = new DlgRegistrasiWalkIn(new javax.swing.JFrame(), true);
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-
                 @Override
                 public void windowClosing(java.awt.event.WindowEvent e) {
                     System.exit(0);
@@ -505,7 +499,7 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         tentukanHari();
         ambilDataPasien();
     }
-
+    
     private void ambilDataPasien() {
         try {
             ps = koneksi.prepareStatement("select nm_pasien, tgl_lahir from pasien where no_rkm_medis = ?");
@@ -537,37 +531,30 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
     private String formatTanggal(String tanggal) {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate ld = LocalDate.parse(tanggal, dtf);
-
-        return ld.format(DateTimeFormatter.ofPattern("dd MMMM yyyy").withLocale(new Locale("ine", "id")));
+        
+        return ld.format(DateTimeFormatter.ofPattern("dd MMMM yyyy").withLocale(new Locale("id", "ID")));
     }
-
+    
     private void setStatusPasien() {
-        if (Sequel.cariIntegerSmc("select count(*) from reg_periksa where no_rkm_medis = ? and kd_poli = ?", labelNoRM.getText(), regKodePoli) > 0) {
+        if (Sequel.cariExistsSmc("select * from reg_periksa where no_rkm_medis = ? and kd_poli = ?", labelNoRM.getText(), regKodePoli)) {
             regStatusPoli = "Lama";
             regBiaya = Sequel.cariIsiSmc("select registrasilama from poliklinik where kd_poli = ? and status = '1'", regKodePoli);
         } else {
             regBiaya = Sequel.cariIsiSmc("select registrasi from poliklinik where kd_poli = ? and status = '1'", regKodePoli);
         }
-
-        try {
-            ps = koneksi.prepareStatement(
-                "select "
-                + "pasien.nm_pasien, concat_ws(', ', pasien.alamat, kelurahan.nm_kel, kecamatan.nm_kec, kabupaten.nm_kab) as alamat, pasien.tgl_lahir, pasien.namakeluarga, pasien.keluarga, pasien.kd_pj, "
-                + "if (pasien.tgl_daftar = ?, 'baru', 'lama') as daftar, timestampdiff(year, pasien.tgl_lahir, curdate()) as tahun, timestampdiff(month, pasien.tgl_lahir, curdate()) - ((timestampdiff(month, pasien.tgl_lahir, curdate()) div 12) * 12) as bulan, "
-                + "timestampdiff(day, date_add(date_add(pasien.tgl_lahir, interval timestampdiff(year, pasien.tgl_lahir, curdate()) year), interval timestampdiff(month, pasien.tgl_lahir, curdate()) - ((timestampdiff(month, pasien.tgl_lahir, curdate()) div 12) * 12) month), curdate()) as hari "
-                + "from pasien "
-                + "join kelurahan on pasien.kd_kel = kelurahan.kd_kel "
-                + "join kecamatan on pasien.kd_kec = kecamatan.kd_kec "
-                + "join kabupaten on pasien.kd_kab = kabupaten.kd_kab "
-                + "where pasien.no_rkm_medis = ?"
-            );
-
-            try {
-                ps.setString(1, Valid.SetTgl(dateTanggalPeriksa.getSelectedItem().toString()));
-                ps.setString(2, labelNoRM.getText());
-
-                rs = ps.executeQuery();
-
+        
+        try (PreparedStatement ps = koneksi.prepareStatement(
+            "select pasien.nm_pasien, concat_ws(', ', pasien.alamat, kelurahan.nm_kel, kecamatan.nm_kec, kabupaten.nm_kab) as alamat, " +
+            "pasien.tgl_lahir, pasien.namakeluarga, pasien.keluarga, pasien.kd_pj, if(pasien.tgl_daftar = ?, 'baru', 'lama') as daftar, " +
+            "timestampdiff(year, pasien.tgl_lahir, curdate()) as tahun, timestampdiff(month, pasien.tgl_lahir, curdate()) - ((timestampdiff(month, " +
+            "pasien.tgl_lahir, curdate()) div 12) * 12) as bulan, timestampdiff(day, date_add(date_add(pasien.tgl_lahir, interval timestampdiff(year, " +
+            "pasien.tgl_lahir, curdate()) year), interval timestampdiff(month, pasien.tgl_lahir, curdate()) - ((timestampdiff(month, pasien.tgl_lahir, " +
+            "curdate()) div 12) * 12) month), curdate()) as hari from pasien join kelurahan on pasien.kd_kel = kelurahan.kd_kel join kecamatan on " +
+            "pasien.kd_kec = kecamatan.kd_kec join kabupaten on pasien.kd_kab = kabupaten.kd_kab where pasien.no_rkm_medis = ?"
+        )) {
+            ps.setString(1, Valid.SetTgl(dateTanggalPeriksa.getSelectedItem().toString()));
+            ps.setString(2, labelNoRM.getText());
+            try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
                     labelNamaPasien.setText(rs.getString("nm_pasien"));
                     labelTglLahir.setText(rs.getString("tgl_lahir"));
@@ -575,7 +562,6 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
                     pasienHubunganPJ = rs.getString("keluarga");
                     pasienAlamatPJ = rs.getString("alamat");
                     regStatusDaftar = rs.getString("daftar");
-
                     if (rs.getInt("tahun") > 0) {
                         pasienUmur = rs.getString("tahun");
                         pasienStatusUmur = "Th";
@@ -586,16 +572,6 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
                         pasienUmur = rs.getString("hari");
                         pasienStatusUmur = "Hr";
                     }
-                }
-            } catch (SQLException e) {
-                System.out.println("Notif : " + e);
-            } finally {
-                if (rs != null) {
-                    rs.close();
-                }
-
-                if (ps != null) {
-                    ps.close();
                 }
             }
         } catch (SQLException e) {

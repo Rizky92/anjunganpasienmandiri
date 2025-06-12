@@ -190,6 +190,15 @@ public class koneksiDB {
             return null;
         }
     }
+    
+    public static String[] TOMBOLDIMATIKAN() {
+        try (FileInputStream fs = new FileInputStream("setting/apm.xml")) {
+            prop.loadFromXML(fs);
+            return prop.getProperty("TOMBOLDIMATIKAN", "").trim().toLowerCase().replaceAll("\\s+", "").split(",");
+        } catch (Exception e) {
+            return null;
+        }
+    }
 
     public static boolean AKTIFKANREGISTRASIBPJS() {
         try (FileInputStream fs = new FileInputStream("setting/apm.xml")) {
