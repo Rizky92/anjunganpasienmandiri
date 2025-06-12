@@ -98,6 +98,8 @@ public final class DlgCariPoli extends javax.swing.JDialog {
         internalFrame1 = new widget.InternalFrame();
         Scroll = new widget.ScrollPane();
         tbKamar = new widget.Table();
+        jPanel1 = new javax.swing.JPanel();
+        button1 = new widget.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -133,6 +135,27 @@ public final class DlgCariPoli extends javax.swing.JDialog {
 
         internalFrame1.add(Scroll, java.awt.BorderLayout.CENTER);
 
+        jPanel1.setBackground(new java.awt.Color(238, 238, 255));
+        jPanel1.setForeground(new java.awt.Color(0, 131, 62));
+        jPanel1.setName("jPanel1"); // NOI18N
+        jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING));
+
+        button1.setBackground(new java.awt.Color(238, 238, 255));
+        button1.setForeground(new java.awt.Color(0, 131, 62));
+        button1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/exit.png"))); // NOI18N
+        button1.setText("KELUAR");
+        button1.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
+        button1.setGlassColor(new java.awt.Color(238, 238, 255));
+        button1.setName("button1"); // NOI18N
+        button1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(button1);
+
+        internalFrame1.add(jPanel1, java.awt.BorderLayout.PAGE_END);
+
         getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);
 
         pack();
@@ -158,6 +181,10 @@ public final class DlgCariPoli extends javax.swing.JDialog {
 
     }//GEN-LAST:event_formWindowOpened
 
+    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
+        dispose();
+    }//GEN-LAST:event_button1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -176,45 +203,28 @@ public final class DlgCariPoli extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.ScrollPane Scroll;
+    private widget.Button button1;
     private widget.InternalFrame internalFrame1;
+    private javax.swing.JPanel jPanel1;
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
     public void tampil(String harikerja) {
         Valid.tabelKosong(tabMode);
-        try {
-            ps = koneksi.prepareStatement("SELECT\n"
-                    + "	poliklinik.nm_poli, \n"
-                    + "	poliklinik.kd_poli, \n"
-                    + "	jadwal.hari_kerja\n"
-                    + "FROM\n"
-                    + "	jadwal\n"
-                    + "	INNER JOIN\n"
-                    + "	poliklinik\n"
-                    + "	ON \n"
-                    + "		jadwal.kd_poli = poliklinik.kd_poli\n"
-                    + "		where poliklinik.status='1' and jadwal.hari_kerja='" + harikerja + "'\n"
-                    + "		group by jadwal.kd_poli");
-            try {
-                rs = ps.executeQuery();
+        try (PreparedStatement ps = koneksi.prepareStatement(
+            "select poliklinik.kd_poli, poliklinik.nm_poli from poliklinik where status = '1' and " +
+            "exists(select * from jadwal where jadwal.kd_poli = poliklinik.kd_poli and jadwal.hari_kerja = ?) " +
+            "order by field(poliklinik.kd_poli, 'U0038') = 0, poliklinik.nm_poli"
+        )) {
+            ps.setString(1, harikerja);
+            try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
-                    tabMode.addRow(new Object[]{rs.getString(2), rs.getString(1)});
-                }
-            } catch (Exception e) {
-                System.out.println("Notifikasi : " + e);
-            } finally {
-                if (rs != null) {
-                    rs.close();
-                }
-
-                if (ps != null) {
-                    ps.close();
+                    tabMode.addRow(new Object[]{rs.getString(1), rs.getString(2)});
                 }
             }
         } catch (Exception e) {
-            System.out.println("Notifikasi : " + e);
+            System.out.println("Notif : " + e);
         }
-
     }
 
     public void tampilPoliMapping(String kodepolihfis) {

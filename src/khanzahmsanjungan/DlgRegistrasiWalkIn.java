@@ -96,16 +96,20 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         poli.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosed(WindowEvent e) {
-                textNamaPoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(), 1).toString());
-                regKodePoli = poli.getTable().getValueAt(poli.getTable().getSelectedRow(), 0).toString();
+                if (poli.getTable().getSelectedRow() >= 0) {
+                    textNamaPoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(), 1).toString());
+                    regKodePoli = poli.getTable().getValueAt(poli.getTable().getSelectedRow(), 0).toString();
+                }
             }
         });
 
         dokter.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosed(WindowEvent e) {
-                textNamaDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(), 1).toString());
-                regKodeDokter = dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(), 0).toString();
+                if (dokter.getTable().getSelectedRow() >= 0) {
+                    textNamaDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(), 1).toString());
+                    regKodeDokter = dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(), 0).toString();
+                }
             }
         });
     }
@@ -189,7 +193,7 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         jLabel31.setBounds(20, 220, 220, 40);
 
         dateTanggalPeriksa.setEditable(false);
-        dateTanggalPeriksa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-12-2023" }));
+        dateTanggalPeriksa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-06-2025" }));
         dateTanggalPeriksa.setDisplayFormat("dd-MM-yyyy");
         dateTanggalPeriksa.setEnabled(false);
         dateTanggalPeriksa.setFocusable(false);
@@ -438,19 +442,19 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btnSimpanActionPerformed
 
-    private void buttonCariPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCariPoliActionPerformed
-        poli.tampil(hari);
-        poli.setSize(jPanel1.getWidth() - 50, jPanel1.getHeight() - 50);
-        poli.setLocationRelativeTo(jPanel2);
-        poli.setVisible(true);
-    }//GEN-LAST:event_buttonCariPoliActionPerformed
-
     private void buttonCariDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCariDokterActionPerformed
         dokter.tampil(hari, regKodePoli);
         dokter.setSize(jPanel1.getWidth() - 50, jPanel1.getHeight() - 50);
         dokter.setLocationRelativeTo(jPanel2);
         dokter.setVisible(true);
     }//GEN-LAST:event_buttonCariDokterActionPerformed
+
+    private void buttonCariPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCariPoliActionPerformed
+        poli.tampil(hari);
+        poli.setSize(jPanel1.getWidth() - 50, jPanel1.getHeight() - 50);
+        poli.setLocationRelativeTo(jPanel2);
+        poli.setVisible(true);
+    }//GEN-LAST:event_buttonCariPoliActionPerformed
 
     /**
      * @param args the command line arguments
@@ -539,7 +543,7 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate ld = LocalDate.parse(tanggal, dtf);
         
-        return ld.format(DateTimeFormatter.ofPattern("dd MMMM yyyy").withLocale(new Locale("ine", "id")));
+        return ld.format(DateTimeFormatter.ofPattern("dd MMMM yyyy").withLocale(new Locale("id", "ID")));
     }
     
     private void setStatusPasien()
