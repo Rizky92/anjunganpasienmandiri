@@ -1,7 +1,6 @@
 package widget;
 
 import java.awt.Color;
-import java.awt.Insets;
 import static java.awt.image.ImageObserver.WIDTH;
 import javax.swing.JTextField;
 import static javax.swing.SwingConstants.LEFT;
@@ -21,8 +20,6 @@ public class TextBox extends JTextField {
         setBackground(new Color(255, 255, 255));
         setHorizontalAlignment(LEFT);
         setSize(WIDTH, 35);
-
-//        setRoundRect(false);
     }
 
 }

@@ -10,8 +10,8 @@ import fungsi.koneksiDB;
 import java.awt.Color;
 import javax.print.PrintService;
 import javax.print.PrintServiceLookup;
+import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
-import usu.widget.util.WidgetUtilities;
 
 /**
  *
@@ -23,33 +23,6 @@ public class KhanzaHMSAnjungan {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-
-        WidgetUtilities.invokeLater(() -> {
-            HalamanUtamaDepan utama = HalamanUtamaDepan.getInstance();
-            utama.setVisible(true);
-
-            String printerBarcode = null, printerRegistrasi = null;
-
-            for (PrintService ps : PrintServiceLookup.lookupPrintServices(null, null)) {
-                System.out.println("Printer ditemukan: " + ps.getName());
-
-                if (ps.getName().equals(koneksiDB.PRINTER_BARCODE())) {
-                    printerBarcode = ps.getName();
-                }
-
-                if (ps.getName().equals(koneksiDB.PRINTER_REGISTRASI())) {
-                    printerRegistrasi = ps.getName();
-                }
-            }
-
-            if (printerBarcode != null) {
-                System.out.println("Setting PRINTER_BARCODE menggunakan printer: " + printerBarcode);
-            }
-
-            if (printerRegistrasi != null) {
-                System.out.println("Setting PRINTER_REGISTRASI menggunakan printer: " + printerRegistrasi);
-            }
-        });
         try {
             UIManager.setLookAndFeel(new FlatMacLightLaf());
             System.setProperty("flatlaf.animation", "true");
@@ -81,5 +54,32 @@ public class KhanzaHMSAnjungan {
         } catch (Exception ex) {
             System.err.println("Failed to initialize LaF");
         }
+        
+        SwingUtilities.invokeLater(() -> {
+            HalamanUtamaDepan utama = HalamanUtamaDepan.getInstance();
+            utama.setVisible(true);
+
+            String printerBarcode = null, printerRegistrasi = null;
+
+            for (PrintService ps : PrintServiceLookup.lookupPrintServices(null, null)) {
+                System.out.println("Printer ditemukan: " + ps.getName());
+
+                if (ps.getName().equals(koneksiDB.PRINTER_BARCODE())) {
+                    printerBarcode = ps.getName();
+                }
+
+                if (ps.getName().equals(koneksiDB.PRINTER_REGISTRASI())) {
+                    printerRegistrasi = ps.getName();
+                }
+            }
+
+            if (printerBarcode != null) {
+                System.out.println("Setting PRINTER_BARCODE menggunakan printer: " + printerBarcode);
+            }
+
+            if (printerRegistrasi != null) {
+                System.out.println("Setting PRINTER_REGISTRASI menggunakan printer: " + printerRegistrasi);
+            }
+        });
     }
 }

@@ -2,12 +2,13 @@ package widget;
 
 import java.awt.Color;
 import java.awt.Font;
+import javax.swing.JPasswordField;
 
 /**
  *
  * @author usu
  */
-public class PasswordBox extends usu.widget.glass.PasswordBox {
+public class PasswordBox extends JPasswordField {
     public PasswordBox() {
         super();
         setSelectionColor(Color.BLUE.brighter());

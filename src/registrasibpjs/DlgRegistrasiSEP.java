@@ -63,7 +63,7 @@ import org.springframework.web.client.HttpServerErrorException;
  *
  * @author Kode
  */
-public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
+public class DlgRegistrasiSEP extends javax.swing.JDialog {
 
     private Connection koneksi = koneksiDB.condb();
     private sekuel Sequel = new sekuel();
@@ -169,7 +169,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
      * @param parent
      * @param id
      */
-    public DlgRegistrasiSEPPertama(java.awt.Frame parent, boolean id) {
+    public DlgRegistrasiSEP(java.awt.Frame parent, boolean id) {
         super(parent, id);
         initComponents();
         JumlahBarcode.setDocument(new batasInput((byte) 3).getOnlyAngka(JumlahBarcode));
@@ -554,7 +554,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         });
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-06-2025" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-06-2025" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         Tanggal.setOpaque(false);
@@ -679,7 +679,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
 
         TanggalSEP.setEditable(false);
         TanggalSEP.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-06-2025" }));
+        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-06-2025" }));
         TanggalSEP.setDisplayFormat("dd-MM-yyyy");
         TanggalSEP.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         TanggalSEP.setOpaque(false);
@@ -701,7 +701,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
 
         TanggalRujuk.setEditable(false);
         TanggalRujuk.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-06-2025" }));
+        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-06-2025" }));
         TanggalRujuk.setDisplayFormat("dd-MM-yyyy");
         TanggalRujuk.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         TanggalRujuk.setOpaque(false);
@@ -988,7 +988,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
 
         TanggalKKL.setEditable(false);
         TanggalKKL.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalKKL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "09-06-2025" }));
+        TanggalKKL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-06-2025" }));
         TanggalKKL.setDisplayFormat("dd-MM-yyyy");
         TanggalKKL.setEnabled(false);
         TanggalKKL.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
@@ -2119,7 +2119,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
      */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
-            DlgRegistrasiSEPPertama dialog = new DlgRegistrasiSEPPertama(new javax.swing.JFrame(), true);
+            DlgRegistrasiSEP dialog = new DlgRegistrasiSEP(new javax.swing.JFrame(), true);
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
 
                 @Override
@@ -3836,7 +3836,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                 }
 
                 if (wText.contains("Registrasi Sidik Jari")) {
-                    DlgRegistrasiSEPPertama.this.aplikasiAktif = true;
+                    DlgRegistrasiSEP.this.aplikasiAktif = true;
                     u32.SetForegroundWindow(hwnd);
                 }
 
@@ -3915,7 +3915,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                 String wText = Native.toString(windowText);
 
                 if (wText.toLowerCase().contains("face recognition bpjs kesehatan")) {
-                    DlgRegistrasiSEPPertama.this.fristaAktif = true;
+                    DlgRegistrasiSEP.this.fristaAktif = true;
                     u32.ShowWindow(hwnd, User32.SW_RESTORE);
                     u32.SetForegroundWindow(hwnd);
                     return false;

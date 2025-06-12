@@ -10,7 +10,7 @@
  */
 package registrasibpjs;
 
-import registrasibpjs.DlgRegistrasiSEPPertama;
+import registrasibpjs.DlgRegistrasiSEP;
 import fungsi.sekuel;
 import java.awt.Cursor;
 import java.awt.event.KeyEvent;
@@ -20,10 +20,10 @@ import javax.swing.JOptionPane;
  *
  * @author Kode
  */
-public class DlgCekKunjunganPertamaSEP extends javax.swing.JDialog {
+public class DlgCekSEPKontrolBedaPoli extends javax.swing.JDialog {
 
     private final sekuel Sequel = new sekuel();
-    private final DlgRegistrasiSEPPertama form = new DlgRegistrasiSEPPertama(null, false);
+    private final DlgRegistrasiSEP form = new DlgRegistrasiSEP(null, false);
 
     /**
      * Creates new form DlgAdmin
@@ -31,7 +31,7 @@ public class DlgCekKunjunganPertamaSEP extends javax.swing.JDialog {
      * @param parent
      * @param id
      */
-    public DlgCekKunjunganPertamaSEP(java.awt.Frame parent, boolean id) {
+    public DlgCekSEPKontrolBedaPoli(java.awt.Frame parent, boolean id) {
         super(parent, id);
         initComponents();
     }
@@ -49,8 +49,8 @@ public class DlgCekKunjunganPertamaSEP extends javax.swing.JDialog {
         jPanel1 = new widget.Panel();
         NoRMPasien = new widget.TextBox();
         jLabel28 = new widget.Label();
-        BtnClose = new widget.ButtonBig();
-        BtnClose2 = new widget.ButtonBig();
+        BtnTutup = new widget.ButtonBig();
+        BtnCek = new widget.ButtonBig();
         jPanel3 = new javax.swing.JPanel();
         btnAngka8 = new javax.swing.JButton();
         btnAngka7 = new javax.swing.JButton();
@@ -128,49 +128,49 @@ public class DlgCekKunjunganPertamaSEP extends javax.swing.JDialog {
         gridBagConstraints.ipady = 5;
         jPanel1.add(jLabel28, gridBagConstraints);
 
-        BtnClose.setBackground(new java.awt.Color(255, 255, 255));
-        BtnClose.setForeground(new java.awt.Color(51, 51, 51));
-        BtnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/exit.png"))); // NOI18N
-        BtnClose.setMnemonic('U');
-        BtnClose.setToolTipText("Alt+U");
-        BtnClose.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        BtnClose.setHorizontalTextPosition(javax.swing.SwingConstants.TRAILING);
-        BtnClose.setIconTextGap(2);
-        BtnClose.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        BtnClose.setPreferredSize(new java.awt.Dimension(100, 75));
-        BtnClose.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        BtnClose.addActionListener(new java.awt.event.ActionListener() {
+        BtnTutup.setBackground(new java.awt.Color(255, 255, 255));
+        BtnTutup.setForeground(new java.awt.Color(51, 51, 51));
+        BtnTutup.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/exit.png"))); // NOI18N
+        BtnTutup.setMnemonic('U');
+        BtnTutup.setToolTipText("Alt+U");
+        BtnTutup.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        BtnTutup.setHorizontalTextPosition(javax.swing.SwingConstants.TRAILING);
+        BtnTutup.setIconTextGap(2);
+        BtnTutup.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        BtnTutup.setPreferredSize(new java.awt.Dimension(100, 75));
+        BtnTutup.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        BtnTutup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnCloseActionPerformed(evt);
+                BtnTutupActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 13;
-        jPanel1.add(BtnClose, gridBagConstraints);
+        jPanel1.add(BtnTutup, gridBagConstraints);
 
-        BtnClose2.setBackground(new java.awt.Color(255, 255, 255));
-        BtnClose2.setForeground(new java.awt.Color(51, 51, 51));
-        BtnClose2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/konfirmasi.png"))); // NOI18N
-        BtnClose2.setMnemonic('U');
-        BtnClose2.setToolTipText("Alt+U");
-        BtnClose2.setFont(new java.awt.Font("Inter", 1, 11)); // NOI18N
-        BtnClose2.setIconTextGap(0);
-        BtnClose2.setMargin(new java.awt.Insets(0, 0, 0, 0));
-        BtnClose2.setPreferredSize(new java.awt.Dimension(100, 75));
-        BtnClose2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        BtnClose2.addActionListener(new java.awt.event.ActionListener() {
+        BtnCek.setBackground(new java.awt.Color(255, 255, 255));
+        BtnCek.setForeground(new java.awt.Color(51, 51, 51));
+        BtnCek.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/konfirmasi.png"))); // NOI18N
+        BtnCek.setMnemonic('U');
+        BtnCek.setToolTipText("Alt+U");
+        BtnCek.setFont(new java.awt.Font("Inter", 1, 11)); // NOI18N
+        BtnCek.setIconTextGap(0);
+        BtnCek.setMargin(new java.awt.Insets(0, 0, 0, 0));
+        BtnCek.setPreferredSize(new java.awt.Dimension(100, 75));
+        BtnCek.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        BtnCek.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnClose2ActionPerformed(evt);
+                BtnCekActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 13;
-        jPanel1.add(BtnClose2, gridBagConstraints);
+        jPanel1.add(BtnCek, gridBagConstraints);
 
         jPanel3.setBackground(new java.awt.Color(238, 238, 255));
-        jPanel3.setPreferredSize(new java.awt.Dimension(294, 402));
+        jPanel3.setPreferredSize(new java.awt.Dimension(350, 399));
 
         btnAngka8.setFont(new java.awt.Font("Segoe UI SemiBold", 0, 48)); // NOI18N
         btnAngka8.setText("8");
@@ -254,10 +254,6 @@ public class DlgCekKunjunganPertamaSEP extends javax.swing.JDialog {
 
         btnAngkaHps.setFont(new java.awt.Font("Segoe UI SemiBold", 0, 36)); // NOI18N
         btnAngkaHps.setText("<-");
-        btnAngkaHps.setToolTipText("");
-        btnAngkaHps.setMaximumSize(new java.awt.Dimension(75, 75));
-        btnAngkaHps.setMinimumSize(new java.awt.Dimension(75, 75));
-        btnAngkaHps.setPreferredSize(new java.awt.Dimension(75, 75));
         btnAngkaHps.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAngkaHpsActionPerformed(evt);
@@ -308,16 +304,16 @@ public class DlgCekKunjunganPertamaSEP extends javax.swing.JDialog {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnAngka7, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAngka8, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAngka9, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAngka4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAngka6, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAngka5, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAngka6, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnAngka4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnAngka3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -327,8 +323,7 @@ public class DlgCekKunjunganPertamaSEP extends javax.swing.JDialog {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnAngka0, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAngkaHps, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, 0))
+                    .addComponent(btnClear, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -346,128 +341,100 @@ public class DlgCekKunjunganPertamaSEP extends javax.swing.JDialog {
 
     private void NoRMPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoRMPasienKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             if (NoRMPasien.getText().isBlank()) {
                 JOptionPane.showMessageDialog(null, "Isian masih kosong..!!");
-                this.setCursor(Cursor.getDefaultCursor());
-                return;
-            }
-
-            if ((Sequel.cariIntegerSmc("select count(*) from referensi_mobilejkn_bpjs where norm = ? and tanggalperiksa = current_date()", NoRMPasien.getText()) > 0)
-                || (Sequel.cariIntegerSmc("select count(*) from referensi_mobilejkn_bpjs where nomorkartu = ? and tanggalperiksa = current_date()", NoRMPasien.getText()) > 0)) {
-                JOptionPane.showMessageDialog(null, "Pasien telah menggunakan Mobile JKN. Silahkan masuk melalui menu \"Cek In MobileJKN\"..!!");
-                this.setCursor(Cursor.getDefaultCursor());
-                return;
-            }
-
-            if (Sequel.cariIntegerSmc("select count(*) from pasien where no_peserta = ?", NoRMPasien.getText()) == 1) {
-                form.tampilKunjunganPertama(NoRMPasien.getText());
-                form.setSize(this.getWidth(), this.getHeight());
-                form.setLocationRelativeTo(jPanel1);
-                this.dispose();
-                form.setVisible(true);
-            } else if (Sequel.cariIntegerSmc("select count(*) from pasien where no_rkm_medis = ?", NoRMPasien.getText()) == 1) {
-                form.tampilKunjunganPertama(Sequel.cariIsiSmc("select no_peserta from pasien where no_rkm_medis = ?", NoRMPasien.getText()));
-                form.setSize(this.getWidth(), this.getHeight());
-                form.setLocationRelativeTo(jPanel1);
-                this.dispose();
-                form.setVisible(true);
             } else {
-                JOptionPane.showMessageDialog(null, "Data pasien tidak ditemukan!");
+                this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                if (Sequel.cariIntegerSmc("select count(*) from pasien where no_peserta = ?", NoRMPasien.getText()) == 1) {
+                    form.tampilKunjunganBedaPoli(NoRMPasien.getText());
+                } else if (Sequel.cariIntegerSmc("select count(*) from pasien where no_rkm_medis = ?", NoRMPasien.getText()) == 1) {
+                    form.tampilKunjunganBedaPoli(Sequel.cariIsiSmc("select no_peserta from pasien where no_rkm_medis = ?", NoRMPasien.getText()));
+                } else if (Sequel.cariInteger("select count(*) from pasien where no_ktp = ?", NoRMPasien.getText()) == 1) {
+                    form.tampilKunjunganBedaPoli(Sequel.cariIsiSmc("select no_peserta from pasien where no_ktp = ?", NoRMPasien.getText()));
+                } else {
+                    JOptionPane.showMessageDialog(null, "Data pasien tidak ditemukan!");
+                    this.setCursor(Cursor.getDefaultCursor());
+                    return;
+                }
+                form.setSize(this.getWidth(), this.getHeight());
+                form.setLocationRelativeTo(jPanel1);
+                this.dispose();
+                form.setVisible(true);
+                this.setCursor(Cursor.getDefaultCursor());
             }
-            this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_NoRMPasienKeyPressed
 
-    private void BtnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCloseActionPerformed
-        dispose();
-    }//GEN-LAST:event_BtnCloseActionPerformed
+    private void BtnTutupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnTutupActionPerformed
 
-    private void BtnClose2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnClose2ActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        dispose();
+    }//GEN-LAST:event_BtnTutupActionPerformed
+
+    private void BtnCekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCekActionPerformed
         if (NoRMPasien.getText().isBlank()) {
             JOptionPane.showMessageDialog(null, "Isian masih kosong..!!");
-            this.setCursor(Cursor.getDefaultCursor());
-            return;
-        }
-
-        if ((Sequel.cariIntegerSmc("select count(*) from referensi_mobilejkn_bpjs where norm = ? and tanggalperiksa = current_date()", NoRMPasien.getText()) > 0)
-            || (Sequel.cariIntegerSmc("select count(*) from referensi_mobilejkn_bpjs where nomorkartu = ? and tanggalperiksa = current_date()", NoRMPasien.getText()) > 0)) {
-            JOptionPane.showMessageDialog(null, "Pasien telah menggunakan Mobile JKN. Silahkan masuk melalui menu \"Cek In MobileJKN\"..!!");
-            this.setCursor(Cursor.getDefaultCursor());
-            return;
-        }
-
-        if (Sequel.cariIntegerSmc("select count(*) from pasien where no_peserta = ?", NoRMPasien.getText()) == 1) {
-            form.tampilKunjunganPertama(NoRMPasien.getText());
-            form.setSize(this.getWidth(), this.getHeight());
-            form.setLocationRelativeTo(jPanel1);
-            this.dispose();
-            form.setVisible(true);
-        } else if (Sequel.cariIntegerSmc("select count(*) from pasien where no_rkm_medis = ?", NoRMPasien.getText()) == 1) {
-            form.tampilKunjunganPertama(Sequel.cariIsiSmc("select no_peserta from pasien where no_rkm_medis = ?", NoRMPasien.getText()));
-            form.setSize(this.getWidth(), this.getHeight());
-            form.setLocationRelativeTo(jPanel1);
-            this.dispose();
-            form.setVisible(true);
         } else {
-            JOptionPane.showMessageDialog(null, "Data pasien tidak ditemukan!");
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            if (Sequel.cariIntegerSmc("select count(*) from pasien where no_peserta = ?", NoRMPasien.getText()) == 1) {
+                form.tampilKunjunganBedaPoli(NoRMPasien.getText());
+            } else if (Sequel.cariIntegerSmc("select count(*) from pasien where no_rkm_medis = ?", NoRMPasien.getText()) == 1) {
+                form.tampilKunjunganBedaPoli(Sequel.cariIsiSmc("select no_peserta from pasien where no_rkm_medis = ?", NoRMPasien.getText()));
+            } else if (Sequel.cariInteger("select count(*) from pasien where no_ktp = ?", NoRMPasien.getText()) == 1) {
+                form.tampilKunjunganBedaPoli(Sequel.cariIsiSmc("select no_peserta from pasien where no_ktp = ?", NoRMPasien.getText()));
+            } else {
+                JOptionPane.showMessageDialog(null, "Data pasien tidak ditemukan!");
+                this.setCursor(Cursor.getDefaultCursor());
+                return;
+            }
+            form.setSize(this.getWidth(), this.getHeight());
+            form.setLocationRelativeTo(jPanel1);
+            this.dispose();
+            form.setVisible(true);
+            this.setCursor(Cursor.getDefaultCursor());
         }
-        this.setCursor(Cursor.getDefaultCursor());
-    }//GEN-LAST:event_BtnClose2ActionPerformed
+    }//GEN-LAST:event_BtnCekActionPerformed
 
-    private void btnAngka8ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAngka8ActionPerformed
-    {//GEN-HEADEREND:event_btnAngka8ActionPerformed
+    private void btnAngka8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAngka8ActionPerformed
         NoRMPasien.setText(NoRMPasien.getText() + "8");
     }//GEN-LAST:event_btnAngka8ActionPerformed
 
-    private void btnAngka7ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAngka7ActionPerformed
-    {//GEN-HEADEREND:event_btnAngka7ActionPerformed
+    private void btnAngka7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAngka7ActionPerformed
         NoRMPasien.setText(NoRMPasien.getText() + "7");
     }//GEN-LAST:event_btnAngka7ActionPerformed
 
-    private void btnAngka9ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAngka9ActionPerformed
-    {//GEN-HEADEREND:event_btnAngka9ActionPerformed
+    private void btnAngka9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAngka9ActionPerformed
         NoRMPasien.setText(NoRMPasien.getText() + "9");
     }//GEN-LAST:event_btnAngka9ActionPerformed
 
-    private void btnAngka4ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAngka4ActionPerformed
-    {//GEN-HEADEREND:event_btnAngka4ActionPerformed
+    private void btnAngka4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAngka4ActionPerformed
         NoRMPasien.setText(NoRMPasien.getText() + "4");
     }//GEN-LAST:event_btnAngka4ActionPerformed
 
-    private void btnAngka5ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAngka5ActionPerformed
-    {//GEN-HEADEREND:event_btnAngka5ActionPerformed
+    private void btnAngka5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAngka5ActionPerformed
         NoRMPasien.setText(NoRMPasien.getText() + "5");
     }//GEN-LAST:event_btnAngka5ActionPerformed
 
-    private void btnAngka6ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAngka6ActionPerformed
-    {//GEN-HEADEREND:event_btnAngka6ActionPerformed
+    private void btnAngka6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAngka6ActionPerformed
         NoRMPasien.setText(NoRMPasien.getText() + "6");
     }//GEN-LAST:event_btnAngka6ActionPerformed
 
-    private void btnAngka2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAngka2ActionPerformed
-    {//GEN-HEADEREND:event_btnAngka2ActionPerformed
+    private void btnAngka2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAngka2ActionPerformed
         NoRMPasien.setText(NoRMPasien.getText() + "2");
     }//GEN-LAST:event_btnAngka2ActionPerformed
 
-    private void btnAngka1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAngka1ActionPerformed
-    {//GEN-HEADEREND:event_btnAngka1ActionPerformed
+    private void btnAngka1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAngka1ActionPerformed
         NoRMPasien.setText(NoRMPasien.getText() + "1");
     }//GEN-LAST:event_btnAngka1ActionPerformed
 
-    private void btnAngka3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAngka3ActionPerformed
-    {//GEN-HEADEREND:event_btnAngka3ActionPerformed
+    private void btnAngka3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAngka3ActionPerformed
         NoRMPasien.setText(NoRMPasien.getText() + "3");
     }//GEN-LAST:event_btnAngka3ActionPerformed
 
-    private void btnAngka0ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAngka0ActionPerformed
-    {//GEN-HEADEREND:event_btnAngka0ActionPerformed
+    private void btnAngka0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAngka0ActionPerformed
         NoRMPasien.setText(NoRMPasien.getText() + "0");
     }//GEN-LAST:event_btnAngka0ActionPerformed
 
-    private void btnAngkaHpsActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAngkaHpsActionPerformed
-    {//GEN-HEADEREND:event_btnAngkaHpsActionPerformed
+    private void btnAngkaHpsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAngkaHpsActionPerformed
         int length = NoRMPasien.getText().length();
         int number = NoRMPasien.getText().length() - 1;
         String store;
@@ -479,8 +446,7 @@ public class DlgCekKunjunganPertamaSEP extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btnAngkaHpsActionPerformed
 
-    private void btnClearActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnClearActionPerformed
-    {//GEN-HEADEREND:event_btnClearActionPerformed
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         int length = NoRMPasien.getText().length();
         if (length > 0) {
             NoRMPasien.setText("");
@@ -492,7 +458,7 @@ public class DlgCekKunjunganPertamaSEP extends javax.swing.JDialog {
      */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
-            DlgCekKunjunganPertamaSEP dialog = new DlgCekKunjunganPertamaSEP(new javax.swing.JFrame(), true);
+            DlgCekSEPKontrolBedaPoli dialog = new DlgCekSEPKontrolBedaPoli(new javax.swing.JFrame(), true);
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
 
                 @Override
@@ -504,8 +470,8 @@ public class DlgCekKunjunganPertamaSEP extends javax.swing.JDialog {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private widget.ButtonBig BtnClose;
-    private widget.ButtonBig BtnClose2;
+    private widget.ButtonBig BtnCek;
+    private widget.ButtonBig BtnTutup;
     private widget.TextBox NoRMPasien;
     private usu.widget.glass.PanelGlass PanelWall;
     private javax.swing.JButton btnAngka0;
