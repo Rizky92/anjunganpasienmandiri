@@ -13,6 +13,6 @@
     <entry key="AUTOBUKAAPLIKASI">frista</entry>
     <entry key="AKTIFKANREGISTRASIBPJS">yes</entry>
     <entry key="AKTIFKANREGISTRASIEKSEKUTIF">yes</entry>
-    <entry key="KODEPOLIEKSEKUTIF">yes</entry>
-    <entry key="JENISBAYARPOLIEKSEKUTIF">yes</entry>
+    <entry key="KODEPOLIEKSEKUTIF">U0038</entry>
+    <entry key="JENISBAYARPOLIEKSEKUTIF">A09</entry>
 </properties>
