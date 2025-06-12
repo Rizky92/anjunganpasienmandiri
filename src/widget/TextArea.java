@@ -14,7 +14,7 @@
  * OS         : Windows Vista
  * Java       : Java 1.6
  */
-package component;
+package widget;
 
 import java.awt.Color;
 import javax.swing.JTextArea;
@@ -38,12 +38,12 @@ public class TextArea extends JTextArea {
         setWrapStyleWord(true);
         setBorder(new EmptyBorder(5, 5, 5, 5));
         //setBackground(new Color(255,170,255));
-        setBackground(new Color(255,255,255));
+        setBackground(new Color(255, 255, 255));
         setFont(new java.awt.Font("Tahoma", 0, 11));
         //setForeground(new Color(90,90,90));
-        setForeground(new Color(140,90,140));
-        setSelectionColor(new Color(204,51,0));
+        setForeground(new Color(140, 90, 140));
+        setSelectionColor(new Color(204, 51, 0));
         setCaretColor(Color.red);
-        setSize(WIDTH,23);
+        setSize(WIDTH, 23);
     }
 }

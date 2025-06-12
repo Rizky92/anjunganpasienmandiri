@@ -88,7 +88,7 @@ public class koneksiDB {
         }
         return connection;
     }
-    
+
     public static String PRINTER_REGISTRASI() {
         try (FileInputStream fs = new FileInputStream("setting/apm.xml")) {
             prop.loadFromXML(fs);
@@ -97,7 +97,7 @@ public class koneksiDB {
             return "";
         }
     }
-    
+
     public static String PRINTER_BARCODE() {
         try (FileInputStream fs = new FileInputStream("setting/apm.xml")) {
             prop.loadFromXML(fs);
@@ -106,7 +106,7 @@ public class koneksiDB {
             return "";
         }
     }
-    
+
     public static String PRINTER_ANTRIAN() {
         try (FileInputStream fs = new FileInputStream("setting/apm.xml")) {
             prop.loadFromXML(fs);
@@ -115,7 +115,7 @@ public class koneksiDB {
             return "";
         }
     }
-    
+
     public static int PRINTJUMLAHBARCODE() {
         try (FileInputStream fs = new FileInputStream("setting/apm.xml")) {
             prop.loadFromXML(fs);
@@ -151,7 +151,7 @@ public class koneksiDB {
             return "";
         }
     }
-    
+
     public static String URLAPLIKASIFRISTABPJS() {
         try (FileInputStream fs = new FileInputStream("setting/apm.xml")) {
             prop.loadFromXML(fs);
@@ -160,7 +160,7 @@ public class koneksiDB {
             return "";
         }
     }
-    
+
     public static String AUTOBUKAAPLIKASI() {
         try (FileInputStream fs = new FileInputStream("setting/apm.xml")) {
             prop.loadFromXML(fs);
@@ -169,7 +169,7 @@ public class koneksiDB {
             return "";
         }
     }
-    
+
     public static boolean ANTRIANPREFIXHURUF() {
         try (FileInputStream fs = new FileInputStream("setting/database.xml")) {
             prop.loadFromXML(fs);
@@ -178,7 +178,7 @@ public class koneksiDB {
             return false;
         }
     }
-    
+
     public static String[] PREFIXHURUFAKTIF() {
         if (!ANTRIANPREFIXHURUF()) {
             return null;
@@ -190,7 +190,7 @@ public class koneksiDB {
             return null;
         }
     }
-    
+
     public static boolean AKTIFKANREGISTRASIBPJS() {
         try (FileInputStream fs = new FileInputStream("setting/apm.xml")) {
             prop.loadFromXML(fs);
@@ -199,7 +199,7 @@ public class koneksiDB {
             return false;
         }
     }
-    
+
     public static boolean AKTIFKANREGISTRASIEKSEKUTIF() {
         try (FileInputStream fs = new FileInputStream("setting/apm.xml")) {
             prop.loadFromXML(fs);
@@ -208,7 +208,7 @@ public class koneksiDB {
             return false;
         }
     }
-    
+
     public static String KODEPOLIEKSEKUTIF() {
         try (FileInputStream fs = new FileInputStream("setting/apm.xml")) {
             prop.loadFromXML(fs);
@@ -217,7 +217,7 @@ public class koneksiDB {
             return "";
         }
     }
-    
+
     public static String JENISBAYARPOLIEKSEKUTIF() {
         try (FileInputStream fs = new FileInputStream("setting/apm.xml")) {
             prop.loadFromXML(fs);
@@ -262,7 +262,7 @@ public class koneksiDB {
             return "";
         }
     }
-    
+
     public static String URLAPIMOBILEJKN() {
         try (FileInputStream fs = new FileInputStream("setting/database.xml")) {
             prop.loadFromXML(fs);

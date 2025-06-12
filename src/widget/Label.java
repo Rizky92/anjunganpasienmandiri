@@ -1,13 +1,13 @@
 package widget;
 
 import java.awt.Color;
-import java.awt.Font;
+import javax.swing.JLabel;
 
 /**
  *
  * @author usu
  */
-public class Label extends usu.widget.Label {
+public class Label extends JLabel {
 
     /*
      * Serial version UID
@@ -17,8 +17,9 @@ public class Label extends usu.widget.Label {
     public Label() {
         super();
         //setForeground(new Color(90,90,90));
-        setForeground(new Color(50,50,50));
-        setFont(new java.awt.Font("Tahoma", Font.BOLD, 11));
+        setForeground(new Color(160, 130, 160));
+        setFont(new java.awt.Font("Tahoma", 0, 20));
+
         setHorizontalAlignment(RIGHT);
         setVerticalAlignment(CENTER);
         setHorizontalTextPosition(CENTER);

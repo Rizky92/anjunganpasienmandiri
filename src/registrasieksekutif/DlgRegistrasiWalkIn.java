@@ -8,7 +8,7 @@
  *
  * Created on 04 Des 13, 12:59:34
  */
-package khanzahmsanjungan;
+package registrasieksekutif;
 
 import fungsi.koneksiDB;
 import fungsi.sekuel;
@@ -17,6 +17,7 @@ import java.awt.Cursor;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -27,12 +28,14 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 import javax.swing.JOptionPane;
+import khanzahmsanjungan.DlgCariDokter;
+import khanzahmsanjungan.DlgCariPoli;
 
 /**
  *
  * @author Kode
  */
-public class DlgRegistrasiEksekutif extends javax.swing.JDialog {
+public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
 
     private Connection koneksi = koneksiDB.condb();
     private sekuel Sequel = new sekuel();
@@ -40,30 +43,28 @@ public class DlgRegistrasiEksekutif extends javax.swing.JDialog {
     private PreparedStatement ps;
     private ResultSet rs;
     private final String URUTNOREG = koneksiDB.URUTNOREG(),
-                         PRINTERREGISTRASI = koneksiDB.PRINTER_REGISTRASI(),
-                         PRINTERBARCODE = koneksiDB.PRINTER_BARCODE(),
-                         KODEPOLIEKSEKUTIF = koneksiDB.KODEPOLIEKSEKUTIF(),
-                         JENISBAYARPOLIEKSEKUTIF = koneksiDB.JENISBAYARPOLIEKSEKUTIF();
+        PRINTERREGISTRASI = koneksiDB.PRINTER_REGISTRASI(),
+        PRINTERBARCODE = koneksiDB.PRINTER_BARCODE();
     private String hari = "",
-                   regNoRawat = "",
-                   regNoUrut = "",
-                   regKodePoli = "",
-                   regKodeDokter = "",
-                   regBiaya = "",
-                   regStatusDaftar = "Lama",
-                   regStatusPoli = "Baru",
-                   pasienUmur = "0",
-                   pasienStatusUmur = "Th",
-                   pasienNamaPJ = "-",
-                   pasienHubunganPJ = "-",
-                   pasienAlamatPJ = "-",
-                   instansiNama = "",
-                   instansiAlamat = "",
-                   instansiKota = "",
-                   instansiKontak = "";
+        regNoRawat = "",
+        regNoUrut = "",
+        regKodeDokter = "",
+        regKodePoli = "",
+        regBiaya = "",
+        regStatusDaftar = "Lama",
+        regStatusPoli = "Baru",
+        pasienUmur = "0",
+        pasienStatusUmur = "Th",
+        pasienNamaPJ = "-",
+        pasienHubunganPJ = "-",
+        pasienAlamatPJ = "-",
+        instansiNama = "",
+        instansiAlamat = "",
+        instansiKota = "",
+        instansiKontak = "";
 
     private DlgCariPoli poli = new DlgCariPoli(null, true);
-    private DlgCariDokter2 dokter = new DlgCariDokter2(null, true);
+    private DlgCariDokter dokter = new DlgCariDokter(null, true);
     private Calendar cal = Calendar.getInstance();
     private int day = cal.get(Calendar.DAY_OF_WEEK);
 
@@ -73,7 +74,7 @@ public class DlgRegistrasiEksekutif extends javax.swing.JDialog {
      * @param parent
      * @param id
      */
-    public DlgRegistrasiEksekutif(java.awt.Frame parent, boolean id) {
+    public DlgRegistrasiWalkIn(java.awt.Frame parent, boolean id) {
         super(parent, id);
         initComponents();
 
@@ -117,30 +118,36 @@ public class DlgRegistrasiEksekutif extends javax.swing.JDialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
-        jPanel1 = new component.Panel();
-        jPanelTengah = new javax.swing.JPanel();
-        jLabelRM = new component.Label();
-        labelNoRM = new component.Label();
-        jLabelNamaPasien = new component.Label();
-        labelNamaPasien = new component.Label();
-        jLabelTglLahir = new component.Label();
-        labelTglLahir = new component.Label();
-        jLabelPoli = new component.Label();
+        jPanel1 = new widget.Panel();
+        jPanel2 = new widget.Panel();
+        jLabel10 = new widget.Label();
+        jLabel29 = new widget.Label();
+        jLabel31 = new widget.Label();
+        dateTanggalPeriksa = new widget.Tanggal();
+        labelNoRM = new widget.Label();
+        jLabel32 = new widget.Label();
+        dropdownCaraBayar = new widget.ComboBox();
+        buttonCariPoli = new widget.Button();
         textNamaPoli = new widget.TextBox();
-        btnCariPoli = new component.Button();
-        jLabelDokter = new component.Label();
+        jLabel36 = new widget.Label();
+        buttonCariDokter = new widget.Button();
         textNamaDokter = new widget.TextBox();
-        btnCariDokter = new component.Button();
-        jLabelJenisBayar = new component.Label();
-        textNamaJenisBayar = new widget.TextBox();
-        btnCariJenisBayar = new component.Button();
-        jPanel2 = new javax.swing.JPanel();
+        jLabel12 = new widget.Label();
+        jLabel13 = new widget.Label();
+        jLabel14 = new widget.Label();
+        jLabel15 = new widget.Label();
+        jLabel16 = new widget.Label();
+        jLabel17 = new widget.Label();
+        jLabel11 = new widget.Label();
+        jLabel18 = new widget.Label();
+        labelNamaPasien = new widget.Label();
+        jLabel19 = new widget.Label();
+        jLabel20 = new widget.Label();
+        labelTglLahir = new widget.Label();
         jPanel3 = new javax.swing.JPanel();
-        jPanelBawah = new javax.swing.JPanel();
-        btnSimpan = new component.Button();
-        btnKeluar = new component.Button();
+        btnSimpan = new widget.Button();
+        btnKeluar = new widget.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setModal(true);
@@ -149,236 +156,217 @@ public class DlgRegistrasiEksekutif extends javax.swing.JDialog {
         getContentPane().setLayout(new java.awt.BorderLayout(1, 1));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 215, 255)), "PENDAFTARAN POLIKLINIK EKSEKUTIF", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Inter", 0, 24), new java.awt.Color(0, 131, 62))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 215, 255)), "PENDAFTARAN POLIKLINIK ONSITE", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Inter", 0, 24), new java.awt.Color(0, 131, 62))); // NOI18N
         jPanel1.setPreferredSize(new java.awt.Dimension(400, 70));
         jPanel1.setLayout(new java.awt.BorderLayout(0, 1));
 
-        jPanelTengah.setBackground(new java.awt.Color(238, 238, 255));
-        jPanelTengah.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 100, 0, 100));
-        jPanelTengah.setLayout(new java.awt.GridBagLayout());
+        jPanel2.setBackground(new java.awt.Color(238, 238, 255));
+        jPanel2.setPreferredSize(new java.awt.Dimension(390, 120));
+        jPanel2.setLayout(null);
 
-        jLabelRM.setForeground(new java.awt.Color(0, 131, 62));
-        jLabelRM.setText("No. Rekam Medis :");
-        jLabelRM.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
-        jLabelRM.setPreferredSize(new java.awt.Dimension(180, 40));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.insets = new java.awt.Insets(2, 4, 2, 0);
-        jPanelTengah.add(jLabelRM, gridBagConstraints);
+        jLabel10.setForeground(new java.awt.Color(0, 131, 62));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel10.setText("No. Rekam Medis");
+        jLabel10.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
+        jLabel10.setPreferredSize(new java.awt.Dimension(20, 14));
+        jPanel2.add(jLabel10);
+        jLabel10.setBounds(20, 50, 220, 40);
+
+        jLabel29.setForeground(new java.awt.Color(0, 131, 62));
+        jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel29.setText("Tanggal Periksa");
+        jLabel29.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
+        jLabel29.setPreferredSize(new java.awt.Dimension(20, 14));
+        jPanel2.add(jLabel29);
+        jLabel29.setBounds(20, 180, 220, 40);
+
+        jLabel31.setForeground(new java.awt.Color(0, 131, 62));
+        jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel31.setText("Poli Tujuan");
+        jLabel31.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
+        jLabel31.setPreferredSize(new java.awt.Dimension(20, 14));
+        jPanel2.add(jLabel31);
+        jLabel31.setBounds(20, 220, 220, 40);
+
+        dateTanggalPeriksa.setEditable(false);
+        dateTanggalPeriksa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-12-2023" }));
+        dateTanggalPeriksa.setDisplayFormat("dd-MM-yyyy");
+        dateTanggalPeriksa.setEnabled(false);
+        dateTanggalPeriksa.setFocusable(false);
+        dateTanggalPeriksa.setOpaque(false);
+        dateTanggalPeriksa.setPreferredSize(new java.awt.Dimension(95, 23));
+        jPanel2.add(dateTanggalPeriksa);
+        dateTanggalPeriksa.setBounds(290, 180, 190, 40);
 
         labelNoRM.setForeground(new java.awt.Color(0, 131, 62));
         labelNoRM.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         labelNoRM.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
-        labelNoRM.setPreferredSize(new java.awt.Dimension(28, 40));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 6;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(2, 4, 2, 0);
-        jPanelTengah.add(labelNoRM, gridBagConstraints);
+        labelNoRM.setPreferredSize(new java.awt.Dimension(20, 14));
+        jPanel2.add(labelNoRM);
+        labelNoRM.setBounds(290, 50, 590, 40);
 
-        jLabelNamaPasien.setForeground(new java.awt.Color(0, 131, 62));
-        jLabelNamaPasien.setText("Nama Pasien :");
-        jLabelNamaPasien.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
-        jLabelNamaPasien.setPreferredSize(new java.awt.Dimension(180, 40));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.insets = new java.awt.Insets(2, 4, 2, 0);
-        jPanelTengah.add(jLabelNamaPasien, gridBagConstraints);
+        jLabel32.setForeground(new java.awt.Color(0, 131, 62));
+        jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel32.setText("Dokter Tujuan");
+        jLabel32.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
+        jLabel32.setPreferredSize(new java.awt.Dimension(20, 14));
+        jPanel2.add(jLabel32);
+        jLabel32.setBounds(20, 260, 220, 40);
+
+        dropdownCaraBayar.setForeground(new java.awt.Color(0, 131, 62));
+        dropdownCaraBayar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "UMUM / PERSONAL" }));
+        dropdownCaraBayar.setFont(new java.awt.Font("Inter", 1, 14)); // NOI18N
+        jPanel2.add(dropdownCaraBayar);
+        dropdownCaraBayar.setBounds(290, 300, 520, 40);
+
+        buttonCariPoli.setForeground(new java.awt.Color(0, 131, 62));
+        buttonCariPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pilih.png"))); // NOI18N
+        buttonCariPoli.setMnemonic('S');
+        buttonCariPoli.setToolTipText("Alt+S");
+        buttonCariPoli.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
+        buttonCariPoli.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        buttonCariPoli.setPreferredSize(new java.awt.Dimension(300, 45));
+        buttonCariPoli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCariPoliActionPerformed(evt);
+            }
+        });
+        jPanel2.add(buttonCariPoli);
+        buttonCariPoli.setBounds(810, 220, 70, 40);
+
+        textNamaPoli.setEditable(false);
+        textNamaPoli.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
+        textNamaPoli.setPreferredSize(new java.awt.Dimension(72, 28));
+        jPanel2.add(textNamaPoli);
+        textNamaPoli.setBounds(290, 220, 520, 40);
+
+        jLabel36.setForeground(new java.awt.Color(0, 131, 62));
+        jLabel36.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel36.setText("Cara Bayar");
+        jLabel36.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
+        jLabel36.setPreferredSize(new java.awt.Dimension(20, 14));
+        jPanel2.add(jLabel36);
+        jLabel36.setBounds(20, 300, 220, 40);
+
+        buttonCariDokter.setForeground(new java.awt.Color(0, 131, 62));
+        buttonCariDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pilih.png"))); // NOI18N
+        buttonCariDokter.setMnemonic('S');
+        buttonCariDokter.setToolTipText("Alt+S");
+        buttonCariDokter.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
+        buttonCariDokter.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        buttonCariDokter.setPreferredSize(new java.awt.Dimension(300, 45));
+        buttonCariDokter.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonCariDokterActionPerformed(evt);
+            }
+        });
+        jPanel2.add(buttonCariDokter);
+        buttonCariDokter.setBounds(810, 260, 70, 40);
+
+        textNamaDokter.setEditable(false);
+        textNamaDokter.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
+        textNamaDokter.setPreferredSize(new java.awt.Dimension(72, 28));
+        jPanel2.add(textNamaDokter);
+        textNamaDokter.setBounds(290, 260, 520, 40);
+
+        jLabel12.setForeground(new java.awt.Color(0, 131, 62));
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel12.setText(":");
+        jLabel12.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
+        jLabel12.setPreferredSize(new java.awt.Dimension(20, 14));
+        jPanel2.add(jLabel12);
+        jLabel12.setBounds(250, 300, 40, 40);
+
+        jLabel13.setForeground(new java.awt.Color(0, 131, 62));
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel13.setText(":");
+        jLabel13.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
+        jLabel13.setPreferredSize(new java.awt.Dimension(20, 14));
+        jPanel2.add(jLabel13);
+        jLabel13.setBounds(250, 50, 40, 40);
+
+        jLabel14.setForeground(new java.awt.Color(0, 131, 62));
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel14.setText(":");
+        jLabel14.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
+        jLabel14.setPreferredSize(new java.awt.Dimension(20, 14));
+        jPanel2.add(jLabel14);
+        jLabel14.setBounds(250, 180, 40, 40);
+
+        jLabel15.setForeground(new java.awt.Color(0, 131, 62));
+        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel15.setText(":");
+        jLabel15.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
+        jLabel15.setPreferredSize(new java.awt.Dimension(20, 14));
+        jPanel2.add(jLabel15);
+        jLabel15.setBounds(250, 220, 40, 40);
+
+        jLabel16.setForeground(new java.awt.Color(0, 131, 62));
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel16.setText(":");
+        jLabel16.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
+        jLabel16.setPreferredSize(new java.awt.Dimension(20, 14));
+        jPanel2.add(jLabel16);
+        jLabel16.setBounds(250, 210, 40, 40);
+
+        jLabel17.setForeground(new java.awt.Color(0, 131, 62));
+        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel17.setText(":");
+        jLabel17.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
+        jLabel17.setPreferredSize(new java.awt.Dimension(20, 14));
+        jPanel2.add(jLabel17);
+        jLabel17.setBounds(250, 260, 40, 40);
+
+        jLabel11.setForeground(new java.awt.Color(0, 131, 62));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel11.setText("Nama");
+        jLabel11.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
+        jLabel11.setPreferredSize(new java.awt.Dimension(20, 14));
+        jPanel2.add(jLabel11);
+        jLabel11.setBounds(20, 90, 220, 40);
+
+        jLabel18.setForeground(new java.awt.Color(0, 131, 62));
+        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel18.setText(":");
+        jLabel18.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
+        jLabel18.setPreferredSize(new java.awt.Dimension(20, 14));
+        jPanel2.add(jLabel18);
+        jLabel18.setBounds(250, 90, 40, 40);
 
         labelNamaPasien.setForeground(new java.awt.Color(0, 131, 62));
         labelNamaPasien.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         labelNamaPasien.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
-        labelNamaPasien.setPreferredSize(new java.awt.Dimension(28, 40));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 6;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(2, 4, 2, 0);
-        jPanelTengah.add(labelNamaPasien, gridBagConstraints);
+        labelNamaPasien.setPreferredSize(new java.awt.Dimension(20, 14));
+        jPanel2.add(labelNamaPasien);
+        labelNamaPasien.setBounds(290, 90, 590, 40);
 
-        jLabelTglLahir.setForeground(new java.awt.Color(0, 131, 62));
-        jLabelTglLahir.setText("Tgl. Lahir :");
-        jLabelTglLahir.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
-        jLabelTglLahir.setPreferredSize(new java.awt.Dimension(180, 40));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.insets = new java.awt.Insets(2, 4, 2, 0);
-        jPanelTengah.add(jLabelTglLahir, gridBagConstraints);
+        jLabel19.setForeground(new java.awt.Color(0, 131, 62));
+        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel19.setText("Tgl. Lahir");
+        jLabel19.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
+        jLabel19.setPreferredSize(new java.awt.Dimension(20, 14));
+        jPanel2.add(jLabel19);
+        jLabel19.setBounds(20, 130, 220, 40);
+
+        jLabel20.setForeground(new java.awt.Color(0, 131, 62));
+        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel20.setText(":");
+        jLabel20.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
+        jLabel20.setPreferredSize(new java.awt.Dimension(20, 14));
+        jPanel2.add(jLabel20);
+        jLabel20.setBounds(250, 130, 40, 40);
 
         labelTglLahir.setForeground(new java.awt.Color(0, 131, 62));
         labelTglLahir.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         labelTglLahir.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
-        labelTglLahir.setPreferredSize(new java.awt.Dimension(28, 40));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.gridwidth = 6;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(2, 4, 2, 0);
-        jPanelTengah.add(labelTglLahir, gridBagConstraints);
+        labelTglLahir.setPreferredSize(new java.awt.Dimension(20, 14));
+        jPanel2.add(labelTglLahir);
+        labelTglLahir.setBounds(290, 130, 590, 40);
 
-        jLabelPoli.setForeground(new java.awt.Color(0, 131, 62));
-        jLabelPoli.setText("Poli Tujuan :");
-        jLabelPoli.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
-        jLabelPoli.setPreferredSize(new java.awt.Dimension(180, 40));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.insets = new java.awt.Insets(2, 4, 2, 0);
-        jPanelTengah.add(jLabelPoli, gridBagConstraints);
-
-        textNamaPoli.setEditable(false);
-        textNamaPoli.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
-        textNamaPoli.setPreferredSize(new java.awt.Dimension(40, 40));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(2, 4, 2, 0);
-        jPanelTengah.add(textNamaPoli, gridBagConstraints);
-
-        btnCariPoli.setForeground(new java.awt.Color(0, 131, 62));
-        btnCariPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pilih.png"))); // NOI18N
-        btnCariPoli.setMnemonic('S');
-        btnCariPoli.setToolTipText("Alt+S");
-        btnCariPoli.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
-        btnCariPoli.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnCariPoli.setPreferredSize(new java.awt.Dimension(40, 23));
-        btnCariPoli.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCariPoliActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 6;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.insets = new java.awt.Insets(2, 4, 2, 0);
-        jPanelTengah.add(btnCariPoli, gridBagConstraints);
-
-        jLabelDokter.setForeground(new java.awt.Color(0, 131, 62));
-        jLabelDokter.setText("Dokter Tujuan :");
-        jLabelDokter.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
-        jLabelDokter.setPreferredSize(new java.awt.Dimension(180, 40));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.insets = new java.awt.Insets(2, 4, 2, 0);
-        jPanelTengah.add(jLabelDokter, gridBagConstraints);
-
-        textNamaDokter.setEditable(false);
-        textNamaDokter.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
-        textNamaDokter.setPreferredSize(new java.awt.Dimension(40, 40));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.gridwidth = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(2, 4, 2, 0);
-        jPanelTengah.add(textNamaDokter, gridBagConstraints);
-
-        btnCariDokter.setForeground(new java.awt.Color(0, 131, 62));
-        btnCariDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pilih.png"))); // NOI18N
-        btnCariDokter.setMnemonic('S');
-        btnCariDokter.setToolTipText("Alt+S");
-        btnCariDokter.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
-        btnCariDokter.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnCariDokter.setPreferredSize(new java.awt.Dimension(40, 23));
-        btnCariDokter.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCariDokterActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 6;
-        gridBagConstraints.gridy = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.insets = new java.awt.Insets(2, 4, 2, 0);
-        jPanelTengah.add(btnCariDokter, gridBagConstraints);
-
-        jLabelJenisBayar.setForeground(new java.awt.Color(0, 131, 62));
-        jLabelJenisBayar.setText("Jenis Bayar :");
-        jLabelJenisBayar.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
-        jLabelJenisBayar.setPreferredSize(new java.awt.Dimension(180, 40));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.insets = new java.awt.Insets(2, 4, 2, 0);
-        jPanelTengah.add(jLabelJenisBayar, gridBagConstraints);
-
-        textNamaJenisBayar.setEditable(false);
-        textNamaJenisBayar.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
-        textNamaJenisBayar.setPreferredSize(new java.awt.Dimension(40, 40));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.gridwidth = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(2, 4, 2, 0);
-        jPanelTengah.add(textNamaJenisBayar, gridBagConstraints);
-
-        btnCariJenisBayar.setForeground(new java.awt.Color(0, 131, 62));
-        btnCariJenisBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pilih.png"))); // NOI18N
-        btnCariJenisBayar.setMnemonic('S');
-        btnCariJenisBayar.setToolTipText("Alt+S");
-        btnCariJenisBayar.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
-        btnCariJenisBayar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnCariJenisBayar.setPreferredSize(new java.awt.Dimension(40, 23));
-        btnCariJenisBayar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCariJenisBayarActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 6;
-        gridBagConstraints.gridy = 6;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.insets = new java.awt.Insets(2, 4, 2, 0);
-        jPanelTengah.add(btnCariJenisBayar, gridBagConstraints);
-
-        jPanel2.setBackground(new java.awt.Color(238, 238, 255));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 7;
-        gridBagConstraints.gridwidth = 7;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 0.6;
-        jPanelTengah.add(jPanel2, gridBagConstraints);
+        jPanel1.add(jPanel2, java.awt.BorderLayout.CENTER);
 
         jPanel3.setBackground(new java.awt.Color(238, 238, 255));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 7;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 0.3;
-        jPanelTengah.add(jPanel3, gridBagConstraints);
-
-        jPanel1.add(jPanelTengah, java.awt.BorderLayout.CENTER);
-
-        jPanelBawah.setBackground(new java.awt.Color(238, 238, 255));
-        jPanelBawah.setPreferredSize(new java.awt.Dimension(615, 100));
+        jPanel3.setPreferredSize(new java.awt.Dimension(615, 200));
 
         btnSimpan.setForeground(new java.awt.Color(0, 131, 62));
         btnSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/konfirmasi.png"))); // NOI18N
@@ -393,7 +381,7 @@ public class DlgRegistrasiEksekutif extends javax.swing.JDialog {
                 btnSimpanActionPerformed(evt);
             }
         });
-        jPanelBawah.add(btnSimpan);
+        jPanel3.add(btnSimpan);
 
         btnKeluar.setForeground(new java.awt.Color(0, 131, 62));
         btnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/reset.png"))); // NOI18N
@@ -408,9 +396,9 @@ public class DlgRegistrasiEksekutif extends javax.swing.JDialog {
                 btnKeluarActionPerformed(evt);
             }
         });
-        jPanelBawah.add(btnKeluar);
+        jPanel3.add(btnKeluar);
 
-        jPanel1.add(jPanelBawah, java.awt.BorderLayout.PAGE_END);
+        jPanel1.add(jPanel3, java.awt.BorderLayout.PAGE_END);
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
@@ -429,7 +417,7 @@ public class DlgRegistrasiEksekutif extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null, "Pilih poli terlebih dahulu..!!");
         } else if (regKodeDokter.isBlank()) {
             JOptionPane.showMessageDialog(null, "Pilih Dokter terlebih dahulu..!!");
-        } else if (Sequel.cariIntegerSmc("select count(*) from reg_periksa where kd_pj = 'A09' and no_rkm_medis = ? and tgl_registrasi = current_date() and kd_poli = ? and kd_dokter = ?", labelNoRM.getText(), regKodePoli, regKodeDokter) > 0) {
+        } else if (Sequel.cariIntegerSmc("select count(*) from reg_periksa where kd_pj = 'A09' and no_rkm_medis = ? and tgl_registrasi = ? and kd_poli = ? and kd_dokter = ?", labelNoRM.getText(), Valid.SetTgl(dateTanggalPeriksa.getSelectedItem().toString()), regKodePoli, regKodeDokter) > 0) {
             JOptionPane.showMessageDialog(null, "Maaf, anda sudah terdaftar pada hari ini dengan dokter dan poli yang sama..!!");
         } else if (Sequel.cariIntegerSmc("select count(*) from reg_periksa join kamar_inap on reg_periksa.no_rawat = kamar_inap.no_rawat where kamar_inap.stts_pulang = '-' and reg_periksa.no_rkm_medis = ?", labelNoRM.getText()) > 0) {
             JOptionPane.showMessageDialog(null, "Maaf, pasien sedang dalam masa perawatan di rawat inap..!!");
@@ -450,27 +438,26 @@ public class DlgRegistrasiEksekutif extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_btnSimpanActionPerformed
 
-    private void btnCariDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariDokterActionPerformed
+    private void buttonCariPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCariPoliActionPerformed
+        poli.tampil(hari);
+        poli.setSize(jPanel1.getWidth() - 50, jPanel1.getHeight() - 50);
+        poli.setLocationRelativeTo(jPanel2);
+        poli.setVisible(true);
+    }//GEN-LAST:event_buttonCariPoliActionPerformed
+
+    private void buttonCariDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCariDokterActionPerformed
         dokter.tampil(hari, regKodePoli);
         dokter.setSize(jPanel1.getWidth() - 50, jPanel1.getHeight() - 50);
         dokter.setLocationRelativeTo(jPanel2);
         dokter.setVisible(true);
-    }//GEN-LAST:event_btnCariDokterActionPerformed
-
-    private void btnCariPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariPoliActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCariPoliActionPerformed
-
-    private void btnCariJenisBayarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariJenisBayarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCariJenisBayarActionPerformed
+    }//GEN-LAST:event_buttonCariDokterActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
-            DlgRegistrasiEksekutif dialog = new DlgRegistrasiEksekutif(new javax.swing.JFrame(), true);
+            DlgRegistrasiWalkIn dialog = new DlgRegistrasiWalkIn(new javax.swing.JFrame(), true);
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
 
                 @Override
@@ -482,27 +469,34 @@ public class DlgRegistrasiEksekutif extends javax.swing.JDialog {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private component.Button btnCariDokter;
-    private component.Button btnCariJenisBayar;
-    private component.Button btnCariPoli;
-    private component.Button btnKeluar;
-    private component.Button btnSimpan;
-    private component.Label jLabelDokter;
-    private component.Label jLabelJenisBayar;
-    private component.Label jLabelNamaPasien;
-    private component.Label jLabelPoli;
-    private component.Label jLabelRM;
-    private component.Label jLabelTglLahir;
-    private component.Panel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private widget.Button btnKeluar;
+    private widget.Button btnSimpan;
+    private widget.Button buttonCariDokter;
+    private widget.Button buttonCariPoli;
+    private widget.Tanggal dateTanggalPeriksa;
+    private widget.ComboBox dropdownCaraBayar;
+    private widget.Label jLabel10;
+    private widget.Label jLabel11;
+    private widget.Label jLabel12;
+    private widget.Label jLabel13;
+    private widget.Label jLabel14;
+    private widget.Label jLabel15;
+    private widget.Label jLabel16;
+    private widget.Label jLabel17;
+    private widget.Label jLabel18;
+    private widget.Label jLabel19;
+    private widget.Label jLabel20;
+    private widget.Label jLabel29;
+    private widget.Label jLabel31;
+    private widget.Label jLabel32;
+    private widget.Label jLabel36;
+    private widget.Panel jPanel1;
+    private widget.Panel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanelBawah;
-    private javax.swing.JPanel jPanelTengah;
-    private component.Label labelNamaPasien;
-    private component.Label labelNoRM;
-    private component.Label labelTglLahir;
+    private widget.Label labelNamaPasien;
+    private widget.Label labelNoRM;
+    private widget.Label labelTglLahir;
     private widget.TextBox textNamaDokter;
-    private widget.TextBox textNamaJenisBayar;
     private widget.TextBox textNamaPoli;
     // End of variables declaration//GEN-END:variables
 
@@ -559,7 +553,7 @@ public class DlgRegistrasiEksekutif extends javax.swing.JDialog {
             ps = koneksi.prepareStatement(
                 "select "
                 + "pasien.nm_pasien, concat_ws(', ', pasien.alamat, kelurahan.nm_kel, kecamatan.nm_kec, kabupaten.nm_kab) as alamat, pasien.tgl_lahir, pasien.namakeluarga, pasien.keluarga, pasien.kd_pj, "
-                + "if (pasien.tgl_daftar = current_date(), 'baru', 'lama') as daftar, timestampdiff(year, pasien.tgl_lahir, curdate()) as tahun, timestampdiff(month, pasien.tgl_lahir, curdate()) - ((timestampdiff(month, pasien.tgl_lahir, curdate()) div 12) * 12) as bulan, "
+                + "if (pasien.tgl_daftar = ?, 'baru', 'lama') as daftar, timestampdiff(year, pasien.tgl_lahir, curdate()) as tahun, timestampdiff(month, pasien.tgl_lahir, curdate()) - ((timestampdiff(month, pasien.tgl_lahir, curdate()) div 12) * 12) as bulan, "
                 + "timestampdiff(day, date_add(date_add(pasien.tgl_lahir, interval timestampdiff(year, pasien.tgl_lahir, curdate()) year), interval timestampdiff(month, pasien.tgl_lahir, curdate()) - ((timestampdiff(month, pasien.tgl_lahir, curdate()) div 12) * 12) month), curdate()) as hari "
                 + "from pasien "
                 + "join kelurahan on pasien.kd_kel = kelurahan.kd_kel "
@@ -569,7 +563,8 @@ public class DlgRegistrasiEksekutif extends javax.swing.JDialog {
             );
 
             try {
-                ps.setString(1, labelNoRM.getText());
+                ps.setString(1, Valid.SetTgl(dateTanggalPeriksa.getSelectedItem().toString()));
+                ps.setString(2, labelNoRM.getText());
 
                 rs = ps.executeQuery();
 
@@ -619,38 +614,39 @@ public class DlgRegistrasiEksekutif extends javax.swing.JDialog {
         switch (URUTNOREG) {
             case "poli":
                 regNoUrut = Sequel.cariIsiSmc(
-                    "select lpad(ifnull(max(convert(no_reg, signed)), 0) + 1, 3, '0') from reg_periksa where kd_poli = ? and tgl_registrasi = current_date()",
-                    regKodePoli
+                    "select lpad(ifnull(max(convert(no_reg, signed)), 0) + 1, 3, '0') from reg_periksa where kd_poli = ? and tgl_registrasi = ?",
+                    regKodePoli, Valid.SetTgl(dateTanggalPeriksa.getSelectedItem().toString())
                 );
                 break;
             case "dokter":
                 regNoUrut = Sequel.cariIsiSmc(
-                    "select lpad(ifnull(max(convert(no_reg, signed)), 0) + 1, 3, '0') from reg_periksa where kd_dokter = ? and tgl_registrasi = current_date()",
-                    regKodePoli
+                    "select lpad(ifnull(max(convert(no_reg, signed)), 0) + 1, 3, '0') from reg_periksa where kd_dokter = ? and tgl_registrasi = ?",
+                    regKodePoli, Valid.SetTgl(dateTanggalPeriksa.getSelectedItem().toString())
                 );
                 break;
             case "dokter + poli":
                 regNoUrut = Sequel.cariIsiSmc(
-                    "select lpad(ifnull(max(convert(no_reg, signed)), 0) + 1, 3, '0') from reg_periksa where kd_poli = ? and kd_dokter = ? and tgl_registrasi = current_date()",
-                    regKodePoli, regKodeDokter
+                    "select lpad(ifnull(max(convert(no_reg, signed)), 0) + 1, 3, '0') from reg_periksa where kd_poli = ? and kd_dokter = ? and tgl_registrasi = ?",
+                    regKodePoli, regKodeDokter, Valid.SetTgl(dateTanggalPeriksa.getSelectedItem().toString())
                 );
                 break;
             default:
                 regNoUrut = Sequel.cariIsiSmc(
-                    "select lpad(ifnull(max(convert(no_reg, signed)), 0) + 1, 3, '0') from reg_periksa where kd_poli = ? and kd_dokter = ? and tgl_registrasi = current_date()",
-                    regKodePoli, regKodeDokter
+                    "select lpad(ifnull(max(convert(no_reg, signed)), 0) + 1, 3, '0') from reg_periksa where kd_poli = ? and kd_dokter = ? and tgl_registrasi = ?",
+                    regKodePoli, regKodeDokter, Valid.SetTgl(dateTanggalPeriksa.getSelectedItem().toString())
                 );
                 break;
         }
 
         regNoRawat = Sequel.cariIsiSmc(
-            "select concat(date_format(current_date(), '%Y/%m/%d'), '/', lpad(ifnull(max(convert(right(no_rawat, 6), signed)), 0) + 1, 6, '0')) from reg_periksa where tgl_registrasi = current_date()"
+            "select concat(date_format(?, '%Y/%m/%d'), '/', lpad(ifnull(max(convert(right(no_rawat, 6), signed)), 0) + 1, 6, '0')) from reg_periksa where tgl_registrasi = ?",
+            Valid.SetTgl(dateTanggalPeriksa.getSelectedItem().toString()), Valid.SetTgl(dateTanggalPeriksa.getSelectedItem().toString())
         );
     }
 
     private void tentukanHari() {
         try {
-            java.util.Date hariperiksa = new java.util.Date();
+            Date hariperiksa = Date.valueOf(Valid.SetTgl(dateTanggalPeriksa.getSelectedItem().toString()));
             cal.setTime(hariperiksa);
             day = cal.get(Calendar.DAY_OF_WEEK);
             switch (day) {
@@ -690,7 +686,7 @@ public class DlgRegistrasiEksekutif extends javax.swing.JDialog {
         System.out.println("Mencoba mendaftarkan pasien dengan no. rawat: " + regNoRawat);
 
         while (coba < maxCoba && (!Sequel.menyimpantfSmc("reg_periksa", null,
-            regNoUrut, regNoRawat, new java.text.SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date()),
+            regNoUrut, regNoRawat, Valid.SetTgl(dateTanggalPeriksa.getSelectedItem().toString()),
             Sequel.cariIsi("select current_time()"), regKodeDokter, labelNoRM.getText(), regKodePoli,
             pasienNamaPJ, pasienAlamatPJ, pasienHubunganPJ, regBiaya, "Belum", regStatusDaftar, "Ralan", "A09",
             pasienUmur, pasienStatusUmur, "Belum Bayar", regStatusPoli))) {
@@ -700,13 +696,13 @@ public class DlgRegistrasiEksekutif extends javax.swing.JDialog {
             coba++;
         }
 
-        String isNoRawat = Sequel.cariIsiSmc("select no_rawat from reg_periksa where tgl_registrasi = current_date() and no_rkm_medis = ? and kd_poli = ? and kd_dokter = ?", labelNoRM.getText(), regKodePoli, regKodeDokter);
+        String isNoRawat = Sequel.cariIsiSmc("select no_rawat from reg_periksa where tgl_registrasi = ? and no_rkm_medis = ? and kd_poli = ? and kd_dokter = ?", Valid.SetTgl(dateTanggalPeriksa.getSelectedItem().toString()), labelNoRM.getText(), regKodePoli, regKodeDokter);
 
         if (coba == maxCoba && (isNoRawat == null || !isNoRawat.equals(regNoRawat))) {
             System.out.println("======================================================");
             System.out.println("Tidak dapat mendaftarkan pasien dengan detail berikut:");
             System.out.println("No. Rawat: " + regNoRawat);
-            System.out.println("Tgl. Registrasi: " + new java.text.SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date()));
+            System.out.println("Tgl. Registrasi: " + Valid.SetTgl(dateTanggalPeriksa.getSelectedItem().toString()));
             System.out.println("No. Antrian: " + regNoUrut + " (Ditemukan: " + Sequel.cariIsiSmc("select no_reg from reg_periksa where no_rawat = ?", regNoRawat) + ")");
             System.out.println("No. RM: " + labelNoRM + " (Ditemukan: " + Sequel.cariIsiSmc("select no_rkm_medis from reg_periksa where no_rawat = ?", regNoRawat) + ")");
             System.out.println("Kode Dokter: " + regKodeDokter + " (Ditemukan: " + Sequel.cariIsiSmc("select kd_dokter from reg_periksa where no_rawat = ?", regNoRawat) + ")");
@@ -741,9 +737,10 @@ public class DlgRegistrasiEksekutif extends javax.swing.JDialog {
         labelNoRM.setText("");
         labelNamaPasien.setText("");
         labelTglLahir.setText("");
+        dateTanggalPeriksa.setDate(new java.util.Date());
         textNamaPoli.setText("");
         textNamaDokter.setText("");
-        textNamaJenisBayar.setText("");
+        dropdownCaraBayar.setSelectedIndex(0);
 
         hari = "";
         regNoRawat = "";

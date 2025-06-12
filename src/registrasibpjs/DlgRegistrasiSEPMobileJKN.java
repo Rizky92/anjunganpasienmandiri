@@ -8,7 +8,7 @@
  *
  * Created on 04 Des 13, 12:59:34
  */
-package khanzahmsanjungan;
+package registrasibpjs;
 
 import bridging.ApiBPJS;
 import bridging.BPJSCekReferensiDokterDPJP1;
@@ -44,6 +44,9 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
+import khanzahmsanjungan.DlgCariDokter;
+import khanzahmsanjungan.DlgCariPoli;
+import khanzahmsanjungan.DlgCariPoliBPJS;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -65,7 +68,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
     private BPJSCekReferensiPenyakit penyakit = new BPJSCekReferensiPenyakit(null, true);
     private DlgCariPoliBPJS poli = new DlgCariPoliBPJS(null, true);
     private DlgCariPoli polimapping = new DlgCariPoli(null, true);
-    private DlgCariDokter2 doktermapping = new DlgCariDokter2(null, true);
+    private DlgCariDokter doktermapping = new DlgCariDokter(null, true);
     private BPJSCekRiwayatRujukanTerakhir rujukanterakhir = new BPJSCekRiwayatRujukanTerakhir(null, true);
     private BPJSCekRiwayatPelayanan historiPelayanan = new BPJSCekRiwayatPelayanan(null, true);
     private String hari = "",
@@ -213,15 +216,15 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        LblKdPoli = new component.Label();
-        LblKdDokter = new component.Label();
-        NoReg = new component.TextBox();
-        NoRawat = new component.TextBox();
-        Biaya = new component.TextBox();
-        TAlmt = new component.Label();
-        TPngJwb = new component.Label();
-        THbngn = new component.Label();
-        NoTelpPasien = new component.Label();
+        LblKdPoli = new widget.Label();
+        LblKdDokter = new widget.Label();
+        NoReg = new widget.TextBox();
+        NoRawat = new widget.TextBox();
+        Biaya = new widget.TextBox();
+        TAlmt = new widget.Label();
+        TPngJwb = new widget.Label();
+        THbngn = new widget.Label();
+        NoTelpPasien = new widget.Label();
         kdpoli = new widget.TextBox();
         TBiaya = new widget.TextBox();
         Kdpnj = new widget.TextBox();
@@ -238,8 +241,8 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         label1 = new widget.Label();
         label2 = new widget.Label();
         label3 = new widget.Label();
-        jPanel1 = new component.Panel();
-        jPanel2 = new component.Panel();
+        jPanel1 = new widget.Panel();
+        jPanel2 = new widget.Panel();
         TPasien = new widget.TextBox();
         TNoRM = new widget.TextBox();
         NoKartu = new widget.TextBox();
@@ -338,9 +341,9 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         jLabel15 = new widget.Label();
         JumlahBarcode = new widget.TextBox();
         jPanel3 = new javax.swing.JPanel();
-        btnSimpan = new component.Button();
-        btnFingerPrint = new component.Button();
-        btnKeluar = new component.Button();
+        btnSimpan = new widget.Button();
+        btnFingerPrint = new widget.Button();
+        btnKeluar = new widget.Button();
 
         LblKdPoli.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LblKdPoli.setText("Norm");
@@ -391,7 +394,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         NoRujukMasuk.setText("0");
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-09-2024" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-06-2025" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         Tanggal.setOpaque(false);
@@ -501,7 +504,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
 
         TanggalSEP.setEditable(false);
         TanggalSEP.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-09-2024" }));
+        TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-06-2025" }));
         TanggalSEP.setDisplayFormat("dd-MM-yyyy");
         TanggalSEP.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         TanggalSEP.setOpaque(false);
@@ -518,7 +521,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
 
         TanggalRujuk.setEditable(false);
         TanggalRujuk.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-09-2024" }));
+        TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-06-2025" }));
         TanggalRujuk.setDisplayFormat("dd-MM-yyyy");
         TanggalRujuk.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         TanggalRujuk.setOpaque(false);
@@ -760,7 +763,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
 
         TanggalKKL.setEditable(false);
         TanggalKKL.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalKKL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-09-2024" }));
+        TanggalKKL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "04-06-2025" }));
         TanggalKKL.setDisplayFormat("dd-MM-yyyy");
         TanggalKKL.setEnabled(false);
         TanggalKKL.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
@@ -1429,7 +1432,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
 
     private void btnApprovalFPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApprovalFPActionPerformed
         resetAksi();
-        if (! NoKartu.getText().isBlank()) {
+        if (!NoKartu.getText().isBlank()) {
             aksi = "Approval";
             WindowAksi.setSize(400, 300);
             WindowAksi.setLocationRelativeTo(null);
@@ -1441,7 +1444,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
 
     private void btnPengajuanFPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPengajuanFPActionPerformed
         resetAksi();
-        if (! NoKartu.getText().isBlank()) {
+        if (!NoKartu.getText().isBlank()) {
             aksi = "Pengajuan";
             WindowAksi.setSize(400, 300);
             WindowAksi.setLocationRelativeTo(null);
@@ -1619,7 +1622,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.ComboBox AsalRujukan;
     private widget.ComboBox AsesmenPoli;
-    private component.TextBox Biaya;
+    private widget.TextBox Biaya;
     private widget.TextBox Catatan;
     private widget.ComboBox FlagProsedur;
     private widget.TextBox JK;
@@ -1649,8 +1652,8 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
     private widget.Label LabelPoli5;
     private widget.Label LabelPoli7;
     private widget.ComboBox LakaLantas;
-    private component.Label LblKdDokter;
-    private component.Label LblKdPoli;
+    private widget.Label LblKdDokter;
+    private widget.Label LblKdPoli;
     private widget.TextBox NIK;
     private widget.TextBox NmDPJP;
     private widget.TextBox NmDPJPLayanan;
@@ -1664,24 +1667,24 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
     private widget.TextBox NmPpkRujukan;
     private widget.TextBox NmPropinsi;
     private widget.TextBox NoKartu;
-    private component.TextBox NoRawat;
-    private component.TextBox NoReg;
+    private widget.TextBox NoRawat;
+    private widget.TextBox NoReg;
     private widget.TextBox NoRujukMasuk;
     private widget.TextBox NoRujukan;
     private widget.TextBox NoSEPSuplesi;
     private widget.TextBox NoSKDP;
     private widget.TextBox NoTelp;
-    private component.Label NoTelpPasien;
+    private widget.Label NoTelpPasien;
     private widget.ComboBox Penunjang;
     private widget.TextBox Status;
     private widget.ComboBox Suplesi;
-    private component.Label TAlmt;
+    private widget.Label TAlmt;
     private widget.TextBox TBiaya;
-    private component.Label THbngn;
+    private widget.Label THbngn;
     private widget.TextBox TNoRM;
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
-    private component.Label TPngJwb;
+    private widget.Label TPngJwb;
     private widget.Tanggal Tanggal;
     private widget.Tanggal TanggalKKL;
     private widget.Tanggal TanggalRujuk;
@@ -1697,12 +1700,12 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
     private widget.Button btnDPJPLayanan1;
     private widget.Button btnDiagnosaAwal;
     private widget.Button btnDokterTerapi;
-    private component.Button btnFingerPrint;
-    private component.Button btnKeluar;
+    private widget.Button btnFingerPrint;
+    private widget.Button btnKeluar;
     private widget.Button btnPengajuanFP;
     private widget.Button btnPoliTerapi;
     private widget.Button btnRiwayatPelayanan;
-    private component.Button btnSimpan;
+    private widget.Button btnSimpan;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel10;
     private widget.Label jLabel11;
@@ -1733,8 +1736,8 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
     private widget.Label jLabel7;
     private widget.Label jLabel8;
     private widget.Label jLabel9;
-    private component.Panel jPanel1;
-    private component.Panel jPanel2;
+    private widget.Panel jPanel1;
+    private widget.Panel jPanel2;
     private javax.swing.JPanel jPanel3;
     private widget.TextBox kdpoli;
     private widget.Label label1;
@@ -2008,10 +2011,10 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         btnDokterTerapi.setVisible(false);
         lblTerapi.setVisible(false);
         try (PreparedStatement psjkn = koneksi.prepareStatement(
-            "select referensi_mobilejkn_bpjs.*, maping_poli_bpjs.nm_poli_bpjs, maping_poli_bpjs.kd_poli_rs, maping_dokter_dpjpvclaim.nm_dokter_bpjs, maping_dokter_dpjpvclaim.kd_dokter from referensi_mobilejkn_bpjs " +
-            "join maping_poli_bpjs on referensi_mobilejkn_bpjs.kodepoli = maping_poli_bpjs.kd_poli_bpjs join maping_dokter_dpjpvclaim on referensi_mobilejkn_bpjs.kodedokter = maping_dokter_dpjpvclaim.kd_dokter_bpjs " +
-            "where referensi_mobilejkn_bpjs.nomorkartu = ? and referensi_mobilejkn_bpjs.tanggalperiksa = current_date() and referensi_mobilejkn_bpjs.status in ('Belum', 'Checkin') and tanggalperiksa = current_date() " +
-            "and not exists(select * from pemeriksaan_ralan where pemeriksaan_ralan.no_rawat = referensi_mobilejkn_bpjs.no_rawat)"
+            "select referensi_mobilejkn_bpjs.*, maping_poli_bpjs.nm_poli_bpjs, maping_poli_bpjs.kd_poli_rs, maping_dokter_dpjpvclaim.nm_dokter_bpjs, maping_dokter_dpjpvclaim.kd_dokter from referensi_mobilejkn_bpjs "
+            + "join maping_poli_bpjs on referensi_mobilejkn_bpjs.kodepoli = maping_poli_bpjs.kd_poli_bpjs join maping_dokter_dpjpvclaim on referensi_mobilejkn_bpjs.kodedokter = maping_dokter_dpjpvclaim.kd_dokter_bpjs "
+            + "where referensi_mobilejkn_bpjs.nomorkartu = ? and referensi_mobilejkn_bpjs.tanggalperiksa = current_date() and referensi_mobilejkn_bpjs.status in ('Belum', 'Checkin') and tanggalperiksa = current_date() "
+            + "and not exists(select * from pemeriksaan_ralan where pemeriksaan_ralan.no_rawat = referensi_mobilejkn_bpjs.no_rawat)"
         )) {
             psjkn.setString(1, noKartu);
             try (ResultSet rsjkn = psjkn.executeQuery()) {
@@ -2053,10 +2056,17 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                         if (nameNode.path("code").asText().equals("200")) {
                             response = mapper.readTree(api.Decrypt(root.path("response").asText(), utc)).path("peserta");
                             switch (response.path("hakKelas").path("kode").asText()) {
-                                case "1": Kelas.setSelectedIndex(0); break;
-                                case "2": Kelas.setSelectedIndex(1); break;
-                                case "3": Kelas.setSelectedIndex(2); break;
-                                default: break;
+                                case "1":
+                                    Kelas.setSelectedIndex(0);
+                                    break;
+                                case "2":
+                                    Kelas.setSelectedIndex(1);
+                                    break;
+                                case "3":
+                                    Kelas.setSelectedIndex(2);
+                                    break;
+                                default:
+                                    break;
                             }
                             prb = response.path("informasi").path("prolanisPRB").asText();
                             if (prb.contains("null")) {
@@ -2143,13 +2153,13 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                             } else if (jeniskunjungan.equals("3")) {
                                 // CEK JENIS KONTROL DULU
                                 try (PreparedStatement pskontrol = koneksi.prepareStatement(
-                                    "select bridging_surat_kontrol_bpjs.*, left(bridging_sep.asal_rujukan, 1) as asal_rujukan, bridging_sep.jnspelayanan, bridging_sep.no_rujukan, bridging_sep.klsrawat " +
-                                    "from bridging_surat_kontrol_bpjs join bridging_sep on bridging_surat_kontrol_bpjs.no_sep = bridging_sep.no_sep where bridging_surat_kontrol_bpjs.no_surat = ?"
+                                    "select bridging_surat_kontrol_bpjs.*, left(bridging_sep.asal_rujukan, 1) as asal_rujukan, bridging_sep.jnspelayanan, bridging_sep.no_rujukan, bridging_sep.klsrawat "
+                                    + "from bridging_surat_kontrol_bpjs join bridging_sep on bridging_surat_kontrol_bpjs.no_sep = bridging_sep.no_sep where bridging_surat_kontrol_bpjs.no_surat = ?"
                                 )) {
                                     pskontrol.setString(1, rsjkn.getString("nomorreferensi"));
                                     try (ResultSet rskontrol = pskontrol.executeQuery()) {
                                         if (rskontrol.next()) {
-                                            if (! rskontrol.getString("tgl_rencana").equals(Valid.SetTgl(TanggalSEP.getSelectedItem().toString()))) {
+                                            if (!rskontrol.getString("tgl_rencana").equals(Valid.SetTgl(TanggalSEP.getSelectedItem().toString()))) {
                                                 updateSuratKontrol(
                                                     rskontrol.getString("no_surat"), rskontrol.getString("no_sep"), rsjkn.getString("nomorkartu"), Valid.SetTgl(TanggalSEP.getSelectedItem().toString()),
                                                     rsjkn.getString("kodedokter"), rsjkn.getString("nm_dokter_bpjs"), rsjkn.getString("kodepoli"), rsjkn.getString("nm_poli_bpjs")
@@ -2259,10 +2269,10 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         }
         try {
             ps = koneksi.prepareStatement(
-                "select referensi_mobilejkn_bpjs.*, reg_periksa.no_rkm_medis, pasien.nm_pasien, poliklinik.nm_poli, dokter.nm_dokter from referensi_mobilejkn_bpjs " +
-                "join reg_periksa on referensi_mobilejkn_bpjs.no_rawat = reg_periksa.no_rawat join pasien on reg_periksa.no_rkm_medis = pasien.no_rkm_medis " +
-                "join poliklinik on reg_periksa.kd_poli = poliklinik.kd_poli join dokter on reg_periksa.kd_dokter = dokter.kd_dokter " +
-                "where referensi_mobilejkn_bpjs.statuskirim = 'Belum' and referensi_mobilejkn_bpjs.nobooking = ? and referensi_mobilejkn.status = 'Checkin'"
+                "select referensi_mobilejkn_bpjs.*, reg_periksa.no_rkm_medis, pasien.nm_pasien, poliklinik.nm_poli, dokter.nm_dokter from referensi_mobilejkn_bpjs "
+                + "join reg_periksa on referensi_mobilejkn_bpjs.no_rawat = reg_periksa.no_rawat join pasien on reg_periksa.no_rkm_medis = pasien.no_rkm_medis "
+                + "join poliklinik on reg_periksa.kd_poli = poliklinik.kd_poli join dokter on reg_periksa.kd_dokter = dokter.kd_dokter "
+                + "where referensi_mobilejkn_bpjs.statuskirim = 'Belum' and referensi_mobilejkn_bpjs.nobooking = ? and referensi_mobilejkn.status = 'Checkin'"
             );
             try {
                 ps.setString(1, nobooking);
@@ -2485,7 +2495,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
             System.out.println("Notif : " + e);
         }
     }
-    
+
     private void bukaAplikasiFrista() {
         if (NIK.getText().isBlank()) {
             JOptionPane.showMessageDialog(null, "No. kartu peserta tidak ada..!!");
@@ -2575,7 +2585,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
             System.out.println("Notif : " + e);
         }
     }
-    
+
     private void updateSuratKontrol(String noSKDP, String noSEP, String noKartu, String tanggalPeriksa, String kodeDPJP, String namaDPJP, String kodePoli, String namaPoli) {
         if (noSKDP.trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Maaf, data surat kontrol tidak ditemukan...!!\nSilahkan hubungi administrasi...!!");
@@ -2634,7 +2644,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
             TNoRw.getText(), NmPpkRujukan.getText(), "-", NoRujukan.getText(),
             "0", NmPpkRujukan.getText(), KdPenyakit.getText(), "-", "-", NoRujukMasuk.getText()
         );
-        while (coba < maxCoba && ! sukses) {
+        while (coba < maxCoba && !sukses) {
             NoRujukMasuk.setText(
                 Sequel.cariIsiSmc(
                     "select concat('BR/', date_format(?, '%Y/%m/%d/'), lpad(ifnull(max(convert(right(rujuk_masuk.no_balasan, 4), signed)), 0) + 1, 4, '0')) from rujuk_masuk where rujuk_masuk.no_balasan like concat('BR/', date_format(?, '%Y/%m/%d/'), '%')",
@@ -2649,7 +2659,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         }
         return sukses;
     }
-    
+
     private void resetAksi() {
         pwUserId.setText("");
         pwPass.setText("");

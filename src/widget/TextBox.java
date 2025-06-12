@@ -1,8 +1,8 @@
 package widget;
 
 import java.awt.Color;
+import java.awt.Insets;
 import static java.awt.image.ImageObserver.WIDTH;
-import usu.widget.glass.TextBoxGlass;
 import javax.swing.JTextField;
 import static javax.swing.SwingConstants.LEFT;
 

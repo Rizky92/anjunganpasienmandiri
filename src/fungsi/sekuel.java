@@ -69,12 +69,12 @@ public final class sekuel {
     public sekuel() {
         super();
     }
-    
+
     public void logTaskid(String norawat, String kodebooking, String jenisPasien, String taskid, String request, String code, String message, String response, String wakturs) {
         try (PreparedStatement ps = connect.prepareStatement(
-            "insert into referensi_mobilejkn_bpjs_taskid_response2 " +
-            "(no_rawat, kodebooking, jenispasien, taskid, request, code, message, response, waktu, waktu_rs) " +
-            "values (?, ?, ?, ?, ?, ?, ?, ?, now(), ?)"
+            "insert into referensi_mobilejkn_bpjs_taskid_response2 "
+            + "(no_rawat, kodebooking, jenispasien, taskid, request, code, message, response, waktu, waktu_rs) "
+            + "values (?, ?, ?, ?, ?, ?, ?, ?, now(), ?)"
         )) {
             ps.setString(1, norawat);
             ps.setString(2, kodebooking);
@@ -90,7 +90,7 @@ public final class sekuel {
             System.out.println("Notif : " + e);
         }
     }
-    
+
     public String cariIsiSmc(String sql, String... values) {
         try (PreparedStatement ps = connect.prepareStatement(sql)) {
             for (int i = 0; i < values.length; i++) {
@@ -138,7 +138,7 @@ public final class sekuel {
         }
         return defaultValue;
     }
-    
+
     public int cariIntegerSmc(String sql, String... values) {
         return cariIntegerSmc(sql, 0, values);
     }
@@ -158,7 +158,7 @@ public final class sekuel {
         }
         return defaultValue;
     }
-    
+
     public double cariDoubleSmc(String sql, String... values) {
         return cariDoubleSmc(sql, 0, values);
     }
@@ -210,7 +210,7 @@ public final class sekuel {
         }
         return null;
     }
-    
+
     public ArrayList<String> cariArraySmc(String sql, String... values) {
         ArrayList<String> list = new ArrayList<>();
         try (PreparedStatement ps = connect.prepareStatement(sql)) {
@@ -1359,7 +1359,7 @@ public final class sekuel {
         angka = 0;
         try {
             ps = connect.prepareStatement(
-                    "select count(billing.no_rawat) from billing where billing.no_rawat=?");
+                "select count(billing.no_rawat) from billing where billing.no_rawat=?");
             try {
                 ps.setString(1, norawat);
                 rs = ps.executeQuery();
@@ -1937,7 +1937,7 @@ public final class sekuel {
                     ((Painter) txt).setImage(gambar(text));
                     Blob blob = rs.getBlob(5);
                     ((Painter) txt).setImageIcon(new javax.swing.ImageIcon(
-                            blob.getBytes(1, (int) (blob.length()))));
+                        blob.getBytes(1, (int) (blob.length()))));
                 }
             } catch (Exception ex) {
                 cetak(ex.toString());
@@ -2035,7 +2035,7 @@ public final class sekuel {
             int scaledH = (int) (scale * inImage.getHeight(null));
 
             BufferedImage outImage = new BufferedImage(scaledW, scaledH,
-                    BufferedImage.TYPE_INT_RGB);
+                BufferedImage.TYPE_INT_RGB);
 
             AffineTransform tx = new AffineTransform();
 
@@ -2099,8 +2099,8 @@ public final class sekuel {
                 try (FileChannel inChannel = inFile.getChannel()) {
                     outChannel = outFile.getChannel();
                     for (ByteBuffer buffer = ByteBuffer.allocate(1024 * 1024);
-                            inChannel.read(buffer) != -1;
-                            buffer.clear()) {
+                        inChannel.read(buffer) != -1;
+                        buffer.clear()) {
                         buffer.flip();
                         while (buffer.hasRemaining()) {
                             outChannel.write(buffer);

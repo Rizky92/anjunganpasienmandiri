@@ -1,4 +1,3 @@
-
 package widget;
 
 import java.awt.Color;
@@ -13,7 +12,7 @@ public class PasswordBox extends usu.widget.glass.PasswordBox {
         super();
         setSelectionColor(Color.BLUE.brighter());
         setCaretColor(Color.red);
-        setFont(getFont().deriveFont(Font.BOLD,12));
+        setFont(getFont().deriveFont(Font.BOLD, 12));
         setForeground(Color.WHITE);
         setHorizontalAlignment(LEFT);
     }

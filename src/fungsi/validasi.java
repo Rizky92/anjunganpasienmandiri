@@ -92,96 +92,96 @@ public final class validasi {
     public validasi() {
         super();
     }
-    
+
     public String getTglSmc(Tanggal tgl) {
         return new SimpleDateFormat("yyyy-MM-dd").format(tgl.getDate());
     }
-    
+
     public void printReport(String namaReport, String namaPrinter, String judul, int jumlah, Map params) {
         String currentDir = System.getProperties().getProperty("user.dir");
 
         File dir = new File(currentDir);
         File report = null;
-        
+
         if (dir.isDirectory()) {
-            for (String file: dir.list()) {
+            for (String file : dir.list()) {
                 report = new File(currentDir + File.separatorChar + file + File.separatorChar + namaReport);
-                
+
                 if (report.isFile()) {
                     System.out.println("Found report file at: " + report.toString());
                     break;
                 }
             }
         }
-        
+
         if (report == null) {
             JOptionPane.showMessageDialog(null, "File tidak ditemukan!");
             return;
         }
-        
+
         try {
             JasperReport jr = (JasperReport) JRLoader.loadObject(report);
             JasperPrint jp = JasperFillManager.fillReport(jr, params, connect);
-            
+
             PrintService printService = null;
-            
-            for (PrintService currentPrintService: PrintServiceLookup.lookupPrintServices(null, null)) {
+
+            for (PrintService currentPrintService : PrintServiceLookup.lookupPrintServices(null, null)) {
                 if (currentPrintService.getName().equals(namaPrinter)) {
                     System.out.println("Printer ditemukan: " + currentPrintService.getName());
                     printService = currentPrintService;
                     break;
                 }
             }
-            
+
             if (printService == null) {
                 JOptionPane.showMessageDialog(null, "Printer tidak ditemukan!");
                 return;
             }
-            
+
             PrintRequestAttributeSet pra = new HashPrintRequestAttributeSet();
             pra.add(new Copies(jumlah));
-            
+
             SimplePrintServiceExporterConfiguration config = new SimplePrintServiceExporterConfiguration();
-            
+
             config.setPrintService(printService);
             config.setPrintRequestAttributeSet(pra);
             config.setPrintServiceAttributeSet(printService.getAttributes());
             config.setDisplayPageDialog(false);
             config.setDisplayPrintDialog(false);
-            
+
             JRPrintServiceExporter exporter = new JRPrintServiceExporter();
-            
+
             exporter.setExporterInput(new SimpleExporterInput(jp));
             exporter.setConfiguration(config);
             exporter.exportReport();
         } catch (Exception e) {
             System.out.println(e);
-            
-            for (StackTraceElement ste: e.getStackTrace()) {
+
+            for (StackTraceElement ste : e.getStackTrace()) {
                 System.out.println(ste);
             }
-            
+
             JOptionPane.showMessageDialog(null, "Tidak bisa menampilkan hasil cetak!");
         }
     }
-    
+
     public void printReportSmc(String reportName, String reportDirName, String judul, Map reportParams, String printerName, int jumlah, String sql, String... values) {
         try (PreparedStatement ps = connect.prepareStatement(sql)) {
             for (int i = 0; i < values.length; i++) {
                 ps.setString(i + 1, values[i]);
             }
-            
+
             JasperPrint jp = JasperFillManager.fillReport("./" + reportDirName + "/" + reportName, reportParams, new JRResultSetDataSource(ps.executeQuery()));
-            
+
             PrintService printService = null;
-            for (PrintService currentPrintService: PrintServiceLookup.lookupPrintServices(null, null)) {
+            for (PrintService currentPrintService : PrintServiceLookup.lookupPrintServices(null, null)) {
                 if (currentPrintService.getName().equals(printerName)) {
                     System.out.println("Printer ditemukan: " + currentPrintService.getName());
                     printService = currentPrintService;
                     break;
                 }
             }
-            
+
             if (printService != null) {
                 PrintRequestAttributeSet pra = new HashPrintRequestAttributeSet();
                 pra.add(new Copies(jumlah));
@@ -214,11 +214,11 @@ public final class validasi {
             JOptionPane.showMessageDialog(null, "Report can't view because : " + e);
         }
     }
-    
+
     public void reportTempSmc(String reportName, String reportDirName, String judul, Map reportParams) {
         reportSmc(reportName, reportDirName, judul, reportParams, "select * from temporary where temp37 = ? order by temporary.no", akses.getalamatip());
     }
-    
+
     public void reportSmc(String reportName, String reportDirName, String judul, Map reportParams, String sql, String... values) {
         try (PreparedStatement ps = connect.prepareStatement(sql)) {
             for (int i = 0; i < values.length; i++) {
@@ -236,7 +236,7 @@ public final class validasi {
             JOptionPane.showMessageDialog(null, "Report can't view because : " + e);
         }
     }
-    
+
     public void reportSmc(String reportName, String reportDirName, String judul, Map reportParams) {
         try {
             JasperViewer jv = new JasperViewer(JasperFillManager.fillReport("./" + reportDirName + "/" + reportName, reportParams, connect), false);
@@ -587,7 +587,7 @@ public final class validasi {
             for (i = 0; i < model.getRowCount(); i++) {
                 for (j = 0; j < model.getColumnCount(); j++) {
                     Label row = new Label(j, i + 1,
-                            model.getValueAt(i, j).toString());
+                        model.getValueAt(i, j).toString());
                     sheet1.addCell(row);
                 }
             }
@@ -1326,7 +1326,7 @@ public final class validasi {
                 for (i = 0; i < browsers.length; i++) {
                     cmd.append(i == 0 ? "" : " || ").append(browsers[i]).append(" \"").append(url).append("\" ");
                 }
-                rt.exec(new String[]{"sh", "-c", cmd.toString()});
+                rt.exec(new String[] {"sh", "-c", cmd.toString()});
             }
         } catch (Exception e) {
             System.out.println("Notif Browser : " + e);

@@ -29,7 +29,7 @@
     <Property name="verticalGap" type="int" value="1"/>
   </Layout>
   <SubComponents>
-    <Container class="component.Panel" name="jPanel1">
+    <Container class="widget.Panel" name="jPanel1">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -80,7 +80,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout"/>
           <SubComponents>
-            <Component class="component.Label" name="jLabelRM">
+            <Component class="widget.Label" name="jLabelRM">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="3e" green="83" red="0" type="rgb"/>
@@ -99,7 +99,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="component.Label" name="labelNoRM">
+            <Component class="widget.Label" name="labelNoRM">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="3e" green="83" red="0" type="rgb"/>
@@ -118,7 +118,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="component.Label" name="jLabelNamaPasien">
+            <Component class="widget.Label" name="jLabelNamaPasien">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="3e" green="83" red="0" type="rgb"/>
@@ -137,7 +137,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="component.Label" name="labelNamaPasien">
+            <Component class="widget.Label" name="labelNamaPasien">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="3e" green="83" red="0" type="rgb"/>
@@ -156,7 +156,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="component.Label" name="jLabelTglLahir">
+            <Component class="widget.Label" name="jLabelTglLahir">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="3e" green="83" red="0" type="rgb"/>
@@ -175,7 +175,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="component.Label" name="labelTglLahir">
+            <Component class="widget.Label" name="labelTglLahir">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="3e" green="83" red="0" type="rgb"/>
@@ -194,7 +194,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="component.Label" name="jLabelPoli">
+            <Component class="widget.Label" name="jLabelPoli">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="3e" green="83" red="0" type="rgb"/>
@@ -229,7 +229,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="component.Button" name="btnCariPoli">
+            <Component class="widget.Button" name="btnCariPoli">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="3e" green="83" red="0" type="rgb"/>
@@ -256,7 +256,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="component.Label" name="jLabelDokter">
+            <Component class="widget.Label" name="jLabelDokter">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="3e" green="83" red="0" type="rgb"/>
@@ -291,7 +291,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="component.Button" name="btnCariDokter">
+            <Component class="widget.Button" name="btnCariDokter">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="3e" green="83" red="0" type="rgb"/>
@@ -318,7 +318,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="component.Label" name="jLabelJenisBayar">
+            <Component class="widget.Label" name="jLabelJenisBayar">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="3e" green="83" red="0" type="rgb"/>
@@ -353,7 +353,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="component.Button" name="btnCariJenisBayar">
+            <Component class="widget.Button" name="btnCariJenisBayar">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="3e" green="83" red="0" type="rgb"/>
@@ -427,7 +427,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
           <SubComponents>
-            <Component class="component.Button" name="btnSimpan">
+            <Component class="widget.Button" name="btnSimpan">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="3e" green="83" red="0" type="rgb"/>
@@ -450,7 +450,7 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSimpanActionPerformed"/>
               </Events>
             </Component>
-            <Component class="component.Button" name="btnKeluar">
+            <Component class="widget.Button" name="btnKeluar">
               <Properties>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="3e" green="83" red="0" type="rgb"/>

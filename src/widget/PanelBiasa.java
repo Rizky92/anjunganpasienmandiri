@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package widget;
 
 import java.awt.Color;
@@ -22,20 +21,19 @@ import javax.swing.JPanel;
  *
  * @author khanzasoft
  */
-public class PanelBiasa extends JPanel{
+public class PanelBiasa extends JPanel {
     private static final long serialVersionUID = -1;
     private BufferedImage gradientImage;
     //private Color warnaAtas = new Color(245,200,245) ;
     //private Color warnaBawah = new Color(245,150,245) ;
-    private Color warnaAtas = new Color(204, 255, 204) ;
-    private Color warnaBawah = new Color(204, 255, 204) ;
+    private Color warnaAtas = new Color(204, 255, 204);
+    private Color warnaBawah = new Color(204, 255, 204);
 
     //private Color warnaAtas = new Color(255,194,255);
     //private Color warnaBawah = new Color(255,194,255);
-
-    public PanelBiasa(){
+    public PanelBiasa() {
         super();
-        this.setBorder(javax.swing.BorderFactory.createLineBorder(new Color(239,244,234)));
+        this.setBorder(javax.swing.BorderFactory.createLineBorder(new Color(239, 244, 234)));
 //        this.setBorder(javax.swing.BorderFactory.createLineBorder(new Color(247, 7, 2)));
     }
 
@@ -62,7 +60,7 @@ public class PanelBiasa extends JPanel{
 
     @Override
     protected void paintComponent(Graphics g) {
-         super.paintComponent(g);
+        super.paintComponent(g);
         if (isOpaque()) {
 
             Graphics2D g2 = (Graphics2D) g.create();
@@ -72,7 +70,7 @@ public class PanelBiasa extends JPanel{
             g2.drawImage(gradientImage, 0, 0, getWidth(), getHeight(), null);
 
             int width = getWidth();
-            int height = getHeight() * 1/ 200;
+            int height = getHeight() * 1 / 200;
 
             Color light = new Color(1F, 1F, 1F, 0.5F);
             Color dark = new Color(1F, 1F, 1F, 0.0F);
@@ -117,18 +115,18 @@ public class PanelBiasa extends JPanel{
             return;
         }
 
-        if (gradientImage == null ||width != gradientImage.getWidth() ||height != gradientImage.getHeight()) {
+        if (gradientImage == null || width != gradientImage.getWidth() || height != gradientImage.getHeight()) {
 
-            gradientImage = new BufferedImage(width, height,BufferedImage.TYPE_INT_RGB);
+            gradientImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 
             Graphics2D g2 = gradientImage.createGraphics();
-            GradientPaint painter = new GradientPaint(0, 0, warnaBawah,0, height / 2, warnaAtas);
+            GradientPaint painter = new GradientPaint(0, 0, warnaBawah, 0, height / 2, warnaAtas);
             g2.setPaint(painter);
 
             Rectangle2D rect = new Rectangle2D.Double(0, 0, width, height / 2.0);
             g2.fill(rect);
 
-            painter = new GradientPaint(0, height / 2, warnaAtas,0, height, warnaBawah);
+            painter = new GradientPaint(0, height / 2, warnaAtas, 0, height, warnaBawah);
             g2.setPaint(painter);
 
             rect = new Rectangle2D.Double(0, (height / 2.0) - 1.0, width, height);
@@ -157,7 +155,6 @@ public class PanelBiasa extends JPanel{
         g2.dispose();
     }
 
-
     private class GradientCacheManager implements ComponentListener {
         @Override
         public void componentResized(ComponentEvent e) {
@@ -166,7 +163,6 @@ public class PanelBiasa extends JPanel{
         @Override
         public void componentMoved(ComponentEvent e) {
         }
-
 
         @Override
         public void componentShown(ComponentEvent e) {
