@@ -154,7 +154,6 @@ public final class DlgCariPoli extends javax.swing.JDialog {
         button1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/exit.png"))); // NOI18N
         button1.setText("KELUAR");
         button1.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
-        button1.setGlassColor(new java.awt.Color(238, 238, 255));
         button1.setName("button1"); // NOI18N
         button1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

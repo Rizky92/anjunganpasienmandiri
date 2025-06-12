@@ -116,9 +116,6 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Inter" size="18" style="1"/>
                 </Property>
-                <Property name="glassColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="ee" red="ee" type="rgb"/>
-                </Property>
                 <Property name="name" type="java.lang.String" value="button1" noResource="true"/>
               </Properties>
               <Events>
