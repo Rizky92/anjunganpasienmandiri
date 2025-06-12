@@ -64,9 +64,17 @@ public final class DlgCariPoli extends javax.swing.JDialog {
 
         Object[] row = {"Kode Unit", "Nama Unit"};
         tabMode = new DefaultTableModel(null, row) {
+            Class[] type = new Class[] {
+                java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class
+            };
             @Override
             public boolean isCellEditable(int rowIndex, int colIndex) {
                 return false;
+            }
+
+            @Override
+            public Class<?> getColumnClass(int columnIndex) {
+                return type[columnIndex];
             }
         };
         tbKamar.setModel(tabMode);
@@ -80,6 +88,9 @@ public final class DlgCariPoli extends javax.swing.JDialog {
                 column.setPreferredWidth(150);
             } else if (i == 1) {
                 column.setPreferredWidth(500);
+            } else {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
@@ -212,9 +223,9 @@ public final class DlgCariPoli extends javax.swing.JDialog {
     public void tampil(String harikerja) {
         Valid.tabelKosong(tabMode);
         try (PreparedStatement ps = koneksi.prepareStatement(
-            "select poliklinik.kd_poli, poliklinik.nm_poli from poliklinik where status = '1' and " +
-            "exists(select * from jadwal where jadwal.kd_poli = poliklinik.kd_poli and jadwal.hari_kerja = ?) " +
-            "order by field(poliklinik.kd_poli, 'U0038') = 0, poliklinik.nm_poli"
+            "select poliklinik.kd_poli, poliklinik.nm_poli, poliklinik.registrasi, poliklinik.registrasilama from " +
+            "poliklinik where status = '1' and exists(select * from jadwal where jadwal.kd_poli = poliklinik.kd_poli " +
+            "and jadwal.hari_kerja = ?) order by field(poliklinik.kd_poli, 'U0038') = 0, poliklinik.nm_poli"
         )) {
             ps.setString(1, harikerja);
             try (ResultSet rs = ps.executeQuery()) {

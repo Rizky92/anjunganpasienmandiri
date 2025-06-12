@@ -7,6 +7,7 @@ package khanzahmsanjungan;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.util.ArrayList;
@@ -299,10 +300,20 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSEPKontrolBedaPoliActionPerformed
 
     private void btnAntrianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAntrianActionPerformed
-        DlgAmbilAntrean pilih = new DlgAmbilAntrean(null, true);
-        pilih.setSize(this.getWidth(), this.getHeight());
-        pilih.setLocationRelativeTo(this);
-        pilih.setVisible(true);
+        if (koneksiDB.ANTRIANPREFIXHURUF()) {
+            DlgAmbilAntrean pilih = new DlgAmbilAntrean(null, true);
+            pilih.setSize(this.getWidth(), this.getHeight());
+            pilih.setLocationRelativeTo(this);
+            pilih.setVisible(true);
+        } else {
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            try {
+                Runtime.getRuntime().exec("java -jar KhanzaCetakAntrianLoket.jar");
+            } catch (Exception e) {
+                System.out.print("Notif : " + e);
+            }
+            this.setCursor(Cursor.getDefaultCursor());
+        }
     }//GEN-LAST:event_btnAntrianActionPerformed
 
     private void btnSatuSehatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSatuSehatActionPerformed

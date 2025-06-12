@@ -57,11 +57,20 @@ public final class DlgCariDokter2 extends javax.swing.JDialog {
         this.setLocation(10, 2);
         setSize(656, 250);
 
-        Object[] row = {"Kode Dokter", "Nama Dokter", "Spesialistik", "Jam Praktek"};
+        Object[] row = {"Kode Dokter", "Nama Dokter", "Spesialistik", "Jam Praktek", "Jumlah Pasien"};
         tabMode = new DefaultTableModel(null, row) {
+            Class[] type = new Class[] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class,
+                java.lang.String.class, java.lang.Integer.class
+            };
             @Override
             public boolean isCellEditable(int rowIndex, int colIndex) {
                 return false;
+            }
+
+            @Override
+            public Class<?> getColumnClass(int columnIndex) {
+                return type[columnIndex];
             }
         };
         tbKamar.setModel(tabMode);
@@ -69,19 +78,23 @@ public final class DlgCariDokter2 extends javax.swing.JDialog {
         tbKamar.setPreferredScrollableViewportSize(new Dimension(500, 500));
         tbKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 5; i++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(i);
             if (i == 0) {
-                column.setPreferredWidth(150);
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             } else if (i == 1) {
                 column.setPreferredWidth(500);
             } else if (i == 2) {
                 column.setPreferredWidth(300);
             } else if (i == 3) {
                 column.setPreferredWidth(150);
+            } else if (i == 4) {
+                column.setPreferredWidth(200);
             }
         }
         tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
+        tbKamar.setDefaultRenderer(Integer.class, new WarnaTable());
 
     }
 
@@ -211,15 +224,17 @@ public final class DlgCariDokter2 extends javax.swing.JDialog {
     public void tampil(String harikerja, String kodepoli) {
         Valid.tabelKosong(tabMode);
         try (PreparedStatement ps = koneksi.prepareStatement(
-            "select jadwal.kd_dokter, dokter.nm_dokter, spesialis.nm_sps, concat(left(jadwal.jam_mulai, 5), '-', left(jadwal.jam_selesai, 5)) " +
-            "from jadwal join dokter on jadwal.kd_dokter = dokter.kd_dokter join spesialis on dokter.kd_sps = spesialis.kd_sps " +
-            "where jadwal.hari_kerja = ? and jadwal.kd_poli = ? order by jadwal.jam_mulai, dokter.nm_dokter"
+            "select jadwal.kd_dokter, dokter.nm_dokter, spesialis.nm_sps, concat(left(jadwal.jam_mulai, 5), '-', left(jadwal.jam_selesai, 5)), " +
+            "(select count(*) from reg_periksa where reg_periksa.kd_dokter = jadwal.kd_dokter and reg_periksa.kd_poli = jadwal.kd_poli and " +
+            "reg_periksa.tgl_registrasi = current_date() and reg_periksa.stts != 'Batal') as jumlahdaftar from jadwal join dokter on " +
+            "jadwal.kd_dokter = dokter.kd_dokter join spesialis on dokter.kd_sps = spesialis.kd_sps where jadwal.hari_kerja = ? and " +
+            "jadwal.kd_poli = ? order by jadwal.jam_mulai, dokter.nm_dokter"
         )) {
             ps.setString(1, harikerja);
             ps.setString(2, kodepoli);
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
-                    tabMode.addRow(new Object[]{rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4)});
+                    tabMode.addRow(new Object[]{rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5)});
                 }
             }
         } catch (Exception e) {
