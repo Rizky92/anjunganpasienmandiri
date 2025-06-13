@@ -1,40 +1,25 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
- /*
- * DlgAdmin.java
- *
- * Created on 04 Des 13, 12:59:34
- */
 package registrasibpjs;
 
+import fungsi.koneksiDB;
 import fungsi.sekuel;
 import java.awt.Cursor;
 import java.awt.event.KeyEvent;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Kode
- */
 public class DlgCekDataPesertaBPJS extends javax.swing.JDialog {
 
-    public static final int SEP_KUNJUNGAN_PERTAMA = 1;
-    public static final int SEP_KONTROL = 2;
-    public static final int SEP_KONTROL_BEDA_POLI = 3;
-    
+    public static final int KUNJUNGAN_PERTAMA = 1;
+    public static final int KONTROL = 2;
+    public static final int KONTROL_BEDA_POLI = 3;
+
+    private final Connection koneksi = koneksiDB.condb();
     private final sekuel Sequel = new sekuel();
     private final DlgRegistrasiSEP form = new DlgRegistrasiSEP(null, false);
     private int jenisPencarian = -1;
 
-    /**
-     * Creates new form DlgAdmin
-     *
-     * @param parent
-     * @param id
-     */
     public DlgCekDataPesertaBPJS(java.awt.Frame parent, boolean id) {
         super(parent, id);
         initComponents();
@@ -49,12 +34,12 @@ public class DlgCekDataPesertaBPJS extends javax.swing.JDialog {
         java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel2 = new javax.swing.JPanel();
-        PanelWall = new usu.widget.glass.PanelGlass();
-        jPanel1 = new widget.Panel();
-        labelKeterangan = new widget.Label();
-        textCekNoKartu = new widget.TextBox();
-        btnKonfirm = new widget.ButtonBig();
-        btnTutup = new widget.ButtonBig();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        labelKeterangan = new javax.swing.JLabel();
+        textCekNoKartu = new javax.swing.JTextField();
+        btnKonfirm = new widget.Button();
+        btnTutup = new widget.Button();
         jPanel3 = new javax.swing.JPanel();
         btnAngka7 = new javax.swing.JButton();
         btnAngka8 = new javax.swing.JButton();
@@ -68,42 +53,30 @@ public class DlgCekDataPesertaBPJS extends javax.swing.JDialog {
         btnClear = new javax.swing.JButton();
         btnAngka0 = new javax.swing.JButton();
         btnAngkaHps = new javax.swing.JButton();
-        empty1 = new widget.Label();
-        empty2 = new widget.Label();
+        empty1 = new javax.swing.JLabel();
+        empty2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setModal(true);
         setUndecorated(true);
         setResizable(false);
-        getContentPane().setLayout(new java.awt.BorderLayout(1, 1));
 
         jPanel2.setBackground(new java.awt.Color(238, 238, 255));
         jPanel2.setForeground(new java.awt.Color(238, 238, 255));
+        jPanel2.setLayout(new java.awt.GridBagLayout());
 
-        PanelWall.setBackground(new java.awt.Color(238, 238, 255));
-        PanelWall.setBackgroundImage(new javax.swing.ImageIcon(getClass().getResource("/picture/bpjs-amiz.png"))); // NOI18N
-        PanelWall.setBackgroundImageType(usu.widget.constan.BackgroundConstan.BACKGROUND_IMAGE_STRECT);
-        PanelWall.setForeground(new java.awt.Color(238, 238, 255));
-        PanelWall.setPreferredSize(new java.awt.Dimension(500, 150));
-        PanelWall.setRound(false);
-        PanelWall.setWarna(new java.awt.Color(238, 238, 255));
-
-        javax.swing.GroupLayout PanelWallLayout = new javax.swing.GroupLayout(PanelWall);
-        PanelWall.setLayout(PanelWallLayout);
-        PanelWallLayout.setHorizontalGroup(
-            PanelWallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
-        );
-        PanelWallLayout.setVerticalGroup(
-            PanelWallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 150, Short.MAX_VALUE)
-        );
-
-        jPanel2.add(PanelWall);
+        jLabel1.setBackground(new java.awt.Color(238, 238, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/bpjs_kesehatan.png"))); // NOI18N
+        jLabel1.setFocusable(false);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.ipady = 40;
+        jPanel2.add(jLabel1, gridBagConstraints);
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
         jPanel1.setBackground(new java.awt.Color(238, 238, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jPanel1.setForeground(new java.awt.Color(0, 131, 62));
         jPanel1.setPreferredSize(new java.awt.Dimension(400, 70));
         jPanel1.setLayout(new java.awt.GridBagLayout());
@@ -372,7 +345,7 @@ public class DlgCekDataPesertaBPJS extends javax.swing.JDialog {
         jPanel3.add(btnAngka0, gridBagConstraints);
 
         btnAngkaHps.setFont(new java.awt.Font("Inter Display Semibold", 0, 40)); // NOI18N
-        btnAngkaHps.setText("<-");
+        btnAngkaHps.setText("←");
         btnAngkaHps.setToolTipText("");
         btnAngkaHps.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnAngkaHps.setMargin(new java.awt.Insets(0, 0, 0, 0));
@@ -399,6 +372,7 @@ public class DlgCekDataPesertaBPJS extends javax.swing.JDialog {
         jPanel1.add(jPanel3, gridBagConstraints);
 
         empty1.setForeground(new java.awt.Color(0, 131, 62));
+        empty1.setEnabled(false);
         empty1.setFocusable(false);
         empty1.setFont(new java.awt.Font("Inter", 0, 36)); // NOI18N
         empty1.setPreferredSize(new java.awt.Dimension(150, 75));
@@ -411,6 +385,7 @@ public class DlgCekDataPesertaBPJS extends javax.swing.JDialog {
         jPanel1.add(empty1, gridBagConstraints);
 
         empty2.setForeground(new java.awt.Color(0, 131, 62));
+        empty2.setEnabled(false);
         empty2.setFocusable(false);
         empty2.setFont(new java.awt.Font("Inter", 0, 36)); // NOI18N
         empty2.setPreferredSize(new java.awt.Dimension(150, 75));
@@ -436,8 +411,8 @@ public class DlgCekDataPesertaBPJS extends javax.swing.JDialog {
                 return;
             }
 
-            if ((Sequel.cariIntegerSmc("select count(*) from referensi_mobilejkn_bpjs where norm = ? and tanggalperiksa = current_date()", textCekNoKartu.getText()) > 0)
-                || (Sequel.cariIntegerSmc("select count(*) from referensi_mobilejkn_bpjs where nomorkartu = ? and tanggalperiksa = current_date()", textCekNoKartu.getText()) > 0)) {
+            if ((Sequel.cariIntegerSmc("select count(*) from referensi_mobilejkn_bpjs where norm = ? and tanggalperiksa = current_date()", textCekNoKartu.getText()) > 0) ||
+                (Sequel.cariIntegerSmc("select count(*) from referensi_mobilejkn_bpjs where nomorkartu = ? and tanggalperiksa = current_date()", textCekNoKartu.getText()) > 0)) {
                 JOptionPane.showMessageDialog(null, "Pasien telah menggunakan Mobile JKN. Silahkan masuk melalui menu \"Cek In MobileJKN\"..!!");
                 this.setCursor(Cursor.getDefaultCursor());
                 return;
@@ -474,8 +449,8 @@ public class DlgCekDataPesertaBPJS extends javax.swing.JDialog {
             return;
         }
 
-        if ((Sequel.cariIntegerSmc("select count(*) from referensi_mobilejkn_bpjs where norm = ? and tanggalperiksa = current_date()", textCekNoKartu.getText()) > 0)
-            || (Sequel.cariIntegerSmc("select count(*) from referensi_mobilejkn_bpjs where nomorkartu = ? and tanggalperiksa = current_date()", textCekNoKartu.getText()) > 0)) {
+        if ((Sequel.cariIntegerSmc("select count(*) from referensi_mobilejkn_bpjs where norm = ? and tanggalperiksa = current_date()", textCekNoKartu.getText()) > 0) ||
+            (Sequel.cariIntegerSmc("select count(*) from referensi_mobilejkn_bpjs where nomorkartu = ? and tanggalperiksa = current_date()", textCekNoKartu.getText()) > 0)) {
             JOptionPane.showMessageDialog(null, "Pasien telah menggunakan Mobile JKN. Silahkan masuk melalui menu \"Cek In MobileJKN\"..!!");
             this.setCursor(Cursor.getDefaultCursor());
             return;
@@ -499,95 +474,58 @@ public class DlgCekDataPesertaBPJS extends javax.swing.JDialog {
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnKonfirmActionPerformed
 
-    private void btnAngka8ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAngka8ActionPerformed
-    {//GEN-HEADEREND:event_btnAngka8ActionPerformed
-        textCekNoKartu.setText(textCekNoKartu.getText() + "8");
-    }//GEN-LAST:event_btnAngka8ActionPerformed
-
-    private void btnAngka7ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAngka7ActionPerformed
-    {//GEN-HEADEREND:event_btnAngka7ActionPerformed
+    private void btnAngka7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAngka7ActionPerformed
         textCekNoKartu.setText(textCekNoKartu.getText() + "7");
     }//GEN-LAST:event_btnAngka7ActionPerformed
 
-    private void btnAngka9ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAngka9ActionPerformed
-    {//GEN-HEADEREND:event_btnAngka9ActionPerformed
+    private void btnAngka8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAngka8ActionPerformed
+        textCekNoKartu.setText(textCekNoKartu.getText() + "8");
+    }//GEN-LAST:event_btnAngka8ActionPerformed
+
+    private void btnAngka9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAngka9ActionPerformed
         textCekNoKartu.setText(textCekNoKartu.getText() + "9");
     }//GEN-LAST:event_btnAngka9ActionPerformed
 
-    private void btnAngka4ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAngka4ActionPerformed
-    {//GEN-HEADEREND:event_btnAngka4ActionPerformed
+    private void btnAngka4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAngka4ActionPerformed
         textCekNoKartu.setText(textCekNoKartu.getText() + "4");
     }//GEN-LAST:event_btnAngka4ActionPerformed
 
-    private void btnAngka5ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAngka5ActionPerformed
-    {//GEN-HEADEREND:event_btnAngka5ActionPerformed
+    private void btnAngka5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAngka5ActionPerformed
         textCekNoKartu.setText(textCekNoKartu.getText() + "5");
     }//GEN-LAST:event_btnAngka5ActionPerformed
 
-    private void btnAngka6ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAngka6ActionPerformed
-    {//GEN-HEADEREND:event_btnAngka6ActionPerformed
+    private void btnAngka6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAngka6ActionPerformed
         textCekNoKartu.setText(textCekNoKartu.getText() + "6");
     }//GEN-LAST:event_btnAngka6ActionPerformed
 
-    private void btnAngka2ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAngka2ActionPerformed
-    {//GEN-HEADEREND:event_btnAngka2ActionPerformed
-        textCekNoKartu.setText(textCekNoKartu.getText() + "2");
-    }//GEN-LAST:event_btnAngka2ActionPerformed
-
-    private void btnAngka1ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAngka1ActionPerformed
-    {//GEN-HEADEREND:event_btnAngka1ActionPerformed
+    private void btnAngka1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAngka1ActionPerformed
         textCekNoKartu.setText(textCekNoKartu.getText() + "1");
     }//GEN-LAST:event_btnAngka1ActionPerformed
 
-    private void btnAngka3ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAngka3ActionPerformed
-    {//GEN-HEADEREND:event_btnAngka3ActionPerformed
+    private void btnAngka2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAngka2ActionPerformed
+        textCekNoKartu.setText(textCekNoKartu.getText() + "2");
+    }//GEN-LAST:event_btnAngka2ActionPerformed
+
+    private void btnAngka3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAngka3ActionPerformed
         textCekNoKartu.setText(textCekNoKartu.getText() + "3");
     }//GEN-LAST:event_btnAngka3ActionPerformed
 
-    private void btnAngka0ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAngka0ActionPerformed
-    {//GEN-HEADEREND:event_btnAngka0ActionPerformed
-        textCekNoKartu.setText(textCekNoKartu.getText() + "0");
-    }//GEN-LAST:event_btnAngka0ActionPerformed
-
-    private void btnAngkaHpsActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnAngkaHpsActionPerformed
-    {//GEN-HEADEREND:event_btnAngkaHpsActionPerformed
-        int length = textCekNoKartu.getText().length();
-        int number = textCekNoKartu.getText().length() - 1;
-        String store;
-        if (length > 0) {
-            StringBuilder back = new StringBuilder(textCekNoKartu.getText());
-            back.deleteCharAt(number);
-            store = back.toString();
-            textCekNoKartu.setText(store);
-        }
-    }//GEN-LAST:event_btnAngkaHpsActionPerformed
-
-    private void btnClearActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_btnClearActionPerformed
-    {//GEN-HEADEREND:event_btnClearActionPerformed
-        int length = textCekNoKartu.getText().length();
-        if (length > 0) {
+    private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
+        if (textCekNoKartu.getText().length() > 0) {
             textCekNoKartu.setText("");
         }
     }//GEN-LAST:event_btnClearActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(() -> {
-            DlgCekDataPesertaBPJS dialog = new DlgCekDataPesertaBPJS(new javax.swing.JFrame(), true);
-            dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+    private void btnAngka0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAngka0ActionPerformed
+        textCekNoKartu.setText(textCekNoKartu.getText() + "0");
+    }//GEN-LAST:event_btnAngka0ActionPerformed
 
-                @Override
-                public void windowClosing(java.awt.event.WindowEvent e) {
-                    System.exit(0);
-                }
-            });
-            dialog.setVisible(true);
-        });
-    }
+    private void btnAngkaHpsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAngkaHpsActionPerformed
+        String input = textCekNoKartu.getText();
+        textCekNoKartu.setText(input.substring(0, input.length() - 1));
+    }//GEN-LAST:event_btnAngkaHpsActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private usu.widget.glass.PanelGlass PanelWall;
     private javax.swing.JButton btnAngka0;
     private javax.swing.JButton btnAngka1;
     private javax.swing.JButton btnAngka2;
@@ -600,53 +538,81 @@ public class DlgCekDataPesertaBPJS extends javax.swing.JDialog {
     private javax.swing.JButton btnAngka9;
     private javax.swing.JButton btnAngkaHps;
     private javax.swing.JButton btnClear;
-    private widget.ButtonBig btnKonfirm;
-    private widget.ButtonBig btnTutup;
-    private widget.Label empty1;
-    private widget.Label empty2;
-    private widget.Panel jPanel1;
+    private widget.Button btnKonfirm;
+    private widget.Button btnTutup;
+    private javax.swing.JLabel empty1;
+    private javax.swing.JLabel empty2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private widget.Label labelKeterangan;
-    private widget.TextBox textCekNoKartu;
+    private javax.swing.JLabel labelKeterangan;
+    private javax.swing.JTextField textCekNoKartu;
     // End of variables declaration//GEN-END:variables
 
     public void setJenisPencarian(int jenisPencarian) {
         this.jenisPencarian = jenisPencarian;
     }
-    
+
     private void cekRujukanPasien() {
         if (textCekNoKartu.getText().isBlank()) {
             JOptionPane.showMessageDialog(null, "Isian masih kosong..!!");
+            return;
+        }
+
+        String nokartu = textCekNoKartu.getText().trim();
+        String norm = Sequel.cariIsiSmc("select pasien.no_rkm_medis from pasien where (pasien.no_rkm_medis = ? or pasien.no_ktp = ? or pasien.no_peserta = ?", nokartu, nokartu, nokartu);
+        if (norm.isBlank()) {
+            textCekNoKartu.setText("");
+            JOptionPane.showMessageDialog(null, "Data pasien tidak ditemukan..!!");
+            return;
+        }
+
+        if (Sequel.cariExistsSmc("select * from referensi_mobilejkn_bpjs where referensi_mobilejkn_bpjs.tanggalperiksa = current_date() and referensi_mobilejkn_bpjs.norm = ? and referensi_mobilejkn_bpjs.status in ('Belum', 'Checkin')", norm)) {
+            bukaPendaftaranMobileJKN(norm);
         } else {
-            String nokartu = textCekNoKartu.getText().trim();
-            // cek booking mobileJKN
-            if (Sequel.cariExistsSmc("select * from referensi_mobilejkn_bpjs where tanggalperiksa = current_date() and status in ('Belum', 'Checkin') and (nomorkartu = ? or nik = ? or norm = ?)", nokartu, nokartu, nokartu)) {
-                bukaPendaftaranMobileJKN();
-            } else if (Sequel.cariExistsSmc("select * from pasien where (no_peserta = ? or nik = ? or norm = ?)", nokartu, nokartu, nokartu)) {
-                switch (this.jenisPencarian) {
-                    case SEP_KUNJUNGAN_PERTAMA: bukaPendaftaranOnsiteKunjunganPertama(); break;
-                    case SEP_KONTROL: bukaPendaftaranOnsiteKontrol(); break;
-                    case SEP_KONTROL_BEDA_POLI: bukaPendaftaranOnsiteKontrolBedaPoli(); break;
-                }
+            switch (this.jenisPencarian) {
+                case KUNJUNGAN_PERTAMA:
+                    bukaPendaftaranOnsiteKunjunganPertama(norm);
+                    break;
+                case KONTROL:
+                    bukaPendaftaranOnsiteKontrol(norm);
+                    break;
+                case KONTROL_BEDA_POLI:
+                    bukaPendaftaranOnsiteKontrolBedaPoli(norm);
+                    break;
             }
         }
+
+        textCekNoKartu.setText("");
         this.jenisPencarian = -1;
     }
-    
-    private void bukaPendaftaranMobileJKN() {
-        
+
+    private void bukaPendaftaranMobileJKN(String norm) {
+        DlgRegistrasiSEPMobileJKN form = new DlgRegistrasiSEPMobileJKN(null, false);
+        form.tampil(norm);
+        form.setSize(this.getWidth(), this.getHeight());
+        form.setLocationRelativeTo(jPanel1);
+        form.setVisible(true);
     }
-    
-    private void bukaPendaftaranOnsiteKunjunganPertama() {
-        
+
+    private void bukaPendaftaranOnsiteKunjunganPertama(String norm) {
+
     }
-    
-    private void bukaPendaftaranOnsiteKontrol() {
-        
+
+    private void bukaPendaftaranOnsiteKontrol(String norm) {
+
     }
-    
-    private void bukaPendaftaranOnsiteKontrolBedaPoli() {
-        
+
+    private void bukaPendaftaranOnsiteKontrolBedaPoli(String nokartu) {
+
+    }
+
+    private static class SingletonHelper {
+        private static final DlgCekDataPesertaBPJS INSTANCE = new DlgCekDataPesertaBPJS(null, true);
+    }
+
+    public static DlgCekDataPesertaBPJS instance() {
+        return SingletonHelper.INSTANCE;
     }
 }

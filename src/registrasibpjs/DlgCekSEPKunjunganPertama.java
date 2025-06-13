@@ -45,11 +45,11 @@ public class DlgCekSEPKunjunganPertama extends javax.swing.JDialog {
 
         jPanel2 = new javax.swing.JPanel();
         PanelWall = new usu.widget.glass.PanelGlass();
-        jPanel1 = new widget.Panel();
-        labelKeterangan = new widget.Label();
-        textCekNoKartu = new widget.TextBox();
-        btnKonfirm = new widget.ButtonBig();
-        btnTutup = new widget.ButtonBig();
+        jPanel1 = new javax.swing.JPanel();
+        labelKeterangan = new javax.swing.JLabel();
+        textCekNoKartu = new javax.swing.JTextField();
+        btnKonfirm = new widget.Button();
+        btnTutup = new widget.Button();
         jPanel3 = new javax.swing.JPanel();
         btnAngka7 = new javax.swing.JButton();
         btnAngka8 = new javax.swing.JButton();
@@ -63,8 +63,8 @@ public class DlgCekSEPKunjunganPertama extends javax.swing.JDialog {
         btnClear = new javax.swing.JButton();
         btnAngka0 = new javax.swing.JButton();
         btnAngkaHps = new javax.swing.JButton();
-        empty1 = new widget.Label();
-        empty2 = new widget.Label();
+        empty1 = new javax.swing.JLabel();
+        empty2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setModal(true);
@@ -431,8 +431,8 @@ public class DlgCekSEPKunjunganPertama extends javax.swing.JDialog {
                 return;
             }
 
-            if ((Sequel.cariIntegerSmc("select count(*) from referensi_mobilejkn_bpjs where norm = ? and tanggalperiksa = current_date()", textCekNoKartu.getText()) > 0)
-                || (Sequel.cariIntegerSmc("select count(*) from referensi_mobilejkn_bpjs where nomorkartu = ? and tanggalperiksa = current_date()", textCekNoKartu.getText()) > 0)) {
+            if ((Sequel.cariIntegerSmc("select count(*) from referensi_mobilejkn_bpjs where norm = ? and tanggalperiksa = current_date()", textCekNoKartu.getText()) > 0) ||
+                (Sequel.cariIntegerSmc("select count(*) from referensi_mobilejkn_bpjs where nomorkartu = ? and tanggalperiksa = current_date()", textCekNoKartu.getText()) > 0)) {
                 JOptionPane.showMessageDialog(null, "Pasien telah menggunakan Mobile JKN. Silahkan masuk melalui menu \"Cek In MobileJKN\"..!!");
                 this.setCursor(Cursor.getDefaultCursor());
                 return;
@@ -469,8 +469,8 @@ public class DlgCekSEPKunjunganPertama extends javax.swing.JDialog {
             return;
         }
 
-        if ((Sequel.cariIntegerSmc("select count(*) from referensi_mobilejkn_bpjs where norm = ? and tanggalperiksa = current_date()", textCekNoKartu.getText()) > 0)
-            || (Sequel.cariIntegerSmc("select count(*) from referensi_mobilejkn_bpjs where nomorkartu = ? and tanggalperiksa = current_date()", textCekNoKartu.getText()) > 0)) {
+        if ((Sequel.cariIntegerSmc("select count(*) from referensi_mobilejkn_bpjs where norm = ? and tanggalperiksa = current_date()", textCekNoKartu.getText()) > 0) ||
+            (Sequel.cariIntegerSmc("select count(*) from referensi_mobilejkn_bpjs where nomorkartu = ? and tanggalperiksa = current_date()", textCekNoKartu.getText()) > 0)) {
             JOptionPane.showMessageDialog(null, "Pasien telah menggunakan Mobile JKN. Silahkan masuk melalui menu \"Cek In MobileJKN\"..!!");
             this.setCursor(Cursor.getDefaultCursor());
             return;
@@ -595,14 +595,14 @@ public class DlgCekSEPKunjunganPertama extends javax.swing.JDialog {
     private javax.swing.JButton btnAngka9;
     private javax.swing.JButton btnAngkaHps;
     private javax.swing.JButton btnClear;
-    private widget.ButtonBig btnKonfirm;
-    private widget.ButtonBig btnTutup;
-    private widget.Label empty1;
-    private widget.Label empty2;
-    private widget.Panel jPanel1;
+    private widget.Button btnKonfirm;
+    private widget.Button btnTutup;
+    private javax.swing.JLabel empty1;
+    private javax.swing.JLabel empty2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private widget.Label labelKeterangan;
-    private widget.TextBox textCekNoKartu;
+    private javax.swing.JLabel labelKeterangan;
+    private javax.swing.JTextField textCekNoKartu;
     // End of variables declaration//GEN-END:variables
 }

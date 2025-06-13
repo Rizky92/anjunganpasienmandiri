@@ -11,7 +11,6 @@
 package registrasibpjs;
 
 import bridging.ApiBPJS;
-import bridging.BPJSCekReferensiDokterDPJP1;
 import bridging.BPJSCekReferensiPenyakit;
 import bridging.BPJSCekRiwayatPelayanan;
 import bridging.BPJSCekRiwayatRujukanTerakhir;
@@ -46,7 +45,6 @@ import java.util.Map;
 import javax.swing.JOptionPane;
 import khanzahmsanjungan.DlgCariDokter;
 import khanzahmsanjungan.DlgCariPoli;
-import khanzahmsanjungan.DlgCariPoliBPJS;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -64,9 +62,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
     private validasi Valid = new validasi();
     private PreparedStatement ps;
     private ResultSet rs;
-    private BPJSCekReferensiDokterDPJP1 dokter = new BPJSCekReferensiDokterDPJP1(null, true);
     private BPJSCekReferensiPenyakit penyakit = new BPJSCekReferensiPenyakit(null, true);
-    private DlgCariPoliBPJS poli = new DlgCariPoliBPJS(null, true);
     private DlgCariPoli polimapping = new DlgCariPoli(null, true);
     private DlgCariDokter doktermapping = new DlgCariDokter(null, true);
     private BPJSCekRiwayatRujukanTerakhir rujukanterakhir = new BPJSCekRiwayatRujukanTerakhir(null, true);
@@ -114,32 +110,6 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         super(parent, id);
         initComponents();
         JumlahBarcode.setDocument(new batasInput((byte) 3).getOnlyAngka(JumlahBarcode));
-        dokter.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if (dokter.getTable().getSelectedRow() != -1) {
-                    KdDPJP.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(), 1).toString());
-                    NmDPJP.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(), 2).toString());
-                    if (JenisPelayanan.getSelectedIndex() == 1) {
-                        KdDPJPLayanan.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(), 1).toString());
-                        NmDPJPLayanan.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(), 2).toString());
-                    }
-                    KdDPJP.requestFocus();
-
-                }
-            }
-        });
-
-        poli.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if (poli.getTable().getSelectedRow() != -1) {
-                    KdPoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(), 0).toString());
-                    NmPoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(), 1).toString());
-                    KdDPJP.requestFocus();
-                }
-            }
-        });
 
         polimapping.addWindowListener(new WindowAdapter() {
             @Override
@@ -216,134 +186,134 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        LblKdPoli = new widget.Label();
-        LblKdDokter = new widget.Label();
-        NoReg = new widget.TextBox();
-        NoRawat = new widget.TextBox();
-        Biaya = new widget.TextBox();
-        TAlmt = new widget.Label();
-        TPngJwb = new widget.Label();
-        THbngn = new widget.Label();
-        NoTelpPasien = new widget.Label();
-        kdpoli = new widget.TextBox();
-        TBiaya = new widget.TextBox();
-        Kdpnj = new widget.TextBox();
-        nmpnj = new widget.TextBox();
-        TNoRw = new widget.TextBox();
-        NoRujukMasuk = new widget.TextBox();
+        LblKdPoli = new javax.swing.JLabel();
+        LblKdDokter = new javax.swing.JLabel();
+        NoReg = new javax.swing.JTextField();
+        NoRawat = new javax.swing.JTextField();
+        Biaya = new javax.swing.JTextField();
+        TAlmt = new javax.swing.JLabel();
+        TPngJwb = new javax.swing.JLabel();
+        THbngn = new javax.swing.JLabel();
+        NoTelpPasien = new javax.swing.JLabel();
+        kdpoli = new javax.swing.JTextField();
+        TBiaya = new javax.swing.JTextField();
+        Kdpnj = new javax.swing.JTextField();
+        nmpnj = new javax.swing.JTextField();
+        TNoRw = new javax.swing.JTextField();
+        NoRujukMasuk = new javax.swing.JTextField();
         Tanggal = new widget.Tanggal();
         WindowAksi = new javax.swing.JDialog();
-        internalFrame1 = new widget.InternalFrame();
-        pwUserId = new widget.PasswordBox();
-        pwPass = new widget.PasswordBox();
-        btnAksiKonfirmasi = new widget.Button();
-        btnAksiBatal = new widget.Button();
-        label1 = new widget.Label();
-        label2 = new widget.Label();
-        label3 = new widget.Label();
-        jPanel1 = new widget.Panel();
-        jPanel2 = new widget.Panel();
-        TPasien = new widget.TextBox();
-        TNoRM = new widget.TextBox();
-        NoKartu = new widget.TextBox();
-        jLabel20 = new widget.Label();
+        internalFrame1 = new javax.swing.JPanel();
+        pwUserId = new javax.swing.JPasswordField();
+        pwPass = new javax.swing.JPasswordField();
+        btnAksiKonfirmasi = new javax.swing.JButton();
+        btnAksiBatal = new javax.swing.JButton();
+        label1 = new javax.swing.JLabel();
+        label2 = new javax.swing.JLabel();
+        label3 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        TPasien = new javax.swing.JTextField();
+        TNoRM = new javax.swing.JTextField();
+        NoKartu = new javax.swing.JTextField();
+        jLabel20 = new javax.swing.JLabel();
         TanggalSEP = new widget.Tanggal();
-        jLabel22 = new widget.Label();
+        jLabel22 = new javax.swing.JLabel();
         TanggalRujuk = new widget.Tanggal();
-        jLabel23 = new widget.Label();
-        NoRujukan = new widget.TextBox();
-        jLabel9 = new widget.Label();
-        KdPPK = new widget.TextBox();
-        NmPPK = new widget.TextBox();
-        jLabel10 = new widget.Label();
-        KdPpkRujukan = new widget.TextBox();
-        NmPpkRujukan = new widget.TextBox();
-        jLabel11 = new widget.Label();
-        KdPenyakit = new widget.TextBox();
-        NmPenyakit = new widget.TextBox();
-        NmPoli = new widget.TextBox();
-        KdPoli = new widget.TextBox();
-        LabelPoli = new widget.Label();
-        jLabel13 = new widget.Label();
-        jLabel14 = new widget.Label();
-        Catatan = new widget.TextBox();
-        JenisPelayanan = new widget.ComboBox();
-        LabelKelas = new widget.Label();
-        Kelas = new widget.ComboBox();
-        LakaLantas = new widget.ComboBox();
-        jLabel8 = new widget.Label();
-        TglLahir = new widget.TextBox();
-        jLabel18 = new widget.Label();
-        JK = new widget.TextBox();
-        jLabel24 = new widget.Label();
-        JenisPeserta = new widget.TextBox();
-        jLabel25 = new widget.Label();
-        Status = new widget.TextBox();
-        jLabel27 = new widget.Label();
-        AsalRujukan = new widget.ComboBox();
-        NoTelp = new widget.TextBox();
-        Katarak = new widget.ComboBox();
-        jLabel37 = new widget.Label();
-        jLabel38 = new widget.Label();
+        jLabel23 = new javax.swing.JLabel();
+        NoRujukan = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        KdPPK = new javax.swing.JTextField();
+        NmPPK = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        KdPpkRujukan = new javax.swing.JTextField();
+        NmPpkRujukan = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        KdPenyakit = new javax.swing.JTextField();
+        NmPenyakit = new javax.swing.JTextField();
+        NmPoli = new javax.swing.JTextField();
+        KdPoli = new javax.swing.JTextField();
+        LabelPoli = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        Catatan = new javax.swing.JTextField();
+        JenisPelayanan = new javax.swing.JComboBox();
+        LabelKelas = new javax.swing.JLabel();
+        Kelas = new javax.swing.JComboBox();
+        LakaLantas = new javax.swing.JComboBox();
+        jLabel8 = new javax.swing.JLabel();
+        TglLahir = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        JK = new javax.swing.JTextField();
+        jLabel24 = new javax.swing.JLabel();
+        JenisPeserta = new javax.swing.JTextField();
+        jLabel25 = new javax.swing.JLabel();
+        Status = new javax.swing.JTextField();
+        jLabel27 = new javax.swing.JLabel();
+        AsalRujukan = new javax.swing.JComboBox();
+        NoTelp = new javax.swing.JTextField();
+        Katarak = new javax.swing.JComboBox();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel38 = new javax.swing.JLabel();
         TanggalKKL = new widget.Tanggal();
-        LabelPoli2 = new widget.Label();
-        KdDPJP = new widget.TextBox();
-        NmDPJP = new widget.TextBox();
-        jLabel36 = new widget.Label();
-        Keterangan = new widget.TextBox();
-        jLabel40 = new widget.Label();
-        Suplesi = new widget.ComboBox();
-        NoSEPSuplesi = new widget.TextBox();
-        jLabel41 = new widget.Label();
-        LabelPoli3 = new widget.Label();
-        KdPropinsi = new widget.TextBox();
-        NmPropinsi = new widget.TextBox();
-        LabelPoli4 = new widget.Label();
-        KdKabupaten = new widget.TextBox();
-        NmKabupaten = new widget.TextBox();
-        LabelPoli5 = new widget.Label();
-        KdKecamatan = new widget.TextBox();
-        NmKecamatan = new widget.TextBox();
-        jLabel42 = new widget.Label();
-        TujuanKunjungan = new widget.ComboBox();
-        FlagProsedur = new widget.ComboBox();
-        jLabel43 = new widget.Label();
-        jLabel44 = new widget.Label();
-        Penunjang = new widget.ComboBox();
-        jLabel45 = new widget.Label();
-        AsesmenPoli = new widget.ComboBox();
-        lblTerapi = new widget.Label();
-        KdDPJPLayanan = new widget.TextBox();
-        NmDPJPLayanan = new widget.TextBox();
-        btnDPJPLayanan = new widget.Button();
-        jLabel55 = new widget.Label();
-        lblNoRawat = new widget.Label();
-        jLabel12 = new widget.Label();
-        jLabel6 = new widget.Label();
-        NoSKDP = new widget.TextBox();
-        jLabel26 = new widget.Label();
-        NIK = new widget.TextBox();
-        jLabel7 = new widget.Label();
-        btnDPJPLayanan1 = new widget.Button();
-        btnDiagnosaAwal = new widget.Button();
-        btnCariNoRujukan = new widget.Button();
-        btnRiwayatPelayanan = new widget.Button();
-        KodeDokterTerapi = new widget.TextBox();
-        KdPoliTerapi = new widget.TextBox();
-        NmPoliTerapi = new widget.TextBox();
-        NmDokterTerapi = new widget.TextBox();
-        btnDokterTerapi = new widget.Button();
-        btnPoliTerapi = new widget.Button();
-        LabelPoli7 = new widget.Label();
-        jLabel57 = new widget.Label();
-        btnApprovalFP = new widget.Button();
-        btnPengajuanFP = new widget.Button();
-        jLabel15 = new widget.Label();
-        JumlahBarcode = new widget.TextBox();
+        LabelPoli2 = new javax.swing.JLabel();
+        KdDPJP = new javax.swing.JTextField();
+        NmDPJP = new javax.swing.JTextField();
+        jLabel36 = new javax.swing.JLabel();
+        Keterangan = new javax.swing.JTextField();
+        jLabel40 = new javax.swing.JLabel();
+        Suplesi = new javax.swing.JComboBox();
+        NoSEPSuplesi = new javax.swing.JTextField();
+        jLabel41 = new javax.swing.JLabel();
+        LabelPoli3 = new javax.swing.JLabel();
+        KdPropinsi = new javax.swing.JTextField();
+        NmPropinsi = new javax.swing.JTextField();
+        LabelPoli4 = new javax.swing.JLabel();
+        KdKabupaten = new javax.swing.JTextField();
+        NmKabupaten = new javax.swing.JTextField();
+        LabelPoli5 = new javax.swing.JLabel();
+        KdKecamatan = new javax.swing.JTextField();
+        NmKecamatan = new javax.swing.JTextField();
+        jLabel42 = new javax.swing.JLabel();
+        TujuanKunjungan = new javax.swing.JComboBox();
+        FlagProsedur = new javax.swing.JComboBox();
+        jLabel43 = new javax.swing.JLabel();
+        jLabel44 = new javax.swing.JLabel();
+        Penunjang = new javax.swing.JComboBox();
+        jLabel45 = new javax.swing.JLabel();
+        AsesmenPoli = new javax.swing.JComboBox();
+        lblTerapi = new javax.swing.JLabel();
+        KdDPJPLayanan = new javax.swing.JTextField();
+        NmDPJPLayanan = new javax.swing.JTextField();
+        btnDPJPLayanan = new javax.swing.JButton();
+        jLabel55 = new javax.swing.JLabel();
+        lblNoRawat = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        NoSKDP = new javax.swing.JTextField();
+        jLabel26 = new javax.swing.JLabel();
+        NIK = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        btnDPJPLayanan1 = new javax.swing.JButton();
+        btnDiagnosaAwal = new javax.swing.JButton();
+        btnCariNoRujukan = new javax.swing.JButton();
+        btnRiwayatPelayanan = new javax.swing.JButton();
+        KodeDokterTerapi = new javax.swing.JTextField();
+        KdPoliTerapi = new javax.swing.JTextField();
+        NmPoliTerapi = new javax.swing.JTextField();
+        NmDokterTerapi = new javax.swing.JTextField();
+        btnDokterTerapi = new javax.swing.JButton();
+        btnPoliTerapi = new javax.swing.JButton();
+        LabelPoli7 = new javax.swing.JLabel();
+        jLabel57 = new javax.swing.JLabel();
+        btnApprovalFP = new javax.swing.JButton();
+        btnPengajuanFP = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
+        JumlahBarcode = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
-        btnSimpan = new widget.Button();
-        btnFingerPrint = new widget.Button();
-        btnKeluar = new widget.Button();
+        btnSimpan = new javax.swing.JButton();
+        btnFingerPrint = new javax.swing.JButton();
+        btnKeluar = new javax.swing.JButton();
 
         LblKdPoli.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LblKdPoli.setText("Norm");
@@ -1245,10 +1215,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDPJPLayananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDPJPLayananActionPerformed
-        dokter.setSize(jPanel1.getWidth() - 75, jPanel1.getHeight() - 75);
-        dokter.setLocationRelativeTo(jPanel1);
-        dokter.carinamadokter(KdPoli.getText(), NmPoli.getText());
-        dokter.setVisible(true);
+        
     }//GEN-LAST:event_btnDPJPLayananActionPerformed
 
     private void TujuanKunjunganItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TujuanKunjunganItemStateChanged
@@ -1297,10 +1264,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
     }//GEN-LAST:event_JenisPelayananItemStateChanged
 
     private void btnDPJPLayanan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDPJPLayanan1ActionPerformed
-        poli.setSize(jPanel1.getWidth() - 100, jPanel1.getHeight() - 100);
-        poli.tampil();
-        poli.setLocationRelativeTo(jPanel1);
-        poli.setVisible(true);
+        
     }//GEN-LAST:event_btnDPJPLayanan1ActionPerformed
 
     private void btnDiagnosaAwalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiagnosaAwalActionPerformed
@@ -1334,7 +1298,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
 
     private void btnDokterTerapiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDokterTerapiActionPerformed
         doktermapping.setSize(jPanel1.getWidth() - 75, jPanel1.getHeight() - 75);
-        doktermapping.tampilDokterTerapi(KdDPJPLayanan.getText());
+        // doktermapping.tampilDokterTerapi(KdDPJPLayanan.getText());
         doktermapping.setLocationRelativeTo(jPanel1);
         doktermapping.setVisible(true);
     }//GEN-LAST:event_btnDokterTerapiActionPerformed
@@ -1502,18 +1466,18 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                                 headers.add("X-Signature", api.getHmac(utc));
                                 headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
                                 URL = URLAPIBPJS + "/Sep/pengajuanSEP";
-                                requestJson = " {"
-                                    + "\"request\": {"
-                                    + "\"t_sep\": {"
-                                    + "\"noKartu\": \"" + NoKartu.getText() + "\","
-                                    + "\"tglSep\": \"" + Valid.SetTgl(TanggalSEP.getSelectedItem() + "") + "\","
-                                    + "\"jnsPelayanan\": \"" + JenisPelayanan.getSelectedItem().toString().substring(0, 1) + "\","
-                                    + "\"jnsPengajuan\": \"2\","
-                                    + "\"keterangan\": \"Pengajuan SEP Finger oleh Anjungan Pasien Mandiri RS Samarinda Medika Citra\","
-                                    + "\"user\": \"" + rs.getString(1) + "\""
-                                    + "}"
-                                    + "}"
-                                    + "}";
+                                requestJson = " {" +
+                                    "\"request\": {" +
+                                    "\"t_sep\": {" +
+                                    "\"noKartu\": \"" + NoKartu.getText() + "\"," +
+                                    "\"tglSep\": \"" + Valid.SetTgl(TanggalSEP.getSelectedItem() + "") + "\"," +
+                                    "\"jnsPelayanan\": \"" + JenisPelayanan.getSelectedItem().toString().substring(0, 1) + "\"," +
+                                    "\"jnsPengajuan\": \"2\"," +
+                                    "\"keterangan\": \"Pengajuan SEP Finger oleh Anjungan Pasien Mandiri RS Samarinda Medika Citra\"," +
+                                    "\"user\": \"" + rs.getString(1) + "\"" +
+                                    "}" +
+                                    "}" +
+                                    "}";
                                 requestEntity = new HttpEntity(requestJson, headers);
                                 root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
                                 nameNode = root.path("metaData");
@@ -1541,18 +1505,18 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                                 headers.add("X-Signature", api.getHmac(utc));
                                 headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
                                 URL = URLAPIBPJS + "/Sep/aprovalSEP";
-                                requestJson = " {"
-                                    + "\"request\": {"
-                                    + "\"t_sep\": {"
-                                    + "\"noKartu\": \"" + NoKartu.getText() + "\","
-                                    + "\"tglSep\": \"" + Valid.SetTgl(TanggalSEP.getSelectedItem() + "") + "\","
-                                    + "\"jnsPelayanan\": \"" + JenisPelayanan.getSelectedItem().toString().substring(0, 1) + "\","
-                                    + "\"jnsPengajuan\": \"2\","
-                                    + "\"keterangan\": \"Approval FingerPrint karena Gagal FP melalui Anjungan Pasien Mandiri\","
-                                    + "\"user\": \"" + rs.getString(1) + "\""
-                                    + "}"
-                                    + "}"
-                                    + "}";
+                                requestJson = " {" +
+                                    "\"request\": {" +
+                                    "\"t_sep\": {" +
+                                    "\"noKartu\": \"" + NoKartu.getText() + "\"," +
+                                    "\"tglSep\": \"" + Valid.SetTgl(TanggalSEP.getSelectedItem() + "") + "\"," +
+                                    "\"jnsPelayanan\": \"" + JenisPelayanan.getSelectedItem().toString().substring(0, 1) + "\"," +
+                                    "\"jnsPengajuan\": \"2\"," +
+                                    "\"keterangan\": \"Approval FingerPrint karena Gagal FP melalui Anjungan Pasien Mandiri\"," +
+                                    "\"user\": \"" + rs.getString(1) + "\"" +
+                                    "}" +
+                                    "}" +
+                                    "}";
                                 requestEntity = new HttpEntity(requestJson, headers);
                                 root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
                                 nameNode = root.path("metaData");
@@ -1620,134 +1584,134 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private widget.ComboBox AsalRujukan;
-    private widget.ComboBox AsesmenPoli;
-    private widget.TextBox Biaya;
-    private widget.TextBox Catatan;
-    private widget.ComboBox FlagProsedur;
-    private widget.TextBox JK;
-    private widget.ComboBox JenisPelayanan;
-    private widget.TextBox JenisPeserta;
-    private widget.TextBox JumlahBarcode;
-    private widget.ComboBox Katarak;
-    private widget.TextBox KdDPJP;
-    private widget.TextBox KdDPJPLayanan;
-    private widget.TextBox KdKabupaten;
-    private widget.TextBox KdKecamatan;
-    private widget.TextBox KdPPK;
-    private widget.TextBox KdPenyakit;
-    private widget.TextBox KdPoli;
-    private widget.TextBox KdPoliTerapi;
-    private widget.TextBox KdPpkRujukan;
-    private widget.TextBox KdPropinsi;
-    private widget.TextBox Kdpnj;
-    private widget.ComboBox Kelas;
-    private widget.TextBox Keterangan;
-    private widget.TextBox KodeDokterTerapi;
-    private widget.Label LabelKelas;
-    private widget.Label LabelPoli;
-    private widget.Label LabelPoli2;
-    private widget.Label LabelPoli3;
-    private widget.Label LabelPoli4;
-    private widget.Label LabelPoli5;
-    private widget.Label LabelPoli7;
-    private widget.ComboBox LakaLantas;
-    private widget.Label LblKdDokter;
-    private widget.Label LblKdPoli;
-    private widget.TextBox NIK;
-    private widget.TextBox NmDPJP;
-    private widget.TextBox NmDPJPLayanan;
-    private widget.TextBox NmDokterTerapi;
-    private widget.TextBox NmKabupaten;
-    private widget.TextBox NmKecamatan;
-    private widget.TextBox NmPPK;
-    private widget.TextBox NmPenyakit;
-    private widget.TextBox NmPoli;
-    private widget.TextBox NmPoliTerapi;
-    private widget.TextBox NmPpkRujukan;
-    private widget.TextBox NmPropinsi;
-    private widget.TextBox NoKartu;
-    private widget.TextBox NoRawat;
-    private widget.TextBox NoReg;
-    private widget.TextBox NoRujukMasuk;
-    private widget.TextBox NoRujukan;
-    private widget.TextBox NoSEPSuplesi;
-    private widget.TextBox NoSKDP;
-    private widget.TextBox NoTelp;
-    private widget.Label NoTelpPasien;
-    private widget.ComboBox Penunjang;
-    private widget.TextBox Status;
-    private widget.ComboBox Suplesi;
-    private widget.Label TAlmt;
-    private widget.TextBox TBiaya;
-    private widget.Label THbngn;
-    private widget.TextBox TNoRM;
-    private widget.TextBox TNoRw;
-    private widget.TextBox TPasien;
-    private widget.Label TPngJwb;
+    private javax.swing.JComboBox AsalRujukan;
+    private javax.swing.JComboBox AsesmenPoli;
+    private javax.swing.JTextField Biaya;
+    private javax.swing.JTextField Catatan;
+    private javax.swing.JComboBox FlagProsedur;
+    private javax.swing.JTextField JK;
+    private javax.swing.JComboBox JenisPelayanan;
+    private javax.swing.JTextField JenisPeserta;
+    private javax.swing.JTextField JumlahBarcode;
+    private javax.swing.JComboBox Katarak;
+    private javax.swing.JTextField KdDPJP;
+    private javax.swing.JTextField KdDPJPLayanan;
+    private javax.swing.JTextField KdKabupaten;
+    private javax.swing.JTextField KdKecamatan;
+    private javax.swing.JTextField KdPPK;
+    private javax.swing.JTextField KdPenyakit;
+    private javax.swing.JTextField KdPoli;
+    private javax.swing.JTextField KdPoliTerapi;
+    private javax.swing.JTextField KdPpkRujukan;
+    private javax.swing.JTextField KdPropinsi;
+    private javax.swing.JTextField Kdpnj;
+    private javax.swing.JComboBox Kelas;
+    private javax.swing.JTextField Keterangan;
+    private javax.swing.JTextField KodeDokterTerapi;
+    private javax.swing.JLabel LabelKelas;
+    private javax.swing.JLabel LabelPoli;
+    private javax.swing.JLabel LabelPoli2;
+    private javax.swing.JLabel LabelPoli3;
+    private javax.swing.JLabel LabelPoli4;
+    private javax.swing.JLabel LabelPoli5;
+    private javax.swing.JLabel LabelPoli7;
+    private javax.swing.JComboBox LakaLantas;
+    private javax.swing.JLabel LblKdDokter;
+    private javax.swing.JLabel LblKdPoli;
+    private javax.swing.JTextField NIK;
+    private javax.swing.JTextField NmDPJP;
+    private javax.swing.JTextField NmDPJPLayanan;
+    private javax.swing.JTextField NmDokterTerapi;
+    private javax.swing.JTextField NmKabupaten;
+    private javax.swing.JTextField NmKecamatan;
+    private javax.swing.JTextField NmPPK;
+    private javax.swing.JTextField NmPenyakit;
+    private javax.swing.JTextField NmPoli;
+    private javax.swing.JTextField NmPoliTerapi;
+    private javax.swing.JTextField NmPpkRujukan;
+    private javax.swing.JTextField NmPropinsi;
+    private javax.swing.JTextField NoKartu;
+    private javax.swing.JTextField NoRawat;
+    private javax.swing.JTextField NoReg;
+    private javax.swing.JTextField NoRujukMasuk;
+    private javax.swing.JTextField NoRujukan;
+    private javax.swing.JTextField NoSEPSuplesi;
+    private javax.swing.JTextField NoSKDP;
+    private javax.swing.JTextField NoTelp;
+    private javax.swing.JLabel NoTelpPasien;
+    private javax.swing.JComboBox Penunjang;
+    private javax.swing.JTextField Status;
+    private javax.swing.JComboBox Suplesi;
+    private javax.swing.JLabel TAlmt;
+    private javax.swing.JTextField TBiaya;
+    private javax.swing.JLabel THbngn;
+    private javax.swing.JTextField TNoRM;
+    private javax.swing.JTextField TNoRw;
+    private javax.swing.JTextField TPasien;
+    private javax.swing.JLabel TPngJwb;
     private widget.Tanggal Tanggal;
     private widget.Tanggal TanggalKKL;
     private widget.Tanggal TanggalRujuk;
     private widget.Tanggal TanggalSEP;
-    private widget.TextBox TglLahir;
-    private widget.ComboBox TujuanKunjungan;
+    private javax.swing.JTextField TglLahir;
+    private javax.swing.JComboBox TujuanKunjungan;
     private javax.swing.JDialog WindowAksi;
-    private widget.Button btnAksiBatal;
-    private widget.Button btnAksiKonfirmasi;
-    private widget.Button btnApprovalFP;
-    private widget.Button btnCariNoRujukan;
-    private widget.Button btnDPJPLayanan;
-    private widget.Button btnDPJPLayanan1;
-    private widget.Button btnDiagnosaAwal;
-    private widget.Button btnDokterTerapi;
-    private widget.Button btnFingerPrint;
-    private widget.Button btnKeluar;
-    private widget.Button btnPengajuanFP;
-    private widget.Button btnPoliTerapi;
-    private widget.Button btnRiwayatPelayanan;
-    private widget.Button btnSimpan;
-    private widget.InternalFrame internalFrame1;
-    private widget.Label jLabel10;
-    private widget.Label jLabel11;
-    private widget.Label jLabel12;
-    private widget.Label jLabel13;
-    private widget.Label jLabel14;
-    private widget.Label jLabel15;
-    private widget.Label jLabel18;
-    private widget.Label jLabel20;
-    private widget.Label jLabel22;
-    private widget.Label jLabel23;
-    private widget.Label jLabel24;
-    private widget.Label jLabel25;
-    private widget.Label jLabel26;
-    private widget.Label jLabel27;
-    private widget.Label jLabel36;
-    private widget.Label jLabel37;
-    private widget.Label jLabel38;
-    private widget.Label jLabel40;
-    private widget.Label jLabel41;
-    private widget.Label jLabel42;
-    private widget.Label jLabel43;
-    private widget.Label jLabel44;
-    private widget.Label jLabel45;
-    private widget.Label jLabel55;
-    private widget.Label jLabel57;
-    private widget.Label jLabel6;
-    private widget.Label jLabel7;
-    private widget.Label jLabel8;
-    private widget.Label jLabel9;
-    private widget.Panel jPanel1;
-    private widget.Panel jPanel2;
+    private javax.swing.JButton btnAksiBatal;
+    private javax.swing.JButton btnAksiKonfirmasi;
+    private javax.swing.JButton btnApprovalFP;
+    private javax.swing.JButton btnCariNoRujukan;
+    private javax.swing.JButton btnDPJPLayanan;
+    private javax.swing.JButton btnDPJPLayanan1;
+    private javax.swing.JButton btnDiagnosaAwal;
+    private javax.swing.JButton btnDokterTerapi;
+    private javax.swing.JButton btnFingerPrint;
+    private javax.swing.JButton btnKeluar;
+    private javax.swing.JButton btnPengajuanFP;
+    private javax.swing.JButton btnPoliTerapi;
+    private javax.swing.JButton btnRiwayatPelayanan;
+    private javax.swing.JButton btnSimpan;
+    private javax.swing.JPanel internalFrame1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
+    private javax.swing.JLabel jLabel38;
+    private javax.swing.JLabel jLabel40;
+    private javax.swing.JLabel jLabel41;
+    private javax.swing.JLabel jLabel42;
+    private javax.swing.JLabel jLabel43;
+    private javax.swing.JLabel jLabel44;
+    private javax.swing.JLabel jLabel45;
+    private javax.swing.JLabel jLabel55;
+    private javax.swing.JLabel jLabel57;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private widget.TextBox kdpoli;
-    private widget.Label label1;
-    private widget.Label label2;
-    private widget.Label label3;
-    private widget.Label lblNoRawat;
-    private widget.Label lblTerapi;
-    private widget.TextBox nmpnj;
-    private widget.PasswordBox pwPass;
-    private widget.PasswordBox pwUserId;
+    private javax.swing.JTextField kdpoli;
+    private javax.swing.JLabel label1;
+    private javax.swing.JLabel label2;
+    private javax.swing.JLabel label3;
+    private javax.swing.JLabel lblNoRawat;
+    private javax.swing.JLabel lblTerapi;
+    private javax.swing.JTextField nmpnj;
+    private javax.swing.JPasswordField pwPass;
+    private javax.swing.JPasswordField pwUserId;
     // End of variables declaration//GEN-END:variables
 
     private void cetakRegistrasi(String noSEP) {
@@ -1785,68 +1749,68 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
             headers.add("X-Signature", api.getHmac(utc));
             headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
             URL = URLAPIBPJS + "/SEP/2.0/insert";
-            requestJson = "{"
-                + "\"request\":{"
-                + "\"t_sep\":{"
-                + "\"noKartu\":\"" + NoKartu.getText() + "\","
-                + "\"tglSep\":\"" + Valid.SetTgl(TanggalSEP.getSelectedItem() + "") + "\","
-                + "\"ppkPelayanan\":\"" + KdPPK.getText() + "\","
-                + "\"jnsPelayanan\":\"" + JenisPelayanan.getSelectedItem().toString().substring(0, 1) + "\","
-                + "\"klsRawat\":{"
-                + "\"klsRawatHak\":\"" + Kelas.getSelectedItem().toString().substring(0, 1) + "\","
-                + "\"klsRawatNaik\":\"\","
-                + "\"pembiayaan\":\"\","
-                + "\"penanggungJawab\":\"\""
-                + "},"
-                + "\"noMR\":\"" + TNoRM.getText() + "\","
-                + "\"rujukan\": {"
-                + "\"asalRujukan\":\"" + AsalRujukan.getSelectedItem().toString().substring(0, 1) + "\","
-                + "\"tglRujukan\":\"" + Valid.SetTgl(TanggalRujuk.getSelectedItem() + "") + "\","
-                + "\"noRujukan\":\"" + NoRujukan.getText() + "\","
-                + "\"ppkRujukan\":\"" + KdPpkRujukan.getText() + "\""
-                + "},"
-                + "\"catatan\":\"" + Catatan.getText() + "\","
-                + "\"diagAwal\":\"" + KdPenyakit.getText() + "\","
-                + "\"poli\": {"
-                + "\"tujuan\": \"" + KdPoli.getText() + "\","
-                + "\"eksekutif\": \"0\""
-                + "},"
-                + "\"cob\": {"
-                + "\"cob\": \"0\""
-                + "},"
-                + "\"katarak\": {"
-                + "\"katarak\": \"" + Katarak.getSelectedItem().toString().substring(0, 1) + "\""
-                + "},"
-                + "\"jaminan\": {"
-                + "\"lakaLantas\":\"" + LakaLantas.getSelectedItem().toString().substring(0, 1) + "\","
-                + "\"penjamin\": {"
-                + "\"tglKejadian\": \"" + tglkkl.replaceAll("0000-00-00", "") + "\","
-                + "\"keterangan\": \"" + Keterangan.getText() + "\","
-                + "\"suplesi\": {"
-                + "\"suplesi\": \"" + Suplesi.getSelectedItem().toString().substring(0, 1) + "\","
-                + "\"noSepSuplesi\": \"" + NoSEPSuplesi.getText() + "\","
-                + "\"lokasiLaka\": {"
-                + "\"kdPropinsi\": \"" + KdPropinsi.getText() + "\","
-                + "\"kdKabupaten\": \"" + KdKabupaten.getText() + "\","
-                + "\"kdKecamatan\": \"" + KdKecamatan.getText() + "\""
-                + "}"
-                + "}"
-                + "}"
-                + "},"
-                + "\"tujuanKunj\": \"" + TujuanKunjungan.getSelectedItem().toString().substring(0, 1) + "\","
-                + "\"flagProcedure\": \"" + (FlagProsedur.getSelectedIndex() > 0 ? FlagProsedur.getSelectedItem().toString().substring(0, 1) : "") + "\","
-                + "\"kdPenunjang\": \"" + (Penunjang.getSelectedIndex() > 0 ? Penunjang.getSelectedIndex() + "" : "") + "\","
-                + "\"assesmentPel\": \"" + (AsesmenPoli.getSelectedIndex() > 0 ? AsesmenPoli.getSelectedItem().toString().substring(0, 1) : "") + "\","
-                + "\"skdp\": {"
-                + "\"noSurat\": \"" + NoSKDP.getText() + "\","
-                + "\"kodeDPJP\": \"" + KdDPJP.getText() + "\""
-                + "},"
-                + "\"dpjpLayan\": \"" + (KdDPJPLayanan.getText().equals("") ? "" : KdDPJPLayanan.getText()) + "\","
-                + "\"noTelp\": \"" + NoTelp.getText() + "\","
-                + "\"user\":\"" + NoKartu.getText() + "\""
-                + "}"
-                + "}"
-                + "}";
+            requestJson = "{" +
+                "\"request\":{" +
+                "\"t_sep\":{" +
+                "\"noKartu\":\"" + NoKartu.getText() + "\"," +
+                "\"tglSep\":\"" + Valid.SetTgl(TanggalSEP.getSelectedItem() + "") + "\"," +
+                "\"ppkPelayanan\":\"" + KdPPK.getText() + "\"," +
+                "\"jnsPelayanan\":\"" + JenisPelayanan.getSelectedItem().toString().substring(0, 1) + "\"," +
+                "\"klsRawat\":{" +
+                "\"klsRawatHak\":\"" + Kelas.getSelectedItem().toString().substring(0, 1) + "\"," +
+                "\"klsRawatNaik\":\"\"," +
+                "\"pembiayaan\":\"\"," +
+                "\"penanggungJawab\":\"\"" +
+                "}," +
+                "\"noMR\":\"" + TNoRM.getText() + "\"," +
+                "\"rujukan\": {" +
+                "\"asalRujukan\":\"" + AsalRujukan.getSelectedItem().toString().substring(0, 1) + "\"," +
+                "\"tglRujukan\":\"" + Valid.SetTgl(TanggalRujuk.getSelectedItem() + "") + "\"," +
+                "\"noRujukan\":\"" + NoRujukan.getText() + "\"," +
+                "\"ppkRujukan\":\"" + KdPpkRujukan.getText() + "\"" +
+                "}," +
+                "\"catatan\":\"" + Catatan.getText() + "\"," +
+                "\"diagAwal\":\"" + KdPenyakit.getText() + "\"," +
+                "\"poli\": {" +
+                "\"tujuan\": \"" + KdPoli.getText() + "\"," +
+                "\"eksekutif\": \"0\"" +
+                "}," +
+                "\"cob\": {" +
+                "\"cob\": \"0\"" +
+                "}," +
+                "\"katarak\": {" +
+                "\"katarak\": \"" + Katarak.getSelectedItem().toString().substring(0, 1) + "\"" +
+                "}," +
+                "\"jaminan\": {" +
+                "\"lakaLantas\":\"" + LakaLantas.getSelectedItem().toString().substring(0, 1) + "\"," +
+                "\"penjamin\": {" +
+                "\"tglKejadian\": \"" + tglkkl.replaceAll("0000-00-00", "") + "\"," +
+                "\"keterangan\": \"" + Keterangan.getText() + "\"," +
+                "\"suplesi\": {" +
+                "\"suplesi\": \"" + Suplesi.getSelectedItem().toString().substring(0, 1) + "\"," +
+                "\"noSepSuplesi\": \"" + NoSEPSuplesi.getText() + "\"," +
+                "\"lokasiLaka\": {" +
+                "\"kdPropinsi\": \"" + KdPropinsi.getText() + "\"," +
+                "\"kdKabupaten\": \"" + KdKabupaten.getText() + "\"," +
+                "\"kdKecamatan\": \"" + KdKecamatan.getText() + "\"" +
+                "}" +
+                "}" +
+                "}" +
+                "}," +
+                "\"tujuanKunj\": \"" + TujuanKunjungan.getSelectedItem().toString().substring(0, 1) + "\"," +
+                "\"flagProcedure\": \"" + (FlagProsedur.getSelectedIndex() > 0 ? FlagProsedur.getSelectedItem().toString().substring(0, 1) : "") + "\"," +
+                "\"kdPenunjang\": \"" + (Penunjang.getSelectedIndex() > 0 ? Penunjang.getSelectedIndex() + "" : "") + "\"," +
+                "\"assesmentPel\": \"" + (AsesmenPoli.getSelectedIndex() > 0 ? AsesmenPoli.getSelectedItem().toString().substring(0, 1) : "") + "\"," +
+                "\"skdp\": {" +
+                "\"noSurat\": \"" + NoSKDP.getText() + "\"," +
+                "\"kodeDPJP\": \"" + KdDPJP.getText() + "\"" +
+                "}," +
+                "\"dpjpLayan\": \"" + (KdDPJPLayanan.getText().equals("") ? "" : KdDPJPLayanan.getText()) + "\"," +
+                "\"noTelp\": \"" + NoTelp.getText() + "\"," +
+                "\"user\":\"" + NoKartu.getText() + "\"" +
+                "}" +
+                "}" +
+                "}";
             requestEntity = new HttpEntity(requestJson, headers);
             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
             nameNode = root.path("metaData");
@@ -2011,10 +1975,10 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         btnDokterTerapi.setVisible(false);
         lblTerapi.setVisible(false);
         try (PreparedStatement psjkn = koneksi.prepareStatement(
-            "select referensi_mobilejkn_bpjs.*, maping_poli_bpjs.nm_poli_bpjs, maping_poli_bpjs.kd_poli_rs, maping_dokter_dpjpvclaim.nm_dokter_bpjs, maping_dokter_dpjpvclaim.kd_dokter from referensi_mobilejkn_bpjs "
-            + "join maping_poli_bpjs on referensi_mobilejkn_bpjs.kodepoli = maping_poli_bpjs.kd_poli_bpjs join maping_dokter_dpjpvclaim on referensi_mobilejkn_bpjs.kodedokter = maping_dokter_dpjpvclaim.kd_dokter_bpjs "
-            + "where referensi_mobilejkn_bpjs.nomorkartu = ? and referensi_mobilejkn_bpjs.tanggalperiksa = current_date() and referensi_mobilejkn_bpjs.status in ('Belum', 'Checkin') and tanggalperiksa = current_date() "
-            + "and not exists(select * from pemeriksaan_ralan where pemeriksaan_ralan.no_rawat = referensi_mobilejkn_bpjs.no_rawat)"
+            "select referensi_mobilejkn_bpjs.*, maping_poli_bpjs.nm_poli_bpjs, maping_poli_bpjs.kd_poli_rs, maping_dokter_dpjpvclaim.nm_dokter_bpjs, maping_dokter_dpjpvclaim.kd_dokter from referensi_mobilejkn_bpjs " +
+            "join maping_poli_bpjs on referensi_mobilejkn_bpjs.kodepoli = maping_poli_bpjs.kd_poli_bpjs join maping_dokter_dpjpvclaim on referensi_mobilejkn_bpjs.kodedokter = maping_dokter_dpjpvclaim.kd_dokter_bpjs " +
+            "where referensi_mobilejkn_bpjs.nomorkartu = ? and referensi_mobilejkn_bpjs.tanggalperiksa = current_date() and referensi_mobilejkn_bpjs.status in ('Belum', 'Checkin') and tanggalperiksa = current_date() " +
+            "and not exists(select * from pemeriksaan_ralan where pemeriksaan_ralan.no_rawat = referensi_mobilejkn_bpjs.no_rawat)"
         )) {
             psjkn.setString(1, noKartu);
             try (ResultSet rsjkn = psjkn.executeQuery()) {
@@ -2153,8 +2117,8 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                             } else if (jeniskunjungan.equals("3")) {
                                 // CEK JENIS KONTROL DULU
                                 try (PreparedStatement pskontrol = koneksi.prepareStatement(
-                                    "select bridging_surat_kontrol_bpjs.*, left(bridging_sep.asal_rujukan, 1) as asal_rujukan, bridging_sep.jnspelayanan, bridging_sep.no_rujukan, bridging_sep.klsrawat "
-                                    + "from bridging_surat_kontrol_bpjs join bridging_sep on bridging_surat_kontrol_bpjs.no_sep = bridging_sep.no_sep where bridging_surat_kontrol_bpjs.no_surat = ?"
+                                    "select bridging_surat_kontrol_bpjs.*, left(bridging_sep.asal_rujukan, 1) as asal_rujukan, bridging_sep.jnspelayanan, bridging_sep.no_rujukan, bridging_sep.klsrawat " +
+                                    "from bridging_surat_kontrol_bpjs join bridging_sep on bridging_surat_kontrol_bpjs.no_sep = bridging_sep.no_sep where bridging_surat_kontrol_bpjs.no_surat = ?"
                                 )) {
                                     pskontrol.setString(1, rsjkn.getString("nomorreferensi"));
                                     try (ResultSet rskontrol = pskontrol.executeQuery()) {
@@ -2269,10 +2233,10 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         }
         try {
             ps = koneksi.prepareStatement(
-                "select referensi_mobilejkn_bpjs.*, reg_periksa.no_rkm_medis, pasien.nm_pasien, poliklinik.nm_poli, dokter.nm_dokter from referensi_mobilejkn_bpjs "
-                + "join reg_periksa on referensi_mobilejkn_bpjs.no_rawat = reg_periksa.no_rawat join pasien on reg_periksa.no_rkm_medis = pasien.no_rkm_medis "
-                + "join poliklinik on reg_periksa.kd_poli = poliklinik.kd_poli join dokter on reg_periksa.kd_dokter = dokter.kd_dokter "
-                + "where referensi_mobilejkn_bpjs.statuskirim = 'Belum' and referensi_mobilejkn_bpjs.nobooking = ? and referensi_mobilejkn.status = 'Checkin'"
+                "select referensi_mobilejkn_bpjs.*, reg_periksa.no_rkm_medis, pasien.nm_pasien, poliklinik.nm_poli, dokter.nm_dokter from referensi_mobilejkn_bpjs " +
+                "join reg_periksa on referensi_mobilejkn_bpjs.no_rawat = reg_periksa.no_rawat join pasien on reg_periksa.no_rkm_medis = pasien.no_rkm_medis " +
+                "join poliklinik on reg_periksa.kd_poli = poliklinik.kd_poli join dokter on reg_periksa.kd_dokter = dokter.kd_dokter " +
+                "where referensi_mobilejkn_bpjs.statuskirim = 'Belum' and referensi_mobilejkn_bpjs.nobooking = ? and referensi_mobilejkn.status = 'Checkin'"
             );
             try {
                 ps.setString(1, nobooking);
@@ -2286,31 +2250,31 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
                         headers.add("x-timestamp", utc);
                         headers.add("x-signature", api.getHmac(utc));
                         headers.add("user_key", koneksiDB.USERKEYAPIMOBILEJKN());
-                        requestJson = "{"
-                            + "\"kodebooking\": \"" + rs.getString("nobooking") + "\","
-                            + "\"jenispasien\": \"JKN\","
-                            + "\"nomorkartu\": \"" + rs.getString("nomorkartu") + "\","
-                            + "\"nik\": \"" + rs.getString("nik") + "\","
-                            + "\"nohp\": \"" + NoTelp.getText().trim() + "\","
-                            + "\"kodepoli\": \"" + rs.getString("kodepoli") + "\","
-                            + "\"namapoli\": \"" + rs.getString("nm_poli") + "\","
-                            + "\"pasienbaru\": " + rs.getString("pasienbaru") + ","
-                            + "\"norm\": \"" + rs.getString("no_rkm_medis") + "\","
-                            + "\"tanggalperiksa\": \"" + rs.getString("tanggalperiksa") + "\","
-                            + "\"kodedokter\": " + rs.getString("kodedokter") + ","
-                            + "\"namadokter\": \"" + rs.getString("nm_dokter") + "\","
-                            + "\"jampraktek\": \"" + rs.getString("jampraktek") + "\","
-                            + "\"jeniskunjungan\": " + rs.getString("jeniskunjungan").substring(0, 1) + ","
-                            + "\"nomorreferensi\": \"" + rs.getString("nomorreferensi") + "\","
-                            + "\"nomorantrean\": \"" + rs.getString("nomorantrean") + "\","
-                            + "\"angkaantrean\": " + rs.getInt("angkaantrean") + ","
-                            + "\"estimasidilayani\": " + rs.getString("estimasidilayani") + ","
-                            + "\"sisakuotajkn\": " + rs.getInt("sisakuotajkn") + ","
-                            + "\"kuotajkn\": " + rs.getInt("kuotajkn") + ","
-                            + "\"sisakuotanonjkn\": " + rs.getInt("sisakuotanonjkn") + ","
-                            + "\"kuotanonjkn\": " + rs.getInt("kuotanonjkn") + ","
-                            + "\"keterangan\": \"Peserta harap 30 menit lebih awal guna pencatatan administrasi.\""
-                            + "}";
+                        requestJson = "{" +
+                            "\"kodebooking\": \"" + rs.getString("nobooking") + "\"," +
+                            "\"jenispasien\": \"JKN\"," +
+                            "\"nomorkartu\": \"" + rs.getString("nomorkartu") + "\"," +
+                            "\"nik\": \"" + rs.getString("nik") + "\"," +
+                            "\"nohp\": \"" + NoTelp.getText().trim() + "\"," +
+                            "\"kodepoli\": \"" + rs.getString("kodepoli") + "\"," +
+                            "\"namapoli\": \"" + rs.getString("nm_poli") + "\"," +
+                            "\"pasienbaru\": " + rs.getString("pasienbaru") + "," +
+                            "\"norm\": \"" + rs.getString("no_rkm_medis") + "\"," +
+                            "\"tanggalperiksa\": \"" + rs.getString("tanggalperiksa") + "\"," +
+                            "\"kodedokter\": " + rs.getString("kodedokter") + "," +
+                            "\"namadokter\": \"" + rs.getString("nm_dokter") + "\"," +
+                            "\"jampraktek\": \"" + rs.getString("jampraktek") + "\"," +
+                            "\"jeniskunjungan\": " + rs.getString("jeniskunjungan").substring(0, 1) + "," +
+                            "\"nomorreferensi\": \"" + rs.getString("nomorreferensi") + "\"," +
+                            "\"nomorantrean\": \"" + rs.getString("nomorantrean") + "\"," +
+                            "\"angkaantrean\": " + rs.getInt("angkaantrean") + "," +
+                            "\"estimasidilayani\": " + rs.getString("estimasidilayani") + "," +
+                            "\"sisakuotajkn\": " + rs.getInt("sisakuotajkn") + "," +
+                            "\"kuotajkn\": " + rs.getInt("kuotajkn") + "," +
+                            "\"sisakuotanonjkn\": " + rs.getInt("sisakuotanonjkn") + "," +
+                            "\"kuotanonjkn\": " + rs.getInt("kuotanonjkn") + "," +
+                            "\"keterangan\": \"Peserta harap 30 menit lebih awal guna pencatatan administrasi.\"" +
+                            "}";
                         System.out.println("JSON : " + requestJson);
                         requestEntity = new HttpEntity(requestJson, headers);
                         URL = koneksiDB.URLAPIMOBILEJKN() + "/antrean/add";
@@ -2600,16 +2564,16 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
             headers.add("X-Signature", api.getHmac(utc));
             headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
             URL = URLAPIBPJS + "/RencanaKontrol/Update";
-            requestJson = "{"
-                + "\"request\": {"
-                + "\"noSuratKontrol\":\"" + noSKDP + "\","
-                + "\"noSEP\":\"" + noSEP + "\","
-                + "\"kodeDokter\":\"" + kodeDPJP + "\","
-                + "\"poliKontrol\":\"" + kodePoli + "\","
-                + "\"tglRencanaKontrol\":\"" + tanggalPeriksa + "\","
-                + "\"user\":\"" + noKartu + "\""
-                + "}"
-                + "}";
+            requestJson = "{" +
+                "\"request\": {" +
+                "\"noSuratKontrol\":\"" + noSKDP + "\"," +
+                "\"noSEP\":\"" + noSEP + "\"," +
+                "\"kodeDokter\":\"" + kodeDPJP + "\"," +
+                "\"poliKontrol\":\"" + kodePoli + "\"," +
+                "\"tglRencanaKontrol\":\"" + tanggalPeriksa + "\"," +
+                "\"user\":\"" + noKartu + "\"" +
+                "}" +
+                "}";
             System.out.println("JSON : " + requestJson);
             requestEntity = new HttpEntity(requestJson, headers);
             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.PUT, requestEntity, String.class).getBody());

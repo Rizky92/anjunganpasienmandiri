@@ -121,28 +121,28 @@ public class DlgRegistrasiEksekutif extends javax.swing.JDialog {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        jPanel1 = new widget.Panel();
+        jPanel1 = new javax.swing.JPanel();
         jPanelTengah = new javax.swing.JPanel();
-        jLabelRM = new widget.Label();
-        labelNoRM = new widget.Label();
-        jLabelNamaPasien = new widget.Label();
-        labelNamaPasien = new widget.Label();
-        jLabelTglLahir = new widget.Label();
-        labelTglLahir = new widget.Label();
-        jLabelPoli = new widget.Label();
-        textNamaPoli = new widget.TextBox();
-        btnCariPoli = new widget.Button();
-        jLabelDokter = new widget.Label();
-        textNamaDokter = new widget.TextBox();
-        btnCariDokter = new widget.Button();
-        jLabelJenisBayar = new widget.Label();
-        textNamaJenisBayar = new widget.TextBox();
-        btnCariJenisBayar = new widget.Button();
+        jLabelRM = new javax.swing.JLabel();
+        labelNoRM = new javax.swing.JLabel();
+        jLabelNamaPasien = new javax.swing.JLabel();
+        labelNamaPasien = new javax.swing.JLabel();
+        jLabelTglLahir = new javax.swing.JLabel();
+        labelTglLahir = new javax.swing.JLabel();
+        jLabelPoli = new javax.swing.JLabel();
+        textNamaPoli = new javax.swing.JTextField();
+        btnCariPoli = new javax.swing.JButton();
+        jLabelDokter = new javax.swing.JLabel();
+        textNamaDokter = new javax.swing.JTextField();
+        btnCariDokter = new javax.swing.JButton();
+        jLabelJenisBayar = new javax.swing.JLabel();
+        textNamaJenisBayar = new javax.swing.JTextField();
+        btnCariJenisBayar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jPanelBawah = new javax.swing.JPanel();
-        btnSimpan = new widget.Button();
-        btnKeluar = new widget.Button();
+        btnSimpan = new javax.swing.JButton();
+        btnKeluar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setModal(true);
@@ -484,28 +484,28 @@ public class DlgRegistrasiEksekutif extends javax.swing.JDialog {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private widget.Button btnCariDokter;
-    private widget.Button btnCariJenisBayar;
-    private widget.Button btnCariPoli;
-    private widget.Button btnKeluar;
-    private widget.Button btnSimpan;
-    private widget.Label jLabelDokter;
-    private widget.Label jLabelJenisBayar;
-    private widget.Label jLabelNamaPasien;
-    private widget.Label jLabelPoli;
-    private widget.Label jLabelRM;
-    private widget.Label jLabelTglLahir;
-    private widget.Panel jPanel1;
+    private javax.swing.JButton btnCariDokter;
+    private javax.swing.JButton btnCariJenisBayar;
+    private javax.swing.JButton btnCariPoli;
+    private javax.swing.JButton btnKeluar;
+    private javax.swing.JButton btnSimpan;
+    private javax.swing.JLabel jLabelDokter;
+    private javax.swing.JLabel jLabelJenisBayar;
+    private javax.swing.JLabel jLabelNamaPasien;
+    private javax.swing.JLabel jLabelPoli;
+    private javax.swing.JLabel jLabelRM;
+    private javax.swing.JLabel jLabelTglLahir;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanelBawah;
     private javax.swing.JPanel jPanelTengah;
-    private widget.Label labelNamaPasien;
-    private widget.Label labelNoRM;
-    private widget.Label labelTglLahir;
-    private widget.TextBox textNamaDokter;
-    private widget.TextBox textNamaJenisBayar;
-    private widget.TextBox textNamaPoli;
+    private javax.swing.JLabel labelNamaPasien;
+    private javax.swing.JLabel labelNoRM;
+    private javax.swing.JLabel labelTglLahir;
+    private javax.swing.JTextField textNamaDokter;
+    private javax.swing.JTextField textNamaJenisBayar;
+    private javax.swing.JTextField textNamaPoli;
     // End of variables declaration//GEN-END:variables
 
     public void setPasien(String noRM) {
@@ -559,15 +559,15 @@ public class DlgRegistrasiEksekutif extends javax.swing.JDialog {
 
         try {
             ps = koneksi.prepareStatement(
-                "select "
-                + "pasien.nm_pasien, concat_ws(', ', pasien.alamat, kelurahan.nm_kel, kecamatan.nm_kec, kabupaten.nm_kab) as alamat, pasien.tgl_lahir, pasien.namakeluarga, pasien.keluarga, pasien.kd_pj, "
-                + "if (pasien.tgl_daftar = current_date(), 'baru', 'lama') as daftar, timestampdiff(year, pasien.tgl_lahir, curdate()) as tahun, timestampdiff(month, pasien.tgl_lahir, curdate()) - ((timestampdiff(month, pasien.tgl_lahir, curdate()) div 12) * 12) as bulan, "
-                + "timestampdiff(day, date_add(date_add(pasien.tgl_lahir, interval timestampdiff(year, pasien.tgl_lahir, curdate()) year), interval timestampdiff(month, pasien.tgl_lahir, curdate()) - ((timestampdiff(month, pasien.tgl_lahir, curdate()) div 12) * 12) month), curdate()) as hari "
-                + "from pasien "
-                + "join kelurahan on pasien.kd_kel = kelurahan.kd_kel "
-                + "join kecamatan on pasien.kd_kec = kecamatan.kd_kec "
-                + "join kabupaten on pasien.kd_kab = kabupaten.kd_kab "
-                + "where pasien.no_rkm_medis = ?"
+                "select " +
+                "pasien.nm_pasien, concat_ws(', ', pasien.alamat, kelurahan.nm_kel, kecamatan.nm_kec, kabupaten.nm_kab) as alamat, pasien.tgl_lahir, pasien.namakeluarga, pasien.keluarga, pasien.kd_pj, " +
+                "if (pasien.tgl_daftar = current_date(), 'baru', 'lama') as daftar, timestampdiff(year, pasien.tgl_lahir, curdate()) as tahun, timestampdiff(month, pasien.tgl_lahir, curdate()) - ((timestampdiff(month, pasien.tgl_lahir, curdate()) div 12) * 12) as bulan, " +
+                "timestampdiff(day, date_add(date_add(pasien.tgl_lahir, interval timestampdiff(year, pasien.tgl_lahir, curdate()) year), interval timestampdiff(month, pasien.tgl_lahir, curdate()) - ((timestampdiff(month, pasien.tgl_lahir, curdate()) div 12) * 12) month), curdate()) as hari " +
+                "from pasien " +
+                "join kelurahan on pasien.kd_kel = kelurahan.kd_kel " +
+                "join kecamatan on pasien.kd_kec = kecamatan.kd_kec " +
+                "join kabupaten on pasien.kd_kab = kabupaten.kd_kab " +
+                "where pasien.no_rkm_medis = ?"
             );
 
             try {

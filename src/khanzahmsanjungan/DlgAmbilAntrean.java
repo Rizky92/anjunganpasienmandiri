@@ -80,18 +80,18 @@ public class DlgAmbilAntrean extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new widget.Panel();
+        jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        lblNamaAntrian = new widget.Label();
+        lblNamaAntrian = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        HurufA = new widget.ButtonBig();
-        HurufB = new widget.ButtonBig();
-        HurufC = new widget.ButtonBig();
-        HurufD = new widget.ButtonBig();
-        HurufE = new widget.ButtonBig();
-        HurufF = new widget.ButtonBig();
+        HurufA = new widget.ButtonMenu();
+        HurufB = new widget.ButtonMenu();
+        HurufC = new widget.ButtonMenu();
+        HurufD = new widget.ButtonMenu();
+        HurufE = new widget.ButtonMenu();
+        HurufF = new widget.ButtonMenu();
         jPanel4 = new javax.swing.JPanel();
-        BtnKeluar = new widget.ButtonBig();
+        BtnKeluar = new widget.ButtonMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setModal(true);
@@ -274,18 +274,18 @@ public class DlgAmbilAntrean extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private widget.ButtonBig BtnKeluar;
-    private widget.ButtonBig HurufA;
-    private widget.ButtonBig HurufB;
-    private widget.ButtonBig HurufC;
-    private widget.ButtonBig HurufD;
-    private widget.ButtonBig HurufE;
-    private widget.ButtonBig HurufF;
-    private widget.Panel jPanel1;
+    private widget.ButtonMenu BtnKeluar;
+    private widget.ButtonMenu HurufA;
+    private widget.ButtonMenu HurufB;
+    private widget.ButtonMenu HurufC;
+    private widget.ButtonMenu HurufD;
+    private widget.ButtonMenu HurufE;
+    private widget.ButtonMenu HurufF;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private widget.Label lblNamaAntrian;
+    private javax.swing.JLabel lblNamaAntrian;
     // End of variables declaration//GEN-END:variables
 
     private void cetakAntrianHuruf(String prefix) {
@@ -297,8 +297,8 @@ public class DlgAmbilAntrean extends javax.swing.JDialog {
                 )) {
                     param.put("logo", Sequel.cariGambar("select logo from setting"));
                     Valid.printReportSmc("rptAntriLoketAPM.jasper", "report", "::[ Antrian Loket ]::", param, koneksiDB.PRINTER_ANTRIAN(), 1,
-                        "select date_format(tanggal, '%d-%m-%Y') as tanggal, nomor, jam from "
-                        + "antriloketcetak_smc where left(nomor, 1) = 'A' and tanggal = current_date() order by nomor desc limit 1");
+                        "select date_format(tanggal, '%d-%m-%Y') as tanggal, nomor, jam from " +
+                        "antriloketcetak_smc where left(nomor, 1) = 'A' and tanggal = current_date() order by nomor desc limit 1");
                 }
                 break;
             case "B":
@@ -308,8 +308,8 @@ public class DlgAmbilAntrean extends javax.swing.JDialog {
                 )) {
                     param.put("logo", Sequel.cariGambar("select logo from setting"));
                     Valid.printReportSmc("rptAntriLoketAPM.jasper", "report", "::[ Antrian Loket ]::", param, koneksiDB.PRINTER_ANTRIAN(), 1,
-                        "select date_format(tanggal, '%d-%m-%Y') as tanggal, nomor, jam from "
-                        + "antriloketcetak_smc where left(nomor, 1) = 'B' and tanggal = current_date() order by nomor desc limit 1");
+                        "select date_format(tanggal, '%d-%m-%Y') as tanggal, nomor, jam from " +
+                        "antriloketcetak_smc where left(nomor, 1) = 'B' and tanggal = current_date() order by nomor desc limit 1");
                 }
                 break;
             case "C":
@@ -319,8 +319,8 @@ public class DlgAmbilAntrean extends javax.swing.JDialog {
                 )) {
                     param.put("logo", Sequel.cariGambar("select logo from setting"));
                     Valid.printReportSmc("rptAntriLoketAPM.jasper", "report", "::[ Antrian Loket ]::", param, koneksiDB.PRINTER_ANTRIAN(), 1,
-                        "select date_format(tanggal, '%d-%m-%Y') as tanggal, nomor, jam from "
-                        + "antriloketcetak_smc where left(nomor, 1) = 'C' and tanggal = current_date() order by nomor desc limit 1");
+                        "select date_format(tanggal, '%d-%m-%Y') as tanggal, nomor, jam from " +
+                        "antriloketcetak_smc where left(nomor, 1) = 'C' and tanggal = current_date() order by nomor desc limit 1");
                 }
                 break;
             case "D":
@@ -330,8 +330,8 @@ public class DlgAmbilAntrean extends javax.swing.JDialog {
                 )) {
                     param.put("logo", Sequel.cariGambar("select logo from setting"));
                     Valid.printReportSmc("rptAntriLoketAPM.jasper", "report", "::[ Antrian Loket ]::", param, koneksiDB.PRINTER_ANTRIAN(), 1,
-                        "select date_format(tanggal, '%d-%m-%Y') as tanggal, nomor, jam from "
-                        + "antriloketcetak_smc where left(nomor, 1) = 'D' and tanggal = current_date() order by nomor desc limit 1");
+                        "select date_format(tanggal, '%d-%m-%Y') as tanggal, nomor, jam from " +
+                        "antriloketcetak_smc where left(nomor, 1) = 'D' and tanggal = current_date() order by nomor desc limit 1");
                 }
                 break;
             case "E":
@@ -341,8 +341,8 @@ public class DlgAmbilAntrean extends javax.swing.JDialog {
                 )) {
                     param.put("logo", Sequel.cariGambar("select logo from setting"));
                     Valid.printReportSmc("rptAntriLoketAPM.jasper", "report", "::[ Antrian Loket ]::", param, koneksiDB.PRINTER_ANTRIAN(), 1,
-                        "select date_format(tanggal, '%d-%m-%Y') as tanggal, nomor, jam from "
-                        + "antriloketcetak_smc where left(nomor, 1) = 'E' and tanggal = current_date() order by nomor desc limit 1");
+                        "select date_format(tanggal, '%d-%m-%Y') as tanggal, nomor, jam from " +
+                        "antriloketcetak_smc where left(nomor, 1) = 'E' and tanggal = current_date() order by nomor desc limit 1");
                 }
                 break;
             case "F":
@@ -352,8 +352,8 @@ public class DlgAmbilAntrean extends javax.swing.JDialog {
                 )) {
                     param.put("logo", Sequel.cariGambar("select logo from setting"));
                     Valid.printReportSmc("rptAntriLoketAPM.jasper", "report", "::[ Antrian Loket ]::", param, koneksiDB.PRINTER_ANTRIAN(), 1,
-                        "select date_format(tanggal, '%d-%m-%Y') as tanggal, nomor, jam from "
-                        + "antriloketcetak_smc where left(nomor, 1) = 'F' and tanggal = current_date() order by nomor desc limit 1");
+                        "select date_format(tanggal, '%d-%m-%Y') as tanggal, nomor, jam from " +
+                        "antriloketcetak_smc where left(nomor, 1) = 'F' and tanggal = current_date() order by nomor desc limit 1");
                 }
                 break;
         }

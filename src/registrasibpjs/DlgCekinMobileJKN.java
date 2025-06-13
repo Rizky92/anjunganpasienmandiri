@@ -46,11 +46,11 @@ public class DlgCekinMobileJKN extends javax.swing.JDialog {
 
         jPanel2 = new javax.swing.JPanel();
         PanelWall = new usu.widget.glass.PanelGlass();
-        jPanel1 = new widget.Panel();
-        NoRMPasien = new widget.TextBox();
-        jLabel28 = new widget.Label();
-        BtnTutup = new widget.ButtonBig();
-        BtnKonfirmasi = new widget.ButtonBig();
+        jPanel1 = new javax.swing.JPanel();
+        NoRMPasien = new javax.swing.JTextField();
+        jLabel28 = new javax.swing.JLabel();
+        BtnTutup = new widget.Button();
+        BtnKonfirmasi = new widget.Button();
         jPanel3 = new javax.swing.JPanel();
         btnAngka8 = new javax.swing.JButton();
         btnAngka7 = new javax.swing.JButton();
@@ -481,9 +481,9 @@ public class DlgCekinMobileJKN extends javax.swing.JDialog {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private widget.ButtonBig BtnKonfirmasi;
-    private widget.ButtonBig BtnTutup;
-    private widget.TextBox NoRMPasien;
+    private widget.Button BtnKonfirmasi;
+    private widget.Button BtnTutup;
+    private javax.swing.JTextField NoRMPasien;
     private usu.widget.glass.PanelGlass PanelWall;
     private javax.swing.JButton btnAngka0;
     private javax.swing.JButton btnAngka1;
@@ -497,8 +497,8 @@ public class DlgCekinMobileJKN extends javax.swing.JDialog {
     private javax.swing.JButton btnAngka9;
     private javax.swing.JButton btnAngkaHps;
     private javax.swing.JButton btnClear;
-    private widget.Label jLabel28;
-    private widget.Panel jPanel1;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables

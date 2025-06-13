@@ -72,9 +72,9 @@ public final class sekuel {
 
     public void logTaskid(String norawat, String kodebooking, String jenisPasien, String taskid, String request, String code, String message, String response, String wakturs) {
         try (PreparedStatement ps = connect.prepareStatement(
-            "insert into referensi_mobilejkn_bpjs_taskid_response2 "
-            + "(no_rawat, kodebooking, jenispasien, taskid, request, code, message, response, waktu, waktu_rs) "
-            + "values (?, ?, ?, ?, ?, ?, ?, ?, now(), ?)"
+            "insert into referensi_mobilejkn_bpjs_taskid_response2 " +
+             "(no_rawat, kodebooking, jenispasien, taskid, request, code, message, response, waktu, waktu_rs) " +
+             "values (?, ?, ?, ?, ?, ?, ?, ?, now(), ?)"
         )) {
             ps.setString(1, norawat);
             ps.setString(2, kodebooking);
@@ -109,6 +109,22 @@ public final class sekuel {
 
     public boolean cariExistsSmc(String sql, String... values) {
         try (PreparedStatement ps = connect.prepareStatement("select exists(" + sql + ")")) {
+            for (int i = 0; i < values.length; i++) {
+                ps.setString(i + 1, values[i]);
+            }
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getBoolean(1);
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif : " + e);
+        }
+        return false;
+    }
+
+    public boolean cariBooleanSmc(String sql, String... values) {
+        try (PreparedStatement ps = connect.prepareStatement(sql)) {
             for (int i = 0; i < values.length; i++) {
                 ps.setString(i + 1, values[i]);
             }

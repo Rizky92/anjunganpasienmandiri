@@ -11,7 +11,6 @@
  */
 package bridging;
 
-import fungsi.WarnaTable;
 import java.awt.Dimension;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -95,7 +94,6 @@ public final class BPJSCekRiwayatRujukanTerakhir extends javax.swing.JDialog {
             }
         }
 
-        tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
         try {
             link = koneksiDB.URLAPIBPJS();
         } catch (Exception e) {
@@ -110,15 +108,15 @@ public final class BPJSCekRiwayatRujukanTerakhir extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        internalFrame1 = new widget.InternalFrame();
-        Scroll = new widget.ScrollPane();
+        internalFrame1 = new javax.swing.JPanel();
+        Scroll = new javax.swing.JScrollPane();
         tbKamar = new widget.Table();
-        panelGlass6 = new widget.panelisi();
-        jLabel16 = new widget.Label();
-        NoKartu = new widget.TextBox();
-        NamaPasien = new widget.TextBox();
-        jLabel17 = new widget.Label();
-        BtnKeluar = new widget.Button();
+        panelGlass6 = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
+        NoKartu = new javax.swing.JTextField();
+        NamaPasien = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        BtnKeluar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(null);
@@ -229,14 +227,14 @@ public final class BPJSCekRiwayatRujukanTerakhir extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private widget.Button BtnKeluar;
-    private widget.TextBox NamaPasien;
-    private widget.TextBox NoKartu;
-    private widget.ScrollPane Scroll;
-    private widget.InternalFrame internalFrame1;
-    private widget.Label jLabel16;
-    private widget.Label jLabel17;
-    private widget.panelisi panelGlass6;
+    private javax.swing.JButton BtnKeluar;
+    private javax.swing.JTextField NamaPasien;
+    private javax.swing.JTextField NoKartu;
+    private javax.swing.JScrollPane Scroll;
+    private javax.swing.JPanel internalFrame1;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JPanel panelGlass6;
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 

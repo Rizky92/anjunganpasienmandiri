@@ -34,7 +34,7 @@
     <Property name="verticalGap" type="int" value="1" />
   </Layout>
   <SubComponents>
-    <Container class="widget.Panel" name="jPanel1">
+    <Container class="javax.swing.JPanel" name="jPanel1">
       <Properties>
         <Property name="background" type="java.awt.Color"
           editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -90,7 +90,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout" />
           <SubComponents>
-            <Component class="widget.Label" name="lblNamaAntrian">
+            <Component class="javax.swing.JLabel" name="lblNamaAntrian">
               <Properties>
                 <Property name="foreground" type="java.awt.Color"
                   editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -134,7 +134,7 @@
             <Property name="rows" type="int" value="0" />
           </Layout>
           <SubComponents>
-            <Component class="widget.ButtonBig" name="HurufA">
+            <Component class="widget.ButtonMenu" name="HurufA">
               <Properties>
                 <Property name="text" type="java.lang.String" value="ANTRIAN A" />
                 <Property name="font" type="java.awt.Font"
@@ -147,7 +147,7 @@
                   parameters="java.awt.event.ActionEvent" handler="HurufAActionPerformed" />
               </Events>
             </Component>
-            <Component class="widget.ButtonBig" name="HurufB">
+            <Component class="widget.ButtonMenu" name="HurufB">
               <Properties>
                 <Property name="text" type="java.lang.String" value="ANTRIAN B" />
                 <Property name="font" type="java.awt.Font"
@@ -160,7 +160,7 @@
                   parameters="java.awt.event.ActionEvent" handler="HurufBActionPerformed" />
               </Events>
             </Component>
-            <Component class="widget.ButtonBig" name="HurufC">
+            <Component class="widget.ButtonMenu" name="HurufC">
               <Properties>
                 <Property name="text" type="java.lang.String" value="ANTRIAN C" />
                 <Property name="font" type="java.awt.Font"
@@ -173,7 +173,7 @@
                   parameters="java.awt.event.ActionEvent" handler="HurufCActionPerformed" />
               </Events>
             </Component>
-            <Component class="widget.ButtonBig" name="HurufD">
+            <Component class="widget.ButtonMenu" name="HurufD">
               <Properties>
                 <Property name="text" type="java.lang.String" value="ANTRIAN D" />
                 <Property name="font" type="java.awt.Font"
@@ -186,7 +186,7 @@
                   parameters="java.awt.event.ActionEvent" handler="HurufDActionPerformed" />
               </Events>
             </Component>
-            <Component class="widget.ButtonBig" name="HurufE">
+            <Component class="widget.ButtonMenu" name="HurufE">
               <Properties>
                 <Property name="text" type="java.lang.String" value="ANTRIAN E" />
                 <Property name="font" type="java.awt.Font"
@@ -199,7 +199,7 @@
                   parameters="java.awt.event.ActionEvent" handler="HurufEActionPerformed" />
               </Events>
             </Component>
-            <Component class="widget.ButtonBig" name="HurufF">
+            <Component class="widget.ButtonMenu" name="HurufF">
               <Properties>
                 <Property name="text" type="java.lang.String" value="ANTRIAN F" />
                 <Property name="font" type="java.awt.Font"
@@ -234,7 +234,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout" />
           <SubComponents>
-            <Component class="widget.ButtonBig" name="BtnKeluar">
+            <Component class="widget.ButtonMenu" name="BtnKeluar">
               <Properties>
                 <Property name="background" type="java.awt.Color"
                   editor="org.netbeans.beaninfo.editors.ColorEditor">

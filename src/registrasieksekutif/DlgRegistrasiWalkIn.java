@@ -119,35 +119,35 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new widget.Panel();
-        jPanel2 = new widget.Panel();
-        jLabel10 = new widget.Label();
-        jLabel29 = new widget.Label();
-        jLabel31 = new widget.Label();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel31 = new javax.swing.JLabel();
         dateTanggalPeriksa = new widget.Tanggal();
-        labelNoRM = new widget.Label();
-        jLabel32 = new widget.Label();
-        dropdownCaraBayar = new widget.ComboBox();
-        buttonCariPoli = new widget.Button();
-        textNamaPoli = new widget.TextBox();
-        jLabel36 = new widget.Label();
-        buttonCariDokter = new widget.Button();
-        textNamaDokter = new widget.TextBox();
-        jLabel12 = new widget.Label();
-        jLabel13 = new widget.Label();
-        jLabel14 = new widget.Label();
-        jLabel15 = new widget.Label();
-        jLabel16 = new widget.Label();
-        jLabel17 = new widget.Label();
-        jLabel11 = new widget.Label();
-        jLabel18 = new widget.Label();
-        labelNamaPasien = new widget.Label();
-        jLabel19 = new widget.Label();
-        jLabel20 = new widget.Label();
-        labelTglLahir = new widget.Label();
+        labelNoRM = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        dropdownCaraBayar = new javax.swing.JComboBox();
+        buttonCariPoli = new javax.swing.JButton();
+        textNamaPoli = new javax.swing.JTextField();
+        jLabel36 = new javax.swing.JLabel();
+        buttonCariDokter = new javax.swing.JButton();
+        textNamaDokter = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        labelNamaPasien = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        labelTglLahir = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        btnSimpan = new widget.Button();
-        btnKeluar = new widget.Button();
+        btnSimpan = new javax.swing.JButton();
+        btnKeluar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setModal(true);
@@ -463,35 +463,35 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private widget.Button btnKeluar;
-    private widget.Button btnSimpan;
-    private widget.Button buttonCariDokter;
-    private widget.Button buttonCariPoli;
+    private javax.swing.JButton btnKeluar;
+    private javax.swing.JButton btnSimpan;
+    private javax.swing.JButton buttonCariDokter;
+    private javax.swing.JButton buttonCariPoli;
     private widget.Tanggal dateTanggalPeriksa;
-    private widget.ComboBox dropdownCaraBayar;
-    private widget.Label jLabel10;
-    private widget.Label jLabel11;
-    private widget.Label jLabel12;
-    private widget.Label jLabel13;
-    private widget.Label jLabel14;
-    private widget.Label jLabel15;
-    private widget.Label jLabel16;
-    private widget.Label jLabel17;
-    private widget.Label jLabel18;
-    private widget.Label jLabel19;
-    private widget.Label jLabel20;
-    private widget.Label jLabel29;
-    private widget.Label jLabel31;
-    private widget.Label jLabel32;
-    private widget.Label jLabel36;
-    private widget.Panel jPanel1;
-    private widget.Panel jPanel2;
+    private javax.swing.JComboBox dropdownCaraBayar;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel29;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel36;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private widget.Label labelNamaPasien;
-    private widget.Label labelNoRM;
-    private widget.Label labelTglLahir;
-    private widget.TextBox textNamaDokter;
-    private widget.TextBox textNamaPoli;
+    private javax.swing.JLabel labelNamaPasien;
+    private javax.swing.JLabel labelNoRM;
+    private javax.swing.JLabel labelTglLahir;
+    private javax.swing.JTextField textNamaDokter;
+    private javax.swing.JTextField textNamaPoli;
     // End of variables declaration//GEN-END:variables
 
     public void setPasien(String noRM) {
@@ -499,7 +499,7 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         tentukanHari();
         ambilDataPasien();
     }
-    
+
     private void ambilDataPasien() {
         try {
             ps = koneksi.prepareStatement("select nm_pasien, tgl_lahir from pasien where no_rkm_medis = ?");
@@ -531,10 +531,10 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
     private String formatTanggal(String tanggal) {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate ld = LocalDate.parse(tanggal, dtf);
-        
+
         return ld.format(DateTimeFormatter.ofPattern("dd MMMM yyyy").withLocale(new Locale("id", "ID")));
     }
-    
+
     private void setStatusPasien() {
         if (Sequel.cariExistsSmc("select * from reg_periksa where no_rkm_medis = ? and kd_poli = ?", labelNoRM.getText(), regKodePoli)) {
             regStatusPoli = "Lama";
@@ -542,7 +542,7 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         } else {
             regBiaya = Sequel.cariIsiSmc("select registrasi from poliklinik where kd_poli = ? and status = '1'", regKodePoli);
         }
-        
+
         try (PreparedStatement ps = koneksi.prepareStatement(
             "select pasien.nm_pasien, concat_ws(', ', pasien.alamat, kelurahan.nm_kel, kecamatan.nm_kec, kabupaten.nm_kab) as alamat, " +
             "pasien.tgl_lahir, pasien.namakeluarga, pasien.keluarga, pasien.kd_pj, if(pasien.tgl_daftar = ?, 'baru', 'lama') as daftar, " +

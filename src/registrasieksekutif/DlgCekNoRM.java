@@ -52,15 +52,15 @@ public class DlgCekNoRM extends javax.swing.JDialog {
 
         try {
             ps = koneksi.prepareStatement(
-                "select nm_pasien,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) asal,"
-                + "namakeluarga,keluarga,pasien.kd_pj,penjab.png_jawab,if(tgl_daftar=?,'Baru','Lama') as daftar, "
-                + "TIMESTAMPDIFF(YEAR, tgl_lahir, CURDATE()) as tahun, "
-                + "(TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) div 12) * 12)) as bulan, "
-                + "TIMESTAMPDIFF(DAY, DATE_ADD(DATE_ADD(tgl_lahir,INTERVAL TIMESTAMPDIFF(YEAR, tgl_lahir, CURDATE()) YEAR), INTERVAL TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) div 12) * 12) MONTH), CURDATE()) as hari from pasien "
-                + "inner join kelurahan inner join kecamatan inner join kabupaten inner join penjab "
-                + "on pasien.kd_kel=kelurahan.kd_kel and pasien.kd_pj=penjab.kd_pj "
-                + "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab "
-                + "where pasien.no_rkm_medis=?");
+                "select nm_pasien,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) asal," +
+                "namakeluarga,keluarga,pasien.kd_pj,penjab.png_jawab,if(tgl_daftar=?,'Baru','Lama') as daftar, " +
+                "TIMESTAMPDIFF(YEAR, tgl_lahir, CURDATE()) as tahun, " +
+                "(TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) div 12) * 12)) as bulan, " +
+                "TIMESTAMPDIFF(DAY, DATE_ADD(DATE_ADD(tgl_lahir,INTERVAL TIMESTAMPDIFF(YEAR, tgl_lahir, CURDATE()) YEAR), INTERVAL TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) div 12) * 12) MONTH), CURDATE()) as hari from pasien " +
+                "inner join kelurahan inner join kecamatan inner join kabupaten inner join penjab " +
+                "on pasien.kd_kel=kelurahan.kd_kel and pasien.kd_pj=penjab.kd_pj " +
+                "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab " +
+                "where pasien.no_rkm_medis=?");
         } catch (Exception ex) {
             System.out.println(ex);
         }
@@ -86,16 +86,16 @@ public class DlgCekNoRM extends javax.swing.JDialog {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        LblKdPoli = new widget.Label();
-        LblKdDokter = new widget.Label();
-        NoReg = new widget.TextBox();
-        NoRawat = new widget.TextBox();
-        Biaya = new widget.TextBox();
-        jPanel1 = new widget.Panel();
-        NoRMPasien = new widget.TextBox();
-        jLabel28 = new widget.Label();
-        BtnClose = new widget.ButtonBig();
-        BtnClose2 = new widget.ButtonBig();
+        LblKdPoli = new javax.swing.JLabel();
+        LblKdDokter = new javax.swing.JLabel();
+        NoReg = new javax.swing.JTextField();
+        NoRawat = new javax.swing.JTextField();
+        Biaya = new javax.swing.JTextField();
+        jPanel1 = new javax.swing.JPanel();
+        NoRMPasien = new javax.swing.JTextField();
+        jLabel28 = new javax.swing.JLabel();
+        BtnClose = new widget.Button();
+        BtnClose2 = new widget.Button();
         jPanel3 = new javax.swing.JPanel();
         btnAngka8 = new javax.swing.JButton();
         btnAngka7 = new javax.swing.JButton();
@@ -576,14 +576,14 @@ public class DlgCekNoRM extends javax.swing.JDialog {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private widget.TextBox Biaya;
-    private widget.ButtonBig BtnClose;
-    private widget.ButtonBig BtnClose2;
-    private widget.Label LblKdDokter;
-    private widget.Label LblKdPoli;
-    private widget.TextBox NoRMPasien;
-    private widget.TextBox NoRawat;
-    private widget.TextBox NoReg;
+    private javax.swing.JTextField Biaya;
+    private widget.Button BtnClose;
+    private widget.Button BtnClose2;
+    private javax.swing.JLabel LblKdDokter;
+    private javax.swing.JLabel LblKdPoli;
+    private javax.swing.JTextField NoRMPasien;
+    private javax.swing.JTextField NoRawat;
+    private javax.swing.JTextField NoReg;
     private javax.swing.JButton btnAngka0;
     private javax.swing.JButton btnAngka1;
     private javax.swing.JButton btnAngka2;
@@ -596,8 +596,8 @@ public class DlgCekNoRM extends javax.swing.JDialog {
     private javax.swing.JButton btnAngka9;
     private javax.swing.JButton btnAngkaHps;
     private javax.swing.JButton btnClear;
-    private widget.Label jLabel28;
-    private widget.Panel jPanel1;
+    private javax.swing.JLabel jLabel28;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables
 

@@ -61,7 +61,7 @@ import org.springframework.web.client.HttpServerErrorException;
  *
  * @author Kode
  */
-public class DlgRegistrasiSEP extends javax.swing.JDialog {
+public class DlgRegistrasiSEPSMC extends javax.swing.JDialog {
 
     private Connection koneksi = koneksiDB.condb();
     private sekuel Sequel = new sekuel();
@@ -165,7 +165,7 @@ public class DlgRegistrasiSEP extends javax.swing.JDialog {
      * @param parent
      * @param id
      */
-    public DlgRegistrasiSEP(java.awt.Frame parent, boolean id) {
+    public DlgRegistrasiSEPSMC(java.awt.Frame parent, boolean id) {
         super(parent, id);
         initComponents();
         JumlahBarcode.setDocument(new batasInput((byte) 3).getOnlyAngka(JumlahBarcode));
@@ -310,6 +310,45 @@ public class DlgRegistrasiSEP extends javax.swing.JDialog {
         label1 = new javax.swing.JLabel();
         label2 = new javax.swing.JLabel();
         label3 = new javax.swing.JLabel();
+        jLabel42 = new javax.swing.JLabel();
+        TujuanKunjungan = new javax.swing.JComboBox();
+        jLabel43 = new javax.swing.JLabel();
+        FlagProsedur = new javax.swing.JComboBox();
+        jLabel44 = new javax.swing.JLabel();
+        Penunjang = new javax.swing.JComboBox();
+        jLabel45 = new javax.swing.JLabel();
+        AsesmenPoli = new javax.swing.JComboBox();
+        LabelPoli7 = new javax.swing.JLabel();
+        KdDPJPLayanan = new javax.swing.JTextField();
+        NmDPJPLayanan = new javax.swing.JTextField();
+        lblTerapi = new javax.swing.JLabel();
+        KdPoliTerapi = new javax.swing.JTextField();
+        KodeDokterTerapi = new javax.swing.JTextField();
+        NmDokterTerapi = new javax.swing.JTextField();
+        NmPoliTerapi = new javax.swing.JTextField();
+        btnPoliTerapi = new javax.swing.JButton();
+        btnDokterTerapi = new javax.swing.JButton();
+        jLabel55 = new javax.swing.JLabel();
+        LakaLantas = new javax.swing.JComboBox();
+        jLabel38 = new javax.swing.JLabel();
+        TanggalKKL = new widget.Tanggal();
+        jLabel36 = new javax.swing.JLabel();
+        Keterangan = new javax.swing.JTextField();
+        jLabel40 = new javax.swing.JLabel();
+        Suplesi = new javax.swing.JComboBox();
+        jLabel41 = new javax.swing.JLabel();
+        NoSEPSuplesi = new javax.swing.JTextField();
+        LabelPoli3 = new javax.swing.JLabel();
+        KdPropinsi = new javax.swing.JTextField();
+        NmPropinsi = new javax.swing.JTextField();
+        LabelPoli4 = new javax.swing.JLabel();
+        KdKabupaten = new javax.swing.JTextField();
+        NmKabupaten = new javax.swing.JTextField();
+        LabelPoli5 = new javax.swing.JLabel();
+        KdKecamatan = new javax.swing.JTextField();
+        NmKecamatan = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        Catatan = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         TPasien = new javax.swing.JTextField();
@@ -334,12 +373,9 @@ public class DlgRegistrasiSEP extends javax.swing.JDialog {
         KdPoli = new javax.swing.JTextField();
         LabelPoli = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        Catatan = new javax.swing.JTextField();
         JenisPelayanan = new javax.swing.JComboBox();
         LabelKelas = new javax.swing.JLabel();
         Kelas = new javax.swing.JComboBox();
-        LakaLantas = new javax.swing.JComboBox();
         jLabel8 = new javax.swing.JLabel();
         TglLahir = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
@@ -353,39 +389,10 @@ public class DlgRegistrasiSEP extends javax.swing.JDialog {
         NoTelp = new javax.swing.JTextField();
         Katarak = new javax.swing.JComboBox();
         jLabel37 = new javax.swing.JLabel();
-        jLabel38 = new javax.swing.JLabel();
-        TanggalKKL = new widget.Tanggal();
         LabelPoli2 = new javax.swing.JLabel();
         KdDPJP = new javax.swing.JTextField();
         NmDPJP = new javax.swing.JTextField();
-        jLabel36 = new javax.swing.JLabel();
-        Keterangan = new javax.swing.JTextField();
-        jLabel40 = new javax.swing.JLabel();
-        Suplesi = new javax.swing.JComboBox();
-        NoSEPSuplesi = new javax.swing.JTextField();
-        jLabel41 = new javax.swing.JLabel();
-        LabelPoli3 = new javax.swing.JLabel();
-        KdPropinsi = new javax.swing.JTextField();
-        NmPropinsi = new javax.swing.JTextField();
-        LabelPoli4 = new javax.swing.JLabel();
-        KdKabupaten = new javax.swing.JTextField();
-        NmKabupaten = new javax.swing.JTextField();
-        LabelPoli5 = new javax.swing.JLabel();
-        KdKecamatan = new javax.swing.JTextField();
-        NmKecamatan = new javax.swing.JTextField();
-        jLabel42 = new javax.swing.JLabel();
-        TujuanKunjungan = new javax.swing.JComboBox();
-        FlagProsedur = new javax.swing.JComboBox();
-        jLabel43 = new javax.swing.JLabel();
-        jLabel44 = new javax.swing.JLabel();
-        Penunjang = new javax.swing.JComboBox();
-        jLabel45 = new javax.swing.JLabel();
-        AsesmenPoli = new javax.swing.JComboBox();
-        lblTerapi = new javax.swing.JLabel();
-        KdDPJPLayanan = new javax.swing.JTextField();
-        NmDPJPLayanan = new javax.swing.JTextField();
         btnDPJPLayanan = new javax.swing.JButton();
-        jLabel55 = new javax.swing.JLabel();
         jLabel56 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -397,13 +404,6 @@ public class DlgRegistrasiSEP extends javax.swing.JDialog {
         btnDiagnosaAwal = new javax.swing.JButton();
         btnDiagnosaAwal1 = new javax.swing.JButton();
         btnDiagnosaAwal2 = new javax.swing.JButton();
-        KodeDokterTerapi = new javax.swing.JTextField();
-        KdPoliTerapi = new javax.swing.JTextField();
-        NmPoliTerapi = new javax.swing.JTextField();
-        NmDokterTerapi = new javax.swing.JTextField();
-        btnDokterTerapi = new javax.swing.JButton();
-        btnPoliTerapi = new javax.swing.JButton();
-        LabelPoli7 = new javax.swing.JLabel();
         btnDiagnosaAwal3 = new javax.swing.JButton();
         btnDiagnosaAwal4 = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
@@ -593,6 +593,261 @@ public class DlgRegistrasiSEP extends javax.swing.JDialog {
 
         WindowAksi.getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);
 
+        jLabel42.setForeground(new java.awt.Color(0, 131, 62));
+        jLabel42.setText("Tujuan Kunjungan :");
+        jLabel42.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
+        jLabel42.setPreferredSize(new java.awt.Dimension(55, 23));
+
+        TujuanKunjungan.setBackground(new java.awt.Color(255, 255, 153));
+        TujuanKunjungan.setForeground(new java.awt.Color(0, 131, 62));
+        TujuanKunjungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0. Normal", "1. Prosedur", "2. Konsul Dokter" }));
+        TujuanKunjungan.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
+        TujuanKunjungan.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                TujuanKunjunganItemStateChanged(evt);
+            }
+        });
+        TujuanKunjungan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TujuanKunjunganKeyPressed(evt);
+            }
+        });
+
+        jLabel43.setForeground(new java.awt.Color(0, 131, 62));
+        jLabel43.setText("Flag Prosedur :");
+        jLabel43.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
+        jLabel43.setPreferredSize(new java.awt.Dimension(55, 23));
+
+        FlagProsedur.setForeground(new java.awt.Color(0, 131, 62));
+        FlagProsedur.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "0. Prosedur Tidak Berkelanjutan", "1. Prosedur dan Terapi Berkelanjutan" }));
+        FlagProsedur.setEnabled(false);
+        FlagProsedur.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
+        FlagProsedur.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                FlagProsedurKeyPressed(evt);
+            }
+        });
+
+        jLabel44.setForeground(new java.awt.Color(0, 131, 62));
+        jLabel44.setText("Penunjang :");
+        jLabel44.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
+        jLabel44.setPreferredSize(new java.awt.Dimension(55, 23));
+
+        Penunjang.setForeground(new java.awt.Color(0, 131, 62));
+        Penunjang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "1. Radioterapi", "2. Kemoterapi", "3. Rehabilitasi Medik", "4. Rehabilitasi Psikososial", "5. Transfusi Darah", "6. Pelayanan Gigi", "7. Laboratorium", "8. USG", "9. Farmasi", "10. Lain-Lain", "11. MRI", "12. HEMODIALISA" }));
+        Penunjang.setEnabled(false);
+        Penunjang.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
+        Penunjang.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                PenunjangKeyPressed(evt);
+            }
+        });
+
+        jLabel45.setForeground(new java.awt.Color(0, 131, 62));
+        jLabel45.setText("Asesmen Pelayanan :");
+        jLabel45.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
+        jLabel45.setPreferredSize(new java.awt.Dimension(55, 23));
+
+        AsesmenPoli.setBackground(new java.awt.Color(255, 255, 153));
+        AsesmenPoli.setForeground(new java.awt.Color(0, 131, 62));
+        AsesmenPoli.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "1. Poli spesialis tidak tersedia pada hari sebelumnya", "2. Jam Poli telah berakhir pada hari sebelumnya", "3. Spesialis yang dimaksud tidak praktek pada hari sebelumnya", "4. Atas Instruksi RS", "5. Tujuan Kontrol" }));
+        AsesmenPoli.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
+        AsesmenPoli.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                AsesmenPoliKeyPressed(evt);
+            }
+        });
+
+        LabelPoli7.setForeground(new java.awt.Color(0, 131, 62));
+        LabelPoli7.setText("DPJP Layanan :");
+        LabelPoli7.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
+        LabelPoli7.setPreferredSize(new java.awt.Dimension(55, 23));
+
+        KdDPJPLayanan.setEditable(false);
+        KdDPJPLayanan.setBackground(new java.awt.Color(255, 255, 153));
+        KdDPJPLayanan.setHighlighter(null);
+
+        NmDPJPLayanan.setEditable(false);
+        NmDPJPLayanan.setBackground(new java.awt.Color(255, 255, 153));
+        NmDPJPLayanan.setHighlighter(null);
+
+        lblTerapi.setForeground(new java.awt.Color(0, 131, 62));
+        lblTerapi.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblTerapi.setText("Terapi / Rehabilitasi Medik");
+        lblTerapi.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
+        lblTerapi.setPreferredSize(new java.awt.Dimension(55, 23));
+
+        KdPoliTerapi.setEditable(false);
+        KdPoliTerapi.setBackground(new java.awt.Color(255, 255, 153));
+        KdPoliTerapi.setHighlighter(null);
+
+        KodeDokterTerapi.setEditable(false);
+        KodeDokterTerapi.setBackground(new java.awt.Color(255, 255, 153));
+        KodeDokterTerapi.setHighlighter(null);
+
+        NmDokterTerapi.setEditable(false);
+        NmDokterTerapi.setBackground(new java.awt.Color(255, 255, 153));
+        NmDokterTerapi.setHighlighter(null);
+
+        NmPoliTerapi.setEditable(false);
+        NmPoliTerapi.setBackground(new java.awt.Color(255, 255, 153));
+        NmPoliTerapi.setHighlighter(null);
+
+        btnPoliTerapi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pilih.png"))); // NOI18N
+        btnPoliTerapi.setMnemonic('X');
+        btnPoliTerapi.setToolTipText("Alt+X");
+        btnPoliTerapi.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
+        btnPoliTerapi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPoliTerapiActionPerformed(evt);
+            }
+        });
+        btnPoliTerapi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnPoliTerapiKeyPressed(evt);
+            }
+        });
+
+        btnDokterTerapi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pilih.png"))); // NOI18N
+        btnDokterTerapi.setMnemonic('X');
+        btnDokterTerapi.setToolTipText("Alt+X");
+        btnDokterTerapi.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
+        btnDokterTerapi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDokterTerapiActionPerformed(evt);
+            }
+        });
+        btnDokterTerapi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnDokterTerapiKeyPressed(evt);
+            }
+        });
+
+        jLabel55.setForeground(new java.awt.Color(0, 131, 62));
+        jLabel55.setText("Laka Lantas :");
+        jLabel55.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
+
+        LakaLantas.setForeground(new java.awt.Color(0, 131, 62));
+        LakaLantas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0. Bukan KLL", "1. KLL Bukan KK", "2. KLL dan KK", "3. KK" }));
+        LakaLantas.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
+        LakaLantas.setPreferredSize(new java.awt.Dimension(64, 25));
+        LakaLantas.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                LakaLantasItemStateChanged(evt);
+            }
+        });
+        LakaLantas.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                LakaLantasKeyPressed(evt);
+            }
+        });
+
+        jLabel38.setForeground(new java.awt.Color(0, 131, 62));
+        jLabel38.setText("Tgl KLL :");
+        jLabel38.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
+        jLabel38.setPreferredSize(new java.awt.Dimension(55, 23));
+
+        TanggalKKL.setEditable(false);
+        TanggalKKL.setForeground(new java.awt.Color(50, 70, 50));
+        TanggalKKL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-06-2025" }));
+        TanggalKKL.setDisplayFormat("dd-MM-yyyy");
+        TanggalKKL.setEnabled(false);
+        TanggalKKL.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
+        TanggalKKL.setOpaque(false);
+        TanggalKKL.setPreferredSize(new java.awt.Dimension(64, 25));
+        TanggalKKL.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TanggalKKLKeyPressed(evt);
+            }
+        });
+
+        jLabel36.setForeground(new java.awt.Color(0, 131, 62));
+        jLabel36.setText("Keterangan :");
+        jLabel36.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
+        jLabel36.setPreferredSize(new java.awt.Dimension(55, 23));
+
+        Keterangan.setEditable(false);
+        Keterangan.setHighlighter(null);
+        Keterangan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KeteranganKeyPressed(evt);
+            }
+        });
+
+        jLabel40.setForeground(new java.awt.Color(0, 131, 62));
+        jLabel40.setText("Suplesi :");
+        jLabel40.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
+
+        Suplesi.setForeground(new java.awt.Color(0, 131, 62));
+        Suplesi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0. Tidak", "1.Ya" }));
+        Suplesi.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
+        Suplesi.setPreferredSize(new java.awt.Dimension(64, 25));
+        Suplesi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                SuplesiKeyPressed(evt);
+            }
+        });
+
+        jLabel41.setForeground(new java.awt.Color(0, 131, 62));
+        jLabel41.setText("Suplesi :");
+        jLabel41.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
+        jLabel41.setPreferredSize(new java.awt.Dimension(55, 23));
+
+        NoSEPSuplesi.setHighlighter(null);
+        NoSEPSuplesi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                NoSEPSuplesiKeyPressed(evt);
+            }
+        });
+
+        LabelPoli3.setForeground(new java.awt.Color(0, 131, 62));
+        LabelPoli3.setText("Propinsi KLL :");
+        LabelPoli3.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
+
+        KdPropinsi.setEditable(false);
+        KdPropinsi.setBackground(new java.awt.Color(245, 250, 240));
+        KdPropinsi.setHighlighter(null);
+
+        NmPropinsi.setEditable(false);
+        NmPropinsi.setBackground(new java.awt.Color(245, 250, 240));
+        NmPropinsi.setHighlighter(null);
+
+        LabelPoli4.setForeground(new java.awt.Color(0, 131, 62));
+        LabelPoli4.setText("Kabupaten KLL :");
+        LabelPoli4.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
+
+        KdKabupaten.setEditable(false);
+        KdKabupaten.setBackground(new java.awt.Color(245, 250, 240));
+        KdKabupaten.setHighlighter(null);
+
+        NmKabupaten.setEditable(false);
+        NmKabupaten.setBackground(new java.awt.Color(245, 250, 240));
+        NmKabupaten.setHighlighter(null);
+
+        LabelPoli5.setForeground(new java.awt.Color(0, 131, 62));
+        LabelPoli5.setText("Kecamatan KLL :");
+        LabelPoli5.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
+
+        KdKecamatan.setEditable(false);
+        KdKecamatan.setBackground(new java.awt.Color(245, 250, 240));
+        KdKecamatan.setHighlighter(null);
+
+        NmKecamatan.setEditable(false);
+        NmKecamatan.setBackground(new java.awt.Color(245, 250, 240));
+        NmKecamatan.setHighlighter(null);
+
+        jLabel14.setForeground(new java.awt.Color(0, 131, 62));
+        jLabel14.setText("Catatan :");
+        jLabel14.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
+
+        Catatan.setText("Anjungan Pasien Mandiri RS Samarinda Medika Citra");
+        Catatan.setHighlighter(null);
+        Catatan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                CatatanKeyPressed(evt);
+            }
+        });
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setModal(true);
         setUndecorated(true);
@@ -608,21 +863,20 @@ public class DlgRegistrasiSEP extends javax.swing.JDialog {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(238, 238, 255), 1, true), "DATA ELIGIBILITAS PESERTA JKN", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Inter", 0, 24), new java.awt.Color(0, 131, 62))); // NOI18N
         jPanel1.setMinimumSize(new java.awt.Dimension(543, 106));
         jPanel1.setPreferredSize(new java.awt.Dimension(543, 106));
-        jPanel1.setLayout(new java.awt.BorderLayout(0, 1));
+        jPanel1.setLayout(new java.awt.BorderLayout());
 
         jPanel2.setBackground(new java.awt.Color(238, 238, 255));
+        jPanel2.setBorder(null);
         jPanel2.setForeground(new java.awt.Color(0, 131, 62));
         jPanel2.setPreferredSize(new java.awt.Dimension(390, 120));
         jPanel2.setLayout(null);
 
         TPasien.setEditable(false);
-        TPasien.setBackground(new java.awt.Color(245, 250, 240));
         TPasien.setHighlighter(null);
         jPanel2.add(TPasien);
         TPasien.setBounds(340, 10, 230, 30);
 
         TNoRM.setEditable(false);
-        TNoRM.setBackground(new java.awt.Color(245, 250, 240));
         TNoRM.setHighlighter(null);
         TNoRM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -633,7 +887,6 @@ public class DlgRegistrasiSEP extends javax.swing.JDialog {
         TNoRM.setBounds(230, 10, 110, 30);
 
         NoKartu.setEditable(false);
-        NoKartu.setBackground(new java.awt.Color(255, 255, 153));
         NoKartu.setHighlighter(null);
         jPanel2.add(NoKartu);
         NoKartu.setBounds(730, 70, 300, 30);
@@ -646,7 +899,6 @@ public class DlgRegistrasiSEP extends javax.swing.JDialog {
         jLabel20.setBounds(660, 130, 70, 30);
 
         TanggalSEP.setEditable(false);
-        TanggalSEP.setForeground(new java.awt.Color(50, 70, 50));
         TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-06-2025" }));
         TanggalSEP.setDisplayFormat("dd-MM-yyyy");
         TanggalSEP.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
@@ -668,7 +920,6 @@ public class DlgRegistrasiSEP extends javax.swing.JDialog {
         jLabel22.setBounds(650, 160, 80, 30);
 
         TanggalRujuk.setEditable(false);
-        TanggalRujuk.setForeground(new java.awt.Color(50, 70, 50));
         TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-06-2025" }));
         TanggalRujuk.setDisplayFormat("dd-MM-yyyy");
         TanggalRujuk.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
@@ -683,14 +934,13 @@ public class DlgRegistrasiSEP extends javax.swing.JDialog {
         TanggalRujuk.setBounds(730, 160, 170, 30);
 
         jLabel23.setForeground(new java.awt.Color(0, 131, 62));
-        jLabel23.setText("No.SKDP / S. Kontrol :");
+        jLabel23.setText("No. SKDP / Surat Kontrol :");
         jLabel23.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         jLabel23.setPreferredSize(new java.awt.Dimension(55, 23));
         jPanel2.add(jLabel23);
-        jLabel23.setBounds(90, 70, 140, 30);
+        jLabel23.setBounds(75, 70, 150, 30);
 
         NoRujukan.setEditable(false);
-        NoRujukan.setBackground(new java.awt.Color(255, 255, 153));
         NoRujukan.setHighlighter(null);
         NoRujukan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -705,16 +955,14 @@ public class DlgRegistrasiSEP extends javax.swing.JDialog {
         jLabel9.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         jLabel9.setPreferredSize(new java.awt.Dimension(55, 23));
         jPanel2.add(jLabel9);
-        jLabel9.setBounds(80, 250, 150, 30);
+        jLabel9.setBounds(75, 250, 150, 30);
 
         KdPPK.setEditable(false);
-        KdPPK.setBackground(new java.awt.Color(245, 250, 240));
         KdPPK.setHighlighter(null);
         jPanel2.add(KdPPK);
         KdPPK.setBounds(230, 250, 75, 30);
 
         NmPPK.setEditable(false);
-        NmPPK.setBackground(new java.awt.Color(245, 250, 240));
         NmPPK.setHighlighter(null);
         jPanel2.add(NmPPK);
         NmPPK.setBounds(310, 250, 260, 30);
@@ -724,16 +972,14 @@ public class DlgRegistrasiSEP extends javax.swing.JDialog {
         jLabel10.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         jLabel10.setPreferredSize(new java.awt.Dimension(55, 23));
         jPanel2.add(jLabel10);
-        jLabel10.setBounds(110, 130, 120, 30);
+        jLabel10.setBounds(75, 130, 150, 30);
 
         KdPpkRujukan.setEditable(false);
-        KdPpkRujukan.setBackground(new java.awt.Color(245, 250, 240));
         KdPpkRujukan.setHighlighter(null);
         jPanel2.add(KdPpkRujukan);
         KdPpkRujukan.setBounds(230, 130, 75, 30);
 
         NmPpkRujukan.setEditable(false);
-        NmPpkRujukan.setBackground(new java.awt.Color(245, 250, 240));
         NmPpkRujukan.setHighlighter(null);
         jPanel2.add(NmPpkRujukan);
         NmPpkRujukan.setBounds(310, 130, 260, 30);
@@ -743,28 +989,24 @@ public class DlgRegistrasiSEP extends javax.swing.JDialog {
         jLabel11.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         jLabel11.setPreferredSize(new java.awt.Dimension(55, 23));
         jPanel2.add(jLabel11);
-        jLabel11.setBounds(90, 160, 140, 30);
+        jLabel11.setBounds(75, 160, 150, 30);
 
         KdPenyakit.setEditable(false);
-        KdPenyakit.setBackground(new java.awt.Color(255, 255, 153));
         KdPenyakit.setHighlighter(null);
         jPanel2.add(KdPenyakit);
         KdPenyakit.setBounds(230, 160, 75, 30);
 
         NmPenyakit.setEditable(false);
-        NmPenyakit.setBackground(new java.awt.Color(255, 255, 153));
         NmPenyakit.setHighlighter(null);
         jPanel2.add(NmPenyakit);
         NmPenyakit.setBounds(310, 160, 260, 30);
 
         NmPoli.setEditable(false);
-        NmPoli.setBackground(new java.awt.Color(255, 255, 153));
         NmPoli.setHighlighter(null);
         jPanel2.add(NmPoli);
         NmPoli.setBounds(310, 190, 260, 30);
 
         KdPoli.setEditable(false);
-        KdPoli.setBackground(new java.awt.Color(255, 255, 153));
         KdPoli.setHighlighter(null);
         jPanel2.add(KdPoli);
         KdPoli.setBounds(230, 190, 75, 30);
@@ -774,33 +1016,15 @@ public class DlgRegistrasiSEP extends javax.swing.JDialog {
         LabelPoli.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         LabelPoli.setPreferredSize(new java.awt.Dimension(55, 23));
         jPanel2.add(LabelPoli);
-        LabelPoli.setBounds(120, 190, 110, 30);
+        LabelPoli.setBounds(75, 190, 150, 30);
 
         jLabel13.setForeground(new java.awt.Color(0, 131, 62));
         jLabel13.setText("Jns.Pelayanan :");
         jLabel13.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         jLabel13.setPreferredSize(new java.awt.Dimension(55, 23));
         jPanel2.add(jLabel13);
-        jLabel13.setBounds(90, 280, 140, 30);
+        jLabel13.setBounds(75, 280, 150, 30);
 
-        jLabel14.setForeground(new java.awt.Color(0, 131, 62));
-        jLabel14.setText("Catatan :");
-        jLabel14.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
-        jPanel2.add(jLabel14);
-        jLabel14.setBounds(640, 460, 90, 30);
-
-        Catatan.setText("Anjungan Pasien Mandiri RS Samarinda Medika Citra");
-        Catatan.setHighlighter(null);
-        Catatan.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                CatatanKeyPressed(evt);
-            }
-        });
-        jPanel2.add(Catatan);
-        Catatan.setBounds(730, 460, 300, 30);
-
-        JenisPelayanan.setBackground(new java.awt.Color(255, 255, 153));
-        JenisPelayanan.setForeground(new java.awt.Color(0, 131, 62));
         JenisPelayanan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1. Ranap", "2. Ralan" }));
         JenisPelayanan.setSelectedIndex(1);
         JenisPelayanan.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
@@ -823,7 +1047,6 @@ public class DlgRegistrasiSEP extends javax.swing.JDialog {
         jPanel2.add(LabelKelas);
         LabelKelas.setBounds(350, 280, 50, 30);
 
-        Kelas.setForeground(new java.awt.Color(0, 131, 62));
         Kelas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1. Kelas 1", "2. Kelas 2", "3. Kelas 3" }));
         Kelas.setSelectedIndex(2);
         Kelas.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
@@ -835,32 +1058,14 @@ public class DlgRegistrasiSEP extends javax.swing.JDialog {
         jPanel2.add(Kelas);
         Kelas.setBounds(400, 280, 100, 30);
 
-        LakaLantas.setForeground(new java.awt.Color(0, 131, 62));
-        LakaLantas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0. Bukan KLL", "1. KLL Bukan KK", "2. KLL dan KK", "3. KK" }));
-        LakaLantas.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
-        LakaLantas.setPreferredSize(new java.awt.Dimension(64, 25));
-        LakaLantas.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                LakaLantasItemStateChanged(evt);
-            }
-        });
-        LakaLantas.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                LakaLantasKeyPressed(evt);
-            }
-        });
-        jPanel2.add(LakaLantas);
-        LakaLantas.setBounds(730, 250, 170, 30);
-
         jLabel8.setForeground(new java.awt.Color(0, 131, 62));
-        jLabel8.setText("Data Pasien : ");
+        jLabel8.setText("Data Pasien :");
         jLabel8.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         jLabel8.setPreferredSize(new java.awt.Dimension(55, 23));
         jPanel2.add(jLabel8);
-        jLabel8.setBounds(90, 10, 140, 30);
+        jLabel8.setBounds(75, 10, 150, 30);
 
         TglLahir.setEditable(false);
-        TglLahir.setBackground(new java.awt.Color(245, 250, 240));
         TglLahir.setHighlighter(null);
         jPanel2.add(TglLahir);
         TglLahir.setBounds(230, 40, 110, 30);
@@ -872,7 +1077,6 @@ public class DlgRegistrasiSEP extends javax.swing.JDialog {
         jLabel18.setBounds(910, 10, 30, 30);
 
         JK.setEditable(false);
-        JK.setBackground(new java.awt.Color(245, 250, 240));
         JK.setHighlighter(null);
         jPanel2.add(JK);
         JK.setBounds(940, 10, 90, 30);
@@ -885,7 +1089,6 @@ public class DlgRegistrasiSEP extends javax.swing.JDialog {
         jLabel24.setBounds(670, 10, 60, 30);
 
         JenisPeserta.setEditable(false);
-        JenisPeserta.setBackground(new java.awt.Color(245, 250, 240));
         JenisPeserta.setHighlighter(null);
         jPanel2.add(JenisPeserta);
         JenisPeserta.setBounds(730, 10, 173, 30);
@@ -898,7 +1101,6 @@ public class DlgRegistrasiSEP extends javax.swing.JDialog {
         jLabel25.setBounds(370, 40, 50, 30);
 
         Status.setEditable(false);
-        Status.setBackground(new java.awt.Color(245, 250, 240));
         Status.setHighlighter(null);
         jPanel2.add(Status);
         Status.setBounds(420, 40, 150, 30);
@@ -909,7 +1111,6 @@ public class DlgRegistrasiSEP extends javax.swing.JDialog {
         jPanel2.add(jLabel27);
         jLabel27.setBounds(630, 100, 100, 30);
 
-        AsalRujukan.setForeground(new java.awt.Color(0, 131, 62));
         AsalRujukan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1. Faskes 1", "2. Faskes 2(RS)" }));
         AsalRujukan.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         AsalRujukan.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -929,7 +1130,6 @@ public class DlgRegistrasiSEP extends javax.swing.JDialog {
         jPanel2.add(NoTelp);
         NoTelp.setBounds(730, 190, 170, 30);
 
-        Katarak.setForeground(new java.awt.Color(0, 131, 62));
         Katarak.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0. Tidak", "1.Ya" }));
         Katarak.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         Katarak.setPreferredSize(new java.awt.Dimension(64, 25));
@@ -947,253 +1147,22 @@ public class DlgRegistrasiSEP extends javax.swing.JDialog {
         jPanel2.add(jLabel37);
         jLabel37.setBounds(640, 220, 87, 30);
 
-        jLabel38.setForeground(new java.awt.Color(0, 131, 62));
-        jLabel38.setText("Tgl KLL :");
-        jLabel38.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
-        jLabel38.setPreferredSize(new java.awt.Dimension(55, 23));
-        jPanel2.add(jLabel38);
-        jLabel38.setBounds(650, 280, 80, 30);
-
-        TanggalKKL.setEditable(false);
-        TanggalKKL.setForeground(new java.awt.Color(50, 70, 50));
-        TanggalKKL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "13-06-2025" }));
-        TanggalKKL.setDisplayFormat("dd-MM-yyyy");
-        TanggalKKL.setEnabled(false);
-        TanggalKKL.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
-        TanggalKKL.setOpaque(false);
-        TanggalKKL.setPreferredSize(new java.awt.Dimension(64, 25));
-        TanggalKKL.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TanggalKKLKeyPressed(evt);
-            }
-        });
-        jPanel2.add(TanggalKKL);
-        TanggalKKL.setBounds(730, 280, 170, 30);
-
         LabelPoli2.setForeground(new java.awt.Color(0, 131, 62));
         LabelPoli2.setText("Dokter DPJP :");
         LabelPoli2.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         LabelPoli2.setPreferredSize(new java.awt.Dimension(55, 23));
         jPanel2.add(LabelPoli2);
-        LabelPoli2.setBounds(120, 220, 110, 30);
+        LabelPoli2.setBounds(75, 220, 150, 30);
 
         KdDPJP.setEditable(false);
-        KdDPJP.setBackground(new java.awt.Color(255, 255, 153));
         KdDPJP.setHighlighter(null);
         jPanel2.add(KdDPJP);
         KdDPJP.setBounds(230, 220, 75, 30);
 
         NmDPJP.setEditable(false);
-        NmDPJP.setBackground(new java.awt.Color(255, 255, 153));
         NmDPJP.setHighlighter(null);
         jPanel2.add(NmDPJP);
         NmDPJP.setBounds(310, 220, 260, 30);
-
-        jLabel36.setForeground(new java.awt.Color(0, 131, 62));
-        jLabel36.setText("Keterangan :");
-        jLabel36.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
-        jLabel36.setPreferredSize(new java.awt.Dimension(55, 23));
-        jPanel2.add(jLabel36);
-        jLabel36.setBounds(640, 310, 87, 30);
-
-        Keterangan.setEditable(false);
-        Keterangan.setHighlighter(null);
-        Keterangan.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                KeteranganKeyPressed(evt);
-            }
-        });
-        jPanel2.add(Keterangan);
-        Keterangan.setBounds(730, 310, 300, 30);
-
-        jLabel40.setForeground(new java.awt.Color(0, 131, 62));
-        jLabel40.setText("Suplesi :");
-        jLabel40.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
-        jPanel2.add(jLabel40);
-        jLabel40.setBounds(640, 340, 87, 30);
-
-        Suplesi.setForeground(new java.awt.Color(0, 131, 62));
-        Suplesi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0. Tidak", "1.Ya" }));
-        Suplesi.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
-        Suplesi.setPreferredSize(new java.awt.Dimension(64, 25));
-        Suplesi.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                SuplesiKeyPressed(evt);
-            }
-        });
-        jPanel2.add(Suplesi);
-        Suplesi.setBounds(730, 340, 90, 30);
-
-        NoSEPSuplesi.setHighlighter(null);
-        NoSEPSuplesi.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                NoSEPSuplesiKeyPressed(evt);
-            }
-        });
-        jPanel2.add(NoSEPSuplesi);
-        NoSEPSuplesi.setBounds(890, 340, 140, 30);
-
-        jLabel41.setForeground(new java.awt.Color(0, 131, 62));
-        jLabel41.setText("Suplesi :");
-        jLabel41.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
-        jLabel41.setPreferredSize(new java.awt.Dimension(55, 23));
-        jPanel2.add(jLabel41);
-        jLabel41.setBounds(820, 340, 68, 30);
-
-        LabelPoli3.setForeground(new java.awt.Color(0, 131, 62));
-        LabelPoli3.setText("Propinsi KLL :");
-        LabelPoli3.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
-        jPanel2.add(LabelPoli3);
-        LabelPoli3.setBounds(640, 370, 87, 30);
-
-        KdPropinsi.setEditable(false);
-        KdPropinsi.setBackground(new java.awt.Color(245, 250, 240));
-        KdPropinsi.setHighlighter(null);
-        jPanel2.add(KdPropinsi);
-        KdPropinsi.setBounds(730, 370, 55, 30);
-
-        NmPropinsi.setEditable(false);
-        NmPropinsi.setBackground(new java.awt.Color(245, 250, 240));
-        NmPropinsi.setHighlighter(null);
-        jPanel2.add(NmPropinsi);
-        NmPropinsi.setBounds(790, 370, 240, 30);
-
-        LabelPoli4.setForeground(new java.awt.Color(0, 131, 62));
-        LabelPoli4.setText("Kabupaten KLL :");
-        LabelPoli4.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
-        jPanel2.add(LabelPoli4);
-        LabelPoli4.setBounds(620, 400, 110, 30);
-
-        KdKabupaten.setEditable(false);
-        KdKabupaten.setBackground(new java.awt.Color(245, 250, 240));
-        KdKabupaten.setHighlighter(null);
-        jPanel2.add(KdKabupaten);
-        KdKabupaten.setBounds(730, 400, 55, 30);
-
-        NmKabupaten.setEditable(false);
-        NmKabupaten.setBackground(new java.awt.Color(245, 250, 240));
-        NmKabupaten.setHighlighter(null);
-        jPanel2.add(NmKabupaten);
-        NmKabupaten.setBounds(790, 400, 240, 30);
-
-        LabelPoli5.setForeground(new java.awt.Color(0, 131, 62));
-        LabelPoli5.setText("Kecamatan KLL :");
-        LabelPoli5.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
-        jPanel2.add(LabelPoli5);
-        LabelPoli5.setBounds(610, 430, 120, 30);
-
-        KdKecamatan.setEditable(false);
-        KdKecamatan.setBackground(new java.awt.Color(245, 250, 240));
-        KdKecamatan.setHighlighter(null);
-        jPanel2.add(KdKecamatan);
-        KdKecamatan.setBounds(730, 430, 55, 30);
-
-        NmKecamatan.setEditable(false);
-        NmKecamatan.setBackground(new java.awt.Color(245, 250, 240));
-        NmKecamatan.setHighlighter(null);
-        jPanel2.add(NmKecamatan);
-        NmKecamatan.setBounds(790, 430, 240, 30);
-
-        jLabel42.setForeground(new java.awt.Color(0, 131, 62));
-        jLabel42.setText("Tujuan Kunjungan :");
-        jLabel42.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
-        jLabel42.setPreferredSize(new java.awt.Dimension(55, 23));
-        jPanel2.add(jLabel42);
-        jLabel42.setBounds(90, 310, 140, 30);
-
-        TujuanKunjungan.setBackground(new java.awt.Color(255, 255, 153));
-        TujuanKunjungan.setForeground(new java.awt.Color(0, 131, 62));
-        TujuanKunjungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0. Normal", "1. Prosedur", "2. Konsul Dokter" }));
-        TujuanKunjungan.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
-        TujuanKunjungan.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                TujuanKunjunganItemStateChanged(evt);
-            }
-        });
-        TujuanKunjungan.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TujuanKunjunganKeyPressed(evt);
-            }
-        });
-        jPanel2.add(TujuanKunjungan);
-        TujuanKunjungan.setBounds(230, 310, 340, 30);
-
-        FlagProsedur.setForeground(new java.awt.Color(0, 131, 62));
-        FlagProsedur.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "0. Prosedur Tidak Berkelanjutan", "1. Prosedur dan Terapi Berkelanjutan" }));
-        FlagProsedur.setEnabled(false);
-        FlagProsedur.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
-        FlagProsedur.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                FlagProsedurKeyPressed(evt);
-            }
-        });
-        jPanel2.add(FlagProsedur);
-        FlagProsedur.setBounds(230, 340, 340, 30);
-
-        jLabel43.setForeground(new java.awt.Color(0, 131, 62));
-        jLabel43.setText("Flag Prosedur :");
-        jLabel43.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
-        jLabel43.setPreferredSize(new java.awt.Dimension(55, 23));
-        jPanel2.add(jLabel43);
-        jLabel43.setBounds(90, 340, 140, 30);
-
-        jLabel44.setForeground(new java.awt.Color(0, 131, 62));
-        jLabel44.setText("Penunjang :");
-        jLabel44.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
-        jLabel44.setPreferredSize(new java.awt.Dimension(55, 23));
-        jPanel2.add(jLabel44);
-        jLabel44.setBounds(90, 370, 140, 30);
-
-        Penunjang.setForeground(new java.awt.Color(0, 131, 62));
-        Penunjang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "1. Radioterapi", "2. Kemoterapi", "3. Rehabilitasi Medik", "4. Rehabilitasi Psikososial", "5. Transfusi Darah", "6. Pelayanan Gigi", "7. Laboratorium", "8. USG", "9. Farmasi", "10. Lain-Lain", "11. MRI", "12. HEMODIALISA" }));
-        Penunjang.setEnabled(false);
-        Penunjang.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
-        Penunjang.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                PenunjangKeyPressed(evt);
-            }
-        });
-        jPanel2.add(Penunjang);
-        Penunjang.setBounds(230, 370, 340, 30);
-
-        jLabel45.setForeground(new java.awt.Color(0, 131, 62));
-        jLabel45.setText("Asesmen Pelayanan :");
-        jLabel45.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
-        jLabel45.setPreferredSize(new java.awt.Dimension(55, 23));
-        jPanel2.add(jLabel45);
-        jLabel45.setBounds(90, 400, 140, 30);
-
-        AsesmenPoli.setBackground(new java.awt.Color(255, 255, 153));
-        AsesmenPoli.setForeground(new java.awt.Color(0, 131, 62));
-        AsesmenPoli.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "1. Poli spesialis tidak tersedia pada hari sebelumnya", "2. Jam Poli telah berakhir pada hari sebelumnya", "3. Spesialis yang dimaksud tidak praktek pada hari sebelumnya", "4. Atas Instruksi RS", "5. Tujuan Kontrol" }));
-        AsesmenPoli.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
-        AsesmenPoli.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                AsesmenPoliKeyPressed(evt);
-            }
-        });
-        jPanel2.add(AsesmenPoli);
-        AsesmenPoli.setBounds(230, 400, 340, 30);
-
-        lblTerapi.setForeground(new java.awt.Color(0, 131, 62));
-        lblTerapi.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTerapi.setText("Terapi / Rehabilitasi Medik");
-        lblTerapi.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
-        lblTerapi.setPreferredSize(new java.awt.Dimension(55, 23));
-        jPanel2.add(lblTerapi);
-        lblTerapi.setBounds(230, 470, 340, 20);
-
-        KdDPJPLayanan.setEditable(false);
-        KdDPJPLayanan.setBackground(new java.awt.Color(255, 255, 153));
-        KdDPJPLayanan.setHighlighter(null);
-        jPanel2.add(KdDPJPLayanan);
-        KdDPJPLayanan.setBounds(230, 430, 80, 30);
-
-        NmDPJPLayanan.setEditable(false);
-        NmDPJPLayanan.setBackground(new java.awt.Color(255, 255, 153));
-        NmDPJPLayanan.setHighlighter(null);
-        jPanel2.add(NmDPJPLayanan);
-        NmDPJPLayanan.setBounds(310, 430, 260, 30);
 
         btnDPJPLayanan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pilih.png"))); // NOI18N
         btnDPJPLayanan.setMnemonic('X');
@@ -1212,12 +1181,6 @@ public class DlgRegistrasiSEP extends javax.swing.JDialog {
         jPanel2.add(btnDPJPLayanan);
         btnDPJPLayanan.setBounds(570, 220, 40, 30);
 
-        jLabel55.setForeground(new java.awt.Color(0, 131, 62));
-        jLabel55.setText("Laka Lantas :");
-        jLabel55.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
-        jPanel2.add(jLabel55);
-        jLabel55.setBounds(640, 250, 87, 30);
-
         jLabel56.setForeground(new java.awt.Color(0, 131, 62));
         jLabel56.setText("No.Telp :");
         jLabel56.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
@@ -1226,11 +1189,11 @@ public class DlgRegistrasiSEP extends javax.swing.JDialog {
         jLabel56.setBounds(670, 190, 58, 30);
 
         jLabel12.setForeground(new java.awt.Color(0, 131, 62));
-        jLabel12.setText("Tgl.Lahir :");
+        jLabel12.setText("Tgl. Lahir :");
         jLabel12.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         jLabel12.setPreferredSize(new java.awt.Dimension(55, 23));
         jPanel2.add(jLabel12);
-        jLabel12.setBounds(120, 40, 110, 30);
+        jLabel12.setBounds(75, 40, 150, 30);
 
         jLabel6.setForeground(new java.awt.Color(0, 131, 62));
         jLabel6.setText("NIK :");
@@ -1239,7 +1202,6 @@ public class DlgRegistrasiSEP extends javax.swing.JDialog {
         jLabel6.setBounds(650, 40, 80, 30);
 
         NoSKDP.setEditable(false);
-        NoSKDP.setBackground(new java.awt.Color(255, 255, 153));
         NoSKDP.setHighlighter(null);
         NoSKDP.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1250,14 +1212,13 @@ public class DlgRegistrasiSEP extends javax.swing.JDialog {
         NoSKDP.setBounds(230, 70, 340, 30);
 
         jLabel26.setForeground(new java.awt.Color(0, 131, 62));
-        jLabel26.setText("No.Rujukan :");
+        jLabel26.setText("No. Rujukan :");
         jLabel26.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         jLabel26.setPreferredSize(new java.awt.Dimension(55, 23));
         jPanel2.add(jLabel26);
-        jLabel26.setBounds(130, 100, 100, 30);
+        jLabel26.setBounds(75, 100, 150, 30);
 
         NIK.setEditable(false);
-        NIK.setBackground(new java.awt.Color(255, 255, 153));
         NIK.setHighlighter(null);
         jPanel2.add(NIK);
         NIK.setBounds(730, 40, 300, 30);
@@ -1339,71 +1300,6 @@ public class DlgRegistrasiSEP extends javax.swing.JDialog {
         jPanel2.add(btnDiagnosaAwal2);
         btnDiagnosaAwal2.setBounds(1040, 150, 220, 30);
 
-        KodeDokterTerapi.setEditable(false);
-        KodeDokterTerapi.setBackground(new java.awt.Color(255, 255, 153));
-        KodeDokterTerapi.setHighlighter(null);
-        jPanel2.add(KodeDokterTerapi);
-        KodeDokterTerapi.setBounds(230, 520, 75, 30);
-
-        KdPoliTerapi.setEditable(false);
-        KdPoliTerapi.setBackground(new java.awt.Color(255, 255, 153));
-        KdPoliTerapi.setHighlighter(null);
-        jPanel2.add(KdPoliTerapi);
-        KdPoliTerapi.setBounds(230, 490, 75, 30);
-
-        NmPoliTerapi.setEditable(false);
-        NmPoliTerapi.setBackground(new java.awt.Color(255, 255, 153));
-        NmPoliTerapi.setHighlighter(null);
-        jPanel2.add(NmPoliTerapi);
-        NmPoliTerapi.setBounds(310, 490, 260, 30);
-
-        NmDokterTerapi.setEditable(false);
-        NmDokterTerapi.setBackground(new java.awt.Color(255, 255, 153));
-        NmDokterTerapi.setHighlighter(null);
-        jPanel2.add(NmDokterTerapi);
-        NmDokterTerapi.setBounds(310, 520, 260, 30);
-
-        btnDokterTerapi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pilih.png"))); // NOI18N
-        btnDokterTerapi.setMnemonic('X');
-        btnDokterTerapi.setToolTipText("Alt+X");
-        btnDokterTerapi.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
-        btnDokterTerapi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDokterTerapiActionPerformed(evt);
-            }
-        });
-        btnDokterTerapi.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                btnDokterTerapiKeyPressed(evt);
-            }
-        });
-        jPanel2.add(btnDokterTerapi);
-        btnDokterTerapi.setBounds(570, 520, 40, 30);
-
-        btnPoliTerapi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pilih.png"))); // NOI18N
-        btnPoliTerapi.setMnemonic('X');
-        btnPoliTerapi.setToolTipText("Alt+X");
-        btnPoliTerapi.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
-        btnPoliTerapi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPoliTerapiActionPerformed(evt);
-            }
-        });
-        btnPoliTerapi.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                btnPoliTerapiKeyPressed(evt);
-            }
-        });
-        jPanel2.add(btnPoliTerapi);
-        btnPoliTerapi.setBounds(570, 490, 40, 30);
-
-        LabelPoli7.setForeground(new java.awt.Color(0, 131, 62));
-        LabelPoli7.setText("DPJP Layanan :");
-        LabelPoli7.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
-        LabelPoli7.setPreferredSize(new java.awt.Dimension(55, 23));
-        jPanel2.add(LabelPoli7);
-        LabelPoli7.setBounds(90, 430, 140, 30);
-
         btnDiagnosaAwal3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/approvalfp.png"))); // NOI18N
         btnDiagnosaAwal3.setMnemonic('X');
         btnDiagnosaAwal3.setText("Approval FP BPJS");
@@ -1465,15 +1361,16 @@ public class DlgRegistrasiSEP extends javax.swing.JDialog {
         jPanel3.setBackground(new java.awt.Color(238, 238, 255));
         jPanel3.setMinimumSize(new java.awt.Dimension(533, 120));
         jPanel3.setPreferredSize(new java.awt.Dimension(533, 120));
+        jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 10));
 
         btnSimpan.setForeground(new java.awt.Color(0, 131, 62));
         btnSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/konfirmasi.png"))); // NOI18N
         btnSimpan.setMnemonic('S');
-        btnSimpan.setText("Konfirmasi");
+        btnSimpan.setText("KONFIRMASI");
         btnSimpan.setToolTipText("Alt+S");
         btnSimpan.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         btnSimpan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnSimpan.setPreferredSize(new java.awt.Dimension(300, 45));
+        btnSimpan.setPreferredSize(new java.awt.Dimension(300, 50));
         btnSimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSimpanActionPerformed(evt);
@@ -1493,7 +1390,7 @@ public class DlgRegistrasiSEP extends javax.swing.JDialog {
         btnFingerPrint.setToolTipText("Alt+K");
         btnFingerPrint.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         btnFingerPrint.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnFingerPrint.setPreferredSize(new java.awt.Dimension(300, 45));
+        btnFingerPrint.setPreferredSize(new java.awt.Dimension(300, 50));
         btnFingerPrint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFingerPrintActionPerformed(evt);
@@ -1507,13 +1404,13 @@ public class DlgRegistrasiSEP extends javax.swing.JDialog {
         jPanel3.add(btnFingerPrint);
 
         btnKeluar.setForeground(new java.awt.Color(0, 131, 62));
-        btnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/reset.png"))); // NOI18N
+        btnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/exit.png"))); // NOI18N
         btnKeluar.setMnemonic('K');
-        btnKeluar.setText("Batal");
+        btnKeluar.setText("BATAL");
         btnKeluar.setToolTipText("Alt+K");
         btnKeluar.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         btnKeluar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnKeluar.setPreferredSize(new java.awt.Dimension(300, 45));
+        btnKeluar.setPreferredSize(new java.awt.Dimension(300, 50));
         btnKeluar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnKeluarActionPerformed(evt);
@@ -2084,7 +1981,7 @@ public class DlgRegistrasiSEP extends javax.swing.JDialog {
      */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
-            DlgRegistrasiSEP dialog = new DlgRegistrasiSEP(new javax.swing.JFrame(), true);
+            DlgRegistrasiSEPSMC dialog = new DlgRegistrasiSEPSMC(new javax.swing.JFrame(), true);
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
 
                 @Override
@@ -3801,7 +3698,7 @@ public class DlgRegistrasiSEP extends javax.swing.JDialog {
                 }
 
                 if (wText.contains("Registrasi Sidik Jari")) {
-                    DlgRegistrasiSEP.this.aplikasiAktif = true;
+                    DlgRegistrasiSEPSMC.this.aplikasiAktif = true;
                     u32.SetForegroundWindow(hwnd);
                 }
 
@@ -3880,7 +3777,7 @@ public class DlgRegistrasiSEP extends javax.swing.JDialog {
                 String wText = Native.toString(windowText);
 
                 if (wText.toLowerCase().contains("face recognition bpjs kesehatan")) {
-                    DlgRegistrasiSEP.this.fristaAktif = true;
+                    DlgRegistrasiSEPSMC.this.fristaAktif = true;
                     u32.ShowWindow(hwnd, User32.SW_RESTORE);
                     u32.SetForegroundWindow(hwnd);
                     return false;

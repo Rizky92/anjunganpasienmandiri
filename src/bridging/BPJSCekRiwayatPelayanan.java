@@ -11,7 +11,6 @@
  */
 package bridging;
 
-import fungsi.WarnaTable;
 import java.awt.Dimension;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -22,14 +21,8 @@ import fungsi.batasInput;
 import fungsi.validasi;
 import fungsi.sekuel;
 import fungsi.koneksiDB;
-import groovy.lang.Sequence;
 import java.awt.Cursor;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
-import java.util.Calendar;
-import java.util.Date;
 import javax.swing.JOptionPane;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -112,10 +105,6 @@ public final class BPJSCekRiwayatPelayanan extends javax.swing.JDialog {
             }
         }
 
-        tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
-
-        NoKartu.setDocument(new batasInput((byte) 100).getKata(NoKartu));
-
         try {
             link = koneksiDB.URLAPIBPJS();
         } catch (Exception e) {
@@ -136,19 +125,19 @@ public final class BPJSCekRiwayatPelayanan extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        NoKartu = new widget.TextBox();
-        internalFrame1 = new widget.InternalFrame();
-        Scroll = new widget.ScrollPane();
+        NoKartu = new javax.swing.JTextField();
+        internalFrame1 = new javax.swing.JPanel();
+        Scroll = new javax.swing.JScrollPane();
         tbKamar = new widget.Table();
-        panelGlass6 = new widget.panelisi();
-        jLabel29 = new widget.Label();
-        jLabel19 = new widget.Label();
+        panelGlass6 = new javax.swing.JPanel();
+        jLabel29 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
         DTPCari1 = new widget.Tanggal();
-        jLabel21 = new widget.Label();
+        jLabel21 = new javax.swing.JLabel();
         DTPCari2 = new widget.Tanggal();
-        BtnCari = new widget.Button();
-        jLabel17 = new widget.Label();
-        BtnKeluar = new widget.Button();
+        BtnCari = new javax.swing.JButton();
+        jLabel17 = new javax.swing.JLabel();
+        BtnKeluar = new javax.swing.JButton();
 
         NoKartu.setName("NoKartu"); // NOI18N
         NoKartu.setPreferredSize(new java.awt.Dimension(130, 23));
@@ -316,18 +305,18 @@ public final class BPJSCekRiwayatPelayanan extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private widget.Button BtnCari;
-    private widget.Button BtnKeluar;
+    private javax.swing.JButton BtnCari;
+    private javax.swing.JButton BtnKeluar;
     private widget.Tanggal DTPCari1;
     private widget.Tanggal DTPCari2;
-    private widget.TextBox NoKartu;
-    private widget.ScrollPane Scroll;
-    private widget.InternalFrame internalFrame1;
-    private widget.Label jLabel17;
-    private widget.Label jLabel19;
-    private widget.Label jLabel21;
-    private widget.Label jLabel29;
-    private widget.panelisi panelGlass6;
+    private javax.swing.JTextField NoKartu;
+    private javax.swing.JScrollPane Scroll;
+    private javax.swing.JPanel internalFrame1;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel29;
+    private javax.swing.JPanel panelGlass6;
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 

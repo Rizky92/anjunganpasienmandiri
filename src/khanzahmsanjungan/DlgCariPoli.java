@@ -12,14 +12,10 @@ package khanzahmsanjungan;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import fungsi.WarnaTable;
-import fungsi.batasInput;
+
 import fungsi.koneksiDB;
 import fungsi.validasi;
-import fungsi.akses;
-import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -27,7 +23,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JTable;
-import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
@@ -67,6 +62,7 @@ public final class DlgCariPoli extends javax.swing.JDialog {
             Class[] type = new Class[] {
                 java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Double.class
             };
+
             @Override
             public boolean isCellEditable(int rowIndex, int colIndex) {
                 return false;
@@ -93,8 +89,6 @@ public final class DlgCariPoli extends javax.swing.JDialog {
                 column.setMaxWidth(0);
             }
         }
-        tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
-
     }
 
     /**
@@ -104,11 +98,11 @@ public final class DlgCariPoli extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        internalFrame1 = new widget.InternalFrame();
-        Scroll = new widget.ScrollPane();
+        internalFrame1 = new javax.swing.JPanel();
+        Scroll = new javax.swing.JScrollPane();
         tbKamar = new widget.Table();
         jPanel1 = new javax.swing.JPanel();
-        button1 = new widget.Button();
+        button1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -210,9 +204,9 @@ public final class DlgCariPoli extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private widget.ScrollPane Scroll;
-    private widget.Button button1;
-    private widget.InternalFrame internalFrame1;
+    private javax.swing.JScrollPane Scroll;
+    private javax.swing.JButton button1;
+    private javax.swing.JPanel internalFrame1;
     private javax.swing.JPanel jPanel1;
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
@@ -227,7 +221,7 @@ public final class DlgCariPoli extends javax.swing.JDialog {
             ps.setString(1, harikerja);
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
-                    tabMode.addRow(new Object[]{rs.getString(1), rs.getString(2)});
+                    tabMode.addRow(new Object[] {rs.getString(1), rs.getString(2)});
                 }
             }
         } catch (Exception e) {
@@ -238,16 +232,16 @@ public final class DlgCariPoli extends javax.swing.JDialog {
     public void tampilPoliMapping(String kodepolihfis) {
         Valid.tabelKosong(tabMode);
         try {
-            ps = koneksi.prepareStatement("SELECT\n"
-                + "	poliklinik.nm_poli, \n"
-                + "	maping_poli_bpjs.kd_poli_rs\n"
-                + " FROM\n"
-                + "	maping_poli_bpjs\n"
-                + "	INNER JOIN\n"
-                + "	poliklinik\n"
-                + "	ON \n"
-                + "	maping_poli_bpjs.kd_poli_rs = poliklinik.kd_poli "
-                + " where maping_poli_bpjs.kd_poli_bpjs= '" + kodepolihfis + "' ");
+            ps = koneksi.prepareStatement("SELECT\n" +
+                "	poliklinik.nm_poli, \n" +
+                "	maping_poli_bpjs.kd_poli_rs\n" +
+                " FROM\n" +
+                "	maping_poli_bpjs\n" +
+                "	INNER JOIN\n" +
+                "	poliklinik\n" +
+                "	ON \n" +
+                "	maping_poli_bpjs.kd_poli_rs = poliklinik.kd_poli " +
+                " where maping_poli_bpjs.kd_poli_bpjs= '" + kodepolihfis + "' ");
             try {
                 rs = ps.executeQuery();
                 while (rs.next()) {

@@ -1,24 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
- /*
- * DlgPenyakit.java
- *
- * Created on May 23, 2010, 12:57:16 AM
- */
 package khanzahmsanjungan;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import fungsi.WarnaTable;
 import fungsi.koneksiDB;
 import fungsi.validasi;
 import java.awt.Dimension;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -26,61 +10,40 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
-/**
- *
- * @author dosen
- */
 public final class DlgCariDokter extends javax.swing.JDialog {
 
     private final DefaultTableModel tabMode;
     private validasi Valid = new validasi();
     private Connection koneksi = koneksiDB.condb();
-    private PreparedStatement ps;
-    private ResultSet rs;
-    private File file;
-    private FileWriter fileWriter;
-    private String iyem;
-    private ObjectMapper mapper = new ObjectMapper();
-    private JsonNode root;
-    private JsonNode response;
-    private FileReader myObj;
 
-    /**
-     * Creates new form DlgPenyakit
-     *
-     * @param parent
-     * @param modal
-     */
     public DlgCariDokter(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.setLocation(10, 2);
-        setSize(656, 250);
 
-        Object[] row = {"Kode Dokter", "Nama Dokter", "Jam Praktek"};
-        tabMode = new DefaultTableModel(null, row) {
-            @Override
-            public boolean isCellEditable(int rowIndex, int colIndex) {
-                return false;
-            }
-        };
+        Object[] row = {"Kode Dokter", "Nama Dokter", "Spesialistik", "Jam Praktek", "Jumlah Pasien", "kddokterbpjs"};
+        tabMode = new DefaultTableModel(null, row);
         tbKamar.setModel(tabMode);
-        //tbPenyakit.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbPenyakit.getBackground()));
         tbKamar.setPreferredScrollableViewportSize(new Dimension(500, 500));
         tbKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 6; i++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(i);
             if (i == 0) {
-                column.setPreferredWidth(150);
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             } else if (i == 1) {
                 column.setPreferredWidth(500);
             } else if (i == 2) {
                 column.setPreferredWidth(300);
+            } else if (i == 3) {
+                column.setPreferredWidth(150);
+            } else if (i == 4) {
+                column.setPreferredWidth(200);
+            } else if (i == 5) {
+                column.setMinWidth(0);
+                column.setMaxWidth(0);
             }
         }
-        tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
-
     }
 
     /**
@@ -90,23 +53,15 @@ public final class DlgCariDokter extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        internalFrame1 = new widget.InternalFrame();
-        Scroll = new widget.ScrollPane();
+        internalFrame1 = new javax.swing.JPanel();
+        Scroll = new javax.swing.JScrollPane();
         tbKamar = new widget.Table();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         setResizable(false);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowActivated(java.awt.event.WindowEvent evt) {
-                formWindowActivated(evt);
-            }
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
-        });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Unit/Poliklinik ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -117,11 +72,6 @@ public final class DlgCariDokter extends javax.swing.JDialog {
         tbKamar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbKamarMouseClicked(evt);
-            }
-        });
-        tbKamar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                tbKamarKeyPressed(evt);
             }
         });
         Scroll.setViewportView(tbKamar);
@@ -141,123 +91,35 @@ public final class DlgCariDokter extends javax.swing.JDialog {
         }
 }//GEN-LAST:event_tbKamarMouseClicked
 
-    private void tbKamarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tbKamarKeyPressed
-
-    }//GEN-LAST:event_tbKamarKeyPressed
-
-    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
-        emptTeks();
-    }//GEN-LAST:event_formWindowActivated
-
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-
-    }//GEN-LAST:event_formWindowOpened
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(() -> {
-            DlgCariDokter dialog = new DlgCariDokter(new javax.swing.JFrame(), true);
-            dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                @Override
-                public void windowClosing(java.awt.event.WindowEvent e) {
-                    System.exit(0);
-                }
-            });
-            dialog.setVisible(true);
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private widget.ScrollPane Scroll;
-    private widget.InternalFrame internalFrame1;
+    private javax.swing.JScrollPane Scroll;
+    private javax.swing.JPanel internalFrame1;
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
     public void tampil(String harikerja, String kodepoli) {
         Valid.tabelKosong(tabMode);
-        try {
-            ps = koneksi.prepareStatement("SELECT\n"
-                + "	dokter.nm_dokter, \n"
-                + "	jadwal.kd_dokter, jadwal.jam_mulai,jadwal.jam_selesai\n"
-                + "FROM\n"
-                + "	dokter\n"
-                + "	INNER JOIN\n"
-                + "	jadwal\n"
-                + "	ON \n"
-                + "		dokter.kd_dokter = jadwal.kd_dokter\n"
-                + "		where jadwal.hari_kerja='" + harikerja + "' and jadwal.kd_poli='" + kodepoli + "'");
-            try {
-                rs = ps.executeQuery();
+        try (PreparedStatement ps = koneksi.prepareStatement(
+            "select jadwal.kd_dokter, dokter.nm_dokter, spesialis.nm_sps, concat(left(jadwal.jam_mulai, 5), '-', left(jadwal.jam_selesai, 5)), " +
+            "(select count(*) from reg_periksa where reg_periksa.kd_dokter = jadwal.kd_dokter and reg_periksa.kd_poli = jadwal.kd_poli and " +
+            "reg_periksa.tgl_registrasi = current_date() and reg_periksa.stts != 'Batal') as jumlahdaftar, maping_dokter_dpjpvclaim.kd_dokter_bpjs " +
+            "from jadwal join dokter on jadwal.kd_dokter = dokter.kd_dokter join spesialis on dokter.kd_sps = spesialis.kd_sps left join " +
+            "maping_dokter_dpjpvclaim on jadwal.kd_dokter = maping_dokter_dpjpvclaim.kd_dokter where jadwal.hari_kerja = ? and " +
+            "jadwal.kd_poli = ? order by jadwal.jam_mulai, dokter.nm_dokter"
+        )) {
+            ps.setString(1, harikerja);
+            ps.setString(2, kodepoli);
+            try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
-                    tabMode.addRow(new Object[] {rs.getString(2), rs.getString(1)});
-                }
-            } catch (Exception e) {
-                System.out.println("Notifikasi : " + e);
-            } finally {
-                if (rs != null) {
-                    rs.close();
-                }
-
-                if (ps != null) {
-                    ps.close();
+                    tabMode.addRow(new Object[] {rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getString(6)});
                 }
             }
         } catch (Exception e) {
-            System.out.println("Notifikasi : " + e);
+            System.out.println("Notif : " + e);
         }
-
-    }
-
-    public void tampilDokterTerapi(String kodedokterbpjs) {
-        Valid.tabelKosong(tabMode);
-        try {
-            ps = koneksi.prepareStatement("SELECT\n"
-                + "	maping_dokter_dpjpvclaim.kd_dokter, \n"
-                + "	dokter.nm_dokter\n"
-                + "FROM\n"
-                + "	maping_dokter_dpjpvclaim\n"
-                + "	INNER JOIN\n"
-                + "	dokter\n"
-                + "	ON \n"
-                + "	maping_dokter_dpjpvclaim.kd_dokter = dokter.kd_dokter "
-                + "where maping_dokter_dpjpvclaim.kd_dokter_bpjs='" + kodedokterbpjs + "'");
-            try {
-                rs = ps.executeQuery();
-                while (rs.next()) {
-                    tabMode.addRow(new Object[] {rs.getString(1), rs.getString(2)});
-                }
-            } catch (Exception e) {
-                System.out.println("Notifikasi : " + e);
-            } finally {
-                if (rs != null) {
-                    rs.close();
-                }
-
-                if (ps != null) {
-                    ps.close();
-                }
-            }
-        } catch (Exception e) {
-            System.out.println("Notifikasi : " + e);
-        }
-
-    }
-
-    public void emptTeks() {
-
     }
 
     public JTable getTable() {
         return tbKamar;
-    }
-
-    public void isCek() {
-
-    }
-
-    private void tampil2() {
-
     }
 }
