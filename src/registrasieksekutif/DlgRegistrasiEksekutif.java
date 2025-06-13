@@ -151,17 +151,16 @@ public class DlgRegistrasiEksekutif extends javax.swing.JDialog {
         getContentPane().setLayout(new java.awt.BorderLayout(1, 1));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 215, 255)), "PENDAFTARAN POLIKLINIK EKSEKUTIF", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Inter", 0, 24), new java.awt.Color(0, 131, 62))); // NOI18N
         jPanel1.setPreferredSize(new java.awt.Dimension(400, 70));
         jPanel1.setLayout(new java.awt.BorderLayout(0, 1));
 
-        jPanelTengah.setBackground(new java.awt.Color(238, 238, 255));
-        jPanelTengah.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 100, 0, 100));
+        jPanelTengah.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 200, 0, 200));
         jPanelTengah.setLayout(new java.awt.GridBagLayout());
 
-        jLabelRM.setForeground(new java.awt.Color(0, 131, 62));
-        jLabelRM.setText("No. Rekam Medis :");
         jLabelRM.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
+        jLabelRM.setForeground(new java.awt.Color(0, 131, 62));
+        jLabelRM.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabelRM.setText("No. Rekam Medis :");
         jLabelRM.setPreferredSize(new java.awt.Dimension(180, 40));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -183,9 +182,10 @@ public class DlgRegistrasiEksekutif extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(2, 4, 2, 0);
         jPanelTengah.add(labelNoRM, gridBagConstraints);
 
-        jLabelNamaPasien.setForeground(new java.awt.Color(0, 131, 62));
-        jLabelNamaPasien.setText("Nama Pasien :");
         jLabelNamaPasien.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
+        jLabelNamaPasien.setForeground(new java.awt.Color(0, 131, 62));
+        jLabelNamaPasien.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabelNamaPasien.setText("Nama Pasien :");
         jLabelNamaPasien.setPreferredSize(new java.awt.Dimension(180, 40));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -207,9 +207,10 @@ public class DlgRegistrasiEksekutif extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(2, 4, 2, 0);
         jPanelTengah.add(labelNamaPasien, gridBagConstraints);
 
-        jLabelTglLahir.setForeground(new java.awt.Color(0, 131, 62));
-        jLabelTglLahir.setText("Tgl. Lahir :");
         jLabelTglLahir.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
+        jLabelTglLahir.setForeground(new java.awt.Color(0, 131, 62));
+        jLabelTglLahir.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabelTglLahir.setText("Tgl. Lahir :");
         jLabelTglLahir.setPreferredSize(new java.awt.Dimension(180, 40));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -231,9 +232,10 @@ public class DlgRegistrasiEksekutif extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(2, 4, 2, 0);
         jPanelTengah.add(labelTglLahir, gridBagConstraints);
 
-        jLabelPoli.setForeground(new java.awt.Color(0, 131, 62));
-        jLabelPoli.setText("Poli Tujuan :");
         jLabelPoli.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
+        jLabelPoli.setForeground(new java.awt.Color(0, 131, 62));
+        jLabelPoli.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabelPoli.setText("Poli Tujuan :");
         jLabelPoli.setPreferredSize(new java.awt.Dimension(180, 40));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -273,9 +275,10 @@ public class DlgRegistrasiEksekutif extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(2, 4, 2, 0);
         jPanelTengah.add(btnCariPoli, gridBagConstraints);
 
-        jLabelDokter.setForeground(new java.awt.Color(0, 131, 62));
-        jLabelDokter.setText("Dokter Tujuan :");
         jLabelDokter.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
+        jLabelDokter.setForeground(new java.awt.Color(0, 131, 62));
+        jLabelDokter.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabelDokter.setText("Dokter Tujuan :");
         jLabelDokter.setPreferredSize(new java.awt.Dimension(180, 40));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -315,9 +318,10 @@ public class DlgRegistrasiEksekutif extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(2, 4, 2, 0);
         jPanelTengah.add(btnCariDokter, gridBagConstraints);
 
-        jLabelJenisBayar.setForeground(new java.awt.Color(0, 131, 62));
-        jLabelJenisBayar.setText("Jenis Bayar :");
         jLabelJenisBayar.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
+        jLabelJenisBayar.setForeground(new java.awt.Color(0, 131, 62));
+        jLabelJenisBayar.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabelJenisBayar.setText("Jenis Bayar :");
         jLabelJenisBayar.setPreferredSize(new java.awt.Dimension(180, 40));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -356,8 +360,6 @@ public class DlgRegistrasiEksekutif extends javax.swing.JDialog {
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.insets = new java.awt.Insets(2, 4, 2, 0);
         jPanelTengah.add(btnCariJenisBayar, gridBagConstraints);
-
-        jPanel2.setBackground(new java.awt.Color(238, 238, 255));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 7;
@@ -366,8 +368,6 @@ public class DlgRegistrasiEksekutif extends javax.swing.JDialog {
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 0.6;
         jPanelTengah.add(jPanel2, gridBagConstraints);
-
-        jPanel3.setBackground(new java.awt.Color(238, 238, 255));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -379,17 +379,15 @@ public class DlgRegistrasiEksekutif extends javax.swing.JDialog {
 
         jPanel1.add(jPanelTengah, java.awt.BorderLayout.CENTER);
 
-        jPanelBawah.setBackground(new java.awt.Color(238, 238, 255));
-        jPanelBawah.setPreferredSize(new java.awt.Dimension(615, 100));
+        jPanelBawah.setPreferredSize(new java.awt.Dimension(615, 70));
 
-        btnSimpan.setForeground(new java.awt.Color(0, 131, 62));
+        btnSimpan.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         btnSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/konfirmasi.png"))); // NOI18N
         btnSimpan.setMnemonic('S');
         btnSimpan.setText("Konfirmasi");
         btnSimpan.setToolTipText("Alt+S");
-        btnSimpan.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         btnSimpan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnSimpan.setPreferredSize(new java.awt.Dimension(300, 45));
+        btnSimpan.setPreferredSize(new java.awt.Dimension(300, 50));
         btnSimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSimpanActionPerformed(evt);
@@ -397,14 +395,13 @@ public class DlgRegistrasiEksekutif extends javax.swing.JDialog {
         });
         jPanelBawah.add(btnSimpan);
 
-        btnKeluar.setForeground(new java.awt.Color(0, 131, 62));
+        btnKeluar.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         btnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/reset.png"))); // NOI18N
         btnKeluar.setMnemonic('K');
         btnKeluar.setText("Batal");
         btnKeluar.setToolTipText("Alt+K");
-        btnKeluar.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         btnKeluar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnKeluar.setPreferredSize(new java.awt.Dimension(300, 45));
+        btnKeluar.setPreferredSize(new java.awt.Dimension(300, 50));
         btnKeluar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnKeluarActionPerformed(evt);

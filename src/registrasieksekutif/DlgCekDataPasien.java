@@ -1,26 +1,24 @@
-package registrasibpjs;
+package registrasieksekutif;
 
+import registrasibpjs.*;
 import fungsi.koneksiDB;
 import fungsi.sekuel;
 import java.awt.Cursor;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
-public class DlgCekDataPesertaBPJS extends javax.swing.JDialog {
+public class DlgCekDataPasien extends javax.swing.JDialog {
 
-    public static final int KUNJUNGAN_PERTAMA = 1;
-    public static final int KONTROL = 2;
-    public static final int KONTROL_BEDA_POLI = 3;
+    public static final int WALKIN = 1;
+    public static final int BOOKING = 2;
 
     private final Connection koneksi = koneksiDB.condb();
     private final sekuel Sequel = new sekuel();
     private final DlgRegistrasiSEP form = new DlgRegistrasiSEP(null, false);
     private int jenisPencarian = -1;
 
-    public DlgCekDataPesertaBPJS(java.awt.Frame parent, boolean id) {
+    public DlgCekDataPasien(java.awt.Frame parent, boolean id) {
         super(parent, id);
         initComponents();
     }
@@ -61,6 +59,7 @@ public class DlgCekDataPesertaBPJS extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
+        jPanel2.setBackground(new java.awt.Color(238, 238, 255));
         jPanel2.setForeground(new java.awt.Color(238, 238, 255));
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
@@ -74,6 +73,9 @@ public class DlgCekDataPesertaBPJS extends javax.swing.JDialog {
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
+        jPanel1.setBackground(new java.awt.Color(238, 238, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jPanel1.setForeground(new java.awt.Color(0, 131, 62));
         jPanel1.setPreferredSize(new java.awt.Dimension(400, 70));
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
@@ -89,9 +91,9 @@ public class DlgCekDataPesertaBPJS extends javax.swing.JDialog {
         gridBagConstraints.ipady = 20;
         jPanel1.add(labelKeterangan, gridBagConstraints);
 
-        textCekNoKartu.setFont(new java.awt.Font("Inter", 0, 36)); // NOI18N
-        textCekNoKartu.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         textCekNoKartu.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 131, 62), 2, true));
+        textCekNoKartu.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        textCekNoKartu.setFont(new java.awt.Font("Inter", 0, 36)); // NOI18N
         textCekNoKartu.setPreferredSize(new java.awt.Dimension(800, 75));
         textCekNoKartu.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -142,6 +144,7 @@ public class DlgCekDataPesertaBPJS extends javax.swing.JDialog {
         gridBagConstraints.weightx = 0.5;
         jPanel1.add(btnTutup, gridBagConstraints);
 
+        jPanel3.setBackground(new java.awt.Color(238, 238, 255));
         jPanel3.setPreferredSize(new java.awt.Dimension(294, 402));
         jPanel3.setLayout(new java.awt.GridBagLayout());
 
@@ -560,14 +563,11 @@ public class DlgCekDataPesertaBPJS extends javax.swing.JDialog {
             bukaPendaftaranMobileJKN(norm);
         } else {
             switch (this.jenisPencarian) {
-                case KUNJUNGAN_PERTAMA:
+                case WALKIN:
                     bukaPendaftaranOnsiteKunjunganPertama(norm);
                     break;
-                case KONTROL:
+                case BOOKING:
                     bukaPendaftaranOnsiteKontrol(norm);
-                    break;
-                case KONTROL_BEDA_POLI:
-                    bukaPendaftaranOnsiteKontrolBedaPoli(norm);
                     break;
             }
         }
@@ -597,10 +597,10 @@ public class DlgCekDataPesertaBPJS extends javax.swing.JDialog {
     }
 
     private static class SingletonHelper {
-        private static final DlgCekDataPesertaBPJS INSTANCE = new DlgCekDataPesertaBPJS(null, true);
+        private static final DlgCekDataPasien INSTANCE = new DlgCekDataPasien(null, true);
     }
 
-    public static DlgCekDataPesertaBPJS instance() {
+    public static DlgCekDataPasien instance() {
         return SingletonHelper.INSTANCE;
     }
 }

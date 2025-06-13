@@ -72,9 +72,6 @@ public class DlgCekSEPKunjunganPertama extends javax.swing.JDialog {
         setResizable(false);
         getContentPane().setLayout(new java.awt.BorderLayout(1, 1));
 
-        jPanel2.setBackground(new java.awt.Color(238, 238, 255));
-        jPanel2.setForeground(new java.awt.Color(238, 238, 255));
-
         PanelWall.setBackground(new java.awt.Color(238, 238, 255));
         PanelWall.setBackgroundImage(new javax.swing.ImageIcon(getClass().getResource("/picture/bpjs-amiz.png"))); // NOI18N
         PanelWall.setBackgroundImageType(usu.widget.constan.BackgroundConstan.BACKGROUND_IMAGE_STRECT);
@@ -98,8 +95,6 @@ public class DlgCekSEPKunjunganPertama extends javax.swing.JDialog {
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
-        jPanel1.setBackground(new java.awt.Color(238, 238, 255));
-        jPanel1.setForeground(new java.awt.Color(0, 131, 62));
         jPanel1.setPreferredSize(new java.awt.Dimension(400, 70));
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
@@ -114,9 +109,9 @@ public class DlgCekSEPKunjunganPertama extends javax.swing.JDialog {
         gridBagConstraints.ipady = 20;
         jPanel1.add(labelKeterangan, gridBagConstraints);
 
-        textCekNoKartu.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 131, 62), 2, true));
-        textCekNoKartu.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         textCekNoKartu.setFont(new java.awt.Font("Inter", 0, 36)); // NOI18N
+        textCekNoKartu.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        textCekNoKartu.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 131, 62), 2, true));
         textCekNoKartu.setPreferredSize(new java.awt.Dimension(800, 75));
         textCekNoKartu.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -135,11 +130,8 @@ public class DlgCekSEPKunjunganPertama extends javax.swing.JDialog {
         btnKonfirm.setToolTipText("Alt+U");
         btnKonfirm.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
         btnKonfirm.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnKonfirm.setHorizontalTextPosition(javax.swing.SwingConstants.TRAILING);
-        btnKonfirm.setIconTextGap(4);
         btnKonfirm.setMargin(new java.awt.Insets(0, 0, 0, 0));
         btnKonfirm.setPreferredSize(new java.awt.Dimension(150, 75));
-        btnKonfirm.setVerticalTextPosition(javax.swing.SwingConstants.CENTER);
         btnKonfirm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnKonfirmActionPerformed(evt);
@@ -157,11 +149,8 @@ public class DlgCekSEPKunjunganPertama extends javax.swing.JDialog {
         btnTutup.setToolTipText("Alt+U");
         btnTutup.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
         btnTutup.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        btnTutup.setHorizontalTextPosition(javax.swing.SwingConstants.TRAILING);
-        btnTutup.setIconTextGap(4);
         btnTutup.setMargin(new java.awt.Insets(0, 0, 0, 0));
         btnTutup.setPreferredSize(new java.awt.Dimension(150, 75));
-        btnTutup.setVerticalTextPosition(javax.swing.SwingConstants.CENTER);
         btnTutup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTutupActionPerformed(evt);
@@ -173,7 +162,6 @@ public class DlgCekSEPKunjunganPertama extends javax.swing.JDialog {
         gridBagConstraints.weightx = 0.5;
         jPanel1.add(btnTutup, gridBagConstraints);
 
-        jPanel3.setBackground(new java.awt.Color(238, 238, 255));
         jPanel3.setPreferredSize(new java.awt.Dimension(294, 402));
         jPanel3.setLayout(new java.awt.GridBagLayout());
 
@@ -330,7 +318,6 @@ public class DlgCekSEPKunjunganPertama extends javax.swing.JDialog {
         gridBagConstraints.weighty = 1.0;
         jPanel3.add(btnAngka3, gridBagConstraints);
 
-        btnClear.setBackground(new java.awt.Color(255, 32, 26));
         btnClear.setFont(new java.awt.Font("Inter Display Semibold", 0, 40)); // NOI18N
         btnClear.setText("C");
         btnClear.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -373,7 +360,6 @@ public class DlgCekSEPKunjunganPertama extends javax.swing.JDialog {
         btnAngkaHps.setMargin(new java.awt.Insets(0, 0, 0, 0));
         btnAngkaHps.setMaximumSize(new java.awt.Dimension(75, 75));
         btnAngkaHps.setMinimumSize(new java.awt.Dimension(75, 75));
-        btnAngkaHps.setPreferredSize(new java.awt.Dimension(55, 55));
         btnAngkaHps.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAngkaHpsActionPerformed(evt);
