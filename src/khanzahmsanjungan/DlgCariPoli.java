@@ -101,8 +101,6 @@ public final class DlgCariPoli extends javax.swing.JDialog {
         internalFrame1 = new javax.swing.JPanel();
         Scroll = new javax.swing.JScrollPane();
         tbKamar = new widget.Table();
-        jPanel1 = new javax.swing.JPanel();
-        button1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -116,7 +114,6 @@ public final class DlgCariPoli extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Unit/Poliklinik ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -137,26 +134,6 @@ public final class DlgCariPoli extends javax.swing.JDialog {
         Scroll.setViewportView(tbKamar);
 
         internalFrame1.add(Scroll, java.awt.BorderLayout.CENTER);
-
-        jPanel1.setBackground(new java.awt.Color(238, 238, 255));
-        jPanel1.setForeground(new java.awt.Color(0, 131, 62));
-        jPanel1.setName("jPanel1"); // NOI18N
-        jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING));
-
-        button1.setBackground(new java.awt.Color(238, 238, 255));
-        button1.setForeground(new java.awt.Color(0, 131, 62));
-        button1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/exit.png"))); // NOI18N
-        button1.setText("KELUAR");
-        button1.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
-        button1.setName("button1"); // NOI18N
-        button1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(button1);
-
-        internalFrame1.add(jPanel1, java.awt.BorderLayout.PAGE_END);
 
         getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);
 
@@ -183,10 +160,6 @@ public final class DlgCariPoli extends javax.swing.JDialog {
 
     }//GEN-LAST:event_formWindowOpened
 
-    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
-        dispose();
-    }//GEN-LAST:event_button1ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -205,9 +178,7 @@ public final class DlgCariPoli extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane Scroll;
-    private javax.swing.JButton button1;
     private javax.swing.JPanel internalFrame1;
-    private javax.swing.JPanel jPanel1;
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 

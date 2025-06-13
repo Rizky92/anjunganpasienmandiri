@@ -110,7 +110,6 @@ public class DlgAmbilAntrean extends javax.swing.JDialog {
         jPanel1.setPreferredSize(new java.awt.Dimension(400, 70));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
-        jPanel2.setBackground(new java.awt.Color(238, 238, 255));
         jPanel2.setForeground(new java.awt.Color(238, 238, 255));
         jPanel2.setPreferredSize(new java.awt.Dimension(60, 60));
 
@@ -124,7 +123,6 @@ public class DlgAmbilAntrean extends javax.swing.JDialog {
 
         jPanel1.add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
-        jPanel3.setBackground(new java.awt.Color(238, 238, 255));
         jPanel3.setForeground(new java.awt.Color(238, 238, 255));
         jPanel3.setLayout(new java.awt.GridLayout(0, 2));
 
@@ -184,10 +182,8 @@ public class DlgAmbilAntrean extends javax.swing.JDialog {
 
         jPanel1.add(jPanel3, java.awt.BorderLayout.CENTER);
 
-        jPanel4.setBackground(new java.awt.Color(238, 238, 255));
         jPanel4.setForeground(new java.awt.Color(238, 238, 255));
 
-        BtnKeluar.setBackground(new java.awt.Color(255, 255, 255));
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/exit.png"))); // NOI18N
         BtnKeluar.setMnemonic('U');
         BtnKeluar.setText("KELUAR");

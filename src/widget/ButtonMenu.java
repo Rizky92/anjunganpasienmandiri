@@ -1,6 +1,7 @@
 package widget;
 
 import java.awt.Dimension;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 
@@ -11,5 +12,6 @@ public class ButtonMenu extends JButton {
         setVerticalTextPosition(SwingConstants.BOTTOM);
         setIconTextGap(16);
         setPreferredSize(new Dimension(200, 90));
+        setBorder(BorderFactory.createEmptyBorder());
     }
 }

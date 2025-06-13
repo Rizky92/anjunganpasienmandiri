@@ -11,8 +11,7 @@
  */
 package registrasibpjs;
 
-import bridging.*;
-
+import bridging.ApiBPJS;
 import java.awt.Dimension;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -22,37 +21,26 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.validasi;
 import fungsi.koneksiDB;
 import java.awt.Cursor;
-import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 
-/**
- *
- * @author dosen
- */
 public final class DlgPilihRujukan extends javax.swing.JDialog {
 
     private final DefaultTableModel tabMode;
-    private validasi Valid = new validasi();
+    private final ApiBPJS api = new ApiBPJS();
+    private final validasi Valid = new validasi();
+    private final ObjectMapper mapper = new ObjectMapper();
     private int i = 0;
-    private ApiBPJS api = new ApiBPJS();
     private String URL = "", link = "", utc = "";
     private HttpHeaders headers;
     private HttpEntity requestEntity;
-    private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode nameNode;
     private JsonNode response;
 
-    /**
-     * Creates new form DlgKamar
-     *
-     * @param parent
-     * @param modal
-     */
     public DlgPilihRujukan(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -104,15 +92,9 @@ public final class DlgPilihRujukan extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        internalFrame1 = new javax.swing.JPanel();
+        panelUtama = new javax.swing.JPanel();
         Scroll = new javax.swing.JScrollPane();
         tbKamar = new widget.Table();
-        panelGlass6 = new javax.swing.JPanel();
-        jLabel16 = new javax.swing.JLabel();
-        NoKartu = new javax.swing.JTextField();
-        NamaPasien = new javax.swing.JTextField();
-        jLabel17 = new javax.swing.JLabel();
-        BtnKeluar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(null);
@@ -120,8 +102,8 @@ public final class DlgPilihRujukan extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        internalFrame1.setName("internalFrame1"); // NOI18N
-        internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
+        panelUtama.setName("panelUtama"); // NOI18N
+        panelUtama.setLayout(new java.awt.BorderLayout(1, 1));
 
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
@@ -135,109 +117,28 @@ public final class DlgPilihRujukan extends javax.swing.JDialog {
         });
         Scroll.setViewportView(tbKamar);
 
-        internalFrame1.add(Scroll, java.awt.BorderLayout.CENTER);
+        panelUtama.add(Scroll, java.awt.BorderLayout.CENTER);
 
-        panelGlass6.setName("panelGlass6"); // NOI18N
-        panelGlass6.setPreferredSize(new java.awt.Dimension(44, 54));
-        panelGlass6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
-
-        jLabel16.setText("No.Kartu :");
-        jLabel16.setName("jLabel16"); // NOI18N
-        jLabel16.setPreferredSize(new java.awt.Dimension(55, 23));
-        panelGlass6.add(jLabel16);
-
-        NoKartu.setEditable(false);
-        NoKartu.setName("NoKartu"); // NOI18N
-        NoKartu.setPreferredSize(new java.awt.Dimension(130, 23));
-        panelGlass6.add(NoKartu);
-
-        NamaPasien.setEditable(false);
-        NamaPasien.setName("NamaPasien"); // NOI18N
-        NamaPasien.setPreferredSize(new java.awt.Dimension(350, 23));
-        panelGlass6.add(NamaPasien);
-
-        jLabel17.setName("jLabel17"); // NOI18N
-        jLabel17.setPreferredSize(new java.awt.Dimension(30, 23));
-        panelGlass6.add(jLabel17);
-
-        BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
-        BtnKeluar.setMnemonic('K');
-        BtnKeluar.setText("Keluar");
-        BtnKeluar.setToolTipText("Alt+K");
-        BtnKeluar.setName("BtnKeluar"); // NOI18N
-        BtnKeluar.setPreferredSize(new java.awt.Dimension(100, 30));
-        BtnKeluar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnKeluarActionPerformed(evt);
-            }
-        });
-        BtnKeluar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnKeluarKeyPressed(evt);
-            }
-        });
-        panelGlass6.add(BtnKeluar);
-
-        internalFrame1.add(panelGlass6, java.awt.BorderLayout.PAGE_END);
-
-        getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);
+        getContentPane().add(panelUtama, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
-        dispose();
-    }//GEN-LAST:event_BtnKeluarActionPerformed
-
-    private void BtnKeluarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnKeluarKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
-            dispose();
-        }
-    }//GEN-LAST:event_BtnKeluarKeyPressed
 
     private void tbKamarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbKamarMouseClicked
         if (evt.getClickCount() == 1) {
             dispose();
         }
-
-        if (evt.getClickCount() == 2) {
-            dispose();
-        }
     }//GEN-LAST:event_tbKamarMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(() -> {
-            DlgPilihRujukan dialog = new DlgPilihRujukan(new javax.swing.JFrame(), true);
-            dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                @Override
-                public void windowClosing(java.awt.event.WindowEvent e) {
-                    System.exit(0);
-                }
-            });
-            dialog.setVisible(true);
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnKeluar;
-    private javax.swing.JTextField NamaPasien;
-    private javax.swing.JTextField NoKartu;
     private javax.swing.JScrollPane Scroll;
-    private javax.swing.JPanel internalFrame1;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JPanel panelGlass6;
+    private javax.swing.JPanel panelUtama;
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 
     public void tampil(String nomorkartu, String namapasien) {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try {
-            NoKartu.setText(nomorkartu);
-            NamaPasien.setText(namapasien);
             Valid.tabelKosong(tabMode);
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);

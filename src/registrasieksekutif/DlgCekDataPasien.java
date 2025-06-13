@@ -32,7 +32,6 @@ public class DlgCekDataPasien extends javax.swing.JDialog {
         java.awt.GridBagConstraints gridBagConstraints;
 
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         labelKeterangan = new javax.swing.JLabel();
         textCekNoKartu = new javax.swing.JTextField();
@@ -59,31 +58,20 @@ public class DlgCekDataPasien extends javax.swing.JDialog {
         setUndecorated(true);
         setResizable(false);
 
-        jPanel2.setBackground(new java.awt.Color(238, 238, 255));
         jPanel2.setForeground(new java.awt.Color(238, 238, 255));
+        jPanel2.setPreferredSize(new java.awt.Dimension(500, 150));
         jPanel2.setLayout(new java.awt.GridBagLayout());
-
-        jLabel1.setBackground(new java.awt.Color(238, 238, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/bpjs_kesehatan.png"))); // NOI18N
-        jLabel1.setFocusable(false);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.ipady = 40;
-        jPanel2.add(jLabel1, gridBagConstraints);
-
         getContentPane().add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
-        jPanel1.setBackground(new java.awt.Color(238, 238, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         jPanel1.setForeground(new java.awt.Color(0, 131, 62));
         jPanel1.setPreferredSize(new java.awt.Dimension(400, 70));
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
-        labelKeterangan.setForeground(new java.awt.Color(0, 131, 62));
-        labelKeterangan.setText("No. RM / KTP / Peserta BPJS : ");
-        labelKeterangan.setFocusable(false);
         labelKeterangan.setFont(new java.awt.Font("Inter", 0, 36)); // NOI18N
-        labelKeterangan.setPreferredSize(null);
+        labelKeterangan.setForeground(new java.awt.Color(0, 131, 62));
+        labelKeterangan.setText("No. RM / KTP :");
+        labelKeterangan.setFocusable(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -144,7 +132,6 @@ public class DlgCekDataPasien extends javax.swing.JDialog {
         gridBagConstraints.weightx = 0.5;
         jPanel1.add(btnTutup, gridBagConstraints);
 
-        jPanel3.setBackground(new java.awt.Color(238, 238, 255));
         jPanel3.setPreferredSize(new java.awt.Dimension(294, 402));
         jPanel3.setLayout(new java.awt.GridBagLayout());
 
@@ -533,7 +520,6 @@ public class DlgCekDataPasien extends javax.swing.JDialog {
     private widget.Button btnTutup;
     private javax.swing.JLabel empty1;
     private javax.swing.JLabel empty2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -552,7 +538,7 @@ public class DlgCekDataPasien extends javax.swing.JDialog {
         }
 
         String nokartu = textCekNoKartu.getText().trim();
-        String norm = Sequel.cariIsiSmc("select pasien.no_rkm_medis from pasien where (pasien.no_rkm_medis = ? or pasien.no_ktp = ? or pasien.no_peserta = ?", nokartu, nokartu, nokartu);
+        String norm = Sequel.cariIsiSmc("select pasien.no_rkm_medis from pasien where (pasien.no_rkm_medis = ? or pasien.no_ktp = ?", nokartu, nokartu);
         if (norm.isBlank()) {
             textCekNoKartu.setText("");
             JOptionPane.showMessageDialog(null, "Data pasien tidak ditemukan..!!");
@@ -560,14 +546,14 @@ public class DlgCekDataPasien extends javax.swing.JDialog {
         }
 
         if (Sequel.cariExistsSmc("select * from referensi_mobilejkn_bpjs where referensi_mobilejkn_bpjs.tanggalperiksa = current_date() and referensi_mobilejkn_bpjs.norm = ? and referensi_mobilejkn_bpjs.status in ('Belum', 'Checkin')", norm)) {
-            bukaPendaftaranMobileJKN(norm);
+            JOptionPane.showMessageDialog(null, "Anda sudah melakukan booking melalui aplikasi MobileJKN. Silahkan gunakan menu \"Check in MobileJKN\"..!! ");
         } else {
             switch (this.jenisPencarian) {
                 case WALKIN:
-                    bukaPendaftaranOnsiteKunjunganPertama(norm);
+                    pendaftaranWalkin(norm);
                     break;
                 case BOOKING:
-                    bukaPendaftaranOnsiteKontrol(norm);
+                    cekBooking(norm);
                     break;
             }
         }
@@ -576,19 +562,16 @@ public class DlgCekDataPasien extends javax.swing.JDialog {
         this.jenisPencarian = -1;
     }
 
-    private void bukaPendaftaranMobileJKN(String norm) {
-        DlgRegistrasiSEPMobileJKN form = new DlgRegistrasiSEPMobileJKN(null, false);
-        form.tampil(norm);
+    private void pendaftaranWalkin(String norm) {
+        DlgRegistrasiWalkIn form = new DlgRegistrasiWalkIn(null, true);
+        form.setPasien(norm);
         form.setSize(this.getWidth(), this.getHeight());
         form.setLocationRelativeTo(jPanel1);
+        this.dispose();
         form.setVisible(true);
     }
 
-    private void bukaPendaftaranOnsiteKunjunganPertama(String norm) {
-
-    }
-
-    private void bukaPendaftaranOnsiteKontrol(String norm) {
+    private void cekBooking(String norm) {
 
     }
 
