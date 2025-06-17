@@ -214,15 +214,15 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        LblKdPoli = new component.Label();
-        LblKdDokter = new component.Label();
-        NoReg = new component.TextBox();
-        NoRawat = new component.TextBox();
-        Biaya = new component.TextBox();
-        TAlmt = new component.Label();
-        TPngJwb = new component.Label();
-        THbngn = new component.Label();
-        NoTelpPasien = new component.Label();
+        LblKdPoli = new widget.Label();
+        LblKdDokter = new widget.Label();
+        NoReg = new widget.TextBox();
+        NoRawat = new widget.TextBox();
+        Biaya = new widget.TextBox();
+        TAlmt = new widget.Label();
+        TPngJwb = new widget.Label();
+        THbngn = new widget.Label();
+        NoTelpPasien = new widget.Label();
         kdpoli = new widget.TextBox();
         TBiaya = new widget.TextBox();
         Kdpnj = new widget.TextBox();
@@ -246,8 +246,8 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         btnDokterTerapi = new widget.Button();
         NmDokterTerapi = new widget.TextBox();
         KodeDokterTerapi = new widget.TextBox();
-        jPanel1 = new component.Panel();
-        panelAtas = new component.Panel();
+        jPanel1 = new javax.swing.JPanel();
+        panelAtas = new javax.swing.JPanel();
         panelUtama = new javax.swing.JPanel();
         TPasien = new widget.TextBox();
         TNoRM = new widget.TextBox();
@@ -346,8 +346,8 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         lblNoRawat = new widget.Label();
         ChkInput = new widget.CekBox();
         panelBawah = new javax.swing.JPanel();
-        btnSimpan = new component.Button();
-        btnKeluar = new component.Button();
+        btnSimpan = new widget.Button();
+        btnKeluar = new widget.Button();
 
         LblKdPoli.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         LblKdPoli.setText("Norm");
@@ -1710,7 +1710,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.ComboBox AsalRujukan;
     private widget.ComboBox AsesmenPoli;
-    private component.TextBox Biaya;
+    private widget.TextBox Biaya;
     private widget.TextBox Catatan;
     private widget.CekBox ChkInput;
     private widget.ComboBox FlagProsedur;
@@ -1741,8 +1741,8 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
     private widget.Label LabelPoli5;
     private widget.Label LabelPoli7;
     private widget.ComboBox LakaLantas;
-    private component.Label LblKdDokter;
-    private component.Label LblKdPoli;
+    private widget.Label LblKdDokter;
+    private widget.Label LblKdPoli;
     private widget.TextBox NIK;
     private widget.TextBox NmDPJP;
     private widget.TextBox NmDPJPLayanan;
@@ -1756,24 +1756,24 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
     private widget.TextBox NmPpkRujukan;
     private widget.TextBox NmPropinsi;
     private widget.TextBox NoKartu;
-    private component.TextBox NoRawat;
-    private component.TextBox NoReg;
+    private widget.TextBox NoRawat;
+    private widget.TextBox NoReg;
     private widget.TextBox NoRujukMasuk;
     private widget.TextBox NoRujukan;
     private widget.TextBox NoSEPSuplesi;
     private widget.TextBox NoSKDP;
     private widget.TextBox NoTelp;
-    private component.Label NoTelpPasien;
+    private widget.Label NoTelpPasien;
     private widget.ComboBox Penunjang;
     private widget.TextBox Status;
     private widget.ComboBox Suplesi;
-    private component.Label TAlmt;
+    private widget.Label TAlmt;
     private widget.TextBox TBiaya;
-    private component.Label THbngn;
+    private widget.Label THbngn;
     private widget.TextBox TNoRM;
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
-    private component.Label TPngJwb;
+    private widget.Label TPngJwb;
     private widget.Tanggal Tanggal;
     private widget.Tanggal TanggalKKL;
     private widget.Tanggal TanggalRujuk;
@@ -1791,11 +1791,11 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
     private widget.Button btnDokterTerapi;
     private widget.Button btnFingerprint;
     private widget.Button btnFrista;
-    private component.Button btnKeluar;
+    private widget.Button btnKeluar;
     private widget.Button btnPengajuanFP;
     private widget.Button btnPoliTerapi;
     private widget.Button btnRiwayatPelayanan;
-    private component.Button btnSimpan;
+    private widget.Button btnSimpan;
     private javax.swing.JPanel form;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel10;
@@ -1827,7 +1827,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
     private widget.Label jLabel7;
     private widget.Label jLabel8;
     private widget.Label jLabel9;
-    private component.Panel jPanel1;
+    private javax.swing.JPanel jPanel1;
     private widget.TextBox kdpoli;
     private widget.Label label1;
     private widget.Label label2;
@@ -1835,7 +1835,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
     private widget.Label lblNoRawat;
     private widget.Label lblTerapi;
     private widget.TextBox nmpnj;
-    private component.Panel panelAtas;
+    private javax.swing.JPanel panelAtas;
     private javax.swing.JPanel panelBawah;
     private widget.PanelNumpad panelNumpad1;
     private javax.swing.JPanel panelTambahan;

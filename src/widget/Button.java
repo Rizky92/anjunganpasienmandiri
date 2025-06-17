@@ -1,5 +1,6 @@
 package widget;
 
+import com.formdev.flatlaf.extras.components.FlatButton;
 import java.awt.Color;
 import java.awt.Insets;
 
@@ -7,7 +8,7 @@ import java.awt.Insets;
  *
  * @author usu
  */
-public class Button extends usu.widget.ButtonGlass {
+public class Button extends FlatButton {
 
     /*
      * Serial version UID
@@ -16,11 +17,8 @@ public class Button extends usu.widget.ButtonGlass {
 
     public Button() {
         super();
-        setFont(new java.awt.Font("Tahoma", 1, 11));
-        setForeground(new Color(50, 50, 50));
-        setGlassColor(new Color(0, 137, 62));
-        setMargin(new Insets(2, 7, 2, 7));
-        setIconTextGap(1);
-        setRoundRect(false);
+        setFont(new java.awt.Font("Inter", 1, 12));
+        setBackground(new Color(255, 238, 238));
+        setForeground(new Color(0, 131, 62));
     }
 }

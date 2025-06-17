@@ -71,9 +71,9 @@ public class DlgAmbilAntrean extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new component.Panel();
+        jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        lblNamaAntrian = new component.Label();
+        lblNamaAntrian = new widget.Label();
         jPanel3 = new javax.swing.JPanel();
         HurufA = new widget.ButtonBig();
         HurufB = new widget.ButtonBig();
@@ -272,11 +272,11 @@ public class DlgAmbilAntrean extends javax.swing.JDialog {
     private widget.ButtonBig HurufD;
     private widget.ButtonBig HurufE;
     private widget.ButtonBig HurufF;
-    private component.Panel jPanel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private component.Label lblNamaAntrian;
+    private widget.Label lblNamaAntrian;
     // End of variables declaration//GEN-END:variables
 
     private void cetakAntrianHuruf(String prefix) {

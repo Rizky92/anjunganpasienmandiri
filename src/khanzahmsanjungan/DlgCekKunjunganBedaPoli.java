@@ -60,9 +60,9 @@ public class DlgCekKunjunganBedaPoli extends javax.swing.JDialog {
 
         jPanel2 = new javax.swing.JPanel();
         PanelWall = new usu.widget.glass.PanelGlass();
-        jPanel1 = new component.Panel();
-        NoRMPasien = new component.TextBox();
-        jLabel28 = new component.Label();
+        jPanel1 = new javax.swing.JPanel();
+        NoRMPasien = new widget.TextBox();
+        jLabel28 = new widget.Label();
         BtnClose = new widget.ButtonBig();
         BtnClose2 = new widget.ButtonBig();
         panelNumpad1 = new widget.PanelNumpad();
@@ -324,16 +324,16 @@ public class DlgCekKunjunganBedaPoli extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.ButtonBig BtnClose;
     private widget.ButtonBig BtnClose2;
-    private component.TextBox NoRMPasien;
+    private widget.TextBox NoRMPasien;
     private usu.widget.glass.PanelGlass PanelWall;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private component.Label jLabel28;
+    private widget.Label jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private component.Panel jPanel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private widget.PanelNumpad panelNumpad1;
     // End of variables declaration//GEN-END:variables
