@@ -5,13 +5,13 @@
  */
 package khanzahmsanjungan;
 
-import com.formdev.flatlaf.themes.FlatMacLightLaf;
+import com.formdev.flatlaf.FlatLightLaf;
 import fungsi.koneksiDB;
 import java.awt.Color;
 import javax.print.PrintService;
 import javax.print.PrintServiceLookup;
+import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
-import usu.widget.util.WidgetUtilities;
 
 /**
  *
@@ -23,36 +23,12 @@ public class KhanzaHMSAnjungan {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-
-        WidgetUtilities.invokeLater(() -> {
-            HalamanUtamaDepan utama = HalamanUtamaDepan.getInstance();
-            utama.setVisible(true);
-            
-            String printerBarcode = null, printerRegistrasi = null;
-            
-            for (PrintService ps: PrintServiceLookup.lookupPrintServices(null, null)) {
-                System.out.println("Printer ditemukan: " + ps.getName());
-                
-                if (ps.getName().equals(koneksiDB.PRINTER_BARCODE())) {
-                    printerBarcode = ps.getName();
-                }
-                
-                if (ps.getName().equals(koneksiDB.PRINTER_REGISTRASI())) {
-                    printerRegistrasi = ps.getName();
-                }
-            }
-            
-            if (printerBarcode != null) {
-                System.out.println("Setting PRINTER_BARCODE menggunakan printer: " + printerBarcode);
-            }
-            
-            if (printerRegistrasi != null) {
-                System.out.println("Setting PRINTER_REGISTRASI menggunakan printer: " + printerRegistrasi);
-            }
-        });
         try {
-            UIManager.setLookAndFeel(new FlatMacLightLaf());
+            UIManager.setLookAndFeel(new FlatLightLaf());
             System.setProperty("flatlaf.animation", "true");
+            UIManager.put("Table.background", new Color(255, 255, 255));
+            UIManager.put("Table.foreground", new Color(0, 131, 62));
+            UIManager.put("Table.alternateRowColor", new Color(238, 238, 255));
             UIManager.put("TabbedPane.showTabSeparators", true);
             UIManager.put("TabbedPane.tabSeparatorsFullHeight", true);
             UIManager.put("ScrollBar.showButtons", true);
@@ -81,5 +57,39 @@ public class KhanzaHMSAnjungan {
         } catch (Exception ex) {
             System.err.println("Failed to initialize LaF");
         }
+        SwingUtilities.invokeLater(() -> {
+            HalamanUtamaDepan utama = HalamanUtamaDepan.getInstance();
+            utama.setVisible(true);
+            
+            String printerBarcode = null, printerRegistrasi = null, printerAntrian = null;
+            
+            for (PrintService ps: PrintServiceLookup.lookupPrintServices(null, null)) {
+                System.out.println("Printer ditemukan: " + ps.getName());
+                
+                if (ps.getName().equals(koneksiDB.PRINTER_BARCODE())) {
+                    printerBarcode = ps.getName();
+                }
+                
+                if (ps.getName().equals(koneksiDB.PRINTER_REGISTRASI())) {
+                    printerRegistrasi = ps.getName();
+                }
+                
+                if (ps.getName().equals(koneksiDB.PRINTER_ANTRIAN())) {
+                    printerRegistrasi = ps.getName();
+                }
+            }
+            
+            if (printerBarcode != null) {
+                System.out.println("Setting PRINTER_BARCODE menggunakan printer: " + printerBarcode);
+            }
+            
+            if (printerRegistrasi != null) {
+                System.out.println("Setting PRINTER_REGISTRASI menggunakan printer: " + printerRegistrasi);
+            }
+            
+            if (printerRegistrasi != null) {
+                System.out.println("Setting PRINTER_ANTRIAN menggunakan printer: " + printerAntrian);
+            }
+        });
     }
 }

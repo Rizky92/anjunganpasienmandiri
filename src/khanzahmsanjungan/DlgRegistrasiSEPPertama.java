@@ -72,7 +72,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
     private BPJSCekReferensiPenyakit penyakit = new BPJSCekReferensiPenyakit(null, true);
     private DlgCariPoliBPJS poli = new DlgCariPoliBPJS(null, true);
     private DlgCariPoli polimapping = new DlgCariPoli(null, true);
-    private DlgCariDokter2 doktermapping = new DlgCariDokter2(null, true);
+    private DlgCariDokter doktermapping = new DlgCariDokter(null, true);
     private SimpleDateFormat dateformat = new SimpleDateFormat("yyyy/MM/dd");
     private BPJSCekRiwayatRujukanTerakhir rujukanterakhir = new BPJSCekRiwayatRujukanTerakhir(null, true);
     private BPJSCekRiwayatPelayanan historiPelayanan = new BPJSCekRiwayatPelayanan(null, true);
@@ -308,6 +308,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         NmPPK.setText(Sequel.cariIsi("select setting.nama_instansi from setting"));
         JumlahBarcode.setText("3");
         isForm();
+        panelNumpad1.setVisible(false);
     }
 
     /**
@@ -402,6 +403,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         btnRiwayatPelayananBPJS = new widget.Button();
         btnFingerprint = new widget.Button();
         btnFrista = new widget.Button();
+        panelNumpad1 = new widget.PanelNumpad();
         panelTambahan = new javax.swing.JPanel();
         ChkInput = new widget.CekBox();
         form = new javax.swing.JPanel();
@@ -942,6 +944,19 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         AsalRujukan.setBounds(730, 130, 170, 30);
 
         NoTelp.setHighlighter(null);
+        NoTelp.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                NoTelpFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                NoTelpFocusLost(evt);
+            }
+        });
+        NoTelp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                NoTelpMouseClicked(evt);
+            }
+        });
         NoTelp.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 NoTelpKeyPressed(evt);
@@ -1164,6 +1179,11 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         panelUtama.add(btnFrista);
         btnFrista.setBounds(1080, 10, 100, 80);
 
+        panelNumpad1.setFontSize(30);
+        panelNumpad1.setTextBox(NoTelp);
+        panelUtama.add(panelNumpad1);
+        panelNumpad1.setBounds(730, 290, 210, 280);
+
         panelAtas.add(panelUtama, java.awt.BorderLayout.PAGE_START);
 
         panelTambahan.setBackground(new java.awt.Color(238, 238, 255));
@@ -1172,6 +1192,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
 
         ChkInput.setBackground(new java.awt.Color(238, 238, 255));
         ChkInput.setBorder(null);
+        ChkInput.setForeground(new java.awt.Color(120, 120, 120));
         ChkInput.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
         ChkInput.setMnemonic('I');
         ChkInput.setText(".: Informasi tambahan :.");
@@ -1190,7 +1211,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
                 ChkInputActionPerformed(evt);
             }
         });
-        panelTambahan.add(ChkInput, java.awt.BorderLayout.PAGE_START);
+        panelTambahan.add(ChkInput, java.awt.BorderLayout.PAGE_END);
 
         form.setBackground(new java.awt.Color(238, 238, 255));
         form.setForeground(new java.awt.Color(0, 131, 62));
@@ -1575,9 +1596,9 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         btnSimpan.setForeground(new java.awt.Color(0, 131, 62));
         btnSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/konfirmasi.png"))); // NOI18N
         btnSimpan.setMnemonic('S');
-        btnSimpan.setText("Konfirmasi");
+        btnSimpan.setText("KONFIRMASI");
         btnSimpan.setToolTipText("Alt+S");
-        btnSimpan.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
+        btnSimpan.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
         btnSimpan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnSimpan.setPreferredSize(new java.awt.Dimension(300, 45));
         btnSimpan.addActionListener(new java.awt.event.ActionListener() {
@@ -1593,7 +1614,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         panelBawah.add(btnSimpan);
 
         btnKeluar.setForeground(new java.awt.Color(0, 131, 62));
-        btnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/reset.png"))); // NOI18N
+        btnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/exit.png"))); // NOI18N
         btnKeluar.setMnemonic('K');
         btnKeluar.setText("Batal");
         btnKeluar.setToolTipText("Alt+K");
@@ -1687,8 +1708,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         } else if (KdDPJP.getText().trim().equals("") || NmDPJP.getText().trim().equals("")) {
             Valid.textKosong(KdDPJP, "DPJP");
         } else if (!statusfinger && Sequel.cariIntegerSmc("select timestampdiff(year, ?, CURRENT_DATE())", TglLahir.getText()) >= 17 && JenisPelayanan.getSelectedIndex() != 0 && !KdPoli.getText().equals("IGD")) {
-            JOptionPane.showMessageDialog(rootPane, "Maaf, Pasien belum melakukan Fingerprint");
-            bukaAplikasiValidasi();
+            JOptionPane.showMessageDialog(null, "Silahkan lakukan validasi biometrik dahulu..!!");
         } else {
             if (!KdPoliTerapi.getText().equals("")) {
                 kodepolireg = KdPoliTerapi.getText();
@@ -2183,6 +2203,24 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         isForm();
     }//GEN-LAST:event_ChkInputActionPerformed
 
+    private void NoTelpFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_NoTelpFocusGained
+        ChkInput.setSelected(false);
+        panelNumpad1.setVisible(true);
+        isForm();
+    }//GEN-LAST:event_NoTelpFocusGained
+
+    private void NoTelpFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_NoTelpFocusLost
+        panelNumpad1.setVisible(false);
+    }//GEN-LAST:event_NoTelpFocusLost
+
+    private void NoTelpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NoTelpMouseClicked
+        if (ChkInput.isSelected()) {
+            ChkInput.setSelected(false);
+            panelNumpad1.setVisible(true);
+            isForm();
+        }
+    }//GEN-LAST:event_NoTelpMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -2328,6 +2366,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
     private widget.TextBox nmpnj;
     private component.Panel panelAtas;
     private javax.swing.JPanel panelBawah;
+    private widget.PanelNumpad panelNumpad1;
     private javax.swing.JPanel panelTambahan;
     private javax.swing.JPanel panelUtama;
     private widget.PasswordBox pwPass;
@@ -4268,11 +4307,14 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
     private void isForm() {
         if (ChkInput.isSelected()) {
             ChkInput.setVisible(false);
+            panelNumpad1.setVisible(false);
+            panelUtama.setPreferredSize(new Dimension(WIDTH, 310));
             panelTambahan.setPreferredSize(new Dimension(WIDTH, 290));
             form.setVisible(true);
             ChkInput.setVisible(true);
         } else {
             ChkInput.setVisible(false);
+            panelUtama.setPreferredSize(new Dimension(WIDTH, 610));
             panelTambahan.setPreferredSize(new Dimension(WIDTH, 30));
             form.setVisible(false);
             ChkInput.setVisible(true);

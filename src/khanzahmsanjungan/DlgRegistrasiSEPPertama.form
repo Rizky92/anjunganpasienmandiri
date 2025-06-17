@@ -1095,6 +1095,9 @@
                     </Property>
                   </Properties>
                   <Events>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="NoTelpFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="NoTelpFocusLost"/>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="NoTelpMouseClicked"/>
                     <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="NoTelpKeyPressed"/>
                   </Events>
                   <Constraints>
@@ -1476,6 +1479,19 @@
                     </Constraint>
                   </Constraints>
                 </Component>
+                <Component class="widget.PanelNumpad" name="panelNumpad1">
+                  <Properties>
+                    <Property name="fontSize" type="int" value="30"/>
+                    <Property name="textBox" type="javax.swing.JTextField" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                      <ComponentRef name="NoTelp"/>
+                    </Property>
+                  </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="730" y="290" width="-1" height="-1"/>
+                    </Constraint>
+                  </Constraints>
+                </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="panelTambahan">
@@ -1502,6 +1518,9 @@
                     </Property>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="null"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="78" green="78" red="78" type="rgb"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/picture/143.png"/>
@@ -1532,7 +1551,7 @@
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-                      <BorderConstraints direction="First"/>
+                      <BorderConstraints direction="Last"/>
                     </Constraint>
                   </Constraints>
                 </Component>
@@ -2402,10 +2421,10 @@
                   <Image iconType="3" name="/48x48/konfirmasi.png"/>
                 </Property>
                 <Property name="mnemonic" type="int" value="83"/>
-                <Property name="text" type="java.lang.String" value="Konfirmasi"/>
+                <Property name="text" type="java.lang.String" value="KONFIRMASI"/>
                 <Property name="toolTipText" type="java.lang.String" value="Alt+S"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Inter" size="18" style="0"/>
+                  <Font name="Inter" size="18" style="1"/>
                 </Property>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -2423,7 +2442,7 @@
                   <Color blue="3e" green="83" red="0" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/48x48/reset.png"/>
+                  <Image iconType="3" name="/48x48/exit.png"/>
                 </Property>
                 <Property name="mnemonic" type="int" value="75"/>
                 <Property name="text" type="java.lang.String" value="Batal"/>

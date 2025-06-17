@@ -42,7 +42,9 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
     private ResultSet rs;
     private final String URUTNOREG = koneksiDB.URUTNOREG(),
                          PRINTERREGISTRASI = koneksiDB.PRINTER_REGISTRASI(),
-                         PRINTERBARCODE = koneksiDB.PRINTER_BARCODE();
+                         PRINTERBARCODE = koneksiDB.PRINTER_BARCODE(),
+                         KODEPOLIEKSEKUTIF = koneksiDB.KODEPOLIEKSEKUTIF(),
+                         JENISBAYARPOLIEKSEKUTIF = koneksiDB.JENISBAYARPOLIEKSEKUTIF();
     private String hari = "",
                    regNoRawat = "",
                    regNoUrut = "",
@@ -62,7 +64,7 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
                    instansiKontak = "";
     
     private DlgCariPoli poli = new DlgCariPoli(null, true);
-    private DlgCariDokter2 dokter = new DlgCariDokter2(null, true);
+    private DlgCariDokter dokter = new DlgCariDokter(null, true);
     private Calendar cal = Calendar.getInstance();
     private int day = cal.get(Calendar.DAY_OF_WEEK);
 
@@ -447,21 +449,6 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         poli.setVisible(true);
     }//GEN-LAST:event_buttonCariPoliActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(() -> {
-            DlgRegistrasiWalkIn dialog = new DlgRegistrasiWalkIn(new javax.swing.JFrame(), true);
-            dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                @Override
-                public void windowClosing(java.awt.event.WindowEvent e) {
-                    System.exit(0);
-                }
-            });
-            dialog.setVisible(true);
-        });
-    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private component.Button btnKeluar;
     private component.Button btnSimpan;

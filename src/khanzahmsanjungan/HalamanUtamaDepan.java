@@ -166,7 +166,7 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
         jPanel1.add(btnAntrian);
 
         btnCekinBooking.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checkin.png"))); // NOI18N
-        btnCekinBooking.setText("CEK IN REGISTRASI");
+        btnCekinBooking.setText("CEK IN BOOKING");
         btnCekinBooking.setFont(new java.awt.Font("Inter", 1, 30)); // NOI18N
         btnCekinBooking.setIconTextGap(0);
         btnCekinBooking.setPreferredSize(new java.awt.Dimension(200, 90));
@@ -178,7 +178,7 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
         jPanel1.add(btnCekinBooking);
 
         btnDaftarEksekutif.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/kioskselfservice.png"))); // NOI18N
-        btnDaftarEksekutif.setText("PENDAFTARAN POLIKLINIK");
+        btnDaftarEksekutif.setText("PENDAFTARAN EKSEKUTIF");
         btnDaftarEksekutif.setFont(new java.awt.Font("Inter", 1, 30)); // NOI18N
         btnDaftarEksekutif.setIconTextGap(0);
         btnDaftarEksekutif.setPreferredSize(new java.awt.Dimension(200, 90));
