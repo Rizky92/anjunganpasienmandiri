@@ -724,6 +724,27 @@ public class DlgCekBooking extends javax.swing.JDialog {
     }
 
     private void isBooking() {
+        try (PreparedStatement ps = koneksi.prepareStatement(
+            "select * from booking_registrasi left join reg_periksa on " +
+            "booking_registrasi.tanggal_periksa = reg_periksa.tgl_registrasi and " +
+            "booking_registrasi.no_rkm_medis = reg_periksa.no_rkm_medis and " +
+            "booking_registrasi.kd_poli = reg_periksa.kd_poli and " +
+            "booking_registrasi.kd_dokter = reg_periksa.kd_dokter and " +
+            "booking_registrasi.no_reg = reg_periksa.no_reg where " +
+            "booking_registrasi.no_rkm_medis = ? " +
+            "and booking_registrasi.tanggal_periksa = current_date()"
+        )) {
+            ps.setString(1, NoRMPasien.getText());
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.last()) {
+                    Sequel.mengupdateSmc("reg_periksa", "jam_reg = current_time()", "no_rawat = ?", rs.getString("no_rawat"));
+                    Sequel.mengupdateSmc("booking_registrasi", "waktu_kunjungan = now()", "tanggal_periksa = ? and no_rkm_medis = ? and kd_dokter = ? and kd_poli = ? and kd_pj = ?");
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif : " + e);
+        }
+        
         try {
             ps3 = koneksi.prepareStatement("SELECT * FROM booking_registrasi WHERE no_rkm_medis = ? AND status='Belum' AND tanggal_periksa=current_date()");
             try {

@@ -26,9 +26,9 @@ public class KhanzaHMSAnjungan {
         try {
             UIManager.setLookAndFeel(new FlatLightLaf());
             System.setProperty("flatlaf.animation", "true");
-            UIManager.put("Table.background", new Color(255, 255, 255));
+            UIManager.put("Table.background", new Color(238, 238, 255));
             UIManager.put("Table.foreground", new Color(0, 131, 62));
-            UIManager.put("Table.alternateRowColor", new Color(238, 238, 255));
+            UIManager.put("Table.alternateRowColor", new Color(255, 255, 255));
             UIManager.put("TabbedPane.showTabSeparators", true);
             UIManager.put("TabbedPane.tabSeparatorsFullHeight", true);
             UIManager.put("ScrollBar.showButtons", true);

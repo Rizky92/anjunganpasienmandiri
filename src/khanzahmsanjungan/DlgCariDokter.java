@@ -2,6 +2,7 @@ package khanzahmsanjungan;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import fungsi.WarnaTable;
 import fungsi.koneksiDB;
 import fungsi.validasi;
 import java.awt.Dimension;
@@ -97,6 +98,7 @@ public final class DlgCariDokter extends javax.swing.JDialog {
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
+        Scroll.setBackground(new java.awt.Color(238, 238, 255));
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
@@ -104,6 +106,11 @@ public final class DlgCariDokter extends javax.swing.JDialog {
         tbKamar.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tbKamar.getTableHeader().setResizingAllowed(false);
         tbKamar.getTableHeader().setReorderingAllowed(false);
+        tbKamar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbKamarMouseClicked(evt);
+            }
+        });
         Scroll.setViewportView(tbKamar);
 
         internalFrame1.add(Scroll, java.awt.BorderLayout.CENTER);
@@ -114,7 +121,6 @@ public final class DlgCariDokter extends javax.swing.JDialog {
         jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING));
 
         button1.setBackground(new java.awt.Color(238, 238, 255));
-        button1.setForeground(new java.awt.Color(0, 131, 62));
         button1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/exit.png"))); // NOI18N
         button1.setText("KELUAR");
         button1.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
@@ -136,6 +142,12 @@ public final class DlgCariDokter extends javax.swing.JDialog {
     private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
         dispose();
     }//GEN-LAST:event_button1ActionPerformed
+
+    private void tbKamarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbKamarMouseClicked
+        if (tbKamar.getSelectedRow() >= 0) {
+            dispose();
+        }
+    }//GEN-LAST:event_tbKamarMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.ScrollPane Scroll;
@@ -165,7 +177,7 @@ public final class DlgCariDokter extends javax.swing.JDialog {
             System.out.println("Notif : " + e);
         }
     }
-
+    
     public void tampilDokterTerapi(String kodedokterbpjs) {
         Valid.tabelKosong(tabMode);
         try {

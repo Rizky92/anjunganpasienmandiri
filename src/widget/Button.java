@@ -2,7 +2,6 @@ package widget;
 
 import com.formdev.flatlaf.extras.components.FlatButton;
 import java.awt.Color;
-import java.awt.Insets;
 
 /**
  *

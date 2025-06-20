@@ -17,7 +17,6 @@ import java.awt.Cursor;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -43,25 +42,27 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
     private final String URUTNOREG = koneksiDB.URUTNOREG(),
                          PRINTERREGISTRASI = koneksiDB.PRINTER_REGISTRASI(),
                          PRINTERBARCODE = koneksiDB.PRINTER_BARCODE(),
-                         KODEPOLIEKSEKUTIF = koneksiDB.KODEPOLIEKSEKUTIF(),
-                         JENISBAYARPOLIEKSEKUTIF = koneksiDB.JENISBAYARPOLIEKSEKUTIF();
+                         KODEPOLIEKSEKUTIF = koneksiDB.KODEPOLIEKSEKUTIF();
     private String hari = "",
-                   regNoRawat = "",
-                   regNoUrut = "",
-                   regKodeDokter = "",
-                   regKodePoli = "",
-                   regBiaya = "",
-                   regStatusDaftar = "Lama",
-                   regStatusPoli = "Baru",
-                   pasienUmur = "0",
-                   pasienStatusUmur = "Th",
-                   pasienNamaPJ = "-",
-                   pasienHubunganPJ = "-",
-                   pasienAlamatPJ = "-",
+                   noRawat = "",
+                   noReg = "",
+                   kdDokter = "",
+                   kdPoli = "",
+                   biayaReg = "",
+                   statusDaftar = "Lama",
+                   statusPoli = "Baru",
+                   umurDaftar = "0",
+                   statusUmur = "Th",
+                   namaPJ = "-",
+                   hubunganPJ = "-",
+                   alamatPJ = "-",
                    instansiNama = "",
                    instansiAlamat = "",
                    instansiKota = "",
-                   instansiKontak = "";
+                   instansiKontak = "",
+                   poliBiaya = "",
+                   poliBiayaLama = "",
+                   umurPasien = "";
     
     private DlgCariPoli poli = new DlgCariPoli(null, true);
     private DlgCariDokter dokter = new DlgCariDokter(null, true);
@@ -88,25 +89,36 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         } catch (SQLException e) {
             System.out.println("Notif : " + e);
         }
-
-        poli.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if (poli.getTable().getSelectedRow() >= 0) {
-                    textNamaDokter.setText("");
-                    regKodeDokter = "";
-                    textNamaPoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(), 1).toString());
-                    regKodePoli = poli.getTable().getValueAt(poli.getTable().getSelectedRow(), 0).toString();
+        
+        if (KODEPOLIEKSEKUTIF.isBlank()) {
+            buttonCariPoli.setVisible(true);
+            poli.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    if (poli.getTable().getSelectedRow() >= 0) {
+                        namaDokter.setText("");
+                        kdDokter = "";
+                        kdPoli = poli.getTable().getValueAt(poli.getTable().getSelectedRow(), 0).toString();
+                        namaPoli.setText(poli.getTable().getValueAt(poli.getTable().getSelectedRow(), 1).toString());
+                        poliBiaya = poli.getTable().getValueAt(poli.getTable().getSelectedRow(), 2).toString();
+                        poliBiayaLama = poli.getTable().getValueAt(poli.getTable().getSelectedRow(), 3).toString();
+                    }
                 }
-            }
-        });
+            });
+        } else {
+            buttonCariPoli.setVisible(false);
+            kdPoli = KODEPOLIEKSEKUTIF;
+            namaPoli.setText(Sequel.cariIsiSmc("select poliklinik.nm_poli from poliklinik where poliklinik.kd_poli = ?", kdPoli));
+            poliBiaya = Sequel.cariIsiSmc("select poliklinik.registrasi from poliklinik where poliklinik.kd_poli = ?", kdPoli);
+            poliBiayaLama = Sequel.cariIsiSmc("select poliklinik.registrasilama from poliklinik where poliklinik.kd_poli = ?", kdPoli);
+        }
 
         dokter.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosed(WindowEvent e) {
                 if (dokter.getTable().getSelectedRow() >= 0) {
-                    textNamaDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(), 1).toString());
-                    regKodeDokter = dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(), 0).toString();
+                    namaDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(), 1).toString());
+                    kdDokter = dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(), 0).toString();
                 }
             }
         });
@@ -126,27 +138,19 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         jLabel10 = new widget.Label();
         jLabel29 = new widget.Label();
         jLabel31 = new widget.Label();
-        dateTanggalPeriksa = new widget.Tanggal();
-        labelNoRM = new widget.Label();
+        noRM = new widget.Label();
         jLabel32 = new widget.Label();
-        dropdownCaraBayar = new widget.ComboBox();
         buttonCariPoli = new widget.Button();
-        textNamaPoli = new widget.TextBox();
+        namaPoli = new widget.TextBox();
         jLabel36 = new widget.Label();
         buttonCariDokter = new widget.Button();
-        textNamaDokter = new widget.TextBox();
-        jLabel12 = new widget.Label();
-        jLabel13 = new widget.Label();
-        jLabel14 = new widget.Label();
-        jLabel15 = new widget.Label();
-        jLabel16 = new widget.Label();
-        jLabel17 = new widget.Label();
+        namaDokter = new widget.TextBox();
         jLabel11 = new widget.Label();
-        jLabel18 = new widget.Label();
-        labelNamaPasien = new widget.Label();
+        namaPasien = new widget.Label();
         jLabel19 = new widget.Label();
-        jLabel20 = new widget.Label();
-        labelTglLahir = new widget.Label();
+        tglLahir = new widget.Label();
+        tanggalPeriksa = new widget.Label();
+        jenisBayar = new widget.Label();
         jPanel3 = new javax.swing.JPanel();
         btnSimpan = new widget.Button();
         btnKeluar = new widget.Button();
@@ -157,8 +161,8 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         setResizable(false);
         getContentPane().setLayout(new java.awt.BorderLayout(1, 1));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 215, 255)), "PENDAFTARAN POLIKLINIK ONSITE", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Inter", 0, 24), new java.awt.Color(0, 131, 62))); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(238, 238, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 215, 255)), "PENDAFTARAN POLIKLINIK PRIBADI", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Inter", 0, 24), new java.awt.Color(0, 131, 62))); // NOI18N
         jPanel1.setPreferredSize(new java.awt.Dimension(400, 70));
         jPanel1.setLayout(new java.awt.BorderLayout(0, 1));
 
@@ -167,59 +171,39 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         jPanel2.setLayout(null);
 
         jLabel10.setForeground(new java.awt.Color(0, 131, 62));
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel10.setText("No. Rekam Medis");
+        jLabel10.setText("No. Rekam Medis :");
         jLabel10.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         jLabel10.setPreferredSize(new java.awt.Dimension(20, 14));
         jPanel2.add(jLabel10);
-        jLabel10.setBounds(20, 50, 220, 40);
+        jLabel10.setBounds(60, 50, 220, 40);
 
         jLabel29.setForeground(new java.awt.Color(0, 131, 62));
-        jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel29.setText("Tanggal Periksa");
+        jLabel29.setText("Tanggal Periksa :");
         jLabel29.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         jLabel29.setPreferredSize(new java.awt.Dimension(20, 14));
         jPanel2.add(jLabel29);
-        jLabel29.setBounds(20, 180, 220, 40);
+        jLabel29.setBounds(60, 200, 220, 40);
 
         jLabel31.setForeground(new java.awt.Color(0, 131, 62));
-        jLabel31.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel31.setText("Poli Tujuan");
+        jLabel31.setText("Poli Tujuan :");
         jLabel31.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         jLabel31.setPreferredSize(new java.awt.Dimension(20, 14));
         jPanel2.add(jLabel31);
-        jLabel31.setBounds(20, 220, 220, 40);
+        jLabel31.setBounds(60, 250, 220, 40);
 
-        dateTanggalPeriksa.setEditable(false);
-        dateTanggalPeriksa.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-06-2025" }));
-        dateTanggalPeriksa.setDisplayFormat("dd-MM-yyyy");
-        dateTanggalPeriksa.setEnabled(false);
-        dateTanggalPeriksa.setFocusable(false);
-        dateTanggalPeriksa.setOpaque(false);
-        dateTanggalPeriksa.setPreferredSize(new java.awt.Dimension(95, 23));
-        jPanel2.add(dateTanggalPeriksa);
-        dateTanggalPeriksa.setBounds(290, 180, 190, 40);
-
-        labelNoRM.setForeground(new java.awt.Color(0, 131, 62));
-        labelNoRM.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        labelNoRM.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
-        labelNoRM.setPreferredSize(new java.awt.Dimension(20, 14));
-        jPanel2.add(labelNoRM);
-        labelNoRM.setBounds(290, 50, 590, 40);
+        noRM.setForeground(new java.awt.Color(0, 131, 62));
+        noRM.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        noRM.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
+        noRM.setPreferredSize(new java.awt.Dimension(20, 14));
+        jPanel2.add(noRM);
+        noRM.setBounds(290, 50, 590, 40);
 
         jLabel32.setForeground(new java.awt.Color(0, 131, 62));
-        jLabel32.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel32.setText("Dokter Tujuan");
+        jLabel32.setText("Dokter Tujuan :");
         jLabel32.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         jLabel32.setPreferredSize(new java.awt.Dimension(20, 14));
         jPanel2.add(jLabel32);
-        jLabel32.setBounds(20, 260, 220, 40);
-
-        dropdownCaraBayar.setForeground(new java.awt.Color(0, 131, 62));
-        dropdownCaraBayar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "UMUM / PERSONAL" }));
-        dropdownCaraBayar.setFont(new java.awt.Font("Inter", 1, 14)); // NOI18N
-        jPanel2.add(dropdownCaraBayar);
-        dropdownCaraBayar.setBounds(290, 300, 520, 40);
+        jLabel32.setBounds(60, 300, 220, 40);
 
         buttonCariPoli.setForeground(new java.awt.Color(0, 131, 62));
         buttonCariPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pilih.png"))); // NOI18N
@@ -234,21 +218,20 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
             }
         });
         jPanel2.add(buttonCariPoli);
-        buttonCariPoli.setBounds(810, 220, 70, 40);
+        buttonCariPoli.setBounds(820, 250, 70, 40);
 
-        textNamaPoli.setEditable(false);
-        textNamaPoli.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
-        textNamaPoli.setPreferredSize(new java.awt.Dimension(72, 28));
-        jPanel2.add(textNamaPoli);
-        textNamaPoli.setBounds(290, 220, 520, 40);
+        namaPoli.setEditable(false);
+        namaPoli.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
+        namaPoli.setPreferredSize(new java.awt.Dimension(72, 28));
+        jPanel2.add(namaPoli);
+        namaPoli.setBounds(290, 250, 520, 40);
 
         jLabel36.setForeground(new java.awt.Color(0, 131, 62));
-        jLabel36.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel36.setText("Cara Bayar");
+        jLabel36.setText("Cara Bayar :");
         jLabel36.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         jLabel36.setPreferredSize(new java.awt.Dimension(20, 14));
         jPanel2.add(jLabel36);
-        jLabel36.setBounds(20, 300, 220, 40);
+        jLabel36.setBounds(60, 350, 220, 40);
 
         buttonCariDokter.setForeground(new java.awt.Color(0, 131, 62));
         buttonCariDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pilih.png"))); // NOI18N
@@ -263,107 +246,57 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
             }
         });
         jPanel2.add(buttonCariDokter);
-        buttonCariDokter.setBounds(810, 260, 70, 40);
+        buttonCariDokter.setBounds(820, 300, 70, 40);
 
-        textNamaDokter.setEditable(false);
-        textNamaDokter.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
-        textNamaDokter.setPreferredSize(new java.awt.Dimension(72, 28));
-        jPanel2.add(textNamaDokter);
-        textNamaDokter.setBounds(290, 260, 520, 40);
-
-        jLabel12.setForeground(new java.awt.Color(0, 131, 62));
-        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel12.setText(":");
-        jLabel12.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
-        jLabel12.setPreferredSize(new java.awt.Dimension(20, 14));
-        jPanel2.add(jLabel12);
-        jLabel12.setBounds(250, 300, 40, 40);
-
-        jLabel13.setForeground(new java.awt.Color(0, 131, 62));
-        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel13.setText(":");
-        jLabel13.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
-        jLabel13.setPreferredSize(new java.awt.Dimension(20, 14));
-        jPanel2.add(jLabel13);
-        jLabel13.setBounds(250, 50, 40, 40);
-
-        jLabel14.setForeground(new java.awt.Color(0, 131, 62));
-        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel14.setText(":");
-        jLabel14.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
-        jLabel14.setPreferredSize(new java.awt.Dimension(20, 14));
-        jPanel2.add(jLabel14);
-        jLabel14.setBounds(250, 180, 40, 40);
-
-        jLabel15.setForeground(new java.awt.Color(0, 131, 62));
-        jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel15.setText(":");
-        jLabel15.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
-        jLabel15.setPreferredSize(new java.awt.Dimension(20, 14));
-        jPanel2.add(jLabel15);
-        jLabel15.setBounds(250, 220, 40, 40);
-
-        jLabel16.setForeground(new java.awt.Color(0, 131, 62));
-        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel16.setText(":");
-        jLabel16.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
-        jLabel16.setPreferredSize(new java.awt.Dimension(20, 14));
-        jPanel2.add(jLabel16);
-        jLabel16.setBounds(250, 210, 40, 40);
-
-        jLabel17.setForeground(new java.awt.Color(0, 131, 62));
-        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel17.setText(":");
-        jLabel17.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
-        jLabel17.setPreferredSize(new java.awt.Dimension(20, 14));
-        jPanel2.add(jLabel17);
-        jLabel17.setBounds(250, 260, 40, 40);
+        namaDokter.setEditable(false);
+        namaDokter.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
+        namaDokter.setPreferredSize(new java.awt.Dimension(72, 28));
+        jPanel2.add(namaDokter);
+        namaDokter.setBounds(290, 300, 520, 40);
 
         jLabel11.setForeground(new java.awt.Color(0, 131, 62));
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel11.setText("Nama");
+        jLabel11.setText("Nama Pasien :");
         jLabel11.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         jLabel11.setPreferredSize(new java.awt.Dimension(20, 14));
         jPanel2.add(jLabel11);
-        jLabel11.setBounds(20, 90, 220, 40);
+        jLabel11.setBounds(60, 100, 220, 40);
 
-        jLabel18.setForeground(new java.awt.Color(0, 131, 62));
-        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel18.setText(":");
-        jLabel18.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
-        jLabel18.setPreferredSize(new java.awt.Dimension(20, 14));
-        jPanel2.add(jLabel18);
-        jLabel18.setBounds(250, 90, 40, 40);
-
-        labelNamaPasien.setForeground(new java.awt.Color(0, 131, 62));
-        labelNamaPasien.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        labelNamaPasien.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
-        labelNamaPasien.setPreferredSize(new java.awt.Dimension(20, 14));
-        jPanel2.add(labelNamaPasien);
-        labelNamaPasien.setBounds(290, 90, 590, 40);
+        namaPasien.setForeground(new java.awt.Color(0, 131, 62));
+        namaPasien.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        namaPasien.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
+        namaPasien.setPreferredSize(new java.awt.Dimension(20, 14));
+        jPanel2.add(namaPasien);
+        namaPasien.setBounds(290, 100, 590, 40);
 
         jLabel19.setForeground(new java.awt.Color(0, 131, 62));
-        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel19.setText("Tgl. Lahir");
+        jLabel19.setText("Tgl. Lahir :");
         jLabel19.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         jLabel19.setPreferredSize(new java.awt.Dimension(20, 14));
         jPanel2.add(jLabel19);
-        jLabel19.setBounds(20, 130, 220, 40);
+        jLabel19.setBounds(60, 150, 220, 40);
 
-        jLabel20.setForeground(new java.awt.Color(0, 131, 62));
-        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel20.setText(":");
-        jLabel20.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
-        jLabel20.setPreferredSize(new java.awt.Dimension(20, 14));
-        jPanel2.add(jLabel20);
-        jLabel20.setBounds(250, 130, 40, 40);
+        tglLahir.setForeground(new java.awt.Color(0, 131, 62));
+        tglLahir.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        tglLahir.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
+        tglLahir.setPreferredSize(new java.awt.Dimension(20, 14));
+        jPanel2.add(tglLahir);
+        tglLahir.setBounds(290, 150, 590, 40);
 
-        labelTglLahir.setForeground(new java.awt.Color(0, 131, 62));
-        labelTglLahir.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        labelTglLahir.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
-        labelTglLahir.setPreferredSize(new java.awt.Dimension(20, 14));
-        jPanel2.add(labelTglLahir);
-        labelTglLahir.setBounds(290, 130, 590, 40);
+        tanggalPeriksa.setForeground(new java.awt.Color(0, 131, 62));
+        tanggalPeriksa.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        tanggalPeriksa.setText(DateTimeFormatter.ofPattern("yyyy-MM-dd").format(LocalDate.now()));
+        tanggalPeriksa.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
+        tanggalPeriksa.setPreferredSize(new java.awt.Dimension(20, 14));
+        jPanel2.add(tanggalPeriksa);
+        tanggalPeriksa.setBounds(290, 200, 590, 40);
+
+        jenisBayar.setForeground(new java.awt.Color(0, 131, 62));
+        jenisBayar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jenisBayar.setText("UMUM / PERSONAL");
+        jenisBayar.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
+        jenisBayar.setPreferredSize(new java.awt.Dimension(20, 14));
+        jPanel2.add(jenisBayar);
+        jenisBayar.setBounds(290, 350, 590, 40);
 
         jPanel1.add(jPanel2, java.awt.BorderLayout.CENTER);
 
@@ -412,15 +345,15 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
     }//GEN-LAST:event_btnKeluarActionPerformed
 
     private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
-        if (labelNoRM.getText().isBlank()) {
+        if (noRM.getText().isBlank()) {
             JOptionPane.showMessageDialog(rootPane, "No. RM Kosong..!!");
-        } else if (regKodePoli.isBlank()) {
+        } else if (kdPoli.isBlank()) {
             JOptionPane.showMessageDialog(rootPane, "Pilih poli terlebih dahulu..!!");
-        } else if (regKodeDokter.isBlank()) {
+        } else if (kdDokter.isBlank()) {
             JOptionPane.showMessageDialog(rootPane, "Pilih Dokter terlebih dahulu..!!");
-        } else if (Sequel.cariIntegerSmc("select count(*) from reg_periksa where kd_pj = 'A09' and no_rkm_medis = ? and tgl_registrasi = ? and kd_poli = ? and kd_dokter = ?", labelNoRM.getText(), Valid.SetTgl(dateTanggalPeriksa.getSelectedItem().toString()), regKodePoli, regKodeDokter) > 0) {
+        } else if (Sequel.cariIntegerSmc("select count(*) from reg_periksa where kd_pj = 'A09' and no_rkm_medis = ? and tgl_registrasi = current_date() and kd_poli = ? and kd_dokter = ?", noRM.getText(), kdPoli, kdDokter) > 0) {
             JOptionPane.showMessageDialog(rootPane, "Maaf, anda sudah terdaftar pada hari ini dengan dokter dan poli yang sama..!!");
-        } else if (Sequel.cariIntegerSmc("select count(*) from reg_periksa join kamar_inap on reg_periksa.no_rawat = kamar_inap.no_rawat where kamar_inap.stts_pulang = '-' and reg_periksa.no_rkm_medis = ?", labelNoRM.getText()) > 0) {
+        } else if (Sequel.cariIntegerSmc("select count(*) from reg_periksa join kamar_inap on reg_periksa.no_rawat = kamar_inap.no_rawat where kamar_inap.stts_pulang = '-' and reg_periksa.no_rkm_medis = ?", noRM.getText()) > 0) {
             JOptionPane.showMessageDialog(rootPane, "Maaf, pasien sedang dalam masa perawatan di rawat inap..!!");
         } else {
             setNomorRegistrasi();
@@ -436,7 +369,7 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
     }//GEN-LAST:event_btnSimpanActionPerformed
 
     private void buttonCariDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCariDokterActionPerformed
-        dokter.tampil(hari, regKodePoli);
+        dokter.tampil(hari, kdPoli);
         dokter.setSize(jPanel1.getWidth() - 50, jPanel1.getHeight() - 50);
         dokter.setLocationRelativeTo(jPanel2);
         dokter.setVisible(true);
@@ -454,19 +387,9 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
     private widget.Button btnSimpan;
     private widget.Button buttonCariDokter;
     private widget.Button buttonCariPoli;
-    private widget.Tanggal dateTanggalPeriksa;
-    private widget.ComboBox dropdownCaraBayar;
     private widget.Label jLabel10;
     private widget.Label jLabel11;
-    private widget.Label jLabel12;
-    private widget.Label jLabel13;
-    private widget.Label jLabel14;
-    private widget.Label jLabel15;
-    private widget.Label jLabel16;
-    private widget.Label jLabel17;
-    private widget.Label jLabel18;
     private widget.Label jLabel19;
-    private widget.Label jLabel20;
     private widget.Label jLabel29;
     private widget.Label jLabel31;
     private widget.Label jLabel32;
@@ -474,15 +397,17 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private widget.Label labelNamaPasien;
-    private widget.Label labelNoRM;
-    private widget.Label labelTglLahir;
-    private widget.TextBox textNamaDokter;
-    private widget.TextBox textNamaPoli;
+    private widget.Label jenisBayar;
+    private widget.TextBox namaDokter;
+    private widget.Label namaPasien;
+    private widget.TextBox namaPoli;
+    private widget.Label noRM;
+    private widget.Label tanggalPeriksa;
+    private widget.Label tglLahir;
     // End of variables declaration//GEN-END:variables
 
     public void setPasien(String noRM) {
-        labelNoRM.setText(noRM);
+        this.noRM.setText(noRM);
         tentukanHari();
         ambilDataPasien();
     }
@@ -491,13 +416,13 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         try {
             ps = koneksi.prepareStatement("select nm_pasien, tgl_lahir from pasien where no_rkm_medis = ?");
             try {
-                ps.setString(1, labelNoRM.getText());
+                ps.setString(1, noRM.getText());
                 
                 rs = ps.executeQuery();
                 
                 if (rs.next()) {
-                    labelNamaPasien.setText(rs.getString("nm_pasien"));
-                    labelTglLahir.setText(formatTanggal(rs.getString("tgl_lahir")));
+                    namaPasien.setText(rs.getString("nm_pasien"));
+                    tglLahir.setText(formatTanggal(rs.getString("tgl_lahir")));
                 }
             } catch (SQLException e) {
                 System.out.println("Notif : " + e);
@@ -523,42 +448,40 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
     }
     
     private void setStatusPasien() {
-        if (Sequel.cariExistsSmc("select * from reg_periksa where no_rkm_medis = ? and kd_poli = ?", labelNoRM.getText(), regKodePoli)) {
-            regStatusPoli = "Lama";
-            regBiaya = Sequel.cariIsiSmc("select registrasilama from poliklinik where kd_poli = ? and status = '1'", regKodePoli);
-        } else {
-            regBiaya = Sequel.cariIsiSmc("select registrasi from poliklinik where kd_poli = ? and status = '1'", regKodePoli);
+        if (Sequel.cariExistsSmc("select * from reg_periksa where no_rkm_medis = ? and kd_poli = ?", noRM.getText(), kdPoli)) {
+            statusPoli = "Lama";
         }
+        biayaReg = statusPoli.equals("Lama") ? poliBiayaLama : poliBiaya;
         
         try (PreparedStatement ps = koneksi.prepareStatement(
             "select pasien.nm_pasien, concat_ws(', ', pasien.alamat, kelurahan.nm_kel, kecamatan.nm_kec, kabupaten.nm_kab) as alamat, " +
-            "pasien.tgl_lahir, pasien.namakeluarga, pasien.keluarga, pasien.kd_pj, if(pasien.tgl_daftar = ?, 'baru', 'lama') as daftar, " +
-            "timestampdiff(year, pasien.tgl_lahir, curdate()) as tahun, timestampdiff(month, pasien.tgl_lahir, curdate()) - ((timestampdiff(month, " +
-            "pasien.tgl_lahir, curdate()) div 12) * 12) as bulan, timestampdiff(day, date_add(date_add(pasien.tgl_lahir, interval timestampdiff(year, " +
-            "pasien.tgl_lahir, curdate()) year), interval timestampdiff(month, pasien.tgl_lahir, curdate()) - ((timestampdiff(month, pasien.tgl_lahir, " +
-            "curdate()) div 12) * 12) month), curdate()) as hari from pasien join kelurahan on pasien.kd_kel = kelurahan.kd_kel join kecamatan on " +
+            "pasien.tgl_lahir, pasien.namakeluarga, pasien.keluarga, pasien.kd_pj, if(pasien.tgl_daftar = current_date(), 'baru', 'lama') as daftar, " +
+            "timestampdiff(year, pasien.tgl_lahir, current_date()) as tahun, timestampdiff(month, pasien.tgl_lahir, current_date()) - ((timestampdiff(month, " +
+            "pasien.tgl_lahir, current_date()) div 12) * 12) as bulan, timestampdiff(day, date_add(date_add(pasien.tgl_lahir, interval timestampdiff(year, " +
+            "pasien.tgl_lahir, current_date()) year), interval timestampdiff(month, pasien.tgl_lahir, current_date()) - ((timestampdiff(month, pasien.tgl_lahir, " +
+            "current_date()) div 12) * 12) month), current_date()) as hari from pasien join kelurahan on pasien.kd_kel = kelurahan.kd_kel join kecamatan on " +
             "pasien.kd_kec = kecamatan.kd_kec join kabupaten on pasien.kd_kab = kabupaten.kd_kab where pasien.no_rkm_medis = ?"
         )) {
-            ps.setString(1, Valid.SetTgl(dateTanggalPeriksa.getSelectedItem().toString()));
-            ps.setString(2, labelNoRM.getText());
+            ps.setString(1, noRM.getText());
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
-                    labelNamaPasien.setText(rs.getString("nm_pasien"));
-                    labelTglLahir.setText(rs.getString("tgl_lahir"));
-                    pasienNamaPJ = rs.getString("namakeluarga");
-                    pasienHubunganPJ = rs.getString("keluarga");
-                    pasienAlamatPJ = rs.getString("alamat");
-                    regStatusDaftar = rs.getString("daftar");
+                    namaPasien.setText(rs.getString("nm_pasien"));
+                    tglLahir.setText(DateTimeFormatter.ofPattern("dd MMM yyyy").withLocale(new Locale("id", "ID")).format(rs.getDate("tgl_lahir").toLocalDate()));
+                    namaPJ = rs.getString("namakeluarga");
+                    hubunganPJ = rs.getString("keluarga");
+                    alamatPJ = rs.getString("alamat");
+                    statusDaftar = rs.getString("daftar");
                     if (rs.getInt("tahun") > 0) {
-                        pasienUmur = rs.getString("tahun");
-                        pasienStatusUmur = "Th";
+                        umurDaftar = rs.getString("tahun");
+                        statusUmur = "Th";
                     } else if ((rs.getInt("tahun") <= 0) && (rs.getInt("bulan") > 0)) {
-                        pasienUmur = rs.getString("bulan");
-                        pasienStatusUmur = "Bl";
+                        umurDaftar = rs.getString("bulan");
+                        statusUmur = "Bl";
                     } else if ((rs.getInt("tahun") <= 0) && (rs.getInt("bulan") <= 0) && (rs.getInt("hari") > 0)) {
-                        pasienUmur = rs.getString("hari");
-                        pasienStatusUmur = "Hr";
+                        umurDaftar = rs.getString("hari");
+                        statusUmur = "Hr";
                     }
+                    umurPasien = rs.getString("tahun") + " Th " + rs.getString("bulan") + " Bl " + rs.getString("hari") + " Hr";
                 }
             }
         } catch (SQLException e) {
@@ -567,51 +490,31 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
     }
 
     private void updateUmurPasien() {
-        Sequel.mengupdateSmc("pasien",
-            "umur = CONCAT(CONCAT(CONCAT(TIMESTAMPDIFF(YEAR, tgl_lahir, CURDATE()), ' Th '), CONCAT(TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) div 12) * 12), ' Bl ')), CONCAT(TIMESTAMPDIFF(DAY, DATE_ADD(DATE_ADD(tgl_lahir, INTERVAL TIMESTAMPDIFF(YEAR, tgl_lahir, CURDATE()) YEAR), INTERVAL TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) div 12) * 12) MONTH), CURDATE()), ' Hr'))",
-            "no_rkm_medis = ?", labelNoRM.getText()
-        );
+        Sequel.mengupdateSmc("pasien", "umur = ?", "no_rkm_medis = ?", umurPasien, noRM.getText());
     }
 
     private void setNomorRegistrasi() {
         switch (URUTNOREG) {
             case "poli":
-                regNoUrut = Sequel.cariIsiSmc(
-                    "select lpad(ifnull(max(convert(no_reg, signed)), 0) + 1, 3, '0') from reg_periksa where kd_poli = ? and tgl_registrasi = ?",
-                    regKodePoli, Valid.SetTgl(dateTanggalPeriksa.getSelectedItem().toString())
-                );
-            break;
+                noReg = Sequel.cariIsiSmc("select lpad(ifnull(max(convert(no_reg, signed)), 0) + 1, 3, '0') from reg_periksa where kd_poli = ? and tgl_registrasi = current_date()", kdPoli);
+                break;
             case "dokter":
-                regNoUrut = Sequel.cariIsiSmc(
-                    "select lpad(ifnull(max(convert(no_reg, signed)), 0) + 1, 3, '0') from reg_periksa where kd_dokter = ? and tgl_registrasi = ?",
-                    regKodePoli, Valid.SetTgl(dateTanggalPeriksa.getSelectedItem().toString())
-                );
-            break;
+                noReg = Sequel.cariIsiSmc("select lpad(ifnull(max(convert(no_reg, signed)), 0) + 1, 3, '0') from reg_periksa where kd_dokter = ? and tgl_registrasi = current_date()", kdPoli);
+                break;
             case "dokter + poli":
-                regNoUrut = Sequel.cariIsiSmc(
-                    "select lpad(ifnull(max(convert(no_reg, signed)), 0) + 1, 3, '0') from reg_periksa where kd_poli = ? and kd_dokter = ? and tgl_registrasi = ?",
-                    regKodePoli, regKodeDokter, Valid.SetTgl(dateTanggalPeriksa.getSelectedItem().toString())
-                );
-            break;
+                noReg = Sequel.cariIsiSmc("select lpad(ifnull(max(convert(no_reg, signed)), 0) + 1, 3, '0') from reg_periksa where kd_poli = ? and kd_dokter = ? and tgl_registrasi = current_date()", kdPoli, kdDokter);
+                break;
             default:
-                regNoUrut = Sequel.cariIsiSmc(
-                    "select lpad(ifnull(max(convert(no_reg, signed)), 0) + 1, 3, '0') from reg_periksa where kd_poli = ? and kd_dokter = ? and tgl_registrasi = ?",
-                    regKodePoli, regKodeDokter, Valid.SetTgl(dateTanggalPeriksa.getSelectedItem().toString())
-                );
-            break;
+                noReg = Sequel.cariIsiSmc("select lpad(ifnull(max(convert(no_reg, signed)), 0) + 1, 3, '0') from reg_periksa where kd_poli = ? and kd_dokter = ? and tgl_registrasi = current_date()", kdPoli, kdDokter);
+                break;
         }
         
-        regNoRawat = Sequel.cariIsiSmc(
-            "select concat(date_format(?, '%Y/%m/%d'), '/', lpad(ifnull(max(convert(right(no_rawat, 6), signed)), 0) + 1, 6, '0')) from reg_periksa where tgl_registrasi = ?",
-            Valid.SetTgl(dateTanggalPeriksa.getSelectedItem().toString()), Valid.SetTgl(dateTanggalPeriksa.getSelectedItem().toString())
-        );
+        noRawat = Sequel.cariIsiSmc("select concat(date_format(current_date(), '%Y/%m/%d'), '/', lpad(ifnull(max(convert(right(no_rawat, 6), signed)), 0) + 1, 6, '0')) from reg_periksa where tgl_registrasi = current_date()");
     }
 
     private void tentukanHari() {
         try {
-            Date hariperiksa = Date.valueOf(Valid.SetTgl(dateTanggalPeriksa.getSelectedItem().toString()));
-            cal.setTime(hariperiksa);
-            day = cal.get(Calendar.DAY_OF_WEEK);
+            day = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
             switch (day) {
                 case 1:
                     hari = "AKHAD";
@@ -646,32 +549,32 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
     private boolean registerPasien() {
         int coba = 0, maxCoba = 5;
         
-        System.out.println("Mencoba mendaftarkan pasien dengan no. rawat: " + regNoRawat);
+        System.out.println("Mencoba mendaftarkan pasien dengan no. rawat: " + noRawat);
              
         while (coba < maxCoba && (
             ! Sequel.menyimpantfSmc("reg_periksa", null,
-                regNoUrut, regNoRawat, Valid.SetTgl(dateTanggalPeriksa.getSelectedItem().toString()),
-                Sequel.cariIsi("select current_time()"), regKodeDokter, labelNoRM.getText(), regKodePoli,
-                pasienNamaPJ, pasienAlamatPJ, pasienHubunganPJ, regBiaya, "Belum", regStatusDaftar, "Ralan", "A09",
-                pasienUmur, pasienStatusUmur, "Belum Bayar", regStatusPoli)
+                noReg, noRawat, new java.text.SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date()),
+                Sequel.cariIsi("select current_time()"), kdDokter, noRM.getText(), kdPoli,
+                namaPJ, alamatPJ, hubunganPJ, biayaReg, "Belum", statusDaftar, "Ralan", "A09",
+                umurDaftar, statusUmur, "Belum Bayar", statusPoli)
         )) {
             setNomorRegistrasi();
-            System.out.println("Mencoba mendaftarkan pasien dengan no. rawat: " + regNoRawat);
+            System.out.println("Mencoba mendaftarkan pasien dengan no. rawat: " + noRawat);
             
             coba++;
         }
         
-        String isNoRawat = Sequel.cariIsiSmc("select no_rawat from reg_periksa where tgl_registrasi = ? and no_rkm_medis = ? and kd_poli = ? and kd_dokter = ?", Valid.SetTgl(dateTanggalPeriksa.getSelectedItem().toString()), labelNoRM.getText(), regKodePoli, regKodeDokter);
+        String isNoRawat = Sequel.cariIsiSmc("select no_rawat from reg_periksa where tgl_registrasi = current_date() and no_rkm_medis = ? and kd_poli = ? and kd_dokter = ?", noRM.getText(), kdPoli, kdDokter);
                 
-        if (coba == maxCoba && (isNoRawat == null || ! isNoRawat.equals(regNoRawat))) {
+        if (coba == maxCoba && (isNoRawat == null || ! isNoRawat.equals(noRawat))) {
             System.out.println("======================================================");
             System.out.println("Tidak dapat mendaftarkan pasien dengan detail berikut:");
-            System.out.println("No. Rawat: " + regNoRawat);
-            System.out.println("Tgl. Registrasi: " + Valid.SetTgl(dateTanggalPeriksa.getSelectedItem().toString()));
-            System.out.println("No. Antrian: " + regNoUrut + " (Ditemukan: " + Sequel.cariIsiSmc("select no_reg from reg_periksa where no_rawat = ?", regNoRawat) + ")");
-            System.out.println("No. RM: " + labelNoRM + " (Ditemukan: " + Sequel.cariIsiSmc("select no_rkm_medis from reg_periksa where no_rawat = ?", regNoRawat) + ")");
-            System.out.println("Kode Dokter: " + regKodeDokter + " (Ditemukan: " + Sequel.cariIsiSmc("select kd_dokter from reg_periksa where no_rawat = ?", regNoRawat) + ")");
-            System.out.println("Kode Poli: " + regKodePoli  + " (Ditemukan: " + Sequel.cariIsiSmc("select kd_poli from reg_periksa where no_rawat = ?", regNoRawat) + ")");
+            System.out.println("No. Rawat: " + noRawat);
+            System.out.println("Tgl. Registrasi: " + new java.text.SimpleDateFormat("yyyy-MM-dd").format(new java.util.Date()));
+            System.out.println("No. Antrian: " + noReg + " (Ditemukan: " + Sequel.cariIsiSmc("select no_reg from reg_periksa where no_rawat = ?", noRawat) + ")");
+            System.out.println("No. RM: " + noRM + " (Ditemukan: " + Sequel.cariIsiSmc("select no_rkm_medis from reg_periksa where no_rawat = ?", noRawat) + ")");
+            System.out.println("Kode Dokter: " + kdDokter + " (Ditemukan: " + Sequel.cariIsiSmc("select kd_dokter from reg_periksa where no_rawat = ?", noRawat) + ")");
+            System.out.println("Kode Poli: " + kdPoli  + " (Ditemukan: " + Sequel.cariIsiSmc("select kd_poli from reg_periksa where no_rawat = ?", noRawat) + ")");
             System.out.println("======================================================");
 
             return false;
@@ -688,7 +591,7 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         param.put("alamatrs", instansiAlamat);
         param.put("kotars", instansiKota);
         param.put("kontakrs", instansiKontak);
-        param.put("norawat", regNoRawat);
+        param.put("norawat", noRawat);
         
         Valid.printReport("rptBuktiRegisterAPM.jasper", PRINTERREGISTRASI, "::[ Bukti Registrasi 1 ]::", 1, param);
         Valid.MyReport("rptBuktiRegisterAPM.jasper", "report", "::[ Bukti Registrasi 1 ]::", param);
@@ -698,29 +601,28 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         this.setCursor(Cursor.getDefaultCursor());
     }
     
-    private void kosongkanInput()
-    {
-        labelNoRM.setText("");
-        labelNamaPasien.setText("");
-        labelTglLahir.setText("");
-        dateTanggalPeriksa.setDate(new java.util.Date());
-        textNamaPoli.setText("");
-        textNamaDokter.setText("");
-        dropdownCaraBayar.setSelectedIndex(0);
+    private void kosongkanInput() {
+        noRM.setText("");
+        namaPasien.setText("");
+        tglLahir.setText("");
+        tanggalPeriksa.setText(DateTimeFormatter.ofPattern("yyyy-MM-dd").format(LocalDate.now()));
+        namaPoli.setText(Sequel.cariIsiSmc("select poliklinik.nm_poli from poliklinik where poliklinik.kd_poli = ?", kdPoli));
+        namaDokter.setText("");
+        jenisBayar.setText("UMUM / PERSONAL");
         
         hari = "";
-        regNoRawat = "";
-        regNoUrut = "";
-        regKodeDokter = "";
-        regKodePoli = "";
-        regBiaya = "";
-        regStatusDaftar = "Lama";
-        regStatusPoli = "Baru";
-        pasienUmur = "0";
-        pasienStatusUmur = "Th";
-        pasienNamaPJ = "-";
-        pasienHubunganPJ = "-";
-        pasienAlamatPJ = "-";
+        noRawat = "";
+        noReg = "";
+        kdDokter = "";
+        kdPoli = KODEPOLIEKSEKUTIF.isBlank() ? "" : KODEPOLIEKSEKUTIF;
+        biayaReg = "";
+        statusDaftar = "Lama";
+        statusPoli = "Baru";
+        umurDaftar = "0";
+        statusUmur = "Th";
+        namaPJ = "-";
+        hubunganPJ = "-";
+        alamatPJ = "-";
         instansiNama = "";
         instansiAlamat = "";
         instansiKota = "";

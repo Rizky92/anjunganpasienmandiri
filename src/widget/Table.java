@@ -28,7 +28,7 @@ public class Table extends FlatTable {
         setRowHeight(50);
         setSelectionBackground(ColorFunctions.darken(new Color(0, 131, 62), 0.15f));
         setSelectionForeground(ColorFunctions.lighten(new Color(238, 238, 255), 0.1f));
-        getTableHeader().setBackground(new Color(238, 238, 255));
+        getTableHeader().setBackground(new Color(255, 255, 255));
         getTableHeader().setBorder(BorderFactory.createMatteBorder(0, 1, 0, 1, ColorFunctions.lighten(new Color(0, 131, 62), 0.25f)));
         getTableHeader().setFont(new Font("Inter", Font.BOLD, 14));
         getTableHeader().setForeground(new Color(0, 131, 62));
