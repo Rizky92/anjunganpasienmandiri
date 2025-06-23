@@ -229,6 +229,15 @@ public class koneksiDB {
             return "";
         }
     }
+    
+    public static boolean BOOKINGLANGSUNGREGISTRASI() {
+        try (FileInputStream fs = new FileInputStream("setting/database.xml")) {
+            prop.loadFromXML(fs);
+            return prop.getProperty("BOOKINGLANGSUNGREGISTRASI", "no").trim().equalsIgnoreCase("yes");
+        } catch (Exception e) {
+            return false;
+        }
+    }
 
     public static String HOST() {
         try {

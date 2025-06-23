@@ -304,7 +304,8 @@ public class DlgCekBookingSMC extends javax.swing.JDialog {
             "reg_periksa.kd_dokter, reg_periksa.kd_poli, reg_periksa.kd_pj from reg_periksa where " +
             "reg_periksa.no_rkm_medis = ? and reg_periksa.tgl_registrasi = current_date() and " +
             "reg_periksa.stts = 'Belum' and exists(select * from booking_registrasi where " +
-            "booking_registrasi.no_rawat = reg_periksa.no_rawat)" + (KODEPOLIEKSEKUTIF.isBlank() ? "" : " and reg_periksa.kd_poli = ?")
+            "booking_registrasi.no_rawat = reg_periksa.no_rawat and booking_registrasi.status = 'Belum')" +
+            (KODEPOLIEKSEKUTIF.isBlank() ? "" : " and reg_periksa.kd_poli = ?")
         )) {
             ps.setString(1, noRM);
             if (!KODEPOLIEKSEKUTIF.isBlank()) {
@@ -320,7 +321,6 @@ public class DlgCekBookingSMC extends javax.swing.JDialog {
                     param.put("namars", Sequel.cariIsiSmc("select setting.nama_instansi from setting limit 1"));
                     param.put("kotars", Sequel.cariIsiSmc("select setting.kabupaten from setting limit 1"));
                     Valid.printReport("rptBarcodeRawatAPM.jasper", koneksiDB.PRINTER_BARCODE(), "::[ Barcode Perawatan ]::", koneksiDB.PRINTJUMLAHBARCODE(), param);
-                    Valid.MyReport("rptBarcodeRawatAPM.jasper", "report", "::[ Barcode Perawatan ]::", param);
                 } else {
                     JOptionPane.showMessageDialog(null, "Maaf, data pasien tidak ditemukan\nSilahkan konfirmasi ke pendaftaran..!!");
                 }
