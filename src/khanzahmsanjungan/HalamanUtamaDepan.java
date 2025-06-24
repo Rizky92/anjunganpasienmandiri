@@ -270,7 +270,7 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
 
     private void btnCekinBookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCekinBookingActionPerformed
         // JOptionPane.showMessageDialog(rootPane, "Mohon maaf, fitur masih dalam tahap pengembangan");
-        DlgCekBookingSMC pilih = new DlgCekBookingSMC(null, true);
+        DlgCekBooking pilih = new DlgCekBooking(null, true);
         pilih.setSize(this.getWidth(), this.getHeight());
         pilih.setLocationRelativeTo(this);
         pilih.setVisible(true);

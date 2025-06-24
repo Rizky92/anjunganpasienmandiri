@@ -46,8 +46,8 @@ public class DlgCekSKDPKontrol extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         InputSKDP = new widget.TextBox();
         jLabel28 = new widget.Label();
-        BtnTutup = new widget.ButtonBig();
-        BtnKonfirmasi = new widget.ButtonBig();
+        BtnTutup = new widget.Button();
+        BtnKonfirmasi = new widget.Button();
         jPanel3 = new javax.swing.JPanel();
         btnAngka8 = new javax.swing.JButton();
         btnAngka7 = new javax.swing.JButton();
@@ -133,11 +133,9 @@ public class DlgCekSKDPKontrol extends javax.swing.JDialog {
         BtnTutup.setMnemonic('U');
         BtnTutup.setToolTipText("Alt+U");
         BtnTutup.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        BtnTutup.setHorizontalTextPosition(javax.swing.SwingConstants.TRAILING);
         BtnTutup.setIconTextGap(2);
         BtnTutup.setMargin(new java.awt.Insets(0, 0, 0, 0));
         BtnTutup.setPreferredSize(new java.awt.Dimension(100, 75));
-        BtnTutup.setVerticalTextPosition(javax.swing.SwingConstants.CENTER);
         BtnTutup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnTutupActionPerformed(evt);
@@ -157,7 +155,6 @@ public class DlgCekSKDPKontrol extends javax.swing.JDialog {
         BtnKonfirmasi.setIconTextGap(0);
         BtnKonfirmasi.setMargin(new java.awt.Insets(0, 0, 0, 0));
         BtnKonfirmasi.setPreferredSize(new java.awt.Dimension(100, 75));
-        BtnKonfirmasi.setVerticalTextPosition(javax.swing.SwingConstants.CENTER);
         BtnKonfirmasi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnKonfirmasiActionPerformed(evt);
@@ -490,8 +487,8 @@ public class DlgCekSKDPKontrol extends javax.swing.JDialog {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private widget.ButtonBig BtnKonfirmasi;
-    private widget.ButtonBig BtnTutup;
+    private widget.Button BtnKonfirmasi;
+    private widget.Button BtnTutup;
     private widget.TextBox InputSKDP;
     private usu.widget.glass.PanelGlass PanelWall;
     private javax.swing.JButton btnAngka0;

@@ -704,7 +704,6 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         jPanel1.setLayout(new java.awt.BorderLayout(0, 1));
 
         panelAtas.setBackground(new java.awt.Color(238, 238, 255));
-        panelAtas.setBorder(null);
         panelAtas.setForeground(new java.awt.Color(0, 131, 62));
         panelAtas.setPreferredSize(new java.awt.Dimension(390, 290));
         panelAtas.setLayout(new java.awt.BorderLayout());
@@ -1002,6 +1001,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         panelUtama.add(NmDPJP);
         NmDPJP.setBounds(310, 220, 260, 30);
 
+        btnCariDokter.setBackground(new java.awt.Color(238, 238, 255));
         btnCariDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pilih.png"))); // NOI18N
         btnCariDokter.setMnemonic('X');
         btnCariDokter.setToolTipText("Alt+X");
@@ -1069,6 +1069,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         panelUtama.add(jLabel7);
         jLabel7.setBounds(625, 100, 100, 30);
 
+        btnCariPoli.setBackground(new java.awt.Color(238, 238, 255));
         btnCariPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pilih.png"))); // NOI18N
         btnCariPoli.setMnemonic('X');
         btnCariPoli.setToolTipText("Alt+X");
@@ -1086,6 +1087,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         panelUtama.add(btnCariPoli);
         btnCariPoli.setBounds(570, 190, 40, 30);
 
+        btnCariDiagnosaAwal.setBackground(new java.awt.Color(238, 238, 255));
         btnCariDiagnosaAwal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pilih.png"))); // NOI18N
         btnCariDiagnosaAwal.setMnemonic('X');
         btnCariDiagnosaAwal.setToolTipText("Alt+X");
@@ -1103,6 +1105,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         panelUtama.add(btnCariDiagnosaAwal);
         btnCariDiagnosaAwal.setBounds(570, 160, 40, 30);
 
+        btnRiwayatRujukan.setBackground(new java.awt.Color(238, 238, 255));
         btnRiwayatRujukan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pilih.png"))); // NOI18N
         btnRiwayatRujukan.setMnemonic('X');
         btnRiwayatRujukan.setToolTipText("Alt+X");
@@ -1120,11 +1123,12 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         panelUtama.add(btnRiwayatRujukan);
         btnRiwayatRujukan.setBounds(570, 100, 40, 30);
 
+        btnRiwayatPelayananBPJS.setBackground(new java.awt.Color(255, 255, 255));
+        btnRiwayatPelayananBPJS.setForeground(new java.awt.Color(0, 131, 62));
         btnRiwayatPelayananBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pilih.png"))); // NOI18N
         btnRiwayatPelayananBPJS.setMnemonic('X');
         btnRiwayatPelayananBPJS.setText("Riwayat Layanan BPJS");
         btnRiwayatPelayananBPJS.setToolTipText("Alt+X");
-        btnRiwayatPelayananBPJS.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         btnRiwayatPelayananBPJS.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnRiwayatPelayananBPJS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1139,11 +1143,12 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         panelUtama.add(btnRiwayatPelayananBPJS);
         btnRiwayatPelayananBPJS.setBounds(980, 220, 220, 30);
 
+        btnFingerprint.setBackground(new java.awt.Color(255, 255, 255));
+        btnFingerprint.setForeground(new java.awt.Color(0, 131, 62));
         btnFingerprint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/fingerprint.png"))); // NOI18N
         btnFingerprint.setMnemonic('X');
         btnFingerprint.setText("Fingerprint");
         btnFingerprint.setToolTipText("Alt+X");
-        btnFingerprint.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         btnFingerprint.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnFingerprint.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnFingerprint.addActionListener(new java.awt.event.ActionListener() {
@@ -1159,11 +1164,12 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         panelUtama.add(btnFingerprint);
         btnFingerprint.setBounds(1080, 100, 100, 80);
 
+        btnFrista.setBackground(new java.awt.Color(255, 255, 255));
+        btnFrista.setForeground(new java.awt.Color(0, 131, 62));
         btnFrista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/face-scan.png"))); // NOI18N
         btnFrista.setMnemonic('X');
         btnFrista.setText("FRISTA");
         btnFrista.setToolTipText("Alt+X");
-        btnFrista.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         btnFrista.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnFrista.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnFrista.addActionListener(new java.awt.event.ActionListener() {
@@ -1529,12 +1535,14 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         form.add(Catatan);
         Catatan.setBounds(730, 220, 300, 30);
 
+        btnApprovalFP.setBackground(new java.awt.Color(255, 255, 255));
+        btnApprovalFP.setForeground(new java.awt.Color(0, 131, 62));
         btnApprovalFP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/approvalfp.png"))); // NOI18N
         btnApprovalFP.setMnemonic('X');
-        btnApprovalFP.setText("Approval FP BPJS");
+        btnApprovalFP.setText("Approval FP");
         btnApprovalFP.setToolTipText("Alt+X");
-        btnApprovalFP.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
-        btnApprovalFP.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnApprovalFP.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnApprovalFP.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnApprovalFP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnApprovalFPActionPerformed(evt);
@@ -1546,14 +1554,16 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
             }
         });
         form.add(btnApprovalFP);
-        btnApprovalFP.setBounds(1080, 190, 190, 50);
+        btnApprovalFP.setBounds(1080, 190, 120, 90);
 
+        btnPengajuanFP.setBackground(new java.awt.Color(255, 255, 255));
+        btnPengajuanFP.setForeground(new java.awt.Color(0, 131, 62));
         btnPengajuanFP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pengajuan.png"))); // NOI18N
         btnPengajuanFP.setMnemonic('X');
-        btnPengajuanFP.setText("Pengajuan FP BPJS");
+        btnPengajuanFP.setText("Pengajuan FP");
         btnPengajuanFP.setToolTipText("Alt+X");
-        btnPengajuanFP.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
-        btnPengajuanFP.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnPengajuanFP.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnPengajuanFP.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnPengajuanFP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPengajuanFPActionPerformed(evt);
@@ -1565,7 +1575,7 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
             }
         });
         form.add(btnPengajuanFP);
-        btnPengajuanFP.setBounds(1080, 120, 190, 50);
+        btnPengajuanFP.setBounds(1080, 80, 120, 90);
 
         jLabel15.setForeground(new java.awt.Color(0, 131, 62));
         jLabel15.setText("Jumlah Barcode :");
@@ -1593,7 +1603,6 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         panelBawah.setMinimumSize(new java.awt.Dimension(533, 120));
         panelBawah.setPreferredSize(new java.awt.Dimension(533, 120));
 
-        btnSimpan.setForeground(new java.awt.Color(0, 131, 62));
         btnSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/konfirmasi.png"))); // NOI18N
         btnSimpan.setMnemonic('S');
         btnSimpan.setText("KONFIRMASI");
@@ -1613,7 +1622,8 @@ public class DlgRegistrasiSEPPertama extends javax.swing.JDialog {
         });
         panelBawah.add(btnSimpan);
 
-        btnKeluar.setForeground(new java.awt.Color(0, 131, 62));
+        btnKeluar.setBackground(new java.awt.Color(255, 255, 255));
+        btnKeluar.setForeground(new java.awt.Color(255, 33, 32));
         btnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/exit.png"))); // NOI18N
         btnKeluar.setMnemonic('K');
         btnKeluar.setText("Batal");

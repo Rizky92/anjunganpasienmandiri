@@ -205,6 +205,7 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         jPanel2.add(jLabel32);
         jLabel32.setBounds(60, 300, 220, 40);
 
+        buttonCariPoli.setBackground(new java.awt.Color(238, 238, 255));
         buttonCariPoli.setForeground(new java.awt.Color(0, 131, 62));
         buttonCariPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pilih.png"))); // NOI18N
         buttonCariPoli.setMnemonic('S');
@@ -218,7 +219,7 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
             }
         });
         jPanel2.add(buttonCariPoli);
-        buttonCariPoli.setBounds(820, 250, 70, 40);
+        buttonCariPoli.setBounds(820, 250, 50, 40);
 
         namaPoli.setEditable(false);
         namaPoli.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
@@ -233,6 +234,7 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         jPanel2.add(jLabel36);
         jLabel36.setBounds(60, 350, 220, 40);
 
+        buttonCariDokter.setBackground(new java.awt.Color(238, 238, 255));
         buttonCariDokter.setForeground(new java.awt.Color(0, 131, 62));
         buttonCariDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pilih.png"))); // NOI18N
         buttonCariDokter.setMnemonic('S');
@@ -246,7 +248,7 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
             }
         });
         jPanel2.add(buttonCariDokter);
-        buttonCariDokter.setBounds(820, 300, 70, 40);
+        buttonCariDokter.setBounds(820, 300, 50, 40);
 
         namaDokter.setEditable(false);
         namaDokter.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
@@ -303,12 +305,11 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         jPanel3.setBackground(new java.awt.Color(238, 238, 255));
         jPanel3.setPreferredSize(new java.awt.Dimension(615, 200));
 
-        btnSimpan.setForeground(new java.awt.Color(0, 131, 62));
         btnSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/konfirmasi.png"))); // NOI18N
         btnSimpan.setMnemonic('S');
         btnSimpan.setText("Konfirmasi");
         btnSimpan.setToolTipText("Alt+S");
-        btnSimpan.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
+        btnSimpan.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
         btnSimpan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnSimpan.setPreferredSize(new java.awt.Dimension(300, 45));
         btnSimpan.addActionListener(new java.awt.event.ActionListener() {
@@ -318,8 +319,9 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         });
         jPanel3.add(btnSimpan);
 
-        btnKeluar.setForeground(new java.awt.Color(0, 131, 62));
-        btnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/reset.png"))); // NOI18N
+        btnKeluar.setBackground(new java.awt.Color(255, 255, 255));
+        btnKeluar.setForeground(new java.awt.Color(255, 33, 32));
+        btnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/exit.png"))); // NOI18N
         btnKeluar.setMnemonic('K');
         btnKeluar.setText("Batal");
         btnKeluar.setToolTipText("Alt+K");

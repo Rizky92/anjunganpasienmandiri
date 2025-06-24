@@ -519,7 +519,6 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         jPanel1.setLayout(new java.awt.BorderLayout(0, 1));
 
         panelAtas.setBackground(new java.awt.Color(238, 238, 255));
-        panelAtas.setBorder(null);
         panelAtas.setForeground(new java.awt.Color(0, 131, 62));
         panelAtas.setPreferredSize(new java.awt.Dimension(390, 120));
         panelAtas.setLayout(new java.awt.BorderLayout());
@@ -775,6 +774,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         panelUtama.add(NmDPJP);
         NmDPJP.setBounds(310, 220, 260, 30);
 
+        btnDPJPLayanan.setBackground(new java.awt.Color(238, 238, 255));
         btnDPJPLayanan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pilih.png"))); // NOI18N
         btnDPJPLayanan.setMnemonic('X');
         btnDPJPLayanan.setToolTipText("Alt+X");
@@ -825,6 +825,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         panelUtama.add(jLabel7);
         jLabel7.setBounds(625, 100, 100, 30);
 
+        btnDPJPLayanan1.setBackground(new java.awt.Color(238, 238, 255));
         btnDPJPLayanan1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pilih.png"))); // NOI18N
         btnDPJPLayanan1.setMnemonic('X');
         btnDPJPLayanan1.setToolTipText("Alt+X");
@@ -837,6 +838,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         panelUtama.add(btnDPJPLayanan1);
         btnDPJPLayanan1.setBounds(570, 190, 40, 30);
 
+        btnDiagnosaAwal.setBackground(new java.awt.Color(238, 238, 255));
         btnDiagnosaAwal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pilih.png"))); // NOI18N
         btnDiagnosaAwal.setMnemonic('X');
         btnDiagnosaAwal.setToolTipText("Alt+X");
@@ -849,6 +851,7 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         panelUtama.add(btnDiagnosaAwal);
         btnDiagnosaAwal.setBounds(570, 160, 40, 30);
 
+        btnCariNoRujukan.setBackground(new java.awt.Color(238, 238, 255));
         btnCariNoRujukan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pilih.png"))); // NOI18N
         btnCariNoRujukan.setMnemonic('X');
         btnCariNoRujukan.setToolTipText("Alt+X");
@@ -861,11 +864,12 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         panelUtama.add(btnCariNoRujukan);
         btnCariNoRujukan.setBounds(570, 100, 40, 30);
 
+        btnRiwayatPelayanan.setBackground(new java.awt.Color(255, 255, 255));
+        btnRiwayatPelayanan.setForeground(new java.awt.Color(0, 131, 62));
         btnRiwayatPelayanan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pilih.png"))); // NOI18N
         btnRiwayatPelayanan.setMnemonic('X');
         btnRiwayatPelayanan.setText("Riwayat Layanan BPJS");
         btnRiwayatPelayanan.setToolTipText("Alt+X");
-        btnRiwayatPelayanan.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         btnRiwayatPelayanan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnRiwayatPelayanan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -882,11 +886,12 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         panelUtama.add(jLabel57);
         jLabel57.setBounds(625, 250, 100, 30);
 
+        btnFingerprint.setBackground(new java.awt.Color(255, 255, 255));
+        btnFingerprint.setForeground(new java.awt.Color(0, 131, 62));
         btnFingerprint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/fingerprint.png"))); // NOI18N
         btnFingerprint.setMnemonic('X');
         btnFingerprint.setText("Fingerprint");
         btnFingerprint.setToolTipText("Alt+X");
-        btnFingerprint.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         btnFingerprint.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnFingerprint.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnFingerprint.addActionListener(new java.awt.event.ActionListener() {
@@ -897,11 +902,12 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         panelUtama.add(btnFingerprint);
         btnFingerprint.setBounds(1080, 100, 100, 80);
 
+        btnFrista.setBackground(new java.awt.Color(255, 255, 255));
+        btnFrista.setForeground(new java.awt.Color(0, 131, 62));
         btnFrista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/face-scan.png"))); // NOI18N
         btnFrista.setMnemonic('X');
         btnFrista.setText("FRISTA");
         btnFrista.setToolTipText("Alt+X");
-        btnFrista.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         btnFrista.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnFrista.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnFrista.addActionListener(new java.awt.event.ActionListener() {
@@ -1192,33 +1198,37 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         form.add(KdDPJPLayanan);
         KdDPJPLayanan.setBounds(230, 160, 80, 30);
 
+        btnApprovalFP.setBackground(new java.awt.Color(255, 255, 255));
+        btnApprovalFP.setForeground(new java.awt.Color(0, 131, 62));
         btnApprovalFP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/approvalfp.png"))); // NOI18N
         btnApprovalFP.setMnemonic('X');
-        btnApprovalFP.setText("Approval FP BPJS");
+        btnApprovalFP.setText("Approval FP");
         btnApprovalFP.setToolTipText("Alt+X");
-        btnApprovalFP.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
-        btnApprovalFP.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnApprovalFP.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnApprovalFP.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnApprovalFP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnApprovalFPActionPerformed(evt);
             }
         });
         form.add(btnApprovalFP);
-        btnApprovalFP.setBounds(1080, 190, 190, 50);
+        btnApprovalFP.setBounds(1080, 190, 120, 90);
 
+        btnPengajuanFP.setBackground(new java.awt.Color(255, 255, 255));
+        btnPengajuanFP.setForeground(new java.awt.Color(0, 131, 62));
         btnPengajuanFP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pengajuan.png"))); // NOI18N
         btnPengajuanFP.setMnemonic('X');
-        btnPengajuanFP.setText("Pengajuan FP BPJS");
+        btnPengajuanFP.setText("Pengajuan FP");
         btnPengajuanFP.setToolTipText("Alt+X");
-        btnPengajuanFP.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
-        btnPengajuanFP.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnPengajuanFP.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnPengajuanFP.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnPengajuanFP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPengajuanFPActionPerformed(evt);
             }
         });
         form.add(btnPengajuanFP);
-        btnPengajuanFP.setBounds(1080, 120, 190, 50);
+        btnPengajuanFP.setBounds(1080, 80, 120, 90);
 
         lblNoRawat.setForeground(new java.awt.Color(0, 131, 62));
         lblNoRawat.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -1260,7 +1270,6 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         panelBawah.setMinimumSize(new java.awt.Dimension(533, 120));
         panelBawah.setPreferredSize(new java.awt.Dimension(533, 120));
 
-        btnSimpan.setForeground(new java.awt.Color(0, 131, 62));
         btnSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/konfirmasi.png"))); // NOI18N
         btnSimpan.setMnemonic('S');
         btnSimpan.setText("KONFIRMASI");
@@ -1280,7 +1289,8 @@ public class DlgRegistrasiSEPMobileJKN extends javax.swing.JDialog {
         });
         panelBawah.add(btnSimpan);
 
-        btnKeluar.setForeground(new java.awt.Color(0, 131, 62));
+        btnKeluar.setBackground(new java.awt.Color(255, 255, 255));
+        btnKeluar.setForeground(new java.awt.Color(255, 33, 32));
         btnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/exit.png"))); // NOI18N
         btnKeluar.setMnemonic('K');
         btnKeluar.setText("Batal");

@@ -17,7 +17,7 @@ public class Button extends FlatButton {
     public Button() {
         super();
         setFont(new java.awt.Font("Inter", 1, 12));
-        setBackground(new Color(255, 238, 238));
-        setForeground(new Color(0, 131, 62));
+        setBackground(new Color(0, 131, 62));
+        setForeground(new Color(255, 255, 255));
     }
 }

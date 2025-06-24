@@ -63,8 +63,8 @@ public class DlgCekKunjunganBedaPoli extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         NoRMPasien = new widget.TextBox();
         jLabel28 = new widget.Label();
-        BtnClose = new widget.ButtonBig();
-        BtnClose2 = new widget.ButtonBig();
+        BtnClose = new widget.Button();
+        BtnClose2 = new widget.Button();
         panelNumpad1 = new widget.PanelNumpad();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -125,6 +125,7 @@ public class DlgCekKunjunganBedaPoli extends javax.swing.JDialog {
         gridBagConstraints.gridy = 1;
         gridBagConstraints.gridwidth = 8;
         gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 10, 0);
         jPanel1.add(NoRMPasien, gridBagConstraints);
 
         jLabel28.setForeground(new java.awt.Color(0, 131, 62));
@@ -142,18 +143,16 @@ public class DlgCekKunjunganBedaPoli extends javax.swing.JDialog {
         jPanel1.add(jLabel28, gridBagConstraints);
 
         BtnClose.setBackground(new java.awt.Color(255, 255, 255));
-        BtnClose.setForeground(new java.awt.Color(51, 51, 51));
+        BtnClose.setForeground(new java.awt.Color(255, 33, 32));
         BtnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/exit.png"))); // NOI18N
         BtnClose.setMnemonic('U');
         BtnClose.setText("BATAL");
         BtnClose.setToolTipText("Alt+U");
         BtnClose.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
         BtnClose.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnClose.setHorizontalTextPosition(javax.swing.SwingConstants.TRAILING);
         BtnClose.setIconTextGap(2);
         BtnClose.setMargin(new java.awt.Insets(0, 0, 0, 0));
         BtnClose.setPreferredSize(new java.awt.Dimension(200, 75));
-        BtnClose.setVerticalTextPosition(javax.swing.SwingConstants.CENTER);
         BtnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnCloseActionPerformed(evt);
@@ -166,20 +165,16 @@ public class DlgCekKunjunganBedaPoli extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(20, 0, 0, 0);
         jPanel1.add(BtnClose, gridBagConstraints);
 
-        BtnClose2.setBackground(new java.awt.Color(255, 255, 255));
-        BtnClose2.setForeground(new java.awt.Color(51, 51, 51));
         BtnClose2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/konfirmasi.png"))); // NOI18N
         BtnClose2.setMnemonic('U');
         BtnClose2.setText("CEK");
         BtnClose2.setToolTipText("Alt+U");
         BtnClose2.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
         BtnClose2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnClose2.setHorizontalTextPosition(javax.swing.SwingConstants.TRAILING);
         BtnClose2.setIconTextGap(0);
         BtnClose2.setMargin(new java.awt.Insets(0, 0, 0, 0));
         BtnClose2.setPreferredSize(new java.awt.Dimension(200, 75));
         BtnClose2.setVerifyInputWhenFocusTarget(false);
-        BtnClose2.setVerticalTextPosition(javax.swing.SwingConstants.CENTER);
         BtnClose2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnClose2ActionPerformed(evt);
@@ -322,8 +317,8 @@ public class DlgCekKunjunganBedaPoli extends javax.swing.JDialog {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private widget.ButtonBig BtnClose;
-    private widget.ButtonBig BtnClose2;
+    private widget.Button BtnClose;
+    private widget.Button BtnClose2;
     private widget.TextBox NoRMPasien;
     private usu.widget.glass.PanelGlass PanelWall;
     private javax.swing.JLabel jLabel1;

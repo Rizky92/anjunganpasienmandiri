@@ -177,6 +177,9 @@
             </Component>
             <Component class="widget.Button" name="buttonCariPoli">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ee" red="ee" type="rgb"/>
+                </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="3e" green="83" red="0" type="rgb"/>
                 </Property>
@@ -198,7 +201,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="820" y="250" width="70" height="40"/>
+                  <AbsoluteConstraints x="820" y="250" width="50" height="40"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -239,6 +242,9 @@
             </Component>
             <Component class="widget.Button" name="buttonCariDokter">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ee" red="ee" type="rgb"/>
+                </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="3e" green="83" red="0" type="rgb"/>
                 </Property>
@@ -260,7 +266,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="820" y="300" width="70" height="40"/>
+                  <AbsoluteConstraints x="820" y="300" width="50" height="40"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -419,9 +425,6 @@
           <SubComponents>
             <Component class="widget.Button" name="btnSimpan">
               <Properties>
-                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="3e" green="83" red="0" type="rgb"/>
-                </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/48x48/konfirmasi.png"/>
                 </Property>
@@ -429,7 +432,7 @@
                 <Property name="text" type="java.lang.String" value="Konfirmasi"/>
                 <Property name="toolTipText" type="java.lang.String" value="Alt+S"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Inter" size="18" style="0"/>
+                  <Font name="Inter" size="18" style="1"/>
                 </Property>
                 <Property name="horizontalTextPosition" type="int" value="4"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -442,11 +445,14 @@
             </Component>
             <Component class="widget.Button" name="btnKeluar">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="3e" green="83" red="0" type="rgb"/>
+                  <Color blue="20" green="21" red="ff" type="rgb"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/48x48/reset.png"/>
+                  <Image iconType="3" name="/48x48/exit.png"/>
                 </Property>
                 <Property name="mnemonic" type="int" value="75"/>
                 <Property name="text" type="java.lang.String" value="Batal"/>
