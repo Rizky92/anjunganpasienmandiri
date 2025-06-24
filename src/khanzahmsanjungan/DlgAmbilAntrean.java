@@ -178,7 +178,6 @@ public class DlgAmbilAntrean extends javax.swing.JDialog {
         jPanel4.setBackground(new java.awt.Color(238, 238, 255));
         jPanel4.setForeground(new java.awt.Color(238, 238, 255));
 
-        BtnKeluar.setBackground(new java.awt.Color(255, 255, 255));
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/exit.png"))); // NOI18N
         BtnKeluar.setMnemonic('U');
         BtnKeluar.setText("KELUAR");

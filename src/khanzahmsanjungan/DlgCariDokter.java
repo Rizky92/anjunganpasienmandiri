@@ -102,6 +102,7 @@ public final class DlgCariDokter extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setOpaque(true);
 
+        tbKamar.setBackground(new java.awt.Color(238, 238, 255));
         tbKamar.setName("tbKamar"); // NOI18N
         tbKamar.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tbKamar.getTableHeader().setResizingAllowed(false);
@@ -121,6 +122,7 @@ public final class DlgCariDokter extends javax.swing.JDialog {
         jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING));
 
         button1.setBackground(new java.awt.Color(238, 238, 255));
+        button1.setForeground(new java.awt.Color(0, 131, 62));
         button1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/exit.png"))); // NOI18N
         button1.setText("KELUAR");
         button1.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N

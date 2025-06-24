@@ -311,7 +311,7 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         btnSimpan.setToolTipText("Alt+S");
         btnSimpan.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
         btnSimpan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnSimpan.setPreferredSize(new java.awt.Dimension(300, 45));
+        btnSimpan.setPreferredSize(new java.awt.Dimension(300, 60));
         btnSimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSimpanActionPerformed(evt);
@@ -327,7 +327,7 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
         btnKeluar.setToolTipText("Alt+K");
         btnKeluar.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         btnKeluar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        btnKeluar.setPreferredSize(new java.awt.Dimension(300, 45));
+        btnKeluar.setPreferredSize(new java.awt.Dimension(300, 60));
         btnKeluar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnKeluarActionPerformed(evt);
@@ -587,19 +587,14 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
     
     private void cetakRegistrasi() {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        
         Map<String, Object> param = new HashMap<>();
         param.put("namars", instansiNama);
         param.put("alamatrs", instansiAlamat);
         param.put("kotars", instansiKota);
         param.put("kontakrs", instansiKontak);
         param.put("norawat", noRawat);
-        
-        Valid.printReport("rptBuktiRegisterAPM.jasper", PRINTERREGISTRASI, "::[ Bukti Registrasi 1 ]::", 1, param);
-        Valid.MyReport("rptBuktiRegisterAPM.jasper", "report", "::[ Bukti Registrasi 1 ]::", param);
+        // Valid.printReport("rptBuktiRegisterAPM.jasper", PRINTERREGISTRASI, "::[ Bukti Registrasi 1 ]::", 1, param);
         Valid.printReport("rptBarcodeRawatAPM.jasper", PRINTERBARCODE, "::[ Barcode Perawatan ]::", 3, param);
-        Valid.MyReport("rptBarcodeRawatAPM.jasper", "report", "::[ Barcode Perawatan ]::", param);
-        
         this.setCursor(Cursor.getDefaultCursor());
     }
     

@@ -317,7 +317,7 @@ public class DlgCekBooking extends javax.swing.JDialog {
                     param.put("kotars", Sequel.cariIsiSmc("select setting.kabupaten from setting limit 1"));
                     Valid.printReport("rptBarcodeRawatAPM.jasper", koneksiDB.PRINTER_BARCODE(), "::[ Barcode Perawatan ]::", koneksiDB.PRINTJUMLAHBARCODE(), param);
                 } else {
-                    JOptionPane.showMessageDialog(null, "Maaf, data pasien tidak ditemukan\nSilahkan konfirmasi ke pendaftaran..!!");
+                    JOptionPane.showMessageDialog(null, "Maaf, jadwal booking untuk hari ini tidak ditemukan\nSilahkan konfirmasi ke pendaftaran..!!");
                 }
             }
         } catch (Exception e) {
