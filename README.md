@@ -80,7 +80,7 @@ values: List menu, dipisah dengan koma, `antrian|cekin|daftarpoli|seppertama|sep
 default: `"cekin,satusehat"`  
 
 ### `KODEPOLIEKSEKUTIF`
-Pengaturan ini digunakan untuk mengatur kode poli yang digunakan sebagai default untuk pendaftaran registrasi walkin.  
+Pengaturan ini digunakan untuk mengatur kode poli yang digunakan sebagai default untuk pendaftaran registrasi eksekutif.  
 
 values: kode poli dari SIMRS  
 default: `""`  
