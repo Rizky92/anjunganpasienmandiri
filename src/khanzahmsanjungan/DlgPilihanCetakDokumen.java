@@ -78,8 +78,7 @@ public final class DlgPilihanCetakDokumen extends javax.swing.JDialog {
                 column.setPreferredWidth(400);
             }
         }
-        tbData.setDefaultRenderer(Object.class, new WarnaTable());
-        
+                
     }
 
     /** This method is called from within the constructor to

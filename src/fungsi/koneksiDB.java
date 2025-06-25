@@ -176,7 +176,7 @@ public class koneksiDB {
     public static String AUTOBUKAAPLIKASI() {
         try (FileInputStream fs = new FileInputStream("setting/apm.xml")) {
             prop.loadFromXML(fs);
-            return prop.getProperty("AUTOBUKAAPLIKASI");
+            return prop.getProperty("AUTOBUKAAPLIKASI", "");
         } catch (Exception e) {
             return "";
         }

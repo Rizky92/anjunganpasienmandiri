@@ -82,8 +82,7 @@ public final class BPJSCekReferensiPoli extends javax.swing.JDialog {
                 column.setPreferredWidth(470);
             }
         }
-        tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
-        
+                
         Poli.setDocument(new batasInput((byte)100).getKata(Poli));
         
         if(koneksiDB.CARICEPAT().equals("aktif")){

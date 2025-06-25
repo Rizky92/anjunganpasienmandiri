@@ -92,8 +92,7 @@ public final class BPJSCekReferensiDokterDPJP1 extends javax.swing.JDialog {
                 column.setPreferredWidth(470);
             }
         }
-        tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
-
+        
         Dokter.setDocument(new batasInput((byte) 100).getKata(Dokter));
 
         if (koneksiDB.CARICEPAT().equals("aktif")) {

@@ -150,7 +150,6 @@ public class DlgCekinMobileJKN extends javax.swing.JDialog {
         BtnClose.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
         BtnClose.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BtnClose.setIconTextGap(2);
-        BtnClose.setMargin(new java.awt.Insets(0, 0, 0, 0));
         BtnClose.setPreferredSize(new java.awt.Dimension(200, 75));
         BtnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -171,7 +170,6 @@ public class DlgCekinMobileJKN extends javax.swing.JDialog {
         BtnClose2.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
         BtnClose2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BtnClose2.setIconTextGap(0);
-        BtnClose2.setMargin(new java.awt.Insets(0, 0, 0, 0));
         BtnClose2.setPreferredSize(new java.awt.Dimension(200, 75));
         BtnClose2.setVerifyInputWhenFocusTarget(false);
         BtnClose2.addActionListener(new java.awt.event.ActionListener() {

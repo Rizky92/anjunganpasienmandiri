@@ -87,8 +87,7 @@ public final class BPJSCekReferensiPenyakit extends javax.swing.JDialog {
                 column.setPreferredWidth(470);
             }
         }
-        tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
-
+        
         diagnosa.setDocument(new batasInput((byte) 100).getKata(diagnosa));
 
         if (koneksiDB.CARICEPAT().equals("aktif")) {

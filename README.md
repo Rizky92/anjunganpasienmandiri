@@ -18,8 +18,8 @@ Berikut adalah konfigurasi yang disediakan dalam file `apm.xml.example`:
 <entry key="URLAPLIKASIFRISTABPJS">D:\BPJS Kesehatan\FRISTA\frista.exe</entry>
 <entry key="USERFINGERPRINTBPJS">l4nh5eVYrLAER/I2A4b3Tw==</entry>
 <entry key="PASSWORDFINGERPRINTBPJS">l4nh5eVYrLAER/I2A4b3Tw==</entry>
-<entry key="AUTOBUKAAPLIKASI">frista</entry>
-<entry key="TOMBOLDIMATIKAN"></entry>
+<entry key="TOMBOLDIMATIKAN">satusehat</entry>
+<entry key="KODEPOLIEKSEKUTIF"></entry>
 ```
 
 ### `PRINTER_REGISTRASI`
@@ -78,3 +78,9 @@ Pengaturan ini digunakan untuk mengatur menu apa yang dimatikan dari halaman dep
 
 values: List menu, dipisah dengan koma, `antrian|cekin|daftarpoli|seppertama|sepkontrol|sepbedapoli|mobilejkn|satusehat`  
 default: `"cekin,satusehat"`  
+
+### `KODEPOLIEKSEKUTIF`
+Pengaturan ini digunakan untuk mengatur kode poli yang digunakan sebagai default untuk pendaftaran registrasi walkin.  
+
+values: kode poli dari SIMRS  
+default: `""`  

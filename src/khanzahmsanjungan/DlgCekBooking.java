@@ -20,8 +20,7 @@ public class DlgCekBooking extends javax.swing.JDialog {
     private final Connection koneksi = koneksiDB.condb();
     private final sekuel Sequel = new sekuel();
     private final validasi Valid = new validasi();
-    private final String KODEPOLIEKSEKUTIF = koneksiDB.KODEPOLIEKSEKUTIF(),
-                         JENISBAYARPOLIEKSEKUTIF = koneksiDB.JENISBAYARPOLIEKSEKUTIF();
+    private final String KODEPOLIEKSEKUTIF = koneksiDB.KODEPOLIEKSEKUTIF();
 
     public DlgCekBooking(java.awt.Frame parent, boolean id) {
         super(parent, id);
@@ -67,6 +66,11 @@ public class DlgCekBooking extends javax.swing.JDialog {
         setModal(true);
         setUndecorated(true);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
         getContentPane().setLayout(new java.awt.BorderLayout(1, 1));
 
         panelHeader.setBackground(new java.awt.Color(238, 238, 255));
@@ -141,7 +145,6 @@ public class DlgCekBooking extends javax.swing.JDialog {
         BtnClose.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
         BtnClose.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BtnClose.setIconTextGap(2);
-        BtnClose.setMargin(new java.awt.Insets(0, 0, 0, 0));
         BtnClose.setPreferredSize(new java.awt.Dimension(200, 75));
         BtnClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,7 +165,6 @@ public class DlgCekBooking extends javax.swing.JDialog {
         BtnClose2.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
         BtnClose2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BtnClose2.setIconTextGap(0);
-        BtnClose2.setMargin(new java.awt.Insets(0, 0, 0, 0));
         BtnClose2.setPreferredSize(new java.awt.Dimension(200, 75));
         BtnClose2.setVerifyInputWhenFocusTarget(false);
         BtnClose2.addActionListener(new java.awt.event.ActionListener() {
@@ -264,6 +266,10 @@ public class DlgCekBooking extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_NoRMPasienKeyPressed
 
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        NoRMPasien.setText("");
+    }//GEN-LAST:event_formWindowActivated
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.Button BtnClose;
     private widget.Button BtnClose2;
@@ -316,6 +322,7 @@ public class DlgCekBooking extends javax.swing.JDialog {
                     param.put("namars", Sequel.cariIsiSmc("select setting.nama_instansi from setting limit 1"));
                     param.put("kotars", Sequel.cariIsiSmc("select setting.kabupaten from setting limit 1"));
                     Valid.printReport("rptBarcodeRawatAPM.jasper", koneksiDB.PRINTER_BARCODE(), "::[ Barcode Perawatan ]::", koneksiDB.PRINTJUMLAHBARCODE(), param);
+                    dispose();
                 } else {
                     JOptionPane.showMessageDialog(null, "Maaf, jadwal booking untuk hari ini tidak ditemukan\nSilahkan konfirmasi ke pendaftaran..!!");
                 }
@@ -324,7 +331,5 @@ public class DlgCekBooking extends javax.swing.JDialog {
             System.out.println("Notif : " + e);
             JOptionPane.showMessageDialog(null, "Terjadi kesalahan pada saat mencari data pasien\nSilahkan hubungi administrator..!!");
         }
-        
-        NoRMPasien.setText("");
     }
 }

@@ -121,8 +121,8 @@ public final class DlgCariDokter extends javax.swing.JDialog {
         jPanel1.setName("jPanel1"); // NOI18N
         jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING));
 
-        button1.setBackground(new java.awt.Color(238, 238, 255));
-        button1.setForeground(new java.awt.Color(0, 131, 62));
+        button1.setBackground(new java.awt.Color(255, 255, 255));
+        button1.setForeground(new java.awt.Color(255, 23, 26));
         button1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/exit.png"))); // NOI18N
         button1.setText("KELUAR");
         button1.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N

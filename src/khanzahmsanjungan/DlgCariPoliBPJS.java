@@ -82,8 +82,7 @@ public final class DlgCariPoliBPJS extends javax.swing.JDialog {
                 column.setPreferredWidth(500);
             }
         }
-        tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
-
+        
     }
 
     /**
