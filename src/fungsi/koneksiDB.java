@@ -126,6 +126,7 @@ public class koneksiDB {
         }
     }
     
+    @Deprecated(forRemoval = true, since = "2025-06-17")
     public static String URLFINGERPRINTBPJS() {
         try {
             prop.loadFromXML(new FileInputStream("setting/apm.xml"));
@@ -171,10 +172,11 @@ public class koneksiDB {
         }
     }
     
+    @Deprecated(since = "2025-06-17")
     public static String AUTOBUKAAPLIKASI() {
         try (FileInputStream fs = new FileInputStream("setting/apm.xml")) {
             prop.loadFromXML(fs);
-            return prop.getProperty("AUTOBUKAAPLIKASI");
+            return prop.getProperty("AUTOBUKAAPLIKASI", "");
         } catch (Exception e) {
             return "";
         }
@@ -207,6 +209,33 @@ public class koneksiDB {
             return prop.getProperty("TOMBOLDIMATIKAN", "").trim().toLowerCase().replaceAll("\\s+", "").split(",");
         } catch (Exception e) {
             return null;
+        }
+    }
+    
+    public static String KODEPOLIEKSEKUTIF() {
+        try (FileInputStream fs = new FileInputStream("setting/apm.xml")) {
+            prop.loadFromXML(fs);
+            return prop.getProperty("KODEPOLIEKSEKUTIF").trim();
+        } catch (Exception e) {
+            return "";
+        }
+    }
+    
+    public static String JENISBAYARPOLIEKSEKUTIF() {
+        try (FileInputStream fs = new FileInputStream("setting/apm.xml")) {
+            prop.loadFromXML(fs);
+            return prop.getProperty("JENISBAYARPOLIEKSEKUTIF").trim();
+        } catch (Exception e) {
+            return "";
+        }
+    }
+    
+    public static boolean BOOKINGLANGSUNGREGISTRASI() {
+        try (FileInputStream fs = new FileInputStream("setting/database.xml")) {
+            prop.loadFromXML(fs);
+            return prop.getProperty("BOOKINGLANGSUNGREGISTRASI", "no").trim().equalsIgnoreCase("yes");
+        } catch (Exception e) {
+            return false;
         }
     }
 

@@ -43,11 +43,11 @@ public class DlgCekSKDPKontrol extends javax.swing.JDialog {
 
         jPanel2 = new javax.swing.JPanel();
         PanelWall = new usu.widget.glass.PanelGlass();
-        jPanel1 = new component.Panel();
-        InputSKDP = new component.TextBox();
-        jLabel28 = new component.Label();
-        BtnTutup = new widget.ButtonBig();
-        BtnKonfirmasi = new widget.ButtonBig();
+        jPanel1 = new javax.swing.JPanel();
+        InputSKDP = new widget.TextBox();
+        jLabel28 = new widget.Label();
+        BtnTutup = new widget.Button();
+        BtnKonfirmasi = new widget.Button();
         jPanel3 = new javax.swing.JPanel();
         btnAngka8 = new javax.swing.JButton();
         btnAngka7 = new javax.swing.JButton();
@@ -133,11 +133,9 @@ public class DlgCekSKDPKontrol extends javax.swing.JDialog {
         BtnTutup.setMnemonic('U');
         BtnTutup.setToolTipText("Alt+U");
         BtnTutup.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        BtnTutup.setHorizontalTextPosition(javax.swing.SwingConstants.TRAILING);
         BtnTutup.setIconTextGap(2);
         BtnTutup.setMargin(new java.awt.Insets(0, 0, 0, 0));
         BtnTutup.setPreferredSize(new java.awt.Dimension(100, 75));
-        BtnTutup.setVerticalTextPosition(javax.swing.SwingConstants.CENTER);
         BtnTutup.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnTutupActionPerformed(evt);
@@ -157,7 +155,6 @@ public class DlgCekSKDPKontrol extends javax.swing.JDialog {
         BtnKonfirmasi.setIconTextGap(0);
         BtnKonfirmasi.setMargin(new java.awt.Insets(0, 0, 0, 0));
         BtnKonfirmasi.setPreferredSize(new java.awt.Dimension(100, 75));
-        BtnKonfirmasi.setVerticalTextPosition(javax.swing.SwingConstants.CENTER);
         BtnKonfirmasi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnKonfirmasiActionPerformed(evt);
@@ -490,9 +487,9 @@ public class DlgCekSKDPKontrol extends javax.swing.JDialog {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private widget.ButtonBig BtnKonfirmasi;
-    private widget.ButtonBig BtnTutup;
-    private component.TextBox InputSKDP;
+    private widget.Button BtnKonfirmasi;
+    private widget.Button BtnTutup;
+    private widget.TextBox InputSKDP;
     private usu.widget.glass.PanelGlass PanelWall;
     private javax.swing.JButton btnAngka0;
     private javax.swing.JButton btnAngka1;
@@ -509,8 +506,8 @@ public class DlgCekSKDPKontrol extends javax.swing.JDialog {
     private javax.swing.JButton btnK;
     private javax.swing.JButton btnR;
     private javax.swing.JButton btnTemplate;
-    private component.Label jLabel28;
-    private component.Panel jPanel1;
+    private widget.Label jLabel28;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     // End of variables declaration//GEN-END:variables

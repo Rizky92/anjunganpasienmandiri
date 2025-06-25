@@ -5,13 +5,16 @@
  */
 package khanzahmsanjungan;
 
+import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import fungsi.koneksiDB;
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.Insets;
 import javax.print.PrintService;
 import javax.print.PrintServiceLookup;
+import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
-import usu.widget.util.WidgetUtilities;
 
 /**
  *
@@ -23,12 +26,36 @@ public class KhanzaHMSAnjungan {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-
-        WidgetUtilities.invokeLater(() -> {
+        try {
+            UIManager.setLookAndFeel(new FlatMacLightLaf());
+            System.setProperty("flatlaf.animation", "true");
+            UIManager.put("Table.background", new Color(238, 238, 255));
+            UIManager.put("Table.foreground", new Color(0, 131, 62));
+            UIManager.put("Table.alternateRowColor", new Color(255, 255, 255));
+            UIManager.put("Table.selectionBackground", new Color(0, 131, 62));
+            UIManager.put("Table.selectionForeground", new Color(255, 255, 255));
+            UIManager.put("Table.cellMargins", new Insets(2, 14, 2, 14));
+            UIManager.put("Table.rowHeight", 50);
+            UIManager.put("Table.font", new Font("Inter Medium", Font.PLAIN, 18));
+            UIManager.put("TableHeader.background", new Color(255, 255, 255));
+            UIManager.put("TableHeader.foreground", new Color(0, 131, 62));
+            UIManager.put("TableHeader.font", new Font("Inter", Font.BOLD, 14));
+            UIManager.put("ScrollBar.showButtons", true);
+            UIManager.put("ScrollBar.width", 15);
+            UIManager.put("ScrollPane.smoothScrolling", true);
+            UIManager.put("Button.arc", 16);
+            UIManager.put("Component.arc", 16);
+            UIManager.put("CheckBox.arc", 16);
+            UIManager.put("ProgressBar.arc", 16);
+            UIManager.put("TextBox.arc", 16);
+        } catch (Exception ex) {
+            System.err.println("Failed to initialize LaF");
+        }
+        SwingUtilities.invokeLater(() -> {
             HalamanUtamaDepan utama = HalamanUtamaDepan.getInstance();
             utama.setVisible(true);
             
-            String printerBarcode = null, printerRegistrasi = null;
+            String printerBarcode = null, printerRegistrasi = null, printerAntrian = null;
             
             for (PrintService ps: PrintServiceLookup.lookupPrintServices(null, null)) {
                 System.out.println("Printer ditemukan: " + ps.getName());
@@ -40,6 +67,10 @@ public class KhanzaHMSAnjungan {
                 if (ps.getName().equals(koneksiDB.PRINTER_REGISTRASI())) {
                     printerRegistrasi = ps.getName();
                 }
+                
+                if (ps.getName().equals(koneksiDB.PRINTER_ANTRIAN())) {
+                    printerRegistrasi = ps.getName();
+                }
             }
             
             if (printerBarcode != null) {
@@ -49,37 +80,10 @@ public class KhanzaHMSAnjungan {
             if (printerRegistrasi != null) {
                 System.out.println("Setting PRINTER_REGISTRASI menggunakan printer: " + printerRegistrasi);
             }
+            
+            if (printerRegistrasi != null) {
+                System.out.println("Setting PRINTER_ANTRIAN menggunakan printer: " + printerAntrian);
+            }
         });
-        try {
-            UIManager.setLookAndFeel(new FlatMacLightLaf());
-            System.setProperty("flatlaf.animation", "true");
-            UIManager.put("TabbedPane.showTabSeparators", true);
-            UIManager.put("TabbedPane.tabSeparatorsFullHeight", true);
-            UIManager.put("ScrollBar.showButtons", true);
-            UIManager.put("ScrollBar.width", 15);
-            UIManager.put("ScrollPane.smoothScrolling", true);
-            UIManager.put("TabbedPane.selectedBackground", Color.LIGHT_GRAY);
-            UIManager.put("TabbedPane.underlineColor", Color.GREEN);
-            UIManager.put("TabbedPane.tabSeparatorColor", Color.darkGray);
-            UIManager.put("Component.arrowType", "triangle");
-            UIManager.put("Component.innerFocusWidth", 1);
-            UIManager.put("TextBoxGlass.innerFocusWidth", 3);
-            UIManager.put("TextBox.focusWidth", 3);
-            UIManager.put("Component.focusWidth", 1);
-            UIManager.put("Button.innerFocusWidth", 1);
-            UIManager.put("Button.arc", 0);
-            UIManager.put("Component.arc", 0);
-            UIManager.put("CheckBox.arc", 0);
-            UIManager.put("ProgressBar.arc", 0);
-            UIManager.put("TextBox.arc", 5);
-            UIManager.put("PasswordField.showCapsLock", true);
-            UIManager.put("PasswordField.showRevealButton", true);
-            UIManager.put("TextArea.selectionForeground", new Color(255, 255, 255));
-            UIManager.put("TextArea.selectionBackground", new Color(38, 117, 191));
-            UIManager.put("TextField.selectionForeground", new Color(255, 255, 255));
-            UIManager.put("TextField.selectionBackground", new Color(38, 117, 191));
-        } catch (Exception ex) {
-            System.err.println("Failed to initialize LaF");
-        }
     }
 }

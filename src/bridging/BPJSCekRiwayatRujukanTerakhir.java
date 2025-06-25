@@ -95,8 +95,7 @@ public final class BPJSCekRiwayatRujukanTerakhir extends javax.swing.JDialog {
             }
         }
 
-        tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
-        try {
+                try {
             link = koneksiDB.URLAPIBPJS();
         } catch (Exception e) {
             System.out.println("E : " + e);

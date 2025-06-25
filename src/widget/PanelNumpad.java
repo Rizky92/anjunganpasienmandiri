@@ -1,0 +1,272 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package widget;
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
+public class PanelNumpad extends JPanel {
+    
+    private JTextField textBox;
+    private int fontSize = 36;
+    private long textLimit = -1;
+    
+    public PanelNumpad() {
+        initPanelNumpad();
+    }
+    
+    public void setTextBox(JTextField textBox) {
+        this.textBox = textBox;
+    }
+    
+    public void setFontSize(int fontSize) {
+        this.fontSize = fontSize;
+        initPanelNumpad();
+    }
+    
+    public void setTextLimit(long textLimit) {
+        this.textLimit = textLimit;
+    }
+    
+    public long getTextLimit() {
+        return this.textLimit;
+    }
+    
+    private void initPanelNumpad() {
+        removeAll();
+        
+        GridBagConstraints gbc;
+        Font font = new Font("Inter", Font.BOLD, this.fontSize);
+        Color background = new Color(255, 238, 238);
+        Color foreground = new Color(0, 131, 62);
+        
+        int buttonSize = (this.fontSize * 2) + (this.fontSize / 4) + (this.fontSize / 8);
+        
+        setLayout(new GridBagLayout());
+
+        com.formdev.flatlaf.extras.components.FlatButton btnAngka7 = new com.formdev.flatlaf.extras.components.FlatButton();
+        btnAngka7.setText("7");
+        btnAngka7.setFont(font);
+        btnAngka7.setBackground(background);
+        btnAngka7.setForeground(foreground);
+        btnAngka7.setPreferredSize(new Dimension(buttonSize, buttonSize));
+        btnAngka7.setHorizontalTextPosition(SwingConstants.CENTER);
+        btnAngka7.addActionListener(evt -> addNumber("7"));
+        gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.weightx = 1.0;
+        gbc.weighty = 1.0;
+        add(btnAngka7, gbc);
+
+        com.formdev.flatlaf.extras.components.FlatButton btnAngka8 = new com.formdev.flatlaf.extras.components.FlatButton();
+        btnAngka8.setText("8");
+        btnAngka8.setFont(font);
+        btnAngka8.setBackground(background);
+        btnAngka8.setForeground(foreground);
+        btnAngka8.setPreferredSize(new Dimension(buttonSize, buttonSize));
+        btnAngka8.setHorizontalTextPosition(SwingConstants.CENTER);
+        btnAngka8.addActionListener(evt -> addNumber("8"));
+        gbc = new GridBagConstraints();
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.weightx = 1.0;
+        gbc.weighty = 1.0;
+        add(btnAngka8, gbc);
+
+        com.formdev.flatlaf.extras.components.FlatButton btnAngka9 = new com.formdev.flatlaf.extras.components.FlatButton();
+        btnAngka9.setText("9");
+        btnAngka9.setFont(font);
+        btnAngka9.setBackground(background);
+        btnAngka9.setForeground(foreground);
+        btnAngka9.setPreferredSize(new Dimension(buttonSize, buttonSize));
+        btnAngka9.setHorizontalTextPosition(SwingConstants.CENTER);
+        btnAngka9.addActionListener(evt -> addNumber("9"));
+        gbc = new GridBagConstraints();
+        gbc.gridx = 2;
+        gbc.gridy = 0;
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.weightx = 1.0;
+        gbc.weighty = 1.0;
+        add(btnAngka9, gbc);
+
+        com.formdev.flatlaf.extras.components.FlatButton btnAngka4 = new com.formdev.flatlaf.extras.components.FlatButton();
+        btnAngka4.setText("4");
+        btnAngka4.setFont(font);
+        btnAngka4.setBackground(background);
+        btnAngka4.setForeground(foreground);
+        btnAngka4.setPreferredSize(new Dimension(buttonSize, buttonSize));
+        btnAngka4.setHorizontalTextPosition(SwingConstants.CENTER);
+        btnAngka4.addActionListener(evt -> addNumber("4"));
+        gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.weightx = 1.0;
+        gbc.weighty = 1.0;
+        add(btnAngka4, gbc);
+
+        com.formdev.flatlaf.extras.components.FlatButton btnAngka5 = new com.formdev.flatlaf.extras.components.FlatButton();
+        btnAngka5.setText("5");
+        btnAngka5.setFont(font);
+        btnAngka5.setBackground(background);
+        btnAngka5.setForeground(foreground);
+        btnAngka5.setPreferredSize(new Dimension(buttonSize, buttonSize));
+        btnAngka5.setHorizontalTextPosition(SwingConstants.CENTER);
+        btnAngka5.addActionListener(evt -> addNumber("5"));
+        gbc = new GridBagConstraints();
+        gbc.gridx = 1;
+        gbc.gridy = 1;
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.weightx = 1.0;
+        gbc.weighty = 1.0;
+        add(btnAngka5, gbc);
+
+        com.formdev.flatlaf.extras.components.FlatButton btnAngka6 = new com.formdev.flatlaf.extras.components.FlatButton();
+        btnAngka6.setText("6");
+        btnAngka6.setFont(font);
+        btnAngka6.setBackground(background);
+        btnAngka6.setForeground(foreground);
+        btnAngka6.setPreferredSize(new Dimension(buttonSize, buttonSize));
+        btnAngka6.setHorizontalTextPosition(SwingConstants.CENTER);
+        btnAngka6.addActionListener(evt -> addNumber("6"));
+        gbc = new GridBagConstraints();
+        gbc.gridx = 2;
+        gbc.gridy = 1;
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.weightx = 1.0;
+        gbc.weighty = 1.0;
+        add(btnAngka6, gbc);
+
+        com.formdev.flatlaf.extras.components.FlatButton btnAngka1 = new com.formdev.flatlaf.extras.components.FlatButton();
+        btnAngka1.setText("1");
+        btnAngka1.setFont(font);
+        btnAngka1.setBackground(background);
+        btnAngka1.setForeground(foreground);
+        btnAngka1.setPreferredSize(new Dimension(buttonSize, buttonSize));
+        btnAngka1.setHorizontalTextPosition(SwingConstants.CENTER);
+        btnAngka1.addActionListener(evt -> addNumber("1"));
+        gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.weightx = 1.0;
+        gbc.weighty = 1.0;
+        add(btnAngka1, gbc);
+
+        com.formdev.flatlaf.extras.components.FlatButton btnAngka2 = new com.formdev.flatlaf.extras.components.FlatButton();
+        btnAngka2.setText("2");
+        btnAngka2.setFont(font);
+        btnAngka2.setBackground(background);
+        btnAngka2.setForeground(foreground);
+        btnAngka2.setPreferredSize(new Dimension(buttonSize, buttonSize));
+        btnAngka2.setHorizontalTextPosition(SwingConstants.CENTER);
+        btnAngka2.addActionListener(evt -> addNumber("2"));
+        gbc = new GridBagConstraints();
+        gbc.gridx = 1;
+        gbc.gridy = 2;
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.weightx = 1.0;
+        gbc.weighty = 1.0;
+        add(btnAngka2, gbc);
+
+        com.formdev.flatlaf.extras.components.FlatButton btnAngka3 = new com.formdev.flatlaf.extras.components.FlatButton();
+        btnAngka3.setText("3");
+        btnAngka3.setFont(font);
+        btnAngka3.setBackground(background);
+        btnAngka3.setForeground(foreground);
+        btnAngka3.setPreferredSize(new Dimension(buttonSize, buttonSize));
+        btnAngka3.setHorizontalTextPosition(SwingConstants.CENTER);
+        btnAngka3.addActionListener(evt -> addNumber("3"));
+        gbc = new GridBagConstraints();
+        gbc.gridx = 2;
+        gbc.gridy = 2;
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.weightx = 1.0;
+        gbc.weighty = 1.0;
+        add(btnAngka3, gbc);
+
+        com.formdev.flatlaf.extras.components.FlatButton btnClear = new com.formdev.flatlaf.extras.components.FlatButton();
+        btnClear.setText("C");
+        btnClear.setToolTipText("Clear");
+        btnClear.setFont(font);
+        btnClear.setBackground(background);
+        btnClear.setForeground(foreground);
+        btnClear.setPreferredSize(new Dimension(buttonSize, buttonSize));
+        btnClear.setHorizontalTextPosition(SwingConstants.CENTER);
+        btnClear.addActionListener(evt -> {
+            if (textBox.getText().length() > 0) {
+                textBox.setText("");
+            }
+        });
+        gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 3;
+        gbc.gridheight = 2;
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.weightx = 1.0;
+        gbc.weighty = 1.0;
+        add(btnClear, gbc);
+
+        com.formdev.flatlaf.extras.components.FlatButton btnAngka0 = new com.formdev.flatlaf.extras.components.FlatButton();
+        btnAngka0.setText("0");
+        btnAngka0.setFont(font);
+        btnAngka0.setBackground(background);
+        btnAngka0.setForeground(foreground);
+        btnAngka0.setPreferredSize(new Dimension(buttonSize, buttonSize));
+        btnAngka0.setHorizontalTextPosition(SwingConstants.CENTER);
+        btnAngka0.addActionListener(evt -> addNumber("0"));
+        gbc = new GridBagConstraints();
+        gbc.gridx = 1;
+        gbc.gridy = 3;
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.weightx = 1.0;
+        gbc.weighty = 1.0;
+        add(btnAngka0, gbc);
+
+        com.formdev.flatlaf.extras.components.FlatButton btnBackspace = new com.formdev.flatlaf.extras.components.FlatButton();
+        btnBackspace.setText("←");
+        btnBackspace.setToolTipText("Backspace");
+        btnBackspace.setFont(font);
+        btnBackspace.setBackground(background);
+        btnBackspace.setForeground(foreground);
+        btnBackspace.setPreferredSize(new Dimension(buttonSize, buttonSize));
+        btnBackspace.setHorizontalTextPosition(SwingConstants.CENTER);
+        btnBackspace.addActionListener(evt -> {
+            String input = textBox.getText();
+            if (input.length() > 0) {
+                textBox.setText(input.substring(0, input.length() - 1));
+            }
+        });
+        gbc = new GridBagConstraints();
+        gbc.gridx = 2;
+        gbc.gridy = 3;
+        gbc.fill = GridBagConstraints.BOTH;
+        gbc.weightx = 1.0;
+        gbc.weighty = 1.0;
+        add(btnBackspace, gbc);
+        
+        setBackground(new Color(238, 238, 255));
+        setForeground(new Color(0, 131, 62));
+        setPreferredSize(new Dimension(buttonSize * 3, buttonSize * 4));
+        
+        revalidate();
+        repaint();
+    }
+    
+    private void addNumber(String number) {
+        if (this.textLimit >= 0 && textBox.getText().length() < this.textLimit) {
+            textBox.setText(textBox.getText().concat(number));
+        }
+    }
+}

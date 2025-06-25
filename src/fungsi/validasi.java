@@ -1534,5 +1534,19 @@ public final class validasi {
             return false;
         }
     }
+    
+    public boolean umur(String path, int umurHari) {
+        File file = new File(path);
+        if (!file.exists()) {
+            return true;
+        }
+        if (file.lastModified() < 1) {
+            return false;
+        }
+        return milliToDay(Calendar.getInstance().getTimeInMillis() - file.lastModified()) > umurHari;
+    }
 
+    private int milliToDay(long milli) {
+        return (int) ((double) milli / (1000 * 24 * 60 * 60));
+    }
 }

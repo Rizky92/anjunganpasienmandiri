@@ -1962,8 +1962,8 @@ public final class sekuel {
                 ps = connect.prepareStatement("insert into trackersql values(now(), ?, ?)");
                 try {
                     InetAddress inetAddress = InetAddress.getLocalHost();
-                    ps.setString(1, sql);
-                    ps.setString(2, "APM" + inetAddress.getHostAddress());
+                    ps.setString(1, inetAddress.getHostAddress() + " " + sql);
+                    ps.setString(2, "APM");
                     ps.executeUpdate();
                 } catch (Exception e) {
                     System.out.println("Notifikasi : " + e);

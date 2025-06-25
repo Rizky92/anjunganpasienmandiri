@@ -112,8 +112,7 @@ public final class BPJSCekRiwayatPelayanan extends javax.swing.JDialog {
             }
         }
 
-        tbKamar.setDefaultRenderer(Object.class, new WarnaTable());
-
+        
         NoKartu.setDocument(new batasInput((byte) 100).getKata(NoKartu));
 
         try {

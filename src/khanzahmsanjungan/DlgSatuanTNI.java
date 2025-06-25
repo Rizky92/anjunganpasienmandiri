@@ -70,8 +70,7 @@ public class DlgSatuanTNI extends javax.swing.JDialog {
             }
         }
 
-        tbkecamatan.setDefaultRenderer(Object.class, new WarnaTable());
-        Nama.setDocument(new batasInput((byte)30).getKata(Nama));
+                Nama.setDocument(new batasInput((byte)30).getKata(Nama));
         TCari.setDocument(new batasInput((byte)100).getKata(TCari));
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
