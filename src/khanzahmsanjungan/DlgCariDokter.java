@@ -34,7 +34,6 @@ public final class DlgCariDokter extends javax.swing.JDialog {
     public DlgCariDokter(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.setLocation(10, 2);
         setSize(656, 250);
 
         tabMode = new DefaultTableModel(null, new Object[] {

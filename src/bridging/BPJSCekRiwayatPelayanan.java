@@ -67,7 +67,6 @@ public final class BPJSCekRiwayatPelayanan extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        this.setLocation(10, 2);
         setSize(628, 674);
 
         Object[] row = {"No.", "Diagnosa", "Jenis Pelayanan", "Kelas Rawat", "Nama Peserta", "No.Kartu", "No.SEP", "No.Rujukan", "Poli", "PPK Pelayanan", "Pulang SEP", "Tgl.SEP"};

@@ -56,7 +56,6 @@ public final class BPJSCekRiwayatRujukanTerakhir extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        this.setLocation(10, 2);
         setSize(628, 674);
 
         Object[] row = {"ICD 10", "Nama Diagnosa", "No.Rujukan", "Kode Tujuan", "Nama Tujuan", "Tgl.Rujukan", "Kode PPK", "Nama PPK", "Status"};

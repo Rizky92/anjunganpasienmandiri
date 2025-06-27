@@ -67,7 +67,6 @@ public final class BPJSCekReferensiDokterDPJP1 extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        this.setLocation(10, 2);
         setSize(628, 674);
 
         tabMode = new DefaultTableModel(null, new String[]{"No.", "Kode Dokter", "Nama Dokter"}) {

@@ -438,7 +438,7 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
                 if (rs.next()) {
                     this.noRM.setText(noRM);
                     namaPasien.setText(rs.getString("nm_pasien"));
-                    tglLahir.setText(DateTimeFormatter.ofPattern("dd MMM yyyy").withLocale(new Locale("id", "ID")).format(rs.getDate("tgl_lahir").toLocalDate()));
+                    tglLahir.setText(DateTimeFormatter.ofPattern("dd MMMM yyyy").withLocale(new Locale("id", "ID")).format(rs.getDate("tgl_lahir").toLocalDate()));
                     namaPJ = rs.getString("namakeluarga");
                     hubunganPJ = rs.getString("keluarga");
                     alamatPJ = rs.getString("alamat");

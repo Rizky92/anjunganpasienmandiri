@@ -211,10 +211,10 @@ public final class DlgCariPoli extends javax.swing.JDialog {
         Valid.tabelKosong(tabMode);
         try (PreparedStatement ps = koneksi.prepareStatement(
             "select poliklinik.kd_poli, poliklinik.nm_poli, poliklinik.registrasi, poliklinik.registrasilama, " +
-            "maping_poli_bpjs.kd_poli_bpjs, maping_poli_bpjs.nm_poli_bpjs from poliklinik join jadwal on " +
-            "poliklinik.kd_poli = jadwal.kd_poli left join maping_poli_bpjs on " +
-            "poliklinik.kd_poli = maping_poli_bpjs.kd_poli_rs where poliklinik.status = '1' " +
-            "and jadwal.hari_kerja = ? order by field(poliklinik.kd_poli, 'U0038') = 0, poliklinik.nm_poli"
+            "maping_poli_bpjs.kd_poli_bpjs, maping_poli_bpjs.nm_poli_bpjs from poliklinik left join " +
+            "maping_poli_bpjs on poliklinik.kd_poli = maping_poli_bpjs.kd_poli_rs where poliklinik.status = '1' " +
+            "and exists(select * from jadwal where jadwal.kd_poli = poliklinik.kd_poli and jadwal.hari_kerja = ?) " +
+            "order by field(poliklinik.kd_poli, 'U0038') = 0, poliklinik.nm_poli"
         )) {
             ps.setString(1, hariKerja);
             try (ResultSet rs = ps.executeQuery()) {
@@ -222,7 +222,7 @@ public final class DlgCariPoli extends javax.swing.JDialog {
                     do {
                         tabMode.addRow(new Object[] {
                             rs.getString("kd_poli"), rs.getString("nm_poli"), rs.getDouble("registrasi"),
-                            rs.getDouble("registrasilama"), rs.getString("kd_poli_bpjs"), rs.getString("nmpoli_bpjs")
+                            rs.getDouble("registrasilama"), rs.getString("kd_poli_bpjs"), rs.getString("nm_poli_bpjs")
                         });
                     } while (rs.next());
                 }

@@ -60,7 +60,6 @@ public final class BPJSCekReferensiPoli extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
 
-        this.setLocation(10,2);
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new String[]{"No.","Kode Poli","Nama Poli"}){

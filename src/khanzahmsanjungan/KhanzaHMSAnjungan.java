@@ -6,7 +6,6 @@
 package khanzahmsanjungan;
 
 import com.formdev.flatlaf.FlatLightLaf;
-import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import fungsi.koneksiDB;
 import java.awt.Color;
 import java.awt.Font;
@@ -27,7 +26,7 @@ public class KhanzaHMSAnjungan {
      */
     public static void main(String[] args) {
         try {
-            UIManager.setLookAndFeel(new FlatMacLightLaf());
+            UIManager.setLookAndFeel(new FlatLightLaf());
             System.setProperty("flatlaf.animation", "true");
             UIManager.put("Table.background", new Color(238, 238, 255));
             UIManager.put("Table.foreground", new Color(0, 131, 62));
