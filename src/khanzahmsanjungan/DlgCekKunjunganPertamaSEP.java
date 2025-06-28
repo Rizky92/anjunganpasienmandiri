@@ -248,14 +248,15 @@ public class DlgCekKunjunganPertamaSEP extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(null, "Isian masih kosong..!!");
             NoRMPasien.requestFocus();
         } else {
-            String noRM = Sequel.cariIsiSmc("select * from pasien where (pasien.no_ktp = ? or pasien.no_peserta = ? or pasien.no_rkm_medis = ?)", NoRMPasien.getText().trim(), NoRMPasien.getText().trim(), NoRMPasien.getText().trim());
-            if (noRM.isBlank()) {
+            String noKartu = Sequel.cariIsiSmc("select pasien.no_peserta from pasien where (pasien.no_ktp = ? or pasien.no_peserta = ? or pasien.no_rkm_medis = ?)", NoRMPasien.getText().trim(), NoRMPasien.getText().trim(), NoRMPasien.getText().trim());
+            if (noKartu.isBlank()) {
                 JOptionPane.showMessageDialog(null, "Data pasien tidak ditemukan..!!");
+                NoRMPasien.setText("");
             } else {
-                if (Sequel.cariExistsSmc("select * from referensi_mobilejkn_bpjs where norm = ? and tanggalperiksa = current_date()", noRM)) {
+                if (Sequel.cariExistsSmc("select * from referensi_mobilejkn_bpjs where nomorkartu = ? and tanggalperiksa = current_date()", noKartu)) {
                     JOptionPane.showMessageDialog(null, "Pasien telah menggunakan Mobile JKN. Silahkan masuk melalui menu \"Cek In MobileJKN\"..!!");
                 } else {
-                    form.tampilKunjunganPertama(noRM);
+                    form.tampilKunjunganPertama(noKartu);
                     form.setSize(this.getWidth(), this.getHeight());
                     form.setLocationRelativeTo(jPanel1);
                     this.dispose();
@@ -277,14 +278,15 @@ public class DlgCekKunjunganPertamaSEP extends javax.swing.JDialog {
                 JOptionPane.showMessageDialog(null, "Isian masih kosong..!!");
                 NoRMPasien.requestFocus();
             } else {
-                String noRM = Sequel.cariIsiSmc("select * from pasien where (pasien.no_ktp = ? or pasien.no_peserta = ? or pasien.no_rkm_medis = ?)", NoRMPasien.getText().trim(), NoRMPasien.getText().trim(), NoRMPasien.getText().trim());
-                if (noRM.isBlank()) {
+                String noKartu = Sequel.cariIsiSmc("select pasien.no_peserta from pasien where (pasien.no_ktp = ? or pasien.no_peserta = ? or pasien.no_rkm_medis = ?)", NoRMPasien.getText().trim(), NoRMPasien.getText().trim(), NoRMPasien.getText().trim());
+                if (noKartu.isBlank()) {
                     JOptionPane.showMessageDialog(null, "Data pasien tidak ditemukan..!!");
+                    NoRMPasien.setText("");
                 } else {
-                    if (Sequel.cariExistsSmc("select * from referensi_mobilejkn_bpjs where norm = ? and tanggalperiksa = current_date()", noRM)) {
+                    if (Sequel.cariExistsSmc("select * from referensi_mobilejkn_bpjs where nomorkartu = ? and tanggalperiksa = current_date()", noKartu)) {
                         JOptionPane.showMessageDialog(null, "Pasien telah menggunakan Mobile JKN. Silahkan masuk melalui menu \"Cek In MobileJKN\"..!!");
                     } else {
-                        form.tampilKunjunganPertama(noRM);
+                        form.tampilKunjunganPertama(noKartu);
                         form.setSize(this.getWidth(), this.getHeight());
                         form.setLocationRelativeTo(jPanel1);
                         this.dispose();

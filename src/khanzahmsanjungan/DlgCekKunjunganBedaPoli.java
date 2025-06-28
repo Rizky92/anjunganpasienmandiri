@@ -243,27 +243,28 @@ public class DlgCekKunjunganBedaPoli extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnClose2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnClose2ActionPerformed
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         if (NoRMPasien.getText().isBlank()) {
-            JOptionPane.showMessageDialog(rootPane, "Isian masih kosong..!!");
+            JOptionPane.showMessageDialog(null, "Isian masih kosong..!!");
+            NoRMPasien.requestFocus();
         } else {
-            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            if (Sequel.cariIntegerSmc("select count(*) from pasien where no_peserta = ?", NoRMPasien.getText()) == 1) {
-                form.tampilKunjunganBedaPoli(NoRMPasien.getText());
-            } else if (Sequel.cariIntegerSmc("select count(*) from pasien where no_rkm_medis = ?", NoRMPasien.getText()) == 1) {
-                form.tampilKunjunganBedaPoli(Sequel.cariIsiSmc("select no_peserta from pasien where no_rkm_medis = ?", NoRMPasien.getText()));
-            } else if (Sequel.cariInteger("select count(*) from pasien where no_ktp = ?", NoRMPasien.getText()) == 1) {
-                form.tampilKunjunganBedaPoli(Sequel.cariIsiSmc("select no_peserta from pasien where no_ktp = ?", NoRMPasien.getText()));
+            String noKartu = Sequel.cariIsiSmc("select pasien.no_peserta from pasien where (pasien.no_ktp = ? or pasien.no_peserta = ? or pasien.no_rkm_medis = ?)", NoRMPasien.getText().trim(), NoRMPasien.getText().trim(), NoRMPasien.getText().trim());
+            if (noKartu.isBlank()) {
+                JOptionPane.showMessageDialog(null, "Data pasien tidak ditemukan..!!");
+                NoRMPasien.setText("");
             } else {
-                JOptionPane.showMessageDialog(rootPane, "Data pasien tidak ditemukan!");
-                this.setCursor(Cursor.getDefaultCursor());
-                return;
+                if (Sequel.cariExistsSmc("select * from referensi_mobilejkn_bpjs where nomorkartu = ? and tanggalperiksa = current_date()", noKartu)) {
+                    JOptionPane.showMessageDialog(null, "Pasien telah menggunakan Mobile JKN. Silahkan masuk melalui menu \"Cek In MobileJKN\"..!!");
+                } else {
+                    form.tampilKunjunganBedaPoli(noKartu);
+                    form.setSize(this.getWidth(), this.getHeight());
+                    form.setLocationRelativeTo(jPanel1);
+                    this.dispose();
+                    form.setVisible(true);
+                }
             }
-            form.setSize(this.getWidth(), this.getHeight());
-            form.setLocationRelativeTo(jPanel1);
-            this.dispose();
-            form.setVisible(true);
-            this.setCursor(Cursor.getDefaultCursor());
         }
+        this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnClose2ActionPerformed
 
     private void BtnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCloseActionPerformed
@@ -272,29 +273,28 @@ public class DlgCekKunjunganBedaPoli extends javax.swing.JDialog {
 
     private void NoRMPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoRMPasienKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-                if (NoRMPasien.getText().isBlank()) {
-                    JOptionPane.showMessageDialog(rootPane, "Isian masih kosong..!!");
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            if (NoRMPasien.getText().isBlank()) {
+                JOptionPane.showMessageDialog(null, "Isian masih kosong..!!");
+                NoRMPasien.requestFocus();
+            } else {
+                String noKartu = Sequel.cariIsiSmc("select pasien.no_peserta from pasien where (pasien.no_ktp = ? or pasien.no_peserta = ? or pasien.no_rkm_medis = ?)", NoRMPasien.getText().trim(), NoRMPasien.getText().trim(), NoRMPasien.getText().trim());
+                if (noKartu.isBlank()) {
+                    JOptionPane.showMessageDialog(null, "Data pasien tidak ditemukan..!!");
+                    NoRMPasien.setText("");
                 } else {
-                    this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                    if (Sequel.cariIntegerSmc("select count(*) from pasien where no_peserta = ?", NoRMPasien.getText()) == 1) {
-                        form.tampilKunjunganBedaPoli(NoRMPasien.getText());
-                    } else if (Sequel.cariIntegerSmc("select count(*) from pasien where no_rkm_medis = ?", NoRMPasien.getText()) == 1) {
-                        form.tampilKunjunganBedaPoli(Sequel.cariIsiSmc("select no_peserta from pasien where no_rkm_medis = ?", NoRMPasien.getText()));
-                    } else if (Sequel.cariInteger("select count(*) from pasien where no_ktp = ?", NoRMPasien.getText()) == 1) {
-                        form.tampilKunjunganBedaPoli(Sequel.cariIsiSmc("select no_peserta from pasien where no_ktp = ?", NoRMPasien.getText()));
+                    if (Sequel.cariExistsSmc("select * from referensi_mobilejkn_bpjs where nomorkartu = ? and tanggalperiksa = current_date()", noKartu)) {
+                        JOptionPane.showMessageDialog(null, "Pasien telah menggunakan Mobile JKN. Silahkan masuk melalui menu \"Cek In MobileJKN\"..!!");
                     } else {
-                        JOptionPane.showMessageDialog(rootPane, "Data pasien tidak ditemukan!");
-                        this.setCursor(Cursor.getDefaultCursor());
-                        return;
+                        form.tampilKunjunganBedaPoli(noKartu);
+                        form.setSize(this.getWidth(), this.getHeight());
+                        form.setLocationRelativeTo(jPanel1);
+                        this.dispose();
+                        form.setVisible(true);
                     }
-                    form.setSize(this.getWidth(), this.getHeight());
-                    form.setLocationRelativeTo(jPanel1);
-                    this.dispose();
-                    form.setVisible(true);
-                    this.setCursor(Cursor.getDefaultCursor());
                 }
             }
+            this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_NoRMPasienKeyPressed
 
