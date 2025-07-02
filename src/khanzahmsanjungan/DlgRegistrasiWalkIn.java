@@ -348,7 +348,7 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
 
                 sukses = Sequel.menyimpantfSmc("reg_periksa", null, noReg, noRawat,
                     waktu.substring(0, 10), waktu.substring(11), kdDokter, noRM.getText(),
-                    kdPoli, namaPJ, alamatPJ, hubunganPJ, biayaReg, "Belum", statusDaftar,
+                    kdPoli, namaPJ, alamatPJ, hubunganPJ, statusDaftar.equalsIgnoreCase("baru") ? poliBiaya : poliBiayaLama, "Belum", statusDaftar,
                     "Ralan", "A09", umurDaftar, statusUmur, "Belum Bayar", statusPoli
                 );
                 
