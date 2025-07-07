@@ -268,6 +268,7 @@ public class DlgCekBooking extends javax.swing.JDialog {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         NoRMPasien.setText("");
+        NoRMPasien.requestFocus();
     }//GEN-LAST:event_formWindowActivated
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -296,7 +297,7 @@ public class DlgCekBooking extends javax.swing.JDialog {
         String noRM = Sequel.cariIsiSmc("select pasien.no_rkm_medis from pasien where pasien.no_rkm_medis = ? or pasien.no_ktp = ?", NoRMPasien.getText().trim(), NoRMPasien.getText().trim());
         if (noRM.isBlank()) {
             JOptionPane.showMessageDialog(null, "Maaf, data pasien tidak ditemukan\nSilahkan konfirmasi ke pendaftaran..!!");
-            NoRMPasien.setText("");
+            formWindowActivated(null);
             return;
         }
         
@@ -322,7 +323,7 @@ public class DlgCekBooking extends javax.swing.JDialog {
                     param.put("namars", Sequel.cariIsiSmc("select setting.nama_instansi from setting limit 1"));
                     param.put("kotars", Sequel.cariIsiSmc("select setting.kabupaten from setting limit 1"));
                     Valid.printReport("rptBarcodeRawatAPM.jasper", koneksiDB.PRINTER_BARCODE(), "::[ Barcode Perawatan ]::", koneksiDB.PRINTJUMLAHBARCODE(), param);
-                    dispose();
+                    formWindowActivated(null);
                 } else {
                     JOptionPane.showMessageDialog(null, "Maaf, jadwal booking untuk hari ini tidak ditemukan\nSilahkan konfirmasi ke pendaftaran..!!");
                 }

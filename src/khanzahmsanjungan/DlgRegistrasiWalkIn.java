@@ -344,21 +344,22 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
 
             do {
                 setNomorRegistrasi();
-                System.out.print("Mencoba mendaftarkan pasien dengan no. rawat: " + noRawat);
+                System.out.print("Mencoba mendaftarkan pasien dengan no. rawat [" + noRawat + "] : ");
+                biayaReg = statusDaftar.equalsIgnoreCase("baru") ? poliBiaya : poliBiayaLama;
 
                 sukses = Sequel.menyimpantfSmc("reg_periksa", null, noReg, noRawat,
                     waktu.substring(0, 10), waktu.substring(11), kdDokter, noRM.getText(),
-                    kdPoli, namaPJ, alamatPJ, hubunganPJ, statusDaftar.equalsIgnoreCase("baru") ? poliBiaya : poliBiayaLama, "Belum", statusDaftar,
+                    kdPoli, namaPJ, alamatPJ, hubunganPJ, biayaReg, "Belum", statusDaftar,
                     "Ralan", "A09", umurDaftar, statusUmur, "Belum Bayar", statusPoli
                 );
                 
                 if (!sukses) {
-                    System.out.println(" Gagal!");
+                    System.out.println("Gagal!");
                 }
             } while (next++ < retries && !sukses);
 
             if (sukses) {
-                System.out.println(" Berhasil!");
+                System.out.println("Berhasil!");
                 Sequel.mengupdateSmc("pasien", "umur = ?", "no_rkm_medis = ?", umurPasien, noRM.getText());
 
                 Map<String, Object> param = new HashMap<>();
@@ -368,7 +369,7 @@ public class DlgRegistrasiWalkIn extends javax.swing.JDialog {
                 param.put("kontakrs", instansiKontak);
                 param.put("norawat", noRawat);
                 // Valid.printReport("rptBuktiRegisterAPM.jasper", PRINTERREGISTRASI, "::[ Bukti Registrasi 1 ]::", 1, param);
-                Valid.printReport("rptBarcodeRawatAPM.jasper", PRINTERBARCODE, "::[ Barcode Perawatan ]::", 3, param);
+                Valid.printReport("rptBarcodeRawatAPM.jasper", PRINTERBARCODE, "::[ Barcode Perawatan ]::", koneksiDB.PRINTJUMLAHBARCODE(), param);
                 JOptionPane.showMessageDialog(null, "Berhasil!");
             } else {
                 JOptionPane.showMessageDialog(null, "Pendaftaran gagal..!!\nSilahkan coba kembali.");

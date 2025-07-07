@@ -106,7 +106,6 @@ public final class validasi {
         if (dir.isDirectory()) {
             for (String file: dir.list()) {
                 report = new File(currentDir + File.separatorChar + file + File.separatorChar + namaReport);
-                
                 if (report.isFile()) {
                     System.out.println("Found report file at: " + report.toString());
                     break;
@@ -122,9 +121,7 @@ public final class validasi {
         try {
             JasperReport jr = (JasperReport) JRLoader.loadObject(report);
             JasperPrint jp = JasperFillManager.fillReport(jr, params, connect);
-            
             PrintService printService = null;
-            
             for (PrintService currentPrintService: PrintServiceLookup.lookupPrintServices(null, null)) {
                 if (currentPrintService.getName().equals(namaPrinter)) {
                     System.out.println("Printer ditemukan: " + currentPrintService.getName());
@@ -161,7 +158,7 @@ public final class validasi {
                 System.out.println(ste);
             }
             
-            JOptionPane.showMessageDialog(null, "Tidak bisa menampilkan hasil cetak!");
+            JOptionPane.showMessageDialog(null, "Tidak bisa memproses cetak!");
         }
     }
     
