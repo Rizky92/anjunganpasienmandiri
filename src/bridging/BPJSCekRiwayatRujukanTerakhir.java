@@ -11,7 +11,6 @@
  */
 package bridging;
 
-import fungsi.WarnaTable;
 import java.awt.Dimension;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;

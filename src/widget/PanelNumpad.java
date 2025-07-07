@@ -9,21 +9,27 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.util.Objects;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.PlainDocument;
 
 public class PanelNumpad extends JPanel {
     
     private JTextField textBox;
     private int fontSize = 36;
-    private long textLimit = -1;
+    private long textLimit = Long.MAX_VALUE;
+    private boolean skdpMode = false;
     
     public PanelNumpad() {
         initPanelNumpad();
     }
     
     public void setTextBox(JTextField textBox) {
+        Objects.requireNonNull(textBox);
         this.textBox = textBox;
     }
     
@@ -33,11 +39,24 @@ public class PanelNumpad extends JPanel {
     }
     
     public void setTextLimit(long textLimit) {
-        this.textLimit = textLimit;
+        if (textLimit <= -1) {
+            this.textLimit = Long.MAX_VALUE;
+        } else {
+            this.textLimit = textLimit;
+        }
     }
     
     public long getTextLimit() {
         return this.textLimit;
+    }
+    
+    public void setSkdpMode(boolean mode) {
+        this.skdpMode = mode;
+        initPanelNumpad();
+    }
+    
+    public boolean getSkdpMode() {
+        return this.skdpMode;
     }
     
     private void initPanelNumpad() {
@@ -195,6 +214,56 @@ public class PanelNumpad extends JPanel {
         gbc.weightx = 1.0;
         gbc.weighty = 1.0;
         add(btnAngka3, gbc);
+        
+        if (this.skdpMode) {
+            com.formdev.flatlaf.extras.components.FlatButton btnHurufK = new com.formdev.flatlaf.extras.components.FlatButton();
+            btnHurufK.setText("K");
+            btnHurufK.setFont(font);
+            btnHurufK.setBackground(background);
+            btnHurufK.setForeground(foreground);
+            btnHurufK.setPreferredSize(new Dimension(buttonSize, buttonSize));
+            btnHurufK.setHorizontalTextPosition(SwingConstants.CENTER);
+            btnHurufK.addActionListener(evt -> addNumber("K"));
+            gbc = new GridBagConstraints();
+            gbc.gridx = 3;
+            gbc.gridy = 0;
+            gbc.fill = GridBagConstraints.BOTH;
+            gbc.weightx = 1.0;
+            gbc.weighty = 1.0;
+            add(btnHurufK, gbc);
+
+            com.formdev.flatlaf.extras.components.FlatButton btnHurufR = new com.formdev.flatlaf.extras.components.FlatButton();
+            btnHurufR.setText("R");
+            btnHurufR.setFont(font);
+            btnHurufR.setBackground(background);
+            btnHurufR.setForeground(foreground);
+            btnHurufR.setPreferredSize(new Dimension(buttonSize, buttonSize));
+            btnHurufR.setHorizontalTextPosition(SwingConstants.CENTER);
+            btnHurufR.addActionListener(evt -> addNumber("R"));
+            gbc = new GridBagConstraints();
+            gbc.gridx = 3;
+            gbc.gridy = 1;
+            gbc.fill = GridBagConstraints.BOTH;
+            gbc.weightx = 1.0;
+            gbc.weighty = 1.0;
+            add(btnHurufR, gbc);
+
+            com.formdev.flatlaf.extras.components.FlatButton btnTemplate = new com.formdev.flatlaf.extras.components.FlatButton();
+            btnTemplate.setText("TP");
+            btnTemplate.setFont(font);
+            btnTemplate.setBackground(background);
+            btnTemplate.setForeground(foreground);
+            btnTemplate.setPreferredSize(new Dimension(buttonSize, buttonSize));
+            btnTemplate.setHorizontalTextPosition(SwingConstants.CENTER);
+            btnTemplate.addActionListener(evt -> textBox.setText("0302R110"));
+            gbc = new GridBagConstraints();
+            gbc.gridx = 3;
+            gbc.gridy = 2;
+            gbc.fill = GridBagConstraints.BOTH;
+            gbc.weightx = 1.0;
+            gbc.weighty = 1.0;
+            add(btnTemplate, gbc);
+        }
 
         com.formdev.flatlaf.extras.components.FlatButton btnClear = new com.formdev.flatlaf.extras.components.FlatButton();
         btnClear.setText("C");
@@ -235,7 +304,11 @@ public class PanelNumpad extends JPanel {
         add(btnAngka0, gbc);
 
         com.formdev.flatlaf.extras.components.FlatButton btnBackspace = new com.formdev.flatlaf.extras.components.FlatButton();
-        btnBackspace.setText("←");
+        if (this.skdpMode) {
+            btnBackspace.setText("🡐");
+        } else {
+            btnBackspace.setText("←");
+        }
         btnBackspace.setToolTipText("Backspace");
         btnBackspace.setFont(font);
         btnBackspace.setBackground(background);
@@ -251,6 +324,11 @@ public class PanelNumpad extends JPanel {
         gbc = new GridBagConstraints();
         gbc.gridx = 2;
         gbc.gridy = 3;
+        if (this.skdpMode) {
+            gbc.gridwidth = 2;
+        } else {
+            gbc.gridwidth = 1;
+        }
         gbc.fill = GridBagConstraints.BOTH;
         gbc.weightx = 1.0;
         gbc.weighty = 1.0;
@@ -258,14 +336,30 @@ public class PanelNumpad extends JPanel {
         
         setBackground(new Color(238, 238, 255));
         setForeground(new Color(0, 131, 62));
-        setPreferredSize(new Dimension(buttonSize * 3, buttonSize * 4));
+        if (this.skdpMode) {
+            setPreferredSize(new Dimension(buttonSize * 4, buttonSize * 4));
+        } else {
+            setPreferredSize(new Dimension(buttonSize * 3, buttonSize * 4));
+        }
+        
+        if (this.textBox != null) {
+            this.textBox.setDocument(new PlainDocument() {
+                @Override
+                public void insertString(int offs, String str, AttributeSet a) throws BadLocationException {
+                    if (str == null) return;
+                    if (getLength() + str.length() <= getTextLimit()) {
+                        super.insertString(offs, str, a);
+                    }
+                }
+            });
+        }
         
         revalidate();
         repaint();
     }
     
     private void addNumber(String number) {
-        if (this.textLimit >= 0 && textBox.getText().length() < this.textLimit) {
+        if (textBox.getText().length() < this.textLimit) {
             textBox.setText(textBox.getText().concat(number));
         }
     }

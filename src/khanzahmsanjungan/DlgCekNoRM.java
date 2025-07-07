@@ -1,51 +1,18 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
- /*
- * DlgAdmin.java
- *
- * Created on 04 Des 13, 12:59:34
- */
 package khanzahmsanjungan;
 
 import fungsi.sekuel;
 import java.awt.Cursor;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
-import javax.swing.text.AttributeSet;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.PlainDocument;
 
-/**
- *
- * @author Kode
- */
 public class DlgCekNoRM extends javax.swing.JDialog {
 
     private final sekuel Sequel = new sekuel();
-    private final DlgRegistrasiSEPPertama form = new DlgRegistrasiSEPPertama(null, false);
+    private final DlgRegistrasiWalkIn form = new DlgRegistrasiWalkIn(null, false);
 
-    /**
-     * Creates new form DlgAdmin
-     *
-     * @param parent
-     * @param id
-     */
     public DlgCekNoRM(java.awt.Frame parent, boolean id) {
         super(parent, id);
         initComponents();
-        
-        NoRMPasien.setDocument(new PlainDocument() {
-            @Override
-            public void insertString(int offs, String str, AttributeSet a) throws BadLocationException {
-                if (str == null) return;
-                if (getLength() + str.length() <= panelNumpad1.getTextLimit()) {
-                    super.insertString(offs, str, a);
-                }
-            }
-        });
     }
 
     /**
@@ -63,8 +30,8 @@ public class DlgCekNoRM extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         NoRMPasien = new widget.TextBox();
         jLabel28 = new widget.Label();
-        BtnClose = new widget.Button();
-        BtnClose2 = new widget.Button();
+        BtnBatal = new widget.Button();
+        BtnKonfirm = new widget.Button();
         panelNumpad1 = new widget.PanelNumpad();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -77,6 +44,11 @@ public class DlgCekNoRM extends javax.swing.JDialog {
         setModal(true);
         setUndecorated(true);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
         getContentPane().setLayout(new java.awt.BorderLayout(1, 1));
 
         jPanel2.setBackground(new java.awt.Color(238, 238, 255));
@@ -130,7 +102,7 @@ public class DlgCekNoRM extends javax.swing.JDialog {
         jLabel28.setForeground(new java.awt.Color(0, 131, 62));
         jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel28.setText("No. RM / NIK :");
-        jLabel28.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel28.setFont(new java.awt.Font("Inter Medium", 0, 36)); // NOI18N
         jLabel28.setPreferredSize(new java.awt.Dimension(450, 75));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -141,19 +113,19 @@ public class DlgCekNoRM extends javax.swing.JDialog {
         gridBagConstraints.weightx = 1.0;
         jPanel1.add(jLabel28, gridBagConstraints);
 
-        BtnClose.setBackground(new java.awt.Color(255, 255, 255));
-        BtnClose.setForeground(new java.awt.Color(255, 33, 32));
-        BtnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/exit.png"))); // NOI18N
-        BtnClose.setMnemonic('U');
-        BtnClose.setText("BATAL");
-        BtnClose.setToolTipText("Alt+U");
-        BtnClose.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
-        BtnClose.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnClose.setIconTextGap(2);
-        BtnClose.setPreferredSize(new java.awt.Dimension(200, 75));
-        BtnClose.addActionListener(new java.awt.event.ActionListener() {
+        BtnBatal.setBackground(new java.awt.Color(255, 255, 255));
+        BtnBatal.setForeground(new java.awt.Color(255, 33, 32));
+        BtnBatal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/exit.png"))); // NOI18N
+        BtnBatal.setMnemonic('U');
+        BtnBatal.setText("BATAL");
+        BtnBatal.setToolTipText("Alt+U");
+        BtnBatal.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
+        BtnBatal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnBatal.setIconTextGap(2);
+        BtnBatal.setPreferredSize(new java.awt.Dimension(200, 75));
+        BtnBatal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnCloseActionPerformed(evt);
+                BtnBatalActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -161,27 +133,27 @@ public class DlgCekNoRM extends javax.swing.JDialog {
         gridBagConstraints.gridy = 3;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(20, 0, 0, 0);
-        jPanel1.add(BtnClose, gridBagConstraints);
+        jPanel1.add(BtnBatal, gridBagConstraints);
 
-        BtnClose2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/konfirmasi.png"))); // NOI18N
-        BtnClose2.setMnemonic('U');
-        BtnClose2.setText("CEK");
-        BtnClose2.setToolTipText("Alt+U");
-        BtnClose2.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
-        BtnClose2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnClose2.setIconTextGap(0);
-        BtnClose2.setPreferredSize(new java.awt.Dimension(200, 75));
-        BtnClose2.setVerifyInputWhenFocusTarget(false);
-        BtnClose2.addActionListener(new java.awt.event.ActionListener() {
+        BtnKonfirm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/konfirmasi.png"))); // NOI18N
+        BtnKonfirm.setMnemonic('U');
+        BtnKonfirm.setText("CEK");
+        BtnKonfirm.setToolTipText("Alt+U");
+        BtnKonfirm.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
+        BtnKonfirm.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnKonfirm.setIconTextGap(0);
+        BtnKonfirm.setPreferredSize(new java.awt.Dimension(200, 75));
+        BtnKonfirm.setVerifyInputWhenFocusTarget(false);
+        BtnKonfirm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnClose2ActionPerformed(evt);
+                BtnKonfirmActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.weightx = 1.0;
-        jPanel1.add(BtnClose2, gridBagConstraints);
+        jPanel1.add(BtnKonfirm, gridBagConstraints);
 
         panelNumpad1.setTextBox(NoRMPasien);
         panelNumpad1.setTextLimit(20L);
@@ -241,77 +213,28 @@ public class DlgCekNoRM extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BtnClose2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnClose2ActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        if (Sequel.cariInteger("select count(pasien.no_rkm_medis) from pasien where pasien.no_rkm_medis='" + NoRMPasien.getText() + "'") == 1) {
-            DlgRegistrasiWalkIn form = new DlgRegistrasiWalkIn(null, true);
-            form.setPasien(NoRMPasien.getText());
-            form.setSize(this.getWidth(), this.getHeight());
-            form.setLocationRelativeTo(jPanel1);
-            this.dispose();
-            form.setVisible(true);
-        } else if (Sequel.cariInteger("select count(pasien.no_ktp) from pasien where pasien.no_ktp='" + NoRMPasien.getText() + "'") == 1) {
-            DlgRegistrasiWalkIn form = new DlgRegistrasiWalkIn(null, true);
-            form.setPasien(Sequel.cariIsi("select pasien.no_rkm_medis from pasien where pasien.no_ktp='" + NoRMPasien.getText() + "'"));
-            form.setSize(this.getWidth(), this.getHeight());
-            form.setLocationRelativeTo(jPanel1);
-            this.dispose();
-            form.setVisible(true);
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "No Rekam Medis tidak terdaftar ");
-            NoRMPasien.setText("");
-        }
-        this.setCursor(Cursor.getDefaultCursor());
-    }//GEN-LAST:event_BtnClose2ActionPerformed
+    private void BtnKonfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKonfirmActionPerformed
+        cek();
+    }//GEN-LAST:event_BtnKonfirmActionPerformed
 
-    private void BtnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCloseActionPerformed
+    private void BtnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatalActionPerformed
         dispose();
-    }//GEN-LAST:event_BtnCloseActionPerformed
+    }//GEN-LAST:event_BtnBatalActionPerformed
 
     private void NoRMPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoRMPasienKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            if (Sequel.cariInteger("select count(pasien.no_rkm_medis) from pasien where pasien.no_rkm_medis='" + NoRMPasien.getText() + "'") == 1) {
-                DlgRegistrasiWalkIn form = new DlgRegistrasiWalkIn(null, true);
-                form.setPasien(NoRMPasien.getText());
-                form.setSize(this.getWidth(), this.getHeight());
-                form.setLocationRelativeTo(jPanel1);
-                this.dispose();
-                form.setVisible(true);
-            } else if (Sequel.cariInteger("select count(pasien.no_ktp) from pasien where pasien.no_ktp='" + NoRMPasien.getText() + "'") == 1) {
-                DlgRegistrasiWalkIn form = new DlgRegistrasiWalkIn(null, true);
-                form.setPasien(Sequel.cariIsi("select pasien.no_rkm_medis from pasien where pasien.no_ktp='" + NoRMPasien.getText() + "'"));
-                form.setSize(this.getWidth(), this.getHeight());
-                form.setLocationRelativeTo(jPanel1);
-                this.dispose();
-                form.setVisible(true);
-            } else {
-                JOptionPane.showMessageDialog(rootPane, "No Rekam Medis tidak terdaftar ");
-                NoRMPasien.setText("");
-            }
-            this.setCursor(Cursor.getDefaultCursor());
+            cek();
         }
     }//GEN-LAST:event_NoRMPasienKeyPressed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(() -> {
-            DlgCekNoRM dialog = new DlgCekNoRM(new javax.swing.JFrame(), true);
-            dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        NoRMPasien.setText("");
+        NoRMPasien.requestFocus();
+    }//GEN-LAST:event_formWindowActivated
 
-                @Override
-                public void windowClosing(java.awt.event.WindowEvent e) {
-                    System.exit(0);
-                }
-            });
-            dialog.setVisible(true);
-        });
-    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private widget.Button BtnClose;
-    private widget.Button BtnClose2;
+    private widget.Button BtnBatal;
+    private widget.Button BtnKonfirm;
     private widget.TextBox NoRMPasien;
     private usu.widget.glass.PanelGlass PanelWall;
     private javax.swing.JLabel jLabel1;
@@ -325,4 +248,25 @@ public class DlgCekNoRM extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel2;
     private widget.PanelNumpad panelNumpad1;
     // End of variables declaration//GEN-END:variables
+
+    private void cek() {
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        if (NoRMPasien.getText().isBlank()) {
+            JOptionPane.showMessageDialog(null, "Isian masih kosong..!!");
+            formWindowActivated(null);
+        } else {
+            String noRM = Sequel.cariIsiSmc("select pasien.no_rkm_medis from pasien where (pasien.no_rkm_medis = ? or trim(pasien.no_ktp) = ?)", NoRMPasien.getText().trim(), NoRMPasien.getText().trim());
+            if (noRM.isBlank()) {
+                JOptionPane.showMessageDialog(null, "Data pasien tidak ditemukan..!!");
+                formWindowActivated(null);
+            } else {
+                form.setPasien(noRM);
+                form.setSize(this.getWidth(), this.getHeight());
+                form.setLocationRelativeTo(jPanel1);
+                this.dispose();
+                form.setVisible(true);
+            }
+        }
+        this.setCursor(Cursor.getDefaultCursor());
+    }
 }

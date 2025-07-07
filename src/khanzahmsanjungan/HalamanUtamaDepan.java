@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package khanzahmsanjungan;
 
 import fungsi.koneksiDB;
@@ -22,10 +18,14 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
 
     private static HalamanUtamaDepan myInstance;
     private final ArrayList<String> TOMBOLDIMATIKAN = new ArrayList(Arrays.asList(koneksiDB.TOMBOLDIMATIKAN()));
+    private DlgAmbilAntrian antrian = null;
+    private DlgCekBooking booking = null;
+    private DlgCekNoRM daftarpoli = null;
+    private DlgCekKunjunganPertamaSEP seppertama = null;
+    private DlgCekSKDPKontrol sepkontrol = null;
+    private DlgCekKunjunganBedaPoli sepbedapoli = null;
+    private DlgCekinMobileJKN mobilejkn = null;
 
-    /**
-     * Creates new form HalamanUtamaDepan
-     */
     public HalamanUtamaDepan() {
         initComponents();
         setIconImage(new ImageIcon(super.getClass().getResource("/picture/indriati48.png")).getImage());
@@ -238,54 +238,67 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSEPKontrolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSEPKontrolActionPerformed
-        DlgCekSKDPKontrol pilih = new DlgCekSKDPKontrol(null, true);
-        pilih.setSize(this.getWidth(), this.getHeight());
-        pilih.setLocationRelativeTo(this);
-        pilih.setVisible(true);
+        if (sepkontrol == null) {
+            sepkontrol = new DlgCekSKDPKontrol(null, true);
+        }
+        sepkontrol.setSize(this.getWidth(), this.getHeight());
+        sepkontrol.setLocationRelativeTo(this);
+        sepkontrol.setVisible(true);
     }//GEN-LAST:event_btnSEPKontrolActionPerformed
 
     private void btnDaftarEksekutifActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDaftarEksekutifActionPerformed
-        DlgCekNoRM pilih = new DlgCekNoRM(null, true);
-        pilih.setSize(this.getWidth(), this.getHeight());
-        pilih.setLocationRelativeTo(this);
-        pilih.setVisible(true);
+        if (daftarpoli == null) {
+            daftarpoli = new DlgCekNoRM(null, true);
+        }
+        daftarpoli.setSize(this.getWidth(), this.getHeight());
+        daftarpoli.setLocationRelativeTo(this);
+        daftarpoli.setVisible(true);
     }//GEN-LAST:event_btnDaftarEksekutifActionPerformed
 
     private void btnCekinBookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCekinBookingActionPerformed
-        // JOptionPane.showMessageDialog(rootPane, "Mohon maaf, fitur masih dalam tahap pengembangan");
-        DlgCekBooking pilih = new DlgCekBooking(null, true);
-        pilih.setSize(this.getWidth(), this.getHeight());
-        pilih.setLocationRelativeTo(this);
-        pilih.setVisible(true);
+        if (booking == null) {
+            booking = new DlgCekBooking(null, true);
+        }
+        booking.setSize(this.getWidth(), this.getHeight());
+        booking.setLocationRelativeTo(this);
+        booking.setVisible(true);
     }//GEN-LAST:event_btnCekinBookingActionPerformed
 
     private void btnSEPPertamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSEPPertamaActionPerformed
-        DlgCekKunjunganPertamaSEP pilih = new DlgCekKunjunganPertamaSEP(null, true);
-        pilih.setSize(this.getWidth(), this.getHeight());
-        pilih.setLocationRelativeTo(this);
-        pilih.setVisible(true);
+        if (seppertama == null) {
+            seppertama = new DlgCekKunjunganPertamaSEP(null, true);
+        }
+        seppertama.setSize(this.getWidth(), this.getHeight());
+        seppertama.setLocationRelativeTo(this);
+        seppertama.setVisible(true);
     }//GEN-LAST:event_btnSEPPertamaActionPerformed
 
     private void btnCekinMobileJKNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCekinMobileJKNActionPerformed
-        DlgCekinMobileJKN pilih = new DlgCekinMobileJKN(null, true);
-        pilih.setSize(this.getWidth(), this.getHeight());
-        pilih.setLocationRelativeTo(this);
-        pilih.setVisible(true);
+        if (mobilejkn == null) {
+            mobilejkn = new DlgCekinMobileJKN(null, true);
+        }
+        mobilejkn.setSize(this.getWidth(), this.getHeight());
+        mobilejkn.setLocationRelativeTo(this);
+        mobilejkn.setVisible(true);
     }//GEN-LAST:event_btnCekinMobileJKNActionPerformed
 
     private void btnSEPKontrolBedaPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSEPKontrolBedaPoliActionPerformed
-        DlgCekKunjunganBedaPoli pilih = new DlgCekKunjunganBedaPoli(null, true);
-        pilih.setSize(this.getWidth(), this.getHeight());
-        pilih.setLocationRelativeTo(this);
-        pilih.setVisible(true);
+        if (sepbedapoli == null) {
+            sepbedapoli = new DlgCekKunjunganBedaPoli(null, true);
+        }
+        sepbedapoli.setSize(this.getWidth(), this.getHeight());
+        sepbedapoli.setLocationRelativeTo(this);
+        sepbedapoli.setVisible(true);
     }//GEN-LAST:event_btnSEPKontrolBedaPoliActionPerformed
 
     private void btnAntrianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAntrianActionPerformed
         if (koneksiDB.ANTRIANPREFIXHURUF()) {
-            DlgAmbilAntrean pilih = new DlgAmbilAntrean(null, true);
-            pilih.setSize(this.getWidth(), this.getHeight());
-            pilih.setLocationRelativeTo(this);
-            pilih.setVisible(true);
+            if (antrian == null) {
+                antrian = new DlgAmbilAntrian(null, true);
+            }
+            antrian.setSize(this.getWidth(), this.getHeight());
+            antrian.setLocationRelativeTo(this);
+            antrian.setVisible(true);
         } else {
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             try {
@@ -305,39 +318,8 @@ public class HalamanUtamaDepan extends javax.swing.JFrame {
         // this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnSatuSehatActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(HalamanUtamaDepan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(HalamanUtamaDepan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(HalamanUtamaDepan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(HalamanUtamaDepan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new HalamanUtamaDepan().setVisible(true);
-            }
-        });
+        java.awt.EventQueue.invokeLater(() -> new HalamanUtamaDepan().setVisible(true));
     }
 
     public static HalamanUtamaDepan getInstance() {

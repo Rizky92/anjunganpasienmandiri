@@ -1,13 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
- /*
- * DlgAdmin.java
- *
- * Created on 04 Des 13, 12:59:34
- */
 package khanzahmsanjungan;
 
 import fungsi.sekuel;
@@ -18,34 +8,14 @@ import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
 
-/**
- *
- * @author Kode
- */
 public class DlgCekinMobileJKN extends javax.swing.JDialog {
 
     private final sekuel Sequel = new sekuel();
     private final DlgRegistrasiSEPMobileJKN form = new DlgRegistrasiSEPMobileJKN(null, false);
 
-    /**
-     * Creates new form DlgAdmin
-     *
-     * @param parent
-     * @param id
-     */
     public DlgCekinMobileJKN(java.awt.Frame parent, boolean id) {
         super(parent, id);
         initComponents();
-        
-        NoRMPasien.setDocument(new PlainDocument() {
-            @Override
-            public void insertString(int offs, String str, AttributeSet a) throws BadLocationException {
-                if (str == null) return;
-                if (getLength() + str.length() <= panelNumpad1.getTextLimit()) {
-                    super.insertString(offs, str, a);
-                }
-            }
-        });
     }
 
     /**
@@ -77,6 +47,11 @@ public class DlgCekinMobileJKN extends javax.swing.JDialog {
         setModal(true);
         setUndecorated(true);
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
         getContentPane().setLayout(new java.awt.BorderLayout(1, 1));
 
         jPanel2.setBackground(new java.awt.Color(238, 238, 255));
@@ -130,7 +105,7 @@ public class DlgCekinMobileJKN extends javax.swing.JDialog {
         jLabel28.setForeground(new java.awt.Color(0, 131, 62));
         jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel28.setText("No. RM / NIK / Peserta BPJS :");
-        jLabel28.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel28.setFont(new java.awt.Font("Inter Medium", 0, 36)); // NOI18N
         jLabel28.setPreferredSize(new java.awt.Dimension(450, 75));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -305,22 +280,11 @@ public class DlgCekinMobileJKN extends javax.swing.JDialog {
         }
     }//GEN-LAST:event_NoRMPasienKeyPressed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(() -> {
-            DlgCekinMobileJKN dialog = new DlgCekinMobileJKN(new javax.swing.JFrame(), true);
-            dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        NoRMPasien.setText("");
+        NoRMPasien.requestFocus();
+    }//GEN-LAST:event_formWindowActivated
 
-                @Override
-                public void windowClosing(java.awt.event.WindowEvent e) {
-                    System.exit(0);
-                }
-            });
-            dialog.setVisible(true);
-        });
-    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.Button BtnClose;
     private widget.Button BtnClose2;
@@ -337,4 +301,28 @@ public class DlgCekinMobileJKN extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel2;
     private widget.PanelNumpad panelNumpad1;
     // End of variables declaration//GEN-END:variables
+
+    private void cek() {
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        if (NoRMPasien.getText().isBlank()) {
+            JOptionPane.showMessageDialog(null, "Isian masih kosong..!!");
+        } else {
+            String noKartu = Sequel.cariIsiSmc("select pasien.no_peserta from pasien where (pasien.no_ktp = ? or pasien.no_peserta = ? or pasien.no_rkm_medis = ?)", NoRMPasien.getText().trim(), NoRMPasien.getText().trim(), NoRMPasien.getText().trim());
+            if (noKartu.isBlank()) {
+                JOptionPane.showMessageDialog(null, "Data pasien tidak ditemukan..!!");
+            } else {
+                if (Sequel.cariExistsSmc("select * from referensi_mobilejkn_bpjs where nomorkartu = ? and tanggalperiksa = current_date() and status = 'Belum'", noKartu)) {
+                    form.tampil(noKartu);
+                    form.setSize(this.getWidth(), this.getHeight());
+                    form.setLocationRelativeTo(jPanel1);
+                    this.dispose();
+                    form.setVisible(true);
+                } else {
+                    
+                }
+            }
+        }
+        formWindowActivated(null);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
 }

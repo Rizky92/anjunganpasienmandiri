@@ -11,7 +11,6 @@
  */
 package bridging;
 
-import fungsi.WarnaTable;
 import java.awt.Dimension;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -22,14 +21,8 @@ import fungsi.batasInput;
 import fungsi.validasi;
 import fungsi.sekuel;
 import fungsi.koneksiDB;
-import groovy.lang.Sequence;
 import java.awt.Cursor;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
-import java.util.Calendar;
-import java.util.Date;
 import javax.swing.JOptionPane;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;

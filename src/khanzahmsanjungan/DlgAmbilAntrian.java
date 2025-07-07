@@ -14,7 +14,7 @@ import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DlgAmbilAntrean extends javax.swing.JDialog {
+public class DlgAmbilAntrian extends javax.swing.JDialog {
 
     private final Connection koneksi = koneksiDB.condb();
     private final sekuel Sequel = new sekuel();
@@ -23,7 +23,7 @@ public class DlgAmbilAntrean extends javax.swing.JDialog {
     
     private Map<String, Object> param = new HashMap<>();
 
-    public DlgAmbilAntrean(java.awt.Frame parent, boolean id) {
+    public DlgAmbilAntrian(java.awt.Frame parent, boolean id) {
         super(parent, id);
         initComponents();
         
@@ -251,7 +251,7 @@ public class DlgAmbilAntrean extends javax.swing.JDialog {
      */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
-            DlgAmbilAntrean dialog = new DlgAmbilAntrean(new javax.swing.JFrame(), true);
+            DlgAmbilAntrian dialog = new DlgAmbilAntrian(new javax.swing.JFrame(), true);
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
 
                 @Override

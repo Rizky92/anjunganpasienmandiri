@@ -11,9 +11,6 @@ import java.sql.ResultSet;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
-import javax.swing.text.AttributeSet;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.PlainDocument;
 
 public class DlgCekBooking extends javax.swing.JDialog {
 
@@ -25,16 +22,6 @@ public class DlgCekBooking extends javax.swing.JDialog {
     public DlgCekBooking(java.awt.Frame parent, boolean id) {
         super(parent, id);
         initComponents();
-        
-        NoRMPasien.setDocument(new PlainDocument() {
-            @Override
-            public void insertString(int offs, String str, AttributeSet a) throws BadLocationException {
-                if (str == null) return;
-                if (getLength() + str.length() <= panelNumpad1.getTextLimit()) {
-                    super.insertString(offs, str, a);
-                }
-            }
-        });
     }
 
     /**
@@ -53,7 +40,7 @@ public class DlgCekBooking extends javax.swing.JDialog {
         NoRMPasien = new widget.TextBox();
         jLabel28 = new widget.Label();
         BtnClose = new widget.Button();
-        BtnClose2 = new widget.Button();
+        BtnKonfirm = new widget.Button();
         panelNumpad1 = new widget.PanelNumpad();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -125,7 +112,7 @@ public class DlgCekBooking extends javax.swing.JDialog {
         jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel28.setLabelFor(NoRMPasien);
         jLabel28.setText("No. RM / NIK :");
-        jLabel28.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        jLabel28.setFont(new java.awt.Font("Inter Medium", 0, 36)); // NOI18N
         jLabel28.setPreferredSize(new java.awt.Dimension(450, 75));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -158,25 +145,25 @@ public class DlgCekBooking extends javax.swing.JDialog {
         gridBagConstraints.insets = new java.awt.Insets(20, 0, 0, 0);
         panelUtama.add(BtnClose, gridBagConstraints);
 
-        BtnClose2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/konfirmasi.png"))); // NOI18N
-        BtnClose2.setMnemonic('U');
-        BtnClose2.setText("CEK");
-        BtnClose2.setToolTipText("Alt+U");
-        BtnClose2.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
-        BtnClose2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnClose2.setIconTextGap(0);
-        BtnClose2.setPreferredSize(new java.awt.Dimension(200, 75));
-        BtnClose2.setVerifyInputWhenFocusTarget(false);
-        BtnClose2.addActionListener(new java.awt.event.ActionListener() {
+        BtnKonfirm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/konfirmasi.png"))); // NOI18N
+        BtnKonfirm.setMnemonic('U');
+        BtnKonfirm.setText("CEK");
+        BtnKonfirm.setToolTipText("Alt+U");
+        BtnKonfirm.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
+        BtnKonfirm.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnKonfirm.setIconTextGap(0);
+        BtnKonfirm.setPreferredSize(new java.awt.Dimension(200, 75));
+        BtnKonfirm.setVerifyInputWhenFocusTarget(false);
+        BtnKonfirm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnClose2ActionPerformed(evt);
+                BtnKonfirmActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.weightx = 1.0;
-        panelUtama.add(BtnClose2, gridBagConstraints);
+        panelUtama.add(BtnKonfirm, gridBagConstraints);
 
         panelNumpad1.setTextBox(NoRMPasien);
         panelNumpad1.setTextLimit(20L);
@@ -248,11 +235,9 @@ public class DlgCekBooking extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BtnClose2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnClose2ActionPerformed
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        cekBooking();
-        this.setCursor(Cursor.getDefaultCursor());
-    }//GEN-LAST:event_BtnClose2ActionPerformed
+    private void BtnKonfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKonfirmActionPerformed
+        cek();
+    }//GEN-LAST:event_BtnKonfirmActionPerformed
 
     private void BtnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCloseActionPerformed
         dispose();
@@ -260,9 +245,7 @@ public class DlgCekBooking extends javax.swing.JDialog {
 
     private void NoRMPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoRMPasienKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            cekBooking();
-            this.setCursor(Cursor.getDefaultCursor());
+            cek();
         }
     }//GEN-LAST:event_NoRMPasienKeyPressed
 
@@ -273,7 +256,7 @@ public class DlgCekBooking extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.Button BtnClose;
-    private widget.Button BtnClose2;
+    private widget.Button BtnKonfirm;
     private widget.TextBox NoRMPasien;
     private usu.widget.glass.PanelGlass PanelWall;
     private javax.swing.JLabel jLabel1;
@@ -288,7 +271,8 @@ public class DlgCekBooking extends javax.swing.JDialog {
     private javax.swing.JPanel panelUtama;
     // End of variables declaration//GEN-END:variables
 
-    private void cekBooking() {
+    private void cek() {
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         if (NoRMPasien.getText().isBlank()) {
             JOptionPane.showMessageDialog(null, "Isian masih kosong..!!");
             return;
@@ -302,12 +286,9 @@ public class DlgCekBooking extends javax.swing.JDialog {
         }
         
         try (PreparedStatement ps = koneksi.prepareStatement(
-            "select reg_periksa.no_rawat, reg_periksa.tgl_registrasi, reg_periksa.no_rkm_medis, " +
-            "reg_periksa.kd_dokter, reg_periksa.kd_poli, reg_periksa.kd_pj from reg_periksa where " +
-            "reg_periksa.no_rkm_medis = ? and reg_periksa.tgl_registrasi = current_date() and " +
-            "reg_periksa.stts = 'Belum' and exists(select * from booking_registrasi where " +
-            "booking_registrasi.no_rawat = reg_periksa.no_rawat and booking_registrasi.status = 'Belum')" +
-            (KODEPOLIEKSEKUTIF.isBlank() ? "" : " and reg_periksa.kd_poli = ?")
+            "select b.no_rawat, b.status, r.stts, exists(select * from pemeriksaan_ralan as p where p.no_rawat = b.no_rawat) as ada_pemeriksaan from " +
+            "booking_registrasi as b join reg_periksa as r on b.no_rawat = r.no_rawat where b.no_rkm_medis = ? and b.tanggal_periksa = current_date() " +
+            (KODEPOLIEKSEKUTIF.isBlank() ? "" : "and b.kd_poli = ?")
         )) {
             ps.setString(1, noRM);
             if (!KODEPOLIEKSEKUTIF.isBlank()) {
@@ -315,22 +296,32 @@ public class DlgCekBooking extends javax.swing.JDialog {
             }
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.first()) {
-                    Sequel.mengupdateSmc("reg_periksa", "jam_reg = current_time()", "no_rawat = ?", rs.getString("no_rawat"));
-                    Sequel.mengupdateSmc("booking_registrasi", "waktu_kunjungan = now(), status = 'Checkin'", "no_rawat = ?", rs.getString("no_rawat"));
-                    JOptionPane.showMessageDialog(null, "Check in berhasil..!!");
                     Map<String, Object> param = new HashMap<>();
                     param.put("norawat", rs.getString("no_rawat"));
                     param.put("namars", Sequel.cariIsiSmc("select setting.nama_instansi from setting limit 1"));
                     param.put("kotars", Sequel.cariIsiSmc("select setting.kabupaten from setting limit 1"));
-                    Valid.printReport("rptBarcodeRawatAPM.jasper", koneksiDB.PRINTER_BARCODE(), "::[ Barcode Perawatan ]::", koneksiDB.PRINTJUMLAHBARCODE(), param);
-                    formWindowActivated(null);
+                    if (!rs.getString("stts").equals("Belum") || rs.getBoolean("ada_pemeriksaan")) {
+                        JOptionPane.showMessageDialog(null, "Anda sudah menerima pelayanan pada hari ini..!!\nSilahkan konfirmasi ke petugas.", "Gagal", JOptionPane.ERROR_MESSAGE);
+                    } else if (rs.getString("status").equals("Checkin")) {
+                        if (JOptionPane.showConfirmDialog(null, "Anda sudah melakukan checkin pada hari ini\nApakah mau mencetak barcode?", "Konfirmasi", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
+                            Valid.printReport("rptBarcodeRawatAPM.jasper", koneksiDB.PRINTER_BARCODE(), "::[ Barcode Perawatan ]::", koneksiDB.PRINTJUMLAHBARCODE(), param);
+                            JOptionPane.showMessageDialog(null, "Barcode berhasil dicetak..!!", "Berhasil", JOptionPane.INFORMATION_MESSAGE);
+                        }
+                    } else {
+                        Sequel.mengupdateSmc("reg_periksa", "jam_reg = current_time()", "no_rawat = ?", rs.getString("no_rawat"));
+                        Sequel.mengupdateSmc("booking_registrasi", "waktu_kunjungan = now(), status = 'Checkin'", "no_rawat = ?", rs.getString("no_rawat"));
+                        JOptionPane.showMessageDialog(null, "Check in berhasil..!!", "Berhasil", JOptionPane.INFORMATION_MESSAGE);
+                        Valid.printReport("rptBarcodeRawatAPM.jasper", koneksiDB.PRINTER_BARCODE(), "::[ Barcode Perawatan ]::", koneksiDB.PRINTJUMLAHBARCODE(), param);
+                    }
                 } else {
                     JOptionPane.showMessageDialog(null, "Maaf, jadwal booking untuk hari ini tidak ditemukan\nSilahkan konfirmasi ke pendaftaran..!!");
                 }
+                formWindowActivated(null);
             }
         } catch (Exception e) {
             System.out.println("Notif : " + e);
             JOptionPane.showMessageDialog(null, "Terjadi kesalahan pada saat mencari data pasien\nSilahkan hubungi administrator..!!");
         }
+        this.setCursor(Cursor.getDefaultCursor());
     }
 }

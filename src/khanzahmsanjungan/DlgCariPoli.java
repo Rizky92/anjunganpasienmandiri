@@ -11,7 +11,6 @@
 package khanzahmsanjungan;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import fungsi.WarnaTable;
 import fungsi.koneksiDB;
 import fungsi.validasi;
 import java.awt.Dimension;
