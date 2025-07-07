@@ -1,7 +1,6 @@
 /*
  Kontribusi dari Mas Dhiaz Shahab Dari RS Islam Bontang
-*/
-
+ */
 package bridging;
 
 import java.util.*;
@@ -24,50 +23,62 @@ public class ApiBPJSLZString {
     }
 
     public static String compressToBase64(String input) {
-        if (input == null) return "";
+        if (input == null) {
+            return "";
+        }
         String res = ApiBPJSLZString._compress(input, 6, new CompressFunctionWrapper() {
             @Override
             public char doFunc(int a) {
-                    return keyStrBase64[a];
+                return keyStrBase64[a];
             }
         });
         switch (res.length() % 4) { // To produce valid Base64
-        default: // When could this happen ?
-        case 0:
+            default: // When could this happen ?
+            case 0:
                 return res;
-        case 1:
+            case 1:
                 return res + "===";
-        case 2:
+            case 2:
                 return res + "==";
-        case 3:
+            case 3:
                 return res + "=";
         }
     }
 
     public static String decompressFromBase64(final String inputStr) {
-        if (inputStr == null) return "";
-        if (inputStr.equals("")) return null;
+        if (inputStr == null) {
+            return "";
+        }
+        if (inputStr.equals("")) {
+            return null;
+        }
         return ApiBPJSLZString._decompress(inputStr.length(), 32, new DecompressFunctionWrapper() {
             @Override
             public char doFunc(int index) {
-                    return getBaseValue(keyStrBase64, inputStr.charAt(index));
+                return getBaseValue(keyStrBase64, inputStr.charAt(index));
             }
         });
-    }	
+    }
 
     public static String compressToUTF16(String input) {
-        if (input == null) return "";
+        if (input == null) {
+            return "";
+        }
         return ApiBPJSLZString._compress(input, 15, new CompressFunctionWrapper() {
             @Override
             public char doFunc(int a) {
-                    return fc(a + 32);
+                return fc(a + 32);
             }
         }) + " ";
     }
 
     public static String decompressFromUTF16(final String compressedStr) {
-        if (compressedStr == null) return "";
-        if (compressedStr.isEmpty()) return null;
+        if (compressedStr == null) {
+            return "";
+        }
+        if (compressedStr.isEmpty()) {
+            return null;
+        }
         return ApiBPJSLZString._decompress(compressedStr.length(), 16384, new DecompressFunctionWrapper() {
             @Override
             public char doFunc(int index) {
@@ -77,7 +88,9 @@ public class ApiBPJSLZString {
     }
 
     public static String compressToEncodedURIComponent(String input) {
-        if (input == null) return "";
+        if (input == null) {
+            return "";
+        }
         return ApiBPJSLZString._compress(input, 6, new CompressFunctionWrapper() {
             @Override
             public char doFunc(int a) {
@@ -87,13 +100,17 @@ public class ApiBPJSLZString {
     }
 
     public static String decompressFromEncodedURIComponent(String inputStr) {
-        if (inputStr == null) return "";
-        if (inputStr.isEmpty()) return null;
+        if (inputStr == null) {
+            return "";
+        }
+        if (inputStr.isEmpty()) {
+            return null;
+        }
         final String urlEncodedInputStr = inputStr.replace(' ', '+');
         return ApiBPJSLZString._decompress(urlEncodedInputStr.length(), 32, new DecompressFunctionWrapper() {
             @Override
             public char doFunc(int index) {
-                    return getBaseValue(keyStrUriSafe, urlEncodedInputStr.charAt(index));
+                return getBaseValue(keyStrUriSafe, urlEncodedInputStr.charAt(index));
             }
         });
     }
@@ -112,7 +129,9 @@ public class ApiBPJSLZString {
     }
 
     private static String _compress(String uncompressedStr, int bitsPerChar, CompressFunctionWrapper getCharFromInt) {
-        if (uncompressedStr == null) return "";
+        if (uncompressedStr == null) {
+            return "";
+        }
         int i, value;
         Map<String, Integer> context_dictionary = new HashMap<String, Integer>();
         Set<String> context_dictionaryToCreate = new HashSet<String>();
@@ -273,8 +292,8 @@ public class ApiBPJSLZString {
                 }
                 context_enlargeIn--;
                 if (context_enlargeIn == 0) {
-                        context_enlargeIn = powerOf2(context_numBits);
-                        context_numBits++;
+                    context_enlargeIn = powerOf2(context_numBits);
+                    context_numBits++;
                 }
                 context_dictionaryToCreate.remove(context_w);
             } else {
@@ -318,9 +337,9 @@ public class ApiBPJSLZString {
             if (context_data_position == bitsPerChar - 1) {
                 context_data.append(getCharFromInt.doFunc(context_data_val));
                 break;
-            }
-            else
+            } else {
                 context_data_position++;
+            }
         }
         return context_data.toString();
     }
@@ -328,32 +347,36 @@ public class ApiBPJSLZString {
     private static abstract class DecompressFunctionWrapper {
         public abstract char doFunc(int i);
     }
+
     protected static class DecData {
         public char val;
         public int position;
-        public int index;		
+        public int index;
     }
 
     public static String f(int i) {
         return String.valueOf((char) i);
     }
+
     public static char fc(int i) {
         return (char) i;
     }
 
     public static String decompress(final String compressed) {
-        if (compressed == null)
+        if (compressed == null) {
             return "";
-        if (compressed.isEmpty())
+        }
+        if (compressed.isEmpty()) {
             return null;
+        }
         return ApiBPJSLZString._decompress(compressed.length(), 32768, new DecompressFunctionWrapper() {
             @Override
             public char doFunc(int i) {
-                    return compressed.charAt(i);
+                return compressed.charAt(i);
             }
         });
     }
-        
+
     private static String _decompress(int length, int resetValue, DecompressFunctionWrapper getNextValue) {
         List<String> dictionary = new ArrayList<String>();
         // TODO: is next an unused variable in original lz-string?
@@ -365,7 +388,8 @@ public class ApiBPJSLZString {
         String entry = "";
         StringBuilder result = new StringBuilder();
         String w;
-        int bits, resb; int maxpower, power;
+        int bits, resb;
+        int maxpower, power;
         String c = null;
         DecData data = new DecData();
         data.val = getNextValue.doFunc(0);
@@ -383,127 +407,127 @@ public class ApiBPJSLZString {
             resb = data.val & data.position;
             data.position >>= 1;
             if (data.position == 0) {
-                    data.position = resetValue;
-                    data.val = getNextValue.doFunc(data.index++);
+                data.position = resetValue;
+                data.val = getNextValue.doFunc(data.index++);
             }
             bits |= (resb > 0 ? 1 : 0) * power;
             power <<= 1;
         }
 
         switch (next = bits) {
-          case 0:
-              bits = 0;
-              maxpower = (int) powerOf2(8);
-              power=1;
-              while (power != maxpower) {
-                resb = data.val & data.position;
-                data.position >>= 1;
-                if (data.position == 0) {
-                  data.position = resetValue;
-                  data.val = getNextValue.doFunc(data.index++);
+            case 0:
+                bits = 0;
+                maxpower = (int) powerOf2(8);
+                power = 1;
+                while (power != maxpower) {
+                    resb = data.val & data.position;
+                    data.position >>= 1;
+                    if (data.position == 0) {
+                        data.position = resetValue;
+                        data.val = getNextValue.doFunc(data.index++);
+                    }
+                    bits |= (resb > 0 ? 1 : 0) * power;
+                    power <<= 1;
                 }
-                bits |= (resb>0 ? 1 : 0) * power;
-                power <<= 1;
-              }
-            c = f(bits);
-            break;
-          case 1:
-              bits = 0;
-              maxpower = powerOf2(16);
-              power=1;
-              while (power!=maxpower) {
-                resb = data.val & data.position;
-                data.position >>= 1;
-                if (data.position == 0) {
-                  data.position = resetValue;
-                  data.val = getNextValue.doFunc(data.index++);
+                c = f(bits);
+                break;
+            case 1:
+                bits = 0;
+                maxpower = powerOf2(16);
+                power = 1;
+                while (power != maxpower) {
+                    resb = data.val & data.position;
+                    data.position >>= 1;
+                    if (data.position == 0) {
+                        data.position = resetValue;
+                        data.val = getNextValue.doFunc(data.index++);
+                    }
+                    bits |= (resb > 0 ? 1 : 0) * power;
+                    power <<= 1;
                 }
-                bits |= (resb>0 ? 1 : 0) * power;
-                power <<= 1;
-              }
-            c = f(bits);
-            break;
-          case 2:
-            return "";
+                c = f(bits);
+                break;
+            case 2:
+                return "";
         }
         dictionary.add(3, c);
         w = c;
-            result.append(w);
+        result.append(w);
         while (true) {
             if (data.index > length) {
-              return "";
+                return "";
             }
 
             bits = 0;
             maxpower = powerOf2(numBits);
-            power=1;
-            while (power!=maxpower) {
-              resb = data.val & data.position;
-              data.position >>= 1;
-              if (data.position == 0) {
-                data.position = resetValue;
-                data.val = getNextValue.doFunc(data.index++);
-              }
-              bits |= (resb>0 ? 1 : 0) * power;
-              power <<= 1;
+            power = 1;
+            while (power != maxpower) {
+                resb = data.val & data.position;
+                data.position >>= 1;
+                if (data.position == 0) {
+                    data.position = resetValue;
+                    data.val = getNextValue.doFunc(data.index++);
+                }
+                bits |= (resb > 0 ? 1 : 0) * power;
+                power <<= 1;
             }
             // TODO: very strange here, c above is as char/string, here further is a int, rename "c" in the switch as "cc"
             int cc;
             switch (cc = bits) {
-              case 0:
-                bits = 0;
-                maxpower = powerOf2(8);
-                power=1;
-                while (power!=maxpower) {
-                  resb = data.val & data.position;
-                  data.position >>= 1;
-                  if (data.position == 0) {
-                    data.position = resetValue;
-                    data.val = getNextValue.doFunc(data.index++);
-                  }
-                  bits |= (resb>0 ? 1 : 0) * power;
-                  power <<= 1;
-                }
-
-                dictionary.add(dictSize++, f(bits));
-                cc = dictSize-1;
-                enlargeIn--;
-                break;
-              case 1:
-                bits = 0;
-                maxpower = powerOf2(16);
-                power=1;
-                while (power!=maxpower) {
-                  resb = data.val & data.position;
-                  data.position >>= 1;
-                  if (data.position == 0) {
-                    data.position = resetValue;
-                    data.val = getNextValue.doFunc(data.index++);
-                  }
-                  bits |= (resb>0 ? 1 : 0) * power;
-                  power <<= 1;
-                }
-                dictionary.add(dictSize++, f(bits));
-                cc = dictSize-1;
-                enlargeIn--;
-                break;
-              case 2:
-                    return result.toString();
+                case 0:
+                    bits = 0;
+                    maxpower = powerOf2(8);
+                    power = 1;
+                    while (power != maxpower) {
+                        resb = data.val & data.position;
+                        data.position >>= 1;
+                        if (data.position == 0) {
+                            data.position = resetValue;
+                            data.val = getNextValue.doFunc(data.index++);
+                        }
+                        bits |= (resb > 0 ? 1 : 0) * power;
+                        power <<= 1;
                     }
 
+                    dictionary.add(dictSize++, f(bits));
+                    cc = dictSize - 1;
+                    enlargeIn--;
+                    break;
+                case 1:
+                    bits = 0;
+                    maxpower = powerOf2(16);
+                    power = 1;
+                    while (power != maxpower) {
+                        resb = data.val & data.position;
+                        data.position >>= 1;
+                        if (data.position == 0) {
+                            data.position = resetValue;
+                            data.val = getNextValue.doFunc(data.index++);
+                        }
+                        bits |= (resb > 0 ? 1 : 0) * power;
+                        power <<= 1;
+                    }
+                    dictionary.add(dictSize++, f(bits));
+                    cc = dictSize - 1;
+                    enlargeIn--;
+                    break;
+                case 2:
+                    return result.toString();
+            }
+
             if (enlargeIn == 0) {
-              enlargeIn = powerOf2(numBits);
-              numBits++;
+                enlargeIn = powerOf2(numBits);
+                numBits++;
             }
 
             if (cc < dictionary.size() && dictionary.get(cc) != null) {
-                    entry = dictionary.get(cc);
+                entry = dictionary.get(cc);
             } else {
-              if (cc == dictSize) {
-                entry = w + w.charAt(0);
-              } else {
-                return null;
-              }
+                if (cc == dictSize) {
+                    entry = w + w.charAt(0);
+                } else {
+                    return null;
+                }
             }
             result.append(entry);
 
@@ -514,11 +538,11 @@ public class ApiBPJSLZString {
             w = entry;
 
             if (enlargeIn == 0) {
-              enlargeIn = powerOf2(numBits);
-              numBits++;
+                enlargeIn = powerOf2(numBits);
+                numBits++;
             }
 
-          }
+        }
 
     }
 

@@ -10,7 +10,10 @@ import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,6 +29,7 @@ public class koneksiDB {
     private static final Properties prop = new Properties();
     private static final MysqlDataSource dataSource = new MysqlDataSource();
     private static String var = "";
+    private static Map<String, String> params = new HashMap<>();
 
     public koneksiDB() {
     }
@@ -48,22 +52,22 @@ public class koneksiDB {
                     while (retries > 0) {
                         try {
                             connection = dataSource.getConnection();
-                            System.out.println("\n"
-                                + "  Koneksi Berhasil. Sorry bro loading, silahkan baca dulu.... \n\n"
-                                + "  Software ini adalah Software Menejemen Rumah Sakit/Klinik/\n"
-                                + "  Puskesmas yang gratis dan boleh digunakan siapa saja tanpa dikenai \n"
-                                + "  biaya apapun. Dilarang keras memperjualbelikan/mengambil \n"
-                                + "  keuntungan dari Software ini dalam bentuk apapun tanpa seijin pembuat \n"
-                                + "  software (Khanza.Soft Media).\n\n"
-                                + "  #    ____  ___  __  __  ____   ____    _  __ _                              \n"
-                                + "  #   / ___||_ _||  \\/  ||  _ \\ / ___|  | |/ /| |__    __ _  _ __   ____ __ _ \n"
-                                + "  #   \\___ \\ | | | |\\/| || |_) |\\___ \\  | ' / | '_ \\  / _` || '_ \\ |_  // _` |\n"
-                                + "  #    ___) || | | |  | ||  _ <  ___) | | . \\ | | | || (_| || | | | / /| (_| |\n"
-                                + "  #   |____/|___||_|  |_||_| \\_\\|____/  |_|\\_\\|_| |_| \\__,_||_| |_|/___|\\__,_|\n"
-                                + "  #                                                                           \n\n"
-                                + "  Lisensi yang dianut di software ini https://en.wikipedia.org/wiki/Aladdin_Free_Public_License \n"
-                                + "  Informasi dan panduan bisa dicek di halaman https://github.com/mas-elkhanza/SIMRS-Khanza/wiki \n"
-                                + "  Bagi yang ingin berdonasi untuk pengembangan aplikasi ini bisa ke BSI 1015369872 atas nama Windiarto");
+                            System.out.println("\n" +
+                                 "  Koneksi Berhasil. Sorry bro loading, silahkan baca dulu.... \n\n" +
+                                 "  Software ini adalah Software Menejemen Rumah Sakit/Klinik/\n" +
+                                 "  Puskesmas yang gratis dan boleh digunakan siapa saja tanpa dikenai \n" +
+                                 "  biaya apapun. Dilarang keras memperjualbelikan/mengambil \n" +
+                                 "  keuntungan dari Software ini dalam bentuk apapun tanpa seijin pembuat \n" +
+                                 "  software (Khanza.Soft Media).\n\n" +
+                                 "  #    ____  ___  __  __  ____   ____    _  __ _                              \n" +
+                                 "  #   / ___||_ _||  \\/  ||  _ \\ / ___|  | |/ /| |__    __ _  _ __   ____ __ _ \n" +
+                                 "  #   \\___ \\ | | | |\\/| || |_) |\\___ \\  | ' / | '_ \\  / _` || '_ \\ |_  // _` |\n" +
+                                 "  #    ___) || | | |  | ||  _ <  ___) | | . \\ | | | || (_| || | | | / /| (_| |\n" +
+                                 "  #   |____/|___||_|  |_||_| \\_\\|____/  |_|\\_\\|_| |_| \\__,_||_| |_|/___|\\__,_|\n" +
+                                 "  #                                                                           \n\n" +
+                                 "  Lisensi yang dianut di software ini https://en.wikipedia.org/wiki/Aladdin_Free_Public_License \n" +
+                                 "  Informasi dan panduan bisa dicek di halaman https://github.com/mas-elkhanza/SIMRS-Khanza/wiki \n" +
+                                 "  Bagi yang ingin berdonasi untuk pengembangan aplikasi ini bisa ke BSI 1015369872 atas nama Windiarto");
                             break;
                         } catch (SQLException e) {
                             retries--;
@@ -90,6 +94,25 @@ public class koneksiDB {
         return connection;
     }
     
+    public static Map PARAMS() {
+        if (params.isEmpty()) {
+            try (ResultSet rs = connection.createStatement().executeQuery("select nama_instansi, alamat_instansi, kabupaten, propinsi, kontak, email, kode_ppk from setting limit 1")) {
+                if (rs.next()) {
+                    params.put("namars", rs.getString("nama_instansi"));
+                    params.put("alamatrs", rs.getString("alamat_instansi"));
+                    params.put("kabupaten", rs.getString("kabupaten"));
+                    params.put("propinsi", rs.getString("propinsi"));
+                    params.put("kontak", rs.getString("kontak"));
+                    params.put("email", rs.getString("email"));
+                    params.put("kode_ppk", rs.getString("kode_ppk"));
+                }
+            } catch (Exception e) {
+                return null;
+            }
+        }
+        return params;
+    }
+
     public static String PRINTER_REGISTRASI() {
         try {
             prop.loadFromXML(new FileInputStream("setting/apm.xml"));
@@ -98,7 +121,7 @@ public class koneksiDB {
             return "";
         }
     }
-    
+
     public static String PRINTER_BARCODE() {
         try {
             prop.loadFromXML(new FileInputStream("setting/apm.xml"));
@@ -107,7 +130,7 @@ public class koneksiDB {
             return "";
         }
     }
-    
+
     public static String PRINTER_ANTRIAN() {
         try (FileInputStream fs = new FileInputStream("setting/apm.xml")) {
             prop.loadFromXML(fs);
@@ -116,7 +139,7 @@ public class koneksiDB {
             return "";
         }
     }
-    
+
     public static int PRINTJUMLAHBARCODE() {
         try {
             prop.loadFromXML(new FileInputStream("setting/apm.xml"));
@@ -125,7 +148,7 @@ public class koneksiDB {
             return 3;
         }
     }
-    
+
     @Deprecated(forRemoval = true, since = "2025-06-17")
     public static String URLFINGERPRINTBPJS() {
         try {
@@ -162,7 +185,7 @@ public class koneksiDB {
             return "";
         }
     }
-    
+
     public static String URLAPLIKASIFRISTABPJS() {
         try {
             prop.loadFromXML(new FileInputStream("setting/apm.xml"));
@@ -171,7 +194,7 @@ public class koneksiDB {
             return "";
         }
     }
-    
+
     @Deprecated(since = "2025-06-17")
     public static String AUTOBUKAAPLIKASI() {
         try (FileInputStream fs = new FileInputStream("setting/apm.xml")) {
@@ -181,7 +204,7 @@ public class koneksiDB {
             return "";
         }
     }
-    
+
     public static boolean ANTRIANPREFIXHURUF() {
         try (FileInputStream fs = new FileInputStream("setting/database.xml")) {
             prop.loadFromXML(fs);
@@ -190,7 +213,7 @@ public class koneksiDB {
             return false;
         }
     }
-    
+
     public static String[] PREFIXHURUFAKTIF() {
         if (!ANTRIANPREFIXHURUF()) {
             return null;
@@ -202,7 +225,7 @@ public class koneksiDB {
             return null;
         }
     }
-    
+
     public static String[] TOMBOLDIMATIKAN() {
         try (FileInputStream fs = new FileInputStream("setting/apm.xml")) {
             prop.loadFromXML(fs);
@@ -211,7 +234,7 @@ public class koneksiDB {
             return null;
         }
     }
-    
+
     public static String KODEPOLIEKSEKUTIF() {
         try (FileInputStream fs = new FileInputStream("setting/apm.xml")) {
             prop.loadFromXML(fs);
@@ -220,7 +243,7 @@ public class koneksiDB {
             return "";
         }
     }
-    
+
     public static String JENISBAYARPOLIEKSEKUTIF() {
         try (FileInputStream fs = new FileInputStream("setting/apm.xml")) {
             prop.loadFromXML(fs);
@@ -229,7 +252,7 @@ public class koneksiDB {
             return "";
         }
     }
-    
+
     public static boolean BOOKINGLANGSUNGREGISTRASI() {
         try (FileInputStream fs = new FileInputStream("setting/database.xml")) {
             prop.loadFromXML(fs);
@@ -922,7 +945,7 @@ public class koneksiDB {
     public static String AKTIFKANTRACKSQL() {
         try {
             prop.loadFromXML(new FileInputStream("setting/database.xml"));
-            
+
             return EnkripsiAES.decrypt(prop.getProperty("AKTIFKANTRACKSQL"));
         } catch (Exception e) {
             return "";

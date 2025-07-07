@@ -28,7 +28,7 @@ public class KhanzaHMSAnjungan {
         try {
             UIManager.setLookAndFeel(new FlatLightLaf());
             System.setProperty("flatlaf.animation", "true");
-            UIManager.put("Table.background", new Color(238, 238, 255));
+            UIManager.put("Table.background", new Color(240, 249, 255));
             UIManager.put("Table.foreground", new Color(0, 131, 62));
             UIManager.put("Table.alternateRowColor", new Color(255, 255, 255));
             UIManager.put("Table.selectionBackground", new Color(0, 131, 62));
@@ -40,46 +40,46 @@ public class KhanzaHMSAnjungan {
             UIManager.put("TableHeader.foreground", new Color(0, 131, 62));
             UIManager.put("TableHeader.font", new Font("Inter", Font.BOLD, 14));
             UIManager.put("ScrollBar.showButtons", true);
-            UIManager.put("ScrollBar.width", 15);
+            UIManager.put("ScrollBar.width", 16);
             UIManager.put("ScrollPane.smoothScrolling", true);
             UIManager.put("Button.arc", 16);
             UIManager.put("Component.arc", 16);
             UIManager.put("CheckBox.arc", 16);
             UIManager.put("ProgressBar.arc", 16);
-            UIManager.put("TextBox.arc", 16);
+            UIManager.put("TextComponent.arc", 16);
         } catch (Exception ex) {
             System.err.println("Failed to initialize LaF");
         }
         SwingUtilities.invokeLater(() -> {
-            HalamanUtamaDepan utama = HalamanUtamaDepan.getInstance();
+            HalamanUtama utama = HalamanUtama.getInstance();
             utama.setVisible(true);
-            
+
             String printerBarcode = null, printerRegistrasi = null, printerAntrian = null;
-            
-            for (PrintService ps: PrintServiceLookup.lookupPrintServices(null, null)) {
+
+            for (PrintService ps : PrintServiceLookup.lookupPrintServices(null, null)) {
                 System.out.println("Printer ditemukan: " + ps.getName());
-                
+
                 if (ps.getName().equals(koneksiDB.PRINTER_BARCODE())) {
                     printerBarcode = ps.getName();
                 }
-                
+
                 if (ps.getName().equals(koneksiDB.PRINTER_REGISTRASI())) {
                     printerRegistrasi = ps.getName();
                 }
-                
+
                 if (ps.getName().equals(koneksiDB.PRINTER_ANTRIAN())) {
                     printerRegistrasi = ps.getName();
                 }
             }
-            
+
             if (printerBarcode != null) {
                 System.out.println("Setting PRINTER_BARCODE menggunakan printer: " + printerBarcode);
             }
-            
+
             if (printerRegistrasi != null) {
                 System.out.println("Setting PRINTER_REGISTRASI menggunakan printer: " + printerRegistrasi);
             }
-            
+
             if (printerRegistrasi != null) {
                 System.out.println("Setting PRINTER_ANTRIAN menggunakan printer: " + printerAntrian);
             }

@@ -1,24 +1,14 @@
 package widget;
 
+import com.formdev.flatlaf.extras.components.FlatLabel;
 import java.awt.Color;
 import java.awt.Font;
 
-/**
- *
- * @author usu
- */
-public class Label extends usu.widget.Label {
-
-    /*
-     * Serial version UID
-     */
-    private static final long serialVersionUID = 1L;
-
+public class Label extends FlatLabel {
     public Label() {
         super();
-        //setForeground(new Color(90,90,90));
-        setForeground(new Color(50,50,50));
-        setFont(new java.awt.Font("Tahoma", Font.BOLD, 11));
+        setForeground(new Color(0, 131, 62));
+        setFont(new java.awt.Font("Inter Medium", Font.PLAIN, 12));
         setHorizontalAlignment(RIGHT);
         setVerticalAlignment(CENTER);
         setHorizontalTextPosition(CENTER);

@@ -1,23 +1,14 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+package widget;
 
-package widget; 
-
+import com.formdev.flatlaf.extras.components.FlatComboBox;
 import java.awt.Color;
-import javax.swing.JComboBox;
+import java.awt.Font;
 
-/**
- *
- * @author dosen3
- */
-public final class ComboBox extends JComboBox {
-
-    public ComboBox(){
-        setFont(new java.awt.Font("Tahoma", 0, 11));
-        setBackground(new Color(255,255,255));
-        setForeground(new Color(50,50,50));
-        setSize(WIDTH,23);
-    } 
+public class ComboBox extends FlatComboBox {
+    public ComboBox() {
+        setFont(new Font("Inter Medium", Font.PLAIN, 12));
+        setForeground(new Color(0, 131, 62));
+        setBackground(new Color(255, 255, 255));
+        setSize(WIDTH, 35);
+    }
 }

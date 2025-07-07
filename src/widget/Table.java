@@ -16,6 +16,7 @@ public class Table extends FlatTable {
     private static final long serialVersionUID = 1L;
 
     public Table() {
+        super();
         setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         getTableHeader().setReorderingAllowed(false);
         getTableHeader().setResizingAllowed(false);
@@ -25,11 +26,11 @@ public class Table extends FlatTable {
     @Override
     public Component prepareRenderer(TableCellRenderer renderer, int row, int column) {
         Component c = super.prepareRenderer(renderer, row, column);
-        
+
         if (!isRowSelected(row)) {
             c.setBackground(row % 2 == 0 ? getBackground() : UIManager.getColor("Table.alternateRowColor"));
         }
-        
+
         return c;
     }
 }

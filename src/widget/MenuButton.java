@@ -7,12 +7,12 @@ import java.awt.Font;
 import javax.swing.BorderFactory;
 import javax.swing.SwingConstants;
 
-public class ButtonBig extends FlatButton {
+public class MenuButton extends FlatButton {
 
-    public ButtonBig() {
+    public MenuButton() {
         super();
         setFont(new Font("Inter", Font.BOLD, 30));
-        setBackground(new Color(238, 238, 255));
+        setBackground(new Color(240, 249, 255));
         setForeground(new Color(0, 131, 62));
         setHorizontalTextPosition(SwingConstants.CENTER);
         setVerticalTextPosition(SwingConstants.BOTTOM);

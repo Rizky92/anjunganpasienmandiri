@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package widget;
 
 import java.awt.Color;
@@ -9,35 +5,35 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.util.Objects;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
 
-public class PanelNumpad extends JPanel {
-    
+public class Numpad extends Panel {
+
     private JTextField textBox;
     private int fontSize = 36;
     private long textLimit = Long.MAX_VALUE;
     private boolean skdpMode = false;
-    
-    public PanelNumpad() {
+
+    public Numpad() {
         initPanelNumpad();
     }
-    
+
     public void setTextBox(JTextField textBox) {
         Objects.requireNonNull(textBox);
         this.textBox = textBox;
     }
-    
+
     public void setFontSize(int fontSize) {
         this.fontSize = fontSize;
         initPanelNumpad();
     }
-    
+
     public void setTextLimit(long textLimit) {
         if (textLimit <= -1) {
             this.textLimit = Long.MAX_VALUE;
@@ -45,30 +41,31 @@ public class PanelNumpad extends JPanel {
             this.textLimit = textLimit;
         }
     }
-    
+
     public long getTextLimit() {
         return this.textLimit;
     }
-    
+
     public void setSkdpMode(boolean mode) {
         this.skdpMode = mode;
         initPanelNumpad();
     }
-    
+
     public boolean getSkdpMode() {
         return this.skdpMode;
     }
-    
+
     private void initPanelNumpad() {
         removeAll();
-        
+
         GridBagConstraints gbc;
         Font font = new Font("Inter", Font.BOLD, this.fontSize);
-        Color background = new Color(255, 238, 238);
+        Color background = new Color(204, 251, 241);
         Color foreground = new Color(0, 131, 62);
-        
+        Insets inset = new Insets(2, 2, 2, 2);
+
         int buttonSize = (this.fontSize * 2) + (this.fontSize / 4) + (this.fontSize / 8);
-        
+
         setLayout(new GridBagLayout());
 
         com.formdev.flatlaf.extras.components.FlatButton btnAngka7 = new com.formdev.flatlaf.extras.components.FlatButton();
@@ -85,6 +82,7 @@ public class PanelNumpad extends JPanel {
         gbc.fill = GridBagConstraints.BOTH;
         gbc.weightx = 1.0;
         gbc.weighty = 1.0;
+        gbc.insets = inset;
         add(btnAngka7, gbc);
 
         com.formdev.flatlaf.extras.components.FlatButton btnAngka8 = new com.formdev.flatlaf.extras.components.FlatButton();
@@ -101,6 +99,7 @@ public class PanelNumpad extends JPanel {
         gbc.fill = GridBagConstraints.BOTH;
         gbc.weightx = 1.0;
         gbc.weighty = 1.0;
+        gbc.insets = inset;
         add(btnAngka8, gbc);
 
         com.formdev.flatlaf.extras.components.FlatButton btnAngka9 = new com.formdev.flatlaf.extras.components.FlatButton();
@@ -117,6 +116,7 @@ public class PanelNumpad extends JPanel {
         gbc.fill = GridBagConstraints.BOTH;
         gbc.weightx = 1.0;
         gbc.weighty = 1.0;
+        gbc.insets = inset;
         add(btnAngka9, gbc);
 
         com.formdev.flatlaf.extras.components.FlatButton btnAngka4 = new com.formdev.flatlaf.extras.components.FlatButton();
@@ -133,6 +133,7 @@ public class PanelNumpad extends JPanel {
         gbc.fill = GridBagConstraints.BOTH;
         gbc.weightx = 1.0;
         gbc.weighty = 1.0;
+        gbc.insets = inset;
         add(btnAngka4, gbc);
 
         com.formdev.flatlaf.extras.components.FlatButton btnAngka5 = new com.formdev.flatlaf.extras.components.FlatButton();
@@ -149,6 +150,7 @@ public class PanelNumpad extends JPanel {
         gbc.fill = GridBagConstraints.BOTH;
         gbc.weightx = 1.0;
         gbc.weighty = 1.0;
+        gbc.insets = inset;
         add(btnAngka5, gbc);
 
         com.formdev.flatlaf.extras.components.FlatButton btnAngka6 = new com.formdev.flatlaf.extras.components.FlatButton();
@@ -165,6 +167,7 @@ public class PanelNumpad extends JPanel {
         gbc.fill = GridBagConstraints.BOTH;
         gbc.weightx = 1.0;
         gbc.weighty = 1.0;
+        gbc.insets = inset;
         add(btnAngka6, gbc);
 
         com.formdev.flatlaf.extras.components.FlatButton btnAngka1 = new com.formdev.flatlaf.extras.components.FlatButton();
@@ -181,6 +184,7 @@ public class PanelNumpad extends JPanel {
         gbc.fill = GridBagConstraints.BOTH;
         gbc.weightx = 1.0;
         gbc.weighty = 1.0;
+        gbc.insets = inset;
         add(btnAngka1, gbc);
 
         com.formdev.flatlaf.extras.components.FlatButton btnAngka2 = new com.formdev.flatlaf.extras.components.FlatButton();
@@ -197,6 +201,7 @@ public class PanelNumpad extends JPanel {
         gbc.fill = GridBagConstraints.BOTH;
         gbc.weightx = 1.0;
         gbc.weighty = 1.0;
+        gbc.insets = inset;
         add(btnAngka2, gbc);
 
         com.formdev.flatlaf.extras.components.FlatButton btnAngka3 = new com.formdev.flatlaf.extras.components.FlatButton();
@@ -213,8 +218,9 @@ public class PanelNumpad extends JPanel {
         gbc.fill = GridBagConstraints.BOTH;
         gbc.weightx = 1.0;
         gbc.weighty = 1.0;
+        gbc.insets = inset;
         add(btnAngka3, gbc);
-        
+
         if (this.skdpMode) {
             com.formdev.flatlaf.extras.components.FlatButton btnHurufK = new com.formdev.flatlaf.extras.components.FlatButton();
             btnHurufK.setText("K");
@@ -230,6 +236,7 @@ public class PanelNumpad extends JPanel {
             gbc.fill = GridBagConstraints.BOTH;
             gbc.weightx = 1.0;
             gbc.weighty = 1.0;
+            gbc.insets = inset;
             add(btnHurufK, gbc);
 
             com.formdev.flatlaf.extras.components.FlatButton btnHurufR = new com.formdev.flatlaf.extras.components.FlatButton();
@@ -246,6 +253,7 @@ public class PanelNumpad extends JPanel {
             gbc.fill = GridBagConstraints.BOTH;
             gbc.weightx = 1.0;
             gbc.weighty = 1.0;
+            gbc.insets = inset;
             add(btnHurufR, gbc);
 
             com.formdev.flatlaf.extras.components.FlatButton btnTemplate = new com.formdev.flatlaf.extras.components.FlatButton();
@@ -262,6 +270,7 @@ public class PanelNumpad extends JPanel {
             gbc.fill = GridBagConstraints.BOTH;
             gbc.weightx = 1.0;
             gbc.weighty = 1.0;
+            gbc.insets = inset;
             add(btnTemplate, gbc);
         }
 
@@ -285,6 +294,7 @@ public class PanelNumpad extends JPanel {
         gbc.fill = GridBagConstraints.BOTH;
         gbc.weightx = 1.0;
         gbc.weighty = 1.0;
+        gbc.insets = inset;
         add(btnClear, gbc);
 
         com.formdev.flatlaf.extras.components.FlatButton btnAngka0 = new com.formdev.flatlaf.extras.components.FlatButton();
@@ -301,6 +311,7 @@ public class PanelNumpad extends JPanel {
         gbc.fill = GridBagConstraints.BOTH;
         gbc.weightx = 1.0;
         gbc.weighty = 1.0;
+        gbc.insets = inset;
         add(btnAngka0, gbc);
 
         com.formdev.flatlaf.extras.components.FlatButton btnBackspace = new com.formdev.flatlaf.extras.components.FlatButton();
@@ -332,32 +343,35 @@ public class PanelNumpad extends JPanel {
         gbc.fill = GridBagConstraints.BOTH;
         gbc.weightx = 1.0;
         gbc.weighty = 1.0;
+        gbc.insets = inset;
         add(btnBackspace, gbc);
-        
-        setBackground(new Color(238, 238, 255));
+
+        setBackground(new Color(240, 249, 255));
         setForeground(new Color(0, 131, 62));
         if (this.skdpMode) {
             setPreferredSize(new Dimension(buttonSize * 4, buttonSize * 4));
         } else {
             setPreferredSize(new Dimension(buttonSize * 3, buttonSize * 4));
         }
-        
+
         if (this.textBox != null) {
             this.textBox.setDocument(new PlainDocument() {
                 @Override
                 public void insertString(int offs, String str, AttributeSet a) throws BadLocationException {
-                    if (str == null) return;
+                    if (str == null) {
+                        return;
+                    }
                     if (getLength() + str.length() <= getTextLimit()) {
                         super.insertString(offs, str, a);
                     }
                 }
             });
         }
-        
+
         revalidate();
         repaint();
     }
-    
+
     private void addNumber(String number) {
         if (textBox.getText().length() < this.textLimit) {
             textBox.setText(textBox.getText().concat(number));
