@@ -15,19 +15,15 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
-import java.awt.Dimension;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import fungsi.sekuel;
 import fungsi.validasi;
 import java.awt.Cursor;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
-import java.util.HashMap;
-import java.util.Map;
 import javax.swing.JOptionPane;
 import javax.swing.event.DocumentEvent;
 import org.springframework.http.HttpEntity;
@@ -35,19 +31,14 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 
-/**
- *
- * @author dosen
- */
 public final class BPJSCekReferensiDokterDPJP extends widget.Dialog {
 
     private final DefaultTableModel tabMode;
     private validasi Valid = new validasi();
-    private sekuel Sequel = new sekuel();
     private int i = 0;
     private String URL = "", link = "", utc = "";
     private ApiBPJS api = new ApiBPJS();
-    private BPJSCekReferensiPoli spesialis = new BPJSCekReferensiPoli(null, false);
+    private final BPJSCekReferensiPoli spesialis;
     private HttpHeaders headers;
     private HttpEntity requestEntity;
     private ObjectMapper mapper = new ObjectMapper();
@@ -55,17 +46,9 @@ public final class BPJSCekReferensiDokterDPJP extends widget.Dialog {
     private JsonNode nameNode;
     private JsonNode response;
 
-    /**
-     * Creates new form DlgKamar
-     *
-     * @param parent
-     * @param modal
-     */
     public BPJSCekReferensiDokterDPJP(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-
-        setSize(628, 674);
 
         tabMode = new DefaultTableModel(null, new String[] {"No.", "Kode Dokter", "Nama Dokter"}) {
             @Override
@@ -73,99 +56,64 @@ public final class BPJSCekReferensiDokterDPJP extends widget.Dialog {
                 return false;
             }
         };
-        tbKamar.setModel(tabMode);
-
-        //tbKamar.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbKamar.getBackground()));
-        tbKamar.setPreferredScrollableViewportSize(new Dimension(500, 500));
-        tbKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        tbDokter.setModel(tabMode);
 
         for (int i = 0; i < 3; i++) {
-            TableColumn column = tbKamar.getColumnModel().getColumn(i);
+            TableColumn column = tbDokter.getColumnModel().getColumn(i);
             if (i == 0) {
-                column.setPreferredWidth(40);
+                column.setPreferredWidth(80);
             } else if (i == 1) {
-                column.setPreferredWidth(140);
+                column.setPreferredWidth(170);
             } else if (i == 2) {
-                column.setPreferredWidth(470);
+                column.setPreferredWidth(700);
             }
         }
 
-        Dokter.setDocument(new batasInput((byte) 100).getKata(Dokter));
+        TCari.setDocument(new batasInput((byte) 100).getKata(TCari));
 
         if (koneksiDB.CARICEPAT().equals("aktif")) {
-            Dokter.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
+            TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
-                    if (Dokter.getText().length() > 2) {
-                        tampil(Dokter.getText());
+                    if (TCari.getText().length() > 2) {
+                        tampil2(TCari.getText());
                     }
                 }
 
                 @Override
                 public void removeUpdate(DocumentEvent e) {
-                    if (Dokter.getText().length() > 2) {
-                        tampil(Dokter.getText());
+                    if (TCari.getText().length() > 2) {
+                        tampil2(TCari.getText());
                     }
                 }
 
                 @Override
                 public void changedUpdate(DocumentEvent e) {
-                    if (Dokter.getText().length() > 2) {
-                        tampil(Dokter.getText());
+                    if (TCari.getText().length() > 2) {
+                        tampil2(TCari.getText());
                     }
                 }
             });
         }
 
-        spesialis.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {
-            }
-
-            @Override
-            public void windowClosing(WindowEvent e) {
-            }
-
+        spesialis = new BPJSCekReferensiPoli(parent, modal);
+        spesialis.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosed(WindowEvent e) {
                 if (spesialis.getTable().getSelectedRow() != -1) {
-                    KdSep.setText(spesialis.getTable().getValueAt(spesialis.getTable().getSelectedRow(), 1).toString());
-                    NmSep.setText(spesialis.getTable().getValueAt(spesialis.getTable().getSelectedRow(), 2).toString());
-                    KdSep.requestFocus();
+                    KdPoli.setText(spesialis.getTable().getValueAt(spesialis.getTable().getSelectedRow(), 1).toString());
+                    NmPoli.setText(spesialis.getTable().getValueAt(spesialis.getTable().getSelectedRow(), 2).toString());
+                    KdPoli.requestFocus();
                 }
-            }
-
-            @Override
-            public void windowIconified(WindowEvent e) {
-            }
-
-            @Override
-            public void windowDeiconified(WindowEvent e) {
-            }
-
-            @Override
-            public void windowActivated(WindowEvent e) {
-            }
-
-            @Override
-            public void windowDeactivated(WindowEvent e) {
             }
         });
 
-        spesialis.getTable().addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-            }
-
+        spesialis.getTable().addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_SPACE) {
                     spesialis.dispose();
                 }
-            }
-
-            @Override
-            public void keyReleased(KeyEvent e) {
             }
         });
 
@@ -184,137 +132,113 @@ public final class BPJSCekReferensiDokterDPJP extends widget.Dialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        internalFrame1 = new widget.Panel();
-        Scroll = new widget.ScrollPane();
-        tbKamar = new widget.Table();
-        panelGlass6 = new widget.Panel();
         jLabel15 = new widget.Label();
         DTPCari1 = new widget.Tanggal();
+        Scroll = new widget.ScrollPane();
+        tbDokter = new widget.Table();
+        panelBawah = new widget.Panel();
         jLabel14 = new widget.Label();
-        KdSep = new widget.TextField();
-        NmSep = new widget.TextField();
-        BtnPropinsi = new widget.Button();
+        KdPoli = new widget.TextField();
+        NmPoli = new widget.TextField();
+        btnCariPoli = new widget.Button();
         jLabel16 = new widget.Label();
-        Dokter = new widget.TextField();
+        TCari = new widget.TextField();
         BtnCari = new widget.Button();
         jLabel17 = new widget.Label();
         BtnKeluar = new widget.Button();
 
-        setIconImage(null);
-        setIconImages(null);
-
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Data Referensi Dokter DPJP VClaim ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
-        internalFrame1.setName("internalFrame1"); // NOI18N
-        internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
-
-        Scroll.setName("Scroll"); // NOI18N
-        Scroll.setOpaque(true);
-        Scroll.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ScrollMouseClicked(evt);
-            }
-        });
-
-        tbKamar.setName("tbKamar"); // NOI18N
-        tbKamar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbKamarMouseClicked(evt);
-            }
-        });
-        Scroll.setViewportView(tbKamar);
-
-        internalFrame1.add(Scroll, java.awt.BorderLayout.CENTER);
-
-        panelGlass6.setName("panelGlass6"); // NOI18N
-        panelGlass6.setPreferredSize(new java.awt.Dimension(44, 54));
-        panelGlass6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
-
         jLabel15.setText("Tanggal Pelayanan :");
         jLabel15.setName("jLabel15"); // NOI18N
         jLabel15.setPreferredSize(new java.awt.Dimension(110, 23));
-        panelGlass6.add(jLabel15);
 
         DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-07-2025" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
         DTPCari1.setPreferredSize(new java.awt.Dimension(150, 23));
-        DTPCari1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                DTPCari1KeyPressed(evt);
+
+        setIconImage(null);
+        setIconImages(null);
+
+        Scroll.setName("Scroll"); // NOI18N
+
+        tbDokter.setName("tbDokter"); // NOI18N
+        tbDokter.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tbDokter.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                tbDokterMouseReleased(evt);
             }
         });
-        panelGlass6.add(DTPCari1);
+        Scroll.setViewportView(tbDokter);
 
-        jLabel14.setText("Poli / Spesialis");
+        getContentPane().add(Scroll, java.awt.BorderLayout.CENTER);
+
+        panelBawah.setName("panelBawah"); // NOI18N
+        panelBawah.setPreferredSize(new java.awt.Dimension(44, 54));
+        panelBawah.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
+
+        jLabel14.setText("Poli / Spesialis :");
         jLabel14.setName("jLabel14"); // NOI18N
-        jLabel14.setPreferredSize(new java.awt.Dimension(125, 23));
-        panelGlass6.add(jLabel14);
+        jLabel14.setPreferredSize(new java.awt.Dimension(90, 30));
+        panelBawah.add(jLabel14);
 
-        KdSep.setEditable(false);
-        KdSep.setHighlighter(null);
-        KdSep.setName("KdSep"); // NOI18N
-        KdSep.setPreferredSize(new java.awt.Dimension(60, 23));
-        panelGlass6.add(KdSep);
+        KdPoli.setEditable(false);
+        KdPoli.setName("KdPoli"); // NOI18N
+        KdPoli.setPreferredSize(new java.awt.Dimension(100, 30));
+        panelBawah.add(KdPoli);
 
-        NmSep.setEditable(false);
-        NmSep.setName("NmSep"); // NOI18N
-        NmSep.setPreferredSize(new java.awt.Dimension(200, 23));
-        panelGlass6.add(NmSep);
+        NmPoli.setEditable(false);
+        NmPoli.setName("NmPoli"); // NOI18N
+        NmPoli.setPreferredSize(new java.awt.Dimension(300, 30));
+        panelBawah.add(NmPoli);
 
-        BtnPropinsi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
-        BtnPropinsi.setMnemonic('3');
-        BtnPropinsi.setToolTipText("ALt+3");
-        BtnPropinsi.setName("BtnPropinsi"); // NOI18N
-        BtnPropinsi.setPreferredSize(new java.awt.Dimension(28, 23));
-        BtnPropinsi.addActionListener(new java.awt.event.ActionListener() {
+        btnCariPoli.setBackground(new java.awt.Color(240, 249, 255));
+        btnCariPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pilih.png"))); // NOI18N
+        btnCariPoli.setMnemonic('3');
+        btnCariPoli.setToolTipText("ALt+3");
+        btnCariPoli.setName("btnCariPoli"); // NOI18N
+        btnCariPoli.setPreferredSize(new java.awt.Dimension(28, 23));
+        btnCariPoli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnPropinsiActionPerformed(evt);
+                btnCariPoliActionPerformed(evt);
             }
         });
-        panelGlass6.add(BtnPropinsi);
+        panelBawah.add(btnCariPoli);
 
-        jLabel16.setText("Dokter :");
+        jLabel16.setText("Key word :");
         jLabel16.setName("jLabel16"); // NOI18N
-        jLabel16.setPreferredSize(new java.awt.Dimension(50, 23));
-        panelGlass6.add(jLabel16);
+        jLabel16.setPreferredSize(new java.awt.Dimension(90, 30));
+        panelBawah.add(jLabel16);
 
-        Dokter.setName("Dokter"); // NOI18N
-        Dokter.setPreferredSize(new java.awt.Dimension(310, 23));
-        Dokter.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                DokterKeyPressed(evt);
-            }
-        });
-        panelGlass6.add(Dokter);
+        TCari.setName("TCari"); // NOI18N
+        TCari.setPreferredSize(new java.awt.Dimension(350, 30));
+        panelBawah.add(TCari);
 
         BtnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         BtnCari.setMnemonic('6');
         BtnCari.setToolTipText("Alt+6");
+        BtnCari.setMaximumSize(new java.awt.Dimension(30, 30));
         BtnCari.setName("BtnCari"); // NOI18N
-        BtnCari.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnCari.setPreferredSize(new java.awt.Dimension(30, 30));
         BtnCari.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnCariActionPerformed(evt);
             }
         });
-        BtnCari.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnCariKeyPressed(evt);
-            }
-        });
-        panelGlass6.add(BtnCari);
+        panelBawah.add(BtnCari);
 
         jLabel17.setName("jLabel17"); // NOI18N
-        jLabel17.setPreferredSize(new java.awt.Dimension(30, 23));
-        panelGlass6.add(jLabel17);
+        jLabel17.setPreferredSize(new java.awt.Dimension(40, 23));
+        panelBawah.add(jLabel17);
 
+        BtnKeluar.setBackground(new java.awt.Color(255, 255, 255));
+        BtnKeluar.setForeground(new java.awt.Color(255, 23, 26));
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
         BtnKeluar.setMnemonic('K');
-        BtnKeluar.setText("Keluar");
+        BtnKeluar.setText("KELUAR");
         BtnKeluar.setToolTipText("Alt+K");
         BtnKeluar.setName("BtnKeluar"); // NOI18N
-        BtnKeluar.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnKeluar.setPreferredSize(new java.awt.Dimension(110, 30));
         BtnKeluar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnKeluarActionPerformed(evt);
@@ -325,11 +249,9 @@ public final class BPJSCekReferensiDokterDPJP extends widget.Dialog {
                 BtnKeluarKeyPressed(evt);
             }
         });
-        panelGlass6.add(BtnKeluar);
+        panelBawah.add(BtnKeluar);
 
-        internalFrame1.add(panelGlass6, java.awt.BorderLayout.PAGE_END);
-
-        getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);
+        getContentPane().add(panelBawah, java.awt.BorderLayout.PAGE_END);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -344,90 +266,45 @@ public final class BPJSCekReferensiDokterDPJP extends widget.Dialog {
         }
     }//GEN-LAST:event_BtnKeluarKeyPressed
 
-    private void DokterKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DokterKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            BtnCariActionPerformed(null);
-        } else if (evt.getKeyCode() == KeyEvent.VK_PAGE_DOWN) {
-            BtnCariActionPerformed(null);
-        } else if (evt.getKeyCode() == KeyEvent.VK_PAGE_UP) {
-            BtnKeluar.requestFocus();
-        } else if (evt.getKeyCode() == KeyEvent.VK_UP) {
-            tbKamar.requestFocus();
-        }
-    }//GEN-LAST:event_DokterKeyPressed
-
     private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCariActionPerformed
-        if (KdSep.getText().trim().equals("") || NmSep.getText().trim().equals("")) {
+        if (KdPoli.getText().trim().equals("") || NmPoli.getText().trim().equals("")) {
             JOptionPane.showMessageDialog(null, "Silahkan pilih spesialis dulu..!!");
-            BtnPropinsi.requestFocus();
+            btnCariPoli.requestFocus();
         } else {
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            tampil(Dokter.getText());
-            tampil2(Dokter.getText());
+            tampil(TCari.getText());
+            tampil2(TCari.getText());
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_BtnCariActionPerformed
 
-    private void BtnCariKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnCariKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_SPACE) {
-            BtnCariActionPerformed(null);
-        }
-    }//GEN-LAST:event_BtnCariKeyPressed
-
-    private void DTPCari1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DTPCari1KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_DTPCari1KeyPressed
-
-    private void BtnPropinsiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPropinsiActionPerformed
-        spesialis.setSize(internalFrame1.getWidth() - 20, internalFrame1.getHeight() - 20);
-        spesialis.setLocationRelativeTo(internalFrame1);
+    private void btnCariPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariPoliActionPerformed
+        spesialis.setSize(getContentPane().getSize());
+        spesialis.setLocationRelativeTo(getContentPane());
         spesialis.setVisible(true);
-    }//GEN-LAST:event_BtnPropinsiActionPerformed
+    }//GEN-LAST:event_btnCariPoliActionPerformed
 
-    private void ScrollMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ScrollMouseClicked
-
-    }//GEN-LAST:event_ScrollMouseClicked
-
-    private void tbKamarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbKamarMouseClicked
-        if (evt.getClickCount() == 1) {
-            dispose();
-        }
-    }//GEN-LAST:event_tbKamarMouseClicked
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(() -> {
-            BPJSCekReferensiDokterDPJP dialog = new BPJSCekReferensiDokterDPJP(new javax.swing.JFrame(), true);
-            dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                @Override
-                public void windowClosing(java.awt.event.WindowEvent e) {
-                    System.exit(0);
-                }
-            });
-            dialog.setVisible(true);
-        });
-    }
+    private void tbDokterMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbDokterMouseReleased
+        dispose();
+    }//GEN-LAST:event_tbDokterMouseReleased
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.Button BtnCari;
     private widget.Button BtnKeluar;
-    private widget.Button BtnPropinsi;
     private widget.Tanggal DTPCari1;
-    private widget.TextField Dokter;
-    private widget.TextField KdSep;
-    private widget.TextField NmSep;
+    private widget.TextField KdPoli;
+    private widget.TextField NmPoli;
     private widget.ScrollPane Scroll;
-    private widget.Panel internalFrame1;
+    private widget.TextField TCari;
+    private widget.Button btnCariPoli;
     private widget.Label jLabel14;
     private widget.Label jLabel15;
     private widget.Label jLabel16;
     private widget.Label jLabel17;
-    private widget.Panel panelGlass6;
-    private widget.Table tbKamar;
+    private widget.Panel panelBawah;
+    private widget.Table tbDokter;
     // End of variables declaration//GEN-END:variables
-
+    
     public void tampil(String poli) {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 
@@ -441,7 +318,7 @@ public final class BPJSCekReferensiDokterDPJP extends widget.Dialog {
             headers.add("X-Signature", api.getHmac(utc));
             headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
             requestEntity = new HttpEntity(headers);
-            URL = link + "/referensi/dokter/pelayanan/1/tglPelayanan/" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + "/Spesialis/" + KdSep.getText();
+            URL = link + "/referensi/dokter/pelayanan/1/tglPelayanan/" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + "/Spesialis/" + KdPoli.getText();
             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("metaData");
             System.out.println("code : " + nameNode.path("code").asText());
@@ -481,7 +358,7 @@ public final class BPJSCekReferensiDokterDPJP extends widget.Dialog {
     public void tampil2(String poli) {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         try {
-            URL = link + "/referensi/dokter/pelayanan/2/tglPelayanan/" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + "/Spesialis/" + KdSep.getText();
+            URL = link + "/referensi/dokter/pelayanan/2/tglPelayanan/" + Valid.SetTgl(DTPCari1.getSelectedItem() + "") + "/Spesialis/" + KdPoli.getText();
             root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
             nameNode = root.path("metaData");
             System.out.println("code : " + nameNode.path("code").asText());
@@ -515,24 +392,24 @@ public final class BPJSCekReferensiDokterDPJP extends widget.Dialog {
         } catch (Exception ex) {
             System.out.println("Notifikasi : " + ex);
             if (ex.toString().contains("UnknownHostException")) {
-                JOptionPane.showMessageDialog(rootPane, "Koneksi ke server BPJS terputus...!");
+                JOptionPane.showMessageDialog(null, "Koneksi ke server BPJS terputus...!");
             }
         }
         this.setCursor(Cursor.getDefaultCursor());
     }
 
     public void setPoli(String KodePoli, String NamaPoli) {
-        KdSep.setText(KodePoli);
-        NmSep.setText(NamaPoli);
+        KdPoli.setText(KodePoli);
+        NmPoli.setText(NamaPoli);
     }
 
     public JTable getTable() {
-        return tbKamar;
+        return tbDokter;
     }
 
     public void carinamadokter(String kodepoli, String namapoli) {
-        KdSep.setText(kodepoli);
-        NmSep.setText(namapoli);
+        KdPoli.setText(kodepoli);
+        NmPoli.setText(namapoli);
         BtnCariActionPerformed(null);
     }
 }

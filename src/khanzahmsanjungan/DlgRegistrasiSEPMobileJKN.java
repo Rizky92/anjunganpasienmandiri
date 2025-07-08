@@ -293,14 +293,14 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
         LabelPoli2 = new widget.Label();
         KdDPJP = new widget.TextField();
         NmDPJP = new widget.TextField();
-        btnDPJPLayanan = new widget.Button();
+        btnCariDokter = new widget.Button();
         jLabel12 = new widget.Label();
         jLabel6 = new widget.Label();
         NoSKDP = new widget.TextField();
         jLabel26 = new widget.Label();
         NIK = new widget.TextField();
         jLabel7 = new widget.Label();
-        btnDPJPLayanan1 = new widget.Button();
+        btnCariPoli = new widget.Button();
         btnDiagnosaAwal = new widget.Button();
         btnCariNoRujukan = new widget.Button();
         btnRiwayatPelayanan = new widget.Button();
@@ -508,13 +508,13 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
         KodeDokterTerapi.setBackground(new java.awt.Color(255, 255, 153));
         KodeDokterTerapi.setHighlighter(null);
 
-        panelAtas.setPreferredSize(new java.awt.Dimension(400, 50));
+        panelAtas.setPreferredSize(new java.awt.Dimension(400, 40));
         panelAtas.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 10));
 
         label4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         label4.setText("DATA ELIGIBILITAS PESERTA JKN");
         label4.setFocusable(false);
-        label4.setFont(new java.awt.Font("Inter", 0, 24)); // NOI18N
+        label4.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         panelAtas.add(label4);
 
         getContentPane().add(panelAtas, java.awt.BorderLayout.PAGE_START);
@@ -546,10 +546,8 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
         jLabel20.setBounds(625, 190, 100, 30);
 
         TanggalSEP.setEditable(false);
-        TanggalSEP.setForeground(new java.awt.Color(50, 70, 50));
         TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-07-2025" }));
         TanggalSEP.setDisplayFormat("dd-MM-yyyy");
-        TanggalSEP.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         TanggalSEP.setOpaque(false);
         TanggalSEP.setPreferredSize(new java.awt.Dimension(95, 25));
         panel1.add(TanggalSEP);
@@ -561,10 +559,8 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
         jLabel22.setBounds(625, 160, 100, 30);
 
         TanggalRujuk.setEditable(false);
-        TanggalRujuk.setForeground(new java.awt.Color(50, 70, 50));
         TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-07-2025" }));
         TanggalRujuk.setDisplayFormat("dd-MM-yyyy");
-        TanggalRujuk.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         TanggalRujuk.setOpaque(false);
         TanggalRujuk.setPreferredSize(new java.awt.Dimension(95, 23));
         panel1.add(TanggalRujuk);
@@ -631,7 +627,6 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
 
         Kelas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1. Kelas 1", "2. Kelas 2", "3. Kelas 3" }));
         Kelas.setSelectedIndex(2);
-        Kelas.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         panel1.add(Kelas);
         Kelas.setBounds(230, 250, 150, 30);
 
@@ -679,7 +674,6 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
         jLabel27.setBounds(625, 130, 100, 30);
 
         AsalRujukan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1. Faskes 1", "2. Faskes 2(RS)" }));
-        AsalRujukan.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         panel1.add(AsalRujukan);
         AsalRujukan.setBounds(730, 130, 170, 30);
 
@@ -701,7 +695,6 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
         NoTelp.setBounds(730, 250, 170, 30);
 
         Katarak.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0. Tidak", "1.Ya" }));
-        Katarak.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         Katarak.setPreferredSize(new java.awt.Dimension(64, 25));
         panel1.add(Katarak);
         Katarak.setBounds(730, 220, 170, 30);
@@ -725,18 +718,18 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
         panel1.add(NmDPJP);
         NmDPJP.setBounds(310, 220, 260, 30);
 
-        btnDPJPLayanan.setBackground(new java.awt.Color(238, 238, 255));
-        btnDPJPLayanan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pilih.png"))); // NOI18N
-        btnDPJPLayanan.setMnemonic('X');
-        btnDPJPLayanan.setToolTipText("Alt+X");
-        btnDPJPLayanan.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
-        btnDPJPLayanan.addActionListener(new java.awt.event.ActionListener() {
+        btnCariDokter.setBackground(new java.awt.Color(238, 238, 255));
+        btnCariDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pilih.png"))); // NOI18N
+        btnCariDokter.setMnemonic('X');
+        btnCariDokter.setToolTipText("Alt+X");
+        btnCariDokter.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
+        btnCariDokter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDPJPLayananActionPerformed(evt);
+                btnCariDokterActionPerformed(evt);
             }
         });
-        panel1.add(btnDPJPLayanan);
-        btnDPJPLayanan.setBounds(570, 220, 40, 30);
+        panel1.add(btnCariDokter);
+        btnCariDokter.setBounds(575, 220, 40, 30);
 
         jLabel12.setText("Tgl. Lahir :");
         jLabel12.setPreferredSize(new java.awt.Dimension(55, 23));
@@ -766,18 +759,18 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
         panel1.add(jLabel7);
         jLabel7.setBounds(625, 100, 100, 30);
 
-        btnDPJPLayanan1.setBackground(new java.awt.Color(238, 238, 255));
-        btnDPJPLayanan1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pilih.png"))); // NOI18N
-        btnDPJPLayanan1.setMnemonic('X');
-        btnDPJPLayanan1.setToolTipText("Alt+X");
-        btnDPJPLayanan1.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
-        btnDPJPLayanan1.addActionListener(new java.awt.event.ActionListener() {
+        btnCariPoli.setBackground(new java.awt.Color(238, 238, 255));
+        btnCariPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pilih.png"))); // NOI18N
+        btnCariPoli.setMnemonic('X');
+        btnCariPoli.setToolTipText("Alt+X");
+        btnCariPoli.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
+        btnCariPoli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDPJPLayanan1ActionPerformed(evt);
+                btnCariPoliActionPerformed(evt);
             }
         });
-        panel1.add(btnDPJPLayanan1);
-        btnDPJPLayanan1.setBounds(570, 190, 40, 30);
+        panel1.add(btnCariPoli);
+        btnCariPoli.setBounds(575, 190, 40, 30);
 
         btnDiagnosaAwal.setBackground(new java.awt.Color(238, 238, 255));
         btnDiagnosaAwal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pilih.png"))); // NOI18N
@@ -790,7 +783,7 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
             }
         });
         panel1.add(btnDiagnosaAwal);
-        btnDiagnosaAwal.setBounds(570, 160, 40, 30);
+        btnDiagnosaAwal.setBounds(575, 160, 40, 30);
 
         btnCariNoRujukan.setBackground(new java.awt.Color(238, 238, 255));
         btnCariNoRujukan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pilih.png"))); // NOI18N
@@ -803,7 +796,7 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
             }
         });
         panel1.add(btnCariNoRujukan);
-        btnCariNoRujukan.setBounds(570, 100, 40, 30);
+        btnCariNoRujukan.setBounds(575, 100, 40, 30);
 
         btnRiwayatPelayanan.setBackground(new java.awt.Color(255, 255, 255));
         btnRiwayatPelayanan.setForeground(new java.awt.Color(0, 131, 62));
@@ -874,10 +867,8 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
         form.add(jLabel13);
         jLabel13.setBounds(75, 10, 150, 30);
 
-        JenisPelayanan.setBackground(new java.awt.Color(255, 255, 153));
         JenisPelayanan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1. Ranap", "2. Ralan" }));
         JenisPelayanan.setSelectedIndex(1);
-        JenisPelayanan.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         JenisPelayanan.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 JenisPelayananItemStateChanged(evt);
@@ -891,7 +882,6 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
         jLabel55.setBounds(625, 10, 100, 30);
 
         LakaLantas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0. Bukan KLL", "1. KLL Bukan KK", "2. KLL dan KK", "3. KK" }));
-        LakaLantas.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         LakaLantas.setPreferredSize(new java.awt.Dimension(64, 25));
         LakaLantas.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -902,11 +892,9 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
         LakaLantas.setBounds(730, 10, 170, 30);
 
         TanggalKKL.setEditable(false);
-        TanggalKKL.setForeground(new java.awt.Color(50, 70, 50));
         TanggalKKL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-07-2025" }));
         TanggalKKL.setDisplayFormat("dd-MM-yyyy");
         TanggalKKL.setEnabled(false);
-        TanggalKKL.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         TanggalKKL.setOpaque(false);
         TanggalKKL.setPreferredSize(new java.awt.Dimension(64, 25));
         form.add(TanggalKKL);
@@ -917,9 +905,7 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
         form.add(jLabel38);
         jLabel38.setBounds(625, 40, 100, 30);
 
-        TujuanKunjungan.setBackground(new java.awt.Color(255, 255, 153));
         TujuanKunjungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0. Normal", "1. Prosedur", "2. Konsul Dokter" }));
-        TujuanKunjungan.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         TujuanKunjungan.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 TujuanKunjunganItemStateChanged(evt);
@@ -940,7 +926,6 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
 
         FlagProsedur.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "0. Prosedur Tidak Berkelanjutan", "1. Prosedur dan Terapi Berkelanjutan" }));
         FlagProsedur.setEnabled(false);
-        FlagProsedur.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         form.add(FlagProsedur);
         FlagProsedur.setBounds(230, 70, 340, 30);
 
@@ -964,7 +949,6 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
         jLabel41.setBounds(830, 100, 55, 30);
 
         Suplesi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0. Tidak", "1.Ya" }));
-        Suplesi.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         Suplesi.setPreferredSize(new java.awt.Dimension(64, 25));
         form.add(Suplesi);
         Suplesi.setBounds(730, 100, 95, 30);
@@ -975,7 +959,6 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
 
         Penunjang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "1. Radioterapi", "2. Kemoterapi", "3. Rehabilitasi Medik", "4. Rehabilitasi Psikososial", "5. Transfusi Darah", "6. Pelayanan Gigi", "7. Laboratorium", "8. USG", "9. Farmasi", "10. Lain-Lain", "11. MRI", "12. HEMODIALISA" }));
         Penunjang.setEnabled(false);
-        Penunjang.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         form.add(Penunjang);
         Penunjang.setBounds(230, 100, 340, 30);
 
@@ -989,9 +972,7 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
         form.add(jLabel45);
         jLabel45.setBounds(75, 130, 150, 30);
 
-        AsesmenPoli.setBackground(new java.awt.Color(255, 255, 153));
         AsesmenPoli.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "1. Poli spesialis tidak tersedia pada hari sebelumnya", "2. Jam Poli telah berakhir pada hari sebelumnya", "3. Spesialis yang dimaksud tidak praktek pada hari sebelumnya", "4. Atas Instruksi RS", "5. Tujuan Kontrol" }));
-        AsesmenPoli.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         form.add(AsesmenPoli);
         AsesmenPoli.setBounds(230, 130, 340, 30);
 
@@ -1191,12 +1172,12 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnDPJPLayananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDPJPLayananActionPerformed
-        dokter.setSize(this.getSize());
-        dokter.setLocationRelativeTo(this);
+    private void btnCariDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariDokterActionPerformed
+        dokter.setSize(getContentPane().getSize());
+        dokter.setLocationRelativeTo(getContentPane());
         dokter.carinamadokter(KdPoli.getText(), NmPoli.getText());
         dokter.setVisible(true);
-    }//GEN-LAST:event_btnDPJPLayananActionPerformed
+    }//GEN-LAST:event_btnCariDokterActionPerformed
 
     private void TujuanKunjunganItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_TujuanKunjunganItemStateChanged
         if (TujuanKunjungan.getSelectedIndex() == 0) {
@@ -1233,25 +1214,25 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
 
             KdDPJPLayanan.setText("");
             NmDPJPLayanan.setText("");
-            btnDPJPLayanan.setEnabled(false);
+            btnCariDokter.setEnabled(false);
         } else if (JenisPelayanan.getSelectedIndex() == 1) {
             LabelPoli.setVisible(true);
             KdPoli.setVisible(true);
             NmPoli.setVisible(true);
 
-            btnDPJPLayanan.setEnabled(true);
+            btnCariDokter.setEnabled(true);
         }
     }//GEN-LAST:event_JenisPelayananItemStateChanged
 
-    private void btnDPJPLayanan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDPJPLayanan1ActionPerformed
-        poli.setSize(this.getSize());
-        poli.setLocationRelativeTo(this);
+    private void btnCariPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariPoliActionPerformed
+        poli.setSize(getContentPane().getSize());
+        poli.setLocationRelativeTo(getContentPane());
         poli.setVisible(true);
-    }//GEN-LAST:event_btnDPJPLayanan1ActionPerformed
+    }//GEN-LAST:event_btnCariPoliActionPerformed
 
     private void btnDiagnosaAwalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDiagnosaAwalActionPerformed
-        penyakit.setSize(this.getSize());
-        penyakit.setLocationRelativeTo(this);
+        penyakit.setSize(getContentPane().getSize());
+        penyakit.setLocationRelativeTo(getContentPane());
         penyakit.setVisible(true);
     }//GEN-LAST:event_btnDiagnosaAwalActionPerformed
 
@@ -1260,8 +1241,8 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
             JOptionPane.showMessageDialog(rootPane, "No.Kartu masih kosong...!!");
         } else {
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            rujukanterakhir.setSize(this.getSize());
-            rujukanterakhir.setLocationRelativeTo(this);
+            rujukanterakhir.setSize(getContentPane().getSize());
+            rujukanterakhir.setLocationRelativeTo(getContentPane());
             rujukanterakhir.tampil(NoKartu.getText(), TPasien.getText());
             rujukanterakhir.setVisible(true);
             this.setCursor(Cursor.getDefaultCursor());
@@ -1270,23 +1251,23 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
 
     private void btnRiwayatPelayananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRiwayatPelayananActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        historiPelayanan.setSize(this.getSize());
-        historiPelayanan.setLocationRelativeTo(this);
+        historiPelayanan.setSize(getContentPane().getSize());
+        historiPelayanan.setLocationRelativeTo(getContentPane());
         historiPelayanan.setKartu(NoKartu.getText());
         historiPelayanan.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnRiwayatPelayananActionPerformed
 
     private void btnDokterTerapiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDokterTerapiActionPerformed
-        doktermapping.setSize(this.getSize());
-        doktermapping.setLocationRelativeTo(this);
+        doktermapping.setSize(getContentPane().getSize());
+        doktermapping.setLocationRelativeTo(getContentPane());
         doktermapping.tampilDokterMapping(KdDPJPLayanan.getText());
         doktermapping.setVisible(true);
     }//GEN-LAST:event_btnDokterTerapiActionPerformed
 
     private void btnPoliTerapiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPoliTerapiActionPerformed
-        polimapping.setSize(this.getSize());
-        polimapping.setLocationRelativeTo(this);
+        polimapping.setSize(getContentPane().getSize());
+        polimapping.setLocationRelativeTo(getContentPane());
         polimapping.tampilPoliMapping(KdPoli.getText());
         polimapping.setVisible(true);
     }//GEN-LAST:event_btnPoliTerapiActionPerformed
@@ -1666,9 +1647,9 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
     private widget.Button btnAksiBatal;
     private widget.Button btnAksiKonfirmasi;
     private widget.Button btnApprovalFP;
+    private widget.Button btnCariDokter;
     private widget.Button btnCariNoRujukan;
-    private widget.Button btnDPJPLayanan;
-    private widget.Button btnDPJPLayanan1;
+    private widget.Button btnCariPoli;
     private widget.Button btnDiagnosaAwal;
     private widget.Button btnDokterTerapi;
     private widget.Button btnFingerprint;
@@ -2363,7 +2344,7 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
         AsesmenPoli.setEnabled(true);
         KdDPJPLayanan.setText("");
         NmDPJPLayanan.setText("");
-        btnDPJPLayanan.setEnabled(true);
+        btnCariDokter.setEnabled(true);
         NoRujukan.requestFocus();
         kodepolireg = "";
         kodedokterreg = "";

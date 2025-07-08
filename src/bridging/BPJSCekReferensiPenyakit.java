@@ -124,63 +124,52 @@ public final class BPJSCekReferensiPenyakit extends widget.Dialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        internalFrame1 = new widget.Panel();
         Scroll = new widget.ScrollPane();
         tbKamar = new widget.Table();
-        panelGlass6 = new widget.Panel();
+        panelBawah = new widget.Panel();
         jLabel16 = new widget.Label();
         diagnosa = new widget.TextField();
         BtnCari = new widget.Button();
         jLabel17 = new widget.Label();
         BtnKeluar = new widget.Button();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(null);
-        setIconImages(null);
-        setUndecorated(true);
-        setResizable(false);
-
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Data Referensi Diagnosa VClaim ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
-        internalFrame1.setName("internalFrame1"); // NOI18N
-        internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         Scroll.setName("Scroll"); // NOI18N
-        Scroll.setOpaque(true);
 
-        tbKamar.setAutoCreateRowSorter(true);
         tbKamar.setName("tbKamar"); // NOI18N
         tbKamar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbKamarMouseClicked(evt);
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                tbKamarMouseReleased(evt);
             }
         });
         Scroll.setViewportView(tbKamar);
 
-        internalFrame1.add(Scroll, java.awt.BorderLayout.CENTER);
+        getContentPane().add(Scroll, java.awt.BorderLayout.CENTER);
 
-        panelGlass6.setName("panelGlass6"); // NOI18N
-        panelGlass6.setPreferredSize(new java.awt.Dimension(44, 54));
-        panelGlass6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
+        panelBawah.setName("panelBawah"); // NOI18N
+        panelBawah.setPreferredSize(new java.awt.Dimension(44, 54));
+        panelBawah.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
         jLabel16.setText("Kode/Nama Diagnosa :");
         jLabel16.setName("jLabel16"); // NOI18N
-        jLabel16.setPreferredSize(new java.awt.Dimension(120, 23));
-        panelGlass6.add(jLabel16);
+        jLabel16.setPreferredSize(new java.awt.Dimension(130, 30));
+        panelBawah.add(jLabel16);
 
         diagnosa.setName("diagnosa"); // NOI18N
-        diagnosa.setPreferredSize(new java.awt.Dimension(250, 23));
+        diagnosa.setPreferredSize(new java.awt.Dimension(400, 30));
         diagnosa.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 diagnosaKeyPressed(evt);
             }
         });
-        panelGlass6.add(diagnosa);
+        panelBawah.add(diagnosa);
 
         BtnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         BtnCari.setMnemonic('6');
         BtnCari.setToolTipText("Alt+6");
         BtnCari.setName("BtnCari"); // NOI18N
-        BtnCari.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnCari.setPreferredSize(new java.awt.Dimension(30, 30));
         BtnCari.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnCariActionPerformed(evt);
@@ -191,18 +180,20 @@ public final class BPJSCekReferensiPenyakit extends widget.Dialog {
                 BtnCariKeyPressed(evt);
             }
         });
-        panelGlass6.add(BtnCari);
+        panelBawah.add(BtnCari);
 
         jLabel17.setName("jLabel17"); // NOI18N
-        jLabel17.setPreferredSize(new java.awt.Dimension(30, 23));
-        panelGlass6.add(jLabel17);
+        jLabel17.setPreferredSize(new java.awt.Dimension(40, 23));
+        panelBawah.add(jLabel17);
 
+        BtnKeluar.setBackground(new java.awt.Color(255, 255, 255));
+        BtnKeluar.setForeground(new java.awt.Color(255, 23, 26));
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
         BtnKeluar.setMnemonic('K');
-        BtnKeluar.setText("Keluar");
+        BtnKeluar.setText("KELUAR");
         BtnKeluar.setToolTipText("Alt+K");
         BtnKeluar.setName("BtnKeluar"); // NOI18N
-        BtnKeluar.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnKeluar.setPreferredSize(new java.awt.Dimension(110, 30));
         BtnKeluar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnKeluarActionPerformed(evt);
@@ -213,11 +204,9 @@ public final class BPJSCekReferensiPenyakit extends widget.Dialog {
                 BtnKeluarKeyPressed(evt);
             }
         });
-        panelGlass6.add(BtnKeluar);
+        panelBawah.add(BtnKeluar);
 
-        internalFrame1.add(panelGlass6, java.awt.BorderLayout.PAGE_END);
-
-        getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);
+        getContentPane().add(panelBawah, java.awt.BorderLayout.PAGE_END);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -260,37 +249,18 @@ public final class BPJSCekReferensiPenyakit extends widget.Dialog {
         }
     }//GEN-LAST:event_BtnCariKeyPressed
 
-    private void tbKamarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbKamarMouseClicked
-        if (evt.getClickCount() == 1) {
-            dispose();
-        }
-    }//GEN-LAST:event_tbKamarMouseClicked
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(() -> {
-            BPJSCekReferensiPenyakit dialog = new BPJSCekReferensiPenyakit(new javax.swing.JFrame(), true);
-            dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                @Override
-                public void windowClosing(java.awt.event.WindowEvent e) {
-                    System.exit(0);
-                }
-            });
-            dialog.setVisible(true);
-        });
-    }
+    private void tbKamarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbKamarMouseReleased
+        dispose();
+    }//GEN-LAST:event_tbKamarMouseReleased
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.Button BtnCari;
     private widget.Button BtnKeluar;
     private widget.ScrollPane Scroll;
     private widget.TextField diagnosa;
-    private widget.Panel internalFrame1;
     private widget.Label jLabel16;
     private widget.Label jLabel17;
-    private widget.Panel panelGlass6;
+    private widget.Panel panelBawah;
     private widget.Table tbKamar;
     // End of variables declaration//GEN-END:variables
 

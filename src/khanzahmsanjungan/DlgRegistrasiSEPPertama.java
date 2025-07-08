@@ -689,13 +689,14 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
             }
         });
 
-        panelAtas.setPreferredSize(new java.awt.Dimension(400, 50));
+        panelAtas.setMinimumSize(new java.awt.Dimension(390, 40));
+        panelAtas.setPreferredSize(new java.awt.Dimension(400, 40));
         panelAtas.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 10));
 
         label4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         label4.setText("DATA ELIGIBILITAS PESERTA JKN");
         label4.setFocusable(false);
-        label4.setFont(new java.awt.Font("Inter", 0, 24)); // NOI18N
+        label4.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         panelAtas.add(label4);
 
         getContentPane().add(panelAtas, java.awt.BorderLayout.PAGE_START);
@@ -708,12 +709,10 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         panel1.setLayout(null);
 
         TPasien.setEditable(false);
-        TPasien.setHighlighter(null);
         panel1.add(TPasien);
         TPasien.setBounds(345, 10, 685, 30);
 
         TNoRM.setEditable(false);
-        TNoRM.setHighlighter(null);
         TNoRM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TNoRMActionPerformed(evt);
@@ -723,7 +722,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         TNoRM.setBounds(230, 10, 110, 30);
 
         NoKartu.setEditable(false);
-        NoKartu.setHighlighter(null);
         panel1.add(NoKartu);
         NoKartu.setBounds(730, 100, 300, 30);
 
@@ -732,11 +730,9 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         panel1.add(jLabel20);
         jLabel20.setBounds(625, 190, 100, 30);
 
-        TanggalSEP.setBorder(new FlatRoundBorder());
         TanggalSEP.setEditable(false);
         TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-07-2025" }));
         TanggalSEP.setDisplayFormat("dd-MM-yyyy");
-        TanggalSEP.setOpaque(false);
         TanggalSEP.setPreferredSize(new java.awt.Dimension(95, 25));
         TanggalSEP.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -751,11 +747,9 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         panel1.add(jLabel22);
         jLabel22.setBounds(625, 160, 100, 30);
 
-        TanggalRujuk.setBorder(new FlatRoundBorder());
         TanggalRujuk.setEditable(false);
         TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-07-2025" }));
         TanggalRujuk.setDisplayFormat("dd-MM-yyyy");
-        TanggalRujuk.setOpaque(false);
         TanggalRujuk.setPreferredSize(new java.awt.Dimension(95, 23));
         TanggalRujuk.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -771,7 +765,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         jLabel23.setBounds(75, 70, 150, 30);
 
         NoRujukan.setEditable(false);
-        NoRujukan.setHighlighter(null);
         NoRujukan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 NoRujukanKeyPressed(evt);
@@ -786,12 +779,10 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         jLabel10.setBounds(75, 130, 150, 30);
 
         KdPpkRujukan.setEditable(false);
-        KdPpkRujukan.setHighlighter(null);
         panel1.add(KdPpkRujukan);
         KdPpkRujukan.setBounds(230, 130, 75, 30);
 
         NmPpkRujukan.setEditable(false);
-        NmPpkRujukan.setHighlighter(null);
         panel1.add(NmPpkRujukan);
         NmPpkRujukan.setBounds(310, 130, 260, 30);
 
@@ -801,22 +792,18 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         jLabel11.setBounds(75, 160, 150, 30);
 
         KdPenyakit.setEditable(false);
-        KdPenyakit.setHighlighter(null);
         panel1.add(KdPenyakit);
         KdPenyakit.setBounds(230, 160, 75, 30);
 
         NmPenyakit.setEditable(false);
-        NmPenyakit.setHighlighter(null);
         panel1.add(NmPenyakit);
         NmPenyakit.setBounds(310, 160, 260, 30);
 
         NmPoli.setEditable(false);
-        NmPoli.setHighlighter(null);
         panel1.add(NmPoli);
         NmPoli.setBounds(310, 190, 260, 30);
 
         KdPoli.setEditable(false);
-        KdPoli.setHighlighter(null);
         panel1.add(KdPoli);
         KdPoli.setBounds(230, 190, 75, 30);
 
@@ -845,7 +832,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         jLabel8.setBounds(75, 10, 150, 30);
 
         TglLahir.setEditable(false);
-        TglLahir.setHighlighter(null);
         panel1.add(TglLahir);
         TglLahir.setBounds(230, 40, 110, 30);
 
@@ -854,7 +840,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         jLabel18.setBounds(910, 40, 35, 30);
 
         JK.setEditable(false);
-        JK.setHighlighter(null);
         panel1.add(JK);
         JK.setBounds(950, 40, 80, 30);
 
@@ -864,7 +849,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         jLabel24.setBounds(625, 40, 100, 30);
 
         JenisPeserta.setEditable(false);
-        JenisPeserta.setHighlighter(null);
         panel1.add(JenisPeserta);
         JenisPeserta.setBounds(730, 40, 173, 30);
 
@@ -874,7 +858,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         jLabel25.setBounds(365, 40, 50, 30);
 
         Status.setEditable(false);
-        Status.setHighlighter(null);
         panel1.add(Status);
         Status.setBounds(420, 40, 150, 30);
 
@@ -891,7 +874,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         panel1.add(AsalRujukan);
         AsalRujukan.setBounds(730, 130, 170, 30);
 
-        NoTelp.setHighlighter(null);
         NoTelp.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
                 NoTelpFocusGained(evt);
@@ -933,20 +915,16 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         LabelPoli2.setBounds(75, 220, 150, 30);
 
         KdDPJP.setEditable(false);
-        KdDPJP.setHighlighter(null);
         panel1.add(KdDPJP);
         KdDPJP.setBounds(230, 220, 75, 30);
 
         NmDPJP.setEditable(false);
-        NmDPJP.setHighlighter(null);
         panel1.add(NmDPJP);
         NmDPJP.setBounds(310, 220, 260, 30);
 
-        btnCariDokter.setBackground(new java.awt.Color(238, 238, 255));
+        btnCariDokter.setBackground(new java.awt.Color(240, 249, 255));
+        btnCariDokter.setBorder(null);
         btnCariDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pilih.png"))); // NOI18N
-        btnCariDokter.setMnemonic('X');
-        btnCariDokter.setToolTipText("Alt+X");
-        btnCariDokter.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         btnCariDokter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCariDokterActionPerformed(evt);
@@ -958,7 +936,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
             }
         });
         panel1.add(btnCariDokter);
-        btnCariDokter.setBounds(570, 220, 40, 30);
+        btnCariDokter.setBounds(575, 220, 40, 30);
 
         jLabel56.setText("No. Telp :");
         jLabel56.setPreferredSize(new java.awt.Dimension(55, 23));
@@ -975,7 +953,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         jLabel6.setBounds(625, 70, 100, 30);
 
         NoSKDP.setEditable(false);
-        NoSKDP.setHighlighter(null);
         NoSKDP.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 NoSKDPKeyPressed(evt);
@@ -990,7 +967,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         jLabel26.setBounds(75, 100, 150, 30);
 
         NIK.setEditable(false);
-        NIK.setHighlighter(null);
         panel1.add(NIK);
         NIK.setBounds(730, 70, 300, 30);
 
@@ -998,11 +974,9 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         panel1.add(jLabel7);
         jLabel7.setBounds(625, 100, 100, 30);
 
-        btnCariPoli.setBackground(new java.awt.Color(238, 238, 255));
+        btnCariPoli.setBackground(new java.awt.Color(240, 249, 255));
+        btnCariPoli.setBorder(null);
         btnCariPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pilih.png"))); // NOI18N
-        btnCariPoli.setMnemonic('X');
-        btnCariPoli.setToolTipText("Alt+X");
-        btnCariPoli.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         btnCariPoli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCariPoliActionPerformed(evt);
@@ -1014,13 +988,11 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
             }
         });
         panel1.add(btnCariPoli);
-        btnCariPoli.setBounds(570, 190, 40, 30);
+        btnCariPoli.setBounds(575, 190, 40, 30);
 
-        btnCariDiagnosaAwal.setBackground(new java.awt.Color(238, 238, 255));
+        btnCariDiagnosaAwal.setBackground(new java.awt.Color(240, 249, 255));
+        btnCariDiagnosaAwal.setBorder(null);
         btnCariDiagnosaAwal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pilih.png"))); // NOI18N
-        btnCariDiagnosaAwal.setMnemonic('X');
-        btnCariDiagnosaAwal.setToolTipText("Alt+X");
-        btnCariDiagnosaAwal.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         btnCariDiagnosaAwal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCariDiagnosaAwalActionPerformed(evt);
@@ -1032,13 +1004,11 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
             }
         });
         panel1.add(btnCariDiagnosaAwal);
-        btnCariDiagnosaAwal.setBounds(570, 160, 40, 30);
+        btnCariDiagnosaAwal.setBounds(575, 160, 40, 30);
 
-        btnRiwayatRujukan.setBackground(new java.awt.Color(238, 238, 255));
+        btnRiwayatRujukan.setBackground(new java.awt.Color(240, 249, 255));
+        btnRiwayatRujukan.setBorder(null);
         btnRiwayatRujukan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pilih.png"))); // NOI18N
-        btnRiwayatRujukan.setMnemonic('X');
-        btnRiwayatRujukan.setToolTipText("Alt+X");
-        btnRiwayatRujukan.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         btnRiwayatRujukan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRiwayatRujukanActionPerformed(evt);
@@ -1050,14 +1020,12 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
             }
         });
         panel1.add(btnRiwayatRujukan);
-        btnRiwayatRujukan.setBounds(570, 100, 40, 30);
+        btnRiwayatRujukan.setBounds(575, 100, 40, 30);
 
         btnRiwayatPelayananBPJS.setBackground(new java.awt.Color(255, 255, 255));
         btnRiwayatPelayananBPJS.setForeground(new java.awt.Color(0, 131, 62));
         btnRiwayatPelayananBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pilih.png"))); // NOI18N
-        btnRiwayatPelayananBPJS.setMnemonic('X');
         btnRiwayatPelayananBPJS.setText("Riwayat Layanan BPJS");
-        btnRiwayatPelayananBPJS.setToolTipText("Alt+X");
         btnRiwayatPelayananBPJS.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnRiwayatPelayananBPJS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1075,9 +1043,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         btnFingerprint.setBackground(new java.awt.Color(255, 255, 255));
         btnFingerprint.setForeground(new java.awt.Color(0, 131, 62));
         btnFingerprint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/fingerprint.png"))); // NOI18N
-        btnFingerprint.setMnemonic('X');
         btnFingerprint.setText("Fingerprint");
-        btnFingerprint.setToolTipText("Alt+X");
         btnFingerprint.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnFingerprint.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnFingerprint.addActionListener(new java.awt.event.ActionListener() {
@@ -1096,9 +1062,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         btnFrista.setBackground(new java.awt.Color(255, 255, 255));
         btnFrista.setForeground(new java.awt.Color(0, 131, 62));
         btnFrista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/face-scan.png"))); // NOI18N
-        btnFrista.setMnemonic('X');
         btnFrista.setText("FRISTA");
-        btnFrista.setToolTipText("Alt+X");
         btnFrista.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnFrista.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnFrista.addActionListener(new java.awt.event.ActionListener() {
@@ -1230,12 +1194,10 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         LabelPoli7.setBounds(75, 160, 150, 30);
 
         KdDPJPLayanan.setEditable(false);
-        KdDPJPLayanan.setHighlighter(null);
         form.add(KdDPJPLayanan);
         KdDPJPLayanan.setBounds(230, 160, 75, 30);
 
         NmDPJPLayanan.setEditable(false);
-        NmDPJPLayanan.setHighlighter(null);
         form.add(NmDPJPLayanan);
         NmDPJPLayanan.setBounds(310, 160, 260, 30);
 
@@ -1245,12 +1207,10 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         jLabel9.setBounds(75, 190, 150, 30);
 
         KdPPK.setEditable(false);
-        KdPPK.setHighlighter(null);
         form.add(KdPPK);
         KdPPK.setBounds(230, 190, 75, 30);
 
         NmPPK.setEditable(false);
-        NmPPK.setHighlighter(null);
         form.add(NmPPK);
         NmPPK.setBounds(310, 190, 260, 30);
 
@@ -1278,12 +1238,10 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         form.add(jLabel38);
         jLabel38.setBounds(625, 40, 100, 30);
 
-        TanggalKKL.setBorder(new FlatRoundBorder());
         TanggalKKL.setEditable(false);
         TanggalKKL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-07-2025" }));
         TanggalKKL.setDisplayFormat("dd-MM-yyyy"); // NOI18N
         TanggalKKL.setEnabled(false);
-        TanggalKKL.setOpaque(false);
         TanggalKKL.setPreferredSize(new java.awt.Dimension(64, 25));
         TanggalKKL.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1299,7 +1257,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         jLabel36.setBounds(625, 70, 100, 30);
 
         Keterangan.setEditable(false);
-        Keterangan.setHighlighter(null);
         Keterangan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 KeteranganKeyPressed(evt);
@@ -1327,7 +1284,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         form.add(jLabel41);
         jLabel41.setBounds(830, 100, 55, 30);
 
-        NoSEPSuplesi.setHighlighter(null);
         NoSEPSuplesi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 NoSEPSuplesiKeyPressed(evt);
@@ -1341,12 +1297,10 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         LabelPoli3.setBounds(625, 130, 100, 30);
 
         KdPropinsi.setEditable(false);
-        KdPropinsi.setHighlighter(null);
         form.add(KdPropinsi);
         KdPropinsi.setBounds(730, 130, 75, 30);
 
         NmPropinsi.setEditable(false);
-        NmPropinsi.setHighlighter(null);
         form.add(NmPropinsi);
         NmPropinsi.setBounds(810, 130, 220, 30);
 
@@ -1355,12 +1309,10 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         LabelPoli4.setBounds(625, 160, 100, 30);
 
         KdKabupaten.setEditable(false);
-        KdKabupaten.setHighlighter(null);
         form.add(KdKabupaten);
         KdKabupaten.setBounds(730, 160, 75, 30);
 
         NmKabupaten.setEditable(false);
-        NmKabupaten.setHighlighter(null);
         form.add(NmKabupaten);
         NmKabupaten.setBounds(810, 160, 220, 30);
 
@@ -1369,12 +1321,10 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         LabelPoli5.setBounds(625, 190, 100, 30);
 
         KdKecamatan.setEditable(false);
-        KdKecamatan.setHighlighter(null);
         form.add(KdKecamatan);
         KdKecamatan.setBounds(730, 190, 75, 30);
 
         NmKecamatan.setEditable(false);
-        NmKecamatan.setHighlighter(null);
         form.add(NmKecamatan);
         NmKecamatan.setBounds(810, 190, 220, 30);
 
@@ -1383,7 +1333,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         jLabel14.setBounds(625, 220, 100, 30);
 
         Catatan.setText("Anjungan Pasien Mandiri RS Samarinda Medika Citra");
-        Catatan.setHighlighter(null);
         Catatan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 CatatanKeyPressed(evt);
@@ -1395,9 +1344,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         btnApprovalFP.setBackground(new java.awt.Color(255, 255, 255));
         btnApprovalFP.setForeground(new java.awt.Color(0, 131, 62));
         btnApprovalFP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/approvalfp.png"))); // NOI18N
-        btnApprovalFP.setMnemonic('X');
         btnApprovalFP.setText("Approval FP");
-        btnApprovalFP.setToolTipText("Alt+X");
         btnApprovalFP.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnApprovalFP.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnApprovalFP.addActionListener(new java.awt.event.ActionListener() {
@@ -1416,9 +1363,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         btnPengajuanFP.setBackground(new java.awt.Color(255, 255, 255));
         btnPengajuanFP.setForeground(new java.awt.Color(0, 131, 62));
         btnPengajuanFP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pengajuan.png"))); // NOI18N
-        btnPengajuanFP.setMnemonic('X');
         btnPengajuanFP.setText("Pengajuan FP");
-        btnPengajuanFP.setToolTipText("Alt+X");
         btnPengajuanFP.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnPengajuanFP.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnPengajuanFP.addActionListener(new java.awt.event.ActionListener() {
@@ -1439,7 +1384,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         jLabel15.setBounds(75, 220, 150, 30);
 
         JumlahBarcode.setText("3");
-        JumlahBarcode.setHighlighter(null);
         JumlahBarcode.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 JumlahBarcodeKeyPressed(evt);
@@ -1634,7 +1578,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
 
     private void btnCariDokterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariDokterActionPerformed
         dokter.setSize(getContentPane().getSize());
-        dokter.setLocationRelativeTo(this);
+        dokter.setLocationRelativeTo(getContentPane());
         dokter.carinamadokter(KdPoli.getText(), NmPoli.getText());
         dokter.setVisible(true);
     }//GEN-LAST:event_btnCariDokterActionPerformed
@@ -1741,13 +1685,13 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
 
             KdDPJPLayanan.setText("");
             NmDPJPLayanan.setText("");
-            btnCariDokter.setEnabled(false);
+            btnCariPoli.setEnabled(false);
         } else if (JenisPelayanan.getSelectedIndex() == 1) {
             LabelPoli.setVisible(true);
             KdPoli.setVisible(true);
             NmPoli.setVisible(true);
 
-            btnCariDokter.setEnabled(true);
+            btnCariPoli.setEnabled(true);
         }
     }//GEN-LAST:event_JenisPelayananItemStateChanged
 
@@ -1805,7 +1749,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
 
     private void btnCariPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariPoliActionPerformed
         poli.setSize(getContentPane().getSize());
-        poli.setLocationRelativeTo(this);
+        poli.setLocationRelativeTo(getContentPane());
         poli.setVisible(true);
     }//GEN-LAST:event_btnCariPoliActionPerformed
 
@@ -1815,7 +1759,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
 
     private void btnCariDiagnosaAwalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariDiagnosaAwalActionPerformed
         penyakit.setSize(getContentPane().getSize());
-        penyakit.setLocationRelativeTo(this);
+        penyakit.setLocationRelativeTo(getContentPane());
         penyakit.setVisible(true);
     }//GEN-LAST:event_btnCariDiagnosaAwalActionPerformed
 
@@ -1829,7 +1773,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         } else {
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             rujukanterakhir.setSize(getContentPane().getSize());
-            rujukanterakhir.setLocationRelativeTo(this);
+            rujukanterakhir.setLocationRelativeTo(getContentPane());
             rujukanterakhir.tampil(NoKartu.getText(), TPasien.getText());
             rujukanterakhir.setVisible(true);
             this.setCursor(Cursor.getDefaultCursor());
@@ -1843,7 +1787,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
     private void btnRiwayatPelayananBPJSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRiwayatPelayananBPJSActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         historiPelayanan.setSize(getContentPane().getSize());
-        historiPelayanan.setLocationRelativeTo(this);
+        historiPelayanan.setLocationRelativeTo(getContentPane());
         historiPelayanan.setKartu(NoKartu.getText());
         historiPelayanan.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
@@ -1855,7 +1799,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
 
     private void btnDokterTerapiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDokterTerapiActionPerformed
         doktermapping.setSize(getContentPane().getSize());
-        doktermapping.setLocationRelativeTo(this);
+        doktermapping.setLocationRelativeTo(getContentPane());
         doktermapping.tampilDokterMapping(KdDPJPLayanan.getText());
         doktermapping.setVisible(true);
     }//GEN-LAST:event_btnDokterTerapiActionPerformed
@@ -1866,7 +1810,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
 
     private void btnPoliTerapiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPoliTerapiActionPerformed
         polimapping.setSize(getContentPane().getSize());
-        polimapping.setLocationRelativeTo(this);
+        polimapping.setLocationRelativeTo(getContentPane());
         polimapping.tampilPoliMapping(KdPoli.getText());
         polimapping.setVisible(true);
     }//GEN-LAST:event_btnPoliTerapiActionPerformed

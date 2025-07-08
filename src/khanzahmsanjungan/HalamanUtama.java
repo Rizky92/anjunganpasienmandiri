@@ -2,8 +2,6 @@ package khanzahmsanjungan;
 
 import fungsi.koneksiDB;
 import java.awt.Cursor;
-import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.ImageIcon;
