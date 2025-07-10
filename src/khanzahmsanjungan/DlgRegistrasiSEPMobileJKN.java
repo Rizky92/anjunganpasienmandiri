@@ -38,6 +38,8 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.HttpServerErrorException;
 
 /**
  *
@@ -58,6 +60,7 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
     private final DlgCariDokter doktermapping;
     private final BPJSCekRiwayatRujukanTerakhir rujukanterakhir;
     private final BPJSCekRiwayatPelayanan historiPelayanan;
+    private final boolean ADDANTRIANAPIMOBILEJKN = koneksiDB.ADDANTRIANAPIMOBILEJKN();
     private String hari = "",
         aksi = "",
         tglkkl = "0000-00-00",
@@ -2234,7 +2237,11 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
         }
     }
 
-    public void SimpanAntrianOnSite() {
+    public boolean SimpanAntrianOnSite() {
+        if (!ADDANTRIANAPIMOBILEJKN) {
+            return true;
+        }
+        boolean sukses = true;
         if (Sequel.cariExistsSmc("select * from referensi_mobilejkn_bpjs where referensi_mobilejkn_bpjs.nobooking = ? and referensi_mobilejkn_bpjs.status = 'Belum'", nobooking)) {
             Sequel.mengupdateSmc("referensi_mobilejkn_bpjs", "referensi_mobilejkn_bpjs.validasi = now(), referensi_mobilejkn_bpjs.status = 'Checkin'", "referensi_mobilejkn_bpjs.nobooking = ? and referensi_mobilejkn_bpjs.status = 'Belum'", nobooking);
             Sequel.mengupdateSmc("reg_periksa", "reg_periksa.jam_reg = current_time()", "reg_periksa.no_rawat = ? and stts != 'Batal'", TNoRw.getText());
@@ -2249,7 +2256,7 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
             try {
                 ps.setString(1, nobooking);
                 rs = ps.executeQuery();
-                while (rs.next()) {
+                if (rs.next()) {
                     try {
                         headers = new HttpHeaders();
                         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -2289,13 +2296,27 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
                         System.out.println("URL : " + URL);
                         root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
                         nameNode = root.path("metadata");
-                        Sequel.logTaskid(TNoRw.getText(), rs.getString("nobooking"), "MobileJKN", "addantrean", requestJson, nameNode.path("code").asText(), nameNode.path("message").asText(), root.toString(), datajam);
+                        Sequel.logTaskid(TNoRw.getText(), rs.getString("nobooking"), "Onsite", "addantrean", requestJson, nameNode.path("code").asText(), nameNode.path("message").asText(), root.toString(), datajam);
                         if (nameNode.path("code").asText().equals("200") || nameNode.path("code").asText().equals("208") || nameNode.path("message").asText().equals("Ok")) {
                             Sequel.mengupdateSmc("referensi_mobilejkn_bpjs", "statuskirim = 'Sudah'", "nobooking = ?", rs.getString("nobooking"));
+                        } else {
+                            sukses = false;
                         }
                         System.out.println("respon WS BPJS : " + nameNode.path("code").asText() + " " + nameNode.path("message").asText() + "\n");
-                    } catch (Exception ex) {
-                        System.out.println("Notifikasi Bridging : " + ex);
+                    } catch (HttpClientErrorException e) {
+                        sukses = false;
+                        System.out.println("Notif : " + e.getMessage());
+                        Sequel.logTaskid(TNoRw.getText(), TNoRw.getText(), "Onsite", "addantrean", requestJson, e.getStatusCode().toString(), e.getMessage(), e.getResponseBodyAsString(), datajam);
+                        JOptionPane.showMessageDialog(null, e.getMessage());
+                    } catch (HttpServerErrorException e) {
+                        sukses = false;
+                        System.out.println("Notif : " + e.getMessage());
+                        Sequel.logTaskid(TNoRw.getText(), TNoRw.getText(), "Onsite", "addantrean", requestJson, e.getStatusCode().toString(), e.getMessage(), "", datajam);
+                        JOptionPane.showMessageDialog(null, e.getMessage());
+                    } catch (Exception e) {
+                        sukses = false;
+                        System.out.println("Notif : " + e);
+                        JOptionPane.showMessageDialog(null, "Terjadi kesalahan..!!\nSilahkan hubungi petugas");
                     }
                 }
             } catch (Exception ex) {
@@ -2311,6 +2332,8 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
         } catch (Exception e) {
             System.out.println("Notif : " + e);
         }
+        
+        return sukses;
     }
 
     private void emptTeks() {
