@@ -5,12 +5,12 @@ import java.awt.Cursor;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
-public class DlgCekNoRM extends widget.Dialog {
+public class DlgCekRegistrasiMandiri extends widget.Dialog {
 
     private final sekuel Sequel = new sekuel();
     private final DlgRegistrasiMandiri form;
 
-    public DlgCekNoRM(java.awt.Frame parent, boolean modal) {
+    public DlgCekRegistrasiMandiri(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         this.form = new DlgRegistrasiMandiri(parent, modal);
         initComponents();

@@ -73,6 +73,7 @@
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
             <TitledBorder justification="2" title="::[ Pendaftaran SEP Kontrol Beda Poli ]::">
+              <Border PropertyName="innerBorder" info="null"/>
               <Font PropertyName="font" name="Inter" size="24" style="0"/>
               <Color PropertyName="color" blue="3e" green="83" red="0" type="rgb"/>
             </TitledBorder>

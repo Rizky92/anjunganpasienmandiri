@@ -130,13 +130,13 @@ public class DlgRegistrasiMandiri extends widget.Dialog {
         btnSimpan = new widget.Button();
         btnKeluar = new widget.Button();
 
-        panelAtas.setPreferredSize(new java.awt.Dimension(400, 70));
+        panelAtas.setPreferredSize(new java.awt.Dimension(400, 40));
         panelAtas.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 10));
 
         label1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         label1.setText("PENDAFTARAN POLIKLINIK EKSEKUTIF");
         label1.setFocusable(false);
-        label1.setFont(new java.awt.Font("Inter", 1, 36)); // NOI18N
+        label1.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         panelAtas.add(label1);
 
         getContentPane().add(panelAtas, java.awt.BorderLayout.PAGE_START);

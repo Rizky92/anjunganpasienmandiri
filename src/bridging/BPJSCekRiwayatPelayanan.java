@@ -11,7 +11,6 @@
  */
 package bridging;
 
-import java.awt.Dimension;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -60,8 +59,6 @@ public final class BPJSCekRiwayatPelayanan extends widget.Dialog {
         super(parent, modal);
         initComponents();
 
-        setSize(628, 674);
-
         Object[] row = {"No.", "Diagnosa", "Jenis Pelayanan", "Kelas Rawat", "Nama Peserta", "No.Kartu", "No.SEP", "No.Rujukan", "Poli", "PPK Pelayanan", "Pulang SEP", "Tgl.SEP"};
         tabMode = new DefaultTableModel(null, row) {
             @Override
@@ -69,14 +66,10 @@ public final class BPJSCekRiwayatPelayanan extends widget.Dialog {
                 return false;
             }
         };
-        tbKamar.setModel(tabMode);
-
-        //tbKamar.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbKamar.getBackground()));
-        tbKamar.setPreferredScrollableViewportSize(new Dimension(500, 500));
-        tbKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        tbRiwayat.setModel(tabMode);
 
         for (i = 0; i < 12; i++) {
-            TableColumn column = tbKamar.getColumnModel().getColumn(i);
+            TableColumn column = tbRiwayat.getColumnModel().getColumn(i);
             if (i == 0) {
                 column.setPreferredWidth(50);
             } else if (i == 1) {
@@ -127,10 +120,9 @@ public final class BPJSCekRiwayatPelayanan extends widget.Dialog {
     private void initComponents() {
 
         NoKartu = new widget.TextField();
-        internalFrame1 = new widget.Panel();
         Scroll = new widget.ScrollPane();
-        tbKamar = new widget.Table();
-        panelGlass6 = new widget.Panel();
+        tbRiwayat = new widget.Table();
+        panelBawah = new widget.Panel();
         jLabel29 = new widget.Label();
         jLabel19 = new widget.Label();
         DTPCari1 = new widget.Tanggal();
@@ -143,72 +135,56 @@ public final class BPJSCekRiwayatPelayanan extends widget.Dialog {
         NoKartu.setName("NoKartu"); // NOI18N
         NoKartu.setPreferredSize(new java.awt.Dimension(130, 23));
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setIconImage(null);
         setIconImages(null);
-        setUndecorated(true);
-        setResizable(false);
-
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Pencarian Histori Pelayanan BPJS ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
-        internalFrame1.setName("internalFrame1"); // NOI18N
-        internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         Scroll.setName("Scroll"); // NOI18N
-        Scroll.setOpaque(true);
 
-        tbKamar.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
-        tbKamar.setName("tbKamar"); // NOI18N
-        tbKamar.addMouseListener(new java.awt.event.MouseAdapter() {
+        tbRiwayat.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
+        tbRiwayat.setName("tbRiwayat"); // NOI18N
+        tbRiwayat.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tbKamarMouseClicked(evt);
+                tbRiwayatMouseClicked(evt);
             }
         });
-        Scroll.setViewportView(tbKamar);
+        Scroll.setViewportView(tbRiwayat);
 
-        internalFrame1.add(Scroll, java.awt.BorderLayout.CENTER);
+        getContentPane().add(Scroll, java.awt.BorderLayout.CENTER);
 
-        panelGlass6.setName("panelGlass6"); // NOI18N
-        panelGlass6.setPreferredSize(new java.awt.Dimension(44, 54));
-        panelGlass6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
+        panelBawah.setName("panelBawah"); // NOI18N
+        panelBawah.setPreferredSize(new java.awt.Dimension(44, 54));
+        panelBawah.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 9));
 
         jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel29.setText("Klik pada kolom nomor SEP apabila ingin mengambil No SEP");
+        jLabel29.setText("Klik pada kolom nomor SEP apabila ingin mengambil No. SEP");
         jLabel29.setName("jLabel29"); // NOI18N
-        jLabel29.setPreferredSize(new java.awt.Dimension(400, 23));
-        panelGlass6.add(jLabel29);
+        jLabel29.setPreferredSize(new java.awt.Dimension(400, 30));
+        panelBawah.add(jLabel29);
 
         jLabel19.setText("Periode :");
         jLabel19.setName("jLabel19"); // NOI18N
-        jLabel19.setPreferredSize(new java.awt.Dimension(50, 23));
-        panelGlass6.add(jLabel19);
+        jLabel19.setPreferredSize(new java.awt.Dimension(60, 30));
+        panelBawah.add(jLabel19);
 
-        DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-11-2023" }));
-        DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
-        DTPCari1.setPreferredSize(new java.awt.Dimension(90, 23));
-        panelGlass6.add(DTPCari1);
+        DTPCari1.setPreferredSize(new java.awt.Dimension(110, 30));
+        panelBawah.add(DTPCari1);
 
         jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel21.setText("s.d.");
         jLabel21.setName("jLabel21"); // NOI18N
-        jLabel21.setPreferredSize(new java.awt.Dimension(23, 23));
-        panelGlass6.add(jLabel21);
+        jLabel21.setPreferredSize(new java.awt.Dimension(30, 30));
+        panelBawah.add(jLabel21);
 
-        DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "07-11-2023" }));
-        DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
-        DTPCari2.setPreferredSize(new java.awt.Dimension(90, 23));
-        panelGlass6.add(DTPCari2);
+        DTPCari2.setPreferredSize(new java.awt.Dimension(110, 30));
+        panelBawah.add(DTPCari2);
 
         BtnCari.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
-        BtnCari.setMnemonic('6');
-        BtnCari.setToolTipText("Alt+6");
         BtnCari.setName("BtnCari"); // NOI18N
-        BtnCari.setPreferredSize(new java.awt.Dimension(28, 23));
+        BtnCari.setPreferredSize(new java.awt.Dimension(30, 30));
         BtnCari.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnCariActionPerformed(evt);
@@ -219,18 +195,19 @@ public final class BPJSCekRiwayatPelayanan extends widget.Dialog {
                 BtnCariKeyPressed(evt);
             }
         });
-        panelGlass6.add(BtnCari);
+        panelBawah.add(BtnCari);
 
+        jLabel17.setFocusable(false);
         jLabel17.setName("jLabel17"); // NOI18N
-        jLabel17.setPreferredSize(new java.awt.Dimension(15, 23));
-        panelGlass6.add(jLabel17);
+        jLabel17.setPreferredSize(new java.awt.Dimension(40, 30));
+        panelBawah.add(jLabel17);
 
+        BtnKeluar.setBackground(new java.awt.Color(255, 255, 255));
+        BtnKeluar.setForeground(new java.awt.Color(255, 23, 26));
         BtnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
-        BtnKeluar.setMnemonic('K');
-        BtnKeluar.setText("Keluar");
-        BtnKeluar.setToolTipText("Alt+K");
+        BtnKeluar.setText("KELUAR");
         BtnKeluar.setName("BtnKeluar"); // NOI18N
-        BtnKeluar.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnKeluar.setPreferredSize(new java.awt.Dimension(110, 30));
         BtnKeluar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnKeluarActionPerformed(evt);
@@ -241,11 +218,9 @@ public final class BPJSCekRiwayatPelayanan extends widget.Dialog {
                 BtnKeluarKeyPressed(evt);
             }
         });
-        panelGlass6.add(BtnKeluar);
+        panelBawah.add(BtnKeluar);
 
-        internalFrame1.add(panelGlass6, java.awt.BorderLayout.PAGE_END);
-
-        getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);
+        getContentPane().add(panelBawah, java.awt.BorderLayout.PAGE_END);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -280,30 +255,14 @@ public final class BPJSCekRiwayatPelayanan extends widget.Dialog {
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_BtnCariActionPerformed
 
-    private void tbKamarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbKamarMouseClicked
+    private void tbRiwayatMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbRiwayatMouseClicked
         if (evt.getClickCount() == 2) {
             dispose();
         }
         if (evt.getClickCount() == 1) {
             dispose();
         }
-    }//GEN-LAST:event_tbKamarMouseClicked
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(() -> {
-            BPJSCekRiwayatPelayanan dialog = new BPJSCekRiwayatPelayanan(new javax.swing.JFrame(), true);
-            dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                @Override
-                public void windowClosing(java.awt.event.WindowEvent e) {
-                    System.exit(0);
-                }
-            });
-            dialog.setVisible(true);
-        });
-    }
+    }//GEN-LAST:event_tbRiwayatMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.Button BtnCari;
@@ -312,13 +271,12 @@ public final class BPJSCekRiwayatPelayanan extends widget.Dialog {
     private widget.Tanggal DTPCari2;
     private widget.TextField NoKartu;
     private widget.ScrollPane Scroll;
-    private widget.Panel internalFrame1;
     private widget.Label jLabel17;
     private widget.Label jLabel19;
     private widget.Label jLabel21;
     private widget.Label jLabel29;
-    private widget.Panel panelGlass6;
-    private widget.Table tbKamar;
+    private widget.Panel panelBawah;
+    private widget.Table tbRiwayat;
     // End of variables declaration//GEN-END:variables
 
     public void tampil(String nomorrujukan) {
@@ -400,7 +358,7 @@ public final class BPJSCekRiwayatPelayanan extends widget.Dialog {
     }
 
     public JTable getTable() {
-        return tbKamar;
+        return tbRiwayat;
     }
 
     public void setKartu(String Kartu) {

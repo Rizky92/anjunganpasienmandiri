@@ -15,7 +15,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
-import java.awt.Dimension;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -59,7 +58,6 @@ public final class BPJSCekReferensiPenyakit extends widget.Dialog {
         super(parent, modal);
         initComponents();
 
-        setSize(628, 674);
         tabMode = new DefaultTableModel(null, new String[] {"No.", "Kode ICD X", "Nama Penyakit"}) {
             @Override
             public boolean isCellEditable(int rowIndex, int colIndex) {
@@ -67,10 +65,6 @@ public final class BPJSCekReferensiPenyakit extends widget.Dialog {
             }
         };
         tbKamar.setModel(tabMode);
-
-        //tbKamar.setDefaultRenderer(Object.class, new WarnaTable(panelJudul.getBackground(),tbKamar.getBackground()));
-        tbKamar.setPreferredScrollableViewportSize(new Dimension(500, 500));
-        tbKamar.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
         for (int i = 0; i < 3; i++) {
             TableColumn column = tbKamar.getColumnModel().getColumn(i);

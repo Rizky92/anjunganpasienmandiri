@@ -28,6 +28,9 @@ public class KhanzaHMSAnjungan {
         try {
             UIManager.setLookAndFeel(new FlatLightLaf());
             System.setProperty("flatlaf.animation", "true");
+            UIManager.put("TitlePane.background", new Color(240, 249, 255));
+            UIManager.put("TitlePane.unifiedBackground", false);
+            UIManager.put("Panel.background", new Color(240, 249, 255));
             UIManager.put("Table.background", new Color(240, 249, 255));
             UIManager.put("Table.foreground", new Color(0, 131, 62));
             UIManager.put("Table.alternateRowColor", new Color(255, 255, 255));

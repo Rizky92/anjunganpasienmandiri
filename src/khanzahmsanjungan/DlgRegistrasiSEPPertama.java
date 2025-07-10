@@ -1,13 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
- /*
- * DlgAdmin.java
- *
- * Created on 04 Des 13, 12:59:34
- */
 package khanzahmsanjungan;
 
 import bridging.ApiBPJS;
@@ -17,7 +7,6 @@ import bridging.BPJSCekRiwayatPelayanan;
 import bridging.BPJSCekRiwayatRujukanTerakhir;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.formdev.flatlaf.ui.FlatRoundBorder;
 import com.sun.jna.Native;
 import com.sun.jna.Pointer;
 import com.sun.jna.platform.win32.User32;
@@ -338,14 +327,15 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         NoRujukMasuk = new widget.TextField();
         Tanggal = new widget.Tanggal();
         WindowAksi = new widget.Dialog();
-        internalFrame1 = new widget.Panel();
-        pwUserId = new widget.PasswordField();
-        pwPass = new widget.PasswordField();
-        btnAksiKonfirmasi = new widget.Button();
-        btnAksiBatal = new widget.Button();
+        judulAksi = new widget.Label();
+        panelTengahAksi = new widget.Panel();
+        userAksi = new widget.PasswordField();
+        passAksi = new widget.PasswordField();
         label1 = new widget.Label();
         label2 = new widget.Label();
-        label3 = new widget.Label();
+        panelBawahAksi = new widget.Panel();
+        btnAksiKonfirmasi = new widget.Button();
+        btnAksiBatal = new widget.Button();
         lblTerapi = new widget.Label();
         KdPoliTerapi = new widget.TextField();
         KodeDokterTerapi = new widget.TextField();
@@ -566,7 +556,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
         Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-07-2025" }));
-        Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
         Tanggal.setOpaque(false);
         Tanggal.setPreferredSize(new java.awt.Dimension(95, 23));
@@ -576,60 +565,81 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
             }
         });
 
-        internalFrame1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        WindowAksi.setUndecorated(false);
 
-        pwUserId.setForeground(new java.awt.Color(40, 40, 40));
-        pwUserId.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        pwUserId.addKeyListener(new java.awt.event.KeyAdapter() {
+        judulAksi.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        judulAksi.setText("KONFIRMASI AKSI");
+        judulAksi.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
+        judulAksi.setPreferredSize(new java.awt.Dimension(400, 30));
+        WindowAksi.getContentPane().add(judulAksi, java.awt.BorderLayout.PAGE_START);
+
+        panelTengahAksi.setOpaque(false);
+        panelTengahAksi.setLayout(null);
+
+        userAksi.setForeground(new java.awt.Color(40, 40, 40));
+        userAksi.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        userAksi.setPreferredSize(new java.awt.Dimension(270, 30));
+        userAksi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                pwUserIdKeyPressed(evt);
+                userAksiKeyPressed(evt);
             }
         });
-        internalFrame1.add(pwUserId, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 70, 230, 23));
+        panelTengahAksi.add(userAksi);
+        userAksi.setBounds(120, 30, 270, 30);
 
-        pwPass.setForeground(new java.awt.Color(40, 40, 40));
-        pwPass.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        pwPass.addKeyListener(new java.awt.event.KeyAdapter() {
+        passAksi.setForeground(new java.awt.Color(40, 40, 40));
+        passAksi.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        passAksi.setPreferredSize(new java.awt.Dimension(270, 30));
+        passAksi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                pwPassKeyPressed(evt);
+                passAksiKeyPressed(evt);
             }
         });
-        internalFrame1.add(pwPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 230, 23));
+        panelTengahAksi.add(passAksi);
+        passAksi.setBounds(120, 70, 270, 30);
 
-        btnAksiKonfirmasi.setText("Konfirmasi");
-        btnAksiKonfirmasi.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        label1.setText("User ID :");
+        label1.setFocusable(false);
+        label1.setFont(new java.awt.Font("Inter Medium", 0, 18)); // NOI18N
+        label1.setPreferredSize(new java.awt.Dimension(60, 30));
+        panelTengahAksi.add(label1);
+        label1.setBounds(0, 30, 110, 30);
+
+        label2.setText("Password :");
+        label2.setFocusable(false);
+        label2.setFont(new java.awt.Font("Inter Medium", 0, 18)); // NOI18N
+        label2.setPreferredSize(new java.awt.Dimension(60, 30));
+        panelTengahAksi.add(label2);
+        label2.setBounds(0, 70, 110, 30);
+
+        WindowAksi.getContentPane().add(panelTengahAksi, java.awt.BorderLayout.CENTER);
+
+        panelBawahAksi.setOpaque(false);
+        panelBawahAksi.setPreferredSize(new java.awt.Dimension(50, 50));
+
+        btnAksiKonfirmasi.setText("KONFIRMASI");
+        btnAksiKonfirmasi.setFont(new java.awt.Font("Inter", 1, 14)); // NOI18N
+        btnAksiKonfirmasi.setPreferredSize(new java.awt.Dimension(140, 35));
         btnAksiKonfirmasi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAksiKonfirmasiActionPerformed(evt);
             }
         });
-        internalFrame1.add(btnAksiKonfirmasi, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 140, -1, -1));
+        panelBawahAksi.add(btnAksiKonfirmasi);
 
+        btnAksiBatal.setBackground(new java.awt.Color(255, 255, 255));
+        btnAksiBatal.setForeground(new java.awt.Color(255, 23, 26));
         btnAksiBatal.setText("Batal");
-        btnAksiBatal.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        btnAksiBatal.setFont(new java.awt.Font("Inter", 0, 14)); // NOI18N
+        btnAksiBatal.setPreferredSize(new java.awt.Dimension(90, 35));
         btnAksiBatal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAksiBatalActionPerformed(evt);
             }
         });
-        internalFrame1.add(btnAksiBatal, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
+        panelBawahAksi.add(btnAksiBatal);
 
-        label1.setText("User ID :");
-        label1.setFocusable(false);
-        label1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        internalFrame1.add(label1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 120, 23));
-
-        label2.setText("Password :");
-        label2.setFocusable(false);
-        label2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        internalFrame1.add(label2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 120, 23));
-
-        label3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        label3.setText("Konfirmasi Aksi");
-        label3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        internalFrame1.add(label3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 400, -1));
-
-        WindowAksi.getContentPane().add(internalFrame1, java.awt.BorderLayout.CENTER);
+        WindowAksi.getContentPane().add(panelBawahAksi, java.awt.BorderLayout.PAGE_END);
 
         lblTerapi.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTerapi.setText("Terapi / Rehabilitasi Medik");
@@ -732,7 +742,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
 
         TanggalSEP.setEditable(false);
         TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-07-2025" }));
-        TanggalSEP.setDisplayFormat("dd-MM-yyyy");
         TanggalSEP.setPreferredSize(new java.awt.Dimension(95, 25));
         TanggalSEP.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -749,7 +758,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
 
         TanggalRujuk.setEditable(false);
         TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-07-2025" }));
-        TanggalRujuk.setDisplayFormat("dd-MM-yyyy");
         TanggalRujuk.setPreferredSize(new java.awt.Dimension(95, 23));
         TanggalRujuk.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -1240,7 +1248,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
 
         TanggalKKL.setEditable(false);
         TanggalKKL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-07-2025" }));
-        TanggalKKL.setDisplayFormat("dd-MM-yyyy"); // NOI18N
         TanggalKKL.setEnabled(false);
         TanggalKKL.setPreferredSize(new java.awt.Dimension(64, 25));
         TanggalKKL.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1823,7 +1830,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         resetAksi();
         if (!NoKartu.getText().isBlank()) {
             aksi = "Approval";
-            WindowAksi.setSize(400, 300);
+            WindowAksi.setSize(415, 250);
             WindowAksi.setLocationRelativeTo(null);
             WindowAksi.setVisible(true);
         } else {
@@ -1841,7 +1848,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         resetAksi();
         if (!NoKartu.getText().isBlank()) {
             aksi = "Pengajuan";
-            WindowAksi.setSize(400, 300);
+            WindowAksi.setSize(415, 250);
             WindowAksi.setLocationRelativeTo(null);
             WindowAksi.setVisible(true);
         } else {
@@ -1863,8 +1870,8 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
             try {
                 ps = koneksi.prepareStatement("select id_user from user where id_user = aes_encrypt(?, 'nur') and password = aes_encrypt(?, 'windi') limit 1");
                 try {
-                    ps.setString(1, new String(pwUserId.getPassword()));
-                    ps.setString(2, new String(pwPass.getPassword()));
+                    ps.setString(1, new String(userAksi.getPassword()));
+                    ps.setString(2, new String(passAksi.getPassword()));
                     rs = ps.executeQuery();
                     if (rs.next()) {
                         if (aksi.equals("Pengajuan")) {
@@ -1965,19 +1972,19 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnAksiKonfirmasiActionPerformed
 
-    private void pwUserIdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pwUserIdKeyPressed
-        Valid.pindah(evt, btnAksiBatal, pwPass);
-    }//GEN-LAST:event_pwUserIdKeyPressed
+    private void userAksiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_userAksiKeyPressed
+        Valid.pindah(evt, btnAksiBatal, passAksi);
+    }//GEN-LAST:event_userAksiKeyPressed
 
-    private void pwPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pwPassKeyPressed
+    private void passAksiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passAksiKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             btnAksiKonfirmasiActionPerformed(null);
         } else if (evt.getKeyCode() == KeyEvent.VK_PAGE_UP) {
-            pwUserId.requestFocus();
+            userAksi.requestFocus();
         } else if (evt.getKeyCode() == KeyEvent.VK_PAGE_DOWN) {
             btnAksiKonfirmasi.requestFocus();
         }
-    }//GEN-LAST:event_pwPassKeyPressed
+    }//GEN-LAST:event_passAksiKeyPressed
 
     private void btnAksiBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAksiBatalActionPerformed
         resetAksi();
@@ -2132,7 +2139,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
     private widget.Button btnRiwayatRujukan;
     private widget.Button btnSimpan;
     private widget.Panel form;
-    private widget.Panel internalFrame1;
     private widget.Label jLabel10;
     private widget.Label jLabel11;
     private widget.Label jLabel12;
@@ -2162,10 +2168,10 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
     private widget.Label jLabel7;
     private widget.Label jLabel8;
     private widget.Label jLabel9;
+    private widget.Label judulAksi;
     private widget.TextField kdpoli;
     private widget.Label label1;
     private widget.Label label2;
-    private widget.Label label3;
     private widget.Label label4;
     private widget.Label lblTerapi;
     private widget.TextField nmpnj;
@@ -2173,10 +2179,12 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
     private widget.Panel panel2;
     private widget.Panel panelAtas;
     private widget.Panel panelBawah;
+    private widget.Panel panelBawahAksi;
     private widget.Numpad panelNumpad1;
     private widget.Panel panelTengah;
-    private widget.PasswordField pwPass;
-    private widget.PasswordField pwUserId;
+    private widget.Panel panelTengahAksi;
+    private widget.PasswordField passAksi;
+    private widget.PasswordField userAksi;
     // End of variables declaration//GEN-END:variables
 
     private void isNumber() {
@@ -4105,8 +4113,8 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
     }
 
     private void resetAksi() {
-        pwUserId.setText("");
-        pwPass.setText("");
+        userAksi.setText("");
+        passAksi.setText("");
         aksi = "";
     }
 

@@ -18,7 +18,7 @@ public class HalamanUtama extends javax.swing.JFrame {
     private final ArrayList<String> TOMBOLDIMATIKAN = new ArrayList(Arrays.asList(koneksiDB.TOMBOLDIMATIKAN()));
     private DlgAmbilAntrian antrian = null;
     private DlgCekinBooking booking = null;
-    private DlgCekNoRM daftarpoli = null;
+    private DlgCekRegistrasiMandiri daftarpoli = null;
     private DlgCekSEPKunjunganPertama seppertama = null;
     private DlgCekSEPKontrol sepkontrol = null;
     private DlgCekSEPKontrolBedaPoli sepbedapoli = null;
@@ -95,13 +95,14 @@ public class HalamanUtama extends javax.swing.JFrame {
         setBackground(new java.awt.Color(102, 102, 102));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
+        panelAtas.setPreferredSize(new java.awt.Dimension(150, 150));
         panelAtas.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 5));
 
         logo.setBackground(new java.awt.Color(240, 249, 255));
         logo.setBackgroundImage(new javax.swing.ImageIcon(getClass().getResource("/picture/icon-128x128.png"))); // NOI18N
         logo.setBackgroundImageType(usu.widget.constan.BackgroundConstan.BACKGROUND_IMAGE_STRECT);
         logo.setForeground(new java.awt.Color(238, 238, 255));
-        logo.setPreferredSize(new java.awt.Dimension(150, 150));
+        logo.setPreferredSize(new java.awt.Dimension(140, 140));
         logo.setRound(false);
         logo.setWarna(new java.awt.Color(238, 238, 255));
 
@@ -109,11 +110,11 @@ public class HalamanUtama extends javax.swing.JFrame {
         logo.setLayout(logoLayout);
         logoLayout.setHorizontalGroup(
             logoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 150, Short.MAX_VALUE)
+            .addGap(0, 140, Short.MAX_VALUE)
         );
         logoLayout.setVerticalGroup(
             logoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 150, Short.MAX_VALUE)
+            .addGap(0, 140, Short.MAX_VALUE)
         );
 
         panelAtas.add(logo);
@@ -210,7 +211,7 @@ public class HalamanUtama extends javax.swing.JFrame {
         judul.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         judul.setText("ANJUNGAN PASIEN MANDIRI");
         judul.setFont(new java.awt.Font("Inter", 1, 36)); // NOI18N
-        judul.setPreferredSize(new java.awt.Dimension(750, 75));
+        judul.setPreferredSize(new java.awt.Dimension(750, 50));
         panelBawah.add(judul, java.awt.BorderLayout.CENTER);
 
         versi.setForeground(new java.awt.Color(180, 185, 189));
@@ -236,7 +237,7 @@ public class HalamanUtama extends javax.swing.JFrame {
 
     private void btnDaftarpoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDaftarpoliActionPerformed
         if (daftarpoli == null) {
-            daftarpoli = new DlgCekNoRM(this, false);
+            daftarpoli = new DlgCekRegistrasiMandiri(this, false);
         }
         daftarpoli.setSize(getContentPane().getSize());
         daftarpoli.setLocationRelativeTo(getContentPane());

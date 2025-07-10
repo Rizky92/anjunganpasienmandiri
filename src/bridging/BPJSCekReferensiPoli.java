@@ -15,7 +15,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
-import java.awt.Dimension;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -57,8 +56,6 @@ public final class BPJSCekReferensiPoli extends widget.Dialog {
     public BPJSCekReferensiPoli(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-
-        setSize(628, 674);
 
         tabMode = new DefaultTableModel(null, new String[] {"No.", "Kode Poli", "Nama Poli"}) {
             @Override
