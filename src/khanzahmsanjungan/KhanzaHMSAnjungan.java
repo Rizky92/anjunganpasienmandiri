@@ -9,7 +9,9 @@ import com.formdev.flatlaf.FlatLightLaf;
 import fungsi.koneksiDB;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.GraphicsEnvironment;
 import java.awt.Insets;
+import java.io.File;
 import javax.print.PrintService;
 import javax.print.PrintServiceLookup;
 import javax.swing.SwingUtilities;
@@ -26,6 +28,10 @@ public class KhanzaHMSAnjungan {
      */
     public static void main(String[] args) {
         try {
+            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, ClassLoader.getSystemClassLoader().getResourceAsStream("font/Inter-Regular.ttf")));
+            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, ClassLoader.getSystemClassLoader().getResourceAsStream("font/Inter-Medium.ttf")));
+            ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, ClassLoader.getSystemClassLoader().getResourceAsStream("font/Inter-Bold.ttf")));
             UIManager.setLookAndFeel(new FlatLightLaf());
             System.setProperty("flatlaf.animation", "true");
             UIManager.put("TitlePane.background", new Color(240, 249, 255));
@@ -52,6 +58,7 @@ public class KhanzaHMSAnjungan {
             UIManager.put("TextComponent.arc", 16);
         } catch (Exception ex) {
             System.err.println("Failed to initialize LaF");
+            ex.printStackTrace();
         }
         SwingUtilities.invokeLater(() -> {
             HalamanUtama utama = HalamanUtama.getInstance();

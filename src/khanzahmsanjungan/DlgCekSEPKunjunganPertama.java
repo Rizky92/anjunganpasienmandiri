@@ -68,7 +68,7 @@ public class DlgCekSEPKunjunganPertama extends widget.Dialog {
 
         getContentPane().add(panelAtas, java.awt.BorderLayout.PAGE_START);
 
-        panelTengah.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "::[ Pendaftaran SEP Kunjungan Pertama ]::", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Inter", 0, 24), new java.awt.Color(0, 131, 62))); // NOI18N
+        panelTengah.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0), "::[ Pendaftaran SEP Kunjungan Pertama ]::", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Inter", 0, 24), new java.awt.Color(0, 131, 62))); // NOI18N
         panelTengah.setPreferredSize(new java.awt.Dimension(400, 70));
         panelTengah.setLayout(new java.awt.GridBagLayout());
 

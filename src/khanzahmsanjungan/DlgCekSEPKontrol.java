@@ -69,7 +69,7 @@ public class DlgCekSEPKontrol extends widget.Dialog {
 
         getContentPane().add(panelAtas, java.awt.BorderLayout.PAGE_START);
 
-        panelTengah.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "::[ Pendaftaran SEP Kontrol ]::", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Inter", 0, 24), new java.awt.Color(0, 131, 62))); // NOI18N
+        panelTengah.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0), "::[ Pendaftaran SEP Kontrol ]::", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Inter", 0, 24), new java.awt.Color(0, 131, 62))); // NOI18N
         panelTengah.setMinimumSize(new java.awt.Dimension(413, 115));
         panelTengah.setPreferredSize(new java.awt.Dimension(413, 115));
         panelTengah.setLayout(new java.awt.GridBagLayout());

@@ -1096,6 +1096,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         panel2.setOpaque(false);
         panel2.setLayout(new java.awt.BorderLayout());
 
+        ChkInput.setForeground(new java.awt.Color(150, 155, 159));
         ChkInput.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
         ChkInput.setMnemonic('I');
         ChkInput.setToolTipText("Alt+I");

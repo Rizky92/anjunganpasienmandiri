@@ -728,6 +728,7 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
         NmDPJP.setBounds(310, 220, 260, 30);
 
         btnCariDokter.setBackground(new java.awt.Color(238, 238, 255));
+        btnCariDokter.setBorder(null);
         btnCariDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pilih.png"))); // NOI18N
         btnCariDokter.setMnemonic('X');
         btnCariDokter.setToolTipText("Alt+X");
@@ -769,6 +770,7 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
         jLabel7.setBounds(625, 100, 100, 30);
 
         btnCariPoli.setBackground(new java.awt.Color(238, 238, 255));
+        btnCariPoli.setBorder(null);
         btnCariPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pilih.png"))); // NOI18N
         btnCariPoli.setMnemonic('X');
         btnCariPoli.setToolTipText("Alt+X");
@@ -782,6 +784,7 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
         btnCariPoli.setBounds(575, 190, 40, 30);
 
         btnDiagnosaAwal.setBackground(new java.awt.Color(238, 238, 255));
+        btnDiagnosaAwal.setBorder(null);
         btnDiagnosaAwal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pilih.png"))); // NOI18N
         btnDiagnosaAwal.setMnemonic('X');
         btnDiagnosaAwal.setToolTipText("Alt+X");
@@ -795,6 +798,7 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
         btnDiagnosaAwal.setBounds(575, 160, 40, 30);
 
         btnCariNoRujukan.setBackground(new java.awt.Color(238, 238, 255));
+        btnCariNoRujukan.setBorder(null);
         btnCariNoRujukan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pilih.png"))); // NOI18N
         btnCariNoRujukan.setMnemonic('X');
         btnCariNoRujukan.setToolTipText("Alt+X");
@@ -1114,6 +1118,7 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
 
         panel2.add(form, java.awt.BorderLayout.CENTER);
 
+        ChkInput.setForeground(new java.awt.Color(150, 155, 159));
         ChkInput.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
         ChkInput.setMnemonic('I');
         ChkInput.setToolTipText("Alt+I");
