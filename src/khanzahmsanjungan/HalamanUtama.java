@@ -26,8 +26,6 @@ public class HalamanUtama extends javax.swing.JFrame {
 
     public HalamanUtama() {
         initComponents();
-        setIconImage(new ImageIcon(super.getClass().getResource("/picture/indriati48.png")).getImage());
-
         TOMBOLDIMATIKAN.forEach(tombol -> {
             switch (tombol) {
                 case "antrian":
@@ -94,15 +92,15 @@ public class HalamanUtama extends javax.swing.JFrame {
         setTitle("ANJUNGAN PASIEN MANDIRI");
         setBackground(new java.awt.Color(102, 102, 102));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setIconImage(new ImageIcon(super.getClass().getResource("/picture/indriati48.png")).getImage());
 
-        panelAtas.setPreferredSize(new java.awt.Dimension(150, 150));
+        panelAtas.setPreferredSize(new java.awt.Dimension(130, 130));
         panelAtas.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 5));
 
         logo.setBackground(new java.awt.Color(240, 249, 255));
         logo.setBackgroundImage(new javax.swing.ImageIcon(getClass().getResource("/picture/icon-128x128.png"))); // NOI18N
-        logo.setBackgroundImageType(usu.widget.constan.BackgroundConstan.BACKGROUND_IMAGE_STRECT);
         logo.setForeground(new java.awt.Color(238, 238, 255));
-        logo.setPreferredSize(new java.awt.Dimension(140, 140));
+        logo.setPreferredSize(new java.awt.Dimension(120, 120));
         logo.setRound(false);
         logo.setWarna(new java.awt.Color(238, 238, 255));
 
@@ -110,11 +108,11 @@ public class HalamanUtama extends javax.swing.JFrame {
         logo.setLayout(logoLayout);
         logoLayout.setHorizontalGroup(
             logoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 140, Short.MAX_VALUE)
+            .addGap(0, 120, Short.MAX_VALUE)
         );
         logoLayout.setVerticalGroup(
             logoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 140, Short.MAX_VALUE)
+            .addGap(0, 120, Short.MAX_VALUE)
         );
 
         panelAtas.add(logo);
@@ -126,7 +124,6 @@ public class HalamanUtama extends javax.swing.JFrame {
 
         btnAntrian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/antrianpasien.png"))); // NOI18N
         btnAntrian.setText("ANTRIAN PASIEN");
-        btnAntrian.setIconTextGap(0);
         btnAntrian.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAntrianActionPerformed(evt);
@@ -136,7 +133,6 @@ public class HalamanUtama extends javax.swing.JFrame {
 
         btnBooking.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checkin.png"))); // NOI18N
         btnBooking.setText("CEK IN BOOKING");
-        btnBooking.setIconTextGap(0);
         btnBooking.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBookingActionPerformed(evt);
@@ -146,7 +142,6 @@ public class HalamanUtama extends javax.swing.JFrame {
 
         btnDaftarpoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/kioskselfservice.png"))); // NOI18N
         btnDaftarpoli.setText("PENDAFTARAN EKSEKUTIF");
-        btnDaftarpoli.setIconTextGap(0);
         btnDaftarpoli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDaftarpoliActionPerformed(evt);
@@ -154,9 +149,8 @@ public class HalamanUtama extends javax.swing.JFrame {
         });
         panelTengah.add(btnDaftarpoli);
 
-        btnSEPPertama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/BPJS_Kesehatan_Logo.png"))); // NOI18N
+        btnSEPPertama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/bpjs_kesehatan.png"))); // NOI18N
         btnSEPPertama.setText("SEP KUNJUNGAN PERTAMA");
-        btnSEPPertama.setIconTextGap(0);
         btnSEPPertama.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSEPPertamaActionPerformed(evt);
@@ -164,9 +158,8 @@ public class HalamanUtama extends javax.swing.JFrame {
         });
         panelTengah.add(btnSEPPertama);
 
-        btnSEPKontrol.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/BPJS_Kesehatan_Logo.png"))); // NOI18N
+        btnSEPKontrol.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/bpjs_kesehatan.png"))); // NOI18N
         btnSEPKontrol.setText("SEP KONTROL");
-        btnSEPKontrol.setIconTextGap(0);
         btnSEPKontrol.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSEPKontrolActionPerformed(evt);
@@ -174,9 +167,8 @@ public class HalamanUtama extends javax.swing.JFrame {
         });
         panelTengah.add(btnSEPKontrol);
 
-        btnSEPKontrolBedaPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/BPJS_Kesehatan_Logo.png"))); // NOI18N
+        btnSEPKontrolBedaPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/bpjs_kesehatan.png"))); // NOI18N
         btnSEPKontrolBedaPoli.setText("KONTROL BEDA POLI");
-        btnSEPKontrolBedaPoli.setIconTextGap(0);
         btnSEPKontrolBedaPoli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSEPKontrolBedaPoliActionPerformed(evt);
@@ -186,7 +178,6 @@ public class HalamanUtama extends javax.swing.JFrame {
 
         btnMobilejkn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/mobilejkn48.png"))); // NOI18N
         btnMobilejkn.setText("CEK IN MOBILEJKN");
-        btnMobilejkn.setIconTextGap(0);
         btnMobilejkn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMobilejknActionPerformed(evt);
@@ -196,7 +187,6 @@ public class HalamanUtama extends javax.swing.JFrame {
 
         btnSatusehat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/logo-satset.png"))); // NOI18N
         btnSatusehat.setText("AKTIVASI SATUSEHAT");
-        btnSatusehat.setIconTextGap(0);
         btnSatusehat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSatusehatActionPerformed(evt);
@@ -211,12 +201,12 @@ public class HalamanUtama extends javax.swing.JFrame {
         judul.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         judul.setText("ANJUNGAN PASIEN MANDIRI");
         judul.setFont(new java.awt.Font("Inter", 1, 36)); // NOI18N
-        judul.setPreferredSize(new java.awt.Dimension(750, 50));
+        judul.setPreferredSize(new java.awt.Dimension(750, 40));
         panelBawah.add(judul, java.awt.BorderLayout.CENTER);
 
         versi.setForeground(new java.awt.Color(150, 155, 159));
         versi.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        versi.setText("Build 2025-06-26 Patch 3      ");
+        versi.setText("Build 2025-07-10      ");
         versi.setFocusable(false);
         panelBawah.add(versi, java.awt.BorderLayout.PAGE_END);
 

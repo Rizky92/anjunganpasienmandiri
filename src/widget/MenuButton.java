@@ -8,7 +8,6 @@ import javax.swing.BorderFactory;
 import javax.swing.SwingConstants;
 
 public class MenuButton extends FlatButton {
-
     public MenuButton() {
         super();
         setFont(new Font("Inter", Font.BOLD, 30));
@@ -16,9 +15,8 @@ public class MenuButton extends FlatButton {
         setForeground(new Color(0, 131, 62));
         setHorizontalTextPosition(SwingConstants.CENTER);
         setVerticalTextPosition(SwingConstants.BOTTOM);
-        setIconTextGap(16);
+        setIconTextGap(8);
         setPreferredSize(new Dimension(200, 90));
         setBorder(BorderFactory.createEmptyBorder());
-
     }
 }
