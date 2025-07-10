@@ -135,6 +135,11 @@ public final class BPJSCekReferensiPoli extends widget.Dialog {
 
         tbKamar.setAutoCreateRowSorter(true);
         tbKamar.setName("tbKamar"); // NOI18N
+        tbKamar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                tbKamarMouseReleased(evt);
+            }
+        });
         Scroll.setViewportView(tbKamar);
 
         getContentPane().add(Scroll, java.awt.BorderLayout.CENTER);
@@ -234,6 +239,10 @@ public final class BPJSCekReferensiPoli extends widget.Dialog {
             BtnCariActionPerformed(null);
         }
     }//GEN-LAST:event_BtnCariKeyPressed
+
+    private void tbKamarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbKamarMouseReleased
+        dispose();
+    }//GEN-LAST:event_tbKamarMouseReleased
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.Button BtnCari;
