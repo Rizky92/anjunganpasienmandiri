@@ -6,6 +6,7 @@
 package khanzahmsanjungan;
 
 import com.formdev.flatlaf.FlatLightLaf;
+import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import fungsi.koneksiDB;
 import java.awt.Color;
 import java.awt.Font;
@@ -32,6 +33,7 @@ public class KhanzaHMSAnjungan {
             ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, ClassLoader.getSystemClassLoader().getResourceAsStream("font/Inter-Regular.ttf")));
             ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, ClassLoader.getSystemClassLoader().getResourceAsStream("font/Inter-Medium.ttf")));
             ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, ClassLoader.getSystemClassLoader().getResourceAsStream("font/Inter-Bold.ttf")));
+            
             UIManager.setLookAndFeel(new FlatLightLaf());
             System.setProperty("flatlaf.animation", "true");
             UIManager.put("TitlePane.background", new Color(240, 249, 255));
@@ -45,6 +47,12 @@ public class KhanzaHMSAnjungan {
             UIManager.put("Table.cellMargins", new Insets(2, 14, 2, 14));
             UIManager.put("Table.rowHeight", 50);
             UIManager.put("Table.font", new Font("Inter Medium", Font.PLAIN, 18));
+            UIManager.put("TextField.foreground", new Color(0, 131, 62));
+            UIManager.put("TextField.background", new Color(255, 255, 255));
+            UIManager.put("TextField.selectionBackground", new Color(0, 131, 62));
+            UIManager.put("TextField.selectionForeground", new Color(255, 255, 255));
+            UIManager.put("TextField.inactiveBackground", new Color(255, 255, 153));
+            UIManager.put("TextField.font", new Font("Inter Medium", Font.PLAIN, 12));
             UIManager.put("TableHeader.background", new Color(255, 255, 255));
             UIManager.put("TableHeader.foreground", new Color(0, 131, 62));
             UIManager.put("TableHeader.font", new Font("Inter", Font.BOLD, 14));
@@ -52,13 +60,12 @@ public class KhanzaHMSAnjungan {
             UIManager.put("ScrollBar.width", 16);
             UIManager.put("ScrollPane.smoothScrolling", true);
             UIManager.put("Button.arc", 16);
-            UIManager.put("Component.arc", 16);
+            UIManager.put("Component.arc", 8);
             UIManager.put("CheckBox.arc", 16);
             UIManager.put("ProgressBar.arc", 16);
-            UIManager.put("TextComponent.arc", 16);
+            UIManager.put("TextComponent.arc", 8);
         } catch (Exception ex) {
             System.err.println("Failed to initialize LaF");
-            ex.printStackTrace();
         }
         SwingUtilities.invokeLater(() -> {
             HalamanUtama utama = HalamanUtama.getInstance();
