@@ -34,7 +34,6 @@ public class KhanzaHMSAnjungan {
             UIManager.setLookAndFeel(new FlatLightLaf());
             System.setProperty("flatlaf.animation", "true");
             UIManager.put("TitlePane.background", new Color(240, 249, 255));
-            UIManager.put("TitlePane.unifiedBackground", false);
             UIManager.put("Panel.background", new Color(240, 249, 255));
             UIManager.put("Table.background", new Color(240, 249, 255));
             UIManager.put("Table.foreground", new Color(0, 131, 62));
@@ -57,13 +56,12 @@ public class KhanzaHMSAnjungan {
             UIManager.put("ScrollBar.width", 16);
             UIManager.put("ScrollPane.smoothScrolling", true);
             UIManager.put("Button.arc", 16);
-            UIManager.put("Component.arc", 16);
+            UIManager.put("Component.arc", 8);
             UIManager.put("CheckBox.arc", 16);
             UIManager.put("ProgressBar.arc", 16);
-            UIManager.put("TextComponent.arc", 16);
+            UIManager.put("TextComponent.arc", 8);
         } catch (Exception ex) {
             System.err.println("Failed to initialize LaF");
-            ex.printStackTrace();
         }
         SwingUtilities.invokeLater(() -> {
             HalamanUtama utama = HalamanUtama.getInstance();

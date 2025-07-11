@@ -9,7 +9,7 @@ public class TextField extends FlatTextField {
         setHorizontalAlignment(LEFT);
         setSize(WIDTH, 35);
     }
-    
+
     @Override
     public void setEditable(boolean b) {
         super.setEditable(b);
