@@ -60,7 +60,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
     private ApiBPJS api = new ApiBPJS();
     private final BPJSCekReferensiDokterDPJP dokter;
     private final BPJSCekReferensiPenyakit penyakit;
-    private final DlgCariJadwal jadwal;
     private final DlgCariPoliBPJS poli;
     private final DlgCariPoli polimapping;
     private final DlgCariDokter doktermapping;
@@ -291,28 +290,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
                 NoRujukan.requestFocus();
             }
         });
-        
-        jadwal = new DlgCariJadwal(parent, modal);
-        jadwal.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if (jadwal.hasSelectedRow()) {
-                    KdPoli.setText(jadwal.getSelectedRow(7).toString());
-                    NmPoli.setText(jadwal.getSelectedRow(1).toString());
-                    KdDPJP.setText(jadwal.getSelectedRow(8).toString());
-                    NmDPJP.setText(jadwal.getSelectedRow(2).toString());
-                    jampraktek = jadwal.getSelectedRow(3).toString();
-                    jammulai = jampraktek.substring(0, 5) + ":00";
-                    kuota = (int) jadwal.getSelectedRow(4);
-                    if (JenisPelayanan.getSelectedIndex() == 1) {
-                        KdDPJPLayanan.setText(jadwal.getSelectedRow(8).toString());
-                        NmDPJPLayanan.setText(jadwal.getSelectedRow(2).toString());
-                    }
-                    kodepolireg = jadwal.getSelectedRow(5).toString();
-                    kodedokterreg = jadwal.getSelectedRow(6).toString();
-                }
-            }
-        });
 
         URUTNOREG = koneksiDB.URUTNOREG();
         BASENOREG = koneksiDB.BASENOREG();
@@ -423,7 +400,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         btnFingerprint = new widget.Button();
         btnFrista = new widget.Button();
         panelNumpad1 = new widget.Numpad();
-        btnCariJadwal = new widget.Button();
         panel2 = new widget.Panel();
         ChkInput = new widget.PaneToggle();
         form = new widget.Panel();
@@ -1115,22 +1091,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         panelNumpad1.setTextBox(NoTelp);
         panel1.add(panelNumpad1);
         panelNumpad1.setBounds(730, 290, 210, 280);
-
-        btnCariJadwal.setBackground(new java.awt.Color(240, 249, 255));
-        btnCariJadwal.setBorder(null);
-        btnCariJadwal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pilih.png"))); // NOI18N
-        btnCariJadwal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCariJadwalActionPerformed(evt);
-            }
-        });
-        btnCariJadwal.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                btnCariJadwalKeyPressed(evt);
-            }
-        });
-        panel1.add(btnCariJadwal);
-        btnCariJadwal.setBounds(620, 190, 40, 30);
 
         panelTengah.add(panel1, java.awt.BorderLayout.PAGE_START);
 
@@ -2084,18 +2044,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         }
     }//GEN-LAST:event_SuplesiItemStateChanged
 
-    private void btnCariJadwalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariJadwalActionPerformed
-        jadwal.setSize(getContentPane().getSize());
-        jadwal.setLocationRelativeTo(getContentPane());
-        tentukanHari();
-        jadwal.setHarikerja(hari);
-        jadwal.setVisible(true);
-    }//GEN-LAST:event_btnCariJadwalActionPerformed
-
-    private void btnCariJadwalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnCariJadwalKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnCariJadwalKeyPressed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.ComboBox AsalRujukan;
     private widget.ComboBox AsesmenPoli;
@@ -2175,7 +2123,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
     private widget.Button btnApprovalFP;
     private widget.Button btnCariDiagnosaAwal;
     private widget.Button btnCariDokter;
-    private widget.Button btnCariJadwal;
     private widget.Button btnCariPoli;
     private widget.Button btnDokterTerapi;
     private widget.Button btnFingerprint;
@@ -3336,27 +3283,25 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
                         break;
                 }
                 
-                if (jampraktek.isBlank() || kuota < 0) {
-                    try (PreparedStatement ps = koneksi.prepareStatement("select jam_mulai, jam_selesai, kuota from jadwal where hari_kerja = ? and kd_poli = ? and kd_dokter = ?")) {
-                        ps.setString(1, hari);
-                        ps.setString(2, kodepolireg);
-                        ps.setString(3, kodedokterreg);
-                        try (ResultSet rs = ps.executeQuery()) {
-                            if (rs.next()) {
-                                jampraktek = rs.getString("jam_mulai").substring(0, 5) + "-" + rs.getString("jam_selesai").substring(0, 5);
-                                jammulai = rs.getString("jam_mulai");
-                                jamselesai = rs.getString("jam_selesai");
-                                kuota = rs.getInt("kuota");
-                            } else {
-                                System.out.println("Jadwal tidak ditemukan...!!!");
-                                JOptionPane.showMessageDialog(null, "Jadwal tidak ditemukan...!!!");
-                                sukses = false;
-                            }
+                try (PreparedStatement ps = koneksi.prepareStatement("select jam_mulai, jam_selesai, kuota from jadwal where hari_kerja = ? and kd_poli = ? and kd_dokter = ?")) {
+                    ps.setString(1, hari);
+                    ps.setString(2, kodepolireg);
+                    ps.setString(3, kodedokterreg);
+                    try (ResultSet rs = ps.executeQuery()) {
+                        if (rs.next()) {
+                            jampraktek = rs.getString("jam_mulai").substring(0, 5) + "-" + rs.getString("jam_selesai").substring(0, 5);
+                            jammulai = rs.getString("jam_mulai");
+                            jamselesai = rs.getString("jam_selesai");
+                            kuota = rs.getInt("kuota");
+                        } else {
+                            sukses = false;
+                            System.out.println("Jadwal praktek tidak ditemukan...!!!");
+                            JOptionPane.showMessageDialog(null, "Jadwal praktek tidak ditemukan...!!!");
                         }
-                    } catch (Exception e) {
-                        System.out.println("Notif : " + e);
-                        sukses = false;
                     }
+                } catch (Exception e) {
+                    System.out.println("Notif : " + e);
+                    sukses = false;
                 }
 
                 if (sukses) {
@@ -3405,6 +3350,9 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
                             nameNode = root.path("metadata");
                             Sequel.logTaskid(TNoRw.getText(), TNoRw.getText(), "Onsite", "addantrean", requestJson, nameNode.path("code").asText(), nameNode.path("message").asText(), root.toString(), datajam);
                             System.out.println(nameNode.path("code").asText() + " " + nameNode.path("message").asText() + "\n");
+                            if (!nameNode.path("code").asText().equals("200")) {
+                                sukses = false;
+                            }
                         } catch (HttpClientErrorException e) {
                             sukses = false;
                             System.out.println("Notif : " + e.getMessage());
@@ -3463,6 +3411,10 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
                         nameNode = root.path("metadata");
                         Sequel.logTaskid(TNoRw.getText(), TNoRw.getText(), "Onsite", "addantrean", requestJson, nameNode.path("code").asText(), nameNode.path("message").asText(), root.toString(), datajam);
                         System.out.println(nameNode.path("code").asText() + " " + nameNode.path("message").asText() + "\n");
+                        if (!nameNode.path("code").asText().equals("200")) {
+                            JOptionPane.showMessageDialog(null, nameNode.path("message").asText());
+                            sukses = false;
+                        }
                     } catch (HttpClientErrorException e) {
                         sukses = false;
                         System.out.println("Notif : " + e.getMessage());
@@ -3860,83 +3812,52 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
     }
 
     private boolean registerPasien() {
-        int coba = 0, maxCoba = 5;
-
-        System.out.println("Mencoba mendaftarkan pasien dengan no. rawat: " + TNoRw.getText());
-
-        while (coba < maxCoba && (!Sequel.menyimpantfSmc("reg_periksa", null,
-            NoReg.getText(), TNoRw.getText(), Valid.getTglSmc(TanggalSEP),
-            Sequel.cariIsi("select current_time()"), kodedokterreg, TNoRM.getText(), kodepolireg,
-            TPngJwb.getText(), TAlmt.getText(), THbngn.getText(), TBiaya.getText(), "Belum",
-            statuspasien, "Ralan", Kdpnj.getText(), umur, sttsumur, "Belum Bayar", status))) {
+        int next = 0, retries = 5;
+        boolean sukses = false;
+        
+        do {
             isNumber();
-            System.out.println("Mencoba mendaftarkan pasien dengan no. rawat: " + TNoRw.getText());
-
-            coba++;
+            
+            System.out.print("Mencoba mendaftarkan pasien dengan no. rawat [" + TNoRw.getText() + "]: ");
+            
+            sukses = Sequel.menyimpantfSmc("reg_periksa", null,
+                NoReg.getText(), TNoRw.getText(), Valid.getTglSmc(TanggalSEP),
+                Sequel.cariIsi("select current_time()"), kodedokterreg, TNoRM.getText(), kodepolireg,
+                TPngJwb.getText(), TAlmt.getText(), THbngn.getText(), TBiaya.getText(), "Belum",
+                statuspasien, "Ralan", Kdpnj.getText(), umur, sttsumur, "Belum Bayar", status
+            );
+            System.out.println(sukses ? "Sukses!" : "Gagal!");
+        } while(next++ < retries && !sukses);
+        
+        if (sukses) {
+            updateUmurPasien();
         }
 
-        String isNoRawat = Sequel.cariIsiSmc("select no_rawat from reg_periksa where tgl_registrasi = ? and no_rkm_medis = ? and kd_poli = ? and kd_dokter = ?", Valid.getTglSmc(TanggalSEP), TNoRM.getText(), kodepolireg, kodedokterreg);
-
-        if (coba == maxCoba && (isNoRawat == null || !isNoRawat.equals(TNoRw.getText()))) {
-            System.out.println("======================================================");
-            System.out.println("Tidak dapat mendaftarkan pasien dengan detail berikut:");
-            System.out.println("No. Rawat: " + TNoRw.getText());
-            System.out.println("Tgl. Registrasi: " + Valid.getTglSmc(TanggalSEP));
-            System.out.println("No. Antrian: " + NoReg.getText() + " (Ditemukan: " + Sequel.cariIsiSmc("select no_reg from reg_periksa where no_rawat = ?", TNoRw.getText()) + ")");
-            System.out.println("No. RM: " + TNoRM.getText() + " (Ditemukan: " + Sequel.cariIsiSmc("select no_rkm_medis from reg_periksa where no_rawat = ?", TNoRw.getText()) + ")");
-            System.out.println("Kode Dokter: " + kodedokterreg + " (Ditemukan: " + Sequel.cariIsiSmc("select kd_dokter from reg_periksa where no_rawat = ?", TNoRw.getText()) + ")");
-            System.out.println("Kode Poli: " + kodepolireg + " (Ditemukan: " + Sequel.cariIsiSmc("select kd_poli from reg_periksa where no_rawat = ?", TNoRw.getText()) + ")");
-            System.out.println("======================================================");
-
-            return false;
-        }
-
-        updateUmurPasien();
-
-        return true;
+        return sukses;
     }
 
     private boolean simpanRujukan() {
-        int coba = 0, maxCoba = 5;
-
-        NoRujukMasuk.setText(
-            Sequel.cariIsiSmc(
-                "select concat('BR/', date_format(?, '%Y/%m/%d'), '/', lpad(ifnull(max(convert(right(rujuk_masuk.no_balasan, 4), signed)), 0) + 1, 4, '0')) from rujuk_masuk where rujuk_masuk.no_balasan like concat('BR/', date_format(?, '%Y/%m/%d/'), '%')",
-                Valid.getTglSmc(TanggalSEP), Valid.getTglSmc(TanggalSEP)
-            )
-        );
-
-        System.out.println("Mencoba memproses rujukan masuk pasien dengan no. surat: " + NoRujukMasuk.getText());
-
-        while (coba < maxCoba && (!Sequel.menyimpantfSmc("rujuk_masuk", null,
-            TNoRw.getText(), NmPpkRujukan.getText(), "-", NoRujukan.getText(),
-            "0", NmPpkRujukan.getText(), KdPenyakit.getText(), "-", "-", NoRujukMasuk.getText()
-        ))) {
+        int next = 0, retries = 5;
+        boolean sukses = false;
+        
+        do {
             NoRujukMasuk.setText(
                 Sequel.cariIsiSmc(
-                    "select concat('BR/', date_format(?, '%Y/%m/%d/'), lpad(ifnull(max(convert(right(rujuk_masuk.no_balasan, 4), signed)), 0) + 1, 4, '0')) from rujuk_masuk where rujuk_masuk.no_balasan like concat('BR/', date_format(?, '%Y/%m/%d/'), '%')",
+                    "select concat('BR/', date_format(?, '%Y/%m/%d'), '/', lpad(ifnull(max(convert(right(rujuk_masuk.no_balasan, 4), signed)), 0) + 1, 4, '0')) from rujuk_masuk where rujuk_masuk.no_balasan like concat('BR/', date_format(?, '%Y/%m/%d/'), '%')",
                     Valid.getTglSmc(TanggalSEP), Valid.getTglSmc(TanggalSEP)
                 )
             );
-
-            System.out.println("Mencoba memproses rujukan masuk pasien dengan no. surat balasan: " + NoRujukMasuk.getText());
-
-            coba++;
-        }
-
-        String isNoRujukMasuk = Sequel.cariIsiSmc("select rujuk_masuk.no_balasan from rujuk_masuk where rujuk_masuk.no_rawat = ?", TNoRw.getText());
-
-        if (coba == maxCoba && (isNoRujukMasuk == null || (!isNoRujukMasuk.equals(NoRujukMasuk.getText())))) {
-            System.out.println("======================================================");
-            System.out.println("Tidak dapat memproses rujukan masuk dengan detail berikut:");
-            System.out.println("No. Surat: " + NoRujukMasuk.getText());
-            System.out.println("No. Rawat: " + TNoRw.getText());
-            System.out.println("======================================================");
-
-            return false;
-        }
-
-        return true;
+            
+            System.out.print("Mencoba memproses rujukan masuk pasien dengan no. surat [" + NoRujukMasuk.getText() + "]: ");
+            
+            sukses = Sequel.menyimpantfSmc("rujuk_masuk", null,
+                TNoRw.getText(), NmPpkRujukan.getText(), "-", NoRujukan.getText(),
+                "0", NmPpkRujukan.getText(), KdPenyakit.getText(), "-", "-", NoRujukMasuk.getText()
+            );
+            System.out.println(sukses ? "Sukses!" : "Gagal!");
+        } while (next++ < retries && !sukses);
+        
+        return sukses;
     }
 
     private void updateUmurPasien() {
