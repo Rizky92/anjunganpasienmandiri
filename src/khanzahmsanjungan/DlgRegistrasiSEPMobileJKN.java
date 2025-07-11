@@ -73,10 +73,6 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
         utc = "",
         jeniskunjungan = "";
 
-    private final String URLAPIBPJS = koneksiDB.URLAPIBPJS(),
-        URLAPLIKASIFINGERPRINTBPJS = koneksiDB.URLAPLIKASIFINGERPRINTBPJS(),
-        USERFINGERPRINTBPJS = koneksiDB.USERFINGERPRINTBPJS(),
-        PASSFINGERPRINTBPJS = koneksiDB.PASSFINGERPRINTBPJS();
     private int kuota = 0;
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
@@ -962,6 +958,11 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
 
         Suplesi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0. Tidak", "1.Ya" }));
         Suplesi.setPreferredSize(new java.awt.Dimension(64, 25));
+        Suplesi.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                SuplesiItemStateChanged(evt);
+            }
+        });
         form.add(Suplesi);
         Suplesi.setBounds(730, 100, 95, 30);
 
@@ -1435,7 +1436,7 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
                                 headers.add("X-Timestamp", utc);
                                 headers.add("X-Signature", api.getHmac(utc));
                                 headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
-                                URL = URLAPIBPJS + "/Sep/pengajuanSEP";
+                                URL = koneksiDB.URLAPIBPJS() + "/Sep/pengajuanSEP";
                                 requestJson = " {" +
                                     "\"request\": {" +
                                     "\"t_sep\": {" +
@@ -1474,7 +1475,7 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
                                 headers.add("X-Timestamp", utc);
                                 headers.add("X-Signature", api.getHmac(utc));
                                 headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
-                                URL = URLAPIBPJS + "/Sep/aprovalSEP";
+                                URL = koneksiDB.URLAPIBPJS() + "/Sep/aprovalSEP";
                                 requestJson = " {" +
                                     "\"request\": {" +
                                     "\"t_sep\": {" +
@@ -1567,22 +1568,15 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
         }
     }//GEN-LAST:event_NoTelpMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(() -> {
-            DlgRegistrasiSEPMobileJKN dialog = new DlgRegistrasiSEPMobileJKN(new javax.swing.JFrame(), true);
-            dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+    private void SuplesiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_SuplesiItemStateChanged
+        if (Suplesi.getSelectedIndex() == 1) {
+            NoSEPSuplesi.setEditable(true);
+        } else {
+            NoSEPSuplesi.setEditable(false);
+            NoSEPSuplesi.setText("");
+        }
+    }//GEN-LAST:event_SuplesiItemStateChanged
 
-                @Override
-                public void windowClosing(java.awt.event.WindowEvent e) {
-                    System.exit(0);
-                }
-            });
-            dialog.setVisible(true);
-        });
-    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.ComboBox AsalRujukan;
     private widget.ComboBox AsesmenPoli;
@@ -1756,7 +1750,7 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
             headers.add("X-Timestamp", utc);
             headers.add("X-Signature", api.getHmac(utc));
             headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
-            URL = URLAPIBPJS + "/SEP/2.0/insert";
+            URL = koneksiDB.URLAPIBPJS() + "/SEP/2.0/insert";
             requestJson = "{" +
                 "\"request\":{" +
                 "\"t_sep\":{" +
@@ -1932,7 +1926,7 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
         }
 
         try {
-            URL = URLAPIBPJS + "/SEP/FingerPrint/Peserta/" + NoKartu.getText() + "/TglPelayanan/" + Valid.SetTgl(TanggalSEP.getSelectedItem().toString());
+            URL = koneksiDB.URLAPIBPJS() + "/SEP/FingerPrint/Peserta/" + NoKartu.getText() + "/TglPelayanan/" + Valid.SetTgl(TanggalSEP.getSelectedItem().toString());
             utc = String.valueOf(api.GetUTCdatetimeAsString());
 
             headers = new HttpHeaders();
@@ -2013,7 +2007,7 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
                     }
                     // CEK STATUS PASIEN
                     try {
-                        URL = URLAPIBPJS + "/Peserta/nokartu/" + rsjkn.getString("nomorkartu") + "/tglSEP/" + Valid.SetTgl(TanggalSEP.getSelectedItem().toString());
+                        URL = koneksiDB.URLAPIBPJS() + "/Peserta/nokartu/" + rsjkn.getString("nomorkartu") + "/tglSEP/" + Valid.SetTgl(TanggalSEP.getSelectedItem().toString());
                         utc = String.valueOf(api.GetUTCdatetimeAsString());
                         headers = new HttpHeaders();
                         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -2054,7 +2048,7 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
                                 // RUJUKAN FKTP
                                 AsalRujukan.setSelectedIndex(0);
                                 try {
-                                    URL = URLAPIBPJS + "/Rujukan/" + rsjkn.getString("nomorreferensi");
+                                    URL = koneksiDB.URLAPIBPJS() + "/Rujukan/" + rsjkn.getString("nomorreferensi");
                                     System.out.println("URL : " + URL);
                                     utc = String.valueOf(api.GetUTCdatetimeAsString());
                                     headers = new HttpHeaders();
@@ -2090,7 +2084,7 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
                                 // RUJUKAN FKTL
                                 AsalRujukan.setSelectedIndex(1);
                                 try {
-                                    URL = URLAPIBPJS + "/Rujukan/RS/" + rsjkn.getString("nomorreferensi");
+                                    URL = koneksiDB.URLAPIBPJS() + "/Rujukan/RS/" + rsjkn.getString("nomorreferensi");
                                     System.out.println("URL : " + URL);
                                     utc = String.valueOf(api.GetUTCdatetimeAsString());
                                     headers = new HttpHeaders();
@@ -2154,10 +2148,10 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
                                                 // KONTROL POLI
                                                 try {
                                                     if (rskontrol.getString("asal_rujukan").equals("1")) {
-                                                        URL = URLAPIBPJS + "/Rujukan/" + rskontrol.getString("no_rujukan");
+                                                        URL = koneksiDB.URLAPIBPJS() + "/Rujukan/" + rskontrol.getString("no_rujukan");
                                                         AsalRujukan.setSelectedIndex(0);
                                                     } else if (rskontrol.getString("asal_rujukan").equals("2")) {
-                                                        URL = URLAPIBPJS + "/Rujukan/RS/" + rskontrol.getString("no_rujukan");
+                                                        URL = koneksiDB.URLAPIBPJS() + "/Rujukan/RS/" + rskontrol.getString("no_rujukan");
                                                         AsalRujukan.setSelectedIndex(1);
                                                     }
                                                     utc = String.valueOf(api.GetUTCdatetimeAsString());
@@ -2563,7 +2557,7 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
             headers.add("X-Timestamp", utc);
             headers.add("X-Signature", api.getHmac(utc));
             headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
-            URL = URLAPIBPJS + "/RencanaKontrol/Update";
+            URL = koneksiDB.URLAPIBPJS() + "/RencanaKontrol/Update";
             requestJson = "{" +
                 "\"request\": {" +
                 "\"noSuratKontrol\":\"" + noSKDP + "\"," +
