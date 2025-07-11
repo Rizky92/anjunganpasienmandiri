@@ -12,7 +12,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.awt.Insets;
-import java.io.File;
 import javax.print.PrintService;
 import javax.print.PrintServiceLookup;
 import javax.swing.SwingUtilities;
