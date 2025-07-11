@@ -122,7 +122,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         utc = "",
         jeniskunjungan = "",
         nomorreg = "",
-        AUTOBUKAAPLIKASI = koneksiDB.AUTOBUKAAPLIKASI().trim().toLowerCase(),
         URLAPLIKASIFINGERPRINTBPJS = koneksiDB.URLAPLIKASIFINGERPRINTBPJS(),
         USERFINGERPRINTBPJS = koneksiDB.USERFINGERPRINTBPJS(),
         PASSFINGERPRINTBPJS = koneksiDB.PASSFINGERPRINTBPJS(),
@@ -3730,14 +3729,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
             }
         } catch (Exception e) {
             System.out.println("Notif Cari Poli : " + e);
-        }
-    }
-
-    private void bukaAplikasiValidasi() {
-        if (AUTOBUKAAPLIKASI.equals("frista")) {
-            bukaAplikasiFrista();
-        } else {
-            bukaAplikasiFingerprint();
         }
     }
 
