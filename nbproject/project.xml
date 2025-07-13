@@ -2,9 +2,6 @@
 <project xmlns="http://www.netbeans.org/ns/project/1">
     <type>org.netbeans.modules.java.j2seproject</type>
     <configuration>
-        <buildExtensions xmlns="http://www.netbeans.org/ns/ant-build-extender/1">
-            <extension file="build-native.xml" id="j2sedeploy"/>
-        </buildExtensions>
         <data xmlns="http://www.netbeans.org/ns/j2se-project/3">
             <name>KhanzaHMSAnjungan</name>
             <source-roots>
@@ -14,8 +11,5 @@
                 <root id="test.src.dir"/>
             </test-roots>
         </data>
-        <libraries xmlns="http://www.netbeans.org/ns/ant-project-libraries/1">
-            <definitions>/home/DATA/lib/nblibraries.properties</definitions>
-        </libraries>
     </configuration>
 </project>
