@@ -721,7 +721,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
 
         TPasien.setEditable(false);
         panel1.add(TPasien);
-        TPasien.setBounds(345, 10, 720, 30);
+        TPasien.setBounds(345, 10, 685, 30);
 
         TNoRM.setEditable(false);
         TNoRM.addActionListener(new java.awt.event.ActionListener() {
@@ -734,12 +734,12 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
 
         NoKartu.setEditable(false);
         panel1.add(NoKartu);
-        NoKartu.setBounds(765, 100, 300, 30);
+        NoKartu.setBounds(730, 100, 300, 30);
 
         jLabel20.setText("Tgl. SEP :");
         jLabel20.setPreferredSize(new java.awt.Dimension(55, 23));
         panel1.add(jLabel20);
-        jLabel20.setBounds(660, 190, 100, 30);
+        jLabel20.setBounds(625, 190, 100, 30);
 
         TanggalSEP.setEditable(false);
         TanggalSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-07-2025" }));
@@ -750,12 +750,12 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
             }
         });
         panel1.add(TanggalSEP);
-        TanggalSEP.setBounds(765, 190, 170, 30);
+        TanggalSEP.setBounds(730, 190, 170, 30);
 
         jLabel22.setText("Tgl. Rujukan :");
         jLabel22.setPreferredSize(new java.awt.Dimension(55, 23));
         panel1.add(jLabel22);
-        jLabel22.setBounds(660, 160, 100, 30);
+        jLabel22.setBounds(625, 160, 100, 30);
 
         TanggalRujuk.setEditable(false);
         TanggalRujuk.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-07-2025" }));
@@ -766,7 +766,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
             }
         });
         panel1.add(TanggalRujuk);
-        TanggalRujuk.setBounds(765, 160, 170, 30);
+        TanggalRujuk.setBounds(730, 160, 170, 30);
 
         jLabel23.setText("No. SKDP / Surat Kontrol :");
         jLabel23.setPreferredSize(new java.awt.Dimension(55, 23));
@@ -846,20 +846,20 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
 
         jLabel18.setText("L / P :");
         panel1.add(jLabel18);
-        jLabel18.setBounds(945, 40, 35, 30);
+        jLabel18.setBounds(910, 40, 35, 30);
 
         JK.setEditable(false);
         panel1.add(JK);
-        JK.setBounds(985, 40, 80, 30);
+        JK.setBounds(950, 40, 80, 30);
 
         jLabel24.setText("Jenis Peserta :");
         jLabel24.setPreferredSize(new java.awt.Dimension(55, 23));
         panel1.add(jLabel24);
-        jLabel24.setBounds(660, 40, 100, 30);
+        jLabel24.setBounds(625, 40, 100, 30);
 
         JenisPeserta.setEditable(false);
         panel1.add(JenisPeserta);
-        JenisPeserta.setBounds(765, 40, 173, 30);
+        JenisPeserta.setBounds(730, 40, 173, 30);
 
         jLabel25.setText("Status :");
         jLabel25.setPreferredSize(new java.awt.Dimension(55, 23));
@@ -872,7 +872,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
 
         jLabel27.setText("Asal Rujukan :");
         panel1.add(jLabel27);
-        jLabel27.setBounds(660, 130, 100, 30);
+        jLabel27.setBounds(625, 130, 100, 30);
 
         AsalRujukan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1. Faskes 1", "2. Faskes 2(RS)" }));
         AsalRujukan.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -881,7 +881,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
             }
         });
         panel1.add(AsalRujukan);
-        AsalRujukan.setBounds(765, 130, 170, 30);
+        AsalRujukan.setBounds(730, 130, 170, 30);
 
         NoTelp.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -902,7 +902,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
             }
         });
         panel1.add(NoTelp);
-        NoTelp.setBounds(765, 250, 170, 30);
+        NoTelp.setBounds(730, 250, 170, 30);
 
         Katarak.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0. Tidak", "1.Ya" }));
         Katarak.setPreferredSize(new java.awt.Dimension(64, 25));
@@ -912,11 +912,11 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
             }
         });
         panel1.add(Katarak);
-        Katarak.setBounds(765, 220, 170, 30);
+        Katarak.setBounds(730, 220, 170, 30);
 
         jLabel37.setText("Katarak :");
         panel1.add(jLabel37);
-        jLabel37.setBounds(660, 220, 100, 30);
+        jLabel37.setBounds(625, 220, 100, 30);
 
         LabelPoli2.setText("Dokter DPJP :");
         LabelPoli2.setPreferredSize(new java.awt.Dimension(55, 23));
@@ -950,7 +950,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         jLabel56.setText("No. Telp :");
         jLabel56.setPreferredSize(new java.awt.Dimension(55, 23));
         panel1.add(jLabel56);
-        jLabel56.setBounds(660, 250, 100, 30);
+        jLabel56.setBounds(625, 250, 100, 30);
 
         jLabel12.setText("Tgl. Lahir :");
         jLabel12.setPreferredSize(new java.awt.Dimension(55, 23));
@@ -959,7 +959,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
 
         jLabel6.setText("NIK :");
         panel1.add(jLabel6);
-        jLabel6.setBounds(660, 70, 100, 30);
+        jLabel6.setBounds(625, 70, 100, 30);
 
         NoSKDP.setEditable(false);
         NoSKDP.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -977,11 +977,11 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
 
         NIK.setEditable(false);
         panel1.add(NIK);
-        NIK.setBounds(765, 70, 300, 30);
+        NIK.setBounds(730, 70, 300, 30);
 
         jLabel7.setText("No. Peserta :");
         panel1.add(jLabel7);
-        jLabel7.setBounds(660, 100, 100, 30);
+        jLabel7.setBounds(625, 100, 100, 30);
 
         btnCariPoli.setBackground(new java.awt.Color(240, 249, 255));
         btnCariPoli.setBorder(null);
@@ -1226,7 +1226,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
 
         jLabel55.setText("Laka Lantas :");
         form.add(jLabel55);
-        jLabel55.setBounds(660, 10, 100, 30);
+        jLabel55.setBounds(625, 10, 100, 30);
 
         LakaLantas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0. Bukan KLL", "1. KLL Bukan KK", "2. KLL dan KK", "3. KK" }));
         LakaLantas.setPreferredSize(new java.awt.Dimension(64, 25));
@@ -1241,12 +1241,12 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
             }
         });
         form.add(LakaLantas);
-        LakaLantas.setBounds(765, 10, 170, 30);
+        LakaLantas.setBounds(730, 10, 170, 30);
 
         jLabel38.setText("Tgl. KLL :");
         jLabel38.setPreferredSize(new java.awt.Dimension(55, 23));
         form.add(jLabel38);
-        jLabel38.setBounds(660, 40, 100, 30);
+        jLabel38.setBounds(625, 40, 100, 30);
 
         TanggalKKL.setEditable(false);
         TanggalKKL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-07-2025" }));
@@ -1258,12 +1258,12 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
             }
         });
         form.add(TanggalKKL);
-        TanggalKKL.setBounds(765, 40, 170, 30);
+        TanggalKKL.setBounds(730, 40, 170, 30);
 
         jLabel36.setText("Keterangan :");
         jLabel36.setPreferredSize(new java.awt.Dimension(55, 23));
         form.add(jLabel36);
-        jLabel36.setBounds(660, 70, 100, 30);
+        jLabel36.setBounds(625, 70, 100, 30);
 
         Keterangan.setEditable(false);
         Keterangan.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1272,11 +1272,11 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
             }
         });
         form.add(Keterangan);
-        Keterangan.setBounds(765, 70, 300, 30);
+        Keterangan.setBounds(730, 70, 300, 30);
 
         jLabel40.setText("Suplesi :");
         form.add(jLabel40);
-        jLabel40.setBounds(660, 100, 100, 30);
+        jLabel40.setBounds(625, 100, 100, 30);
 
         Suplesi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0. Tidak", "1.Ya" }));
         Suplesi.setPreferredSize(new java.awt.Dimension(64, 25));
@@ -1286,12 +1286,12 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
             }
         });
         form.add(Suplesi);
-        Suplesi.setBounds(765, 100, 95, 30);
+        Suplesi.setBounds(730, 100, 95, 30);
 
         jLabel41.setText("No. SEP :");
         jLabel41.setPreferredSize(new java.awt.Dimension(55, 23));
         form.add(jLabel41);
-        jLabel41.setBounds(865, 100, 55, 30);
+        jLabel41.setBounds(830, 100, 55, 30);
 
         NoSEPSuplesi.setEditable(false);
         NoSEPSuplesi.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -1300,47 +1300,47 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
             }
         });
         form.add(NoSEPSuplesi);
-        NoSEPSuplesi.setBounds(925, 100, 140, 30);
+        NoSEPSuplesi.setBounds(890, 100, 140, 30);
 
         LabelPoli3.setText("Propinsi KLL :");
         form.add(LabelPoli3);
-        LabelPoli3.setBounds(660, 130, 100, 30);
+        LabelPoli3.setBounds(625, 130, 100, 30);
 
         KdPropinsi.setEditable(false);
         form.add(KdPropinsi);
-        KdPropinsi.setBounds(765, 130, 75, 30);
+        KdPropinsi.setBounds(730, 130, 75, 30);
 
         NmPropinsi.setEditable(false);
         form.add(NmPropinsi);
-        NmPropinsi.setBounds(845, 130, 220, 30);
+        NmPropinsi.setBounds(810, 130, 220, 30);
 
         LabelPoli4.setText("Kabupaten KLL :");
         form.add(LabelPoli4);
-        LabelPoli4.setBounds(660, 160, 100, 30);
+        LabelPoli4.setBounds(625, 160, 100, 30);
 
         KdKabupaten.setEditable(false);
         form.add(KdKabupaten);
-        KdKabupaten.setBounds(765, 160, 75, 30);
+        KdKabupaten.setBounds(730, 160, 75, 30);
 
         NmKabupaten.setEditable(false);
         form.add(NmKabupaten);
-        NmKabupaten.setBounds(845, 160, 220, 30);
+        NmKabupaten.setBounds(810, 160, 220, 30);
 
         LabelPoli5.setText("Kecamatan KLL :");
         form.add(LabelPoli5);
-        LabelPoli5.setBounds(660, 190, 100, 30);
+        LabelPoli5.setBounds(625, 190, 100, 30);
 
         KdKecamatan.setEditable(false);
         form.add(KdKecamatan);
-        KdKecamatan.setBounds(765, 190, 75, 30);
+        KdKecamatan.setBounds(730, 190, 75, 30);
 
         NmKecamatan.setEditable(false);
         form.add(NmKecamatan);
-        NmKecamatan.setBounds(845, 190, 220, 30);
+        NmKecamatan.setBounds(810, 190, 220, 30);
 
         jLabel14.setText("Catatan :");
         form.add(jLabel14);
-        jLabel14.setBounds(660, 220, 100, 30);
+        jLabel14.setBounds(625, 220, 100, 30);
 
         Catatan.setEditable(false);
         Catatan.setText("Anjungan Pasien Mandiri RS Samarinda Medika Citra");
@@ -1350,7 +1350,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
             }
         });
         form.add(Catatan);
-        Catatan.setBounds(765, 220, 300, 30);
+        Catatan.setBounds(730, 220, 300, 30);
 
         btnApprovalFP.setBackground(new java.awt.Color(255, 255, 255));
         btnApprovalFP.setForeground(new java.awt.Color(0, 131, 62));
