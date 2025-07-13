@@ -3313,7 +3313,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
                             "\"jenispasien\": \"JKN\"," +
                             "\"nomorkartu\": \"" + NoKartu.getText() + "\"," +
                             "\"nik\": \"" + NIK.getText() + "\"," +
-                            "\"nohp\": \"" + nohppasien + "\"," +
+                            "\"nohp\": \"" + NoTelp.getText().trim() + "\"," +
                             "\"kodepoli\": \"" + KdPoli.getText() + "\"," +
                             "\"namapoli\": \"" + NmPoli.getText() + "\"," +
                             "\"pasienbaru\": 0," +
@@ -3374,7 +3374,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
                         "\"jenispasien\": \"JKN\"," +
                         "\"nomorkartu\": \"" + NoKartu.getText() + "\"," +
                         "\"nik\": \"" + NIK.getText() + "\"," +
-                        "\"nohp\": \"" + NoTelp.getText().trim() + "\"," +
+                        "\"nohp\": \"" + nohppasien + "\"," +
                         "\"kodepoli\": \"" + KdPoli.getText() + "\"," +
                         "\"namapoli\": \"" + NmPoli.getText() + "\"," +
                         "\"pasienbaru\": 0," +
