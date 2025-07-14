@@ -1,19 +1,38 @@
 package khanzahmsanjungan;
 
+import fungsi.koneksiDB;
 import fungsi.sekuel;
+import fungsi.validasi;
 import java.awt.Cursor;
 import java.awt.event.KeyEvent;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JOptionPane;
+import javax.swing.border.TitledBorder;
 
-public class DlgCekinMobileJKN extends widget.Dialog {
+public class DlgCekDataPasien extends widget.Dialog {
 
+    public static final int REGIST_MANDIRI = 1;
+    public static final int CEKIN_BOOKING = 2;
+    
+    private static final String TITLE_REGIST_MANDIRI = "::[ Registrasi Mandiri Poliklinik Eksekutif ]::";
+    private static final String TITLE_CEKIN_BOOKING = "::[ Cek In Booking Registrasi ]::";
+    
+    private final Connection koneksi = koneksiDB.condb();
     private final sekuel Sequel = new sekuel();
-    private final DlgRegistrasiSEPMobileJKN form;
+    private final validasi Valid = new validasi();
+    private final String KODEPOLIEKSEKUTIF = koneksiDB.KODEPOLIEKSEKUTIF();
+    private final DlgRegistrasiMandiri mandiri;
+    
+    private int flag = -1;
 
-    public DlgCekinMobileJKN(java.awt.Frame parent, boolean modal) {
+    public DlgCekDataPasien(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        this.mandiri = new DlgRegistrasiMandiri(parent, modal);
         initComponents();
-        form = new DlgRegistrasiSEPMobileJKN(parent, modal);
     }
 
     /**
@@ -29,7 +48,7 @@ public class DlgCekinMobileJKN extends widget.Dialog {
         panelTengah = new widget.Panel();
         NoRMPasien = new widget.TextField();
         jLabel28 = new widget.Label();
-        BtnClose = new widget.Button();
+        BtnBatal = new widget.Button();
         BtnKonfirm = new widget.Button();
         panelNumpad1 = new widget.Numpad();
         jLabel1 = new widget.Label();
@@ -46,7 +65,7 @@ public class DlgCekinMobileJKN extends widget.Dialog {
         });
 
         PanelWall.setBackground(new java.awt.Color(238, 238, 255));
-        PanelWall.setBackgroundImage(new javax.swing.ImageIcon(getClass().getResource("/48x48/mobilejkn.png"))); // NOI18N
+        PanelWall.setBackgroundImage(new javax.swing.ImageIcon(getClass().getResource("/picture/icon-128x128.png"))); // NOI18N
         PanelWall.setForeground(new java.awt.Color(238, 238, 255));
         PanelWall.setPreferredSize(new java.awt.Dimension(500, 150));
         PanelWall.setRound(false);
@@ -67,7 +86,7 @@ public class DlgCekinMobileJKN extends widget.Dialog {
 
         getContentPane().add(panelAtas, java.awt.BorderLayout.PAGE_START);
 
-        panelTengah.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0), "::[ Cek In Booking MobileJKN ]::", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Inter", 0, 24), new java.awt.Color(0, 131, 62))); // NOI18N
+        panelTengah.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0), "::[ Pendaftaran Eksekutif ]::", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Inter", 0, 24), new java.awt.Color(0, 131, 62))); // NOI18N
         panelTengah.setPreferredSize(new java.awt.Dimension(400, 70));
         panelTengah.setLayout(new java.awt.GridBagLayout());
 
@@ -89,7 +108,7 @@ public class DlgCekinMobileJKN extends widget.Dialog {
         panelTengah.add(NoRMPasien, gridBagConstraints);
 
         jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel28.setText("No. RM / NIK / Peserta BPJS :");
+        jLabel28.setText("No. RM / NIK :");
         jLabel28.setFont(new java.awt.Font("Inter Medium", 0, 36)); // NOI18N
         jLabel28.setPreferredSize(new java.awt.Dimension(450, 75));
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -101,19 +120,19 @@ public class DlgCekinMobileJKN extends widget.Dialog {
         gridBagConstraints.weightx = 1.0;
         panelTengah.add(jLabel28, gridBagConstraints);
 
-        BtnClose.setBackground(new java.awt.Color(255, 255, 255));
-        BtnClose.setForeground(new java.awt.Color(255, 33, 32));
-        BtnClose.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/exit.png"))); // NOI18N
-        BtnClose.setMnemonic('U');
-        BtnClose.setText("BATAL");
-        BtnClose.setToolTipText("Alt+U");
-        BtnClose.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
-        BtnClose.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        BtnClose.setIconTextGap(2);
-        BtnClose.setPreferredSize(new java.awt.Dimension(200, 75));
-        BtnClose.addActionListener(new java.awt.event.ActionListener() {
+        BtnBatal.setBackground(new java.awt.Color(255, 255, 255));
+        BtnBatal.setForeground(new java.awt.Color(255, 33, 32));
+        BtnBatal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/exit.png"))); // NOI18N
+        BtnBatal.setMnemonic('U');
+        BtnBatal.setText("BATAL");
+        BtnBatal.setToolTipText("Alt+U");
+        BtnBatal.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
+        BtnBatal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnBatal.setIconTextGap(2);
+        BtnBatal.setPreferredSize(new java.awt.Dimension(200, 75));
+        BtnBatal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnCloseActionPerformed(evt);
+                BtnBatalActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -121,7 +140,7 @@ public class DlgCekinMobileJKN extends widget.Dialog {
         gridBagConstraints.gridy = 3;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(20, 0, 0, 0);
-        panelTengah.add(BtnClose, gridBagConstraints);
+        panelTengah.add(BtnBatal, gridBagConstraints);
 
         BtnKonfirm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/konfirmasi.png"))); // NOI18N
         BtnKonfirm.setMnemonic('U');
@@ -205,9 +224,9 @@ public class DlgCekinMobileJKN extends widget.Dialog {
         cek();
     }//GEN-LAST:event_BtnKonfirmActionPerformed
 
-    private void BtnCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCloseActionPerformed
+    private void BtnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatalActionPerformed
         dispose();
-    }//GEN-LAST:event_BtnCloseActionPerformed
+    }//GEN-LAST:event_BtnBatalActionPerformed
 
     private void NoRMPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoRMPasienKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
@@ -221,7 +240,7 @@ public class DlgCekinMobileJKN extends widget.Dialog {
     }//GEN-LAST:event_formWindowActivated
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private widget.Button BtnClose;
+    private widget.Button BtnBatal;
     private widget.Button BtnKonfirm;
     private widget.TextField NoRMPasien;
     private usu.widget.glass.PanelGlass PanelWall;
@@ -237,27 +256,93 @@ public class DlgCekinMobileJKN extends widget.Dialog {
     private widget.Panel panelTengah;
     // End of variables declaration//GEN-END:variables
 
+    public void setFlag(int flag) {
+        if (flag <= 0) {
+            JOptionPane.showMessageDialog(null, "Flag tidak valid..!!");
+            return;
+        }
+        
+        this.flag = flag;
+        TitledBorder border = (TitledBorder) panelTengah.getBorder();
+        
+        switch (flag) {
+            case REGIST_MANDIRI:
+                border.setTitle(TITLE_REGIST_MANDIRI);
+                break;
+            case CEKIN_BOOKING:
+                border.setTitle(TITLE_CEKIN_BOOKING);
+                break;
+            default:
+                border.setTitle(TITLE_REGIST_MANDIRI);
+                break;
+        }
+        repaint();
+    }
+    
     private void cek() {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         if (NoRMPasien.getText().isBlank()) {
             JOptionPane.showMessageDialog(null, "Isian masih kosong..!!");
         } else {
-            String noKartu = Sequel.cariIsiSmc("select pasien.no_peserta from pasien where (pasien.no_ktp = ? or pasien.no_peserta = ? or pasien.no_rkm_medis = ?)", NoRMPasien.getText().trim(), NoRMPasien.getText().trim(), NoRMPasien.getText().trim());
-            if (noKartu.isBlank()) {
+            String noRM = Sequel.cariIsiSmc("select pasien.no_rkm_medis from pasien where (pasien.no_rkm_medis = ? or trim(pasien.no_ktp) = ?)", NoRMPasien.getText().trim(), NoRMPasien.getText().trim());
+            if (noRM.isBlank()) {
                 JOptionPane.showMessageDialog(null, "Data pasien tidak ditemukan..!!");
             } else {
-                if (Sequel.cariExistsSmc("select * from referensi_mobilejkn_bpjs where nomorkartu = ? and tanggalperiksa = current_date() and status in ('Belum', 'Checkin')", noKartu)) {
-                    form.tampil(noKartu);
-                    form.setSize(getContentPane().getSize());
-                    form.setLocationRelativeTo(getContentPane());
-                    form.setVisible(true);
-                    this.dispose();
-                } else {
-                    JOptionPane.showMessageDialog(null, "Data Booking MobileJKN tidak ditemukan. ");
+                switch (flag) {
+                    case CEKIN_BOOKING:
+                        this.cekBooking(noRM);
+                        break;
+                    case REGIST_MANDIRI:
+                        mandiri.setSize(this.getSize());
+                        mandiri.setLocationRelativeTo(this);
+                        mandiri.setPasien(noRM);
+                        mandiri.setVisible(true);
+                        this.dispose();
+                        break;
                 }
             }
         }
+        this.flag = -1;
         formWindowActivated(null);
         this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void cekBooking(String noRM) {
+        try (PreparedStatement ps = koneksi.prepareStatement(
+            "select b.no_rawat, b.status, r.stts, exists(select * from pemeriksaan_ralan as p where p.no_rawat = b.no_rawat) as ada_pemeriksaan from " +
+            "booking_registrasi as b join reg_periksa as r on b.no_rawat = r.no_rawat where b.no_rkm_medis = ? and b.tanggal_periksa = current_date() " +
+            (KODEPOLIEKSEKUTIF.isBlank() ? "" : "and b.kd_poli = ?")
+        )) {
+            ps.setString(1, noRM);
+            if (!KODEPOLIEKSEKUTIF.isBlank()) {
+                ps.setString(2, KODEPOLIEKSEKUTIF);
+            }
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.first()) {
+                    Map<String, Object> param = new HashMap<>();
+                    param.put("norawat", rs.getString("no_rawat"));
+                    param.put("namars", Sequel.cariIsiSmc("select setting.nama_instansi from setting limit 1"));
+                    param.put("kotars", Sequel.cariIsiSmc("select setting.kabupaten from setting limit 1"));
+                    if (!rs.getString("stts").equals("Belum") || rs.getBoolean("ada_pemeriksaan")) {
+                        JOptionPane.showMessageDialog(null, "Anda sudah menerima pelayanan pada hari ini..!!\nSilahkan konfirmasi ke petugas.", "Gagal", JOptionPane.ERROR_MESSAGE);
+                    } else if (rs.getString("status").equals("Checkin")) {
+                        if (JOptionPane.showConfirmDialog(null, "Anda sudah melakukan checkin pada hari ini\nApakah mau mencetak barcode?", "Konfirmasi", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
+                            Valid.printReport("rptBarcodeRawatAPM.jasper", koneksiDB.PRINTER_BARCODE(), "::[ Barcode Perawatan ]::", koneksiDB.PRINTJUMLAHBARCODE(), param);
+                            JOptionPane.showMessageDialog(null, "Barcode berhasil dicetak..!!", "Berhasil", JOptionPane.INFORMATION_MESSAGE);
+                        }
+                    } else {
+                        Sequel.mengupdateSmc("reg_periksa", "jam_reg = current_time()", "no_rawat = ?", rs.getString("no_rawat"));
+                        Sequel.mengupdateSmc("booking_registrasi", "waktu_kunjungan = now(), status = 'Checkin'", "no_rawat = ?", rs.getString("no_rawat"));
+                        JOptionPane.showMessageDialog(null, "Check in berhasil..!!", "Berhasil", JOptionPane.INFORMATION_MESSAGE);
+                        Valid.printReport("rptBarcodeRawatAPM.jasper", koneksiDB.PRINTER_BARCODE(), "::[ Barcode Perawatan ]::", koneksiDB.PRINTJUMLAHBARCODE(), param);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Maaf, jadwal booking untuk hari ini tidak ditemukan\nSilahkan konfirmasi ke pendaftaran..!!");
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Notif : " + e);
+            JOptionPane.showMessageDialog(null, "Terjadi kesalahan pada saat mencari data pasien\nSilahkan konfirmasi ke pendaftaran..!!");
+        }
     }
 }

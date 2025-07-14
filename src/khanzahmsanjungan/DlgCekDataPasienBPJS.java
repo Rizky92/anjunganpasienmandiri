@@ -4,16 +4,34 @@ import fungsi.sekuel;
 import java.awt.Cursor;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
+import javax.swing.border.TitledBorder;
 
-public class DlgCekSEPKontrol extends widget.Dialog {
+public class DlgCekDataPasienBPJS extends widget.Dialog {
 
+    public static final int SEP_KUNJUNGAN_PERTAMA = 1;
+    public static final int SEP_KONTROL = 2;
+    public static final int SEP_KONTROL_BEDA_POLI = 3;
+    public static final int SEP_MOBILEJKN = 4;
+    
+    private static final String TITLE_SEP_KUNJUNGAN_PERTAMA = "::[ Pendaftaran SEP Kunjungan Pertama ]::";
+    private static final String TITLE_SEP_KONTROL = "::[ Pendaftaran SEP Kontrol ]::";
+    private static final String TITLE_SEP_KONTROL_BEDA_POLI = "::[ Pendaftaran SEP Kontrol Beda Poli ]::";
+    private static final String TITLE_SEP_MOBILEJKN = "::[ Cek in Booking MobileJKN ]::";
+    private static final String INPUT_RM = "No. RM / NIK / Peserta BPJS :";
+    private static final String INPUT_KONTROL = "No. Surat Kontrol :";
+    private static final String INPUT_MOBILEJKN = "No. RM / NIK / Peserta BPJS / Surat Kontrol :";
+    
     private final sekuel Sequel = new sekuel();
-    private final DlgRegistrasiSEPPertama form;
+    private final DlgRegistrasiSEPPertama regist;
+    private final DlgRegistrasiSEPMobileJKN mobilejkn;
+    
+    private int flag = -1;
 
-    public DlgCekSEPKontrol(java.awt.Frame parent, boolean modal) {
+    public DlgCekDataPasienBPJS(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        form = new DlgRegistrasiSEPPertama(parent, modal);
+        regist = new DlgRegistrasiSEPPertama(parent, modal);
+        mobilejkn = new DlgRegistrasiSEPMobileJKN(parent, modal);
     }
 
     /**
@@ -28,7 +46,7 @@ public class DlgCekSEPKontrol extends widget.Dialog {
         PanelWall = new usu.widget.glass.PanelGlass();
         panelTengah = new widget.Panel();
         NoRMPasien = new widget.TextField();
-        jLabel28 = new widget.Label();
+        labelInput = new widget.Label();
         BtnBatal = new widget.Button();
         BtnKonfirm = new widget.Button();
         panelNumpad1 = new widget.Numpad();
@@ -39,7 +57,6 @@ public class DlgCekSEPKontrol extends widget.Dialog {
         jLabel5 = new widget.Label();
         jLabel6 = new widget.Label();
 
-        setMinimumSize(new java.awt.Dimension(413, 115));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
@@ -69,9 +86,8 @@ public class DlgCekSEPKontrol extends widget.Dialog {
 
         getContentPane().add(panelAtas, java.awt.BorderLayout.PAGE_START);
 
-        panelTengah.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0), "::[ Pendaftaran SEP Kontrol ]::", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Inter", 0, 24), new java.awt.Color(0, 131, 62))); // NOI18N
-        panelTengah.setMinimumSize(new java.awt.Dimension(413, 115));
-        panelTengah.setPreferredSize(new java.awt.Dimension(413, 115));
+        panelTengah.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0), " ", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Inter", 0, 24), new java.awt.Color(0, 131, 62))); // NOI18N
+        panelTengah.setPreferredSize(new java.awt.Dimension(400, 70));
         panelTengah.setLayout(new java.awt.GridBagLayout());
 
         NoRMPasien.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 131, 62), 2, true));
@@ -91,10 +107,10 @@ public class DlgCekSEPKontrol extends widget.Dialog {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 10, 0);
         panelTengah.add(NoRMPasien, gridBagConstraints);
 
-        jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel28.setText("No. Surat Kontrol :");
-        jLabel28.setFont(new java.awt.Font("Inter Medium", 0, 36)); // NOI18N
-        jLabel28.setPreferredSize(new java.awt.Dimension(450, 75));
+        labelInput.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelInput.setText("No. RM / NIK / Peserta BPJS :");
+        labelInput.setFont(new java.awt.Font("Inter Medium", 0, 36)); // NOI18N
+        labelInput.setPreferredSize(new java.awt.Dimension(450, 75));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -102,7 +118,7 @@ public class DlgCekSEPKontrol extends widget.Dialog {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipady = 5;
         gridBagConstraints.weightx = 1.0;
-        panelTengah.add(jLabel28, gridBagConstraints);
+        panelTengah.add(labelInput, gridBagConstraints);
 
         BtnBatal.setBackground(new java.awt.Color(255, 255, 255));
         BtnBatal.setForeground(new java.awt.Color(255, 33, 32));
@@ -146,7 +162,6 @@ public class DlgCekSEPKontrol extends widget.Dialog {
         gridBagConstraints.weightx = 1.0;
         panelTengah.add(BtnKonfirm, gridBagConstraints);
 
-        panelNumpad1.setSkdpMode(true);
         panelNumpad1.setTextBox(NoRMPasien);
         panelNumpad1.setTextLimit(20L);
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -205,19 +220,19 @@ public class DlgCekSEPKontrol extends widget.Dialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void NoRMPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoRMPasienKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            cek();
-        }
-    }//GEN-LAST:event_NoRMPasienKeyPressed
+    private void BtnKonfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKonfirmActionPerformed
+        cek();
+    }//GEN-LAST:event_BtnKonfirmActionPerformed
 
     private void BtnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBatalActionPerformed
         dispose();
     }//GEN-LAST:event_BtnBatalActionPerformed
 
-    private void BtnKonfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKonfirmActionPerformed
-        cek();
-    }//GEN-LAST:event_BtnKonfirmActionPerformed
+    private void NoRMPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoRMPasienKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            cek();
+        }
+    }//GEN-LAST:event_NoRMPasienKeyPressed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         NoRMPasien.setText("");
@@ -231,42 +246,115 @@ public class DlgCekSEPKontrol extends widget.Dialog {
     private usu.widget.glass.PanelGlass PanelWall;
     private widget.Label jLabel1;
     private widget.Label jLabel2;
-    private widget.Label jLabel28;
     private widget.Label jLabel3;
     private widget.Label jLabel4;
     private widget.Label jLabel5;
     private widget.Label jLabel6;
+    private widget.Label labelInput;
     private widget.Panel panelAtas;
     private widget.Numpad panelNumpad1;
     private widget.Panel panelTengah;
     // End of variables declaration//GEN-END:variables
 
+    public void setFlag(int flag) {
+        if (flag <= 0) {
+            JOptionPane.showMessageDialog(null, "Flag tidak valid..!!");
+            return;
+        }
+        
+        this.flag = flag;
+        panelNumpad1.setSkdpMode(flag == SEP_KONTROL || flag == SEP_MOBILEJKN);
+        TitledBorder border = (TitledBorder) panelTengah.getBorder();
+        
+        switch (flag) {
+            case SEP_KUNJUNGAN_PERTAMA:
+                border.setTitle(TITLE_SEP_KUNJUNGAN_PERTAMA);
+                labelInput.setText(INPUT_RM);
+                break;
+            case SEP_KONTROL:
+                border.setTitle(TITLE_SEP_KONTROL);
+                labelInput.setText(INPUT_KONTROL);
+                break;
+            case SEP_KONTROL_BEDA_POLI:
+                border.setTitle(TITLE_SEP_KONTROL_BEDA_POLI);
+                labelInput.setText(INPUT_RM);
+                break;
+            case SEP_MOBILEJKN:
+                border.setTitle(TITLE_SEP_MOBILEJKN);
+                labelInput.setText(INPUT_MOBILEJKN);
+                break;
+            default:
+                border.setTitle(TITLE_SEP_KUNJUNGAN_PERTAMA);
+                labelInput.setText(INPUT_RM);
+                break;
+        }
+        repaint();
+    }
+    
     private void cek() {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         if (NoRMPasien.getText().isBlank()) {
             JOptionPane.showMessageDialog(null, "Isian masih kosong..!!");
-            formWindowActivated(null);
         } else {
-            String noSKDP = Sequel.cariIsiSmc(
-                "select bridging_surat_kontrol_bpjs.no_surat from bridging_surat_kontrol_bpjs where " +
-                "bridging_surat_kontrol_bpjs.no_surat = ?", NoRMPasien.getText().trim()
-            );
-            if (noSKDP.isBlank()) {
-                JOptionPane.showMessageDialog(null, "Data Jadwal Rencana Kontrol tidak ditemukan..!!");
-            } else {
-                if (Sequel.cariExistsSmc("select * from referensi_mobilejkn_bpjs where nomorreferensi = ? and tanggalperiksa = current_date() and status in ('Belum', 'Checkin')", noSKDP)) {
-                    JOptionPane.showMessageDialog(null, "Pasien telah mendaftar online menggunakan MobileJKN.\nSilahkan cekin di menu \"Cek In MobileJKN\"..!!");
-                } else if (Sequel.cariIntegerSmc("select datediff((select tgl_rencana from bridging_surat_kontrol_bpjs where no_surat = ?), current_date())", noSKDP) > 0) {
-                    JOptionPane.showMessageDialog(null, "Jadwal kontrol pasien tidak boleh dimajukan..!!");
+            if (flag == SEP_KONTROL) {
+                String noSKDP = Sequel.cariIsiSmc("select bridging_surat_kontrol_bpjs.no_surat from bridging_surat_kontrol_bpjs where bridging_surat_kontrol_bpjs.no_surat = ?", NoRMPasien.getText().trim());
+                if (noSKDP.isBlank()) {
+                    JOptionPane.showMessageDialog(null, "Data rujukan tidak ditemukan..!!");
                 } else {
-                    form.tampilKontrol(noSKDP);
-                    form.setSize(getContentPane().getSize());
-                    form.setLocationRelativeTo(getContentPane());
-                    form.setVisible(true);
-                    this.dispose();
+                    if (Sequel.cariExistsSmc("select * from referensi_mobilejkn_bpjs where nomorreferensi = ? and tanggalperiksa = current_date() and status in ('Belum', 'Checkin')", noSKDP)) {
+                        JOptionPane.showMessageDialog(null, "Pasien telah mengambil antrian menggunakan Mobile JKN.\nSilahkan cekin melalui menu \"Cek In MobileJKN\"..!!");
+                    } else if (Sequel.cariIntegerSmc("select datediff((select tgl_rencana from bridging_surat_kontrol_bpjs where no_surat = ?), current_date())", noSKDP) > 0) {
+                        JOptionPane.showMessageDialog(null, "Jadwal kontrol pasien tidak boleh dimajukan..!!");
+                    } else {
+                        regist.setSize(getContentPane().getSize());
+                        regist.setLocationRelativeTo(getContentPane());
+                        regist.setVisible(true);
+                        this.dispose();
+                    }
+                }
+            } else if (flag == SEP_MOBILEJKN) {
+                String noKartu = Sequel.cariIsiSmc("select pasien.no_peserta from pasien where (pasien.no_ktp = ? or pasien.no_peserta = ? or pasien.no_rkm_medis = ?)", NoRMPasien.getText().trim(), NoRMPasien.getText().trim(), NoRMPasien.getText().trim());
+                if (noKartu.isBlank()) {
+                    noKartu = Sequel.cariIsiSmc("select bridging_sep.no_kartu from bridging_surat_kontrol_bpjs join bridging_sep on bridging_surat_kontrol_bpjs.no_sep = bridging_sep.no_sep where bridging_surat_kontrol_bpjs.no_surat = ?", NoRMPasien.getText().trim());
+                }
+                if (noKartu.isBlank()) {
+                    JOptionPane.showMessageDialog(null, "Data pasien tidak ditemukan..!!");
+                } else {
+                    if (Sequel.cariExistsSmc("select * from referensi_mobilejkn_bpjs where nomorkartu = ? and tanggalperiksa = current_date() and status in ('Belum', 'Checkin')", noKartu)) {
+                        mobilejkn.tampil(noKartu);
+                        mobilejkn.setSize(getContentPane().getSize());
+                        mobilejkn.setLocationRelativeTo(getContentPane());
+                        mobilejkn.setVisible(true);
+                        this.dispose();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Data booking MobileJKN tidak ditemukan..!!");
+                    }
+                }
+            } else {
+                String noKartu = Sequel.cariIsiSmc("select pasien.no_peserta from pasien where (pasien.no_ktp = ? or pasien.no_peserta = ? or pasien.no_rkm_medis = ?)", NoRMPasien.getText().trim(), NoRMPasien.getText().trim(), NoRMPasien.getText().trim());
+                if (noKartu.isBlank()) {
+                    JOptionPane.showMessageDialog(null, "Data pasien tidak ditemukan..!!");
+                } else {
+                    if (Sequel.cariExistsSmc("select * from referensi_mobilejkn_bpjs where nomorkartu = ? and tanggalperiksa = current_date() and status in ('Belum', 'Checkin')", noKartu)) {
+                        JOptionPane.showMessageDialog(null, "Pasien telah mengambil antrian menggunakan Mobile JKN.\nSilahkan cekin melalui menu \"Cek In MobileJKN\"..!!");
+                    } else {
+                        switch (flag) {
+                            case SEP_KUNJUNGAN_PERTAMA:
+                                regist.tampilKunjunganPertama(noKartu);
+                                break;
+                            case SEP_KONTROL_BEDA_POLI:
+                                regist.tampilKunjunganBedaPoli(noKartu);
+                                break;
+                        }
+                        regist.setSize(getContentPane().getSize());
+                        regist.setLocationRelativeTo(getContentPane());
+                        regist.setVisible(true);
+                        this.dispose();
+                    }
                 }
             }
         }
+        this.flag = -1;
         formWindowActivated(null);
         this.setCursor(Cursor.getDefaultCursor());
     }
