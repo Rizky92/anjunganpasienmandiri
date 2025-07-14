@@ -3583,6 +3583,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
                 TBiaya.getText(), "Belum", statuspasien, "Ralan", Kdpnj.getText(),
                 umur, sttsumur, "Belum Bayar", status
             );
+
             System.out.println(sukses ? "Sukses!" : "Gagal!");
         } while (next++ < retries && !sukses);
 
