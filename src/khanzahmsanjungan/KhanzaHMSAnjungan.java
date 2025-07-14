@@ -64,8 +64,7 @@ public class KhanzaHMSAnjungan {
             System.err.println("Failed to initialize LaF");
         }
         SwingUtilities.invokeLater(() -> {
-            HalamanUtama utama = HalamanUtama.getInstance();
-            utama.setVisible(true);
+            new HalamanUtama().setVisible(true);
 
             String printerBarcode = null, printerRegistrasi = null, printerAntrian = null;
 

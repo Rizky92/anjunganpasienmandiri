@@ -14,18 +14,18 @@ import javax.swing.JOptionPane;
  */
 public class HalamanUtama extends javax.swing.JFrame {
 
-    private static HalamanUtama myInstance;
     private final ArrayList<String> TOMBOLDIMATIKAN = new ArrayList(Arrays.asList(koneksiDB.TOMBOLDIMATIKAN()));
-    private DlgAmbilAntrian antrian = null;
-    private DlgCekinBooking booking = null;
-    private DlgCekRegistrasiMandiri daftarpoli = null;
-    private DlgCekSEPKunjunganPertama seppertama = null;
-    private DlgCekSEPKontrol sepkontrol = null;
-    private DlgCekSEPKontrolBedaPoli sepbedapoli = null;
-    private DlgCekinMobileJKN mobilejkn = null;
+    private final DlgCekDataPasien umum;
+    private final DlgCekDataPasienBPJS bpjs;
+    private final DlgAmbilAntrian antrian;
 
     public HalamanUtama() {
         initComponents();
+        
+        umum = new DlgCekDataPasien(this, false);
+        bpjs = new DlgCekDataPasienBPJS(this, false);
+        antrian = new DlgAmbilAntrian(this, false);
+        
         TOMBOLDIMATIKAN.forEach(tombol -> {
             switch (tombol) {
                 case "antrian":
@@ -216,64 +216,49 @@ public class HalamanUtama extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSEPKontrolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSEPKontrolActionPerformed
-        if (sepkontrol == null) {
-            sepkontrol = new DlgCekSEPKontrol(this, false);
-        }
-        sepkontrol.setSize(getContentPane().getSize());
-        sepkontrol.setLocationRelativeTo(getContentPane());
-        sepkontrol.setVisible(true);
+        bpjs.setFlag(DlgCekDataPasienBPJS.SEP_KONTROL);
+        bpjs.setSize(getContentPane().getSize());
+        bpjs.setLocationRelativeTo(getContentPane());
+        bpjs.setVisible(true);
     }//GEN-LAST:event_btnSEPKontrolActionPerformed
 
     private void btnDaftarpoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDaftarpoliActionPerformed
-        if (daftarpoli == null) {
-            daftarpoli = new DlgCekRegistrasiMandiri(this, false);
-        }
-        daftarpoli.setSize(getContentPane().getSize());
-        daftarpoli.setLocationRelativeTo(getContentPane());
-        daftarpoli.setVisible(true);
+        umum.setFlag(DlgCekDataPasien.REGIST_MANDIRI);
+        umum.setSize(getContentPane().getSize());
+        umum.setLocationRelativeTo(getContentPane());
+        umum.setVisible(true);
     }//GEN-LAST:event_btnDaftarpoliActionPerformed
 
     private void btnBookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookingActionPerformed
-        if (booking == null) {
-            booking = new DlgCekinBooking(this, false);
-        }
-        booking.setSize(getContentPane().getSize());
-        booking.setLocationRelativeTo(getContentPane());
-        booking.setVisible(true);
+        umum.setFlag(DlgCekDataPasien.CEKIN_BOOKING);
+        umum.setSize(getContentPane().getSize());
+        umum.setLocationRelativeTo(getContentPane());
+        umum.setVisible(true);
     }//GEN-LAST:event_btnBookingActionPerformed
 
     private void btnSEPPertamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSEPPertamaActionPerformed
-        if (seppertama == null) {
-            seppertama = new DlgCekSEPKunjunganPertama(this, false);
-        }
-        seppertama.setSize(getContentPane().getSize());
-        seppertama.setLocationRelativeTo(getContentPane());
-        seppertama.setVisible(true);
+        bpjs.setFlag(DlgCekDataPasienBPJS.SEP_KUNJUNGAN_PERTAMA);
+        bpjs.setSize(getContentPane().getSize());
+        bpjs.setLocationRelativeTo(getContentPane());
+        bpjs.setVisible(true);
     }//GEN-LAST:event_btnSEPPertamaActionPerformed
 
     private void btnMobilejknActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMobilejknActionPerformed
-        if (mobilejkn == null) {
-            mobilejkn = new DlgCekinMobileJKN(this, false);
-        }
-        mobilejkn.setSize(getContentPane().getSize());
-        mobilejkn.setLocationRelativeTo(getContentPane());
-        mobilejkn.setVisible(true);
+        bpjs.setFlag(DlgCekDataPasienBPJS.SEP_MOBILEJKN);
+        bpjs.setSize(getContentPane().getSize());
+        bpjs.setLocationRelativeTo(getContentPane());
+        bpjs.setVisible(true);
     }//GEN-LAST:event_btnMobilejknActionPerformed
 
     private void btnSEPKontrolBedaPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSEPKontrolBedaPoliActionPerformed
-        if (sepbedapoli == null) {
-            sepbedapoli = new DlgCekSEPKontrolBedaPoli(this, false);
-        }
-        sepbedapoli.setSize(getContentPane().getSize());
-        sepbedapoli.setLocationRelativeTo(getContentPane());
-        sepbedapoli.setVisible(true);
+        bpjs.setFlag(DlgCekDataPasienBPJS.SEP_KONTROL_BEDA_POLI);
+        bpjs.setSize(getContentPane().getSize());
+        bpjs.setLocationRelativeTo(getContentPane());
+        bpjs.setVisible(true);
     }//GEN-LAST:event_btnSEPKontrolBedaPoliActionPerformed
 
     private void btnAntrianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAntrianActionPerformed
         if (koneksiDB.ANTRIANPREFIXHURUF()) {
-            if (antrian == null) {
-                antrian = new DlgAmbilAntrian(this, false);
-            }
             antrian.setSize(getContentPane().getSize());
             antrian.setLocationRelativeTo(getContentPane());
             antrian.setVisible(true);
@@ -289,24 +274,12 @@ public class HalamanUtama extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAntrianActionPerformed
 
     private void btnSatusehatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSatusehatActionPerformed
-        JOptionPane.showMessageDialog(rootPane, "Mohon maaf, fitur masih dalam tahap pengembangan");
+        JOptionPane.showMessageDialog(null, "Mohon maaf, fitur masih dalam tahap pengembangan");
         // this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         // String nikktppetugas = Sequel.cariIsi("select no_ktp from pegawai where nik='0132' ");
         // Valid.panggilUrl("kyc/index.php?&nikagent=" + nikktppetugas + "");
         // this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnSatusehatActionPerformed
-
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(() -> new HalamanUtama().setVisible(true));
-    }
-
-    public static HalamanUtama getInstance() {
-        if (myInstance == null) {
-            myInstance = new HalamanUtama();
-        }
-
-        return myInstance;
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.MenuButton btnAntrian;

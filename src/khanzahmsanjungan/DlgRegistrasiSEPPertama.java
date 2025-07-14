@@ -989,13 +989,13 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         panel2.setLayout(new java.awt.BorderLayout());
 
         ChkInput.setForeground(new java.awt.Color(150, 155, 159));
-        ChkInput.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
+        ChkInput.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/145.png"))); // NOI18N
         ChkInput.setMnemonic('I');
         ChkInput.setToolTipText("Alt+I");
         ChkInput.setPreferredSize(new java.awt.Dimension(192, 30));
-        ChkInput.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
-        ChkInput.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/145.png"))); // NOI18N
-        ChkInput.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/145.png"))); // NOI18N
+        ChkInput.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/145.png"))); // NOI18N
+        ChkInput.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
+        ChkInput.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
         ChkInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ChkInputActionPerformed(evt);
@@ -2427,6 +2427,8 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
     }
 
     public void tampilKunjunganPertama(String noKartu) {
+        ChkInput.setSelected(false);
+        isForm();
         KdPoliTerapi.setText("");
         NmPoliTerapi.setText("");
         KodeDokterTerapi.setText("");
@@ -2599,6 +2601,8 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
     }
 
     public void tampilKunjunganBedaPoli(String noKartu) {
+        ChkInput.setSelected(false);
+        isForm();
         KdPoliTerapi.setText("");
         NmPoliTerapi.setText("");
         KodeDokterTerapi.setText("");
@@ -2775,6 +2779,8 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
     }
 
     public void tampilKontrol(String noSKDP) {
+        ChkInput.setSelected(false);
+        isForm();
         KdPoliTerapi.setText("");
         NmPoliTerapi.setText("");
         KodeDokterTerapi.setText("");
