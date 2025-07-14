@@ -18,8 +18,7 @@ public class PaneToggle extends FlatCheckBox {
         setRolloverIcon(new ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
         setRolloverSelectedIcon(new ImageIcon(getClass().getResource("/picture/145.png"))); // NOI18N
         setSelectedIcon(new ImageIcon(getClass().getResource("/picture/145.png"))); // NOI18N
-        
-        
+
         setFont(new Font("Inter", Font.PLAIN, 10));
         setBackground(new Color(240, 249, 255));
         setForeground(new Color(180, 185, 190));

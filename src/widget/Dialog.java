@@ -9,12 +9,12 @@ public class Dialog extends JDialog {
         super();
         setup();
     }
-    
+
     public Dialog(Frame parent, boolean modal) {
         super(parent, modal);
         setup();
     }
-    
+
     private void setup() {
         setBackground(new Color(240, 249, 255));
         setForeground(new Color(0, 131, 62));

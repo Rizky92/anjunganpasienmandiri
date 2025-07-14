@@ -96,7 +96,7 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
         super(parent, modal);
         initComponents();
         JumlahBarcode.setDocument(new batasInput((byte) 3).getOnlyAngka(JumlahBarcode));
-        
+
         dokter = new BPJSCekReferensiDokterDPJP(parent, modal);
         dokter.addWindowListener(new WindowAdapter() {
             @Override

@@ -153,7 +153,7 @@ public final class DlgCariDokter extends widget.Dialog {
             System.out.println("Notif : " + e);
         }
     }
-    
+
     public boolean hasSelectedRow() {
         return tbDokter.getSelectedRow() >= 0;
     }

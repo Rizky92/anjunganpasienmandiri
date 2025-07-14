@@ -83,7 +83,7 @@ public class koneksiDB {
         }
         return connection;
     }
-    
+
     private static String raw(String key, String defaultValue) {
         try (FileInputStream fs = new FileInputStream("setting/database.xml")) {
             prop.loadFromXML(fs);
@@ -92,11 +92,11 @@ public class koneksiDB {
             return "";
         }
     }
-    
+
     private static String raw(String key) {
         return raw(key, "");
     }
-    
+
     private static String rawe(String key, String defaultValue) {
         defaultValue = EnkripsiAES.encrypt(defaultValue);
         try (FileInputStream fs = new FileInputStream("setting/database.xml")) {
@@ -106,11 +106,11 @@ public class koneksiDB {
             return "";
         }
     }
-    
+
     private static String rawe(String key) {
         return rawe(key, "");
     }
-    
+
     private static String rawAPM(String key, String defaultValue) {
         try (FileInputStream fs = new FileInputStream("setting/apm.xml")) {
             prop.loadFromXML(fs);
@@ -119,11 +119,11 @@ public class koneksiDB {
             return "";
         }
     }
-    
+
     private static String rawAPM(String key) {
         return rawAPM(key, "");
     }
-    
+
     private static String raweAPM(String key, String defaultValue) {
         defaultValue = EnkripsiAES.encrypt(defaultValue);
         try (FileInputStream fs = new FileInputStream("setting/apm.xml")) {
@@ -133,7 +133,7 @@ public class koneksiDB {
             return "";
         }
     }
-    
+
     private static String raweAPM(String key) {
         return raweAPM(key, "");
     }
@@ -192,7 +192,7 @@ public class koneksiDB {
     public static boolean BOOKINGLANGSUNGREGISTRASI() {
         return raw("BOOKINGLANGSUNGREGISTRASI", "no").equalsIgnoreCase("yes");
     }
-    
+
     public static String HOST() {
         return rawe("HOST");
     }
@@ -240,11 +240,11 @@ public class koneksiDB {
     public static String USERKEYAPIMOBILEJKN() {
         return rawe("USERKEYAPIMOBILEJKN");
     }
-    
+
     public static String CONSIDAPIMOBILEJKN() {
         return rawe("CONSIDAPIMOBILEJKN");
     }
-    
+
     public static boolean ADDANTRIANAPIMOBILEJKN() {
         return raw("ADDANTRIANAPIMOBILEJKN", "no").equalsIgnoreCase("yes");
     }

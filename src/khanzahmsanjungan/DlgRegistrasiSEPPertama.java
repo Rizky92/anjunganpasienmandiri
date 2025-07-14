@@ -3591,11 +3591,11 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
     private boolean registerPasien() {
         int next = 0, retries = 5;
         boolean sukses = false;
-        
+
         do {
             isNumber();
             System.out.print("Mencoba mendaftarkan pasien dengan no. rawat [" + TNoRw.getText() + "]: ");
-            
+
             sukses = Sequel.menyimpantfSmc("reg_periksa", null,
                 NoReg.getText(), TNoRw.getText(), Valid.getTglSmc(TanggalSEP),
                 Sequel.cariIsi("select current_time()"), kodedokterreg, TNoRM.getText(),
@@ -3603,10 +3603,10 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
                 TBiaya.getText(), "Belum", statuspasien, "Ralan", Kdpnj.getText(),
                 umur, sttsumur, "Belum Bayar", status
             );
-            
+
             System.out.println(sukses ? "Sukses!" : "Gagal!");
         } while (next++ < retries && !sukses);
-        
+
         if (sukses) {
             updateUmurPasien();
         }
@@ -3617,7 +3617,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
     private boolean simpanRujukan() {
         int next = 0, retries = 5;
         boolean sukses = false;
-        
+
         do {
             NoRujukMasuk.setText(
                 Sequel.cariIsiSmc(
@@ -3626,12 +3626,12 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
                 )
             );
             System.out.print("Mencoba memproses rujukan masuk pasien dengan no. surat [" + NoRujukMasuk.getText() + "]: ");
-            
+
             sukses = Sequel.menyimpantfSmc("rujuk_masuk", null,
                 TNoRw.getText(), NmPpkRujukan.getText(), "-", NoRujukan.getText(),
                 "0", NmPpkRujukan.getText(), KdPenyakit.getText(), "-", "-", NoRujukMasuk.getText()
             );
-            
+
             System.out.println(sukses ? "Sukses!" : "Gagal!");
         } while (next++ < retries && !sukses);
 

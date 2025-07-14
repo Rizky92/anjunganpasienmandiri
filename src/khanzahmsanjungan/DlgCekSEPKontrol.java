@@ -6,7 +6,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 public class DlgCekSEPKontrol extends widget.Dialog {
-    
+
     private final sekuel Sequel = new sekuel();
     private final DlgRegistrasiSEPPertama form;
 

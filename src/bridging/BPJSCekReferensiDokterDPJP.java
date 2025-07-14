@@ -304,7 +304,7 @@ public final class BPJSCekReferensiDokterDPJP extends widget.Dialog {
     private widget.Panel panelBawah;
     private widget.Table tbDokter;
     // End of variables declaration//GEN-END:variables
-    
+
     public void tampil(String poli) {
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 
