@@ -2983,25 +2983,27 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         String nomorreferensi = NoRujukan.getText();
         String responsecode = "200";
         if ((!NoRujukan.getText().equals("")) || (!NoSKDP.getText().equals(""))) {
-            if (TujuanKunjungan.getSelectedItem().toString().equals("0. Normal") && FlagProsedur.getSelectedItem().toString().equals("") && Penunjang.getSelectedItem().toString().equals("") && AsesmenPoli.getSelectedItem().toString().equals("")) {
+            if (TujuanKunjungan.getSelectedItem().toString().trim().equals("0. Normal") && FlagProsedur.getSelectedItem().toString().trim().equals("") && Penunjang.getSelectedItem().toString().trim().equals("") && AsesmenPoli.getSelectedItem().toString().trim().equals("")) {
                 if (AsalRujukan.getSelectedIndex() == 0) {
                     jeniskunjungan = "1";
                     nomorreferensi = NoRujukan.getText();
                 } else {
-                    jeniskunjungan = "4";
-                    nomorreferensi = NoRujukan.getText();
+                    if (!NoSKDP.getText().equals("")) {
+                        jeniskunjungan = "3";
+                        nomorreferensi = NoSKDP.getText();
+                    } else {
+                        jeniskunjungan = "4";
+                        nomorreferensi = NoRujukan.getText();
+                    }
                 }
-            } else if (TujuanKunjungan.getSelectedItem().toString().equals("2. Konsul Dokter") && FlagProsedur.getSelectedItem().toString().equals("") && Penunjang.getSelectedItem().toString().equals("") && AsesmenPoli.getSelectedItem().toString().equals("5. Tujuan Kontrol")) {
+            } else if (TujuanKunjungan.getSelectedItem().toString().trim().equals("2. Konsul Dokter") && FlagProsedur.getSelectedItem().toString().trim().equals("") && Penunjang.getSelectedItem().toString().trim().equals("") && AsesmenPoli.getSelectedItem().toString().trim().equals("5. Tujuan Kontrol")) {
                 jeniskunjungan = "3";
                 nomorreferensi = NoSKDP.getText();
-            } else if (TujuanKunjungan.getSelectedItem().toString().equals("0. Normal") && FlagProsedur.getSelectedItem().toString().equals("") && Penunjang.getSelectedItem().toString().equals("") && AsesmenPoli.getSelectedItem().toString().equals("4. Atas Instruksi RS")) {
-                jeniskunjungan = "2";
-                nomorreferensi = NoRujukan.getText();
-            } else if (TujuanKunjungan.getSelectedItem().toString().equals("0. Normal") && FlagProsedur.getSelectedItem().toString().equals("") && Penunjang.getSelectedItem().toString().equals("") && AsesmenPoli.getSelectedItem().toString().equals("1. Poli spesialis tidak tersedia pada hari sebelumnya")) {
+            } else if (TujuanKunjungan.getSelectedItem().toString().trim().equals("0. Normal") && FlagProsedur.getSelectedItem().toString().trim().equals("") && Penunjang.getSelectedItem().toString().trim().equals("") && AsesmenPoli.getSelectedItem().toString().trim().equals("4. Atas Instruksi RS")) {
                 jeniskunjungan = "2";
                 nomorreferensi = NoRujukan.getText();
             } else {
-                if (TujuanKunjungan.getSelectedItem().toString().equals("2. Konsul Dokter") && AsesmenPoli.getSelectedItem().toString().equals("5. Tujuan Kontrol")) {
+                if (TujuanKunjungan.getSelectedItem().toString().trim().equals("2. Konsul Dokter") && AsesmenPoli.getSelectedItem().toString().trim().equals("5. Tujuan Kontrol")) {
                     jeniskunjungan = "3";
                     nomorreferensi = NoSKDP.getText();
                 } else {
