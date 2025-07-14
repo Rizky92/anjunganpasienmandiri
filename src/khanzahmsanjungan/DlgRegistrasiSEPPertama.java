@@ -1233,7 +1233,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         form.add(jLabel14);
         jLabel14.setBounds(625, 220, 100, 30);
 
-        Catatan.setEditable(false);
         Catatan.setText("Anjungan Pasien Mandiri RS Samarinda Medika Citra");
         Catatan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {

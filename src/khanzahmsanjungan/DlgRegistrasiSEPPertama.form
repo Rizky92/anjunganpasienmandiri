@@ -1712,7 +1712,6 @@
                 </Component>
                 <Component class="widget.TextField" name="Catatan">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="text" type="java.lang.String" value="Anjungan Pasien Mandiri RS Samarinda Medika Citra"/>
                   </Properties>
                   <Events>
