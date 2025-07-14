@@ -147,7 +147,7 @@ public final class DlgCariPoli extends widget.Dialog {
             System.out.println("Notif : " + e);
         }
     }
-    
+
     public boolean hasSelectedRow() {
         return tbPoli.getSelectedRow() >= 0;
     }

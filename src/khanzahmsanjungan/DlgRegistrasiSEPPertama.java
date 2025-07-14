@@ -25,9 +25,6 @@ import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -37,7 +34,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 import javax.swing.JOptionPane;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -52,12 +48,10 @@ import org.springframework.web.client.HttpServerErrorException;
  */
 public class DlgRegistrasiSEPPertama extends widget.Dialog {
 
-    private Connection koneksi = koneksiDB.condb();
-    private sekuel Sequel = new sekuel();
-    private validasi Valid = new validasi();
-    private PreparedStatement ps, ps3;
-    private ResultSet rs, rs3;
-    private ApiBPJS api = new ApiBPJS();
+    private final Connection koneksi = koneksiDB.condb();
+    private final sekuel Sequel = new sekuel();
+    private final validasi Valid = new validasi();
+    private final ApiBPJS api = new ApiBPJS();
     private final BPJSCekReferensiDokterDPJP dokter;
     private final BPJSCekReferensiPenyakit penyakit;
     private final DlgCariPoliBPJS poli;
@@ -83,9 +77,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         kdkab = "",
         kdprop = "",
         nosisrute = "",
-        BASENOREG = "",
-        URUTNOREG = "",
-        URLAPIBPJS = "",
         klg = "SAUDARA",
         statuspasien = "",
         pengurutan = "",
@@ -124,25 +115,12 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         utc = "",
         jeniskunjungan = "",
         nomorreg = "",
-        URLAPLIKASIFINGERPRINTBPJS = koneksiDB.URLAPLIKASIFINGERPRINTBPJS(),
-        USERFINGERPRINTBPJS = koneksiDB.USERFINGERPRINTBPJS(),
-        PASSFINGERPRINTBPJS = koneksiDB.PASSFINGERPRINTBPJS(),
-        PRINTER_REGISTRASI = koneksiDB.PRINTER_REGISTRASI(),
-        PRINTER_BARCODE = koneksiDB.PRINTER_BARCODE(),
-        tampilkantni = Sequel.cariIsi("select tampilkan_tni_polri from set_tni_polri"),
         aksi = "",
         nohppasien = "";
     private int kuota = 0;
-    private Properties prop = new Properties();
-    private File file;
-    private DlgCariPoli poli2 = new DlgCariPoli(null, true);
-
-    private FileWriter fileWriter;
-    private String iyem;
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root;
     private JsonNode response;
-    private FileReader myObj;
     private Calendar cal = Calendar.getInstance();
     private boolean statusfinger = false, aplikasiAktif = false, fristaAktif = false;
     private HttpHeaders headers;
@@ -152,37 +130,16 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
     private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     private Date parsedDate;
 
-    /**
-     * Creates new form DlgAdmin
-     *
-     * @param parent
-     * @param modal
-     */
     public DlgRegistrasiSEPPertama(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         JumlahBarcode.setDocument(new batasInput((byte) 3).getOnlyAngka(JumlahBarcode));
 
-        try {
-            ps = koneksi.prepareStatement(
-                "select nm_pasien,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) asal," +
-                "namakeluarga,keluarga,pasien.kd_pj,penjab.png_jawab,if(tgl_daftar=?,'Baru','Lama') as daftar, " +
-                "TIMESTAMPDIFF(YEAR, tgl_lahir, CURDATE()) as tahun, " +
-                "(TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) div 12) * 12)) as bulan, " +
-                "TIMESTAMPDIFF(DAY, DATE_ADD(DATE_ADD(tgl_lahir,INTERVAL TIMESTAMPDIFF(YEAR, tgl_lahir, CURDATE()) YEAR), INTERVAL TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) div 12) * 12) MONTH), CURDATE()) as hari from pasien " +
-                "inner join kelurahan inner join kecamatan inner join kabupaten inner join penjab " +
-                "on pasien.kd_kel=kelurahan.kd_kel and pasien.kd_pj=penjab.kd_pj " +
-                "and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab " +
-                "where pasien.no_rkm_medis=?");
-        } catch (Exception ex) {
-            System.out.println(ex);
-        }
-
-        try {
-            ps = koneksi.prepareStatement("select nama_instansi, alamat_instansi, kabupaten, propinsi, aktifkan, wallpaper,kontak,email,logo from setting");
-            rs = ps.executeQuery();
-            while (rs.next()) {
+        try (ResultSet rs = koneksi.createStatement().executeQuery("select kode_ppk, nama_instansi, alamat_instansi, kabupaten, propinsi, kontak, email from setting")) {
+            if (rs.next()) {
+                KdPPK.setText(rs.getString("kode_ppk"));
                 nama_instansi = rs.getString("nama_instansi");
+                NmPPK.setText(nama_instansi);
                 alamat_instansi = rs.getString("alamat_instansi");
                 kabupaten = rs.getString("kabupaten");
                 propinsi = rs.getString("propinsi");
@@ -291,15 +248,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
             }
         });
 
-        URUTNOREG = koneksiDB.URUTNOREG();
-        BASENOREG = koneksiDB.BASENOREG();
-        URLAPIBPJS = koneksiDB.URLAPIBPJS();
-        USERFINGERPRINTBPJS = koneksiDB.USERFINGERPRINTBPJS();
-        PASSFINGERPRINTBPJS = koneksiDB.PASSFINGERPRINTBPJS();
-        URLAPLIKASIFINGERPRINTBPJS = koneksiDB.URLAPLIKASIFINGERPRINTBPJS();
-
-        KdPPK.setText(Sequel.cariIsi("select setting.kode_ppk from setting"));
-        NmPPK.setText(Sequel.cariIsi("select setting.nama_instansi from setting"));
         JumlahBarcode.setText("3");
         isForm();
         panelNumpad1.setVisible(false);
@@ -312,22 +260,16 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        LblKdPoli = new widget.Label();
-        LblKdDokter = new widget.Label();
         NoReg = new widget.TextField();
-        NoRawat = new widget.TextField();
         Biaya = new widget.TextField();
         TAlmt = new widget.Label();
         TPngJwb = new widget.Label();
         THbngn = new widget.Label();
-        NoTelpPasien = new widget.Label();
-        kdpoli = new widget.TextField();
         TBiaya = new widget.TextField();
         Kdpnj = new widget.TextField();
         nmpnj = new widget.TextField();
         TNoRw = new widget.TextField();
         NoRujukMasuk = new widget.TextField();
-        Tanggal = new widget.Tanggal();
         WindowAksi = new widget.Dialog();
         judulAksi = new widget.Label();
         panelTengahAksi = new widget.Panel();
@@ -448,16 +390,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         btnSimpan = new widget.Button();
         btnKeluar = new widget.Button();
 
-        LblKdPoli.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LblKdPoli.setText("Norm");
-        LblKdPoli.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        LblKdPoli.setPreferredSize(new java.awt.Dimension(20, 14));
-
-        LblKdDokter.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        LblKdDokter.setText("Norm");
-        LblKdDokter.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        LblKdDokter.setPreferredSize(new java.awt.Dimension(20, 14));
-
         NoReg.setPreferredSize(new java.awt.Dimension(320, 30));
         NoReg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -467,18 +399,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         NoReg.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 NoRegKeyPressed(evt);
-            }
-        });
-
-        NoRawat.setPreferredSize(new java.awt.Dimension(320, 30));
-        NoRawat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NoRawatActionPerformed(evt);
-            }
-        });
-        NoRawat.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                NoRawatKeyPressed(evt);
             }
         });
 
@@ -508,18 +428,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         THbngn.setText("Norm");
         THbngn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         THbngn.setPreferredSize(new java.awt.Dimension(20, 14));
-
-        NoTelpPasien.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        NoTelpPasien.setText("Norm");
-        NoTelpPasien.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        NoTelpPasien.setPreferredSize(new java.awt.Dimension(20, 14));
-
-        kdpoli.setHighlighter(null);
-        kdpoli.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                kdpoliKeyPressed(evt);
-            }
-        });
 
         TBiaya.setText("0");
         TBiaya.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -553,17 +461,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         NoRujukMasuk.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 NoRujukMasukKeyPressed(evt);
-            }
-        });
-
-        Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-07-2025" }));
-        Tanggal.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
-        Tanggal.setOpaque(false);
-        Tanggal.setPreferredSize(new java.awt.Dimension(95, 23));
-        Tanggal.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TanggalKeyPressed(evt);
             }
         });
 
@@ -691,12 +588,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         btnDokterTerapi.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 btnDokterTerapiKeyPressed(evt);
-            }
-        });
-
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
             }
         });
 
@@ -1457,10 +1348,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-
-    }//GEN-LAST:event_formWindowOpened
-
     private void NoRegActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoRegActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_NoRegActionPerformed
@@ -1468,14 +1355,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
     private void NoRegKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoRegKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_NoRegKeyPressed
-
-    private void NoRawatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoRawatActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NoRawatActionPerformed
-
-    private void NoRawatKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoRawatKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NoRawatKeyPressed
 
     private void BiayaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BiayaActionPerformed
         // TODO add your handling code here:
@@ -1509,7 +1388,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         } else if (NoKartu.getText().trim().equals("")) {
             Valid.textKosong(NoKartu, "Nomor Kartu");
         } else if (Sequel.cariIntegerSmc("select count(*) from pasien where no_rkm_medis = ?", TNoRM.getText()) < 1) {
-            JOptionPane.showMessageDialog(rootPane, "Maaf, no RM tidak sesuai");
+            JOptionPane.showMessageDialog(null, "Maaf, no RM tidak sesuai");
         } else if (KdPpkRujukan.getText().trim().equals("") || NmPpkRujukan.getText().trim().equals("")) {
             Valid.textKosong(KdPpkRujukan, "PPK Rujukan");
         } else if (KdPPK.getText().trim().equals("") || NmPPK.getText().trim().equals("")) {
@@ -1545,11 +1424,11 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
 
             // cek apabila pasien sudah pernah diregistrasikan sebelumnya
             if (Sequel.cariIntegerSmc("select count(*) from reg_periksa where no_rkm_medis = ? and tgl_registrasi = ? and kd_poli = ? and kd_dokter = ? and kd_pj = ?", TNoRM.getText(), Valid.getTglSmc(TanggalSEP), kodepolireg, kodedokterreg, Kdpnj.getText()) > 0) {
-                JOptionPane.showMessageDialog(rootPane, "Maaf, Telah terdaftar pemeriksaan hari ini. Mohon konfirmasi ke Bagian Admisi");
+                JOptionPane.showMessageDialog(null, "Maaf, Telah terdaftar pemeriksaan hari ini. Mohon konfirmasi ke Bagian Admisi");
                 emptTeks();
             } else {
                 if (!registerPasien()) {
-                    JOptionPane.showMessageDialog(rootPane, "Terjadi kesalahan pada saat pendaftaran pasien!");
+                    JOptionPane.showMessageDialog(null, "Terjadi kesalahan pada saat pendaftaran pasien!");
                     this.setCursor(Cursor.getDefaultCursor());
 
                     return;
@@ -1560,7 +1439,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
                 } else if (JenisPelayanan.getSelectedIndex() == 1) {
                     if (NmPoli.getText().toLowerCase().contains("darurat")) {
                         if (Sequel.cariIntegerSmc("select count(*) from bridging_sep where no_kartu = ? and jnspelayanan = ? and tglsep = ? and nmpolitujuan like '%darurat%'", no_peserta, JenisPelayanan.getSelectedItem().toString().substring(0, 1), Valid.getTglSmc(TanggalSEP)) >= 3) {
-                            JOptionPane.showMessageDialog(rootPane, "Maaf, sebelumnya sudah dilakukan 3x pembuatan SEP di jenis pelayanan yang sama..!!");
+                            JOptionPane.showMessageDialog(null, "Maaf, sebelumnya sudah dilakukan 3x pembuatan SEP di jenis pelayanan yang sama..!!");
                         } else {
                             if ((!kodedokterreg.equals("")) && (!kodepolireg.equals(""))) {
                                 if (SimpanAntrianOnSite()) {
@@ -1570,7 +1449,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
                         }
                     } else if (!NmPoli.getText().toLowerCase().contains("darurat")) {
                         if (Sequel.cariIntegerSmc("select count(*) from bridging_sep where no_kartu = ? and jnspelayanan = ? and tglsep = ? and nmpolitujuan not like '%darurat%'", no_peserta, JenisPelayanan.getSelectedItem().toString().substring(0, 1), Valid.getTglSmc(TanggalSEP)) >= 1) {
-                            JOptionPane.showMessageDialog(rootPane, "Maaf, sebelumnya sudah dilakukan pembuatan SEP di jenis pelayanan yang sama..!!");
+                            JOptionPane.showMessageDialog(null, "Maaf, sebelumnya sudah dilakukan pembuatan SEP di jenis pelayanan yang sama..!!");
                         } else {
                             if ((!kodedokterreg.equals("")) && (!kodepolireg.equals(""))) {
                                 if (SimpanAntrianOnSite()) {
@@ -1724,10 +1603,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_TNoRMActionPerformed
 
-    private void kdpoliKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kdpoliKeyPressed
-
-    }//GEN-LAST:event_kdpoliKeyPressed
-
     private void TBiayaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TBiayaKeyPressed
 
     }//GEN-LAST:event_TBiayaKeyPressed
@@ -1747,10 +1622,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
     private void NoRujukMasukKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoRujukMasukKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_NoRujukMasukKeyPressed
-
-    private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TanggalKeyPressed
 
     private void NoSKDPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoSKDPKeyPressed
         // TODO add your handling code here:
@@ -1778,7 +1649,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
 
     private void btnRiwayatRujukanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRiwayatRujukanActionPerformed
         if (NoKartu.getText().trim().equals("")) {
-            JOptionPane.showMessageDialog(rootPane, "No.Kartu masih kosong...!!");
+            JOptionPane.showMessageDialog(null, "No.Kartu masih kosong...!!");
         } else {
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
             rujukanterakhir.setSize(getContentPane().getSize());
@@ -1836,7 +1707,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
             WindowAksi.setLocationRelativeTo(null);
             WindowAksi.setVisible(true);
         } else {
-            JOptionPane.showMessageDialog(rootPane, "Maaf, No. Kartu Peserta tidak ada...!!!");
+            JOptionPane.showMessageDialog(null, "Maaf, No. Kartu Peserta tidak ada...!!!");
         }
     }//GEN-LAST:event_btnApprovalFPActionPerformed
 
@@ -1854,7 +1725,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
             WindowAksi.setLocationRelativeTo(null);
             WindowAksi.setVisible(true);
         } else {
-            JOptionPane.showMessageDialog(rootPane, "Maaf, No. Kartu Peserta tidak ada...!!!");
+            JOptionPane.showMessageDialog(null, "Maaf, No. Kartu Peserta tidak ada...!!!");
         }
     }//GEN-LAST:event_btnPengajuanFPActionPerformed
 
@@ -1867,108 +1738,101 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
     private void btnAksiKonfirmasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAksiKonfirmasiActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         if (NoKartu.getText().isBlank()) {
-            JOptionPane.showMessageDialog(rootPane, "Maaf, No. Kartu Peserta tidak ada...!!!");
+            JOptionPane.showMessageDialog(null, "Maaf, No. Kartu Peserta tidak ada...!!!");
         } else {
-            try {
-                ps = koneksi.prepareStatement("select id_user from user where id_user = aes_encrypt(?, 'nur') and password = aes_encrypt(?, 'windi') limit 1");
-                try {
-                    ps.setString(1, new String(userAksi.getPassword()));
-                    ps.setString(2, new String(passAksi.getPassword()));
-                    rs = ps.executeQuery();
+            try (PreparedStatement ps = koneksi.prepareStatement("select id_user from user where id_user = aes_encrypt(?, 'nur') and password = aes_encrypt(?, 'windi') limit 1")) {
+                ps.setString(1, new String(userAksi.getPassword()));
+                ps.setString(2, new String(passAksi.getPassword()));
+                try (ResultSet rs = ps.executeQuery()) {
                     if (rs.next()) {
-                        if (aksi.equals("Pengajuan")) {
-                            try {
-                                headers = new HttpHeaders();
-                                headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-                                headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
-                                utc = String.valueOf(api.GetUTCdatetimeAsString());
-                                headers.add("X-Timestamp", utc);
-                                headers.add("X-Signature", api.getHmac(utc));
-                                headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
-                                URL = URLAPIBPJS + "/Sep/pengajuanSEP";
-                                requestJson = " {" +
-                                    "\"request\": {" +
-                                    "\"t_sep\": {" +
-                                    "\"noKartu\": \"" + NoKartu.getText() + "\"," +
-                                    "\"tglSep\": \"" + Valid.SetTgl(TanggalSEP.getSelectedItem() + "") + "\"," +
-                                    "\"jnsPelayanan\": \"" + JenisPelayanan.getSelectedItem().toString().substring(0, 1) + "\"," +
-                                    "\"jnsPengajuan\": \"2\"," +
-                                    "\"keterangan\": \"Pengajuan SEP Finger oleh Anjungan Pasien Mandiri RS Samarinda Medika Citra\"," +
-                                    "\"user\": \"NoRM:" + TNoRM.getText() + "\"" +
-                                    "}" +
-                                    "}" +
-                                    "}";
-                                requestEntity = new HttpEntity(requestJson, headers);
-                                root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
-                                nameNode = root.path("metaData");
-                                System.out.println("code : " + nameNode.path("code").asText());
-                                System.out.println("message : " + nameNode.path("message").asText());
-                                if (nameNode.path("code").asText().equals("200")) {
-                                    JOptionPane.showMessageDialog(rootPane, "Pengajuan Berhasil");
-                                } else {
-                                    JOptionPane.showMessageDialog(rootPane, nameNode.path("message").asText());
+                        switch (aksi) {
+                            case "Pengajuan":
+                                try {
+                                    headers = new HttpHeaders();
+                                    headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+                                    headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
+                                    utc = String.valueOf(api.GetUTCdatetimeAsString());
+                                    headers.add("X-Timestamp", utc);
+                                    headers.add("X-Signature", api.getHmac(utc));
+                                    headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
+                                    URL = koneksiDB.URLAPIBPJS() + "/Sep/pengajuanSEP";
+                                    requestJson = " {" +
+                                        "\"request\": {" +
+                                        "\"t_sep\": {" +
+                                        "\"noKartu\": \"" + NoKartu.getText() + "\"," +
+                                        "\"tglSep\": \"" + Valid.SetTgl(TanggalSEP.getSelectedItem() + "") + "\"," +
+                                        "\"jnsPelayanan\": \"" + JenisPelayanan.getSelectedItem().toString().substring(0, 1) + "\"," +
+                                        "\"jnsPengajuan\": \"2\"," +
+                                        "\"keterangan\": \"Pengajuan SEP Finger oleh Anjungan Pasien Mandiri RS Samarinda Medika Citra\"," +
+                                        "\"user\": \"NoRM:" + TNoRM.getText() + "\"" +
+                                        "}" +
+                                        "}" +
+                                        "}";
+                                    requestEntity = new HttpEntity(requestJson, headers);
+                                    root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
+                                    nameNode = root.path("metaData");
+                                    System.out.println("code : " + nameNode.path("code").asText());
+                                    System.out.println("message : " + nameNode.path("message").asText());
+                                    if (nameNode.path("code").asText().equals("200")) {
+                                        JOptionPane.showMessageDialog(null, "Pengajuan Berhasil");
+                                    } else {
+                                        JOptionPane.showMessageDialog(null, nameNode.path("message").asText());
+                                    }
+                                } catch (Exception ex) {
+                                    System.out.println("Notifikasi Bridging : " + ex);
+                                    if (ex.toString().contains("UnknownHostException")) {
+                                        JOptionPane.showMessageDialog(null, "Koneksi ke server BPJS terputus...!");
+                                    }
                                 }
-                            } catch (Exception ex) {
-                                System.out.println("Notifikasi Bridging : " + ex);
-                                if (ex.toString().contains("UnknownHostException")) {
-                                    JOptionPane.showMessageDialog(rootPane, "Koneksi ke server BPJS terputus...!");
+                                break;
+                            case "Approval":
+                                try {
+                                    headers = new HttpHeaders();
+                                    headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
+                                    headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
+                                    utc = String.valueOf(api.GetUTCdatetimeAsString());
+                                    headers.add("X-Timestamp", utc);
+                                    headers.add("X-Signature", api.getHmac(utc));
+                                    headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
+                                    URL = koneksiDB.URLAPIBPJS() + "/Sep/aprovalSEP";
+                                    requestJson = " {" +
+                                        "\"request\": {" +
+                                        "\"t_sep\": {" +
+                                        "\"noKartu\": \"" + NoKartu.getText() + "\"," +
+                                        "\"tglSep\": \"" + Valid.SetTgl(TanggalSEP.getSelectedItem() + "") + "\"," +
+                                        "\"jnsPelayanan\": \"" + JenisPelayanan.getSelectedItem().toString().substring(0, 1) + "\"," +
+                                        "\"jnsPengajuan\": \"2\"," +
+                                        "\"keterangan\": \"Approval FingerPrint karena Gagal FP melalui Anjungan Pasien Mandiri\"," +
+                                        "\"user\": \"NoRM:" + TNoRM.getText() + "\"" +
+                                        "}" +
+                                        "}" +
+                                        "}";
+                                    requestEntity = new HttpEntity(requestJson, headers);
+                                    root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
+                                    nameNode = root.path("metaData");
+                                    System.out.println("code : " + nameNode.path("code").asText());
+                                    System.out.println("message : " + nameNode.path("message").asText());
+                                    if (nameNode.path("code").asText().equals("200")) {
+                                        JOptionPane.showMessageDialog(null, "Approval Berhasil");
+                                    } else {
+                                        JOptionPane.showMessageDialog(null, nameNode.path("message").asText());
+                                    }
+                                } catch (Exception ex) {
+                                    System.out.println("Notifikasi Bridging : " + ex);
+                                    if (ex.toString().contains("UnknownHostException")) {
+                                        JOptionPane.showMessageDialog(null, "Koneksi ke server BPJS terputus...!");
+                                    }
                                 }
-                            }
-                        } else if (aksi.equals("Approval")) {
-                            try {
-                                headers = new HttpHeaders();
-                                headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-                                headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
-                                utc = String.valueOf(api.GetUTCdatetimeAsString());
-                                headers.add("X-Timestamp", utc);
-                                headers.add("X-Signature", api.getHmac(utc));
-                                headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
-                                URL = URLAPIBPJS + "/Sep/aprovalSEP";
-                                requestJson = " {" +
-                                    "\"request\": {" +
-                                    "\"t_sep\": {" +
-                                    "\"noKartu\": \"" + NoKartu.getText() + "\"," +
-                                    "\"tglSep\": \"" + Valid.SetTgl(TanggalSEP.getSelectedItem() + "") + "\"," +
-                                    "\"jnsPelayanan\": \"" + JenisPelayanan.getSelectedItem().toString().substring(0, 1) + "\"," +
-                                    "\"jnsPengajuan\": \"2\"," +
-                                    "\"keterangan\": \"Approval FingerPrint karena Gagal FP melalui Anjungan Pasien Mandiri\"," +
-                                    "\"user\": \"NoRM:" + TNoRM.getText() + "\"" +
-                                    "}" +
-                                    "}" +
-                                    "}";
-                                requestEntity = new HttpEntity(requestJson, headers);
-                                root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.POST, requestEntity, String.class).getBody());
-                                nameNode = root.path("metaData");
-                                System.out.println("code : " + nameNode.path("code").asText());
-                                System.out.println("message : " + nameNode.path("message").asText());
-                                if (nameNode.path("code").asText().equals("200")) {
-                                    JOptionPane.showMessageDialog(rootPane, "Approval Berhasil");
-                                } else {
-                                    JOptionPane.showMessageDialog(rootPane, nameNode.path("message").asText());
-                                }
-                            } catch (Exception ex) {
-                                System.out.println("Notifikasi Bridging : " + ex);
-                                if (ex.toString().contains("UnknownHostException")) {
-                                    JOptionPane.showMessageDialog(rootPane, "Koneksi ke server BPJS terputus...!");
-                                }
-                            }
-                        } else {
-                            JOptionPane.showMessageDialog(rootPane, "Anda tidak diizinkan untuk melakukan aksi ini...!!!");
+                                break;
+                            default:
+                                JOptionPane.showMessageDialog(null, "Anda tidak diizinkan untuk melakukan aksi ini...!!!");
+                                break;
                         }
-                    }
-                } catch (Exception e) {
-                    System.out.println("Notif : " + e);
-                } finally {
-                    if (rs != null) {
-                        rs.close();
-                    }
-                    if (ps != null) {
-                        ps.close();
                     }
                 }
             } catch (Exception e) {
                 System.out.println("Notif : " + e);
-                JOptionPane.showMessageDialog(rootPane, "Terjadi kesalahan pada saat memproses aksi...!!!");
+                JOptionPane.showMessageDialog(null, "Terjadi kesalahan pada saat memproses aksi...!!!");
             }
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -2078,8 +1942,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
     private widget.Label LabelPoli5;
     private widget.Label LabelPoli7;
     private widget.ComboBox LakaLantas;
-    private widget.Label LblKdDokter;
-    private widget.Label LblKdPoli;
     private widget.TextField NIK;
     private widget.TextField NmDPJP;
     private widget.TextField NmDPJPLayanan;
@@ -2093,14 +1955,12 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
     private widget.TextField NmPpkRujukan;
     private widget.TextField NmPropinsi;
     private widget.TextField NoKartu;
-    private widget.TextField NoRawat;
     private widget.TextField NoReg;
     private widget.TextField NoRujukMasuk;
     private widget.TextField NoRujukan;
     private widget.TextField NoSEPSuplesi;
     private widget.TextField NoSKDP;
     private widget.TextField NoTelp;
-    private widget.Label NoTelpPasien;
     private widget.ComboBox Penunjang;
     private widget.TextField Status;
     private widget.ComboBox Suplesi;
@@ -2111,7 +1971,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
     private widget.TextField TNoRw;
     private widget.TextField TPasien;
     private widget.Label TPngJwb;
-    private widget.Tanggal Tanggal;
     private widget.Tanggal TanggalKKL;
     private widget.Tanggal TanggalRujuk;
     private widget.Tanggal TanggalSEP;
@@ -2164,7 +2023,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
     private widget.Label jLabel8;
     private widget.Label jLabel9;
     private widget.Label judulAksi;
-    private widget.TextField kdpoli;
     private widget.Label label1;
     private widget.Label label2;
     private widget.Label label4;
@@ -2183,7 +2041,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
     // End of variables declaration//GEN-END:variables
 
     private void isNumber() {
-        switch (URUTNOREG) {
+        switch (koneksiDB.URUTNOREG()) {
             case "poli":
                 NoReg.setText(
                     Sequel.cariIsiSmc(
@@ -2265,26 +2123,24 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
     }
 
     private void isCekPasien() {
-        try {
-            ps3 = koneksi.prepareStatement("select nm_pasien,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) asal," +
-                "namakeluarga,keluarga,pasien.kd_pj,penjab.png_jawab,if(tgl_daftar=?,'Baru','Lama') as daftar, " +
-                "TIMESTAMPDIFF(YEAR, tgl_lahir, CURDATE()) as tahun,pasien.no_peserta, " +
-                "(TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) div 12) * 12)) as bulan, " +
-                "TIMESTAMPDIFF(DAY, DATE_ADD(DATE_ADD(tgl_lahir,INTERVAL TIMESTAMPDIFF(YEAR, tgl_lahir, CURDATE()) YEAR), INTERVAL TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) div 12) * 12) MONTH), CURDATE()) as hari,pasien.no_ktp,pasien.no_tlp " +
-                "from pasien inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel " +
-                "inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec " +
-                "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab " +
-                "inner join penjab on pasien.kd_pj=penjab.kd_pj " +
-                "where pasien.no_rkm_medis=?");
-            try {
-                ps3.setString(1, Valid.SetTgl(TanggalSEP.getSelectedItem() + ""));
-                ps3.setString(2, TNoRM.getText());
-                rs = ps3.executeQuery();
-                while (rs.next()) {
+        try (PreparedStatement ps = koneksi.prepareStatement("select nm_pasien,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab) asal," +
+            "namakeluarga,keluarga,pasien.kd_pj,penjab.png_jawab,if(tgl_daftar=?,'Baru','Lama') as daftar, " +
+            "TIMESTAMPDIFF(YEAR, tgl_lahir, CURDATE()) as tahun,pasien.no_peserta, " +
+            "(TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) div 12) * 12)) as bulan, " +
+            "TIMESTAMPDIFF(DAY, DATE_ADD(DATE_ADD(tgl_lahir,INTERVAL TIMESTAMPDIFF(YEAR, tgl_lahir, CURDATE()) YEAR), INTERVAL TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) - ((TIMESTAMPDIFF(MONTH, tgl_lahir, CURDATE()) div 12) * 12) MONTH), CURDATE()) as hari,pasien.no_ktp,pasien.no_tlp " +
+            "from pasien inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel " +
+            "inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec " +
+            "inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab " +
+            "inner join penjab on pasien.kd_pj=penjab.kd_pj " +
+            "where pasien.no_rkm_medis=?"
+        )) {
+            ps.setString(1, Valid.SetTgl(TanggalSEP.getSelectedItem() + ""));
+            ps.setString(2, TNoRM.getText());
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
                     TAlmt.setText(rs.getString("asal"));
                     TPngJwb.setText(rs.getString("namakeluarga"));
                     THbngn.setText(rs.getString("keluarga"));
-                    NoTelpPasien.setText(rs.getString("no_tlp"));
                     umur = "0";
                     sttsumur = "Th";
                     statuspasien = rs.getString("daftar");
@@ -2301,16 +2157,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
                         }
                     }
                 }
-            } catch (Exception ex) {
-                System.out.println(ex);
-            } finally {
-                if (rs != null) {
-                    rs.close();
-                }
-
-                if (ps3 != null) {
-                    ps3.close();
-                }
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -2320,7 +2166,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         if (Sequel.cariInteger("select count(*) from reg_periksa where no_rkm_medis = ? and kd_poli = ?", TNoRM.getText(), kodepolireg) > 0) {
             status = "Lama";
         }
-
     }
 
     private void cetakRegistrasi(String noSEP) {
@@ -2357,7 +2202,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
             headers.add("X-Signature", api.getHmac(utc));
             headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
 
-            URL = URLAPIBPJS + "/SEP/2.0/insert";
+            URL = koneksiDB.URLAPIBPJS() + "/SEP/2.0/insert";
             requestJson = "{" +
                 "\"request\":{" +
                 "\"t_sep\":{" +
@@ -2427,7 +2272,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
 
             System.out.println("code : " + nameNode.path("code").asText());
             System.out.println("message : " + nameNode.path("message").asText());
-            JOptionPane.showMessageDialog(rootPane, "Respon BPJS : " + nameNode.path("message").asText());
+            JOptionPane.showMessageDialog(null, "Respon BPJS : " + nameNode.path("message").asText());
 
             if (nameNode.path("code").asText().equals("200")) {
                 response = mapper.readTree(api.Decrypt(root.path("response").asText(), utc)).path("sep").path("noSep");
@@ -2534,7 +2379,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         } catch (Exception ex) {
             System.out.println("Notifikasi Bridging : " + ex);
             if (ex.toString().contains("UnknownHostException")) {
-                JOptionPane.showMessageDialog(rootPane, "Koneksi ke server BPJS terputus...!");
+                JOptionPane.showMessageDialog(null, "Koneksi ke server BPJS terputus...!");
             }
         }
     }
@@ -2551,7 +2396,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
                 headers.add("X-Timestamp", utc);
                 headers.add("X-Signature", api.getHmac(utc));
                 headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
-                URL = URLAPIBPJS + "/SEP/FingerPrint/Peserta/" + noka + "/TglPelayanan/" + Valid.getTglSmc(TanggalSEP);
+                URL = koneksiDB.URLAPIBPJS() + "/SEP/FingerPrint/Peserta/" + noka + "/TglPelayanan/" + Valid.getTglSmc(TanggalSEP);
                 requestEntity = new HttpEntity(headers);
                 root = mapper.readTree(api.getRest().exchange(URL, HttpMethod.GET, requestEntity, String.class).getBody());
                 nameNode = root.path("metaData");
@@ -2564,21 +2409,21 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
                             statusfinger = true;
                         } else {
                             statusfinger = false;
-                            JOptionPane.showMessageDialog(rootPane, response.path("status").asText());
+                            JOptionPane.showMessageDialog(null, response.path("status").asText());
                         }
                     }
 
                 } else {
-                    JOptionPane.showMessageDialog(rootPane, response.path("status").asText());
+                    JOptionPane.showMessageDialog(null, response.path("status").asText());
                 }
             } catch (Exception ex) {
                 System.out.println("Notifikasi Bridging : " + ex);
                 if (ex.toString().contains("UnknownHostException")) {
-                    JOptionPane.showMessageDialog(rootPane, "Koneksi ke server BPJS terputus...!");
+                    JOptionPane.showMessageDialog(null, "Koneksi ke server BPJS terputus...!");
                 }
             }
         } else {
-            JOptionPane.showMessageDialog(rootPane, "Maaf, silahkan pilih data peserta!");
+            JOptionPane.showMessageDialog(null, "Maaf, silahkan pilih data peserta!");
         }
     }
 
@@ -2595,7 +2440,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         btnDokterTerapi.setVisible(false);
         lblTerapi.setVisible(false);
         try {
-            URL = URLAPIBPJS + "/Rujukan/Peserta/" + noKartu;
+            URL = koneksiDB.URLAPIBPJS() + "/Rujukan/Peserta/" + noKartu;
             utc = String.valueOf(api.GetUTCdatetimeAsString());
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
@@ -2642,7 +2487,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
                 KdPoli.setText(response.path("poliRujukan").path("kode").asText());
                 NmPoli.setText(response.path("poliRujukan").path("nama").asText());
                 JenisPeserta.setText(response.path("peserta").path("jenisPeserta").path("keterangan").asText());
-                kdpoli.setText(Sequel.cariIsiSmc("select kd_poli_rs from maping_poli_bpjs where kd_poli_bpjs = ?", response.path("poliRujukan").path("kode").asText()));
                 kodepolireg = Sequel.cariIsiSmc("select kd_poli_rs from maping_poli_bpjs where kd_poli_bpjs = ?", response.path("poliRujukan").path("kode").asText());
                 kodedokterreg = Sequel.cariIsiSmc("select kd_dokter from maping_dokter_dpjpvclaim where kd_dokter_bpjs = ?", KdDPJP.getText());
                 isPoli();
@@ -2660,9 +2504,9 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
                 }
             } else {
                 System.out.println("Pesan pencarian rujukan FKTP : " + nameNode.path("message").asText());
-                JOptionPane.showMessageDialog(rootPane, "Pesan Pencarian Rujukan FKTP : " + nameNode.path("message").asText());
+                JOptionPane.showMessageDialog(null, "Pesan Pencarian Rujukan FKTP : " + nameNode.path("message").asText());
                 try {
-                    URL = URLAPIBPJS + "/Rujukan/RS/Peserta/" + noKartu;
+                    URL = koneksiDB.URLAPIBPJS() + "/Rujukan/RS/Peserta/" + noKartu;
                     headers = new HttpHeaders();
                     headers.setContentType(MediaType.APPLICATION_JSON);
                     headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
@@ -2708,7 +2552,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
                         KdPoli.setText(response.path("poliRujukan").path("kode").asText());
                         NmPoli.setText(response.path("poliRujukan").path("nama").asText());
                         JenisPeserta.setText(response.path("peserta").path("jenisPeserta").path("keterangan").asText());
-                        kdpoli.setText(Sequel.cariIsi("select kd_poli_rs from maping_poli_bpjs where kd_poli_bpjs=?", response.path("poliRujukan").path("kode").asText()));
                         kodepolireg = Sequel.cariIsi("select kd_poli_rs from maping_poli_bpjs where kd_poli_bpjs=?", response.path("poliRujukan").path("kode").asText());
                         kodedokterreg = Sequel.cariIsi("select kd_dokter from maping_dokter_dpjpvclaim where kd_dokter_bpjs=?", KdDPJP.getText());
                         NoTelp.setText(Sequel.cariIsiSmc("select no_tlp from pasien where no_rkm_medis = ?", TNoRM.getText()));
@@ -2726,64 +2569,29 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
                         Catatan.setText("Anjungan Pasien Mandiri RS Samarinda Medika Citra");
                     } else {
                         emptTeks();
-                        JOptionPane.showMessageDialog(rootPane, "Pesan Pencarian Rujukan FKRTL : " + nameNode.path("message").asText());
+                        JOptionPane.showMessageDialog(null, "Pesan Pencarian Rujukan FKRTL : " + nameNode.path("message").asText());
                     }
                 } catch (Exception ex) {
                     System.out.println("Notifikasi Peserta : " + ex);
                     if (ex.toString().contains("UnknownHostException")) {
-                        JOptionPane.showMessageDialog(rootPane, "Koneksi ke server BPJS terputus...!");
+                        JOptionPane.showMessageDialog(null, "Koneksi ke server BPJS terputus...!");
                     }
                 }
             }
         } catch (Exception ex) {
             System.out.println("Notifikasi Peserta : " + ex);
             if (ex.toString().contains("UnknownHostException")) {
-                JOptionPane.showMessageDialog(rootPane, "Koneksi ke server BPJS terputus...!");
+                JOptionPane.showMessageDialog(null, "Koneksi ke server BPJS terputus...!");
             }
         }
-        try {
-            ps = koneksi.prepareStatement("select maping_dokter_dpjpvclaim.kd_dokter, maping_dokter_dpjpvclaim.kd_dokter_bpjs, maping_dokter_dpjpvclaim.nm_dokter_bpjs from maping_dokter_dpjpvclaim inner join jadwal on maping_dokter_dpjpvclaim.kd_dokter = jadwal.kd_dokter where jadwal.kd_poli = ? and jadwal.hari_kerja = ?");
-            try {
-                switch (day) {
-                    case 1:
-                        hari = "AKHAD";
-                        break;
-                    case 2:
-                        hari = "SENIN";
-                        break;
-                    case 3:
-                        hari = "SELASA";
-                        break;
-                    case 4:
-                        hari = "RABU";
-                        break;
-                    case 5:
-                        hari = "KAMIS";
-                        break;
-                    case 6:
-                        hari = "JUMAT";
-                        break;
-                    case 7:
-                        hari = "SABTU";
-                        break;
-                    default:
-                        break;
-                }
-                ps.setString(1, kdpoli.getText());
-                ps.setString(2, hari);
-                rs = ps.executeQuery();
+        try (PreparedStatement ps = koneksi.prepareStatement("select maping_dokter_dpjpvclaim.kd_dokter, maping_dokter_dpjpvclaim.kd_dokter_bpjs, maping_dokter_dpjpvclaim.nm_dokter_bpjs from maping_dokter_dpjpvclaim inner join jadwal on maping_dokter_dpjpvclaim.kd_dokter = jadwal.kd_dokter where jadwal.kd_poli = ? and jadwal.hari_kerja = ?")) {
+            tentukanHari();
+            ps.setString(1, kodepolireg);
+            ps.setString(2, hari);
+            try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
                     KdDPJP.setText(rs.getString("kd_dokter_bpjs"));
                     NmDPJP.setText(rs.getString("nm_dokter_bpjs"));
-                }
-            } catch (Exception e) {
-                System.out.println("Notif : " + e);
-            } finally {
-                if (rs != null) {
-                    rs.close();
-                }
-                if (ps != null) {
-                    ps.close();
                 }
             }
         } catch (Exception e) {
@@ -2808,7 +2616,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         Penunjang.setSelectedIndex(0);
         AsesmenPoli.setSelectedIndex(1);
         try {
-            URL = URLAPIBPJS + "/Rujukan/Peserta/" + noKartu;
+            URL = koneksiDB.URLAPIBPJS() + "/Rujukan/Peserta/" + noKartu;
             utc = String.valueOf(api.GetUTCdatetimeAsString());
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
@@ -2855,7 +2663,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
                 KdPoli.setText(response.path("poliRujukan").path("kode").asText());
                 NmPoli.setText(response.path("poliRujukan").path("nama").asText());
                 JenisPeserta.setText(response.path("peserta").path("jenisPeserta").path("keterangan").asText());
-                kdpoli.setText(Sequel.cariIsiSmc("select kd_poli_rs from maping_poli_bpjs where kd_poli_bpjs = ?", response.path("poliRujukan").path("kode").asText()));
                 kodepolireg = Sequel.cariIsiSmc("select kd_poli_rs from maping_poli_bpjs where kd_poli_bpjs = ?", response.path("poliRujukan").path("kode").asText());
                 kodedokterreg = Sequel.cariIsiSmc("select kd_dokter from maping_dokter_dpjpvclaim where kd_dokter_bpjs = ?", KdDPJP.getText());
                 isPoli();
@@ -2874,7 +2681,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
             } else {
                 System.out.println("Pesan pencarian rujukan FKTP : " + nameNode.path("message").asText());
                 try {
-                    URL = URLAPIBPJS + "/Rujukan/RS/Peserta/" + noKartu;
+                    URL = koneksiDB.URLAPIBPJS() + "/Rujukan/RS/Peserta/" + noKartu;
                     headers = new HttpHeaders();
                     headers.setContentType(MediaType.APPLICATION_JSON);
                     headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
@@ -2920,7 +2727,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
                         KdPoli.setText(response.path("poliRujukan").path("kode").asText());
                         NmPoli.setText(response.path("poliRujukan").path("nama").asText());
                         JenisPeserta.setText(response.path("peserta").path("jenisPeserta").path("keterangan").asText());
-                        kdpoli.setText(Sequel.cariIsiSmc("select kd_poli_rs from maping_poli_bpjs where kd_poli_bpjs=?", response.path("poliRujukan").path("kode").asText()));
                         kodepolireg = Sequel.cariIsiSmc("select kd_poli_rs from maping_poli_bpjs where kd_poli_bpjs=?", response.path("poliRujukan").path("kode").asText());
                         kodedokterreg = Sequel.cariIsiSmc("select kd_dokter from maping_dokter_dpjpvclaim where kd_dokter_bpjs=?", KdDPJP.getText());
                         NoTelp.setText(Sequel.cariIsiSmc("select no_tlp from pasien where no_rkm_medis = ?", TNoRM.getText()));
@@ -2939,64 +2745,29 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
                     } else {
                         emptTeks();
                         System.out.println("Pesan pencarian rujukan FKTL : " + nameNode.path("message").asText());
-                        JOptionPane.showMessageDialog(rootPane, nameNode.path("message").asText());
+                        JOptionPane.showMessageDialog(null, nameNode.path("message").asText());
                     }
                 } catch (Exception ex) {
                     System.out.println("Notifikasi Peserta : " + ex);
                     if (ex.toString().contains("UnknownHostException")) {
-                        JOptionPane.showMessageDialog(rootPane, "Koneksi ke server BPJS terputus...!");
+                        JOptionPane.showMessageDialog(null, "Koneksi ke server BPJS terputus...!");
                     }
                 }
             }
         } catch (Exception ex) {
             System.out.println("Notifikasi Peserta : " + ex);
             if (ex.toString().contains("UnknownHostException")) {
-                JOptionPane.showMessageDialog(rootPane, "Koneksi ke server BPJS terputus...!");
+                JOptionPane.showMessageDialog(null, "Koneksi ke server BPJS terputus...!");
             }
         }
-        try {
-            ps = koneksi.prepareStatement("select maping_dokter_dpjpvclaim.kd_dokter, maping_dokter_dpjpvclaim.kd_dokter_bpjs, maping_dokter_dpjpvclaim.nm_dokter_bpjs from maping_dokter_dpjpvclaim inner join jadwal on maping_dokter_dpjpvclaim.kd_dokter = jadwal.kd_dokter where jadwal.kd_poli = ? and jadwal.hari_kerja = ?");
-            try {
-                switch (day) {
-                    case 1:
-                        hari = "AKHAD";
-                        break;
-                    case 2:
-                        hari = "SENIN";
-                        break;
-                    case 3:
-                        hari = "SELASA";
-                        break;
-                    case 4:
-                        hari = "RABU";
-                        break;
-                    case 5:
-                        hari = "KAMIS";
-                        break;
-                    case 6:
-                        hari = "JUMAT";
-                        break;
-                    case 7:
-                        hari = "SABTU";
-                        break;
-                    default:
-                        break;
-                }
-                ps.setString(1, kdpoli.getText());
-                ps.setString(2, hari);
-                rs = ps.executeQuery();
+        try (PreparedStatement ps = koneksi.prepareStatement("select maping_dokter_dpjpvclaim.kd_dokter, maping_dokter_dpjpvclaim.kd_dokter_bpjs, maping_dokter_dpjpvclaim.nm_dokter_bpjs from maping_dokter_dpjpvclaim inner join jadwal on maping_dokter_dpjpvclaim.kd_dokter = jadwal.kd_dokter where jadwal.kd_poli = ? and jadwal.hari_kerja = ?")) {
+            tentukanHari();
+            ps.setString(1, kodepolireg);
+            ps.setString(2, hari);
+            try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
                     KdDPJP.setText(rs.getString("kd_dokter_bpjs"));
                     NmDPJP.setText(rs.getString("nm_dokter_bpjs"));
-                }
-            } catch (Exception e) {
-                System.out.println("Notif : " + e);
-            } finally {
-                if (rs != null) {
-                    rs.close();
-                }
-                if (ps != null) {
-                    ps.close();
                 }
             }
         } catch (Exception e) {
@@ -3031,7 +2802,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
                     }
                     if (rskontrol.getString("jnspelayanan").equals("1")) {
                         try {
-                            URL = URLAPIBPJS + "/Peserta/nokartu/" + rskontrol.getString("no_kartu") + "/tglSEP/" + Valid.getTglSmc(TanggalSEP);
+                            URL = koneksiDB.URLAPIBPJS() + "/Peserta/nokartu/" + rskontrol.getString("no_kartu") + "/tglSEP/" + Valid.getTglSmc(TanggalSEP);
                             utc = String.valueOf(api.GetUTCdatetimeAsString());
                             headers = new HttpHeaders();
                             headers.setContentType(MediaType.APPLICATION_JSON);
@@ -3060,7 +2831,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
                                 NmDPJP.setText(rskontrol.getString("nm_dokter_bpjs"));
                                 KdDPJPLayanan.setText(KdDPJP.getText());
                                 NmDPJPLayanan.setText(NmDPJP.getText());
-                                kdpoli.setText(Sequel.cariIsiSmc("select kd_poli_rs from maping_poli_bpjs where kd_poli_bpjs = ?", KdPoli.getText()));
                                 kodepolireg = Sequel.cariIsiSmc("select kd_poli_rs from maping_poli_bpjs where kd_poli_bpjs = ?", KdPoli.getText());
                                 kodedokterreg = Sequel.cariIsiSmc("select kd_dokter from maping_dokter_dpjpvclaim where kd_dokter_bpjs = ?", KdDPJP.getText());
                                 NoSKDP.setText(rskontrol.getString("no_surat"));
@@ -3106,20 +2876,20 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
                                 }
                             } else {
                                 emptTeks();
-                                JOptionPane.showMessageDialog(rootPane, nameNode.path("message").asText());
+                                JOptionPane.showMessageDialog(null, nameNode.path("message").asText());
                             }
                         } catch (Exception ex) {
                             System.out.println("Notifikasi Peserta : " + ex);
                             if (ex.toString().contains("UnknownHostException")) {
-                                JOptionPane.showMessageDialog(rootPane, "Koneksi ke server BPJS terputus...!");
+                                JOptionPane.showMessageDialog(null, "Koneksi ke server BPJS terputus...!");
                             }
                         }
                     } else {
                         try {
                             if (rskontrol.getString("asal_rujukan").equals("1")) {
-                                URL = URLAPIBPJS + "/Rujukan/" + rskontrol.getString("no_rujukan");
+                                URL = koneksiDB.URLAPIBPJS() + "/Rujukan/" + rskontrol.getString("no_rujukan");
                             } else if (rskontrol.getString("asal_rujukan").equals("2")) {
-                                URL = URLAPIBPJS + "/Rujukan/RS/" + rskontrol.getString("no_rujukan");
+                                URL = koneksiDB.URLAPIBPJS() + "/Rujukan/RS/" + rskontrol.getString("no_rujukan");
                             }
                             utc = String.valueOf(api.GetUTCdatetimeAsString());
                             headers = new HttpHeaders();
@@ -3143,7 +2913,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
                                 NmPoli.setText(rskontrol.getString("nm_poli_bpjs"));
                                 KdDPJP.setText(rskontrol.getString("kd_dokter_bpjs"));
                                 NmDPJP.setText(rskontrol.getString("nm_dokter_bpjs"));
-                                kdpoli.setText(Sequel.cariIsiSmc("select kd_poli_rs from maping_poli_bpjs where kd_poli_bpjs = ?", KdPoli.getText()));
                                 KdDPJPLayanan.setText(KdDPJP.getText());
                                 NmDPJPLayanan.setText(NmDPJP.getText());
                                 kodepolireg = Sequel.cariIsiSmc("select kd_poli_rs from maping_poli_bpjs where kd_poli_bpjs = ?", KdPoli.getText());
@@ -3206,7 +2975,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
                         } catch (Exception ex) {
                             System.out.println("Notifikasi Peserta : " + ex);
                             if (ex.toString().contains("UnknownHostException")) {
-                                JOptionPane.showMessageDialog(rootPane, "Koneksi ke server BPJS terputus...!");
+                                JOptionPane.showMessageDialog(null, "Koneksi ke server BPJS terputus...!");
                             }
                         }
                     }
@@ -3214,7 +2983,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
             }
         } catch (Exception e) {
             System.out.println("Notif : " + e);
-            JOptionPane.showMessageDialog(rootPane, "Maaf, Data surat kontrol tidak ditemukan...!!!");
+            JOptionPane.showMessageDialog(null, "Maaf, Data surat kontrol tidak ditemukan...!!!");
         }
     }
 
@@ -3499,11 +3268,9 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
     }
 
     private void isPoli() {
-        try {
-            ps = koneksi.prepareStatement("select registrasi, registrasilama from poliklinik where kd_poli = ? order by nm_poli");
-            try {
-                ps.setString(1, kodepolireg);
-                rs = ps.executeQuery();
+        try (PreparedStatement ps = koneksi.prepareStatement("select registrasi, registrasilama from poliklinik where kd_poli = ? order by nm_poli")) {
+            ps.setString(1, kodepolireg);
+            try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
                     if (statuspasien.equals("Lama")) {
                         TBiaya.setText(rs.getString("registrasilama"));
@@ -3511,25 +3278,15 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
                         TBiaya.setText(rs.getString("registrasi"));
                     }
                 }
-            } catch (Exception e) {
-                System.out.println("Notifikasi : " + e);
-            } finally {
-                if (rs != null) {
-                    rs.close();
-                }
-
-                if (ps != null) {
-                    ps.close();
-                }
             }
         } catch (Exception e) {
-            System.out.println("Notif Cari Poli : " + e);
+            System.out.println("Notif : " + e);
         }
     }
 
     private void bukaAplikasiFingerprint() {
         if (NoKartu.getText().isBlank()) {
-            JOptionPane.showMessageDialog(rootPane, "No. kartu peserta tidak ada..!!");
+            JOptionPane.showMessageDialog(null, "No. kartu peserta tidak ada..!!");
 
             return;
         }
@@ -3704,7 +3461,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
 
     private void updateSuratKontrol(String noSKDP, String noSEP, String tglKontrol, String noKartuPeserta) {
         if (noSKDP.trim().isEmpty()) {
-            JOptionPane.showMessageDialog(rootPane, "Maaf, data surat kontrol tidak ditemukan...!!\nSilahkan hubungi administrasi...!!");
+            JOptionPane.showMessageDialog(null, "Maaf, data surat kontrol tidak ditemukan...!!\nSilahkan hubungi administrasi...!!");
 
             return;
         }
@@ -3724,7 +3481,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
             headers.add("X-Signature", api.getHmac(utc));
             headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
 
-            URL = URLAPIBPJS + "/RencanaKontrol/Update";
+            URL = koneksiDB.URLAPIBPJS() + "/RencanaKontrol/Update";
 
             requestJson = "{" +
                 "\"request\": {" +
@@ -3755,19 +3512,19 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
                     noSKDP
                 );
             } else {
-                JOptionPane.showMessageDialog(rootPane, nameNode.path("message").asText());
+                JOptionPane.showMessageDialog(null, nameNode.path("message").asText());
             }
         } catch (Exception ex) {
             System.out.println("Notifikasi Bridging : " + ex);
             if (ex.toString().contains("UnknownHostException")) {
-                JOptionPane.showMessageDialog(rootPane, "Koneksi ke server BPJS terputus...!");
+                JOptionPane.showMessageDialog(null, "Koneksi ke server BPJS terputus...!");
             }
         }
     }
 
     private void updateSuratKontrol(String noSKDP, String noSEP, String noKartu, String tanggalPeriksa, String kodeDPJP, String namaDPJP, String kodePoli, String namaPoli) {
         if (noSKDP.trim().isEmpty()) {
-            JOptionPane.showMessageDialog(rootPane, "Maaf, data surat kontrol tidak ditemukan...!!\nSilahkan hubungi administrasi...!!");
+            JOptionPane.showMessageDialog(null, "Maaf, data surat kontrol tidak ditemukan...!!\nSilahkan hubungi administrasi...!!");
             return;
         }
         try {
@@ -3778,7 +3535,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
             headers.add("X-Timestamp", utc);
             headers.add("X-Signature", api.getHmac(utc));
             headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
-            URL = URLAPIBPJS + "/RencanaKontrol/Update";
+            URL = koneksiDB.URLAPIBPJS() + "/RencanaKontrol/Update";
             requestJson = "{" +
                 "\"request\": {" +
                 "\"noSuratKontrol\":\"" + noSKDP + "\"," +
@@ -3801,12 +3558,12 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
                     tanggalPeriksa, kodeDPJP, namaDPJP, kodePoli, namaPoli, noSKDP
                 );
             } else {
-                JOptionPane.showMessageDialog(rootPane, nameNode.path("message").asText());
+                JOptionPane.showMessageDialog(null, nameNode.path("message").asText());
             }
         } catch (Exception ex) {
             System.out.println("Notifikasi Bridging : " + ex);
             if (ex.toString().contains("UnknownHostException")) {
-                JOptionPane.showMessageDialog(rootPane, "Koneksi ke server BPJS terputus...!");
+                JOptionPane.showMessageDialog(null, "Koneksi ke server BPJS terputus...!");
             }
         }
     }

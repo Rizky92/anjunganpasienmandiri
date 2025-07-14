@@ -116,7 +116,7 @@ public final class DlgCariPoliBPJS extends widget.Dialog {
     public boolean hasSelectedRow() {
         return tbPoli.getSelectedRow() >= 0;
     }
-    
+
     public Object getSelectedRow(int column) {
         return tbPoli.getValueAt(tbPoli.getSelectedRow(), column);
     }
