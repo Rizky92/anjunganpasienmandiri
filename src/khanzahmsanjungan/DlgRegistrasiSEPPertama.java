@@ -3596,6 +3596,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
 
         do {
             isNumber();
+
             System.out.print("Mencoba mendaftarkan pasien dengan no. rawat [" + TNoRw.getText() + "]: ");
 
             sukses = Sequel.menyimpantfSmc("reg_periksa", null,
@@ -3627,6 +3628,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
                     Valid.getTglSmc(TanggalSEP), Valid.getTglSmc(TanggalSEP)
                 )
             );
+
             System.out.print("Mencoba memproses rujukan masuk pasien dengan no. surat [" + NoRujukMasuk.getText() + "]: ");
 
             sukses = Sequel.menyimpantfSmc("rujuk_masuk", null,
