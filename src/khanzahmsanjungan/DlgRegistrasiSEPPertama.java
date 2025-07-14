@@ -588,8 +588,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
             }
         });
 
-        setBackground(new java.awt.Color(238, 238, 255));
-
         panelAtas.setMinimumSize(new java.awt.Dimension(390, 40));
         panelAtas.setPreferredSize(new java.awt.Dimension(400, 40));
         panelAtas.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 10));
