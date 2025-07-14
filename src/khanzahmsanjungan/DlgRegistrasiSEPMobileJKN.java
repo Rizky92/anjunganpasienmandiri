@@ -947,6 +947,7 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
         form.add(Keterangan);
         Keterangan.setBounds(730, 70, 300, 30);
 
+        NoSEPSuplesi.setEditable(false);
         NoSEPSuplesi.setHighlighter(null);
         form.add(NoSEPSuplesi);
         NoSEPSuplesi.setBounds(890, 100, 140, 30);

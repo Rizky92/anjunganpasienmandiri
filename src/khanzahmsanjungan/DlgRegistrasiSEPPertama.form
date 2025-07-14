@@ -1603,6 +1603,9 @@
                   </Constraints>
                 </Component>
                 <Component class="widget.TextField" name="NoSEPSuplesi">
+                  <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
+                  </Properties>
                   <Events>
                     <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="NoSEPSuplesiKeyPressed"/>
                   </Events>
@@ -1714,7 +1717,6 @@
                 </Component>
                 <Component class="widget.TextField" name="Catatan">
                   <Properties>
-                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="text" type="java.lang.String" value="Anjungan Pasien Mandiri RS Samarinda Medika Citra"/>
                   </Properties>
                   <Events>
