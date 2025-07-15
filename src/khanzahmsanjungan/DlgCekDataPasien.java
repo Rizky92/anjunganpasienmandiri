@@ -327,9 +327,13 @@ public class DlgCekDataPasien extends widget.Dialog {
                     if (!rs.getString("stts").equals("Belum") || rs.getBoolean("ada_pemeriksaan")) {
                         JOptionPane.showMessageDialog(null, "Anda sudah menerima pelayanan pada hari ini..!!\nSilahkan konfirmasi ke petugas.", "Gagal", JOptionPane.ERROR_MESSAGE);
                     } else if (rs.getString("status").equals("Checkin")) {
-                        if (JOptionPane.showConfirmDialog(null, "Anda sudah melakukan checkin pada hari ini\nApakah mau mencetak barcode?", "Konfirmasi", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
-                            Valid.printReport("rptBarcodeRawatAPM.jasper", koneksiDB.PRINTER_BARCODE(), "::[ Barcode Perawatan ]::", koneksiDB.PRINTJUMLAHBARCODE(), param);
-                            JOptionPane.showMessageDialog(null, "Barcode berhasil dicetak..!!", "Berhasil", JOptionPane.INFORMATION_MESSAGE);
+                        if (koneksiDB.PRINTJUMLAHBARCODE() > 0) {
+                            if (JOptionPane.showConfirmDialog(null, "Anda sudah melakukan checkin pada hari ini\nApakah mau mencetak barcode?", "Konfirmasi", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
+                                Valid.printReport("rptBarcodeRawatAPM.jasper", koneksiDB.PRINTER_BARCODE(), "::[ Barcode Perawatan ]::", koneksiDB.PRINTJUMLAHBARCODE(), param);
+                                JOptionPane.showMessageDialog(null, "Barcode berhasil dicetak..!!", "Berhasil", JOptionPane.INFORMATION_MESSAGE);
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Anda sudah melakukan checkin pada hari ini..!!");
                         }
                     } else {
                         Sequel.mengupdateSmc("reg_periksa", "jam_reg = current_time()", "no_rawat = ?", rs.getString("no_rawat"));

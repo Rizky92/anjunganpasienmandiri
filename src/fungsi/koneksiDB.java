@@ -151,7 +151,7 @@ public class koneksiDB {
     }
 
     public static int PRINTJUMLAHBARCODE() {
-        return Integer.parseInt(rawAPM("PRINTJUMLAHBARCODE"));
+        return Integer.parseInt(rawAPM("PRINTJUMLAHBARCODE", "3"));
     }
 
     public static String URLAPLIKASIFINGERPRINTBPJS() {
@@ -210,7 +210,7 @@ public class koneksiDB {
     }
 
     public static String CARICEPAT() {
-        return raw("CARICEPAT");
+        return raw("CARICEPAT", "no");
     }
 
     public static String URLAPIBPJS() {
@@ -257,8 +257,8 @@ public class koneksiDB {
         return raw("URUTNOREG");
     }
 
-    public static String JADWALDOKTERDIREGISTRASI() {
-        return raw("JADWALDOKTERDIREGISTRASI");
+    public static boolean JADWALDOKTERDIREGISTRASI() {
+        return raw("JADWALDOKTERDIREGISTRASI", "no").equalsIgnoreCase("yes");
     }
 
     public static String IPPRINTERTRACER() {
