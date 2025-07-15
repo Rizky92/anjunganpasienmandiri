@@ -248,6 +248,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
             }
         });
 
+        emptTeks();
         JumlahBarcode.setText("3");
         isForm();
         panelNumpad1.setVisible(false);
@@ -2429,6 +2430,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
     public void tampilKunjunganPertama(String noKartu) {
         ChkInput.setSelected(false);
         isForm();
+        emptTeks();
         KdPoliTerapi.setText("");
         NmPoliTerapi.setText("");
         KodeDokterTerapi.setText("");
@@ -2603,6 +2605,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
     public void tampilKunjunganBedaPoli(String noKartu) {
         ChkInput.setSelected(false);
         isForm();
+        emptTeks();
         KdPoliTerapi.setText("");
         NmPoliTerapi.setText("");
         KodeDokterTerapi.setText("");
@@ -2781,6 +2784,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
     public void tampilKontrol(String noSKDP) {
         ChkInput.setSelected(false);
         isForm();
+        emptTeks();
         KdPoliTerapi.setText("");
         NmPoliTerapi.setText("");
         KodeDokterTerapi.setText("");
@@ -3338,7 +3342,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
                 r.keyRelease(KeyEvent.VK_V);
                 r.keyRelease(KeyEvent.VK_CONTROL);
             } else {
-                Runtime.getRuntime().exec(koneksiDB.URLAPLIKASIFINGERPRINTBPJS());
+                Runtime.getRuntime().exec("\"" + koneksiDB.URLAPLIKASIFINGERPRINTBPJS() + "\"");
                 Thread.sleep(2000);
                 ss = new StringSelection(koneksiDB.USERFINGERPRINTBPJS());
                 c.setContents(ss, ss);
@@ -3351,7 +3355,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
                 r.keyRelease(KeyEvent.VK_TAB);
                 Thread.sleep(1000);
 
-                ss = new StringSelection(koneksiDB.PASSFINGERPRINTBPJS());
+                ss = new StringSelection(koneksiDB.PASSWORDFINGERPRINTBPJS());
                 c.setContents(ss, ss);
 
                 r.keyPress(KeyEvent.VK_CONTROL);
@@ -3423,8 +3427,8 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
                 r.keyRelease(KeyEvent.VK_V);
                 r.keyRelease(KeyEvent.VK_CONTROL);
             } else {
-                Runtime.getRuntime().exec(koneksiDB.URLAPLIKASIFRISTABPJS());
-                Thread.sleep(5000);
+                Runtime.getRuntime().exec("\"" + koneksiDB.URLAPLIKASIFRISTABPJS() + "\"");
+                Thread.sleep(7000);
 
                 ss = new StringSelection(koneksiDB.USERFINGERPRINTBPJS());
                 c.setContents(ss, ss);
@@ -3434,9 +3438,9 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
                 r.keyRelease(KeyEvent.VK_CONTROL);
                 r.keyPress(KeyEvent.VK_TAB);
                 r.keyRelease(KeyEvent.VK_TAB);
-                Thread.sleep(1000);
+                Thread.sleep(1500);
 
-                ss = new StringSelection(koneksiDB.PASSFINGERPRINTBPJS());
+                ss = new StringSelection(koneksiDB.PASSWORDFINGERPRINTBPJS());
                 c.setContents(ss, ss);
                 r.keyPress(KeyEvent.VK_CONTROL);
                 r.keyPress(KeyEvent.VK_V);
@@ -3446,7 +3450,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
                 r.keyRelease(KeyEvent.VK_TAB);
                 r.keyPress(KeyEvent.VK_SPACE);
                 r.keyRelease(KeyEvent.VK_SPACE);
-                Thread.sleep(3000);
+                Thread.sleep(5000);
 
                 r.mouseMove(d.width / 2, d.height / 2);
                 r.mousePress(InputEvent.BUTTON1_DOWN_MASK);

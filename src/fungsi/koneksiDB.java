@@ -166,8 +166,8 @@ public class koneksiDB {
         return raweAPM("USERFINGERPRINTBPJS");
     }
 
-    public static String PASSFINGERPRINTBPJS() {
-        return raweAPM("PASSFINGERPRINTBPJS");
+    public static String PASSWORDFINGERPRINTBPJS() {
+        return raweAPM("PASSWORDFINGERPRINTBPJS");
     }
 
     public static boolean ANTRIANPREFIXHURUF() {
