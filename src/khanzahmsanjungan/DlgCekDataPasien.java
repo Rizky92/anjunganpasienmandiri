@@ -276,6 +276,7 @@ public class DlgCekDataPasien extends widget.Dialog {
                 border.setTitle(TITLE_REGIST_MANDIRI);
                 break;
         }
+        
         repaint();
     }
     
@@ -297,12 +298,12 @@ public class DlgCekDataPasien extends widget.Dialog {
                         mandiri.setLocationRelativeTo(this);
                         mandiri.setPasien(noRM);
                         mandiri.setVisible(true);
+                        this.flag = -1;
                         this.dispose();
                         break;
                 }
             }
         }
-        this.flag = -1;
         formWindowActivated(null);
         this.setCursor(Cursor.getDefaultCursor());
     }
