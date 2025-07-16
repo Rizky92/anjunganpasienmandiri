@@ -7,19 +7,12 @@ import javax.swing.ListSelectionModel;
 import javax.swing.UIManager;
 import javax.swing.table.TableCellRenderer;
 
-/**
- *
- * @author usu
- */
 public class Table extends FlatTable {
-
-    private static final long serialVersionUID = 1L;
-
     public Table() {
         super();
         setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         getTableHeader().setReorderingAllowed(false);
-        getTableHeader().setResizingAllowed(false);
+        getTableHeader().setResizingAllowed(true);
         getSelectionModel().setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     }
 

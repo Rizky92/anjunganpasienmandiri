@@ -113,7 +113,7 @@ public final class DlgCariPoliBPJS extends widget.Dialog {
     private widget.Table tbPoli;
     // End of variables declaration//GEN-END:variables
 
-    public boolean hasSelectedRow() {
+    public boolean hasSelection() {
         return tbPoli.getSelectedRow() >= 0;
     }
 

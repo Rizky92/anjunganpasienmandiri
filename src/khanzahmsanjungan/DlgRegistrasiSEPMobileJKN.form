@@ -999,7 +999,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="widget.Numpad" name="panelNumpad1">
+            <Component class="widget.Numpad" name="panelNumpad">
               <Properties>
                 <Property name="fontSize" type="int" value="30"/>
                 <Property name="textBox" type="javax.swing.JTextField" editor="org.netbeans.modules.form.ComponentChooserEditor">

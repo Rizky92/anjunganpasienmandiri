@@ -403,13 +403,21 @@ public final class BPJSCekReferensiDokterDPJP extends widget.Dialog {
         NmPoli.setText(NamaPoli);
     }
 
-    public JTable getTable() {
-        return tbDokter;
-    }
-
     public void carinamadokter(String kodepoli, String namapoli) {
         KdPoli.setText(kodepoli);
         NmPoli.setText(namapoli);
         BtnCariActionPerformed(null);
+    }
+    
+    public boolean hasSelection() {
+        return tbDokter.getSelectedRow() > -1;
+    }
+    
+    public Object getSelectedRow(int column) {
+        return tbDokter.getValueAt(tbDokter.getSelectedRow(), column);
+    }
+
+    public JTable getTable() {
+        return tbDokter;
     }
 }

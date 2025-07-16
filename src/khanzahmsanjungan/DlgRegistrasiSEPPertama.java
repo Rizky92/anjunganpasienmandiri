@@ -171,7 +171,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         poli.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosed(WindowEvent e) {
-                if (poli.hasSelectedRow()) {
+                if (poli.hasSelection()) {
                     kodePoli.setText(poli.getSelectedRow(0).toString());
                     namaPoli.setText(poli.getSelectedRow(1).toString());
                     kodeDPJP.requestFocus();
