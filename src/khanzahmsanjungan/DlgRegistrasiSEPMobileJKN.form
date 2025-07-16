@@ -2,154 +2,6 @@
 
 <Form version="1.3" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
   <NonVisualComponents>
-    <Component class="widget.Label" name="LblKdPoli">
-      <Properties>
-        <Property name="horizontalAlignment" type="int" value="2"/>
-        <Property name="text" type="java.lang.String" value="Norm"/>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="18" style="0"/>
-        </Property>
-        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[20, 14]"/>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="widget.Label" name="LblKdDokter">
-      <Properties>
-        <Property name="horizontalAlignment" type="int" value="2"/>
-        <Property name="text" type="java.lang.String" value="Norm"/>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="18" style="0"/>
-        </Property>
-        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[20, 14]"/>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="widget.TextField" name="NoReg">
-      <Properties>
-        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[320, 30]"/>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="widget.TextField" name="NoRawat">
-      <Properties>
-        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[320, 30]"/>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="widget.TextField" name="Biaya">
-      <Properties>
-        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[320, 30]"/>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="widget.Label" name="TAlmt">
-      <Properties>
-        <Property name="horizontalAlignment" type="int" value="2"/>
-        <Property name="text" type="java.lang.String" value="Norm"/>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="18" style="0"/>
-        </Property>
-        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[20, 14]"/>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="widget.Label" name="TPngJwb">
-      <Properties>
-        <Property name="horizontalAlignment" type="int" value="2"/>
-        <Property name="text" type="java.lang.String" value="Norm"/>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="18" style="0"/>
-        </Property>
-        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[20, 14]"/>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="widget.Label" name="THbngn">
-      <Properties>
-        <Property name="horizontalAlignment" type="int" value="2"/>
-        <Property name="text" type="java.lang.String" value="Norm"/>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="18" style="0"/>
-        </Property>
-        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[20, 14]"/>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="widget.Label" name="NoTelpPasien">
-      <Properties>
-        <Property name="horizontalAlignment" type="int" value="2"/>
-        <Property name="text" type="java.lang.String" value="Norm"/>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Tahoma" size="18" style="0"/>
-        </Property>
-        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[20, 14]"/>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="widget.TextField" name="kdpoli">
-      <Properties>
-        <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="null"/>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="widget.TextField" name="TBiaya">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="0"/>
-      </Properties>
-    </Component>
-    <Component class="widget.TextField" name="Kdpnj">
-      <Properties>
-        <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="null"/>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="widget.TextField" name="nmpnj">
-      <Properties>
-        <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="null"/>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="widget.TextField" name="TNoRw">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="0"/>
-      </Properties>
-    </Component>
-    <Component class="widget.TextField" name="NoRujukMasuk">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="0"/>
-      </Properties>
-    </Component>
-    <Component class="widget.Tanggal" name="Tanggal">
-      <Properties>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="32" green="46" red="32" type="rgb"/>
-        </Property>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="1">
-            <StringItem index="0" value="08-07-2025"/>
-          </StringArray>
-        </Property>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Inter" size="12" style="0"/>
-        </Property>
-        <Property name="opaque" type="boolean" value="false"/>
-        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[95, 23]"/>
-        </Property>
-      </Properties>
-    </Component>
     <Container class="widget.Dialog" name="WindowAksi">
       <Properties>
         <Property name="undecorated" type="boolean" value="false"/>
@@ -319,92 +171,6 @@
         </Container>
       </SubComponents>
     </Container>
-    <Component class="widget.Label" name="lblTerapi">
-      <Properties>
-        <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Terapi / Rehabilitasi Medik"/>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Inter" size="12" style="0"/>
-        </Property>
-        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[55, 23]"/>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="widget.TextField" name="KdPoliTerapi">
-      <Properties>
-        <Property name="editable" type="boolean" value="false"/>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="99" green="ff" red="ff" type="rgb"/>
-        </Property>
-        <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="null"/>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="widget.TextField" name="NmPoliTerapi">
-      <Properties>
-        <Property name="editable" type="boolean" value="false"/>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="99" green="ff" red="ff" type="rgb"/>
-        </Property>
-        <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="null"/>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="widget.Button" name="btnPoliTerapi">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/pilih.png"/>
-        </Property>
-        <Property name="mnemonic" type="int" value="88"/>
-        <Property name="toolTipText" type="java.lang.String" value="Alt+X"/>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Inter" size="12" style="0"/>
-        </Property>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPoliTerapiActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="widget.Button" name="btnDokterTerapi">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/48x48/pilih.png"/>
-        </Property>
-        <Property name="mnemonic" type="int" value="88"/>
-        <Property name="toolTipText" type="java.lang.String" value="Alt+X"/>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Inter" size="12" style="0"/>
-        </Property>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDokterTerapiActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="widget.TextField" name="NmDokterTerapi">
-      <Properties>
-        <Property name="editable" type="boolean" value="false"/>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="99" green="ff" red="ff" type="rgb"/>
-        </Property>
-        <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="null"/>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="widget.TextField" name="KodeDokterTerapi">
-      <Properties>
-        <Property name="editable" type="boolean" value="false"/>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="99" green="ff" red="ff" type="rgb"/>
-        </Property>
-        <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="null"/>
-        </Property>
-      </Properties>
-    </Component>
   </NonVisualComponents>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -484,7 +250,7 @@
             <Property name="useNullLayout" type="boolean" value="true"/>
           </Layout>
           <SubComponents>
-            <Component class="widget.TextField" name="TPasien">
+            <Component class="widget.TextField" name="namaPasien">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
@@ -497,7 +263,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="widget.TextField" name="TNoRM">
+            <Component class="widget.TextField" name="noRM">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
@@ -510,7 +276,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="widget.TextField" name="NoKartu">
+            <Component class="widget.TextField" name="noPeserta">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
@@ -536,7 +302,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="widget.Tanggal" name="TanggalSEP">
+            <Component class="widget.Tanggal" name="tglSEP">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
@@ -568,7 +334,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="widget.Tanggal" name="TanggalRujuk">
+            <Component class="widget.Tanggal" name="tglRujukan">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
@@ -600,7 +366,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="widget.TextField" name="NoRujukan">
+            <Component class="widget.TextField" name="noRujukan">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
@@ -626,7 +392,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="widget.TextField" name="KdPpkRujukan">
+            <Component class="widget.TextField" name="kodePPKRujukan">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
@@ -639,7 +405,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="widget.TextField" name="NmPpkRujukan">
+            <Component class="widget.TextField" name="namaPPKRujukan">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
@@ -665,7 +431,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="widget.TextField" name="KdPenyakit">
+            <Component class="widget.TextField" name="kodeDiagnosa">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
@@ -678,7 +444,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="widget.TextField" name="NmPenyakit">
+            <Component class="widget.TextField" name="namaDiagnosa">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
@@ -691,7 +457,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="widget.TextField" name="NmPoli">
+            <Component class="widget.TextField" name="namaPoli">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
@@ -704,7 +470,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="widget.TextField" name="KdPoli">
+            <Component class="widget.TextField" name="kodePoli">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
@@ -740,7 +506,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="widget.ComboBox" name="Kelas">
+            <Component class="widget.ComboBox" name="kelas">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="3">
@@ -770,7 +536,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="widget.TextField" name="TglLahir">
+            <Component class="widget.TextField" name="tglLahir">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
@@ -793,7 +559,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="widget.TextField" name="JK">
+            <Component class="widget.TextField" name="jk">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
@@ -819,7 +585,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="widget.TextField" name="JenisPeserta">
+            <Component class="widget.TextField" name="jenisPeserta">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
@@ -845,7 +611,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="widget.TextField" name="Status">
+            <Component class="widget.TextField" name="statusPeserta">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
@@ -868,7 +634,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="widget.ComboBox" name="AsalRujukan">
+            <Component class="widget.ComboBox" name="asalRujukan">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="2">
@@ -883,16 +649,16 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="widget.TextField" name="NoTelp">
+            <Component class="widget.TextField" name="noTelp">
               <Properties>
                 <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
                   <ComponentRef name="null"/>
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="NoTelpFocusGained"/>
-                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="NoTelpFocusLost"/>
-                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="NoTelpMouseClicked"/>
+                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="noTelpFocusGained"/>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="noTelpFocusLost"/>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="noTelpMouseClicked"/>
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -900,7 +666,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="widget.ComboBox" name="Katarak">
+            <Component class="widget.ComboBox" name="katarak">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="2">
@@ -941,7 +707,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="widget.TextField" name="KdDPJP">
+            <Component class="widget.TextField" name="kodeDPJP">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
@@ -954,7 +720,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="widget.TextField" name="NmDPJP">
+            <Component class="widget.TextField" name="namaDPJP">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
@@ -967,7 +733,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="widget.Button" name="btnCariDokter">
+            <Component class="widget.Button" name="cariDPJP">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ee" red="ee" type="rgb"/>
@@ -985,7 +751,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCariDokterActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cariDPJPActionPerformed"/>
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1016,7 +782,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="widget.TextField" name="NoSKDP">
+            <Component class="widget.TextField" name="noSKDP">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
@@ -1042,7 +808,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="widget.TextField" name="NIK">
+            <Component class="widget.TextField" name="nik">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
@@ -1065,7 +831,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="widget.Button" name="btnCariPoli">
+            <Component class="widget.Button" name="cariPoli">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ee" red="ee" type="rgb"/>
@@ -1083,7 +849,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCariPoliActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cariPoliActionPerformed"/>
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1091,7 +857,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="widget.Button" name="btnDiagnosaAwal">
+            <Component class="widget.Button" name="cariDiagnosa">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ee" red="ee" type="rgb"/>
@@ -1109,7 +875,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDiagnosaAwalActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cariDiagnosaActionPerformed"/>
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1117,7 +883,7 @@
                 </Constraint>
               </Constraints>
             </Component>
-            <Component class="widget.Button" name="btnCariNoRujukan">
+            <Component class="widget.Button" name="cariNoRujukan">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ee" red="ee" type="rgb"/>
@@ -1135,7 +901,7 @@
                 </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCariNoRujukanActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cariNoRujukanActionPerformed"/>
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1237,7 +1003,7 @@
               <Properties>
                 <Property name="fontSize" type="int" value="30"/>
                 <Property name="textBox" type="javax.swing.JTextField" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="NoTelp"/>
+                  <ComponentRef name="noTelp"/>
                 </Property>
               </Properties>
               <Constraints>
@@ -1284,7 +1050,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="widget.ComboBox" name="JenisPelayanan">
+                <Component class="widget.ComboBox" name="jenisPelayanan">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="2">
@@ -1295,7 +1061,7 @@
                     <Property name="selectedIndex" type="int" value="1"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="JenisPelayananItemStateChanged"/>
+                    <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="jenisPelayananItemStateChanged"/>
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1313,7 +1079,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="widget.ComboBox" name="LakaLantas">
+                <Component class="widget.ComboBox" name="lakaLantas">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="4">
@@ -1328,7 +1094,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="LakaLantasItemStateChanged"/>
+                    <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="lakaLantasItemStateChanged"/>
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1336,7 +1102,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="widget.Tanggal" name="TanggalKKL">
+                <Component class="widget.Tanggal" name="tglKLL">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
@@ -1369,7 +1135,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="widget.ComboBox" name="TujuanKunjungan">
+                <Component class="widget.ComboBox" name="tujuanKunjungan">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="3">
@@ -1380,7 +1146,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="TujuanKunjunganItemStateChanged"/>
+                    <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="tujuanKunjunganItemStateChanged"/>
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1414,7 +1180,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="widget.ComboBox" name="FlagProsedur">
+                <Component class="widget.ComboBox" name="flagProsedur">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="3">
@@ -1444,7 +1210,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="widget.TextField" name="Keterangan">
+                <Component class="widget.TextField" name="keterangan">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
@@ -1457,7 +1223,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="widget.TextField" name="NoSEPSuplesi">
+                <Component class="widget.TextField" name="noSEPSuplesi">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
@@ -1483,7 +1249,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="widget.ComboBox" name="Suplesi">
+                <Component class="widget.ComboBox" name="suplesi">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="2">
@@ -1496,7 +1262,7 @@
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="SuplesiItemStateChanged"/>
+                    <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="suplesiItemStateChanged"/>
                   </Events>
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -1514,7 +1280,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="widget.ComboBox" name="Penunjang">
+                <Component class="widget.ComboBox" name="penunjang">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="13">
@@ -1567,7 +1333,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="widget.ComboBox" name="AsesmenPoli">
+                <Component class="widget.ComboBox" name="asesmenPelayanan">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                       <StringArray count="6">
@@ -1596,7 +1362,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="widget.TextField" name="KdPropinsi">
+                <Component class="widget.TextField" name="kdPropKLL">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
@@ -1609,7 +1375,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="widget.TextField" name="NmPropinsi">
+                <Component class="widget.TextField" name="nmPropKLL">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
@@ -1622,7 +1388,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="widget.TextField" name="NmKabupaten">
+                <Component class="widget.TextField" name="nmKabKLL">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
@@ -1635,7 +1401,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="widget.TextField" name="KdKabupaten">
+                <Component class="widget.TextField" name="kdKabKLL">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
@@ -1658,7 +1424,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="widget.TextField" name="NmDPJPLayanan">
+                <Component class="widget.TextField" name="namaDPJPLayanan">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
@@ -1697,7 +1463,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="widget.TextField" name="KdPPK">
+                <Component class="widget.TextField" name="kodePPK">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
@@ -1710,7 +1476,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="widget.TextField" name="NmPPK">
+                <Component class="widget.TextField" name="namaPPK">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
@@ -1733,7 +1499,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="widget.TextField" name="KdKecamatan">
+                <Component class="widget.TextField" name="kdKecKLL">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
@@ -1746,7 +1512,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="widget.TextField" name="NmKecamatan">
+                <Component class="widget.TextField" name="nmKecKLL">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
@@ -1759,7 +1525,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="widget.TextField" name="Catatan">
+                <Component class="widget.TextField" name="catatan">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Anjungan Pasien Mandiri RS Samarinda Medika Citra"/>
                     <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
@@ -1782,7 +1548,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="widget.TextField" name="JumlahBarcode">
+                <Component class="widget.TextField" name="barcode">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="3"/>
                     <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
@@ -1805,7 +1571,7 @@
                     </Constraint>
                   </Constraints>
                 </Component>
-                <Component class="widget.TextField" name="KdDPJPLayanan">
+                <Component class="widget.TextField" name="kodeDPJPLayanan">
                   <Properties>
                     <Property name="editable" type="boolean" value="false"/>
                     <Property name="highlighter" type="javax.swing.text.Highlighter" editor="org.netbeans.modules.form.ComponentChooserEditor">
@@ -1867,22 +1633,6 @@
                   <Constraints>
                     <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
                       <AbsoluteConstraints x="1080" y="80" width="120" height="90"/>
-                    </Constraint>
-                  </Constraints>
-                </Component>
-                <Component class="widget.Label" name="lblNoRawat">
-                  <Properties>
-                    <Property name="horizontalAlignment" type="int" value="2"/>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Inter" size="12" style="0"/>
-                    </Property>
-                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-                      <Dimension value="[55, 23]"/>
-                    </Property>
-                  </Properties>
-                  <Constraints>
-                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                      <AbsoluteConstraints x="730" y="250" width="220" height="30"/>
                     </Constraint>
                   </Constraints>
                 </Component>
