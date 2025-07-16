@@ -973,11 +973,6 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
                 btnSimpanActionPerformed(evt);
             }
         });
-        btnSimpan.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                btnSimpanKeyPressed(evt);
-            }
-        });
         panelBawah.add(btnSimpan);
 
         btnKeluar.setBackground(new java.awt.Color(255, 255, 255));
@@ -991,11 +986,6 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
         btnKeluar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnKeluarActionPerformed(evt);
-            }
-        });
-        btnKeluar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                btnKeluarKeyPressed(evt);
             }
         });
         panelBawah.add(btnKeluar);
@@ -1089,21 +1079,9 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnRiwayatPelayananActionPerformed
 
-    private void btnKeluarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnKeluarKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            btnKeluarActionPerformed(null);
-        }
-    }//GEN-LAST:event_btnKeluarKeyPressed
-
     private void btnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKeluarActionPerformed
         dispose();
     }//GEN-LAST:event_btnKeluarActionPerformed
-
-    private void btnSimpanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnSimpanKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            btnSimpanActionPerformed(null);
-        }
-    }//GEN-LAST:event_btnSimpanKeyPressed
 
     private void btnSimpanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSimpanActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
