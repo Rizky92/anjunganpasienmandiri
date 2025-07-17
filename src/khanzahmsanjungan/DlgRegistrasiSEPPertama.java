@@ -86,7 +86,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         instansiKota = "",
         instansiKontak = "",
         instansiEmail = "";
-
     private int kuota = 0;
     private ObjectMapper mapper = new ObjectMapper();
     private JsonNode root, metadata, response;
@@ -95,7 +94,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
     private HttpEntity entity;
     private int day = cal.get(Calendar.DAY_OF_WEEK);
     private Date parsedDate;
-    private boolean statusfinger = false, aplikasiAktif = false, fristaAktif = false;
+    private boolean statusFinger = false, aplikasiAktif = false, fristaAktif = false;
 
     public DlgRegistrasiSEPPertama(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -199,9 +198,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        TAlmt = new widget.Label();
-        TPngJwb = new widget.Label();
-        THbngn = new widget.Label();
         WindowAksi = new widget.Dialog();
         judulAksi = new widget.Label();
         panelTengahAksi = new widget.Panel();
@@ -314,21 +310,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         panelBawah = new widget.Panel();
         btnSimpan = new widget.Button();
         btnKeluar = new widget.Button();
-
-        TAlmt.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        TAlmt.setText("Norm");
-        TAlmt.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        TAlmt.setPreferredSize(new java.awt.Dimension(20, 14));
-
-        TPngJwb.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        TPngJwb.setText("Norm");
-        TPngJwb.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        TPngJwb.setPreferredSize(new java.awt.Dimension(20, 14));
-
-        THbngn.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        THbngn.setText("Norm");
-        THbngn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        THbngn.setPreferredSize(new java.awt.Dimension(20, 14));
 
         WindowAksi.setUndecorated(false);
 
@@ -1072,8 +1053,8 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
             Valid.textKosong(namaPasien, "Pasien");
         } else if (noPeserta.getText().isBlank()) {
             Valid.textKosong(noPeserta, "Nomor Kartu");
-        } else if (Sequel.cariIntegerSmc("select count(*) from pasien where no_rkm_medis = ?", noRM.getText()) < 1) {
-            JOptionPane.showMessageDialog(null, "Maaf, no RM tidak sesuai");
+        } else if (Sequel.cariExistsSmc("select * from pasien where no_rkm_medis = ?", noRM.getText())) {
+            JOptionPane.showMessageDialog(null, "Maaf, no. RM tidak sesuai");
         } else if (kodePPKRujukan.getText().isBlank() || namaPPKRujukan.getText().isBlank()) {
             Valid.textKosong(kodePPKRujukan, "PPK Rujukan");
         } else if (kodePPK.getText().isBlank() || namaPPK.getText().isBlank()) {
@@ -1088,17 +1069,13 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
             Valid.textKosong(keterangan, "Keterangan");
         } else if (kodeDPJP.getText().isBlank() || namaDPJP.getText().isBlank()) {
             Valid.textKosong(kodeDPJP, "DPJP");
-        } else if (!statusfinger && Sequel.cariIntegerSmc("select timestampdiff(year, ?, CURRENT_DATE())", tglLahir.getText()) >= 17 && jenisPelayanan.getSelectedIndex() != 0 && !kodePoli.getText().equals("IGD")) {
+        } else if (!statusFinger && Sequel.cariIntegerSmc("select timestampdiff(year, ?, CURRENT_DATE())", tglLahir.getText()) >= 17 && jenisPelayanan.getSelectedIndex() != 0 && !kodePoli.getText().equals("IGD")) {
             JOptionPane.showMessageDialog(null, "Silahkan lakukan validasi biometrik dahulu..!!");
         } else {
             kdPoli = Sequel.cariIsiSmc("select kd_poli_rs from maping_poli_bpjs where kd_poli_bpjs = ?", kodePoli.getText());
             kdDokter = Sequel.cariIsiSmc("select kd_dokter from maping_dokter_dpjpvclaim where kd_dokter_bpjs = ?", kodeDPJP.getText());
-
             if (!kdPoli.isBlank() && !kdDokter.isBlank()) {
                 setPasien();
-                setNomorRegistrasi();
-
-                // cek apabila pasien sudah pernah diregistrasikan sebelumnya
                 if (Sequel.cariIntegerSmc("select count(*) from reg_periksa where no_rkm_medis = ? and tgl_registrasi = ? and kd_poli = ? and kd_dokter = ? and kd_pj = ?", noRM.getText(), Valid.getTglSmc(tglSEP), kdPoli, kdDokter, kodePJ) > 0) {
                     JOptionPane.showMessageDialog(null, "Maaf, Telah terdaftar pemeriksaan hari ini.\nMohon konfirmasi ke bagian pendaftaran..!!");
                     emptTeks();
@@ -1423,9 +1400,6 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
     private widget.Label LabelPoli4;
     private widget.Label LabelPoli5;
     private widget.Label LabelPoli7;
-    private widget.Label TAlmt;
-    private widget.Label THbngn;
-    private widget.Label TPngJwb;
     private widget.Dialog WindowAksi;
     private widget.ComboBox asalRujukan;
     private widget.ComboBox asesmenPelayanan;
@@ -1734,11 +1708,10 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
 
             System.out.println("code : " + metadata.path("code").asText());
             System.out.println("message : " + metadata.path("message").asText());
-            JOptionPane.showMessageDialog(null, "Respon BPJS : " + metadata.path("message").asText());
+            JOptionPane.showMessageDialog(null, metadata.path("message").asText());
 
             if (metadata.path("code").asText().equals("200")) {
                 noSEP = mapper.readTree(api.Decrypt(root.path("response").asText(), utc)).path("sep").path("noSep").asText();
-                System.out.println("SEP berhasil terbit!");
                 System.out.println("No. SEP: " + noSEP);
 
                 String isNoRawat = Sequel.cariIsiSmc("select no_rawat from reg_periksa where tgl_registrasi = ? and no_rkm_medis = ? and kd_poli = ? and kd_dokter = ?", Valid.getTglSmc(tglSEP), noRM.getText(), kdPoli, kdDokter);
@@ -1844,7 +1817,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
     }
 
     private void cekFinger(String noka) {
-        statusfinger = false;
+        statusFinger = false;
 
         if (!noPeserta.getText().equals("")) {
             try {
@@ -1865,9 +1838,9 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
                     response = mapper.readTree(api.Decrypt(root.path("response").asText(), utc));
                     if (response.path("kode").asText().equals("1")) {
                         if (response.path("status").asText().contains(Sequel.cariIsiSmc("select current_date()"))) {
-                            statusfinger = true;
+                            statusFinger = true;
                         } else {
-                            statusfinger = false;
+                            statusFinger = false;
                             JOptionPane.showMessageDialog(null, response.path("status").asText());
                         }
                     }
@@ -2930,14 +2903,14 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         }
 
         do {
+            String waktu = new SimpleDateFormat("HH:mm:ss").format(new Date());
             setNomorRegistrasi();
 
             System.out.print("Mencoba mendaftarkan pasien dengan no. rawat [" + noRawat + "]: ");
 
             sukses = Sequel.menyimpantfSmc("reg_periksa", null, noReg, noRawat, Valid.getTglSmc(tglSEP),
-                Sequel.cariIsiSmc("select current_time()"), kdDokter, noRM.getText(), kdPoli, namaPJ,
-                alamatPJ, hubunganPJ, biayaReg, "Belum", statusDaftar, "Ralan", kodePJ,
-                umurDaftar, statusUmur, "Belum Bayar", statusPoli
+                waktu, kdDokter, noRM.getText(), kdPoli, namaPJ, alamatPJ, hubunganPJ, biayaReg, "Belum",
+                statusDaftar, "Ralan", kodePJ, umurDaftar, statusUmur, "Belum Bayar", statusPoli
             );
 
             System.out.println(sukses ? "Sukses!" : "Gagal!");
