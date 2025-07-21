@@ -1,9 +1,24 @@
-/nbproject/build-impl.xml
-/nbproject/build-native.xml
-/nbproject/genfiles.properties
-/nbproject/private/
+# Root level ignore
+/*.css
+/*.html
+/*.html_files
+
+# Root level folder ignore
+/.vscode
 /build/
 /dist/
+/lib/
+/setting/*.ini
 /setting/*.xml
-!/setting/apm.xml.example
-manifest.mf
+
+*.DS_Store
+*.*~*
+*.csv
+*.exe
+*.jar
+*.log
+*.pdf
+*.sql
+*.wps
+*.xls
+*.xlsx

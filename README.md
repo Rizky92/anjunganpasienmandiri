@@ -4,17 +4,19 @@ Aplikasi anjungan pasien mandiri (APM) modifikasi dari [APM RS Indriati Boyolali
 ### Requirements
 - [Apache Netbeans](https://netbeans.apache.org/front/main/download/index.html)
 - [Liberica JDK 17](https://github.com/bell-sw/Liberica/releases?q=17.0&expanded=true)
-- Library yang digunakan bisa di [download disini](https://drive.google.com/drive/folders/1bLKuw8l9k5ElC5dxxlrXijACPLtNmCTg?usp=sharing).  
+- [SIMRS Khanza SMC](https://github.com/Rizky92/simrs-khanza)
+- Library yang digunakan bisa di [download disini](https://drive.google.com/drive/folders/1bLKuw8l9k5ElC5dxxlrXijACPLtNmCTg?usp=sharing). 
 
 ### Konfigurasi
+Terdapat dua jenis konfigurasi. Konfigurasi bawaan [SIMRS Khanza SMC](https://github.com/Rizky92/simrs-khanza), dan konfigurasi khusus untuk APM.  
 Berikut adalah konfigurasi yang disediakan dalam file `apm.xml.example`:
 ```xml
 <entry key="PRINTER_REGISTRASI"></entry>
 <entry key="PRINTER_BARCODE"></entry>
 <entry key="PRINTER_ANTRIAN"></entry>
-<entry key="PRINTERJUMLAHBARCODE">3</entry>
-<entry key="URLAPLIKASIFINGERPRINTBPJS">D:\BPJS Kesehatan\Aplikasi Sidik Jari BPJS Kesehatan\After.exe</entry>
-<entry key="URLAPLIKASIFRISTABPJS">D:\BPJS Kesehatan\FRISTA\frista.exe</entry>
+<entry key="PRINTJUMLAHBARCODE">3</entry>
+<entry key="URLAPLIKASIFINGERPRINTBPJS"></entry>
+<entry key="URLAPLIKASIFRISTABPJS"></entry>
 <entry key="USERFINGERPRINTBPJS">l4nh5eVYrLAER/I2A4b3Tw==</entry>
 <entry key="PASSWORDFINGERPRINTBPJS">l4nh5eVYrLAER/I2A4b3Tw==</entry>
 <entry key="TOMBOLDIMATIKAN">satusehat</entry>
@@ -42,7 +44,7 @@ Untuk mengambil nama printer bisa dilakukan dengan pertama kali membuka APM dan 
 values: nama printer yang muncul di terminal  
 default: `""`  
 
-### `PRINTERJUMLAHBARCODE`
+### `PRINTJUMLAHBARCODE`
 Pengaturan ini digunakan untuk menentukan jumlah barcode yang mau dicetak.  
 
 values: integer  
@@ -75,11 +77,11 @@ default: `""`
 ### `TOMBOLDIMATIKAN`
 Pengaturan ini digunakan untuk mengatur menu apa yang dimatikan dari halaman depan APM.  
 
-values: List menu, dipisah dengan koma, `antrian|cekin|daftarpoli|seppertama|sepkontrol|sepbedapoli|mobilejkn|satusehat`  
-default: `"cekin,satusehat"`  
+values: List menu, dipisah dengan koma, `antrian,cekin,daftarpoli,seppertama,sepkontrol,sepbedapoli,mobilejkn,satusehat`  
+default: `"satusehat"`  
 
 ### `KODEPOLIEKSEKUTIF`
 Pengaturan ini digunakan untuk mengatur kode poli yang digunakan sebagai default untuk pendaftaran registrasi eksekutif.  
 
-values: kode poli dari SIMRS  
+values: kode poli eksekutif dari SIMRS  
 default: `""`  
