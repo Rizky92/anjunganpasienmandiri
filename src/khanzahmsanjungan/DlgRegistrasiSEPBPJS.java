@@ -55,8 +55,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
     private final BPJSCekReferensiDokterDPJP dokter;
     private final BPJSCekReferensiPenyakit penyakit;
     private final DlgCariPoliBPJS poli;
-    private final DlgCariPoli polimapping;
-    private final DlgCariDokter doktermapping;
     private final BPJSCekRiwayatRujukanTerakhir rujukanterakhir;
     private final BPJSCekRiwayatPelayanan historiPelayanan;
     private final boolean ADDANTRIANAPIMOBILEJKN = koneksiDB.ADDANTRIANAPIMOBILEJKN();
@@ -183,31 +181,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
             }
         });
 
-        polimapping = new DlgCariPoli(parent, modal);
-        polimapping.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if (polimapping.hasSelectedRow()) {
-                    KdPoliTerapi.setText(polimapping.getSelectedRow(0).toString());
-                    NmPoliTerapi.setText(polimapping.getSelectedRow(1).toString());
-                    KodeDokterTerapi.requestFocus();
-
-                }
-            }
-        });
-
-        doktermapping = new DlgCariDokter(parent, modal);
-        doktermapping.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosed(WindowEvent e) {
-                if (doktermapping.hasSelectedRow()) {
-                    KodeDokterTerapi.setText(doktermapping.getSelectedRow(0).toString());
-                    NmDokterTerapi.setText(doktermapping.getSelectedRow(1).toString());
-                    KodeDokterTerapi.requestFocus();
-                }
-            }
-        });
-
         penyakit = new BPJSCekReferensiPenyakit(parent, modal);
         penyakit.addWindowListener(new WindowAdapter() {
             @Override
@@ -284,13 +257,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         panelBawahAksi = new widget.Panel();
         btnAksiKonfirmasi = new widget.Button();
         btnAksiBatal = new widget.Button();
-        lblTerapi = new widget.Label();
-        KdPoliTerapi = new widget.TextField();
-        KodeDokterTerapi = new widget.TextField();
-        NmDokterTerapi = new widget.TextField();
-        NmPoliTerapi = new widget.TextField();
-        btnPoliTerapi = new widget.Button();
-        btnDokterTerapi = new widget.Button();
         panelAtas = new widget.Panel();
         label4 = new widget.Label();
         panelTengah = new widget.Panel();
@@ -543,57 +509,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         panelBawahAksi.add(btnAksiBatal);
 
         WindowAksi.getContentPane().add(panelBawahAksi, java.awt.BorderLayout.PAGE_END);
-
-        lblTerapi.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTerapi.setText("Terapi / Rehabilitasi Medik");
-        lblTerapi.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
-        lblTerapi.setPreferredSize(new java.awt.Dimension(55, 23));
-
-        KdPoliTerapi.setEditable(false);
-        KdPoliTerapi.setBackground(new java.awt.Color(255, 255, 153));
-        KdPoliTerapi.setHighlighter(null);
-
-        KodeDokterTerapi.setEditable(false);
-        KodeDokterTerapi.setBackground(new java.awt.Color(255, 255, 153));
-        KodeDokterTerapi.setHighlighter(null);
-
-        NmDokterTerapi.setEditable(false);
-        NmDokterTerapi.setBackground(new java.awt.Color(255, 255, 153));
-        NmDokterTerapi.setHighlighter(null);
-
-        NmPoliTerapi.setEditable(false);
-        NmPoliTerapi.setBackground(new java.awt.Color(255, 255, 153));
-        NmPoliTerapi.setHighlighter(null);
-
-        btnPoliTerapi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pilih.png"))); // NOI18N
-        btnPoliTerapi.setMnemonic('X');
-        btnPoliTerapi.setToolTipText("Alt+X");
-        btnPoliTerapi.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
-        btnPoliTerapi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPoliTerapiActionPerformed(evt);
-            }
-        });
-        btnPoliTerapi.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                btnPoliTerapiKeyPressed(evt);
-            }
-        });
-
-        btnDokterTerapi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pilih.png"))); // NOI18N
-        btnDokterTerapi.setMnemonic('X');
-        btnDokterTerapi.setToolTipText("Alt+X");
-        btnDokterTerapi.setFont(new java.awt.Font("Inter", 0, 12)); // NOI18N
-        btnDokterTerapi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDokterTerapiActionPerformed(evt);
-            }
-        });
-        btnDokterTerapi.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                btnDokterTerapiKeyPressed(evt);
-            }
-        });
 
         panelAtas.setMinimumSize(new java.awt.Dimension(390, 40));
         panelAtas.setPreferredSize(new java.awt.Dimension(400, 40));
@@ -1463,17 +1378,8 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         } else if (!statusfinger && Sequel.cariIntegerSmc("select timestampdiff(year, ?, CURRENT_DATE())", tglLahir.getText()) >= 17 && jenisPelayanan.getSelectedIndex() != 0 && !kodePoli.getText().equals("IGD")) {
             JOptionPane.showMessageDialog(null, "Silahkan lakukan validasi biometrik dahulu..!!");
         } else {
-            if (!KdPoliTerapi.getText().equals("")) {
-                kodepolireg = KdPoliTerapi.getText();
-            } else {
-                kodepolireg = Sequel.cariIsi("select kd_poli_rs from maping_poli_bpjs where kd_poli_bpjs = ?", kodePoli.getText());
-            }
-
-            if (!KodeDokterTerapi.getText().equals("")) {
-                kodedokterreg = KodeDokterTerapi.getText();
-            } else {
-                kodedokterreg = Sequel.cariIsi("select kd_dokter from maping_dokter_dpjpvclaim where kd_dokter_bpjs = ?", kodeDPJP.getText());
-            }
+            kodepolireg = Sequel.cariIsi("select kd_poli_rs from maping_poli_bpjs where kd_poli_bpjs = ?", kodePoli.getText());
+            kodedokterreg = Sequel.cariIsi("select kd_dokter from maping_dokter_dpjpvclaim where kd_dokter_bpjs = ?", kodeDPJP.getText());
 
             isPoli();
             isCekPasien();
@@ -1734,28 +1640,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRiwayatPelayananKeyPressed
 
-    private void btnDokterTerapiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDokterTerapiActionPerformed
-        doktermapping.setSize(getContentPane().getSize());
-        doktermapping.setLocationRelativeTo(getContentPane());
-        doktermapping.tampilDokterMapping(kodeDPJPLayanan.getText());
-        doktermapping.setVisible(true);
-    }//GEN-LAST:event_btnDokterTerapiActionPerformed
-
-    private void btnDokterTerapiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnDokterTerapiKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDokterTerapiKeyPressed
-
-    private void btnPoliTerapiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPoliTerapiActionPerformed
-        polimapping.setSize(getContentPane().getSize());
-        polimapping.setLocationRelativeTo(getContentPane());
-        polimapping.tampilPoliMapping(kodePoli.getText());
-        polimapping.setVisible(true);
-    }//GEN-LAST:event_btnPoliTerapiActionPerformed
-
-    private void btnPoliTerapiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPoliTerapiKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnPoliTerapiKeyPressed
-
     private void btnApprovalFPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApprovalFPActionPerformed
         resetAksi();
         if (!noPeserta.getText().isBlank()) {
@@ -1967,9 +1851,7 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.TextField Biaya;
-    private widget.TextField KdPoliTerapi;
     private widget.TextField Kdpnj;
-    private widget.TextField KodeDokterTerapi;
     private widget.Label LabelKelas;
     private widget.Label LabelPoli;
     private widget.Label LabelPoli2;
@@ -1977,8 +1859,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
     private widget.Label LabelPoli4;
     private widget.Label LabelPoli5;
     private widget.Label LabelPoli7;
-    private widget.TextField NmDokterTerapi;
-    private widget.TextField NmPoliTerapi;
     private widget.TextField NoReg;
     private widget.TextField NoRujukMasuk;
     private widget.Label TAlmt;
@@ -1994,12 +1874,10 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
     private widget.Button btnAksiKonfirmasi;
     private widget.Button btnApprovalFP;
     private widget.Button btnBatal;
-    private widget.Button btnDokterTerapi;
     private widget.Button btnFingerprint;
     private widget.Button btnFrista;
     private widget.Button btnKonfirmasi;
     private widget.Button btnPengajuanFP;
-    private widget.Button btnPoliTerapi;
     private widget.Button btnRiwayatPelayanan;
     private widget.Button cariDPJP;
     private widget.Button cariDiagnosa;
@@ -2057,7 +1935,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
     private widget.Label label2;
     private widget.Label label4;
     private widget.ComboBox lakaLantas;
-    private widget.Label lblTerapi;
     private widget.TextField namaDPJP;
     private widget.TextField namaDPJPLayanan;
     private widget.TextField namaDiagnosa;
@@ -2477,17 +2354,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         toggleInfoTambahan.setSelected(false);
         isForm();
         emptTeks();
-        KdPoliTerapi.setText("");
-        NmPoliTerapi.setText("");
-        KodeDokterTerapi.setText("");
-        NmDokterTerapi.setText("");
-        KdPoliTerapi.setVisible(false);
-        NmPoliTerapi.setVisible(false);
-        KodeDokterTerapi.setVisible(false);
-        NmDokterTerapi.setVisible(false);
-        btnPoliTerapi.setVisible(false);
-        btnDokterTerapi.setVisible(false);
-        lblTerapi.setVisible(false);
         try {
             URL = koneksiDB.URLAPIBPJS() + "/Rujukan/Peserta/" + noKartu;
             utc = api.getUTCDateTimeAsString();
@@ -2652,17 +2518,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         toggleInfoTambahan.setSelected(false);
         isForm();
         emptTeks();
-        KdPoliTerapi.setText("");
-        NmPoliTerapi.setText("");
-        KodeDokterTerapi.setText("");
-        NmDokterTerapi.setText("");
-        KdPoliTerapi.setVisible(true);
-        NmPoliTerapi.setVisible(true);
-        KodeDokterTerapi.setVisible(true);
-        NmDokterTerapi.setVisible(true);
-        btnPoliTerapi.setVisible(true);
-        btnDokterTerapi.setVisible(true);
-        lblTerapi.setVisible(true);
         tujuanKunjungan.setSelectedIndex(0);
         flagProsedur.setSelectedIndex(0);
         penunjang.setSelectedIndex(0);
@@ -2831,17 +2686,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         toggleInfoTambahan.setSelected(false);
         isForm();
         emptTeks();
-        KdPoliTerapi.setText("");
-        NmPoliTerapi.setText("");
-        KodeDokterTerapi.setText("");
-        NmDokterTerapi.setText("");
-        KdPoliTerapi.setVisible(false);
-        NmPoliTerapi.setVisible(false);
-        KodeDokterTerapi.setVisible(false);
-        NmDokterTerapi.setVisible(false);
-        btnPoliTerapi.setVisible(false);
-        btnDokterTerapi.setVisible(false);
-        lblTerapi.setVisible(false);
         try (PreparedStatement pskontrol = koneksi.prepareStatement(
             "select bridging_surat_kontrol_bpjs.*, bridging_sep.no_kartu, left(bridging_sep.asal_rujukan, 1) as asal_rujukan, bridging_sep.jnspelayanan, bridging_sep.no_rujukan, bridging_sep.klsrawat " +
             "from bridging_surat_kontrol_bpjs join bridging_sep on bridging_surat_kontrol_bpjs.no_sep = bridging_sep.no_sep where bridging_surat_kontrol_bpjs.no_surat = ?"
@@ -3313,10 +3157,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         noRujukan.requestFocus();
         kodepolireg = "";
         kodedokterreg = "";
-        KdPoliTerapi.setText("");
-        NmPoliTerapi.setText("");
-        KodeDokterTerapi.setText("");
-        NmDokterTerapi.setText("");
         barcode.setText("3");
         resetAksi();
     }
