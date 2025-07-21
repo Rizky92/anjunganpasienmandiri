@@ -1087,25 +1087,25 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
     private void btnKonfirmasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKonfirmasiActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         cekFinger(noPeserta.getText());
-        if (namaPasien.getText().trim().equals("")) {
+        if (namaPasien.getText().isBlank()) {
             Valid.textKosong(namaPasien, "Pasien");
-        } else if (noPeserta.getText().trim().equals("")) {
+        } else if (noPeserta.getText().isBlank()) {
             Valid.textKosong(noPeserta, "Nomor Kartu");
         } else if (Sequel.cariIntegerSmc("select count(*) from pasien where no_rkm_medis = ?", noRM.getText()) < 1) {
             JOptionPane.showMessageDialog(null, "Maaf, no RM tidak sesuai");
-        } else if (kodePPKRujukan.getText().trim().equals("") || namaPPKRujukan.getText().trim().equals("")) {
+        } else if (kodePPKRujukan.getText().isBlank() || namaPPKRujukan.getText().isBlank()) {
             Valid.textKosong(kodePPKRujukan, "PPK Rujukan");
-        } else if (kodePPK.getText().trim().equals("") || namaPPK.getText().trim().equals("")) {
+        } else if (kodePPK.getText().isBlank() || namaPPK.getText().isBlank()) {
             Valid.textKosong(kodePPK, "PPK Pelayanan");
-        } else if (kodeDiagnosa.getText().trim().equals("") || namaDiagnosa.getText().trim().equals("")) {
+        } else if (kodeDiagnosa.getText().isBlank() || namaDiagnosa.getText().isBlank()) {
             Valid.textKosong(kodeDiagnosa, "Diagnosa");
-        } else if (catatan.getText().trim().equals("")) {
+        } else if (catatan.getText().isBlank()) {
             Valid.textKosong(catatan, "Catatan");
-        } else if ((jenisPelayanan.getSelectedIndex() == 1) && (kodePoli.getText().trim().equals("") || namaPoli.getText().trim().equals(""))) {
+        } else if ((jenisPelayanan.getSelectedIndex() == 1) && (kodePoli.getText().isBlank() || namaPoli.getText().isBlank())) {
             Valid.textKosong(kodePoli, "Poli Tujuan");
-        } else if ((lakaLantas.getSelectedIndex() == 1) && keterangan.getText().equals("")) {
+        } else if ((lakaLantas.getSelectedIndex() == 1) && keterangan.getText().isBlank()) {
             Valid.textKosong(keterangan, "Keterangan");
-        } else if (kodeDPJP.getText().trim().equals("") || namaDPJP.getText().trim().equals("")) {
+        } else if (kodeDPJP.getText().isBlank() || namaDPJP.getText().isBlank()) {
             Valid.textKosong(kodeDPJP, "DPJP");
         } else if (!statusfinger && Sequel.cariIntegerSmc("select timestampdiff(year, ?, CURRENT_DATE())", tglLahir.getText()) >= 17 && jenisPelayanan.getSelectedIndex() != 0 && !kodePoli.getText().equals("IGD")) {
             JOptionPane.showMessageDialog(null, "Silahkan lakukan validasi biometrik dahulu..!!");
@@ -1136,7 +1136,7 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
                         if (Sequel.cariIntegerSmc("select count(*) from bridging_sep where no_kartu = ? and jnspelayanan = ? and tglsep = ? and nmpolitujuan like '%darurat%'", no_peserta, jenisPelayanan.getSelectedItem().toString().substring(0, 1), Valid.getTglSmc(tglSEP)) >= 3) {
                             JOptionPane.showMessageDialog(null, "Maaf, sebelumnya sudah dilakukan 3x pembuatan SEP di jenis pelayanan yang sama..!!");
                         } else {
-                            if ((!kdDokter.equals("")) && (!kdPoli.equals(""))) {
+                            if ((!kdDokter.isBlank()) && (!kdPoli.isBlank())) {
                                 if (kirimAntrianOnsite()) {
                                     insertSEP();
                                 }
@@ -1146,7 +1146,7 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
                         if (Sequel.cariIntegerSmc("select count(*) from bridging_sep where no_kartu = ? and jnspelayanan = ? and tglsep = ? and nmpolitujuan not like '%darurat%'", no_peserta, jenisPelayanan.getSelectedItem().toString().substring(0, 1), Valid.getTglSmc(tglSEP)) >= 1) {
                             JOptionPane.showMessageDialog(null, "Maaf, sebelumnya sudah dilakukan pembuatan SEP di jenis pelayanan yang sama..!!");
                         } else {
-                            if ((!kdDokter.equals("")) && (!kdPoli.equals(""))) {
+                            if ((!kdDokter.isBlank()) && (!kdPoli.isBlank())) {
                                 if (kirimAntrianOnsite()) {
                                     insertSEP();
                                 }
@@ -1235,7 +1235,7 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
     }//GEN-LAST:event_cariDiagnosaActionPerformed
 
     private void cariNoRujukanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cariNoRujukanActionPerformed
-        if (noPeserta.getText().trim().equals("")) {
+        if (noPeserta.getText().isBlank()) {
             JOptionPane.showMessageDialog(null, "No.Kartu masih kosong...!!");
         } else {
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -1741,7 +1741,7 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
                 "\"noSurat\": \"" + noSKDP.getText() + "\"," +
                 "\"kodeDPJP\": \"" + kodeDPJP.getText() + "\"" +
                 "}," +
-                "\"dpjpLayan\": \"" + (kodeDPJPLayanan.getText().equals("") ? "" : kodeDPJPLayanan.getText()) + "\"," +
+                "\"dpjpLayan\": \"" + (kodeDPJPLayanan.getText().isBlank() ? "" : kodeDPJPLayanan.getText()) + "\"," +
                 "\"noTelp\": \"" + noTelp.getText() + "\"," +
                 "\"user\":\"" + noPeserta.getText() + "\"" +
                 "}" +
@@ -1840,7 +1840,7 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
                     Sequel.mengupdateSmc("bridging_sep", "tglpulang = ?", "no_sep = ?", Valid.getTglSmc(tglSEP), response.asText());
                 }
 
-                if (!prb.equals("")) {
+                if (!prb.isBlank()) {
                     Sequel.menyimpanSmc("bpjs_prb", null, response.asText(), prb);
 
                     prb = "";
@@ -1868,7 +1868,7 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
     private void cekFinger(String noka) {
         statusfinger = false;
 
-        if (!noPeserta.getText().equals("")) {
+        if (!noPeserta.getText().isBlank()) {
             try {
                 headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
@@ -2439,13 +2439,13 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         int angkaantrean = Integer.parseInt(noReg);
         jeniskunjungan = "1";
         String nomorreferensi = noRujukan.getText();
-        if ((!noRujukan.getText().equals("")) || (!noSKDP.getText().equals(""))) {
-            if (tujuanKunjungan.getSelectedItem().toString().trim().equals("0. Normal") && flagProsedur.getSelectedItem().toString().trim().equals("") && penunjang.getSelectedItem().toString().trim().equals("") && asesmenPelayanan.getSelectedItem().toString().trim().equals("")) {
+        if ((!noRujukan.getText().isBlank()) || (!noSKDP.getText().isBlank())) {
+            if (tujuanKunjungan.getSelectedItem().toString().trim().equals("0. Normal") && flagProsedur.getSelectedItem().toString().isBlank() && penunjang.getSelectedItem().toString().isBlank() && asesmenPelayanan.getSelectedItem().toString().isBlank()) {
                 if (asalRujukan.getSelectedIndex() == 0) {
                     jeniskunjungan = "1";
                     nomorreferensi = noRujukan.getText();
                 } else {
-                    if (!noSKDP.getText().equals("")) {
+                    if (!noSKDP.getText().isBlank()) {
                         jeniskunjungan = "3";
                         nomorreferensi = noSKDP.getText();
                     } else {
@@ -2453,10 +2453,10 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
                         nomorreferensi = noRujukan.getText();
                     }
                 }
-            } else if (tujuanKunjungan.getSelectedItem().toString().trim().equals("2. Konsul Dokter") && flagProsedur.getSelectedItem().toString().trim().equals("") && penunjang.getSelectedItem().toString().trim().equals("") && asesmenPelayanan.getSelectedItem().toString().trim().equals("5. Tujuan Kontrol")) {
+            } else if (tujuanKunjungan.getSelectedItem().toString().trim().equals("2. Konsul Dokter") && flagProsedur.getSelectedItem().toString().isBlank() && penunjang.getSelectedItem().toString().isBlank() && asesmenPelayanan.getSelectedItem().toString().trim().equals("5. Tujuan Kontrol")) {
                 jeniskunjungan = "3";
                 nomorreferensi = noSKDP.getText();
-            } else if (tujuanKunjungan.getSelectedItem().toString().trim().equals("0. Normal") && flagProsedur.getSelectedItem().toString().trim().equals("") && penunjang.getSelectedItem().toString().trim().equals("") && asesmenPelayanan.getSelectedItem().toString().trim().equals("4. Atas Instruksi RS")) {
+            } else if (tujuanKunjungan.getSelectedItem().toString().trim().equals("0. Normal") && flagProsedur.getSelectedItem().toString().isBlank() && penunjang.getSelectedItem().toString().isBlank() && asesmenPelayanan.getSelectedItem().toString().trim().equals("4. Atas Instruksi RS")) {
                 jeniskunjungan = "2";
                 nomorreferensi = noRujukan.getText();
             } else {
