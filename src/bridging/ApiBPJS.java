@@ -74,9 +74,14 @@ public class ApiBPJS {
         }
     }
 
-    public long GetUTCdatetimeAsString() {
+    public long getUTCDateTime() {
         millis = System.currentTimeMillis();
         return millis / 1000;
+    }
+    
+    public String getUTCDateTimeAsString() {
+        millis = System.currentTimeMillis();
+        return String.valueOf(millis / 1000);
     }
 
     public String Decrypt(String data, String utc) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidAlgorithmParameterException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException {

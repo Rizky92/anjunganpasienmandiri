@@ -1751,7 +1751,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
                                     headers = new HttpHeaders();
                                     headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
                                     headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
-                                    utc = String.valueOf(api.GetUTCdatetimeAsString());
+                                    utc = String.valueOf(api.getUTCDateTime());
                                     headers.add("X-Timestamp", utc);
                                     headers.add("X-Signature", api.getHmac(utc));
                                     headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
@@ -1790,7 +1790,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
                                     headers = new HttpHeaders();
                                     headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
                                     headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
-                                    utc = String.valueOf(api.GetUTCdatetimeAsString());
+                                    utc = String.valueOf(api.getUTCDateTime());
                                     headers.add("X-Timestamp", utc);
                                     headers.add("X-Signature", api.getHmac(utc));
                                     headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
@@ -2193,7 +2193,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
             if (LakaLantas.getSelectedIndex() > 0) {
                 tglkkl = Valid.SetTgl(TanggalKKL.getSelectedItem() + "");
             }
-            utc = String.valueOf(api.GetUTCdatetimeAsString());
+            utc = String.valueOf(api.getUTCDateTime());
 
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
@@ -2392,7 +2392,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
                 headers = new HttpHeaders();
                 headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
                 headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
-                utc = String.valueOf(api.GetUTCdatetimeAsString());
+                utc = String.valueOf(api.getUTCDateTime());
                 headers.add("X-Timestamp", utc);
                 headers.add("X-Signature", api.getHmac(utc));
                 headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
@@ -2444,7 +2444,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         lblTerapi.setVisible(false);
         try {
             URL = koneksiDB.URLAPIBPJS() + "/Rujukan/Peserta/" + noKartu;
-            utc = String.valueOf(api.GetUTCdatetimeAsString());
+            utc = String.valueOf(api.getUTCDateTime());
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
             headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
@@ -2513,7 +2513,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
                     headers = new HttpHeaders();
                     headers.setContentType(MediaType.APPLICATION_JSON);
                     headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
-                    utc = String.valueOf(api.GetUTCdatetimeAsString());
+                    utc = String.valueOf(api.getUTCDateTime());
                     headers.add("X-Timestamp", utc);
                     headers.add("X-Signature", api.getHmac(utc));
                     headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
@@ -2623,7 +2623,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
         AsesmenPoli.setSelectedIndex(1);
         try {
             URL = koneksiDB.URLAPIBPJS() + "/Rujukan/Peserta/" + noKartu;
-            utc = String.valueOf(api.GetUTCdatetimeAsString());
+            utc = String.valueOf(api.getUTCDateTime());
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_JSON);
             headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
@@ -2691,7 +2691,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
                     headers = new HttpHeaders();
                     headers.setContentType(MediaType.APPLICATION_JSON);
                     headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
-                    utc = String.valueOf(api.GetUTCdatetimeAsString());
+                    utc = String.valueOf(api.getUTCDateTime());
                     headers.add("X-Timestamp", utc);
                     headers.add("X-Signature", api.getHmac(utc));
                     headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
@@ -2812,7 +2812,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
                     if (rskontrol.getString("jnspelayanan").equals("1")) {
                         try {
                             URL = koneksiDB.URLAPIBPJS() + "/Peserta/nokartu/" + rskontrol.getString("no_kartu") + "/tglSEP/" + Valid.getTglSmc(TanggalSEP);
-                            utc = String.valueOf(api.GetUTCdatetimeAsString());
+                            utc = String.valueOf(api.getUTCDateTime());
                             headers = new HttpHeaders();
                             headers.setContentType(MediaType.APPLICATION_JSON);
                             headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
@@ -2900,7 +2900,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
                             } else if (rskontrol.getString("asal_rujukan").equals("2")) {
                                 URL = koneksiDB.URLAPIBPJS() + "/Rujukan/RS/" + rskontrol.getString("no_rujukan");
                             }
-                            utc = String.valueOf(api.GetUTCdatetimeAsString());
+                            utc = String.valueOf(api.getUTCDateTime());
                             headers = new HttpHeaders();
                             headers.setContentType(MediaType.APPLICATION_JSON);
                             headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
@@ -3116,7 +3116,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
                         System.out.println("URL : " + URL);
                         System.out.print("addantrean " + TNoRw.getText() + " : ");
                         try {
-                            utc = String.valueOf(api.GetUTCdatetimeAsString());
+                            utc = String.valueOf(api.getUTCDateTime());
                             headers = new HttpHeaders();
                             headers.setContentType(MediaType.APPLICATION_JSON);
                             headers.add("x-cons-id", koneksiDB.CONSIDAPIMOBILEJKN());
@@ -3177,7 +3177,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
                     System.out.println("URL : " + URL);
                     System.out.print("addantrean " + TNoRw.getText() + " : ");
                     try {
-                        utc = String.valueOf(api.GetUTCdatetimeAsString());
+                        utc = String.valueOf(api.getUTCDateTime());
                         headers = new HttpHeaders();
                         headers.setContentType(MediaType.APPLICATION_JSON);
                         headers.add("x-cons-id", koneksiDB.CONSIDAPIMOBILEJKN());
@@ -3481,7 +3481,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
             namaDokterKontrol = Sequel.cariIsiSmc("select nm_dokter_bpjs from maping_dokter_dpjpvclaim where kd_dokter_bpjs = ?", kodeDokterKontrol);
 
         try {
-            utc = String.valueOf(api.GetUTCdatetimeAsString());
+            utc = String.valueOf(api.getUTCDateTime());
 
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
@@ -3537,7 +3537,7 @@ public class DlgRegistrasiSEPPertama extends widget.Dialog {
             return;
         }
         try {
-            utc = String.valueOf(api.GetUTCdatetimeAsString());
+            utc = String.valueOf(api.getUTCDateTime());
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
             headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());

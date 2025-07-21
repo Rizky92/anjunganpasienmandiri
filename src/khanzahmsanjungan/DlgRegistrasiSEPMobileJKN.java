@@ -1436,7 +1436,7 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
                                 headers = new HttpHeaders();
                                 headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
                                 headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
-                                utc = String.valueOf(api.GetUTCdatetimeAsString());
+                                utc = String.valueOf(api.getUTCDateTime());
                                 headers.add("X-Timestamp", utc);
                                 headers.add("X-Signature", api.getHmac(utc));
                                 headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
@@ -1475,7 +1475,7 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
                                 headers = new HttpHeaders();
                                 headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
                                 headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
-                                utc = String.valueOf(api.GetUTCdatetimeAsString());
+                                utc = String.valueOf(api.getUTCDateTime());
                                 headers.add("X-Timestamp", utc);
                                 headers.add("X-Signature", api.getHmac(utc));
                                 headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
@@ -1750,7 +1750,7 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
             headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
-            utc = String.valueOf(api.GetUTCdatetimeAsString());
+            utc = String.valueOf(api.getUTCDateTime());
             headers.add("X-Timestamp", utc);
             headers.add("X-Signature", api.getHmac(utc));
             headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
@@ -1931,7 +1931,7 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
 
         try {
             URL = koneksiDB.URLAPIBPJS() + "/SEP/FingerPrint/Peserta/" + NoKartu.getText() + "/TglPelayanan/" + Valid.SetTgl(TanggalSEP.getSelectedItem().toString());
-            utc = String.valueOf(api.GetUTCdatetimeAsString());
+            utc = String.valueOf(api.getUTCDateTime());
 
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
@@ -2015,7 +2015,7 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
                     // CEK STATUS PASIEN
                     try {
                         URL = koneksiDB.URLAPIBPJS() + "/Peserta/nokartu/" + rsjkn.getString("nomorkartu") + "/tglSEP/" + Valid.SetTgl(TanggalSEP.getSelectedItem().toString());
-                        utc = String.valueOf(api.GetUTCdatetimeAsString());
+                        utc = String.valueOf(api.getUTCDateTime());
                         headers = new HttpHeaders();
                         headers.setContentType(MediaType.APPLICATION_JSON);
                         headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
@@ -2057,7 +2057,7 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
                                 try {
                                     URL = koneksiDB.URLAPIBPJS() + "/Rujukan/" + rsjkn.getString("nomorreferensi");
                                     System.out.println("URL : " + URL);
-                                    utc = String.valueOf(api.GetUTCdatetimeAsString());
+                                    utc = String.valueOf(api.getUTCDateTime());
                                     headers = new HttpHeaders();
                                     headers.setContentType(MediaType.APPLICATION_JSON);
                                     headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
@@ -2093,7 +2093,7 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
                                 try {
                                     URL = koneksiDB.URLAPIBPJS() + "/Rujukan/RS/" + rsjkn.getString("nomorreferensi");
                                     System.out.println("URL : " + URL);
-                                    utc = String.valueOf(api.GetUTCdatetimeAsString());
+                                    utc = String.valueOf(api.getUTCDateTime());
                                     headers = new HttpHeaders();
                                     headers.setContentType(MediaType.APPLICATION_JSON);
                                     headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
@@ -2161,7 +2161,7 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
                                                         URL = koneksiDB.URLAPIBPJS() + "/Rujukan/RS/" + rskontrol.getString("no_rujukan");
                                                         AsalRujukan.setSelectedIndex(1);
                                                     }
-                                                    utc = String.valueOf(api.GetUTCdatetimeAsString());
+                                                    utc = String.valueOf(api.getUTCDateTime());
                                                     headers = new HttpHeaders();
                                                     headers.setContentType(MediaType.APPLICATION_JSON);
                                                     headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
@@ -2259,7 +2259,7 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
                         headers = new HttpHeaders();
                         headers.setContentType(MediaType.APPLICATION_JSON);
                         headers.add("x-cons-id", koneksiDB.CONSIDAPIMOBILEJKN());
-                        utc = String.valueOf(api.GetUTCdatetimeAsString());
+                        utc = String.valueOf(api.getUTCDateTime());
                         headers.add("x-timestamp", utc);
                         headers.add("x-signature", api.getHmac(utc));
                         headers.add("user_key", koneksiDB.USERKEYAPIMOBILEJKN());
@@ -2577,7 +2577,7 @@ public class DlgRegistrasiSEPMobileJKN extends widget.Dialog {
             return;
         }
         try {
-            utc = String.valueOf(api.GetUTCdatetimeAsString());
+            utc = String.valueOf(api.getUTCDateTime());
             headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
             headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
