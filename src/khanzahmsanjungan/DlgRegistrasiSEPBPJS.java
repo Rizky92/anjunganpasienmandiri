@@ -456,11 +456,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
 
         noRM.setEditable(false);
         noRM.setFocusable(false);
-        noRM.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                noRMActionPerformed(evt);
-            }
-        });
         panel1.add(noRM);
         noRM.setBounds(230, 10, 110, 30);
 
@@ -478,11 +473,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         tglSEP.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-07-2025" }));
         tglSEP.setFocusable(false);
         tglSEP.setPreferredSize(new java.awt.Dimension(95, 25));
-        tglSEP.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                tglSEPKeyPressed(evt);
-            }
-        });
         panel1.add(tglSEP);
         tglSEP.setBounds(730, 190, 170, 30);
 
@@ -495,11 +485,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         tglRujukan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-07-2025" }));
         tglRujukan.setFocusable(false);
         tglRujukan.setPreferredSize(new java.awt.Dimension(95, 23));
-        tglRujukan.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                tglRujukanKeyPressed(evt);
-            }
-        });
         panel1.add(tglRujukan);
         tglRujukan.setBounds(730, 160, 170, 30);
 
@@ -510,11 +495,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
 
         noRujukan.setEditable(false);
         noRujukan.setFocusable(false);
-        noRujukan.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                noRujukanKeyPressed(evt);
-            }
-        });
         panel1.add(noRujukan);
         noRujukan.setBounds(230, 100, 340, 30);
 
@@ -570,11 +550,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         kelas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1. Kelas 1", "2. Kelas 2", "3. Kelas 3" }));
         kelas.setSelectedIndex(2);
         kelas.setFocusable(false);
-        kelas.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                kelasKeyPressed(evt);
-            }
-        });
         panel1.add(kelas);
         kelas.setBounds(230, 250, 150, 30);
 
@@ -623,11 +598,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
 
         asalRujukan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1. Faskes 1", "2. Faskes 2(RS)" }));
         asalRujukan.setFocusable(false);
-        asalRujukan.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                asalRujukanKeyPressed(evt);
-            }
-        });
         panel1.add(asalRujukan);
         asalRujukan.setBounds(730, 130, 170, 30);
 
@@ -645,22 +615,12 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
                 noTelpMouseClicked(evt);
             }
         });
-        noTelp.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                noTelpKeyPressed(evt);
-            }
-        });
         panel1.add(noTelp);
         noTelp.setBounds(730, 250, 170, 30);
 
         katarak.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0. Tidak", "1.Ya" }));
         katarak.setFocusable(false);
         katarak.setPreferredSize(new java.awt.Dimension(64, 25));
-        katarak.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                katarakKeyPressed(evt);
-            }
-        });
         panel1.add(katarak);
         katarak.setBounds(730, 220, 170, 30);
 
@@ -692,11 +652,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
                 cariDPJPActionPerformed(evt);
             }
         });
-        cariDPJP.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                cariDPJPKeyPressed(evt);
-            }
-        });
         panel1.add(cariDPJP);
         cariDPJP.setBounds(575, 220, 40, 30);
 
@@ -716,11 +671,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
 
         noSKDP.setEditable(false);
         noSKDP.setFocusable(false);
-        noSKDP.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                noSKDPKeyPressed(evt);
-            }
-        });
         panel1.add(noSKDP);
         noSKDP.setBounds(230, 70, 340, 30);
 
@@ -747,11 +697,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
                 cariPoliActionPerformed(evt);
             }
         });
-        cariPoli.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                cariPoliKeyPressed(evt);
-            }
-        });
         panel1.add(cariPoli);
         cariPoli.setBounds(575, 190, 40, 30);
 
@@ -762,11 +707,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         cariDiagnosa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cariDiagnosaActionPerformed(evt);
-            }
-        });
-        cariDiagnosa.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                cariDiagnosaKeyPressed(evt);
             }
         });
         panel1.add(cariDiagnosa);
@@ -781,11 +721,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
                 cariNoRujukanActionPerformed(evt);
             }
         });
-        cariNoRujukan.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                cariNoRujukanKeyPressed(evt);
-            }
-        });
         panel1.add(cariNoRujukan);
         cariNoRujukan.setBounds(575, 100, 40, 30);
 
@@ -798,11 +733,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         btnRiwayatPelayanan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRiwayatPelayananActionPerformed(evt);
-            }
-        });
-        btnRiwayatPelayanan.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                btnRiwayatPelayananKeyPressed(evt);
             }
         });
         panel1.add(btnRiwayatPelayanan);
@@ -820,11 +750,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
                 btnFingerprintActionPerformed(evt);
             }
         });
-        btnFingerprint.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                btnFingerprintKeyPressed(evt);
-            }
-        });
         panel1.add(btnFingerprint);
         btnFingerprint.setBounds(1080, 100, 120, 80);
 
@@ -838,11 +763,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         btnFrista.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFristaActionPerformed(evt);
-            }
-        });
-        btnFrista.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                btnFristaKeyPressed(evt);
             }
         });
         panel1.add(btnFrista);
@@ -889,11 +809,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
                 jenisPelayananItemStateChanged(evt);
             }
         });
-        jenisPelayanan.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jenisPelayananKeyPressed(evt);
-            }
-        });
         form.add(jenisPelayanan);
         jenisPelayanan.setBounds(230, 10, 150, 30);
 
@@ -909,11 +824,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
                 tujuanKunjunganItemStateChanged(evt);
             }
         });
-        tujuanKunjungan.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                tujuanKunjunganKeyPressed(evt);
-            }
-        });
         form.add(tujuanKunjungan);
         tujuanKunjungan.setBounds(230, 40, 340, 30);
 
@@ -925,11 +835,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         flagProsedur.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "0. Prosedur Tidak Berkelanjutan", "1. Prosedur dan Terapi Berkelanjutan" }));
         flagProsedur.setEnabled(false);
         flagProsedur.setFocusable(false);
-        flagProsedur.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                flagProsedurKeyPressed(evt);
-            }
-        });
         form.add(flagProsedur);
         flagProsedur.setBounds(230, 70, 340, 30);
 
@@ -941,11 +846,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         penunjang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "1. Radioterapi", "2. Kemoterapi", "3. Rehabilitasi Medik", "4. Rehabilitasi Psikososial", "5. Transfusi Darah", "6. Pelayanan Gigi", "7. Laboratorium", "8. USG", "9. Farmasi", "10. Lain-Lain", "11. MRI", "12. HEMODIALISA" }));
         penunjang.setEnabled(false);
         penunjang.setFocusable(false);
-        penunjang.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                penunjangKeyPressed(evt);
-            }
-        });
         form.add(penunjang);
         penunjang.setBounds(230, 100, 340, 30);
 
@@ -956,11 +856,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
 
         asesmenPelayanan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "1. Poli spesialis tidak tersedia pada hari sebelumnya", "2. Jam Poli telah berakhir pada hari sebelumnya", "3. Spesialis yang dimaksud tidak praktek pada hari sebelumnya", "4. Atas Instruksi RS", "5. Tujuan Kontrol" }));
         asesmenPelayanan.setFocusable(false);
-        asesmenPelayanan.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                asesmenPelayananKeyPressed(evt);
-            }
-        });
         form.add(asesmenPelayanan);
         asesmenPelayanan.setBounds(230, 130, 340, 30);
 
@@ -1006,11 +901,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
                 lakaLantasItemStateChanged(evt);
             }
         });
-        lakaLantas.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                lakaLantasKeyPressed(evt);
-            }
-        });
         form.add(lakaLantas);
         lakaLantas.setBounds(730, 10, 170, 30);
 
@@ -1024,11 +914,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         tglKLL.setEnabled(false);
         tglKLL.setFocusable(false);
         tglKLL.setPreferredSize(new java.awt.Dimension(64, 25));
-        tglKLL.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                tglKLLKeyPressed(evt);
-            }
-        });
         form.add(tglKLL);
         tglKLL.setBounds(730, 40, 170, 30);
 
@@ -1039,11 +924,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
 
         keterangan.setEditable(false);
         keterangan.setFocusable(false);
-        keterangan.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                keteranganKeyPressed(evt);
-            }
-        });
         form.add(keterangan);
         keterangan.setBounds(730, 70, 300, 30);
 
@@ -1054,11 +934,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         suplesi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0. Tidak", "1.Ya" }));
         suplesi.setFocusable(false);
         suplesi.setPreferredSize(new java.awt.Dimension(64, 25));
-        suplesi.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                suplesiItemStateChanged(evt);
-            }
-        });
         form.add(suplesi);
         suplesi.setBounds(730, 100, 95, 30);
 
@@ -1068,11 +943,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         jLabel41.setBounds(830, 100, 55, 30);
 
         noSEPSuplesi.setEditable(false);
-        noSEPSuplesi.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                noSEPSuplesiKeyPressed(evt);
-            }
-        });
         form.add(noSEPSuplesi);
         noSEPSuplesi.setBounds(890, 100, 140, 30);
 
@@ -1124,11 +994,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
 
         catatan.setText("Anjungan Pasien Mandiri RS Samarinda Medika Citra");
         catatan.setFocusable(false);
-        catatan.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                catatanKeyPressed(evt);
-            }
-        });
         form.add(catatan);
         catatan.setBounds(730, 220, 300, 30);
 
@@ -1142,11 +1007,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         btnApprovalFP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnApprovalFPActionPerformed(evt);
-            }
-        });
-        btnApprovalFP.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                btnApprovalFPKeyPressed(evt);
             }
         });
         form.add(btnApprovalFP);
@@ -1164,11 +1024,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
                 btnPengajuanFPActionPerformed(evt);
             }
         });
-        btnPengajuanFP.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                btnPengajuanFPKeyPressed(evt);
-            }
-        });
         form.add(btnPengajuanFP);
         btnPengajuanFP.setBounds(1080, 80, 120, 90);
 
@@ -1178,11 +1033,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
 
         barcode.setText("3");
         barcode.setFocusable(false);
-        barcode.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                barcodeKeyPressed(evt);
-            }
-        });
         form.add(barcode);
         barcode.setBounds(230, 220, 50, 30);
 
@@ -1331,32 +1181,12 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         }
     }//GEN-LAST:event_btnKonfirmasiActionPerformed
 
-    private void cariDPJPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cariDPJPKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cariDPJPKeyPressed
-
     private void cariDPJPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cariDPJPActionPerformed
         dokter.setSize(getContentPane().getSize());
         dokter.setLocationRelativeTo(getContentPane());
         dokter.carinamadokter(kodePoli.getText(), namaPoli.getText());
         dokter.setVisible(true);
     }//GEN-LAST:event_cariDPJPActionPerformed
-
-    private void asesmenPelayananKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_asesmenPelayananKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_asesmenPelayananKeyPressed
-
-    private void penunjangKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_penunjangKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_penunjangKeyPressed
-
-    private void flagProsedurKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_flagProsedurKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_flagProsedurKeyPressed
-
-    private void tujuanKunjunganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tujuanKunjunganKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tujuanKunjunganKeyPressed
 
     private void tujuanKunjunganItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_tujuanKunjunganItemStateChanged
         if (tujuanKunjungan.getSelectedIndex() == 0) {
@@ -1383,34 +1213,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         }
     }//GEN-LAST:event_tujuanKunjunganItemStateChanged
 
-    private void noSEPSuplesiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_noSEPSuplesiKeyPressed
-
-    }//GEN-LAST:event_noSEPSuplesiKeyPressed
-
-    private void keteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_keteranganKeyPressed
-        Valid.pindah(evt, tglKLL, suplesi);
-    }//GEN-LAST:event_keteranganKeyPressed
-
-    private void tglKLLKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tglKLLKeyPressed
-        Valid.pindah(evt, lakaLantas, keterangan);
-    }//GEN-LAST:event_tglKLLKeyPressed
-
-    private void katarakKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_katarakKeyPressed
-        Valid.pindah(evt, catatan, noTelp);
-    }//GEN-LAST:event_katarakKeyPressed
-
-    private void noTelpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_noTelpKeyPressed
-        Valid.pindah(evt, katarak, lakaLantas);
-    }//GEN-LAST:event_noTelpKeyPressed
-
-    private void asalRujukanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_asalRujukanKeyPressed
-
-    }//GEN-LAST:event_asalRujukanKeyPressed
-
-    private void lakaLantasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lakaLantasKeyPressed
-        Valid.pindah(evt, noTelp, tglKLL);
-    }//GEN-LAST:event_lakaLantasKeyPressed
-
     private void lakaLantasItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_lakaLantasItemStateChanged
         if (lakaLantas.getSelectedIndex() == 0) {
             tglKLL.setEnabled(false);
@@ -1421,14 +1223,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
             keterangan.setEditable(true);
         }
     }//GEN-LAST:event_lakaLantasItemStateChanged
-
-    private void kelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_kelasKeyPressed
-
-    }//GEN-LAST:event_kelasKeyPressed
-
-    private void jenisPelayananKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jenisPelayananKeyPressed
-
-    }//GEN-LAST:event_jenisPelayananKeyPressed
 
     private void jenisPelayananItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jenisPelayananItemStateChanged
         if (jenisPelayanan.getSelectedIndex() == 0) {
@@ -1450,49 +1244,17 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         }
     }//GEN-LAST:event_jenisPelayananItemStateChanged
 
-    private void catatanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_catatanKeyPressed
-
-    }//GEN-LAST:event_catatanKeyPressed
-
-    private void noRujukanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_noRujukanKeyPressed
-
-    }//GEN-LAST:event_noRujukanKeyPressed
-
-    private void tglRujukanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tglRujukanKeyPressed
-        Valid.pindah(evt, noRujukan, tglSEP);
-    }//GEN-LAST:event_tglRujukanKeyPressed
-
-    private void tglSEPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tglSEPKeyPressed
-        Valid.pindah(evt, tglRujukan, asalRujukan);
-    }//GEN-LAST:event_tglSEPKeyPressed
-
-    private void noRMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_noRMActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_noRMActionPerformed
-
-    private void noSKDPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_noSKDPKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_noSKDPKeyPressed
-
     private void cariPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cariPoliActionPerformed
         poli.setSize(getContentPane().getSize());
         poli.setLocationRelativeTo(getContentPane());
         poli.setVisible(true);
     }//GEN-LAST:event_cariPoliActionPerformed
 
-    private void cariPoliKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cariPoliKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cariPoliKeyPressed
-
     private void cariDiagnosaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cariDiagnosaActionPerformed
         penyakit.setSize(getContentPane().getSize());
         penyakit.setLocationRelativeTo(getContentPane());
         penyakit.setVisible(true);
     }//GEN-LAST:event_cariDiagnosaActionPerformed
-
-    private void cariDiagnosaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cariDiagnosaKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cariDiagnosaKeyPressed
 
     private void cariNoRujukanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cariNoRujukanActionPerformed
         if (noPeserta.getText().trim().equals("")) {
@@ -1507,10 +1269,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         }
     }//GEN-LAST:event_cariNoRujukanActionPerformed
 
-    private void cariNoRujukanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cariNoRujukanKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cariNoRujukanKeyPressed
-
     private void btnRiwayatPelayananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRiwayatPelayananActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         historiPelayanan.setSize(getContentPane().getSize());
@@ -1519,10 +1277,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         historiPelayanan.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnRiwayatPelayananActionPerformed
-
-    private void btnRiwayatPelayananKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnRiwayatPelayananKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnRiwayatPelayananKeyPressed
 
     private void btnApprovalFPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApprovalFPActionPerformed
         resetAksi();
@@ -1536,12 +1290,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         }
     }//GEN-LAST:event_btnApprovalFPActionPerformed
 
-    private void btnApprovalFPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnApprovalFPKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            btnApprovalFPActionPerformed(null);
-        }
-    }//GEN-LAST:event_btnApprovalFPKeyPressed
-
     private void btnPengajuanFPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPengajuanFPActionPerformed
         resetAksi();
         if (!noPeserta.getText().isBlank()) {
@@ -1553,12 +1301,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
             JOptionPane.showMessageDialog(null, "Maaf, No. Kartu Peserta tidak ada...!!!");
         }
     }//GEN-LAST:event_btnPengajuanFPActionPerformed
-
-    private void btnPengajuanFPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnPengajuanFPKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            btnPengajuanFPActionPerformed(null);
-        }
-    }//GEN-LAST:event_btnPengajuanFPKeyPressed
 
     private void btnAksiKonfirmasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAksiKonfirmasiActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -1682,25 +1424,13 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         WindowAksi.dispose();
     }//GEN-LAST:event_btnAksiBatalActionPerformed
 
-    private void barcodeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_barcodeKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_barcodeKeyPressed
-
     private void btnFingerprintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFingerprintActionPerformed
         bukaAplikasiFingerprint();
     }//GEN-LAST:event_btnFingerprintActionPerformed
 
-    private void btnFingerprintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnFingerprintKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnFingerprintKeyPressed
-
     private void btnFristaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFristaActionPerformed
         bukaAplikasiFrista();
     }//GEN-LAST:event_btnFristaActionPerformed
-
-    private void btnFristaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnFristaKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnFristaKeyPressed
 
     private void toggleInfoTambahanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_toggleInfoTambahanActionPerformed
         isForm();
@@ -1723,15 +1453,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
             isForm();
         }
     }//GEN-LAST:event_noTelpMouseClicked
-
-    private void suplesiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_suplesiItemStateChanged
-        if (suplesi.getSelectedIndex() == 1) {
-            noSEPSuplesi.setEditable(true);
-        } else {
-            noSEPSuplesi.setEditable(false);
-            noSEPSuplesi.setText("");
-        }
-    }//GEN-LAST:event_suplesiItemStateChanged
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.Label LabelKelas;
