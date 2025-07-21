@@ -53,10 +53,10 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
     private final validasi Valid = new validasi();
     private final ApiBPJS api = new ApiBPJS();
     private final BPJSCekReferensiDokterDPJP dokter;
-    private final BPJSCekReferensiPenyakit penyakit;
+    private final BPJSCekReferensiPenyakit diagnosa;
     private final DlgCariPoliBPJS poli;
-    private final BPJSCekRiwayatRujukanTerakhir rujukanterakhir;
-    private final BPJSCekRiwayatPelayanan historiPelayanan;
+    private final BPJSCekRiwayatRujukanTerakhir riwayatRujukan;
+    private final BPJSCekRiwayatPelayanan riwayatPelayanan;
     private final boolean ADDANTRIANAPIMOBILEJKN = koneksiDB.ADDANTRIANAPIMOBILEJKN();
     private SimpleDateFormat dateformat = new SimpleDateFormat("yyyy/MM/dd");
     private String umurDaftar = "0",
@@ -170,7 +170,7 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
             }
         });
  
-       poli = new DlgCariPoliBPJS(parent, modal);
+        poli = new DlgCariPoliBPJS(parent, modal);
         poli.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosed(WindowEvent e) {
@@ -183,43 +183,43 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
             }
         });
 
-        penyakit = new BPJSCekReferensiPenyakit(parent, modal);
-        penyakit.addWindowListener(new WindowAdapter() {
+        diagnosa = new BPJSCekReferensiPenyakit(parent, modal);
+        diagnosa.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosed(WindowEvent e) {
-                if (penyakit.getTable().getSelectedRow() != -1) {
-                    kodeDiagnosa.setText(penyakit.getTable().getValueAt(penyakit.getTable().getSelectedRow(), 1).toString());
-                    namaDiagnosa.setText(penyakit.getTable().getValueAt(penyakit.getTable().getSelectedRow(), 2).toString());
+                if (diagnosa.getTable().getSelectedRow() != -1) {
+                    kodeDiagnosa.setText(diagnosa.getTable().getValueAt(diagnosa.getTable().getSelectedRow(), 1).toString());
+                    namaDiagnosa.setText(diagnosa.getTable().getValueAt(diagnosa.getTable().getSelectedRow(), 2).toString());
                     kodeDiagnosa.requestFocus();
                 }
             }
         });
 
-        rujukanterakhir = new BPJSCekRiwayatRujukanTerakhir(parent, modal);
-        rujukanterakhir.addWindowListener(new WindowAdapter() {
+        riwayatRujukan = new BPJSCekRiwayatRujukanTerakhir(parent, modal);
+        riwayatRujukan.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosed(WindowEvent e) {
-                if (rujukanterakhir.getTable().getSelectedRow() != -1) {
-                    kodeDiagnosa.setText(rujukanterakhir.getTable().getValueAt(rujukanterakhir.getTable().getSelectedRow(), 0).toString());
-                    namaDiagnosa.setText(rujukanterakhir.getTable().getValueAt(rujukanterakhir.getTable().getSelectedRow(), 1).toString());
-                    noRujukan.setText(rujukanterakhir.getTable().getValueAt(rujukanterakhir.getTable().getSelectedRow(), 2).toString());
-                    kodePoli.setText(rujukanterakhir.getTable().getValueAt(rujukanterakhir.getTable().getSelectedRow(), 3).toString());
-                    namaPoli.setText(rujukanterakhir.getTable().getValueAt(rujukanterakhir.getTable().getSelectedRow(), 4).toString());
-                    kodePPKRujukan.setText(rujukanterakhir.getTable().getValueAt(rujukanterakhir.getTable().getSelectedRow(), 6).toString());
-                    namaPPKRujukan.setText(rujukanterakhir.getTable().getValueAt(rujukanterakhir.getTable().getSelectedRow(), 7).toString());
-                    Valid.SetTgl(tglRujukan, rujukanterakhir.getTable().getValueAt(rujukanterakhir.getTable().getSelectedRow(), 5).toString());
+                if (riwayatRujukan.getTable().getSelectedRow() != -1) {
+                    kodeDiagnosa.setText(riwayatRujukan.getTable().getValueAt(riwayatRujukan.getTable().getSelectedRow(), 0).toString());
+                    namaDiagnosa.setText(riwayatRujukan.getTable().getValueAt(riwayatRujukan.getTable().getSelectedRow(), 1).toString());
+                    noRujukan.setText(riwayatRujukan.getTable().getValueAt(riwayatRujukan.getTable().getSelectedRow(), 2).toString());
+                    kodePoli.setText(riwayatRujukan.getTable().getValueAt(riwayatRujukan.getTable().getSelectedRow(), 3).toString());
+                    namaPoli.setText(riwayatRujukan.getTable().getValueAt(riwayatRujukan.getTable().getSelectedRow(), 4).toString());
+                    kodePPKRujukan.setText(riwayatRujukan.getTable().getValueAt(riwayatRujukan.getTable().getSelectedRow(), 6).toString());
+                    namaPPKRujukan.setText(riwayatRujukan.getTable().getValueAt(riwayatRujukan.getTable().getSelectedRow(), 7).toString());
+                    Valid.SetTgl(tglRujukan, riwayatRujukan.getTable().getValueAt(riwayatRujukan.getTable().getSelectedRow(), 5).toString());
                     catatan.requestFocus();
                 }
             }
         });
 
-        historiPelayanan = new BPJSCekRiwayatPelayanan(parent, modal);
-        historiPelayanan.addWindowListener(new WindowAdapter() {
+        riwayatPelayanan = new BPJSCekRiwayatPelayanan(parent, modal);
+        riwayatPelayanan.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosed(WindowEvent e) {
-                if (historiPelayanan.getTable().getSelectedRow() != -1) {
-                    if ((historiPelayanan.getTable().getSelectedColumn() == 6) || (historiPelayanan.getTable().getSelectedColumn() == 7)) {
-                        noRujukan.setText(historiPelayanan.getTable().getValueAt(historiPelayanan.getTable().getSelectedRow(), historiPelayanan.getTable().getSelectedColumn()).toString());
+                if (riwayatPelayanan.getTable().getSelectedRow() != -1) {
+                    if ((riwayatPelayanan.getTable().getSelectedColumn() == 6) || (riwayatPelayanan.getTable().getSelectedColumn() == 7)) {
+                        noRujukan.setText(riwayatPelayanan.getTable().getValueAt(riwayatPelayanan.getTable().getSelectedRow(), riwayatPelayanan.getTable().getSelectedColumn()).toString());
                     }
                 }
                 noRujukan.requestFocus();
@@ -241,7 +241,7 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        WindowAksi = new widget.Dialog();
+        dlgAksiFP = new widget.Dialog();
         judulAksi = new widget.Label();
         panelTengahAksi = new widget.Panel();
         userAksi = new widget.PasswordField();
@@ -354,13 +354,13 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         btnKonfirmasi = new widget.Button();
         btnBatal = new widget.Button();
 
-        WindowAksi.setUndecorated(false);
+        dlgAksiFP.setUndecorated(false);
 
         judulAksi.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         judulAksi.setText("KONFIRMASI AKSI");
         judulAksi.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
         judulAksi.setPreferredSize(new java.awt.Dimension(400, 30));
-        WindowAksi.getContentPane().add(judulAksi, java.awt.BorderLayout.PAGE_START);
+        dlgAksiFP.getContentPane().add(judulAksi, java.awt.BorderLayout.PAGE_START);
 
         panelTengahAksi.setOpaque(false);
         panelTengahAksi.setLayout(null);
@@ -401,7 +401,7 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         panelTengahAksi.add(label2);
         label2.setBounds(0, 70, 110, 30);
 
-        WindowAksi.getContentPane().add(panelTengahAksi, java.awt.BorderLayout.CENTER);
+        dlgAksiFP.getContentPane().add(panelTengahAksi, java.awt.BorderLayout.CENTER);
 
         panelBawahAksi.setOpaque(false);
         panelBawahAksi.setPreferredSize(new java.awt.Dimension(50, 50));
@@ -428,7 +428,7 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         });
         panelBawahAksi.add(btnAksiBatal);
 
-        WindowAksi.getContentPane().add(panelBawahAksi, java.awt.BorderLayout.PAGE_END);
+        dlgAksiFP.getContentPane().add(panelBawahAksi, java.awt.BorderLayout.PAGE_END);
 
         panelAtas.setMinimumSize(new java.awt.Dimension(390, 40));
         panelAtas.setPreferredSize(new java.awt.Dimension(400, 40));
@@ -1057,11 +1057,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
                 btnKonfirmasiActionPerformed(evt);
             }
         });
-        btnKonfirmasi.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                btnKonfirmasiKeyPressed(evt);
-            }
-        });
         panelBawah.add(btnKonfirmasi);
 
         btnBatal.setBackground(new java.awt.Color(255, 255, 255));
@@ -1078,11 +1073,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
                 btnBatalActionPerformed(evt);
             }
         });
-        btnBatal.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                btnBatalKeyPressed(evt);
-            }
-        });
         panelBawah.add(btnBatal);
 
         getContentPane().add(panelBawah, java.awt.BorderLayout.PAGE_END);
@@ -1090,21 +1080,9 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnBatalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnBatalKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            btnBatalActionPerformed(null);
-        }
-    }//GEN-LAST:event_btnBatalKeyPressed
-
     private void btnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalActionPerformed
         dispose();
     }//GEN-LAST:event_btnBatalActionPerformed
-
-    private void btnKonfirmasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnKonfirmasiKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            btnKonfirmasiActionPerformed(null);
-        }
-    }//GEN-LAST:event_btnKonfirmasiKeyPressed
 
     private void btnKonfirmasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKonfirmasiActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
@@ -1251,9 +1229,9 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
     }//GEN-LAST:event_cariPoliActionPerformed
 
     private void cariDiagnosaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cariDiagnosaActionPerformed
-        penyakit.setSize(getContentPane().getSize());
-        penyakit.setLocationRelativeTo(getContentPane());
-        penyakit.setVisible(true);
+        diagnosa.setSize(getContentPane().getSize());
+        diagnosa.setLocationRelativeTo(getContentPane());
+        diagnosa.setVisible(true);
     }//GEN-LAST:event_cariDiagnosaActionPerformed
 
     private void cariNoRujukanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cariNoRujukanActionPerformed
@@ -1261,20 +1239,20 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
             JOptionPane.showMessageDialog(null, "No.Kartu masih kosong...!!");
         } else {
             this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-            rujukanterakhir.setSize(getContentPane().getSize());
-            rujukanterakhir.setLocationRelativeTo(getContentPane());
-            rujukanterakhir.tampil(noPeserta.getText(), namaPasien.getText());
-            rujukanterakhir.setVisible(true);
+            riwayatRujukan.setSize(getContentPane().getSize());
+            riwayatRujukan.setLocationRelativeTo(getContentPane());
+            riwayatRujukan.tampil(noPeserta.getText(), namaPasien.getText());
+            riwayatRujukan.setVisible(true);
             this.setCursor(Cursor.getDefaultCursor());
         }
     }//GEN-LAST:event_cariNoRujukanActionPerformed
 
     private void btnRiwayatPelayananActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRiwayatPelayananActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        historiPelayanan.setSize(getContentPane().getSize());
-        historiPelayanan.setLocationRelativeTo(getContentPane());
-        historiPelayanan.setKartu(noPeserta.getText());
-        historiPelayanan.setVisible(true);
+        riwayatPelayanan.setSize(getContentPane().getSize());
+        riwayatPelayanan.setLocationRelativeTo(getContentPane());
+        riwayatPelayanan.setKartu(noPeserta.getText());
+        riwayatPelayanan.setVisible(true);
         this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnRiwayatPelayananActionPerformed
 
@@ -1282,9 +1260,9 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         resetAksi();
         if (!noPeserta.getText().isBlank()) {
             aksi = "Approval";
-            WindowAksi.setSize(415, 250);
-            WindowAksi.setLocationRelativeTo(null);
-            WindowAksi.setVisible(true);
+            dlgAksiFP.setSize(415, 250);
+            dlgAksiFP.setLocationRelativeTo(null);
+            dlgAksiFP.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(null, "Maaf, No. Kartu Peserta tidak ada...!!!");
         }
@@ -1294,9 +1272,9 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         resetAksi();
         if (!noPeserta.getText().isBlank()) {
             aksi = "Pengajuan";
-            WindowAksi.setSize(415, 250);
-            WindowAksi.setLocationRelativeTo(null);
-            WindowAksi.setVisible(true);
+            dlgAksiFP.setSize(415, 250);
+            dlgAksiFP.setLocationRelativeTo(null);
+            dlgAksiFP.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(null, "Maaf, No. Kartu Peserta tidak ada...!!!");
         }
@@ -1327,7 +1305,7 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
                                         "\"request\": {" +
                                         "\"t_sep\": {" +
                                         "\"noKartu\": \"" + noPeserta.getText() + "\"," +
-                                        "\"tglSep\": \"" + Valid.SetTgl(tglSEP.getSelectedItem() + "") + "\"," +
+                                        "\"tglSep\": \"" + Valid.getTglSmc(tglSEP) + "\"," +
                                         "\"jnsPelayanan\": \"" + jenisPelayanan.getSelectedItem().toString().substring(0, 1) + "\"," +
                                         "\"jnsPengajuan\": \"2\"," +
                                         "\"keterangan\": \"Pengajuan SEP Finger oleh Anjungan Pasien Mandiri RS Samarinda Medika Citra\"," +
@@ -1366,7 +1344,7 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
                                         "\"request\": {" +
                                         "\"t_sep\": {" +
                                         "\"noKartu\": \"" + noPeserta.getText() + "\"," +
-                                        "\"tglSep\": \"" + Valid.SetTgl(tglSEP.getSelectedItem() + "") + "\"," +
+                                        "\"tglSep\": \"" + Valid.getTglSmc(tglSEP) + "\"," +
                                         "\"jnsPelayanan\": \"" + jenisPelayanan.getSelectedItem().toString().substring(0, 1) + "\"," +
                                         "\"jnsPengajuan\": \"2\"," +
                                         "\"keterangan\": \"Approval FingerPrint karena Gagal FP melalui Anjungan Pasien Mandiri\"," +
@@ -1421,7 +1399,7 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
 
     private void btnAksiBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAksiBatalActionPerformed
         resetAksi();
-        WindowAksi.dispose();
+        dlgAksiFP.dispose();
     }//GEN-LAST:event_btnAksiBatalActionPerformed
 
     private void btnFingerprintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFingerprintActionPerformed
@@ -1462,7 +1440,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
     private widget.Label LabelPoli4;
     private widget.Label LabelPoli5;
     private widget.Label LabelPoli7;
-    private widget.Dialog WindowAksi;
     private widget.ComboBox asalRujukan;
     private widget.ComboBox asesmenPelayanan;
     private widget.TextField barcode;
@@ -1480,6 +1457,7 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
     private widget.Button cariNoRujukan;
     private widget.Button cariPoli;
     private widget.TextField catatan;
+    private widget.Dialog dlgAksiFP;
     private widget.ComboBox flagProsedur;
     private widget.Panel form;
     private widget.Label jLabel10;
@@ -1638,7 +1616,7 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
             "inner join penjab on pasien.kd_pj=penjab.kd_pj " +
             "where pasien.no_rkm_medis=?"
         )) {
-            ps.setString(1, Valid.SetTgl(tglSEP.getSelectedItem() + ""));
+            ps.setString(1, Valid.getTglSmc(tglSEP));
             ps.setString(2, noRM.getText());
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
@@ -1711,7 +1689,7 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
                 "\"request\":{" +
                 "\"t_sep\":{" +
                 "\"noKartu\":\"" + noPeserta.getText() + "\"," +
-                "\"tglSep\":\"" + Valid.SetTgl(tglSEP.getSelectedItem() + "") + "\"," +
+                "\"tglSep\":\"" + Valid.getTglSmc(tglSEP) + "\"," +
                 "\"ppkPelayanan\":\"" + kodePPK.getText() + "\"," +
                 "\"jnsPelayanan\":\"" + jenisPelayanan.getSelectedItem().toString().substring(0, 1) + "\"," +
                 "\"klsRawat\":{" +
