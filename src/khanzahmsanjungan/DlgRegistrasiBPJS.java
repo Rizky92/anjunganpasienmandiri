@@ -42,7 +42,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.HttpServerErrorException;
 
-public class DlgRegistrasiSEPBPJS extends widget.Dialog {
+public class DlgRegistrasiBPJS extends widget.Dialog {
 
     private final Connection koneksi = koneksiDB.condb();
     private final sekuel Sequel = new sekuel();
@@ -93,7 +93,7 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
     private int day = cal.get(Calendar.DAY_OF_WEEK);
     private Date parsedDate;
 
-    public DlgRegistrasiSEPBPJS(java.awt.Frame parent, boolean modal) {
+    public DlgRegistrasiBPJS(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         barcode.setDocument(new batasInput((byte) 3).getOnlyAngka(barcode));
@@ -414,16 +414,16 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         gridBagConstraints.weighty = 1.0;
         getContentPane().add(emptyKiri, gridBagConstraints);
 
-        panelTengah.setPreferredSize(new java.awt.Dimension(1280, 585));
+        panelTengah.setPreferredSize(new java.awt.Dimension(1280, 590));
         panelTengah.setLayout(new java.awt.GridBagLayout());
 
         panelUtama.setMinimumSize(new java.awt.Dimension(533, 290));
-        panelUtama.setPreferredSize(new java.awt.Dimension(1280, 420));
+        panelUtama.setPreferredSize(new java.awt.Dimension(1280, 770));
         panelUtama.setLayout(null);
 
         namaPasien.setEditable(false);
         panelUtama.add(namaPasien);
-        namaPasien.setBounds(375, 10, 870, 40);
+        namaPasien.setBounds(375, 10, 895, 40);
 
         noRM.setEditable(false);
         panelUtama.add(noRM);
@@ -431,7 +431,7 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
 
         noPeserta.setEditable(false);
         panelUtama.add(noPeserta);
-        noPeserta.setBounds(875, 145, 210, 40);
+        noPeserta.setBounds(875, 145, 220, 40);
 
         jLabel20.setText("Tgl. SEP :");
         jLabel20.setPreferredSize(new java.awt.Dimension(55, 23));
@@ -441,7 +441,7 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         tglSEP.setEditable(false);
         tglSEP.setPreferredSize(new java.awt.Dimension(95, 25));
         panelUtama.add(tglSEP);
-        tglSEP.setBounds(875, 280, 210, 40);
+        tglSEP.setBounds(875, 280, 220, 40);
 
         jLabel22.setText("Tgl. Rujukan :");
         jLabel22.setPreferredSize(new java.awt.Dimension(55, 23));
@@ -451,7 +451,7 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         tglRujukan.setEditable(false);
         tglRujukan.setPreferredSize(new java.awt.Dimension(95, 23));
         panelUtama.add(tglRujukan);
-        tglRujukan.setBounds(875, 235, 210, 40);
+        tglRujukan.setBounds(875, 235, 220, 40);
 
         jLabel23.setText("No. SKDP / Surat Kontrol :");
         panelUtama.add(jLabel23);
@@ -512,11 +512,11 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
 
         jLabel18.setText("L / P :");
         panelUtama.add(jLabel18);
-        jLabel18.setBounds(1145, 55, 55, 40);
+        jLabel18.setBounds(1155, 55, 55, 40);
 
         jk.setEditable(false);
         panelUtama.add(jk);
-        jk.setBounds(1205, 55, 40, 40);
+        jk.setBounds(1215, 55, 55, 40);
 
         jLabel24.setText("Jenis Peserta :");
         jLabel24.setPreferredSize(new java.awt.Dimension(55, 23));
@@ -525,7 +525,7 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
 
         jenisPeserta.setEditable(false);
         panelUtama.add(jenisPeserta);
-        jenisPeserta.setBounds(875, 55, 270, 40);
+        jenisPeserta.setBounds(875, 55, 275, 40);
 
         jLabel25.setText("Status :");
         jLabel25.setPreferredSize(new java.awt.Dimension(55, 23));
@@ -542,7 +542,7 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
 
         asalRujukan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1. Faskes 1", "2. Faskes 2(RS)" }));
         panelUtama.add(asalRujukan);
-        asalRujukan.setBounds(875, 190, 210, 40);
+        asalRujukan.setBounds(875, 190, 220, 40);
 
         noTelp.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -555,12 +555,12 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
             }
         });
         panelUtama.add(noTelp);
-        noTelp.setBounds(875, 370, 210, 40);
+        noTelp.setBounds(875, 370, 220, 40);
 
         katarak.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0. Tidak", "1.Ya" }));
         katarak.setPreferredSize(new java.awt.Dimension(64, 25));
         panelUtama.add(katarak);
-        katarak.setBounds(875, 325, 210, 40);
+        katarak.setBounds(875, 325, 220, 40);
 
         jLabel37.setText("Katarak :");
         panelUtama.add(jLabel37);
@@ -609,7 +609,7 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
 
         nik.setEditable(false);
         panelUtama.add(nik);
-        nik.setBounds(875, 100, 370, 40);
+        nik.setBounds(875, 100, 395, 40);
 
         jLabel7.setText("No. Peserta :");
         panelUtama.add(jLabel7);
@@ -660,7 +660,7 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
             }
         });
         panelUtama.add(btnRiwayatPelayanan);
-        btnRiwayatPelayanan.setBounds(1090, 145, 45, 40);
+        btnRiwayatPelayanan.setBounds(1100, 145, 45, 40);
 
         btnFingerprint.setBackground(new java.awt.Color(255, 255, 255));
         btnFingerprint.setForeground(new java.awt.Color(0, 131, 62));
@@ -822,13 +822,13 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
             }
         });
         form.add(lakaLantas);
-        lakaLantas.setBounds(875, 10, 225, 40);
+        lakaLantas.setBounds(875, 10, 220, 40);
 
         tglKLL.setEditable(false);
         tglKLL.setEnabled(false);
         tglKLL.setPreferredSize(new java.awt.Dimension(64, 25));
         form.add(tglKLL);
-        tglKLL.setBounds(1105, 10, 140, 40);
+        tglKLL.setBounds(1100, 10, 170, 40);
 
         jLabel36.setText("Keterangan :");
         jLabel36.setPreferredSize(new java.awt.Dimension(55, 23));
@@ -837,7 +837,7 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
 
         keterangan.setEditable(false);
         form.add(keterangan);
-        keterangan.setBounds(875, 55, 370, 40);
+        keterangan.setBounds(875, 55, 395, 40);
 
         jLabel40.setText("Suplesi :");
         form.add(jLabel40);
@@ -860,7 +860,7 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
 
         noSEPSuplesi.setEditable(false);
         form.add(noSEPSuplesi);
-        noSEPSuplesi.setBounds(875, 145, 370, 40);
+        noSEPSuplesi.setBounds(875, 145, 395, 40);
 
         LabelPoli3.setText("Propinsi KLL :");
         form.add(LabelPoli3);
@@ -872,7 +872,7 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
 
         nmPropKLL.setEditable(false);
         form.add(nmPropKLL);
-        nmPropKLL.setBounds(995, 190, 250, 40);
+        nmPropKLL.setBounds(995, 190, 275, 40);
 
         LabelPoli4.setText("Kabupaten KLL :");
         form.add(LabelPoli4);
@@ -884,7 +884,7 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
 
         nmKabKLL.setEditable(false);
         form.add(nmKabKLL);
-        nmKabKLL.setBounds(995, 235, 250, 40);
+        nmKabKLL.setBounds(995, 235, 275, 40);
 
         LabelPoli5.setText("Kecamatan KLL :");
         form.add(LabelPoli5);
@@ -896,7 +896,7 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
 
         nmKecKLL.setEditable(false);
         form.add(nmKecKLL);
-        nmKecKLL.setBounds(995, 280, 250, 40);
+        nmKecKLL.setBounds(995, 280, 275, 40);
 
         jLabel14.setText("Catatan :");
         form.add(jLabel14);
@@ -904,7 +904,7 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
 
         catatan.setText("Anjungan Pasien Mandiri RS Samarinda Medika Citra");
         form.add(catatan);
-        catatan.setBounds(875, 325, 370, 40);
+        catatan.setBounds(875, 325, 395, 40);
 
         btnApprovalFP.setBackground(new java.awt.Color(255, 255, 255));
         btnApprovalFP.setForeground(new java.awt.Color(0, 131, 62));
@@ -2989,7 +2989,7 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
                 }
 
                 if (wText.contains("Registrasi Sidik Jari")) {
-                    DlgRegistrasiSEPBPJS.this.aplikasiAktif = true;
+                    DlgRegistrasiBPJS.this.aplikasiAktif = true;
                     u32.SetForegroundWindow(hwnd);
                 }
 
@@ -3068,7 +3068,7 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
                 String wText = Native.toString(windowText);
 
                 if (wText.toLowerCase().contains("face recognition bpjs kesehatan")) {
-                    DlgRegistrasiSEPBPJS.this.fristaAktif = true;
+                    DlgRegistrasiBPJS.this.fristaAktif = true;
                     u32.ShowWindow(hwnd, User32.SW_RESTORE);
                     u32.SetForegroundWindow(hwnd);
                     return false;
@@ -3141,69 +3141,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         }
     }
 
-    private void updateSuratKontrol(String noSKDP, String noSEP, String tglKontrol, String noKartuPeserta) {
-        if (noSKDP.trim().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Maaf, data surat kontrol tidak ditemukan...!!\nSilahkan hubungi administrasi...!!");
-
-            return;
-        }
-
-        String kodePoliKontrol = Sequel.cariIsiSmc("select kd_poli_bpjs from bridging_surat_kontrol_bpjs where no_surat = ?", noSKDP),
-            namaPoliKontrol = Sequel.cariIsiSmc("select nm_poli_bpjs from maping_poli_bpjs where kd_poli_bpjs = ?", kodePoliKontrol),
-            kodeDokterKontrol = Sequel.cariIsiSmc("select kd_dokter_bpjs from bridging_surat_kontrol_bpjs where no_surat = ?", noSKDP),
-            namaDokterKontrol = Sequel.cariIsiSmc("select nm_dokter_bpjs from maping_dokter_dpjpvclaim where kd_dokter_bpjs = ?", kodeDokterKontrol);
-
-        try {
-            utc = api.getUTCDateTimeAsString();
-
-            headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-            headers.add("X-Cons-ID", koneksiDB.CONSIDAPIBPJS());
-            headers.add("X-Timestamp", utc);
-            headers.add("X-Signature", api.getHmac(utc));
-            headers.add("user_key", koneksiDB.USERKEYAPIBPJS());
-
-            url = koneksiDB.URLAPIBPJS() + "/RencanaKontrol/Update";
-
-            json = "{" +
-                "\"request\": {" +
-                "\"noSuratKontrol\":\"" + noSKDP + "\"," +
-                "\"noSEP\":\"" + noSEP + "\"," +
-                "\"kodeDokter\":\"" + kodeDokterKontrol + "\"," +
-                "\"poliKontrol\":\"" + kodePoliKontrol + "\"," +
-                "\"tglRencanaKontrol\":\"" + tglKontrol + "\"," +
-                "\"user\":\"" + noKartuPeserta + "\"" +
-                "}" +
-                "}";
-
-            System.out.println("JSON : " + json);
-
-            entity = new HttpEntity(json, headers);
-            root = mapper.readTree(api.getRest().exchange(url, HttpMethod.PUT, entity, String.class).getBody());
-            metadata = root.path("metaData");
-            System.out.println("code : " + metadata.path("code").asText());
-            System.out.println("message : " + metadata.path("message").asText());
-
-            if (metadata.path("code").asText().equals("200")) {
-                System.out.println("Respon BPJS : " + metadata.path("message").asText());
-
-                Sequel.mengupdateSmc("bridging_surat_kontrol_bpjs",
-                    "tgl_rencana = ?, kd_dokter_bpjs = ?, nm_dokter_bpjs = ?, kd_poli_bpjs = ?, nm_poli_bpjs = ?",
-                    "no_surat = ?",
-                    tglKontrol, kodeDokterKontrol, namaDokterKontrol, kodePoliKontrol, namaPoliKontrol,
-                    noSKDP
-                );
-            } else {
-                JOptionPane.showMessageDialog(null, metadata.path("message").asText());
-            }
-        } catch (Exception ex) {
-            System.out.println("Notifikasi Bridging : " + ex);
-            if (ex.toString().contains("UnknownHostException")) {
-                JOptionPane.showMessageDialog(null, "Koneksi ke server BPJS terputus...!");
-            }
-        }
-    }
-
     private void updateSuratKontrol(String noSKDP, String noSEP, String noKartu, String tanggalPeriksa, String kodeDPJP, String namaDPJP, String kodePoli, String namaPoli) {
         if (noSKDP.trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Maaf, data surat kontrol tidak ditemukan...!!\nSilahkan hubungi administrasi...!!");
@@ -3251,6 +3188,10 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
     }
 
     private boolean registerPasien() {
+        if (isMobileJKN) {
+            return true;
+        }
+        
         int next = 0, retries = 5;
         boolean sukses = false;
 
@@ -3322,8 +3263,8 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         if (toggleInfoTambahan.isSelected()) {
             toggleInfoTambahan.setVisible(false);
             panelNumpad.setVisible(false);
-            panelUtama.setPreferredSize(new Dimension(WIDTH, 70));
-            panelTambahan.setPreferredSize(new Dimension(WIDTH, 540));
+            panelUtama.setPreferredSize(new Dimension(WIDTH, panelTengah.getHeight() - 570));
+            panelTambahan.setPreferredSize(new Dimension(WIDTH, 570));
             form.setVisible(true);
             toggleInfoTambahan.setVisible(true);
         } else {
