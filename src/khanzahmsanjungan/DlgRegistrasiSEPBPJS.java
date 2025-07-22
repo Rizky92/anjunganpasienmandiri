@@ -207,7 +207,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         panelBawahAksi = new widget.Panel();
         btnAksiKonfirmasi = new widget.Button();
         btnAksiBatal = new widget.Button();
-        panelNumpad = new widget.Numpad();
         panelAtas = new widget.Panel();
         label4 = new widget.Label();
         emptyKiri = new widget.Panel();
@@ -261,6 +260,7 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         btnRiwayatPelayanan = new widget.Button();
         btnFingerprint = new widget.Button();
         btnFrista = new widget.Button();
+        panelNumpad = new widget.Numpad();
         panelTambahan = new widget.Panel();
         toggleInfoTambahan = new widget.PaneToggle();
         form = new widget.Panel();
@@ -282,7 +282,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         namaPPK = new widget.TextField();
         jLabel55 = new widget.Label();
         lakaLantas = new widget.ComboBox();
-        jLabel38 = new widget.Label();
         tglKLL = new widget.Tanggal();
         jLabel36 = new widget.Label();
         keterangan = new widget.TextField();
@@ -384,14 +383,7 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
 
         dlgAksiFP.getContentPane().add(panelBawahAksi, java.awt.BorderLayout.PAGE_END);
 
-        panelNumpad.setFontSize(30);
-        panelNumpad.setTextBox(noTelp);
-
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
-        });
+        getContentPane().setLayout(new java.awt.GridBagLayout());
 
         panelAtas.setMinimumSize(new java.awt.Dimension(1, 35));
         panelAtas.setPreferredSize(new java.awt.Dimension(1, 35));
@@ -403,13 +395,26 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         label4.setPreferredSize(new java.awt.Dimension(340, 35));
         panelAtas.add(label4);
 
-        getContentPane().add(panelAtas, java.awt.BorderLayout.NORTH);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
+        getContentPane().add(panelAtas, gridBagConstraints);
 
         emptyKiri.setMinimumSize(new java.awt.Dimension(0, 0));
         emptyKiri.setPreferredSize(new java.awt.Dimension(0, 0));
-        getContentPane().add(emptyKiri, java.awt.BorderLayout.WEST);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        getContentPane().add(emptyKiri, gridBagConstraints);
 
-        panelTengah.setPreferredSize(new java.awt.Dimension(390, 290));
+        panelTengah.setPreferredSize(new java.awt.Dimension(1280, 585));
         panelTengah.setLayout(new java.awt.GridBagLayout());
 
         panelUtama.setMinimumSize(new java.awt.Dimension(533, 290));
@@ -417,17 +422,14 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         panelUtama.setLayout(null);
 
         namaPasien.setEditable(false);
-        namaPasien.setFocusable(false);
         panelUtama.add(namaPasien);
         namaPasien.setBounds(375, 10, 870, 40);
 
         noRM.setEditable(false);
-        noRM.setFocusable(false);
         panelUtama.add(noRM);
         noRM.setBounds(230, 10, 140, 40);
 
         noPeserta.setEditable(false);
-        noPeserta.setFocusable(false);
         panelUtama.add(noPeserta);
         noPeserta.setBounds(875, 145, 210, 40);
 
@@ -437,7 +439,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         jLabel20.setBounds(740, 280, 130, 40);
 
         tglSEP.setEditable(false);
-        tglSEP.setFocusable(false);
         tglSEP.setPreferredSize(new java.awt.Dimension(95, 25));
         panelUtama.add(tglSEP);
         tglSEP.setBounds(875, 280, 210, 40);
@@ -448,7 +449,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         jLabel22.setBounds(740, 235, 130, 40);
 
         tglRujukan.setEditable(false);
-        tglRujukan.setFocusable(false);
         tglRujukan.setPreferredSize(new java.awt.Dimension(95, 23));
         panelUtama.add(tglRujukan);
         tglRujukan.setBounds(875, 235, 210, 40);
@@ -458,7 +458,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         jLabel23.setBounds(0, 100, 225, 40);
 
         noRujukan.setEditable(false);
-        noRujukan.setFocusable(false);
         panelUtama.add(noRujukan);
         noRujukan.setBounds(230, 145, 455, 40);
 
@@ -467,12 +466,10 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         jLabel10.setBounds(0, 190, 225, 40);
 
         kodePPKRujukan.setEditable(false);
-        kodePPKRujukan.setFocusable(false);
         panelUtama.add(kodePPKRujukan);
         kodePPKRujukan.setBounds(230, 190, 115, 40);
 
         namaPPKRujukan.setEditable(false);
-        namaPPKRujukan.setFocusable(false);
         panelUtama.add(namaPPKRujukan);
         namaPPKRujukan.setBounds(350, 190, 335, 40);
 
@@ -481,17 +478,14 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         jLabel11.setBounds(0, 235, 225, 40);
 
         kodeDiagnosa.setEditable(false);
-        kodeDiagnosa.setFocusable(false);
         panelUtama.add(kodeDiagnosa);
         kodeDiagnosa.setBounds(230, 235, 115, 40);
 
         namaDiagnosa.setEditable(false);
-        namaDiagnosa.setFocusable(false);
         panelUtama.add(namaDiagnosa);
         namaDiagnosa.setBounds(350, 235, 335, 40);
 
         namaPoli.setEditable(false);
-        namaPoli.setFocusable(false);
         panelUtama.add(namaPoli);
         namaPoli.setBounds(230, 280, 455, 40);
 
@@ -505,7 +499,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
 
         kelas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1. Kelas 1", "2. Kelas 2", "3. Kelas 3" }));
         kelas.setSelectedIndex(2);
-        kelas.setFocusable(false);
         panelUtama.add(kelas);
         kelas.setBounds(230, 370, 150, 40);
 
@@ -514,7 +507,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         jLabel8.setBounds(0, 10, 225, 40);
 
         tglLahir.setEditable(false);
-        tglLahir.setFocusable(false);
         panelUtama.add(tglLahir);
         tglLahir.setBounds(230, 55, 140, 40);
 
@@ -523,7 +515,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         jLabel18.setBounds(1145, 55, 55, 40);
 
         jk.setEditable(false);
-        jk.setFocusable(false);
         panelUtama.add(jk);
         jk.setBounds(1205, 55, 40, 40);
 
@@ -533,7 +524,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         jLabel24.setBounds(740, 55, 130, 40);
 
         jenisPeserta.setEditable(false);
-        jenisPeserta.setFocusable(false);
         panelUtama.add(jenisPeserta);
         jenisPeserta.setBounds(875, 55, 270, 40);
 
@@ -543,7 +533,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         jLabel25.setBounds(380, 55, 70, 40);
 
         statusPeserta.setEditable(false);
-        statusPeserta.setFocusable(false);
         panelUtama.add(statusPeserta);
         statusPeserta.setBounds(455, 55, 230, 40);
 
@@ -552,15 +541,10 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         jLabel27.setBounds(740, 190, 130, 40);
 
         asalRujukan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1. Faskes 1", "2. Faskes 2(RS)" }));
-        asalRujukan.setFocusable(false);
         panelUtama.add(asalRujukan);
         asalRujukan.setBounds(875, 190, 210, 40);
 
-        noTelp.setFocusable(false);
         noTelp.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                noTelpFocusGained(evt);
-            }
             public void focusLost(java.awt.event.FocusEvent evt) {
                 noTelpFocusLost(evt);
             }
@@ -574,7 +558,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         noTelp.setBounds(875, 370, 210, 40);
 
         katarak.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0. Tidak", "1.Ya" }));
-        katarak.setFocusable(false);
         katarak.setPreferredSize(new java.awt.Dimension(64, 25));
         panelUtama.add(katarak);
         katarak.setBounds(875, 325, 210, 40);
@@ -588,7 +571,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         LabelPoli2.setBounds(0, 325, 225, 40);
 
         namaDokter.setEditable(false);
-        namaDokter.setFocusable(false);
         panelUtama.add(namaDokter);
         namaDokter.setBounds(230, 325, 455, 40);
 
@@ -596,7 +578,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         cariDokter.setBorder(null);
         cariDokter.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pilih.png"))); // NOI18N
         cariDokter.setToolTipText("Referensi Dokter");
-        cariDokter.setFocusable(false);
         cariDokter.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cariDokterActionPerformed(evt);
@@ -619,7 +600,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         jLabel6.setBounds(740, 100, 130, 40);
 
         noSKDP.setEditable(false);
-        noSKDP.setFocusable(false);
         panelUtama.add(noSKDP);
         noSKDP.setBounds(230, 100, 455, 40);
 
@@ -628,7 +608,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         jLabel26.setBounds(0, 145, 225, 40);
 
         nik.setEditable(false);
-        nik.setFocusable(false);
         panelUtama.add(nik);
         nik.setBounds(875, 100, 370, 40);
 
@@ -640,7 +619,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         cariPoli.setBorder(null);
         cariPoli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pilih.png"))); // NOI18N
         cariPoli.setToolTipText("Referensi Poli BPJS");
-        cariPoli.setFocusable(false);
         cariPoli.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cariPoliActionPerformed(evt);
@@ -653,7 +631,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         cariDiagnosa.setBorder(null);
         cariDiagnosa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pilih.png"))); // NOI18N
         cariDiagnosa.setToolTipText("Referensi Diagnosa BPJS");
-        cariDiagnosa.setFocusable(false);
         cariDiagnosa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cariDiagnosaActionPerformed(evt);
@@ -666,7 +643,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         cariNoRujukan.setBorder(null);
         cariNoRujukan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pilih.png"))); // NOI18N
         cariNoRujukan.setToolTipText("Daftar Rujukan Pasien");
-        cariNoRujukan.setFocusable(false);
         cariNoRujukan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cariNoRujukanActionPerformed(evt);
@@ -678,7 +654,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         btnRiwayatPelayanan.setBackground(new java.awt.Color(240, 249, 255));
         btnRiwayatPelayanan.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         btnRiwayatPelayanan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pilih.png"))); // NOI18N
-        btnRiwayatPelayanan.setFocusable(false);
         btnRiwayatPelayanan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRiwayatPelayananActionPerformed(evt);
@@ -691,7 +666,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         btnFingerprint.setForeground(new java.awt.Color(0, 131, 62));
         btnFingerprint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/fingerprint.png"))); // NOI18N
         btnFingerprint.setText("Fingerprint");
-        btnFingerprint.setFocusable(false);
         btnFingerprint.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnFingerprint.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnFingerprint.addActionListener(new java.awt.event.ActionListener() {
@@ -700,13 +674,12 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
             }
         });
         panelUtama.add(btnFingerprint);
-        btnFingerprint.setBounds(1105, 310, 140, 100);
+        btnFingerprint.setBounds(650, 420, 140, 100);
 
         btnFrista.setBackground(new java.awt.Color(255, 255, 255));
         btnFrista.setForeground(new java.awt.Color(0, 131, 62));
         btnFrista.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/face-scan.png"))); // NOI18N
         btnFrista.setText("FRISTA");
-        btnFrista.setFocusable(false);
         btnFrista.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnFrista.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnFrista.addActionListener(new java.awt.event.ActionListener() {
@@ -715,7 +688,13 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
             }
         });
         panelUtama.add(btnFrista);
-        btnFrista.setBounds(1105, 195, 140, 100);
+        btnFrista.setBounds(490, 420, 140, 100);
+
+        panelNumpad.setFocusable(false);
+        panelNumpad.setFontSize(36);
+        panelNumpad.setTextBox(noTelp);
+        panelUtama.add(panelNumpad);
+        panelNumpad.setBounds(875, 420, 255, 340);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -743,108 +722,99 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         });
         panelTambahan.add(toggleInfoTambahan, java.awt.BorderLayout.PAGE_END);
 
-        form.setPreferredSize(new java.awt.Dimension(533, 120));
+        form.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 0, new java.awt.Color(0, 131, 62)));
+        form.setPreferredSize(new java.awt.Dimension(1280, 540));
         form.setLayout(null);
 
         jLabel13.setText("Jenis Pelayanan :");
         jLabel13.setPreferredSize(new java.awt.Dimension(55, 23));
         form.add(jLabel13);
-        jLabel13.setBounds(75, 10, 150, 30);
+        jLabel13.setBounds(0, 10, 225, 40);
 
         jenisPelayanan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1. Ranap", "2. Ralan" }));
         jenisPelayanan.setSelectedIndex(1);
-        jenisPelayanan.setFocusable(false);
         jenisPelayanan.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 jenisPelayananItemStateChanged(evt);
             }
         });
         form.add(jenisPelayanan);
-        jenisPelayanan.setBounds(230, 10, 150, 30);
+        jenisPelayanan.setBounds(230, 10, 150, 40);
 
         jLabel42.setText("Tujuan Kunjungan :");
         jLabel42.setPreferredSize(new java.awt.Dimension(55, 23));
         form.add(jLabel42);
-        jLabel42.setBounds(75, 40, 150, 30);
+        jLabel42.setBounds(0, 55, 225, 40);
 
         tujuanKunjungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0. Normal", "1. Prosedur", "2. Konsul Dokter" }));
-        tujuanKunjungan.setFocusable(false);
         tujuanKunjungan.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 tujuanKunjunganItemStateChanged(evt);
             }
         });
         form.add(tujuanKunjungan);
-        tujuanKunjungan.setBounds(230, 40, 340, 30);
+        tujuanKunjungan.setBounds(230, 55, 455, 40);
 
         jLabel43.setText("Flag Prosedur :");
         jLabel43.setPreferredSize(new java.awt.Dimension(55, 23));
         form.add(jLabel43);
-        jLabel43.setBounds(75, 70, 150, 30);
+        jLabel43.setBounds(0, 100, 225, 40);
 
         flagProsedur.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "0. Prosedur Tidak Berkelanjutan", "1. Prosedur dan Terapi Berkelanjutan" }));
         flagProsedur.setEnabled(false);
-        flagProsedur.setFocusable(false);
         form.add(flagProsedur);
-        flagProsedur.setBounds(230, 70, 340, 30);
+        flagProsedur.setBounds(230, 100, 455, 40);
 
         jLabel44.setText("Penunjang :");
         jLabel44.setPreferredSize(new java.awt.Dimension(55, 23));
         form.add(jLabel44);
-        jLabel44.setBounds(75, 100, 150, 30);
+        jLabel44.setBounds(0, 145, 225, 40);
 
         penunjang.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "1. Radioterapi", "2. Kemoterapi", "3. Rehabilitasi Medik", "4. Rehabilitasi Psikososial", "5. Transfusi Darah", "6. Pelayanan Gigi", "7. Laboratorium", "8. USG", "9. Farmasi", "10. Lain-Lain", "11. MRI", "12. HEMODIALISA" }));
         penunjang.setEnabled(false);
-        penunjang.setFocusable(false);
         form.add(penunjang);
-        penunjang.setBounds(230, 100, 340, 30);
+        penunjang.setBounds(230, 145, 455, 40);
 
         jLabel45.setText("Asesmen Pelayanan :");
         jLabel45.setPreferredSize(new java.awt.Dimension(55, 23));
         form.add(jLabel45);
-        jLabel45.setBounds(75, 130, 150, 30);
+        jLabel45.setBounds(0, 190, 225, 40);
 
         asesmenPelayanan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " ", "1. Poli spesialis tidak tersedia pada hari sebelumnya", "2. Jam Poli telah berakhir pada hari sebelumnya", "3. Spesialis yang dimaksud tidak praktek pada hari sebelumnya", "4. Atas Instruksi RS", "5. Tujuan Kontrol" }));
-        asesmenPelayanan.setFocusable(false);
         form.add(asesmenPelayanan);
-        asesmenPelayanan.setBounds(230, 130, 340, 30);
+        asesmenPelayanan.setBounds(230, 190, 455, 40);
 
         LabelPoli7.setText("DPJP Layanan :");
         LabelPoli7.setPreferredSize(new java.awt.Dimension(55, 23));
         form.add(LabelPoli7);
-        LabelPoli7.setBounds(75, 160, 150, 30);
+        LabelPoli7.setBounds(0, 235, 225, 40);
 
         kodeDPJPLayanan.setEditable(false);
-        kodeDPJPLayanan.setFocusable(false);
         form.add(kodeDPJPLayanan);
-        kodeDPJPLayanan.setBounds(230, 160, 75, 30);
+        kodeDPJPLayanan.setBounds(230, 235, 115, 40);
 
         namaDPJPLayanan.setEditable(false);
-        namaDPJPLayanan.setFocusable(false);
         form.add(namaDPJPLayanan);
-        namaDPJPLayanan.setBounds(310, 160, 260, 30);
+        namaDPJPLayanan.setBounds(350, 235, 335, 40);
 
         jLabel9.setText("PPK Pelayanan :");
         jLabel9.setPreferredSize(new java.awt.Dimension(55, 23));
         form.add(jLabel9);
-        jLabel9.setBounds(75, 190, 150, 30);
+        jLabel9.setBounds(0, 280, 225, 40);
 
         kodePPK.setEditable(false);
-        kodePPK.setFocusable(false);
         form.add(kodePPK);
-        kodePPK.setBounds(230, 190, 75, 30);
+        kodePPK.setBounds(230, 280, 115, 40);
 
         namaPPK.setEditable(false);
-        namaPPK.setFocusable(false);
         form.add(namaPPK);
-        namaPPK.setBounds(310, 190, 260, 30);
+        namaPPK.setBounds(350, 280, 335, 40);
 
         jLabel55.setText("Laka Lantas :");
         form.add(jLabel55);
-        jLabel55.setBounds(625, 10, 100, 30);
+        jLabel55.setBounds(720, 10, 150, 40);
 
         lakaLantas.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0. Bukan KLL", "1. KLL Bukan KK", "2. KLL dan KK", "3. KK" }));
-        lakaLantas.setFocusable(false);
         lakaLantas.setPreferredSize(new java.awt.Dimension(64, 25));
         lakaLantas.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -852,37 +822,28 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
             }
         });
         form.add(lakaLantas);
-        lakaLantas.setBounds(730, 10, 170, 30);
-
-        jLabel38.setText("Tgl. KLL :");
-        jLabel38.setPreferredSize(new java.awt.Dimension(55, 23));
-        form.add(jLabel38);
-        jLabel38.setBounds(625, 40, 100, 30);
+        lakaLantas.setBounds(875, 10, 225, 40);
 
         tglKLL.setEditable(false);
-        tglKLL.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "08-07-2025" }));
         tglKLL.setEnabled(false);
-        tglKLL.setFocusable(false);
         tglKLL.setPreferredSize(new java.awt.Dimension(64, 25));
         form.add(tglKLL);
-        tglKLL.setBounds(730, 40, 170, 30);
+        tglKLL.setBounds(1105, 10, 140, 40);
 
         jLabel36.setText("Keterangan :");
         jLabel36.setPreferredSize(new java.awt.Dimension(55, 23));
         form.add(jLabel36);
-        jLabel36.setBounds(625, 70, 100, 30);
+        jLabel36.setBounds(720, 55, 150, 40);
 
         keterangan.setEditable(false);
-        keterangan.setFocusable(false);
         form.add(keterangan);
-        keterangan.setBounds(730, 70, 300, 30);
+        keterangan.setBounds(875, 55, 370, 40);
 
         jLabel40.setText("Suplesi :");
         form.add(jLabel40);
-        jLabel40.setBounds(625, 100, 100, 30);
+        jLabel40.setBounds(720, 100, 150, 40);
 
         suplesi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0. Tidak", "1.Ya" }));
-        suplesi.setFocusable(false);
         suplesi.setPreferredSize(new java.awt.Dimension(64, 25));
         suplesi.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -890,73 +851,65 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
             }
         });
         form.add(suplesi);
-        suplesi.setBounds(730, 100, 95, 30);
+        suplesi.setBounds(875, 100, 140, 40);
 
         jLabel41.setText("No. SEP :");
         jLabel41.setPreferredSize(new java.awt.Dimension(55, 23));
         form.add(jLabel41);
-        jLabel41.setBounds(830, 100, 55, 30);
+        jLabel41.setBounds(720, 145, 150, 40);
 
         noSEPSuplesi.setEditable(false);
         form.add(noSEPSuplesi);
-        noSEPSuplesi.setBounds(890, 100, 140, 30);
+        noSEPSuplesi.setBounds(875, 145, 370, 40);
 
         LabelPoli3.setText("Propinsi KLL :");
         form.add(LabelPoli3);
-        LabelPoli3.setBounds(625, 130, 100, 30);
+        LabelPoli3.setBounds(720, 190, 150, 40);
 
         kdPropKLL.setEditable(false);
-        kdPropKLL.setFocusable(false);
         form.add(kdPropKLL);
-        kdPropKLL.setBounds(730, 130, 75, 30);
+        kdPropKLL.setBounds(875, 190, 115, 40);
 
         nmPropKLL.setEditable(false);
-        nmPropKLL.setFocusable(false);
         form.add(nmPropKLL);
-        nmPropKLL.setBounds(810, 130, 220, 30);
+        nmPropKLL.setBounds(995, 190, 250, 40);
 
         LabelPoli4.setText("Kabupaten KLL :");
         form.add(LabelPoli4);
-        LabelPoli4.setBounds(625, 160, 100, 30);
+        LabelPoli4.setBounds(720, 235, 150, 40);
 
         kdKabKLL.setEditable(false);
-        kdKabKLL.setFocusable(false);
         form.add(kdKabKLL);
-        kdKabKLL.setBounds(730, 160, 75, 30);
+        kdKabKLL.setBounds(875, 235, 115, 40);
 
         nmKabKLL.setEditable(false);
-        nmKabKLL.setFocusable(false);
         form.add(nmKabKLL);
-        nmKabKLL.setBounds(810, 160, 220, 30);
+        nmKabKLL.setBounds(995, 235, 250, 40);
 
         LabelPoli5.setText("Kecamatan KLL :");
         form.add(LabelPoli5);
-        LabelPoli5.setBounds(625, 190, 100, 30);
+        LabelPoli5.setBounds(720, 280, 150, 40);
 
         kdKecKLL.setEditable(false);
-        kdKecKLL.setFocusable(false);
         form.add(kdKecKLL);
-        kdKecKLL.setBounds(730, 190, 75, 30);
+        kdKecKLL.setBounds(875, 280, 115, 40);
 
         nmKecKLL.setEditable(false);
-        nmKecKLL.setFocusable(false);
         form.add(nmKecKLL);
-        nmKecKLL.setBounds(810, 190, 220, 30);
+        nmKecKLL.setBounds(995, 280, 250, 40);
 
         jLabel14.setText("Catatan :");
         form.add(jLabel14);
-        jLabel14.setBounds(625, 220, 100, 30);
+        jLabel14.setBounds(720, 325, 150, 40);
 
         catatan.setText("Anjungan Pasien Mandiri RS Samarinda Medika Citra");
-        catatan.setFocusable(false);
         form.add(catatan);
-        catatan.setBounds(730, 220, 300, 30);
+        catatan.setBounds(875, 325, 370, 40);
 
         btnApprovalFP.setBackground(new java.awt.Color(255, 255, 255));
         btnApprovalFP.setForeground(new java.awt.Color(0, 131, 62));
         btnApprovalFP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/approvalfp.png"))); // NOI18N
         btnApprovalFP.setText("Approval FP");
-        btnApprovalFP.setFocusable(false);
         btnApprovalFP.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnApprovalFP.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnApprovalFP.addActionListener(new java.awt.event.ActionListener() {
@@ -965,13 +918,12 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
             }
         });
         form.add(btnApprovalFP);
-        btnApprovalFP.setBounds(1080, 190, 120, 90);
+        btnApprovalFP.setBounds(650, 400, 160, 120);
 
         btnPengajuanFP.setBackground(new java.awt.Color(255, 255, 255));
         btnPengajuanFP.setForeground(new java.awt.Color(0, 131, 62));
         btnPengajuanFP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/pengajuan.png"))); // NOI18N
         btnPengajuanFP.setText("Pengajuan FP");
-        btnPengajuanFP.setFocusable(false);
         btnPengajuanFP.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnPengajuanFP.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnPengajuanFP.addActionListener(new java.awt.event.ActionListener() {
@@ -980,16 +932,15 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
             }
         });
         form.add(btnPengajuanFP);
-        btnPengajuanFP.setBounds(1080, 80, 120, 90);
+        btnPengajuanFP.setBounds(470, 400, 160, 120);
 
         jLabel15.setText("Jumlah Barcode :");
         form.add(jLabel15);
-        jLabel15.setBounds(75, 220, 150, 30);
+        jLabel15.setBounds(0, 325, 225, 40);
 
         barcode.setText("3");
-        barcode.setFocusable(false);
         form.add(barcode);
-        barcode.setBounds(230, 220, 50, 30);
+        barcode.setBounds(230, 325, 50, 40);
 
         panelTambahan.add(form, java.awt.BorderLayout.CENTER);
 
@@ -1001,14 +952,26 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         gridBagConstraints.weighty = 1.0;
         panelTengah.add(panelTambahan, gridBagConstraints);
 
-        getContentPane().add(panelTengah, java.awt.BorderLayout.CENTER);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
+        gridBagConstraints.weighty = 1.0;
+        getContentPane().add(panelTengah, gridBagConstraints);
 
         emptyKanan.setMinimumSize(new java.awt.Dimension(0, 0));
         emptyKanan.setPreferredSize(new java.awt.Dimension(0, 0));
-        getContentPane().add(emptyKanan, java.awt.BorderLayout.EAST);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        getContentPane().add(emptyKanan, gridBagConstraints);
 
         panelBawah.setMinimumSize(new java.awt.Dimension(533, 100));
-        panelBawah.setPreferredSize(new java.awt.Dimension(1, 100));
+        panelBawah.setPreferredSize(new java.awt.Dimension(1, 75));
 
         btnKonfirmasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/konfirmasi.png"))); // NOI18N
         btnKonfirmasi.setMnemonic('S');
@@ -1039,7 +1002,13 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         });
         panelBawah.add(btnBatal);
 
-        getContentPane().add(panelBawah, java.awt.BorderLayout.SOUTH);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTH;
+        getContentPane().add(panelBawah, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -1360,20 +1329,9 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         isForm();
     }//GEN-LAST:event_toggleInfoTambahanActionPerformed
 
-    private void noTelpFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_noTelpFocusGained
-        toggleInfoTambahan.setSelected(false);
-        panelNumpad.setLocation(855, 415);
-        panelNumpad.setVisible(true);
-        isForm();
-    }//GEN-LAST:event_noTelpFocusGained
-
-    private void noTelpFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_noTelpFocusLost
-        panelNumpad.setVisible(false);
-    }//GEN-LAST:event_noTelpFocusLost
-
     private void noTelpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_noTelpMouseClicked
-        if (toggleInfoTambahan.isSelected()) {
-            noTelpFocusGained(null);
+        if (!toggleInfoTambahan.isSelected()) {
+            panelNumpad.setVisible(true);
         }
     }//GEN-LAST:event_noTelpMouseClicked
 
@@ -1386,21 +1344,9 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         }
     }//GEN-LAST:event_suplesiItemStateChanged
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        /*
-        revalidate();
-        Dimension newD = new Dimension(jPanel2.getWidth() - 32, panelBiasa1.getPreferredSize().height);
-        panelDiagnosaSmc.setPreferredSize(new Dimension(newD.width, panelDiagnosaSmc.getPreferredSize().height));
-        panelDiagnosaSmc.setSize(new Dimension(newD.width, panelDiagnosaSmc.getPreferredSize().height));
-        panelDiagnosaSmc.revalidate(newD.width);
-        panelBiasa1.setPreferredSize(newD);
-        panelBiasa1.setSize(newD);
-        scrollPane1.setPreferredSize(newD);
-        scrollPane1.setSize(newD);
-        BtnHapusDiagnosa.setLocation(panelBiasa1.getWidth() - BtnHapusDiagnosa.getWidth() - 4, BtnHapusDiagnosa.getY());
-        revalidate();
-        */
-    }//GEN-LAST:event_formWindowOpened
+    private void noTelpFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_noTelpFocusLost
+        panelNumpad.setVisible(false);
+    }//GEN-LAST:event_noTelpFocusLost
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.Label LabelKelas;
@@ -1448,7 +1394,6 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
     private widget.Label jLabel27;
     private widget.Label jLabel36;
     private widget.Label jLabel37;
-    private widget.Label jLabel38;
     private widget.Label jLabel40;
     private widget.Label jLabel41;
     private widget.Label jLabel42;
@@ -2492,7 +2437,8 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
                                             JOptionPane.showMessageDialog(null, "Koneksi ke Server BPJS terputus...!!!");
                                         }
                                         emptTeks();
-                                    }   break;
+                                    }
+                                    break;
                                 case "4":
                                     // RUJUKAN FKTL
                                     asalRujukan.setSelectedIndex(1);
@@ -2528,7 +2474,8 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
                                             JOptionPane.showMessageDialog(null, "Koneksi ke Server BPJS terputus...!!!");
                                         }
                                         emptTeks();
-                                    }   break;
+                                    }
+                                    break;
                                 case "3":
                                     // CEK JENIS KONTROL DULU
                                     try (PreparedStatement pskontrol = koneksi.prepareStatement(
@@ -2612,7 +2559,8 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
                                     } catch (Exception e) {
                                         emptTeks();
                                         JOptionPane.showMessageDialog(null, "Maaf, rujukan kontrol pasien tidak ditemukan!\nSilahkan hubungi administrasi.");
-                                    }   break;
+                                    }
+                                    break;
                                 default:
                                     emptTeks();
                                     JOptionPane.showMessageDialog(null, "Maaf, antrian JKN tidak ditemukan!\nSilahkan hubungi administrasi.");
@@ -2641,14 +2589,14 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
             JOptionPane.showMessageDialog(null, "Maaf, terjadi kesalahan pada saat mencari rujukan di MobileJKN!\nSilahkan hubungi administrasi.");
         }
     }
-    
+
     private boolean kirimAntrianOnsite() {
         boolean sukses = true;
-        
+
         if (!ADDANTRIANAPIMOBILEJKN) {
             return sukses;
         }
-        
+
         if (isMobileJKN) {
             if (Sequel.cariExistsSmc("select * from referensi_mobilejkn_bpjs where referensi_mobilejkn_bpjs.nobooking = ? and referensi_mobilejkn_bpjs.status = 'Belum'", noBooking)) {
                 Sequel.mengupdateSmc("referensi_mobilejkn_bpjs", "referensi_mobilejkn_bpjs.validasi = now(), referensi_mobilejkn_bpjs.status = 'Checkin'", "referensi_mobilejkn_bpjs.nobooking = ? and referensi_mobilejkn_bpjs.status = 'Belum'", noBooking);
@@ -3374,13 +3322,13 @@ public class DlgRegistrasiSEPBPJS extends widget.Dialog {
         if (toggleInfoTambahan.isSelected()) {
             toggleInfoTambahan.setVisible(false);
             panelNumpad.setVisible(false);
-            panelUtama.setPreferredSize(new Dimension(WIDTH, 310));
-            panelTambahan.setPreferredSize(new Dimension(WIDTH, 290));
+            panelUtama.setPreferredSize(new Dimension(WIDTH, 70));
+            panelTambahan.setPreferredSize(new Dimension(WIDTH, 540));
             form.setVisible(true);
             toggleInfoTambahan.setVisible(true);
         } else {
             toggleInfoTambahan.setVisible(false);
-            panelUtama.setPreferredSize(new Dimension(WIDTH, 610));
+            panelUtama.setPreferredSize(new Dimension(WIDTH, 780));
             panelTambahan.setPreferredSize(new Dimension(WIDTH, 30));
             form.setVisible(false);
             toggleInfoTambahan.setVisible(true);
