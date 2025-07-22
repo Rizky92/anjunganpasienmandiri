@@ -34,6 +34,9 @@ public class KhanzaHMSAnjungan {
             UIManager.setLookAndFeel(new FlatLightLaf());
             System.setProperty("flatlaf.animation", "true");
             UIManager.put("TitlePane.background", new Color(240, 249, 255));
+            UIManager.put("ComboBox.background", new Color(255, 255, 255));
+            UIManager.put("ComboBox.foreground", new Color(0, 131, 62));
+            UIManager.put("ComboBox.font", new Font("Inter Medium", Font.PLAIN, 18));
             UIManager.put("Panel.background", new Color(240, 249, 255));
             UIManager.put("Table.background", new Color(240, 249, 255));
             UIManager.put("Table.foreground", new Color(0, 131, 62));
@@ -48,7 +51,7 @@ public class KhanzaHMSAnjungan {
             UIManager.put("TextField.selectionBackground", new Color(0, 131, 62));
             UIManager.put("TextField.selectionForeground", new Color(255, 255, 255));
             UIManager.put("TextField.inactiveBackground", new Color(255, 255, 153));
-            UIManager.put("TextField.font", new Font("Inter Medium", Font.PLAIN, 12));
+            UIManager.put("TextField.font", new Font("Inter Medium", Font.PLAIN, 18));
             UIManager.put("TableHeader.background", new Color(255, 255, 255));
             UIManager.put("TableHeader.foreground", new Color(0, 131, 62));
             UIManager.put("TableHeader.font", new Font("Inter", Font.BOLD, 14));

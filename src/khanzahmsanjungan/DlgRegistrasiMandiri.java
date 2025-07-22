@@ -145,19 +145,16 @@ public class DlgRegistrasiMandiri extends widget.Dialog {
         panelTengah.setLayout(null);
 
         jLabel10.setText("No. Rekam Medis :");
-        jLabel10.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         jLabel10.setPreferredSize(new java.awt.Dimension(20, 14));
         panelTengah.add(jLabel10);
         jLabel10.setBounds(60, 50, 220, 40);
 
         jLabel29.setText("Tanggal Periksa :");
-        jLabel29.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         jLabel29.setPreferredSize(new java.awt.Dimension(20, 14));
         panelTengah.add(jLabel29);
         jLabel29.setBounds(60, 200, 220, 40);
 
         jLabel31.setText("Poli Tujuan :");
-        jLabel31.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         jLabel31.setPreferredSize(new java.awt.Dimension(20, 14));
         panelTengah.add(jLabel31);
         jLabel31.setBounds(60, 250, 220, 40);
@@ -169,7 +166,6 @@ public class DlgRegistrasiMandiri extends widget.Dialog {
         noRM.setBounds(290, 50, 650, 40);
 
         jLabel32.setText("Dokter Tujuan :");
-        jLabel32.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         jLabel32.setPreferredSize(new java.awt.Dimension(20, 14));
         panelTengah.add(jLabel32);
         jLabel32.setBounds(60, 300, 220, 40);
@@ -197,7 +193,6 @@ public class DlgRegistrasiMandiri extends widget.Dialog {
         namaPoli.setBounds(290, 250, 650, 40);
 
         jLabel36.setText("Cara Bayar :");
-        jLabel36.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         jLabel36.setPreferredSize(new java.awt.Dimension(20, 14));
         panelTengah.add(jLabel36);
         jLabel36.setBounds(60, 350, 220, 40);
@@ -225,7 +220,6 @@ public class DlgRegistrasiMandiri extends widget.Dialog {
         namaDokter.setBounds(290, 300, 650, 40);
 
         jLabel11.setText("Nama Pasien :");
-        jLabel11.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         jLabel11.setPreferredSize(new java.awt.Dimension(20, 14));
         panelTengah.add(jLabel11);
         jLabel11.setBounds(60, 100, 220, 40);
@@ -237,7 +231,6 @@ public class DlgRegistrasiMandiri extends widget.Dialog {
         namaPasien.setBounds(290, 100, 650, 40);
 
         jLabel19.setText("Tgl. Lahir :");
-        jLabel19.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         jLabel19.setPreferredSize(new java.awt.Dimension(20, 14));
         panelTengah.add(jLabel19);
         jLabel19.setBounds(60, 150, 220, 40);

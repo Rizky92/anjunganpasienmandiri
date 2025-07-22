@@ -22,16 +22,14 @@ public class DlgCekDataPasienBPJS extends widget.Dialog {
     private static final String INPUT_MOBILEJKN = "No. RM / NIK / Peserta BPJS / Surat Kontrol :";
     
     private final sekuel Sequel = new sekuel();
-    private final DlgRegistrasiSEPPertama regist;
-    private final DlgRegistrasiSEPMobileJKN mobilejkn;
+    private final DlgRegistrasiSEPBPJS regist;
     
     private int flag = -1;
 
     public DlgCekDataPasienBPJS(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        regist = new DlgRegistrasiSEPPertama(parent, modal);
-        mobilejkn = new DlgRegistrasiSEPMobileJKN(parent, modal);
+        regist = new DlgRegistrasiSEPBPJS(parent, modal);
     }
 
     /**
@@ -305,11 +303,10 @@ public class DlgCekDataPasienBPJS extends widget.Dialog {
                     JOptionPane.showMessageDialog(null, "Data pasien tidak ditemukan..!!");
                 } else {
                     if (Sequel.cariExistsSmc("select * from referensi_mobilejkn_bpjs where nomorkartu = ? and tanggalperiksa = current_date() and status in ('Belum', 'Checkin')", noKartu)) {
-                        mobilejkn.tampil(noKartu);
-                        mobilejkn.setSize(getContentPane().getSize());
-                        mobilejkn.setLocationRelativeTo(getContentPane());
-                        mobilejkn.setVisible(true);
-                        this.dispose();
+                        regist.tampilMobileJKN(noKartu);
+                        regist.setSize(getContentPane().getSize());
+                        regist.setLocationRelativeTo(getContentPane());
+                        regist.setVisible(true);
                     } else {
                         JOptionPane.showMessageDialog(null, "Data booking MobileJKN tidak ditemukan..!!");
                     }
@@ -328,7 +325,6 @@ public class DlgCekDataPasienBPJS extends widget.Dialog {
                         regist.setSize(getContentPane().getSize());
                         regist.setLocationRelativeTo(getContentPane());
                         regist.setVisible(true);
-                        this.dispose();
                     }
                 }
             } else {
@@ -350,11 +346,11 @@ public class DlgCekDataPasienBPJS extends widget.Dialog {
                         regist.setSize(getContentPane().getSize());
                         regist.setLocationRelativeTo(getContentPane());
                         regist.setVisible(true);
-                        this.dispose();
                     }
                 }
             }
         }
+        this.dispose();
         this.flag = -1;
         formWindowActivated(null);
         this.setCursor(Cursor.getDefaultCursor());
