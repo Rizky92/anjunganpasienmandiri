@@ -344,7 +344,7 @@ public class DlgCekDataBPJS extends widget.Dialog {
                                 regist.tampilKunjunganPertama(noKartu);
                                 break;
                             case SEP_KONTROL_BEDA_POLI:
-                                regist.tampilKunjunganBedaPoli(noKartu);
+                                regist.tampilKontrolBedaPoli(noKartu);
                                 break;
                         }
                         regist.setSize(getContentPane().getSize());

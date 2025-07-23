@@ -230,10 +230,14 @@ public class HalamanUtama extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDaftarpoliActionPerformed
 
     private void btnBookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookingActionPerformed
-        umum.setFlag(DlgCekDataPasien.CEKIN_BOOKING);
-        umum.setSize(getContentPane().getSize());
-        umum.setLocationRelativeTo(getContentPane());
-        umum.setVisible(true);
+        if (!koneksiDB.BOOKINGLANGSUNGREGISTRASI()) {
+            JOptionPane.showMessageDialog(null, "Mohon maaf, fitur masih dalam tahap pengembangan");
+        } else {
+            umum.setFlag(DlgCekDataPasien.CEKIN_BOOKING);
+            umum.setSize(getContentPane().getSize());
+            umum.setLocationRelativeTo(getContentPane());
+            umum.setVisible(true);
+        }
     }//GEN-LAST:event_btnBookingActionPerformed
 
     private void btnSEPPertamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSEPPertamaActionPerformed

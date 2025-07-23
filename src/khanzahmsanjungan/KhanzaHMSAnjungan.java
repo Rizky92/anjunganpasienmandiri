@@ -35,19 +35,19 @@ public class KhanzaHMSAnjungan {
             
             Color foreground = new Color(0, 131, 62);
             Color panelBackground = new Color(240, 249, 255);
-            Color disableEditBackground = new Color(153, 255, 228);
+            Color disableEditBackground = new Color(255, 255, 153);
             Font main = new Font("Inter Medium", Font.PLAIN, 18);
             
             UIManager.setLookAndFeel(new FlatLightLaf());
             System.setProperty("flatlaf.animation", "true");
             UIManager.put("TitlePane.background", panelBackground);
-            UIManager.put("ComboBox.background", disableEditBackground);
+            UIManager.put("ComboBox.background", Color.WHITE);
             UIManager.put("ComboBox.editableBackground", Color.WHITE);
             UIManager.put("ComboBox.foreground", foreground);
-            UIManager.put("ComboBox.buttonBackground", disableEditBackground);
-            UIManager.put("ComboBox.buttonEditableBackground", disableEditBackground);
+            UIManager.put("ComboBox.buttonBackground", Color.WHITE);
+            UIManager.put("ComboBox.buttonEditableBackground", Color.WHITE);
             UIManager.put("ComboBox.buttonArrowColor", foreground);
-            UIManager.put("ComboBox.buttonHoverArrowColor", ColorFunctions.lighten(foreground, 0.15f));
+            UIManager.put("ComboBox.buttonHoverArrowColor", ColorFunctions.lighten(foreground, 0.1f));
             UIManager.put("ComboBox.buttonPressedArrowColor", ColorFunctions.darken(foreground, 0.4f));
             UIManager.put("ComboBox.popupBackground", Color.WHITE);
             UIManager.put("ComboBox.selectionBackground", foreground);
