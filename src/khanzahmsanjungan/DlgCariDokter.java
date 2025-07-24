@@ -154,7 +154,7 @@ public final class DlgCariDokter extends widget.Dialog {
         }
     }
 
-    public boolean hasSelectedRow() {
+    public boolean hasSelection() {
         return tbDokter.getSelectedRow() >= 0;
     }
 

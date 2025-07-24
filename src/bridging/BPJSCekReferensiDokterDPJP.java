@@ -15,9 +15,6 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fungsi.batasInput;
 import fungsi.koneksiDB;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
 import fungsi.validasi;
 import java.awt.Cursor;
 import java.awt.event.KeyAdapter;
@@ -25,7 +22,10 @@ import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -398,18 +398,21 @@ public final class BPJSCekReferensiDokterDPJP extends widget.Dialog {
         this.setCursor(Cursor.getDefaultCursor());
     }
 
-    public void setPoli(String KodePoli, String NamaPoli) {
-        KdPoli.setText(KodePoli);
-        NmPoli.setText(NamaPoli);
-    }
-
-    public JTable getTable() {
-        return tbDokter;
-    }
-
     public void carinamadokter(String kodepoli, String namapoli) {
         KdPoli.setText(kodepoli);
         NmPoli.setText(namapoli);
         BtnCariActionPerformed(null);
+    }
+    
+    public boolean hasSelection() {
+        return tbDokter.getSelectedRow() > -1;
+    }
+    
+    public Object getSelectedRow(int column) {
+        return tbDokter.getValueAt(tbDokter.getSelectedRow(), column);
+    }
+
+    public JTable getTable() {
+        return tbDokter;
     }
 }

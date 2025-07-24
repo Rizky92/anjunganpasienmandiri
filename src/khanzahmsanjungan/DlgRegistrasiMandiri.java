@@ -71,7 +71,7 @@ public class DlgRegistrasiMandiri extends widget.Dialog {
             poli.addWindowListener(new WindowAdapter() {
                 @Override
                 public void windowClosed(WindowEvent e) {
-                    if (poli.hasSelectedRow()) {
+                    if (poli.hasSelection()) {
                         namaDokter.setText("");
                         kdDokter = "";
                         kdPoli = poli.getSelectedRow(0).toString();
@@ -92,7 +92,7 @@ public class DlgRegistrasiMandiri extends widget.Dialog {
         dokter.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosed(WindowEvent e) {
-                if (dokter.hasSelectedRow()) {
+                if (dokter.hasSelection()) {
                     namaDokter.setText(dokter.getSelectedRow(1).toString());
                     kdDokter = dokter.getSelectedRow(0).toString();
                 }

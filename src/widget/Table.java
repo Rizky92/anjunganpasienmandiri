@@ -7,14 +7,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.UIManager;
 import javax.swing.table.TableCellRenderer;
 
-/**
- *
- * @author usu
- */
 public class Table extends FlatTable {
-
-    private static final long serialVersionUID = 1L;
-
     public Table() {
         super();
         setAutoResizeMode(JTable.AUTO_RESIZE_OFF);

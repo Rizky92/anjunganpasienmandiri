@@ -148,7 +148,7 @@ public final class DlgCariPoli extends widget.Dialog {
         }
     }
 
-    public boolean hasSelectedRow() {
+    public boolean hasSelection() {
         return tbPoli.getSelectedRow() >= 0;
     }
 
