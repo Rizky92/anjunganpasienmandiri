@@ -386,7 +386,7 @@ public class DlgRegistrasiMandiri extends widget.Dialog {
                 param.put("kotars", instansiKota);
                 param.put("kontakrs", instansiKontak);
                 param.put("norawat", noRawat);
-                Valid.printReport("rptBarcodeRawatAPM.jasper", PRINTERBARCODE, "::[ Barcode Perawatan ]::", koneksiDB.PRINTJUMLAHBARCODE(), param);
+                Valid.printReportSmc("rptBarcodeRawatAPM.jasper", "report", "::[ Barcode Perawatan ]::", param, koneksiDB.PRINTER_BARCODE(), koneksiDB.PRINTJUMLAHBARCODE());
                 JOptionPane.showMessageDialog(null, "Berhasil!");
             } else {
                 JOptionPane.showMessageDialog(null, "Pendaftaran gagal..!!\nSilahkan coba kembali.");
@@ -460,8 +460,8 @@ public class DlgRegistrasiMandiri extends widget.Dialog {
                     namaPasien.setText(rs.getString("nm_pasien"));
                     tglLahir.setText(DateTimeFormatter.ofPattern("dd MMMM yyyy").withLocale(new Locale("id", "ID")).format(rs.getDate("tgl_lahir").toLocalDate()));
                     namaPJ = rs.getString("namakeluarga");
-                    hubunganPJ = rs.getString("keluarga");
                     alamatPJ = rs.getString("alamat");
+                    hubunganPJ = rs.getString("keluarga");
                     statusDaftar = rs.getString("daftar");
                     if (rs.getInt("tahun") > 0) {
                         umurDaftar = rs.getString("tahun");

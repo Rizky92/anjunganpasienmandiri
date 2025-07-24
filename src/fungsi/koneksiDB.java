@@ -192,6 +192,10 @@ public class koneksiDB {
     public static boolean BOOKINGLANGSUNGREGISTRASI() {
         return raw("BOOKINGLANGSUNGREGISTRASI", "no").equalsIgnoreCase("yes");
     }
+    
+    public static boolean PREVIEWHASILPRINT() {
+        return rawAPM("PREVIEWHASILPRINT", "no").equalsIgnoreCase("yes");
+    }
 
     public static String HOST() {
         return rawe("HOST");

@@ -206,8 +206,10 @@ public class HalamanUtama extends javax.swing.JFrame {
 
         versi.setForeground(new java.awt.Color(150, 155, 159));
         versi.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        versi.setText("Build 2025-07-15      ");
+        versi.setText("Build 2025-07-24      ");
         versi.setFocusable(false);
+        versi.setFont(new java.awt.Font("Inter Medium", 0, 12)); // NOI18N
+        versi.setPreferredSize(new java.awt.Dimension(1, 20));
         panelBawah.add(versi, java.awt.BorderLayout.PAGE_END);
 
         getContentPane().add(panelBawah, java.awt.BorderLayout.PAGE_END);

@@ -329,7 +329,7 @@ public class DlgCekDataPasien extends widget.Dialog {
                     } else if (rs.getString("status").equals("Checkin")) {
                         if (koneksiDB.PRINTJUMLAHBARCODE() > 0) {
                             if (JOptionPane.showConfirmDialog(null, "Anda sudah melakukan checkin pada hari ini\nApakah mau mencetak barcode?", "Konfirmasi", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {
-                                Valid.printReport("rptBarcodeRawatAPM.jasper", koneksiDB.PRINTER_BARCODE(), "::[ Barcode Perawatan ]::", koneksiDB.PRINTJUMLAHBARCODE(), param);
+                                Valid.printReportSmc("rptBarcodeRawatAPM.jasper", "report", "::[ Barcode Perawatan ]::", param, koneksiDB.PRINTER_BARCODE(), koneksiDB.PRINTJUMLAHBARCODE());
                                 JOptionPane.showMessageDialog(null, "Barcode berhasil dicetak..!!", "Berhasil", JOptionPane.INFORMATION_MESSAGE);
                             }
                         } else {
@@ -339,7 +339,7 @@ public class DlgCekDataPasien extends widget.Dialog {
                         Sequel.mengupdateSmc("reg_periksa", "jam_reg = current_time()", "no_rawat = ?", rs.getString("no_rawat"));
                         Sequel.mengupdateSmc("booking_registrasi", "waktu_kunjungan = now(), status = 'Checkin'", "no_rawat = ?", rs.getString("no_rawat"));
                         JOptionPane.showMessageDialog(null, "Check in berhasil..!!", "Berhasil", JOptionPane.INFORMATION_MESSAGE);
-                        Valid.printReport("rptBarcodeRawatAPM.jasper", koneksiDB.PRINTER_BARCODE(), "::[ Barcode Perawatan ]::", koneksiDB.PRINTJUMLAHBARCODE(), param);
+                        Valid.printReportSmc("rptBarcodeRawatAPM.jasper", "report", "::[ Barcode Perawatan ]::", param, koneksiDB.PRINTER_BARCODE(), koneksiDB.PRINTJUMLAHBARCODE());
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "Maaf, jadwal booking untuk hari ini tidak ditemukan\nSilahkan konfirmasi ke pendaftaran..!!");

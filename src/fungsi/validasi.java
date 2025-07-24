@@ -15,7 +15,6 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -47,6 +46,7 @@ import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 import jxl.write.WriteException;
 import net.sf.jasperreports.engine.JREmptyDataSource;
+import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRExporterParameter;
 import net.sf.jasperreports.engine.JRResultSetDataSource;
 import net.sf.jasperreports.engine.JasperExportManager;
@@ -94,78 +94,72 @@ public final class validasi {
         return new SimpleDateFormat("yyyy-MM-dd").format(tgl.getDate());
     }
 
-    public void printReport(String namaReport, String namaPrinter, String judul, int jumlah, Map params) {
-        String currentDir = System.getProperties().getProperty("user.dir");
 
-        File dir = new File(currentDir);
-        File report = null;
-
-        if (dir.isDirectory()) {
-            for (String file : dir.list()) {
-                report = new File(currentDir + File.separatorChar + file + File.separatorChar + namaReport);
-                if (report.isFile()) {
-                    System.out.println("Found report file at: " + report.toString());
-                    break;
-                }
-            }
-        }
-
-        if (report == null) {
-            JOptionPane.showMessageDialog(null, "File tidak ditemukan!");
-            return;
-        }
-
+    public void printReportSmc(String reportName, String reportDirName, String judul, Map reportParams, String printerName, int jumlah, String sql, String... values) {
         try {
-            JasperReport jr = (JasperReport) JRLoader.loadObject(report);
-            JasperPrint jp = JasperFillManager.fillReport(jr, params, connect);
-            PrintService printService = null;
-            for (PrintService currentPrintService : PrintServiceLookup.lookupPrintServices(null, null)) {
-                if (currentPrintService.getName().equals(namaPrinter)) {
-                    System.out.println("Printer ditemukan: " + currentPrintService.getName());
-                    printService = currentPrintService;
-                    break;
+            try (PreparedStatement ps = connect.prepareStatement(sql)) {
+                for (int i = 0; i < values.length; i++) {
+                    ps.setString(i + 1, values[i]);
+                }
+
+                JasperPrint jp = JasperFillManager.fillReport("./" + reportDirName + "/" + reportName, reportParams, new JRResultSetDataSource(ps.executeQuery()));
+
+                PrintService printService = null;
+                for (PrintService currentPrintService : PrintServiceLookup.lookupPrintServices(null, null)) {
+                    if (currentPrintService.getName().equals(printerName)) {
+                        System.out.println("Printer ditemukan: " + currentPrintService.getName());
+                        printService = currentPrintService;
+                        break;
+                    }
+                }
+
+                if (printService != null) {
+                    PrintRequestAttributeSet pra = new HashPrintRequestAttributeSet();
+                    pra.add(new Copies(jumlah));
+
+                    SimplePrintServiceExporterConfiguration config = new SimplePrintServiceExporterConfiguration();
+
+                    config.setPrintService(printService);
+                    config.setPrintRequestAttributeSet(pra);
+                    config.setPrintServiceAttributeSet(printService.getAttributes());
+                    config.setDisplayPageDialog(false);
+                    config.setDisplayPrintDialog(false);
+
+                    JRPrintServiceExporter exporter = new JRPrintServiceExporter();
+
+                    exporter.setExporterInput(new SimpleExporterInput(jp));
+                    exporter.setConfiguration(config);
+                    exporter.exportReport();
+
+                    if (koneksiDB.PREVIEWHASILPRINT()) {
+                        JasperViewer jv = new JasperViewer(jp, false);
+                        jv.setTitle(judul);
+                        Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+                        jv.setSize(screen.width - 50, screen.height - 50);
+                        jv.setModalExclusionType(ModalExclusionType.TOOLKIT_EXCLUDE);
+                        jv.setLocationRelativeTo(null);
+                        jv.setVisible(true);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Printer tidak ditemukan!");
+                    JasperViewer jv = new JasperViewer(jp, false);
+                    jv.setTitle(judul);
+                    Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+                    jv.setSize(screen.width - 50, screen.height - 50);
+                    jv.setModalExclusionType(ModalExclusionType.TOOLKIT_EXCLUDE);
+                    jv.setLocationRelativeTo(null);
+                    jv.setVisible(true);
                 }
             }
-
-            if (printService == null) {
-                JOptionPane.showMessageDialog(null, "Printer tidak ditemukan!");
-                return;
-            }
-
-            PrintRequestAttributeSet pra = new HashPrintRequestAttributeSet();
-            pra.add(new Copies(jumlah));
-
-            SimplePrintServiceExporterConfiguration config = new SimplePrintServiceExporterConfiguration();
-
-            config.setPrintService(printService);
-            config.setPrintRequestAttributeSet(pra);
-            config.setPrintServiceAttributeSet(printService.getAttributes());
-            config.setDisplayPageDialog(false);
-            config.setDisplayPrintDialog(false);
-
-            JRPrintServiceExporter exporter = new JRPrintServiceExporter();
-
-            exporter.setExporterInput(new SimpleExporterInput(jp));
-            exporter.setConfiguration(config);
-            exporter.exportReport();
         } catch (Exception e) {
-            System.out.println(e);
-
-            for (StackTraceElement ste : e.getStackTrace()) {
-                System.out.println(ste);
-            }
-
-            JOptionPane.showMessageDialog(null, "Tidak bisa memproses cetak!");
+            System.out.println("Notif : " + e);
+            JOptionPane.showMessageDialog(null, "Terjadi kesalahan pada saat melakukan proses cetak..!!", "Gagal", JOptionPane.ERROR_MESSAGE);
         }
     }
 
-    public void printReportSmc(String reportName, String reportDirName, String judul, Map reportParams, String printerName, int jumlah, String sql, String... values) {
-        try (PreparedStatement ps = connect.prepareStatement(sql)) {
-            for (int i = 0; i < values.length; i++) {
-                ps.setString(i + 1, values[i]);
-            }
-
-            JasperPrint jp = JasperFillManager.fillReport("./" + reportDirName + "/" + reportName, reportParams, new JRResultSetDataSource(ps.executeQuery()));
+    public void printReportSmc(String reportName, String reportDirName, String judul, Map reportParams, String printerName, int jumlah) {
+        try {
+            JasperPrint jp = JasperFillManager.fillReport("./" + reportDirName + "/" + reportName, reportParams, connect);
 
             PrintService printService = null;
             for (PrintService currentPrintService : PrintServiceLookup.lookupPrintServices(null, null)) {
@@ -193,6 +187,16 @@ public final class validasi {
                 exporter.setExporterInput(new SimpleExporterInput(jp));
                 exporter.setConfiguration(config);
                 exporter.exportReport();
+
+                if (koneksiDB.PREVIEWHASILPRINT()) {
+                    JasperViewer jv = new JasperViewer(jp, false);
+                    jv.setTitle(judul);
+                    Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
+                    jv.setSize(screen.width - 50, screen.height - 50);
+                    jv.setModalExclusionType(ModalExclusionType.TOOLKIT_EXCLUDE);
+                    jv.setLocationRelativeTo(null);
+                    jv.setVisible(true);
+                }
             } else {
                 JOptionPane.showMessageDialog(null, "Printer tidak ditemukan!");
                 JasperViewer jv = new JasperViewer(jp, false);
@@ -203,42 +207,9 @@ public final class validasi {
                 jv.setLocationRelativeTo(null);
                 jv.setVisible(true);
             }
-        } catch (Exception e) {
+        } catch (JRException e) {
             System.out.println("Notif : " + e);
-            JOptionPane.showMessageDialog(null, "Report can't view because : " + e);
-        }
-    }
-
-    public void reportSmc(String reportName, String reportDirName, String judul, Map reportParams, String sql, String... values) {
-        try (PreparedStatement ps = connect.prepareStatement(sql)) {
-            for (int i = 0; i < values.length; i++) {
-                ps.setString(i + 1, values[i]);
-            }
-            JasperViewer jasperViewer = new JasperViewer(JasperFillManager.fillReport("./" + reportDirName + "/" + reportName, reportParams, new JRResultSetDataSource(ps.executeQuery())), false);
-            jasperViewer.setTitle(judul);
-            Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
-            jasperViewer.setSize(screen.width - 50, screen.height - 50);
-            jasperViewer.setModalExclusionType(ModalExclusionType.TOOLKIT_EXCLUDE);
-            jasperViewer.setLocationRelativeTo(null);
-            jasperViewer.setVisible(true);
-        } catch (Exception e) {
-            System.out.println("Notif : " + e);
-            JOptionPane.showMessageDialog(null, "Report can't view because : " + e);
-        }
-    }
-
-    public void reportSmc(String reportName, String reportDirName, String judul, Map reportParams) {
-        try {
-            JasperViewer jv = new JasperViewer(JasperFillManager.fillReport("./" + reportDirName + "/" + reportName, reportParams, connect), false);
-            jv.setTitle(judul);
-            Dimension screen = Toolkit.getDefaultToolkit().getScreenSize();
-            jv.setSize(screen.width - 50, screen.height - 50);
-            jv.setModalExclusionType(ModalExclusionType.TOOLKIT_EXCLUDE);
-            jv.setLocationRelativeTo(null);
-            jv.setVisible(true);
-        } catch (Exception e) {
-            System.out.println("Notif : " + e);
-            JOptionPane.showMessageDialog(null, "Report can't view because : " + e);
+            JOptionPane.showMessageDialog(null, "Terjadi kesalahan pada saat melakukan proses cetak..!!", "Gagal", JOptionPane.ERROR_MESSAGE);
         }
     }
 
