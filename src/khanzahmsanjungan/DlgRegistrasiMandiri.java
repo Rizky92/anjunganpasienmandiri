@@ -106,9 +106,11 @@ public class DlgRegistrasiMandiri extends widget.Dialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         panelAtas = new widget.Panel();
         label1 = new widget.Label();
+        emptyKiri = new widget.Panel();
         panelTengah = new widget.Panel();
         jLabel10 = new widget.Label();
         jLabel29 = new widget.Label();
@@ -126,53 +128,70 @@ public class DlgRegistrasiMandiri extends widget.Dialog {
         tglLahir = new widget.Label();
         tanggalPeriksa = new widget.Label();
         jenisBayar = new widget.Label();
+        emptyKanan = new widget.Panel();
         panelBawah = new widget.Panel();
         btnSimpan = new widget.Button();
         btnKeluar = new widget.Button();
 
-        panelAtas.setPreferredSize(new java.awt.Dimension(400, 40));
-        panelAtas.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 10));
+        getContentPane().setLayout(new java.awt.GridBagLayout());
+
+        panelAtas.setPreferredSize(new java.awt.Dimension(1, 35));
+        panelAtas.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 5));
 
         label1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         label1.setText("PENDAFTARAN POLIKLINIK EKSEKUTIF");
         label1.setFocusable(false);
         label1.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
+        label1.setPreferredSize(new java.awt.Dimension(600, 30));
         panelAtas.add(label1);
 
-        getContentPane().add(panelAtas, java.awt.BorderLayout.PAGE_START);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTH;
+        getContentPane().add(panelAtas, gridBagConstraints);
 
-        panelTengah.setPreferredSize(new java.awt.Dimension(390, 120));
+        emptyKiri.setMinimumSize(new java.awt.Dimension(0, 0));
+        emptyKiri.setPreferredSize(new java.awt.Dimension(0, 0));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        getContentPane().add(emptyKiri, gridBagConstraints);
+
+        panelTengah.setPreferredSize(new java.awt.Dimension(880, 410));
         panelTengah.setLayout(null);
 
         jLabel10.setText("No. Rekam Medis :");
-        jLabel10.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         jLabel10.setPreferredSize(new java.awt.Dimension(20, 14));
         panelTengah.add(jLabel10);
-        jLabel10.setBounds(60, 50, 220, 40);
+        jLabel10.setBounds(0, 50, 165, 40);
 
         jLabel29.setText("Tanggal Periksa :");
-        jLabel29.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         jLabel29.setPreferredSize(new java.awt.Dimension(20, 14));
         panelTengah.add(jLabel29);
-        jLabel29.setBounds(60, 200, 220, 40);
+        jLabel29.setBounds(0, 200, 165, 40);
 
         jLabel31.setText("Poli Tujuan :");
-        jLabel31.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         jLabel31.setPreferredSize(new java.awt.Dimension(20, 14));
         panelTengah.add(jLabel31);
-        jLabel31.setBounds(60, 250, 220, 40);
+        jLabel31.setBounds(0, 250, 165, 40);
 
         noRM.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         noRM.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
         noRM.setPreferredSize(new java.awt.Dimension(20, 14));
         panelTengah.add(noRM);
-        noRM.setBounds(290, 50, 650, 40);
+        noRM.setBounds(175, 50, 650, 40);
 
         jLabel32.setText("Dokter Tujuan :");
-        jLabel32.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         jLabel32.setPreferredSize(new java.awt.Dimension(20, 14));
         panelTengah.add(jLabel32);
-        jLabel32.setBounds(60, 300, 220, 40);
+        jLabel32.setBounds(0, 300, 165, 40);
 
         buttonCariPoli.setBackground(new java.awt.Color(240, 249, 255));
         buttonCariPoli.setBorder(null);
@@ -188,19 +207,18 @@ public class DlgRegistrasiMandiri extends widget.Dialog {
             }
         });
         panelTengah.add(buttonCariPoli);
-        buttonCariPoli.setBounds(945, 250, 50, 40);
+        buttonCariPoli.setBounds(830, 250, 45, 40);
 
         namaPoli.setEditable(false);
         namaPoli.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
         namaPoli.setPreferredSize(new java.awt.Dimension(72, 28));
         panelTengah.add(namaPoli);
-        namaPoli.setBounds(290, 250, 650, 40);
+        namaPoli.setBounds(175, 250, 650, 40);
 
         jLabel36.setText("Cara Bayar :");
-        jLabel36.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         jLabel36.setPreferredSize(new java.awt.Dimension(20, 14));
         panelTengah.add(jLabel36);
-        jLabel36.setBounds(60, 350, 220, 40);
+        jLabel36.setBounds(0, 350, 165, 40);
 
         buttonCariDokter.setBackground(new java.awt.Color(240, 249, 255));
         buttonCariDokter.setBorder(null);
@@ -216,61 +234,74 @@ public class DlgRegistrasiMandiri extends widget.Dialog {
             }
         });
         panelTengah.add(buttonCariDokter);
-        buttonCariDokter.setBounds(945, 300, 50, 40);
+        buttonCariDokter.setBounds(830, 300, 45, 40);
 
         namaDokter.setEditable(false);
         namaDokter.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
         namaDokter.setPreferredSize(new java.awt.Dimension(72, 28));
         panelTengah.add(namaDokter);
-        namaDokter.setBounds(290, 300, 650, 40);
+        namaDokter.setBounds(175, 300, 650, 40);
 
         jLabel11.setText("Nama Pasien :");
-        jLabel11.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         jLabel11.setPreferredSize(new java.awt.Dimension(20, 14));
         panelTengah.add(jLabel11);
-        jLabel11.setBounds(60, 100, 220, 40);
+        jLabel11.setBounds(0, 100, 165, 40);
 
         namaPasien.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         namaPasien.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
         namaPasien.setPreferredSize(new java.awt.Dimension(20, 14));
         panelTengah.add(namaPasien);
-        namaPasien.setBounds(290, 100, 650, 40);
+        namaPasien.setBounds(175, 100, 650, 40);
 
         jLabel19.setText("Tgl. Lahir :");
-        jLabel19.setFont(new java.awt.Font("Inter", 0, 18)); // NOI18N
         jLabel19.setPreferredSize(new java.awt.Dimension(20, 14));
         panelTengah.add(jLabel19);
-        jLabel19.setBounds(60, 150, 220, 40);
+        jLabel19.setBounds(0, 150, 165, 40);
 
         tglLahir.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         tglLahir.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
         tglLahir.setPreferredSize(new java.awt.Dimension(20, 14));
         panelTengah.add(tglLahir);
-        tglLahir.setBounds(290, 150, 650, 40);
+        tglLahir.setBounds(175, 150, 650, 40);
 
         tanggalPeriksa.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         tanggalPeriksa.setText(DateTimeFormatter.ofPattern("yyyy-MM-dd").format(LocalDate.now()));
         tanggalPeriksa.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
         tanggalPeriksa.setPreferredSize(new java.awt.Dimension(20, 14));
         panelTengah.add(tanggalPeriksa);
-        tanggalPeriksa.setBounds(290, 200, 650, 40);
+        tanggalPeriksa.setBounds(175, 200, 650, 40);
 
         jenisBayar.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jenisBayar.setText("UMUM / PERSONAL");
         jenisBayar.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
         jenisBayar.setPreferredSize(new java.awt.Dimension(20, 14));
         panelTengah.add(jenisBayar);
-        jenisBayar.setBounds(290, 350, 590, 40);
+        jenisBayar.setBounds(175, 350, 590, 40);
 
-        getContentPane().add(panelTengah, java.awt.BorderLayout.CENTER);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weighty = 1.0;
+        getContentPane().add(panelTengah, gridBagConstraints);
 
-        panelBawah.setPreferredSize(new java.awt.Dimension(615, 100));
+        emptyKanan.setMinimumSize(new java.awt.Dimension(0, 0));
+        emptyKanan.setPreferredSize(new java.awt.Dimension(0, 0));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.EAST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        getContentPane().add(emptyKanan, gridBagConstraints);
+
+        panelBawah.setPreferredSize(new java.awt.Dimension(1, 75));
 
         btnSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/konfirmasi.png"))); // NOI18N
         btnSimpan.setMnemonic('S');
         btnSimpan.setText("KONFIRMASI");
         btnSimpan.setToolTipText("Alt+S");
-        btnSimpan.setFont(new java.awt.Font("Inter", 1, 18)); // NOI18N
         btnSimpan.setPreferredSize(new java.awt.Dimension(300, 60));
         btnSimpan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -295,7 +326,13 @@ public class DlgRegistrasiMandiri extends widget.Dialog {
         });
         panelBawah.add(btnKeluar);
 
-        getContentPane().add(panelBawah, java.awt.BorderLayout.PAGE_END);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTH;
+        getContentPane().add(panelBawah, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -349,7 +386,7 @@ public class DlgRegistrasiMandiri extends widget.Dialog {
                 param.put("kotars", instansiKota);
                 param.put("kontakrs", instansiKontak);
                 param.put("norawat", noRawat);
-                Valid.printReport("rptBarcodeRawatAPM.jasper", PRINTERBARCODE, "::[ Barcode Perawatan ]::", koneksiDB.PRINTJUMLAHBARCODE(), param);
+                Valid.printReportSmc("rptBarcodeRawatAPM.jasper", "report", "::[ Barcode Perawatan ]::", param, koneksiDB.PRINTER_BARCODE(), koneksiDB.PRINTJUMLAHBARCODE());
                 JOptionPane.showMessageDialog(null, "Berhasil!");
             } else {
                 JOptionPane.showMessageDialog(null, "Pendaftaran gagal..!!\nSilahkan coba kembali.");
@@ -378,6 +415,8 @@ public class DlgRegistrasiMandiri extends widget.Dialog {
     private widget.Button btnSimpan;
     private widget.Button buttonCariDokter;
     private widget.Button buttonCariPoli;
+    private widget.Panel emptyKanan;
+    private widget.Panel emptyKiri;
     private widget.Label jLabel10;
     private widget.Label jLabel11;
     private widget.Label jLabel19;
@@ -421,8 +460,8 @@ public class DlgRegistrasiMandiri extends widget.Dialog {
                     namaPasien.setText(rs.getString("nm_pasien"));
                     tglLahir.setText(DateTimeFormatter.ofPattern("dd MMMM yyyy").withLocale(new Locale("id", "ID")).format(rs.getDate("tgl_lahir").toLocalDate()));
                     namaPJ = rs.getString("namakeluarga");
-                    hubunganPJ = rs.getString("keluarga");
                     alamatPJ = rs.getString("alamat");
+                    hubunganPJ = rs.getString("keluarga");
                     statusDaftar = rs.getString("daftar");
                     if (rs.getInt("tahun") > 0) {
                         umurDaftar = rs.getString("tahun");
@@ -457,7 +496,6 @@ public class DlgRegistrasiMandiri extends widget.Dialog {
                 noReg = Sequel.cariIsiSmc("select lpad(ifnull(max(convert(no_reg, signed)), 0) + 1, 3, '0') from reg_periksa where kd_poli = ? and kd_dokter = ? and tgl_registrasi = current_date()", kdPoli, kdDokter);
                 break;
         }
-
         noRawat = Sequel.cariIsiSmc("select concat(date_format(current_date(), '%Y/%m/%d'), '/', lpad(ifnull(max(convert(right(no_rawat, 6), signed)), 0) + 1, 6, '0')) from reg_periksa where tgl_registrasi = current_date()");
     }
 

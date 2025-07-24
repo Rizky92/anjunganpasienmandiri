@@ -6,7 +6,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import javax.swing.border.TitledBorder;
 
-public class DlgCekDataPasienBPJS extends widget.Dialog {
+public class DlgCekDataBPJS extends widget.Dialog {
 
     public static final int SEP_KUNJUNGAN_PERTAMA = 1;
     public static final int SEP_KONTROL = 2;
@@ -22,16 +22,14 @@ public class DlgCekDataPasienBPJS extends widget.Dialog {
     private static final String INPUT_MOBILEJKN = "No. RM / NIK / Peserta BPJS / Surat Kontrol :";
     
     private final sekuel Sequel = new sekuel();
-    private final DlgRegistrasiSEPPertama regist;
-    private final DlgRegistrasiSEPMobileJKN mobilejkn;
+    private final DlgRegistrasiBPJS regist;
     
     private int flag = -1;
 
-    public DlgCekDataPasienBPJS(java.awt.Frame parent, boolean modal) {
+    public DlgCekDataBPJS(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        regist = new DlgRegistrasiSEPPertama(parent, modal);
-        mobilejkn = new DlgRegistrasiSEPMobileJKN(parent, modal);
+        regist = new DlgRegistrasiBPJS(parent, modal);
     }
 
     /**
@@ -305,10 +303,11 @@ public class DlgCekDataPasienBPJS extends widget.Dialog {
                     JOptionPane.showMessageDialog(null, "Data pasien tidak ditemukan..!!");
                 } else {
                     if (Sequel.cariExistsSmc("select * from referensi_mobilejkn_bpjs where nomorkartu = ? and tanggalperiksa = current_date() and status in ('Belum', 'Checkin')", noKartu)) {
-                        mobilejkn.tampil(noKartu);
-                        mobilejkn.setSize(getContentPane().getSize());
-                        mobilejkn.setLocationRelativeTo(getContentPane());
-                        mobilejkn.setVisible(true);
+                        regist.tampilMobileJKN(noKartu);
+                        regist.setSize(getContentPane().getSize());
+                        regist.setLocationRelativeTo(getContentPane());
+                        regist.setVisible(true);
+                        this.flag = -1;
                         this.dispose();
                     } else {
                         JOptionPane.showMessageDialog(null, "Data booking MobileJKN tidak ditemukan..!!");
@@ -328,6 +327,7 @@ public class DlgCekDataPasienBPJS extends widget.Dialog {
                         regist.setSize(getContentPane().getSize());
                         regist.setLocationRelativeTo(getContentPane());
                         regist.setVisible(true);
+                        this.flag = -1;
                         this.dispose();
                     }
                 }
@@ -344,18 +344,18 @@ public class DlgCekDataPasienBPJS extends widget.Dialog {
                                 regist.tampilKunjunganPertama(noKartu);
                                 break;
                             case SEP_KONTROL_BEDA_POLI:
-                                regist.tampilKunjunganBedaPoli(noKartu);
+                                regist.tampilKontrolBedaPoli(noKartu);
                                 break;
                         }
                         regist.setSize(getContentPane().getSize());
                         regist.setLocationRelativeTo(getContentPane());
                         regist.setVisible(true);
+                        this.flag = -1;
                         this.dispose();
                     }
                 }
             }
         }
-        this.flag = -1;
         formWindowActivated(null);
         this.setCursor(Cursor.getDefaultCursor());
     }

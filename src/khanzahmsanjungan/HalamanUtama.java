@@ -16,14 +16,14 @@ public class HalamanUtama extends javax.swing.JFrame {
 
     private final ArrayList<String> TOMBOLDIMATIKAN = new ArrayList(Arrays.asList(koneksiDB.TOMBOLDIMATIKAN()));
     private final DlgCekDataPasien umum;
-    private final DlgCekDataPasienBPJS bpjs;
+    private final DlgCekDataBPJS bpjs;
     private final DlgAmbilAntrian antrian;
 
     public HalamanUtama() {
         initComponents();
         
         umum = new DlgCekDataPasien(this, false);
-        bpjs = new DlgCekDataPasienBPJS(this, false);
+        bpjs = new DlgCekDataBPJS(this, false);
         antrian = new DlgAmbilAntrian(this, false);
         
         TOMBOLDIMATIKAN.forEach(tombol -> {
@@ -206,8 +206,10 @@ public class HalamanUtama extends javax.swing.JFrame {
 
         versi.setForeground(new java.awt.Color(150, 155, 159));
         versi.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        versi.setText("Build 2025-07-15      ");
+        versi.setText("Build 2025-07-24      ");
         versi.setFocusable(false);
+        versi.setFont(new java.awt.Font("Inter Medium", 0, 12)); // NOI18N
+        versi.setPreferredSize(new java.awt.Dimension(1, 20));
         panelBawah.add(versi, java.awt.BorderLayout.PAGE_END);
 
         getContentPane().add(panelBawah, java.awt.BorderLayout.PAGE_END);
@@ -216,7 +218,7 @@ public class HalamanUtama extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSEPKontrolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSEPKontrolActionPerformed
-        bpjs.setFlag(DlgCekDataPasienBPJS.SEP_KONTROL);
+        bpjs.setFlag(DlgCekDataBPJS.SEP_KONTROL);
         bpjs.setSize(getContentPane().getSize());
         bpjs.setLocationRelativeTo(getContentPane());
         bpjs.setVisible(true);
@@ -230,28 +232,32 @@ public class HalamanUtama extends javax.swing.JFrame {
     }//GEN-LAST:event_btnDaftarpoliActionPerformed
 
     private void btnBookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookingActionPerformed
-        umum.setFlag(DlgCekDataPasien.CEKIN_BOOKING);
-        umum.setSize(getContentPane().getSize());
-        umum.setLocationRelativeTo(getContentPane());
-        umum.setVisible(true);
+        if (!koneksiDB.BOOKINGLANGSUNGREGISTRASI()) {
+            JOptionPane.showMessageDialog(null, "Mohon maaf, fitur masih dalam tahap pengembangan");
+        } else {
+            umum.setFlag(DlgCekDataPasien.CEKIN_BOOKING);
+            umum.setSize(getContentPane().getSize());
+            umum.setLocationRelativeTo(getContentPane());
+            umum.setVisible(true);
+        }
     }//GEN-LAST:event_btnBookingActionPerformed
 
     private void btnSEPPertamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSEPPertamaActionPerformed
-        bpjs.setFlag(DlgCekDataPasienBPJS.SEP_KUNJUNGAN_PERTAMA);
+        bpjs.setFlag(DlgCekDataBPJS.SEP_KUNJUNGAN_PERTAMA);
         bpjs.setSize(getContentPane().getSize());
         bpjs.setLocationRelativeTo(getContentPane());
         bpjs.setVisible(true);
     }//GEN-LAST:event_btnSEPPertamaActionPerformed
 
     private void btnMobilejknActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMobilejknActionPerformed
-        bpjs.setFlag(DlgCekDataPasienBPJS.SEP_MOBILEJKN);
+        bpjs.setFlag(DlgCekDataBPJS.SEP_MOBILEJKN);
         bpjs.setSize(getContentPane().getSize());
         bpjs.setLocationRelativeTo(getContentPane());
         bpjs.setVisible(true);
     }//GEN-LAST:event_btnMobilejknActionPerformed
 
     private void btnSEPKontrolBedaPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSEPKontrolBedaPoliActionPerformed
-        bpjs.setFlag(DlgCekDataPasienBPJS.SEP_KONTROL_BEDA_POLI);
+        bpjs.setFlag(DlgCekDataBPJS.SEP_KONTROL_BEDA_POLI);
         bpjs.setSize(getContentPane().getSize());
         bpjs.setLocationRelativeTo(getContentPane());
         bpjs.setVisible(true);
