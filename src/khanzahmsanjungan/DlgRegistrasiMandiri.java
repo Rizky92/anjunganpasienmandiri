@@ -51,8 +51,8 @@ public class DlgRegistrasiMandiri extends widget.Dialog {
 
     public DlgRegistrasiMandiri(java.awt.Frame parent, boolean model) {
         super(parent, model);
-        this.dokter = new DlgCariDokter(parent, model);
-        this.poli = new DlgCariPoli(parent, model);
+        dokter = new DlgCariDokter(parent, model);
+        poli = new DlgCariPoli(parent, model);
         initComponents();
 
         try (ResultSet rs = koneksi.prepareStatement("select nama_instansi, alamat_instansi, kabupaten, kontak from setting").executeQuery()) {
@@ -93,8 +93,8 @@ public class DlgRegistrasiMandiri extends widget.Dialog {
             @Override
             public void windowClosed(WindowEvent e) {
                 if (dokter.hasSelection()) {
-                    namaDokter.setText(dokter.getSelectedRow(1).toString());
                     kdDokter = dokter.getSelectedRow(0).toString();
+                    namaDokter.setText(dokter.getSelectedRow(1).toString());
                 }
             }
         });

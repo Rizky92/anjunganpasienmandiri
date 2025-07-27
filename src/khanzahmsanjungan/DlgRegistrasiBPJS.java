@@ -1412,7 +1412,6 @@ public class DlgRegistrasiBPJS extends widget.Dialog {
             JOptionPane.showMessageDialog(null, "No. kartu peserta tidak ada..!!");
             return;
         }
-        toFront();
         SwingUtilities.invokeLater(() -> { 
             try {
                 fristaAktif = false;
@@ -1439,7 +1438,7 @@ public class DlgRegistrasiBPJS extends widget.Dialog {
                 StringSelection ss;
 
                 if (fristaAktif) {
-                    Thread.sleep(1000);
+                    Thread.sleep(2000);
                     r.mouseMove(d.width / 2, d.height / 2);
                     r.mousePress(InputEvent.BUTTON1_DOWN_MASK);
                     r.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
@@ -2115,7 +2114,7 @@ public class DlgRegistrasiBPJS extends widget.Dialog {
                         cekStatusFinger();
                     } else {
                         emptTeks();
-                        JOptionPane.showMessageDialog(null, "Pesan Pencarian Rujukan FKRTL : " + metadata.path("message").asText());
+                        JOptionPane.showMessageDialog(null, "Rujukan faskes pertama atau FKTL tidak ada..!!");
                     }
                 } catch (Exception e) {
                     System.out.println("Notif : " + e);
