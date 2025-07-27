@@ -96,7 +96,7 @@ public class DlgRegistrasiBPJS extends widget.Dialog {
     private JsonNode root, response, metadata;
     private HttpHeaders headers;
     private HttpEntity entity;
-    private boolean statusFinger = false, fingerprintAktif = false, fristaAktif = false, isMobileJKN = false;
+    private boolean statusFinger = false, fingerprintAktif = false, fristaAktif = false, isMobileJKN = false, bisaTampilkanNumpad = false;
     private Date parsedDate;
 
     public DlgRegistrasiBPJS(java.awt.Frame parent, boolean modal) {
@@ -123,10 +123,8 @@ public class DlgRegistrasiBPJS extends widget.Dialog {
                 if (dokter.getTable().getSelectedRow() != -1) {
                     kodeDokter = dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(), 1).toString();
                     namaDokter.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(), 2).toString());
-                    if (jenisPelayanan.getSelectedIndex() == 1) {
-                        kodeDPJPLayanan.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(), 1).toString());
-                        namaDPJPLayanan.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(), 2).toString());
-                    }
+                    kodeDPJPLayanan.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(), 1).toString());
+                    namaDPJPLayanan.setText(dokter.getTable().getValueAt(dokter.getTable().getSelectedRow(), 2).toString());
                 }
                 namaDokter.requestFocus();
             }
@@ -267,7 +265,6 @@ public class DlgRegistrasiBPJS extends widget.Dialog {
         toggleInfoTambahan = new widget.PaneToggle();
         form = new widget.Panel();
         jLabel13 = new widget.Label();
-        jenisPelayanan = new widget.ComboBox();
         jLabel42 = new widget.Label();
         tujuanKunjungan = new widget.ComboBox();
         jLabel43 = new widget.Label();
@@ -306,6 +303,7 @@ public class DlgRegistrasiBPJS extends widget.Dialog {
         btnPengajuanFP = new widget.Button();
         jLabel15 = new widget.Label();
         barcode = new widget.TextField();
+        jenisPelayanan = new widget.TextField();
         emptyKanan = new widget.Panel();
         panelBawah = new widget.Panel();
         btnKonfirmasi = new widget.Button();
@@ -385,16 +383,23 @@ public class DlgRegistrasiBPJS extends widget.Dialog {
 
         dlgAksiFP.getContentPane().add(panelBawahAksi, java.awt.BorderLayout.PAGE_END);
 
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowActivated(java.awt.event.WindowEvent evt) {
+                formWindowActivated(evt);
+            }
+        });
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        panelAtas.setMinimumSize(new java.awt.Dimension(1, 35));
-        panelAtas.setPreferredSize(new java.awt.Dimension(1, 35));
+        panelAtas.setMinimumSize(new java.awt.Dimension(1280, 30));
+        panelAtas.setPreferredSize(new java.awt.Dimension(1280, 30));
         panelAtas.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 0));
 
         label4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         label4.setText("DATA ELIGIBILITAS PESERTA JKN");
         label4.setFocusable(false);
-        label4.setPreferredSize(new java.awt.Dimension(340, 35));
+        label4.setMaximumSize(new java.awt.Dimension(340, 30));
+        label4.setMinimumSize(new java.awt.Dimension(340, 30));
+        label4.setPreferredSize(new java.awt.Dimension(340, 30));
         panelAtas.add(label4);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -416,11 +421,12 @@ public class DlgRegistrasiBPJS extends widget.Dialog {
         gridBagConstraints.weighty = 1.0;
         getContentPane().add(emptyKiri, gridBagConstraints);
 
-        panelTengah.setPreferredSize(new java.awt.Dimension(1280, 590));
+        panelTengah.setMinimumSize(new java.awt.Dimension(1280, 620));
+        panelTengah.setPreferredSize(new java.awt.Dimension(1280, 620));
         panelTengah.setLayout(new java.awt.GridBagLayout());
 
-        panelUtama.setMinimumSize(new java.awt.Dimension(533, 290));
-        panelUtama.setPreferredSize(new java.awt.Dimension(1280, 770));
+        panelUtama.setMinimumSize(new java.awt.Dimension(1280, 560));
+        panelUtama.setPreferredSize(new java.awt.Dimension(1280, 560));
         panelUtama.setLayout(null);
 
         namaPasien.setEditable(false);
@@ -669,7 +675,7 @@ public class DlgRegistrasiBPJS extends widget.Dialog {
             }
         });
         panelUtama.add(btnFingerprint);
-        btnFingerprint.setBounds(645, 470, 140, 100);
+        btnFingerprint.setBounds(645, 460, 140, 90);
 
         btnFrista.setBackground(new java.awt.Color(255, 255, 255));
         btnFrista.setForeground(new java.awt.Color(0, 131, 62));
@@ -683,7 +689,7 @@ public class DlgRegistrasiBPJS extends widget.Dialog {
             }
         });
         panelUtama.add(btnFrista);
-        btnFrista.setBounds(495, 470, 140, 100);
+        btnFrista.setBounds(495, 460, 140, 90);
 
         panelNumpad.setFocusable(false);
         panelNumpad.setFontSize(36);
@@ -704,18 +710,20 @@ public class DlgRegistrasiBPJS extends widget.Dialog {
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.weighty = 1.0;
         panelTengah.add(panelUtama, gridBagConstraints);
 
+        panelTambahan.setMinimumSize(new java.awt.Dimension(1280, 560));
         panelTambahan.setOpaque(false);
-        panelTambahan.setPreferredSize(new java.awt.Dimension(1280, 570));
+        panelTambahan.setPreferredSize(new java.awt.Dimension(1280, 560));
         panelTambahan.setLayout(new java.awt.BorderLayout());
 
         toggleInfoTambahan.setForeground(new java.awt.Color(150, 155, 159));
         toggleInfoTambahan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/145.png"))); // NOI18N
         toggleInfoTambahan.setMnemonic('I');
         toggleInfoTambahan.setToolTipText("Alt+I");
-        toggleInfoTambahan.setPreferredSize(new java.awt.Dimension(192, 30));
+        toggleInfoTambahan.setMaximumSize(new java.awt.Dimension(32767, 30));
+        toggleInfoTambahan.setMinimumSize(new java.awt.Dimension(1280, 30));
+        toggleInfoTambahan.setPreferredSize(new java.awt.Dimension(1280, 30));
         toggleInfoTambahan.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/145.png"))); // NOI18N
         toggleInfoTambahan.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
         toggleInfoTambahan.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/143.png"))); // NOI18N
@@ -727,23 +735,14 @@ public class DlgRegistrasiBPJS extends widget.Dialog {
         panelTambahan.add(toggleInfoTambahan, java.awt.BorderLayout.PAGE_END);
 
         form.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 0, 0, 0, new java.awt.Color(0, 131, 62)));
-        form.setPreferredSize(new java.awt.Dimension(1280, 570));
+        form.setMinimumSize(new java.awt.Dimension(1280, 490));
+        form.setPreferredSize(new java.awt.Dimension(1280, 490));
         form.setLayout(null);
 
         jLabel13.setText("Jenis Pelayanan :");
         jLabel13.setPreferredSize(new java.awt.Dimension(55, 23));
         form.add(jLabel13);
         jLabel13.setBounds(0, 10, 225, 40);
-
-        jenisPelayanan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1. Ranap", "2. Ralan" }));
-        jenisPelayanan.setSelectedIndex(1);
-        jenisPelayanan.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                jenisPelayananItemStateChanged(evt);
-            }
-        });
-        form.add(jenisPelayanan);
-        jenisPelayanan.setBounds(230, 10, 150, 40);
 
         jLabel42.setText("Tujuan Kunjungan :");
         jLabel42.setPreferredSize(new java.awt.Dimension(55, 23));
@@ -922,7 +921,7 @@ public class DlgRegistrasiBPJS extends widget.Dialog {
             }
         });
         form.add(btnApprovalFP);
-        btnApprovalFP.setBounds(650, 400, 160, 120);
+        btnApprovalFP.setBounds(645, 380, 160, 90);
 
         btnPengajuanFP.setBackground(new java.awt.Color(255, 255, 255));
         btnPengajuanFP.setForeground(new java.awt.Color(0, 131, 62));
@@ -936,7 +935,7 @@ public class DlgRegistrasiBPJS extends widget.Dialog {
             }
         });
         form.add(btnPengajuanFP);
-        btnPengajuanFP.setBounds(470, 400, 160, 120);
+        btnPengajuanFP.setBounds(475, 380, 160, 90);
 
         jLabel15.setText("Jumlah Barcode :");
         form.add(jLabel15);
@@ -945,6 +944,12 @@ public class DlgRegistrasiBPJS extends widget.Dialog {
         barcode.setText("3");
         form.add(barcode);
         barcode.setBounds(230, 325, 50, 40);
+
+        jenisPelayanan.setEditable(false);
+        jenisPelayanan.setText("2. Ralan");
+        jenisPelayanan.setToolTipText("");
+        form.add(jenisPelayanan);
+        jenisPelayanan.setBounds(230, 10, 140, 40);
 
         panelTambahan.add(form, java.awt.BorderLayout.CENTER);
 
@@ -974,8 +979,9 @@ public class DlgRegistrasiBPJS extends widget.Dialog {
         gridBagConstraints.weighty = 1.0;
         getContentPane().add(emptyKanan, gridBagConstraints);
 
-        panelBawah.setMinimumSize(new java.awt.Dimension(533, 100));
-        panelBawah.setPreferredSize(new java.awt.Dimension(1, 75));
+        panelBawah.setMinimumSize(new java.awt.Dimension(1280, 70));
+        panelBawah.setPreferredSize(new java.awt.Dimension(1280, 70));
+        panelBawah.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 5));
 
         btnKonfirmasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/konfirmasi.png"))); // NOI18N
         btnKonfirmasi.setMnemonic('S');
@@ -1038,13 +1044,13 @@ public class DlgRegistrasiBPJS extends widget.Dialog {
             Valid.textKosong(kodeDiagnosa, "Diagnosa");
         } else if (catatan.getText().isBlank()) {
             Valid.textKosong(catatan, "Catatan");
-        } else if ((jenisPelayanan.getSelectedIndex() == 1) && (kodePoli.isBlank() || namaPoli.getText().isBlank())) {
+        } else if (namaPoli.getText().isBlank()) {
             Valid.textKosong(namaPoli, "Poli Tujuan");
         } else if ((lakaLantas.getSelectedIndex() == 1) && keterangan.getText().isBlank()) {
             Valid.textKosong(keterangan, "Keterangan");
         } else if (kodeDokter.isBlank() || namaDokter.getText().isBlank()) {
             Valid.textKosong(namaDokter, "DPJP");
-        } else if (!statusFinger && Sequel.cariIntegerSmc("select timestampdiff(year, ?, CURRENT_DATE())", tglLahir.getText()) >= 17 && jenisPelayanan.getSelectedIndex() != 0 && !namaPoli.getText().toLowerCase().contains("darurat")) {
+        } else if (!statusFinger && Sequel.cariIntegerSmc("select timestampdiff(year, ?, CURRENT_DATE())", tglLahir.getText()) >= 17 && !namaPoli.getText().toLowerCase().contains("darurat")) {
             JOptionPane.showMessageDialog(null, "Silahkan lakukan validasi biometrik dahulu..!!");
         } else {
             kodePoliReg = Sequel.cariIsiSmc("select kd_poli_rs from maping_poli_bpjs where kd_poli_bpjs = ?", kodePoli);
@@ -1055,24 +1061,20 @@ public class DlgRegistrasiBPJS extends widget.Dialog {
                 if (!registerPasien()) {
                     JOptionPane.showMessageDialog(null, "Terjadi kesalahan pada saat pendaftaran pasien!");
                 } else {
-                    if (jenisPelayanan.getSelectedIndex() == 0) {
-                        insertSEP();
-                    } else if (jenisPelayanan.getSelectedIndex() == 1) {
-                        if (namaPoli.getText().toLowerCase().contains("darurat")) {
-                            if (Sequel.cariIntegerSmc("select count(*) from bridging_sep where no_kartu = ? and jnspelayanan = ? and tglsep = ? and nmpolitujuan like '%darurat%'", noPeserta.getText(), jenisPelayanan.getSelectedItem().toString().substring(0, 1), tglSEP.getText()) >= 3) {
-                                JOptionPane.showMessageDialog(null, "Maaf, sebelumnya sudah dilakukan 3x pembuatan SEP di jenis pelayanan yang sama..!!");
-                            } else {
-                                if (kirimAntrianOnsite()) {
-                                    insertSEP();
-                                }
+                    if (namaPoli.getText().toLowerCase().contains("darurat")) {
+                        if (Sequel.cariIntegerSmc("select count(*) from bridging_sep where no_kartu = ? and jnspelayanan = '2' and tglsep = ? and nmpolitujuan like '%darurat%'", noPeserta.getText(), tglSEP.getText()) >= 3) {
+                            JOptionPane.showMessageDialog(null, "Maaf, sebelumnya sudah dilakukan 3x pembuatan SEP di jenis pelayanan yang sama..!!");
+                        } else {
+                            if (kirimAntrianOnsite()) {
+                                insertSEP();
                             }
-                        } else if (!namaPoli.getText().toLowerCase().contains("darurat")) {
-                            if (Sequel.cariIntegerSmc("select count(*) from bridging_sep where no_kartu = ? and jnspelayanan = ? and tglsep = ? and nmpolitujuan not like '%darurat%'", noPeserta.getText(), jenisPelayanan.getSelectedItem().toString().substring(0, 1), tglSEP.getText()) >= 1) {
-                                JOptionPane.showMessageDialog(null, "Maaf, sebelumnya sudah dilakukan pembuatan SEP di jenis pelayanan yang sama..!!");
-                            } else {
-                                if (kirimAntrianOnsite()) {
-                                    insertSEP();
-                                }
+                        }
+                    } else {
+                        if (Sequel.cariIntegerSmc("select count(*) from bridging_sep where no_kartu = ? and jnspelayanan = '2' and tglsep = ? and nmpolitujuan not like '%darurat%'", noPeserta.getText(), tglSEP.getText()) >= 1) {
+                            JOptionPane.showMessageDialog(null, "Maaf, sebelumnya sudah dilakukan pembuatan SEP di jenis pelayanan yang sama..!!");
+                        } else {
+                            if (kirimAntrianOnsite()) {
+                                insertSEP();
                             }
                         }
                     }
@@ -1124,22 +1126,6 @@ public class DlgRegistrasiBPJS extends widget.Dialog {
             keterangan.setEditable(true);
         }
     }//GEN-LAST:event_lakaLantasItemStateChanged
-
-    private void jenisPelayananItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jenisPelayananItemStateChanged
-        if (jenisPelayanan.getSelectedIndex() == 0) {
-            kodePoli = "";
-            namaPoli.setText("");
-            LabelPoli.setVisible(false);
-            namaPoli.setVisible(false);
-            kodeDPJPLayanan.setText("");
-            namaDPJPLayanan.setText("");
-            cariPoli.setEnabled(false);
-        } else if (jenisPelayanan.getSelectedIndex() == 1) {
-            LabelPoli.setVisible(true);
-            namaPoli.setVisible(true);
-            cariPoli.setEnabled(true);
-        }
-    }//GEN-LAST:event_jenisPelayananItemStateChanged
 
     private void cariPoliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cariPoliActionPerformed
         poli.setSize(getContentPane().getSize());
@@ -1227,7 +1213,7 @@ public class DlgRegistrasiBPJS extends widget.Dialog {
                                         "\"t_sep\": {" +
                                         "\"noKartu\": \"" + noPeserta.getText() + "\"," +
                                         "\"tglSep\": \"" + tglSEP.getText() + "\"," +
-                                        "\"jnsPelayanan\": \"" + jenisPelayanan.getSelectedItem().toString().substring(0, 1) + "\"," +
+                                        "\"jnsPelayanan\": \"2\"," +
                                         "\"jnsPengajuan\": \"2\"," +
                                         "\"keterangan\": \"Pengajuan SEP Finger oleh Anjungan Pasien Mandiri RS Samarinda Medika Citra\"," +
                                         "\"user\": \"NoRM:" + noRM.getText() + "\"" +
@@ -1267,7 +1253,7 @@ public class DlgRegistrasiBPJS extends widget.Dialog {
                                         "\"t_sep\": {" +
                                         "\"noKartu\": \"" + noPeserta.getText() + "\"," +
                                         "\"tglSep\": \"" + tglSEP.getText() + "\"," +
-                                        "\"jnsPelayanan\": \"" + jenisPelayanan.getSelectedItem().toString().substring(0, 1) + "\"," +
+                                        "\"jnsPelayanan\": \"2\"," +
                                         "\"jnsPengajuan\": \"2\"," +
                                         "\"keterangan\": \"Approval FingerPrint karena Gagal FP melalui Anjungan Pasien Mandiri\"," +
                                         "\"user\": \"NoRM:" + noRM.getText() + "\"" +
@@ -1422,12 +1408,14 @@ public class DlgRegistrasiBPJS extends widget.Dialog {
                     char[] windowText = new char[512];
                     u32.GetWindowText(hwnd, windowText, 512);
                     String wText = Native.toString(windowText);
+                    
+                    if (wText.isEmpty()) {
+                        return true;
+                    }
 
                     if (wText.toLowerCase().contains("face recognition bpjs kesehatan")) {
                         DlgRegistrasiBPJS.this.fristaAktif = true;
-                        u32.ShowWindow(hwnd, User32.SW_RESTORE);
                         u32.SetForegroundWindow(hwnd);
-                        return false;
                     }
 
                     return true;
@@ -1503,7 +1491,7 @@ public class DlgRegistrasiBPJS extends widget.Dialog {
     }//GEN-LAST:event_toggleInfoTambahanActionPerformed
 
     private void noTelpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_noTelpMouseClicked
-        if (!toggleInfoTambahan.isSelected()) {
+        if (!toggleInfoTambahan.isSelected() && bisaTampilkanNumpad) {
             panelNumpad.setVisible(true);
         }
     }//GEN-LAST:event_noTelpMouseClicked
@@ -1526,6 +1514,10 @@ public class DlgRegistrasiBPJS extends widget.Dialog {
             noTelp.setCaretPosition(noTelp.getText().length());
         });
     }//GEN-LAST:event_noTelpFocusGained
+
+    private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
+        isForm();
+    }//GEN-LAST:event_formWindowActivated
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.Label LabelKelas;
@@ -1585,7 +1577,7 @@ public class DlgRegistrasiBPJS extends widget.Dialog {
     private widget.Label jLabel7;
     private widget.Label jLabel8;
     private widget.Label jLabel9;
-    private widget.ComboBox jenisPelayanan;
+    private widget.TextField jenisPelayanan;
     private widget.TextField jenisPeserta;
     private widget.TextField jk;
     private widget.Label judulAksi;
@@ -1741,11 +1733,7 @@ public class DlgRegistrasiBPJS extends widget.Dialog {
         param.put("parameter", noSEP);
         param.put("namars", instansiNama);
         param.put("kotars", instansiKota);
-        if (jenisPelayanan.getSelectedIndex() == 0) {
-            Valid.printReportSmc("rptBridgingSEPAPM1.jasper", "report", "::[ Cetak SEP Model 4 ]::", param, koneksiDB.PRINTER_REGISTRASI(), 1);
-        } else {
-            Valid.printReportSmc("rptBridgingSEPAPM2.jasper", "report", "::[ Cetak SEP Model 4 ]::", param, koneksiDB.PRINTER_REGISTRASI(), 1);
-        }
+        Valid.printReportSmc("rptBridgingSEPAPM2.jasper", "report", "::[ Cetak SEP Model 4 ]::", param, koneksiDB.PRINTER_REGISTRASI(), 1);
         Valid.printReportSmc("rptBarcodeRawatAPM.jasper", "report", "::[ Barcode Perawatan ]::", param, koneksiDB.PRINTER_BARCODE(), Integer.parseInt(barcode.getText().trim()));
     }
 
@@ -1772,7 +1760,7 @@ public class DlgRegistrasiBPJS extends widget.Dialog {
                 "\"noKartu\":\"" + noPeserta.getText() + "\"," +
                 "\"tglSep\":\"" + tglSEP.getText() + "\"," +
                 "\"ppkPelayanan\":\"" + kodePPK.getText() + "\"," +
-                "\"jnsPelayanan\":\"" + jenisPelayanan.getSelectedItem().toString().substring(0, 1) + "\"," +
+                "\"jnsPelayanan\":\"" + "2" + "\"," +
                 "\"klsRawat\":{" +
                 "\"klsRawatHak\":\"" + kelas.getSelectedItem().toString().substring(0, 1) + "\"," +
                 "\"klsRawatNaik\":\"\"," +
@@ -1864,7 +1852,7 @@ public class DlgRegistrasiBPJS extends widget.Dialog {
                     namaPPKRujukan.getText(),
                     kodePPK.getText(),
                     namaPPK.getText(),
-                    jenisPelayanan.getSelectedItem().toString().substring(0, 1),
+                    "2",
                     catatan.getText(),
                     kodeDiagnosa.getText(),
                     namaDiagnosa.getText(),
@@ -1882,7 +1870,7 @@ public class DlgRegistrasiBPJS extends widget.Dialog {
                     jenisPeserta.getText(),
                     jk.getText(),
                     noPeserta.getText(),
-                    "0000-00-00 00:00:00",
+                    tglSEP.getText() + " 00:00:00",
                     asalRujukan.getSelectedItem().toString(),
                     "0. Tidak",
                     "0. Tidak",
@@ -1910,9 +1898,6 @@ public class DlgRegistrasiBPJS extends widget.Dialog {
                 );
                 if (!simpanRujukan()) {
                     System.out.println("Terjadi kesalahan pada saat proses rujukan masuk pasien!");
-                }
-                if (jenisPelayanan.getSelectedIndex() == 1) {
-                    Sequel.mengupdateSmc("bridging_sep", "tglpulang = ?", "no_sep = ?", tglSEP.getText(), noSEP);
                 }
                 if (!prb.isBlank()) {
                     Sequel.menyimpanSmc("bpjs_prb", null, noSEP, prb);
@@ -2924,8 +2909,7 @@ public class DlgRegistrasiBPJS extends widget.Dialog {
         katarak.setSelectedIndex(0);
         noTelp.setText("");
 
-        jenisPelayanan.setSelectedIndex(1);
-        jenisPelayananItemStateChanged(null);
+        jenisPelayanan.setText("2. Ralan");
         tujuanKunjungan.setSelectedIndex(0);
         flagProsedur.setSelectedIndex(0);
         flagProsedur.setEnabled(false);
@@ -3100,19 +3084,29 @@ public class DlgRegistrasiBPJS extends widget.Dialog {
     }
 
     private void isForm() {
+        int preferredWidth = 1280,
+            height = panelTengah.getHeight();
+        
+        bisaTampilkanNumpad = height > 820;
+        
         if (toggleInfoTambahan.isSelected()) {
             toggleInfoTambahan.setVisible(false);
-            panelNumpad.setVisible(false);
-            panelUtama.setPreferredSize(new Dimension(WIDTH, panelTengah.getHeight() - 570));
-            panelTambahan.setPreferredSize(new Dimension(WIDTH, 570));
             form.setVisible(true);
+            panelUtama.setPreferredSize(new Dimension(preferredWidth, panelTengah.getHeight() - 560));
+            panelTambahan.setPreferredSize(new Dimension(preferredWidth, 560));
+            panelNumpad.setVisible(false);
             toggleInfoTambahan.setVisible(true);
         } else {
             toggleInfoTambahan.setVisible(false);
-            panelUtama.setPreferredSize(new Dimension(WIDTH, 820));
-            panelTambahan.setPreferredSize(new Dimension(WIDTH, 30));
             form.setVisible(false);
+            if (bisaTampilkanNumpad) {
+                panelUtama.setPreferredSize(new Dimension(preferredWidth, 820));
+            } else {
+                panelUtama.setPreferredSize(new Dimension(preferredWidth, 560));
+            }
+            panelTambahan.setPreferredSize(new Dimension(preferredWidth, 30));
             toggleInfoTambahan.setVisible(true);
         }
+        revalidate();
     }
 }

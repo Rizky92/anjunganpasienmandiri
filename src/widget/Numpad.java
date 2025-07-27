@@ -74,6 +74,7 @@ public class Numpad extends Panel {
         btnAngka7.setBackground(background);
         btnAngka7.setForeground(foreground);
         btnAngka7.setFocusable(false);
+        btnAngka7.setMinimumSize(new Dimension(buttonSize, buttonSize));
         btnAngka7.setPreferredSize(new Dimension(buttonSize, buttonSize));
         btnAngka7.setHorizontalTextPosition(SwingConstants.CENTER);
         btnAngka7.addActionListener(evt -> addNumber("7"));
@@ -92,6 +93,7 @@ public class Numpad extends Panel {
         btnAngka8.setBackground(background);
         btnAngka8.setForeground(foreground);
         btnAngka8.setFocusable(false);
+        btnAngka8.setMinimumSize(new Dimension(buttonSize, buttonSize));
         btnAngka8.setPreferredSize(new Dimension(buttonSize, buttonSize));
         btnAngka8.setHorizontalTextPosition(SwingConstants.CENTER);
         btnAngka8.addActionListener(evt -> addNumber("8"));
@@ -110,6 +112,7 @@ public class Numpad extends Panel {
         btnAngka9.setBackground(background);
         btnAngka9.setForeground(foreground);
         btnAngka9.setFocusable(false);
+        btnAngka9.setMinimumSize(new Dimension(buttonSize, buttonSize));
         btnAngka9.setPreferredSize(new Dimension(buttonSize, buttonSize));
         btnAngka9.setHorizontalTextPosition(SwingConstants.CENTER);
         btnAngka9.addActionListener(evt -> addNumber("9"));
@@ -128,6 +131,7 @@ public class Numpad extends Panel {
         btnAngka4.setBackground(background);
         btnAngka4.setForeground(foreground);
         btnAngka4.setFocusable(false);
+        btnAngka4.setMinimumSize(new Dimension(buttonSize, buttonSize));
         btnAngka4.setPreferredSize(new Dimension(buttonSize, buttonSize));
         btnAngka4.setHorizontalTextPosition(SwingConstants.CENTER);
         btnAngka4.addActionListener(evt -> addNumber("4"));
@@ -146,6 +150,7 @@ public class Numpad extends Panel {
         btnAngka5.setBackground(background);
         btnAngka5.setForeground(foreground);
         btnAngka5.setFocusable(false);
+        btnAngka5.setMinimumSize(new Dimension(buttonSize, buttonSize));
         btnAngka5.setPreferredSize(new Dimension(buttonSize, buttonSize));
         btnAngka5.setHorizontalTextPosition(SwingConstants.CENTER);
         btnAngka5.addActionListener(evt -> addNumber("5"));
@@ -164,6 +169,7 @@ public class Numpad extends Panel {
         btnAngka6.setBackground(background);
         btnAngka6.setForeground(foreground);
         btnAngka6.setFocusable(false);
+        btnAngka6.setMinimumSize(new Dimension(buttonSize, buttonSize));
         btnAngka6.setPreferredSize(new Dimension(buttonSize, buttonSize));
         btnAngka6.setHorizontalTextPosition(SwingConstants.CENTER);
         btnAngka6.addActionListener(evt -> addNumber("6"));
@@ -182,6 +188,7 @@ public class Numpad extends Panel {
         btnAngka1.setBackground(background);
         btnAngka1.setForeground(foreground);
         btnAngka1.setFocusable(false);
+        btnAngka1.setMinimumSize(new Dimension(buttonSize, buttonSize));
         btnAngka1.setPreferredSize(new Dimension(buttonSize, buttonSize));
         btnAngka1.setHorizontalTextPosition(SwingConstants.CENTER);
         btnAngka1.addActionListener(evt -> addNumber("1"));
@@ -200,6 +207,7 @@ public class Numpad extends Panel {
         btnAngka2.setBackground(background);
         btnAngka2.setForeground(foreground);
         btnAngka2.setFocusable(false);
+        btnAngka2.setMinimumSize(new Dimension(buttonSize, buttonSize));
         btnAngka2.setPreferredSize(new Dimension(buttonSize, buttonSize));
         btnAngka2.setHorizontalTextPosition(SwingConstants.CENTER);
         btnAngka2.addActionListener(evt -> addNumber("2"));
@@ -218,6 +226,7 @@ public class Numpad extends Panel {
         btnAngka3.setBackground(background);
         btnAngka3.setForeground(foreground);
         btnAngka3.setFocusable(false);
+        btnAngka3.setMinimumSize(new Dimension(buttonSize, buttonSize));
         btnAngka3.setPreferredSize(new Dimension(buttonSize, buttonSize));
         btnAngka3.setHorizontalTextPosition(SwingConstants.CENTER);
         btnAngka3.addActionListener(evt -> addNumber("3"));
@@ -237,6 +246,7 @@ public class Numpad extends Panel {
             btnHurufK.setBackground(background);
             btnHurufK.setForeground(foreground);
             btnHurufK.setFocusable(false);
+            btnHurufK.setMinimumSize(new Dimension(buttonSize, buttonSize));
             btnHurufK.setPreferredSize(new Dimension(buttonSize, buttonSize));
             btnHurufK.setHorizontalTextPosition(SwingConstants.CENTER);
             btnHurufK.addActionListener(evt -> addNumber("K"));
@@ -255,6 +265,7 @@ public class Numpad extends Panel {
             btnHurufR.setBackground(background);
             btnHurufR.setForeground(foreground);
             btnHurufR.setFocusable(false);
+            btnHurufR.setMinimumSize(new Dimension(buttonSize, buttonSize));
             btnHurufR.setPreferredSize(new Dimension(buttonSize, buttonSize));
             btnHurufR.setHorizontalTextPosition(SwingConstants.CENTER);
             btnHurufR.addActionListener(evt -> addNumber("R"));
@@ -273,6 +284,7 @@ public class Numpad extends Panel {
             btnTemplate.setBackground(background);
             btnTemplate.setForeground(foreground);
             btnTemplate.setFocusable(false);
+            btnTemplate.setMinimumSize(new Dimension(buttonSize, buttonSize));
             btnTemplate.setPreferredSize(new Dimension(buttonSize, buttonSize));
             btnTemplate.setHorizontalTextPosition(SwingConstants.CENTER);
             btnTemplate.addActionListener(evt -> textBox.setText("0302R110"));
@@ -293,6 +305,7 @@ public class Numpad extends Panel {
         btnClear.setBackground(background);
         btnClear.setForeground(foreground);
         btnClear.setFocusable(false);
+        btnClear.setMinimumSize(new Dimension(buttonSize, buttonSize));
         btnClear.setPreferredSize(new Dimension(buttonSize, buttonSize));
         btnClear.setHorizontalTextPosition(SwingConstants.CENTER);
         btnClear.addActionListener(evt -> {
@@ -316,6 +329,7 @@ public class Numpad extends Panel {
         btnAngka0.setBackground(background);
         btnAngka0.setForeground(foreground);
         btnAngka0.setFocusable(false);
+        btnAngka0.setMinimumSize(new Dimension(buttonSize, buttonSize));
         btnAngka0.setPreferredSize(new Dimension(buttonSize, buttonSize));
         btnAngka0.setHorizontalTextPosition(SwingConstants.CENTER);
         btnAngka0.addActionListener(evt -> addNumber("0"));
@@ -339,6 +353,7 @@ public class Numpad extends Panel {
         btnBackspace.setBackground(background);
         btnBackspace.setForeground(foreground);
         btnBackspace.setFocusable(false);
+        btnBackspace.setMinimumSize(new Dimension(buttonSize, buttonSize));
         btnBackspace.setPreferredSize(new Dimension(buttonSize, buttonSize));
         btnBackspace.setHorizontalTextPosition(SwingConstants.CENTER);
         btnBackspace.addActionListener(evt -> {
@@ -364,8 +379,10 @@ public class Numpad extends Panel {
         setBackground(new Color(240, 249, 255));
         setForeground(new Color(0, 131, 62));
         if (this.skdpMode) {
+            setMinimumSize(new Dimension(buttonSize * 4, buttonSize * 4));
             setPreferredSize(new Dimension(buttonSize * 4, buttonSize * 4));
         } else {
+            setMinimumSize(new Dimension(buttonSize * 3, buttonSize * 4));
             setPreferredSize(new Dimension(buttonSize * 3, buttonSize * 4));
         }
 
@@ -384,7 +401,6 @@ public class Numpad extends Panel {
         }
 
         revalidate();
-        repaint();
     }
 
     private void addNumber(String number) {
