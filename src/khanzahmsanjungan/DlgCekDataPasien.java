@@ -44,7 +44,7 @@ public class DlgCekDataPasien extends widget.Dialog {
         java.awt.GridBagConstraints gridBagConstraints;
 
         panelAtas = new widget.Panel();
-        PanelWall = new usu.widget.glass.PanelGlass();
+        flatLabel1 = new com.formdev.flatlaf.extras.components.FlatLabel();
         panelTengah = new widget.Panel();
         NoRMPasien = new widget.TextField();
         jLabel28 = new widget.Label();
@@ -64,25 +64,12 @@ public class DlgCekDataPasien extends widget.Dialog {
             }
         });
 
-        PanelWall.setBackground(new java.awt.Color(238, 238, 255));
-        PanelWall.setBackgroundImage(new javax.swing.ImageIcon(getClass().getResource("/picture/icon-128x128.png"))); // NOI18N
-        PanelWall.setForeground(new java.awt.Color(238, 238, 255));
-        PanelWall.setPreferredSize(new java.awt.Dimension(500, 150));
-        PanelWall.setRound(false);
-        PanelWall.setWarna(new java.awt.Color(238, 238, 255));
+        panelAtas.setMinimumSize(new java.awt.Dimension(500, 100));
+        panelAtas.setPreferredSize(new java.awt.Dimension(500, 100));
+        panelAtas.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 10));
 
-        javax.swing.GroupLayout PanelWallLayout = new javax.swing.GroupLayout(PanelWall);
-        PanelWall.setLayout(PanelWallLayout);
-        PanelWallLayout.setHorizontalGroup(
-            PanelWallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
-        );
-        PanelWallLayout.setVerticalGroup(
-            PanelWallLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 150, Short.MAX_VALUE)
-        );
-
-        panelAtas.add(PanelWall);
+        flatLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/smc-lg.png"))); // NOI18N
+        panelAtas.add(flatLabel1);
 
         getContentPane().add(panelAtas, java.awt.BorderLayout.PAGE_START);
 
@@ -93,6 +80,8 @@ public class DlgCekDataPasien extends widget.Dialog {
         NoRMPasien.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 131, 62), 2, true));
         NoRMPasien.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         NoRMPasien.setFont(new java.awt.Font("Inter", 0, 36)); // NOI18N
+        NoRMPasien.setMinimumSize(new java.awt.Dimension(600, 75));
+        NoRMPasien.setMinimumWidth(600);
         NoRMPasien.setPreferredSize(new java.awt.Dimension(600, 75));
         NoRMPasien.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -110,7 +99,9 @@ public class DlgCekDataPasien extends widget.Dialog {
         jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel28.setText("No. RM / NIK :");
         jLabel28.setFont(new java.awt.Font("Inter Medium", 0, 36)); // NOI18N
-        jLabel28.setPreferredSize(new java.awt.Dimension(450, 75));
+        jLabel28.setMaximumSize(new java.awt.Dimension(32767, 32767));
+        jLabel28.setMinimumSize(new java.awt.Dimension(600, 60));
+        jLabel28.setPreferredSize(new java.awt.Dimension(600, 60));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -129,6 +120,8 @@ public class DlgCekDataPasien extends widget.Dialog {
         BtnBatal.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
         BtnBatal.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BtnBatal.setIconTextGap(2);
+        BtnBatal.setMinimumSize(new java.awt.Dimension(200, 75));
+        BtnBatal.setMinimumWidth(200);
         BtnBatal.setPreferredSize(new java.awt.Dimension(200, 75));
         BtnBatal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -149,6 +142,8 @@ public class DlgCekDataPasien extends widget.Dialog {
         BtnKonfirm.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
         BtnKonfirm.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         BtnKonfirm.setIconTextGap(0);
+        BtnKonfirm.setMinimumSize(new java.awt.Dimension(200, 75));
+        BtnKonfirm.setMinimumWidth(200);
         BtnKonfirm.setPreferredSize(new java.awt.Dimension(200, 75));
         BtnKonfirm.setVerifyInputWhenFocusTarget(false);
         BtnKonfirm.addActionListener(new java.awt.event.ActionListener() {
@@ -162,6 +157,7 @@ public class DlgCekDataPasien extends widget.Dialog {
         gridBagConstraints.weightx = 1.0;
         panelTengah.add(BtnKonfirm, gridBagConstraints);
 
+        panelNumpad1.setFontSize(36);
         panelNumpad1.setTextBox(NoRMPasien);
         panelNumpad1.setTextLimit(20L);
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -171,6 +167,8 @@ public class DlgCekDataPasien extends widget.Dialog {
         gridBagConstraints.weightx = 1.0;
         panelTengah.add(panelNumpad1, gridBagConstraints);
 
+        jLabel1.setMaximumSize(new java.awt.Dimension(32767, 32767));
+        jLabel1.setMinimumSize(new java.awt.Dimension(200, 75));
         jLabel1.setPreferredSize(new java.awt.Dimension(200, 75));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -179,6 +177,8 @@ public class DlgCekDataPasien extends widget.Dialog {
         gridBagConstraints.weightx = 1.0;
         panelTengah.add(jLabel1, gridBagConstraints);
 
+        jLabel2.setMaximumSize(new java.awt.Dimension(32767, 32767));
+        jLabel2.setMinimumSize(new java.awt.Dimension(200, 75));
         jLabel2.setPreferredSize(new java.awt.Dimension(200, 75));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -187,6 +187,8 @@ public class DlgCekDataPasien extends widget.Dialog {
         gridBagConstraints.weightx = 1.0;
         panelTengah.add(jLabel2, gridBagConstraints);
 
+        jLabel3.setMaximumSize(new java.awt.Dimension(32767, 32767));
+        jLabel3.setMinimumSize(new java.awt.Dimension(200, 75));
         jLabel3.setPreferredSize(new java.awt.Dimension(200, 75));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 5;
@@ -194,6 +196,8 @@ public class DlgCekDataPasien extends widget.Dialog {
         gridBagConstraints.weightx = 1.0;
         panelTengah.add(jLabel3, gridBagConstraints);
 
+        jLabel4.setMaximumSize(new java.awt.Dimension(32767, 32767));
+        jLabel4.setMinimumSize(new java.awt.Dimension(200, 75));
         jLabel4.setPreferredSize(new java.awt.Dimension(200, 75));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 5;
@@ -201,6 +205,8 @@ public class DlgCekDataPasien extends widget.Dialog {
         gridBagConstraints.weightx = 1.0;
         panelTengah.add(jLabel4, gridBagConstraints);
 
+        jLabel5.setMaximumSize(new java.awt.Dimension(32767, 32767));
+        jLabel5.setMinimumSize(new java.awt.Dimension(200, 75));
         jLabel5.setPreferredSize(new java.awt.Dimension(200, 75));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -208,6 +214,8 @@ public class DlgCekDataPasien extends widget.Dialog {
         gridBagConstraints.weightx = 1.0;
         panelTengah.add(jLabel5, gridBagConstraints);
 
+        jLabel6.setMaximumSize(new java.awt.Dimension(32767, 32767));
+        jLabel6.setMinimumSize(new java.awt.Dimension(200, 75));
         jLabel6.setPreferredSize(new java.awt.Dimension(200, 75));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -243,7 +251,7 @@ public class DlgCekDataPasien extends widget.Dialog {
     private widget.Button BtnBatal;
     private widget.Button BtnKonfirm;
     private widget.TextField NoRMPasien;
-    private usu.widget.glass.PanelGlass PanelWall;
+    private com.formdev.flatlaf.extras.components.FlatLabel flatLabel1;
     private widget.Label jLabel1;
     private widget.Label jLabel2;
     private widget.Label jLabel28;

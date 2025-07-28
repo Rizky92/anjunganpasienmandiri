@@ -61,12 +61,16 @@ public class DlgCekDataBPJS extends widget.Dialog {
             }
         });
 
+        panelAtas.setMinimumSize(new java.awt.Dimension(500, 100));
+        panelAtas.setPreferredSize(new java.awt.Dimension(500, 100));
+        panelAtas.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 10));
+
         flatLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/bpjs-lg.png"))); // NOI18N
         panelAtas.add(flatLabel1);
 
         getContentPane().add(panelAtas, java.awt.BorderLayout.PAGE_START);
 
-        panelTengah.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0), " ", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Inter", 0, 24), new java.awt.Color(0, 131, 62))); // NOI18N
+        panelTengah.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0), "::[ Pendaftaran SEP Kunjungan Pertama ]::", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Inter", 0, 24), new java.awt.Color(0, 131, 62))); // NOI18N
         panelTengah.setPreferredSize(new java.awt.Dimension(400, 70));
         panelTengah.setLayout(new java.awt.GridBagLayout());
 
@@ -74,6 +78,7 @@ public class DlgCekDataBPJS extends widget.Dialog {
         NoRMPasien.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         NoRMPasien.setFont(new java.awt.Font("Inter", 0, 36)); // NOI18N
         NoRMPasien.setMinimumSize(new java.awt.Dimension(600, 75));
+        NoRMPasien.setMinimumWidth(600);
         NoRMPasien.setPreferredSize(new java.awt.Dimension(600, 75));
         NoRMPasien.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -98,6 +103,7 @@ public class DlgCekDataBPJS extends widget.Dialog {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.gridwidth = 8;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipady = 5;
         gridBagConstraints.weightx = 1.0;
         panelTengah.add(labelInput, gridBagConstraints);

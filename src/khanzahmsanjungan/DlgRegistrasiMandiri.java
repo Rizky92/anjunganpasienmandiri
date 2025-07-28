@@ -297,6 +297,7 @@ public class DlgRegistrasiMandiri extends widget.Dialog {
         getContentPane().add(emptyKanan, gridBagConstraints);
 
         panelBawah.setPreferredSize(new java.awt.Dimension(1, 75));
+        panelBawah.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 0));
 
         btnSimpan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/konfirmasi.png"))); // NOI18N
         btnSimpan.setMnemonic('S');

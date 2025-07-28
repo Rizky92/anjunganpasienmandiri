@@ -74,7 +74,7 @@ public class HalamanUtama extends javax.swing.JFrame {
     private void initComponents() {
 
         panelAtas = new widget.Panel();
-        logo = new usu.widget.glass.PanelGlass();
+        flatLabel1 = new com.formdev.flatlaf.extras.components.FlatLabel();
         panelTengah = new widget.Panel();
         btnAntrian = new widget.MenuButton();
         btnBooking = new widget.MenuButton();
@@ -92,30 +92,15 @@ public class HalamanUtama extends javax.swing.JFrame {
         setTitle("ANJUNGAN PASIEN MANDIRI");
         setBackground(new java.awt.Color(102, 102, 102));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setIconImage(new ImageIcon(super.getClass().getResource("/picture/indriati48.png")).getImage());
+        setIconImage(new ImageIcon(super.getClass().getResource("/picture/logo.ico")).getImage());
+        setPreferredSize(new java.awt.Dimension(1280, 720));
 
-        panelAtas.setPreferredSize(new java.awt.Dimension(130, 130));
-        panelAtas.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 5));
+        panelAtas.setMinimumSize(new java.awt.Dimension(500, 100));
+        panelAtas.setPreferredSize(new java.awt.Dimension(500, 100));
+        panelAtas.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 0, 10));
 
-        logo.setBackground(new java.awt.Color(240, 249, 255));
-        logo.setBackgroundImage(new javax.swing.ImageIcon(getClass().getResource("/picture/icon-128x128.png"))); // NOI18N
-        logo.setForeground(new java.awt.Color(238, 238, 255));
-        logo.setPreferredSize(new java.awt.Dimension(120, 120));
-        logo.setRound(false);
-        logo.setWarna(new java.awt.Color(238, 238, 255));
-
-        javax.swing.GroupLayout logoLayout = new javax.swing.GroupLayout(logo);
-        logo.setLayout(logoLayout);
-        logoLayout.setHorizontalGroup(
-            logoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 120, Short.MAX_VALUE)
-        );
-        logoLayout.setVerticalGroup(
-            logoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 120, Short.MAX_VALUE)
-        );
-
-        panelAtas.add(logo);
+        flatLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/smc-lg.png"))); // NOI18N
+        panelAtas.add(flatLabel1);
 
         getContentPane().add(panelAtas, java.awt.BorderLayout.PAGE_START);
 
@@ -296,8 +281,8 @@ public class HalamanUtama extends javax.swing.JFrame {
     private widget.MenuButton btnSEPKontrolBedaPoli;
     private widget.MenuButton btnSEPPertama;
     private widget.MenuButton btnSatusehat;
+    private com.formdev.flatlaf.extras.components.FlatLabel flatLabel1;
     private widget.Label judul;
-    private usu.widget.glass.PanelGlass logo;
     private widget.Panel panelAtas;
     private widget.Panel panelBawah;
     private widget.Panel panelTengah;
