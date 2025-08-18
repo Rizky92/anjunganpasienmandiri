@@ -87,10 +87,21 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/48x48/antrianpasien.png"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="ANTRIAN PASIEN"/>
+            <Property name="text" type="java.lang.String" value="ANTRIAN LOKET PENDAFTARAN"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAntrianActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="widget.MenuButton" name="btnAntrianFarmasi">
+          <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/48x48/farmasi.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="ANTRIAN RESEP FARMASI"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAntrianFarmasiActionPerformed"/>
           </Events>
         </Component>
         <Component class="widget.MenuButton" name="btnBooking">
