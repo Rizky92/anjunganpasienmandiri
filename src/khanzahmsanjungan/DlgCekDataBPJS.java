@@ -310,8 +310,8 @@ public class DlgCekDataBPJS extends widget.Dialog {
                         regist.setSize(getContentPane().getSize());
                         regist.setLocationRelativeTo(getContentPane());
                         regist.setVisible(true);
-                        this.flag = -1;
-                        this.dispose();
+                        flag = -1;
+                        dispose();
                     } else {
                         JOptionPane.showMessageDialog(null, "Data booking MobileJKN tidak ditemukan..!!");
                     }
@@ -330,8 +330,8 @@ public class DlgCekDataBPJS extends widget.Dialog {
                         regist.setSize(getContentPane().getSize());
                         regist.setLocationRelativeTo(getContentPane());
                         regist.setVisible(true);
-                        this.flag = -1;
-                        this.dispose();
+                        flag = -1;
+                        dispose();
                     }
                 }
             } else {
@@ -353,13 +353,13 @@ public class DlgCekDataBPJS extends widget.Dialog {
                         regist.setSize(getContentPane().getSize());
                         regist.setLocationRelativeTo(getContentPane());
                         regist.setVisible(true);
-                        this.flag = -1;
-                        this.dispose();
+                        flag = -1;
+                        dispose();
                     }
                 }
             }
         }
         formWindowActivated(null);
-        this.setCursor(Cursor.getDefaultCursor());
+        setCursor(Cursor.getDefaultCursor());
     }
 }
