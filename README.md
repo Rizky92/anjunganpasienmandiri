@@ -77,7 +77,19 @@ default: `""`
 ### `TOMBOLDIMATIKAN`
 Pengaturan ini digunakan untuk mengatur menu apa yang dimatikan dari halaman depan APM.  
 
-values: List menu, dipisah dengan koma, `antrian,cekin,daftarpoli,seppertama,sepkontrol,sepbedapoli,mobilejkn,satusehat`  
+values: List menu, dipisah dengan koma  
+| value | keterangan |
+| --- | --- |
+| `antrian` | Mematikan tombol "Antrian Loket" |  
+| `antrianfarmasi` | Mematikan tombol "Antrian Farmasi" |
+| `cekin` | Mematikan tombol "Cek In Booking" |
+| `daftarpoli` | Mematikan tombol "Pendaftaran Poliklinik" |
+| `seppertama` | Mematikan tombol "SEP Kunjungan Pertama" |
+| `sepkontrol` | Mematikan tombol "SEP Kontrol" |
+| `sepbedapoli` | Mematikan tombol "SEP Kontrol Beda Poli" |
+| `mobilejkn` | Mematikan tombol "Cek In MobileJKN" |
+| `satusehat` | Mematikan tombol "Aktivasi Satu Sehat" |
+---
 default: `"satusehat"`  
 
 ### `KODEPOLIEKSEKUTIF`
