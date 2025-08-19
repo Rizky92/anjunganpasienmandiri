@@ -28,57 +28,57 @@ Berikut adalah konfigurasi yang disediakan dalam file `apm.xml.example`:
 Pengaturan ini digunakan untuk mencari nama printer untuk mencetak bukti registrasi dan lembar SEP.  
 Untuk mengambil nama printer bisa dilakukan dengan pertama kali membuka APM dan melihat daftar printer yang muncul di terminal.  
 
-values: nama printer yang muncul di terminal  
+value: nama printer yang muncul di terminal  
 default: `""`  
 
 ### `PRINTER_BARCODE`
 Pengaturan ini digunakan untuk mencari nama printer untuk mencetak lembar barcode.  
 Untuk mengambil nama printer bisa dilakukan dengan pertama kali membuka APM dan melihat daftar printer yang muncul di terminal.  
 
-values: nama printer yang muncul di terminal  
+value: nama printer yang muncul di terminal  
 default: `""`  
 
 ### `PRINTER_ANTRIAN`
 Pengaturan ini digunakan untuk mencari nama printer untuk mencetak nomor antrian dari APM.  
 Untuk mengambil nama printer bisa dilakukan dengan pertama kali membuka APM dan melihat daftar printer yang muncul di terminal.  
 
-values: nama printer yang muncul di terminal  
+value: nama printer yang muncul di terminal  
 default: `""`  
 
 ### `PRINTJUMLAHBARCODE`
 Pengaturan ini digunakan untuk menentukan jumlah barcode yang mau dicetak.  
 
-values: integer  
+value: integer  
 default: `3`  
 
 ### `PRINTJUMLAHANTRIANFARMASI`
 Pengaturan ini digunakan untuk menentukan jumlah antrian farmasi yang mau dicetak.  
 
-values: integer  
+value: integer  
 default: `2`  
 
 ### `URLAPLIKASIFINGERPRINTBPJS`
 Pengaturan ini digunakan untuk mencari lokasi file exe aplikasi fingerprint BPJS Kesehatan untuk proses validasi biometrik fingerprint dari APM.  
 
-values: Path file exe  
+value: Path file exe  
 default: `""`  
 
 ### `URLAPLIKASIFRISTABPJS`
 Pengaturan ini digunakan untuk mencari lokasi file exe aplikasi FRISTA BPJS Kesehatan untuk proses validasi biometrik pengenalan wajah dari APM.  
 
-values: Path file exe  
+value: Path file exe  
 default: `""`  
 
 ### `USERFINGERPRINTBPJS`
 Pengaturan ini digunakan untuk mengisi kolom username pada saat pertama kali membuka aplikasi validasi biometrik BPJS Kesehatan. Harus dilakukan enkripsi dahulu.  
 
-values: encrypted  
+value: encrypted  
 default: `""`  
 
 ### `PASSWORDFINGERPRINTBPJS`
 Pengaturan ini digunakan untuk mengisi kolom password pada saat pertama kali membuka aplikasi validasi biometrik BPJS Kesehatan. Harus dilakukan enkripsi dahulu.  
 
-values: encrypted  
+value: encrypted  
 default: `""`  
 
 ### `TOMBOLDIMATIKAN`
@@ -102,5 +102,5 @@ default: `"satusehat"`
 ### `KODEPOLIEKSEKUTIF`
 Pengaturan ini digunakan untuk mengatur kode poli yang digunakan sebagai default untuk pendaftaran registrasi eksekutif.  
 
-values: kode poli eksekutif dari SIMRS  
+value: kode poli eksekutif dari SIMRS  
 default: `""`  
