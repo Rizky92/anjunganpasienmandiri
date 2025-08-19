@@ -1469,7 +1469,7 @@ public class DlgRegistrasiBPJS extends widget.Dialog {
                     r.keyRelease(KeyEvent.VK_CONTROL);
                     r.keyPress(KeyEvent.VK_TAB);
                     r.keyRelease(KeyEvent.VK_TAB);
-                    Thread.sleep(1500);
+                    Thread.sleep(1000);
 
                     ss = new StringSelection(koneksiDB.PASSWORDFINGERPRINTBPJS());
                     c.setContents(ss, ss);
@@ -1481,7 +1481,7 @@ public class DlgRegistrasiBPJS extends widget.Dialog {
                     r.keyRelease(KeyEvent.VK_TAB);
                     r.keyPress(KeyEvent.VK_SPACE);
                     r.keyRelease(KeyEvent.VK_SPACE);
-                    Thread.sleep(5000);
+                    Thread.sleep(1000);
                     
                     u32.EnumWindows((WinDef.HWND hwnd, Pointer pntr) -> {
                         char[] windowText = new char[512];
@@ -1493,13 +1493,15 @@ public class DlgRegistrasiBPJS extends widget.Dialog {
                         }
 
                         if (wText.toLowerCase().contains("face recognition bpjs kesehatan")) {
-                            u32.ShowWindow(hwnd, User32.SW_RESTORE);
                             u32.SetForegroundWindow(hwnd);
+                            u32.ShowWindow(hwnd, User32.SW_MAXIMIZE);
+                            u32.ShowWindow(hwnd, User32.SW_RESTORE);
                             u32.SetFocus(hwnd);
                         }
 
                         return true;
                     }, Pointer.NULL);
+                    Thread.sleep(1000);
 
                     ss = new StringSelection(noPeserta.getText());
                     c.setContents(ss, ss);
@@ -2889,7 +2891,7 @@ public class DlgRegistrasiBPJS extends widget.Dialog {
         jenisPeserta.setText("");
         jk.setText("");
         nik.setText("");
-        noPeserta.setText("");
+        noPeserta.setText("0002299948514");
         asalRujukan.setSelectedIndex(0);
         tglRujukan.setText(LocalDate.now().toString());
         tglSEP.setText(LocalDate.now().toString());
