@@ -9,12 +9,13 @@ Aplikasi anjungan pasien mandiri (APM) modifikasi dari [APM RS Indriati Boyolali
 
 ### Konfigurasi
 Terdapat dua jenis konfigurasi. Konfigurasi bawaan [SIMRS Khanza SMC](https://github.com/Rizky92/simrs-khanza), dan konfigurasi khusus untuk APM.  
-Berikut adalah konfigurasi yang disediakan dalam file `apm.xml.example`:
+Berikut adalah konfigurasi yang disediakan dalam file `apm.xml.example`:  
 ```xml
 <entry key="PRINTER_REGISTRASI"></entry>
 <entry key="PRINTER_BARCODE"></entry>
 <entry key="PRINTER_ANTRIAN"></entry>
 <entry key="PRINTJUMLAHBARCODE">3</entry>
+<entry key="PRINTJUMLAHANTRIANFARMASI">2</entry>
 <entry key="URLAPLIKASIFINGERPRINTBPJS"></entry>
 <entry key="URLAPLIKASIFRISTABPJS"></entry>
 <entry key="USERFINGERPRINTBPJS">l4nh5eVYrLAER/I2A4b3Tw==</entry>
@@ -49,6 +50,12 @@ Pengaturan ini digunakan untuk menentukan jumlah barcode yang mau dicetak.
 
 values: integer  
 default: `3`  
+
+### `PRINTJUMLAHANTRIANFARMASI`
+Pengaturan ini digunakan untuk menentukan jumlah antrian farmasi yang mau dicetak.  
+
+values: integer  
+default: `2`  
 
 ### `URLAPLIKASIFINGERPRINTBPJS`
 Pengaturan ini digunakan untuk mencari lokasi file exe aplikasi fingerprint BPJS Kesehatan untuk proses validasi biometrik fingerprint dari APM.  
@@ -89,7 +96,7 @@ values: List menu, dipisah dengan koma
 | `sepbedapoli` | Mematikan tombol "SEP Kontrol Beda Poli" |
 | `mobilejkn` | Mematikan tombol "Cek In MobileJKN" |
 | `satusehat` | Mematikan tombol "Aktivasi Satu Sehat" |
----
+
 default: `"satusehat"`  
 
 ### `KODEPOLIEKSEKUTIF`

@@ -10,6 +10,7 @@ import fungsi.validasi;
 import java.awt.Cursor;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,6 +19,7 @@ public class DlgAmbilAntrianFarmasi extends widget.Dialog {
     private final Connection koneksi = koneksiDB.condb();
     private final sekuel Sequel = new sekuel();
     private final validasi Valid = new validasi();
+    private final String templateAntrian = "<html><body><center>AMBIL ANTRIAN<br>(%s)</center></body></html>";
 
     private Map<String, Object> param = new HashMap<>();
 
@@ -49,11 +51,13 @@ public class DlgAmbilAntrianFarmasi extends widget.Dialog {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         panelAtas = new widget.Panel();
         judul = new widget.Label();
         panelTengah = new widget.Panel();
-        HurufF = new widget.MenuButton();
+        AmbilAntrian = new widget.MenuButton();
+        tanggal = new widget.Label();
         panelBawah = new widget.Panel();
         btnKeluar = new widget.Button();
 
@@ -66,24 +70,39 @@ public class DlgAmbilAntrianFarmasi extends widget.Dialog {
         panelAtas.setPreferredSize(new java.awt.Dimension(60, 60));
 
         judul.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        judul.setText("AMBIL ANTRIAN");
+        judul.setText("ANTRIAN RESEP FARMASI");
         judul.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         judul.setFont(new java.awt.Font("Inter", 1, 36)); // NOI18N
-        judul.setPreferredSize(new java.awt.Dimension(500, 75));
+        judul.setPreferredSize(new java.awt.Dimension(700, 75));
         panelAtas.add(judul);
 
         getContentPane().add(panelAtas, java.awt.BorderLayout.PAGE_START);
 
-        panelTengah.setLayout(new java.awt.GridLayout(0, 2));
+        panelTengah.setLayout(new java.awt.GridBagLayout());
 
-        HurufF.setText("ANTRIAN F");
-        HurufF.setFont(new java.awt.Font("Inter", 1, 36)); // NOI18N
-        HurufF.addActionListener(new java.awt.event.ActionListener() {
+        AmbilAntrian.setText("<html>\n<body>\n<center>\nCETAK ANTRIAN<br>(0001)\n</center>\n</body>\n</html>"); // NOI18N
+        AmbilAntrian.setFont(new java.awt.Font("Inter", 1, 144)); // NOI18N
+        AmbilAntrian.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                HurufFActionPerformed(evt);
+                AmbilAntrianActionPerformed(evt);
             }
         });
-        panelTengah.add(HurufF);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        panelTengah.add(AmbilAntrian, gridBagConstraints);
+
+        tanggal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tanggal.setText("Tanggal"); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        panelTengah.add(tanggal, gridBagConstraints);
 
         getContentPane().add(panelTengah, java.awt.BorderLayout.CENTER);
 
@@ -108,11 +127,11 @@ public class DlgAmbilAntrianFarmasi extends widget.Dialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void HurufFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HurufFActionPerformed
+    private void AmbilAntrianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AmbilAntrianActionPerformed
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-        cetakAntrianHuruf("F");
+        cetakAntrian();
         this.setCursor(Cursor.getDefaultCursor());
-    }//GEN-LAST:event_HurufFActionPerformed
+    }//GEN-LAST:event_AmbilAntrianActionPerformed
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         tampil();
@@ -123,28 +142,29 @@ public class DlgAmbilAntrianFarmasi extends widget.Dialog {
     }//GEN-LAST:event_btnKeluarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private widget.MenuButton HurufF;
+    private widget.MenuButton AmbilAntrian;
     private widget.Button btnKeluar;
     private widget.Label judul;
     private widget.Panel panelAtas;
     private widget.Panel panelBawah;
     private widget.Panel panelTengah;
+    private widget.Label tanggal;
     // End of variables declaration//GEN-END:variables
 
-    private void cetakAntrianHuruf(String prefix) {
-        if (Sequel.executeRawSmc(
-            "insert into antriloketcetak_smc (nomor, tanggal, jam) values (concat('F', lpad(?, greatest(length(substring(nomor, 2)), 3), '0')), current_date(), current_time())",
-            String.valueOf(Integer.parseInt(HurufF.getText().substring(HurufF.getText().indexOf("(") + 2, HurufF.getText().length() - 1)) + 1)
+    private void cetakAntrian() {
+        if (Sequel.executeRawSmc("insert into antriloketfarmasi_smc (nomor, tanggal, jam) values (lpad(?, greatest(length(nomor), 4), '0'), current_date(), current_time())",
+            String.valueOf(Integer.parseInt(AmbilAntrian.getText().substring(AmbilAntrian.getText().indexOf("(") + 1, AmbilAntrian.getText().indexOf(")"))))
         )) {
-            param.put("logo", Sequel.cariGambar("select logo from setting"));
-            Valid.printReportSmc("rptAntriLoketAPM.jasper", "report", "::[ Antrian Loket ]::", param, koneksiDB.PRINTER_ANTRIAN(), 2,
-                "select date_format(tanggal, '%d-%m-%Y') as tanggal, nomor, jam from " +
-                "antriloketcetak_smc where left(nomor, 1) = 'F' and tanggal = current_date() order by nomor desc limit 1");
+            Valid.printReportSmc("rptAntriFarmasiAPM.jasper", "report", "::[ Antrian Farmasi ]::", param, koneksiDB.PRINTER_ANTRIAN(), koneksiDB.PRINTJUMLAHANTRIANFARMASI(),
+                "select date_format(tanggal, '%d-%m-%Y') as tanggal, nomor, jam from antriloketfarmasi_smc where tanggal = current_date() order by nomor desc limit 1");
         }
         tampil();
     }
 
     private void tampil() {
-        HurufF.setText("ANTRIAN F (" + Sequel.cariIsiSmc("select ifnull(max(nomor), 'F000') from antriloketcetak_smc where tanggal = current_date() and left(nomor, 1) = 'F'") + ")");
+        tanggal.setText("Tanggal " + LocalDate.now());
+        AmbilAntrian.setText(String.format(templateAntrian,
+            Sequel.cariIsiSmc("select lpad(ifnull(max(convert(nomor, unsigned)), 0) + 1, greatest(length(ifnull(nomor, 0)), 4), '0') from antriloketfarmasi_smc where tanggal = current_date()")
+        ));
     }
 }

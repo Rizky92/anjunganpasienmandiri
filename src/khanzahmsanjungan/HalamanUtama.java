@@ -18,6 +18,7 @@ public class HalamanUtama extends javax.swing.JFrame {
     private final DlgCekDataPasien umum;
     private final DlgCekDataBPJS bpjs;
     private final DlgAmbilAntrian antrian;
+    private final DlgAmbilAntrianFarmasi antrianfarmasi;
 
     public HalamanUtama() {
         initComponents();
@@ -25,6 +26,7 @@ public class HalamanUtama extends javax.swing.JFrame {
         umum = new DlgCekDataPasien(this, false);
         bpjs = new DlgCekDataBPJS(this, false);
         antrian = new DlgAmbilAntrian(this, false);
+        antrianfarmasi = new DlgAmbilAntrianFarmasi(this, false);
         
         TOMBOLDIMATIKAN.forEach(tombol -> {
             switch (tombol) {
@@ -286,7 +288,9 @@ public class HalamanUtama extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSatusehatActionPerformed
 
     private void btnAntrianFarmasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAntrianFarmasiActionPerformed
-        // TODO add your handling code here:
+        antrianfarmasi.setSize(getContentPane().getSize());
+        antrianfarmasi.setLocationRelativeTo(getContentPane());
+        antrianfarmasi.setVisible(true);
     }//GEN-LAST:event_btnAntrianFarmasiActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
