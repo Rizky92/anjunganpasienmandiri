@@ -18,6 +18,7 @@ public class HalamanUtama extends javax.swing.JFrame {
     private final DlgCekDataPasien umum;
     private final DlgCekDataBPJS bpjs;
     private final DlgAmbilAntrian antrian;
+    private final DlgAmbilAntrianFarmasi antrianfarmasi;
 
     public HalamanUtama() {
         initComponents();
@@ -25,11 +26,15 @@ public class HalamanUtama extends javax.swing.JFrame {
         umum = new DlgCekDataPasien(this, false);
         bpjs = new DlgCekDataBPJS(this, false);
         antrian = new DlgAmbilAntrian(this, false);
+        antrianfarmasi = new DlgAmbilAntrianFarmasi(this, false);
         
         TOMBOLDIMATIKAN.forEach(tombol -> {
             switch (tombol) {
                 case "antrian":
                     panelTengah.remove(btnAntrian);
+                    break;
+                case "antrianfarmasi":
+                    panelTengah.remove(btnAntrianFarmasi);
                     break;
                 case "cekin":
                     panelTengah.remove(btnBooking);
@@ -77,6 +82,7 @@ public class HalamanUtama extends javax.swing.JFrame {
         flatLabel1 = new com.formdev.flatlaf.extras.components.FlatLabel();
         panelTengah = new widget.Panel();
         btnAntrian = new widget.MenuButton();
+        btnAntrianFarmasi = new widget.MenuButton();
         btnBooking = new widget.MenuButton();
         btnDaftarpoli = new widget.MenuButton();
         btnSEPPertama = new widget.MenuButton();
@@ -108,13 +114,22 @@ public class HalamanUtama extends javax.swing.JFrame {
         panelTengah.setLayout(new java.awt.GridLayout(0, 2));
 
         btnAntrian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/antrianpasien.png"))); // NOI18N
-        btnAntrian.setText("ANTRIAN PASIEN");
+        btnAntrian.setText("ANTRIAN LOKET PENDAFTARAN");
         btnAntrian.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAntrianActionPerformed(evt);
             }
         });
         panelTengah.add(btnAntrian);
+
+        btnAntrianFarmasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/farmasi.png"))); // NOI18N
+        btnAntrianFarmasi.setText("ANTRIAN RESEP FARMASI");
+        btnAntrianFarmasi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAntrianFarmasiActionPerformed(evt);
+            }
+        });
+        panelTengah.add(btnAntrianFarmasi);
 
         btnBooking.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/checkin.png"))); // NOI18N
         btnBooking.setText("CEK IN BOOKING");
@@ -272,8 +287,15 @@ public class HalamanUtama extends javax.swing.JFrame {
         // this.setCursor(Cursor.getDefaultCursor());
     }//GEN-LAST:event_btnSatusehatActionPerformed
 
+    private void btnAntrianFarmasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAntrianFarmasiActionPerformed
+        antrianfarmasi.setSize(getContentPane().getSize());
+        antrianfarmasi.setLocationRelativeTo(getContentPane());
+        antrianfarmasi.setVisible(true);
+    }//GEN-LAST:event_btnAntrianFarmasiActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private widget.MenuButton btnAntrian;
+    private widget.MenuButton btnAntrianFarmasi;
     private widget.MenuButton btnBooking;
     private widget.MenuButton btnDaftarpoli;
     private widget.MenuButton btnMobilejkn;

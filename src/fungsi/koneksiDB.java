@@ -153,6 +153,10 @@ public class koneksiDB {
     public static int PRINTJUMLAHBARCODE() {
         return Integer.parseInt(rawAPM("PRINTJUMLAHBARCODE", "3"));
     }
+    
+    public static int PRINTJUMLAHANTRIANFARMASI() {
+        return Integer.parseInt(rawAPM("PRINTJUMLAHANTRIANFARMASI", "2"));
+    }
 
     public static String URLAPLIKASIFINGERPRINTBPJS() {
         return rawAPM("URLAPLIKASIFINGERPRINTBPJS");
