@@ -99,7 +99,7 @@ public class KhanzaHMSAnjungan {
                 }
 
                 if (ps.getName().equals(koneksiDB.PRINTER_ANTRIAN())) {
-                    printerRegistrasi = ps.getName();
+                    printerAntrian = ps.getName();
                 }
             }
 
@@ -111,7 +111,7 @@ public class KhanzaHMSAnjungan {
                 System.out.println("Setting PRINTER_REGISTRASI menggunakan printer: " + printerRegistrasi);
             }
 
-            if (printerRegistrasi != null) {
+            if (printerAntrian != null) {
                 System.out.println("Setting PRINTER_ANTRIAN menggunakan printer: " + printerAntrian);
             }
         });
