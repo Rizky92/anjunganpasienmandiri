@@ -1424,8 +1424,9 @@ public class DlgRegistrasiBPJS extends widget.Dialog {
 
                     if (wText.toLowerCase().contains("face recognition bpjs kesehatan")) {
                         DlgRegistrasiBPJS.this.fristaAktif = true;
-                        u32.ShowWindow(hwnd, User32.SW_RESTORE);
                         u32.SetForegroundWindow(hwnd);
+                        u32.ShowWindow(hwnd, User32.SW_MAXIMIZE);
+                        u32.ShowWindow(hwnd, User32.SW_RESTORE);
                         u32.SetFocus(hwnd);
                     }
 
@@ -1877,7 +1878,7 @@ public class DlgRegistrasiBPJS extends widget.Dialog {
                     kdKabKLL.getText(), nmKabKLL.getText(), kdKecKLL.getText(), nmKecKLL.getText(), noSKDP.getText(), kodeDokter, namaDokter.getText(),
                     tujuanKunjungan.getSelectedItem().toString().substring(0, 1), (flagProsedur.getSelectedIndex() > 0 ? flagProsedur.getSelectedItem().toString().substring(0, 1) : ""),
                     (penunjang.getSelectedIndex() > 0 ? String.valueOf(penunjang.getSelectedIndex()) : ""), (asesmenPelayanan.getSelectedIndex() > 0 ? asesmenPelayanan.getSelectedItem().toString().substring(0, 1) : ""),
-                    kodeDPJPLayanan.getText(), namaDPJPLayanan.getText(), "1"
+                    kodeDPJPLayanan.getText(), namaDPJPLayanan.getText()
                 );
                 Sequel.executeRawSmc("insert into mutasi_berkas values(?, 'Sudah Dikirim', now(), '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00') on duplicate key update dikirim = values(dikirim)", noRawat);
                 if (!simpanRujukan()) {
