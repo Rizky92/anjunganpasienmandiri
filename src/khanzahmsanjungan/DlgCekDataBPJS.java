@@ -3,6 +3,7 @@ package khanzahmsanjungan;
 import fungsi.sekuel;
 import java.awt.Cursor;
 import java.awt.event.KeyEvent;
+import java.util.Calendar;
 import javax.swing.JOptionPane;
 import javax.swing.border.TitledBorder;
 
@@ -293,7 +294,7 @@ public class DlgCekDataBPJS extends widget.Dialog {
     }
     
     private void cek() {
-        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         if (NoRMPasien.getText().isBlank()) {
             JOptionPane.showMessageDialog(null, "Isian masih kosong..!!");
         } else {
@@ -306,6 +307,10 @@ public class DlgCekDataBPJS extends widget.Dialog {
                     JOptionPane.showMessageDialog(null, "Data pasien tidak ditemukan..!!");
                 } else {
                     if (Sequel.cariExistsSmc("select * from referensi_mobilejkn_bpjs where nomorkartu = ? and tanggalperiksa = current_date() and status in ('Belum', 'Checkin')", noKartu)) {
+                        int sisawaktu = Sequel.cariIntegerSmc("select timestampdiff(minute, now(), concat(r.tanggalperiksa, ' ', left(r.jampraktek, 5))) from referensi_mobilejkn_bpjs r where r.nomorkartu = ? and r.tanggalperiksa = current_date() and r.status = 'Belum'", noKartu);
+                        if (sisawaktu > 60) {
+                            JOptionPane.showMessageDialog(null, "Cek in anda harus masih menunggu lagi.\nSilahkan kembali cek in pada yyyy-MM-dd HH:mm:ss", "Cek In", JOptionPane.WARNING_MESSAGE);
+                        }
                         regist.tampilMobileJKN(noKartu);
                         regist.setSize(getContentPane().getSize());
                         regist.setLocationRelativeTo(getContentPane());
