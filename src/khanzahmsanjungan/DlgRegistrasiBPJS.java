@@ -2891,7 +2891,7 @@ public class DlgRegistrasiBPJS extends widget.Dialog {
         jenisPeserta.setText("");
         jk.setText("");
         nik.setText("");
-        noPeserta.setText("0002299948514");
+        noPeserta.setText("");
         asalRujukan.setSelectedIndex(0);
         tglRujukan.setText(LocalDate.now().toString());
         tglSEP.setText(LocalDate.now().toString());
