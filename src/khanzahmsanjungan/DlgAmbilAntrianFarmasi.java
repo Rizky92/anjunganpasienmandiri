@@ -16,7 +16,6 @@ import java.util.Map;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
-import javax.swing.Timer;
 
 public class DlgAmbilAntrianFarmasi extends widget.Dialog {
 
