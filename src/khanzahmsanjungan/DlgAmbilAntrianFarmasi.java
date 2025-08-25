@@ -13,6 +13,10 @@ import java.sql.ResultSet;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+import javax.swing.Timer;
 
 public class DlgAmbilAntrianFarmasi extends widget.Dialog {
 
@@ -157,6 +161,18 @@ public class DlgAmbilAntrianFarmasi extends widget.Dialog {
         )) {
             Valid.printReportSmc("rptAntriFarmasiAPM.jasper", "report", "::[ Antrian Farmasi ]::", param, koneksiDB.PRINTER_ANTRIAN(), koneksiDB.PRINTJUMLAHANTRIANFARMASI(),
                 "select date_format(tanggal, '%d-%m-%Y') as tanggal, nomor, jam from antriloketfarmasi_smc where tanggal = current_date() order by nomor desc limit 1");
+            final JOptionPane wait = new JOptionPane("Silahkan ambil antrian anda..!!", JOptionPane.INFORMATION_MESSAGE);
+            final JDialog dialog = wait.createDialog(null, "Ambil antrian");
+            dialog.setAlwaysOnTop(true);
+            SwingUtilities.invokeLater(() -> {
+                try {
+                    Thread.sleep(3000);
+                    dialog.setVisible(false);
+                } catch (Exception e) {
+                    System.out.println("Notif : " + e);
+                }
+            });
+            dialog.setVisible(true);
         }
         tampil();
     }
