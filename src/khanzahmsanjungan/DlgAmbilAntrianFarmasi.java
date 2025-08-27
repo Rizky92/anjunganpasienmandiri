@@ -8,13 +8,20 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import java.awt.Cursor;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.AbstractAction;
+import javax.swing.ActionMap;
+import javax.swing.InputMap;
+import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+import javax.swing.KeyStroke;
 import javax.swing.SwingUtilities;
 
 public class DlgAmbilAntrianFarmasi extends widget.Dialog {
@@ -22,7 +29,7 @@ public class DlgAmbilAntrianFarmasi extends widget.Dialog {
     private final Connection koneksi = koneksiDB.condb();
     private final sekuel Sequel = new sekuel();
     private final validasi Valid = new validasi();
-    private final String templateAntrian = "<html><body><center>AMBIL ANTRIAN<br>(%s)</center></body></html>";
+    private final String templateAntrian = "<html><body><center>TEKAN<br>⟶&nbsp;&nbsp;DISINI&nbsp;&nbsp;⟵<br>(%s)</center></body></html>";
 
     private Map<String, Object> param = new HashMap<>();
 
@@ -44,6 +51,17 @@ public class DlgAmbilAntrianFarmasi extends widget.Dialog {
         } catch (Exception e) {
             System.out.println("Notif : " + e);
         }
+        
+        InputMap input = rootPane.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+        ActionMap action = rootPane.getActionMap();
+        
+        input.put(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), "ESCAPE");
+        action.put("ESCAPE", new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
         
         repaint();
     }
@@ -70,21 +88,22 @@ public class DlgAmbilAntrianFarmasi extends widget.Dialog {
             }
         });
 
-        panelAtas.setPreferredSize(new java.awt.Dimension(60, 60));
+        panelAtas.setPreferredSize(new java.awt.Dimension(80, 80));
 
         judul.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         judul.setText("ANTRIAN RESEP FARMASI");
         judul.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        judul.setFont(new java.awt.Font("Inter", 1, 36)); // NOI18N
-        judul.setPreferredSize(new java.awt.Dimension(700, 75));
+        judul.setFont(new java.awt.Font("Inter", 1, 60)); // NOI18N
+        judul.setPreferredSize(new java.awt.Dimension(800, 80));
         panelAtas.add(judul);
 
         getContentPane().add(panelAtas, java.awt.BorderLayout.PAGE_START);
 
         panelTengah.setLayout(new java.awt.GridBagLayout());
 
-        AmbilAntrian.setText("<html>\n<body>\n<center>\nCETAK ANTRIAN<br>(0001)\n</center>\n</body>\n</html>"); // NOI18N
-        AmbilAntrian.setFont(new java.awt.Font("Inter", 1, 144)); // NOI18N
+        AmbilAntrian.setText("<html>\n<body>\n<center>\n⟶ KLIK DISINI ⟵<br>(0001)\n</center>\n</body>\n</html>"); // NOI18N
+        AmbilAntrian.setActionCommand("<html>\n<body>\n<center>\n⟶ TEKAN DISINI ⟵<br>(0001)\n</center>\n</body>\n</html>");
+        AmbilAntrian.setFont(new java.awt.Font("Inter", 1, 120)); // NOI18N
         AmbilAntrian.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AmbilAntrianActionPerformed(evt);
@@ -103,21 +122,19 @@ public class DlgAmbilAntrianFarmasi extends widget.Dialog {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
-        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         panelTengah.add(tanggal, gridBagConstraints);
 
         getContentPane().add(panelTengah, java.awt.BorderLayout.CENTER);
 
         btnKeluar.setBackground(new java.awt.Color(240, 249, 255));
-        btnKeluar.setForeground(new java.awt.Color(255, 33, 32));
-        btnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/exit.png"))); // NOI18N
+        btnKeluar.setForeground(new java.awt.Color(255, 78, 21));
+        btnKeluar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
         btnKeluar.setMnemonic('U');
-        btnKeluar.setText("KELUAR");
-        btnKeluar.setToolTipText("Alt+U");
-        btnKeluar.setFont(new java.awt.Font("Inter", 1, 24)); // NOI18N
+        btnKeluar.setToolTipText("Keluar");
+        btnKeluar.setFont(new java.awt.Font("Inter", 1, 12)); // NOI18N
         btnKeluar.setIconTextGap(2);
-        btnKeluar.setPreferredSize(new java.awt.Dimension(200, 75));
+        btnKeluar.setPreferredSize(new java.awt.Dimension(40, 40));
         btnKeluar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnKeluarActionPerformed(evt);
