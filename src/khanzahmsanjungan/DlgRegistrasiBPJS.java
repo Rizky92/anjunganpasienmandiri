@@ -1725,7 +1725,9 @@ public class DlgRegistrasiBPJS extends widget.Dialog {
             "from pasien join kelurahan on pasien.kd_kel = kelurahan.kd_kel join kecamatan on pasien.kd_kec = kecamatan.kd_kec join kabupaten on " +
             "pasien.kd_kab = kabupaten.kd_kab where pasien.no_rkm_medis = ?"
         )) {
-            ps.setString(9, noRM.getText());
+            int p = 0;
+            ps.setString(++p, tglSEP.getText());
+            ps.setString(++p, noRM.getText());
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
                     namaPJ = rs.getString("namakeluarga");
