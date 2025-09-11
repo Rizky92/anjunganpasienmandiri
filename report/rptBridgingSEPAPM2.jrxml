@@ -60,6 +60,7 @@
     bridging_sep.pembiayaan,
     bridging_sep.nmdpdjp,
     bridging_sep.lakalantas,
+    ifnull(bpjs_prb.prb, '') as prb,
     case
         when bridging_sep.tujuankunjungan = '0' and bridging_sep.asesmenpelayanan in ('', '1') then 'Konsultasi Dokter (Pertama)'
         when bridging_sep.tujuankunjungan = '2' and bridging_sep.asesmenpelayanan = '5' then 'Kunjungan Kontrol (Ulangan)'
@@ -67,7 +68,8 @@
     end jeniskunjungan
 from bridging_sep
 join reg_periksa on bridging_sep.no_rawat = reg_periksa.no_rawat
-where no_sep = $P{parameter}]]>
+left join bpjs_prb on bridging_sep.no_sep = bpjs_prb.no_sep
+where bridging_sep.no_sep = $P{parameter}]]>
 	</queryString>
 	<field name="no_sep" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="no_sep"/>
@@ -272,6 +274,10 @@ where no_sep = $P{parameter}]]>
 		<property name="com.jaspersoft.studio.field.tree.path" value="bridging_sep"/>
 		<property name="com.jaspersoft.studio.field.name" value="lakalantas"/>
 		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="prb" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="prb"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="bpjs_prb"/>
 	</field>
 	<field name="jeniskunjungan" class="java.lang.String">
 		<property name="com.jaspersoft.studio.field.label" value="jeniskunjungan"/>
@@ -1346,7 +1352,7 @@ $P{namars}]]></textFieldExpression>
 					<font fontName="Tahoma" size="11" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[($P{prb} == null || $P{prb}.trim().isEmpty() ? "" : $P{prb})]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{prb}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" pattern="">
 				<reportElement mode="Transparent" x="66" y="118" width="242" height="11" uuid="75504212-9d14-42ce-8087-3dc8d0068fe6">

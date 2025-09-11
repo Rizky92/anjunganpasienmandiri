@@ -241,10 +241,9 @@ public final class sekuel {
             for (int i = 0; i < values.length; i++) {
                 ps.setString(i + 1, values[i]);
             }
-            if (ps.executeUpdate() > 0) {
-                track = ps.toString();
-                SimpanTrack(track.substring(track.indexOf("insert")));
-            }
+            ps.executeUpdate();
+            track = ps.toString();
+            SimpanTrack(track.substring(track.indexOf("insert")));
         } catch (Exception e) {
             System.out.println("Notif : " + e);
             JOptionPane.showMessageDialog(null, "Gagal menyimpan data!");
@@ -264,9 +263,9 @@ public final class sekuel {
             for (int i = 0; i < values.length; i++) {
                 ps.setString(i + 1, values[i]);
             }
+            track = ps.toString();
+            SimpanTrack(track.substring(track.indexOf("insert")));
             if (ps.executeUpdate() > 0) {
-                track = ps.toString();
-                SimpanTrack(track.substring(track.indexOf("insert")));
                 return true;
             }
         } catch (Exception e) {
@@ -288,9 +287,9 @@ public final class sekuel {
             for (int i = 0; i < values.length; i++) {
                 ps.setString(i + 1, values[i]);
             }
+            track = ps.toString();
+            SimpanTrack(track.substring(track.indexOf("insert")));
             if (ps.executeUpdate() > 0) {
-                track = ps.toString();
-                SimpanTrack(track.substring(track.indexOf("insert")));
                 return true;
             }
         } catch (Exception e) {
@@ -312,10 +311,9 @@ public final class sekuel {
             for (int i = 0; i < values.length; i++) {
                 ps.setString(i + 1, values[i]);
             }
-            if (ps.executeUpdate() > 0) {
-                track = ps.toString();
-                SimpanTrack(track.substring(track.indexOf("update")));
-            }
+            ps.executeUpdate();
+            track = ps.toString();
+            SimpanTrack(track.substring(track.indexOf("update")));
         } catch (Exception e) {
             System.out.println("Notif : " + e);
             JOptionPane.showMessageDialog(null, "Gagal mengupdate data!");
@@ -332,9 +330,9 @@ public final class sekuel {
             for (int i = 0; i < values.length; i++) {
                 ps.setString(i + 1, values[i]);
             }
+            track = ps.toString();
+            SimpanTrack(track.substring(track.indexOf("update")));
             if (ps.executeUpdate() > 0) {
-                track = ps.toString();
-                SimpanTrack(track.substring(track.indexOf("update")));
                 return true;
             }
         } catch (Exception e) {
@@ -353,10 +351,9 @@ public final class sekuel {
             for (int i = 0; i < values.length; i++) {
                 ps.setString(i + 1, values[i]);
             }
-            if (ps.executeUpdate() > 0) {
-                track = ps.toString();
-                SimpanTrack(track.substring(track.indexOf("delete")));
-            }
+            ps.executeUpdate();
+            track = ps.toString();
+            SimpanTrack(track.substring(track.indexOf("delete")));
         } catch (Exception e) {
             System.out.println("Notif : " + e);
             if (e.getMessage().contains("constraint")) {
@@ -381,9 +378,9 @@ public final class sekuel {
             for (int i = 0; i < values.length; i++) {
                 ps.setString(i + 1, values[i]);
             }
+            track = ps.toString();
+            SimpanTrack(track.substring(track.indexOf("delete")));
             if (ps.executeUpdate() > 0) {
-                track = ps.toString();
-                SimpanTrack(track.substring(track.indexOf("delete")));
                 return true;
             }
         } catch (Exception e) {
@@ -397,9 +394,9 @@ public final class sekuel {
             for (int i = 0; i < values.length; i++) {
                 ps.setString(i + 1, values[i]);
             }
+            track = ps.toString();
+            SimpanTrack(track.substring(track.indexOf(sql.substring(0, 8))));
             if (ps.executeUpdate() > 0) {
-                track = ps.toString();
-                SimpanTrack(track.substring(track.indexOf(sql.substring(0, 8))));
                 return true;
             }
         } catch (Exception e) {
