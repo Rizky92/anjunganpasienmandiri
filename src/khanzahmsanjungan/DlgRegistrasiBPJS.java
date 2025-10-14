@@ -2582,6 +2582,7 @@ public class DlgRegistrasiBPJS extends widget.Dialog {
                 updateSuratKontrol();
             }
             if (Sequel.cariExistsSmc("select * from referensi_mobilejkn_bpjs where referensi_mobilejkn_bpjs.nobooking = ? and referensi_mobilejkn_bpjs.status = 'Checkin' and referensi_mobilejkn_bpjs.statuskirim = 'Belum'", noBooking)) {
+                datajam = Sequel.cariIsiSmc("select referensi_mobilejkn_bpjs.validasi from referensi_mobilejkn_bpjs where referensi_mobilejkn_bpjs.nobooking = ? and referensi_mobilejkn_bpjs.status = 'Checkin' and referensi_mobilejkn_bpjs.statuskirim = 'Belum'", noBooking);
                 try {
                     url = koneksiDB.URLAPIMOBILEJKN() + "/antrean/add";
                     System.out.println("URL : " + url);
