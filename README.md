@@ -7,8 +7,10 @@ Aplikasi anjungan pasien mandiri (APM) modifikasi dari [APM RS Indriati Boyolali
 - [SIMRS Khanza SMC](https://github.com/Rizky92/simrs-khanza)  
 - Library yang digunakan bisa di [download disini](https://drive.google.com/drive/folders/1bLKuw8l9k5ElC5dxxlrXijACPLtNmCTg?usp=sharing)  
 
+Dokumentasi tentang bagaiman cara membuka projek dapat dilihat [disini](https://github.com/Rizky92/SIMRS-Khanza/blob/0e9c09907adc2c7635405cd35403df7ca235eea7/README.MD).  
+
 ### Konfigurasi
-Terdapat dua jenis konfigurasi. Konfigurasi bawaan [SIMRS Khanza SMC](https://github.com/Rizky92/simrs-khanza), dan konfigurasi khusus untuk APM.  
+Terdapat dua jenis konfigurasi. Konfigurasi bawaan [SIMRS Khanza SMC (database.xml)](https://github.com/Rizky92/SIMRS-Khanza/blob/0e9c09907adc2c7635405cd35403df7ca235eea7/setting/database.xml.example), dan konfigurasi khusus untuk APM.  
 Berikut adalah konfigurasi yang disediakan dalam file `apm.xml.example`:  
 ```xml
 <entry key="PRINTER_REGISTRASI"></entry>
